@@ -1,0 +1,31 @@
+name: Sync swagger.yaml to docs/
+on:
+  push:
+    branches:
+      - main
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Check if swagger.yaml has changed
+        id: check
+        run: |
+          git fetch origin main
+          git diff --exit-code --quiet HEAD^ HEAD -- swagger.yaml || echo "swagger.yaml changed"
+      - name: Skip if no changes
+        if: ${{ steps.check.outcome == 'success' }}
+        run: echo "No changes to swagger.yaml. Skipping sync."
+      - name: Sync swagger.yaml
+        if: ${{ steps.check.outcome != 'success' }}
+        run: |
+          cp swagger.yaml docs/swagger.yaml
+      - name: Commit changes
+        if: ${{ steps.check.outcome != 'success' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/swagger.yaml
+          git commit -m "Sync swagger.yaml to docs/"
+          git push
