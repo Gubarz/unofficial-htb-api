@@ -6,7 +6,7 @@ info:
     name: ''
     url: ' '
   title: HTB Unofficial API
-  version: v0.1.0
+  version: v0.1.1
 openapi: "3.0.0"
 components:
   headers:
@@ -608,6 +608,9 @@ components:
         application/x-www-form-urlencoded:
           schema:
             $ref: '#/components/schemas/spawn_extend_request'
+        application/json:
+            schema:
+              $ref: '#/components/schemas/spawn_extend_request'
       description: Body to post spawn or reset vm
       required: true
   responses:
@@ -623,11 +626,22 @@ components:
           schema:
             $ref: '#/components/schemas/message'
       description: Generic Error Response
-    generic_success_2xx:
+    generic_error_5xx:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/message'
+      description: Internal Server Error
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/x-ratelimit-limit'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/x-ratelimit-remaining'
+    generic_success_2xx:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/messagesuccess'
       description: Generic Success message
     get_access_ovpnfile_vpn_id_0_200:
       content:
@@ -990,22 +1004,12 @@ components:
           schema:
             $ref: '#/components/schemas/connection_status_response'
       description: Connection Status Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_connections_200:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/connections_response'
       description: Connections Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_connections_servers_200:
       content:
         application/json:
@@ -1399,11 +1403,6 @@ components:
           schema:
             $ref: '#/components/schemas/profile_badges_id_repsonse'
       description: Profile Badges User Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_profile_bloods_user_id_200:
       content:
         application/json:
@@ -1520,33 +1519,18 @@ components:
           schema:
             $ref: '#/components/schemas/prolab_id_faq_response'
       description: Prolab FAQ Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_prolab_prolab_id_flags_200:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/prolab_id_flags_response'
       description: Prolab Flags Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_prolab_prolab_id_info_200:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/prolab_id_info_response'
       description: Prolab Info Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_prolab_prolab_id_machines_200:
       content:
         application/json:
@@ -1564,11 +1548,6 @@ components:
           schema:
             $ref: '#/components/schemas/prolab_id_overview_response'
       description: Prolab Overview Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_prolab_prolab_id_reviews_200:
       content:
         application/json:
@@ -1597,11 +1576,6 @@ components:
           schema:
             $ref: '#/components/schemas/prolabs_response'
       description: Prolabs response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/x-ratelimit-limit'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/x-ratelimit-remaining'
     get_pwnbox_status_200:
       content:
         application/json:
@@ -2140,7 +2114,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/team_information_profile_response'
+            $ref: '#/components/schemas/university_all_list_response'
       description: University List Response
       headers:
         x-ratelimit-limit:
@@ -2152,7 +2126,7 @@ components:
         application/json:
           schema:
             items:
-              $ref: '#/components/schemas/team_member'
+              $ref: '#/components/schemas/university_members_response'
             type: array
       description: University Members Response
       headers:
@@ -2433,7 +2407,7 @@ components:
           example:
             message: Container Stopped
           schema:
-            $ref: '#/components/schemas/message'
+            $ref: '#/components/schemas/messagesuccess'
       description: Challenge Stop Response
       headers:
         x-ratelimit-limit:
@@ -2660,7 +2634,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/message'
+            $ref: '#/components/schemas/messagesuccess'
       description: Vm Spawn Response
       headers:
         x-ratelimit-limit:
@@ -4107,7 +4081,7 @@ components:
       properties:
         data:
           properties:
-            competitive:
+            release_arena:
               properties:
                 assigned_server:
                   $ref: '#/components/schemas/assigned_server'
@@ -4294,48 +4268,67 @@ components:
       properties:
         data:
           properties:
-            avatar_url:
-              type: string
-            cover_image_url:
-              type: string
-            creators:
-              items:
-                properties:
-                  avatar_thumb:
-                    type: string
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                type: object
-              type: array
-            description:
-              type: string
-            endgame_reset_votes:
-              type: integer
-            entry_points:
-              items:
-                type: string
-              type: array
             id:
               type: integer
             name:
               type: string
-            players_completed:
-              type: integer
-            points:
-              type: integer
+            avatar_url:
+              type: string
+            cover_image_url:
+              type: string
             retired:
               oneOf:
               - type: boolean
               - type: integer
-            video_url:
-              nullable: true
-              type: string
             vip:
               oneOf:
               - type: boolean
               - type: integer
+            creators:
+              items:
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  avatar_thumb:
+                    type: string
+                type: object
+              type: array
+            points:
+              type: integer
+            players_completed:
+              type: integer
+            endgame_reset_votes:
+              type: integer
+            most_recent_reset:
+              type: object
+            is_deployment_ready:
+              type: boolean
+            entry_points:
+              items:
+                type: string
+              type: array
+            video_url:
+              nullable: true
+              type: string
+            description:
+              type: string
+            completion_icon:
+              type: string
+            completion_text:
+              type: string
+            has_user_finished:
+              type: boolean
+            user_availability:
+              type: object
+              properties:
+                available:
+                  type: boolean
+                code:
+                  type: number
+                message:
+                  type: object
           type: object
         status:
           oneOf:
@@ -4618,20 +4611,21 @@ components:
       items:
         nullable: true
         properties:
-          challenge_category_id:
-            type: integer
-          difficulty:
-            type: string
           id:
-            type: integer
+            type: number
           name:
             type: string
-          points:
-            nullable: true
+          url_name:
             type: string
+          difficulty:
+            type: string
+          points:
+            type: object
+          challenge_category_id:
+            type: number
           url:
             type: string
-          url_name:
+          avatar:
             type: string
         type: object
       title: Home Challenge Card
@@ -4641,22 +4635,26 @@ components:
       items:
         nullable: true
         properties:
-          avatar:
-            type: string
-          difficulty:
-            type: string
           id:
-            type: integer
+            type: number
           name:
             type: string
           os:
             type: string
           points:
-            type: integer
-          root_flag:
-            type: integer
+            type: number
+          difficulty:
+            type: string
+          avatar:
+            type: string
           user_flag:
-            type: integer
+            type: boolean
+          root_flag:
+            type: boolean
+          root_flag_only:
+            type: boolean
+          url:
+            type: string
         type: object
       title: Home Machine Card
       type: array
@@ -4665,18 +4663,21 @@ components:
       items:
         nullable: true
         properties:
-          avatar:
-            nullable: true
-            type: string
-          difficulty:
-            type: string
           id:
-            type: integer
+            type: number
           name:
             type: string
-          percentage:
-            type: number
+          avatar:
+            type: object
+          difficulty:
+            type: string
           points:
+            type: string
+          progress:
+            type: number
+          url:
+            type: string
+          identifier:
             type: string
         type: object
       title: Home Prolab Card
@@ -4797,7 +4798,7 @@ components:
             challenges:
               $ref: '#/components/schemas/home_challenge_card'
             machines:
-              $ref: '#/components/schemas/home_sps_card'
+              $ref: '#/components/schemas/home_machine_card'
             prolabs:
               $ref: '#/components/schemas/home_prolab_card'
             tracks:
@@ -5918,6 +5919,16 @@ components:
           type: integer
       title: Match Penalty Response
       type: object
+    messagesuccess:
+      description: Schema definition for Message
+      properties:
+        message:
+          description: Return message (variation 1)
+          type: string
+        success:
+          type: boolean
+      title: Message
+      type: object
     message:
       description: Schema definition for Message
       properties:
@@ -6244,33 +6255,17 @@ components:
       description: Schema definition for Profile Badges Id Repsonse
       properties:
         badges:
+          type: array
           items:
+            type: object
             properties:
-              badge_category_id:
-                type: integer
-              color:
-                type: string
-              description_en:
-                type: string
-              icon:
-                type: string
               id:
-                type: integer
-              name:
-                type: string
+                type: number
               pivot:
+                type: object
                 properties:
-                  badge_id:
-                    type: integer
                   created_at:
                     type: string
-                  updated_at:
-                    type: string
-                  user_id:
-                    type: integer
-                type: object
-            type: object
-          type: array
       title: Profile Badges Id Repsonse
       type: object
     profile_chart_machine_attack_card:
@@ -6587,83 +6582,85 @@ components:
     prolab:
       description: Schema definition for Prolab
       properties:
-        cover_img_url:
-          example: null
-          nullable: true
-          type: string
-        designated_category:
-          example: Red team_ Operator
-          type: string
         id:
-          example: 1
-          type: integer
-        lab_servers_count:
-          example: 6
-          type: integer
-        level:
           example: 1
           type: integer
         name:
           example: RastaLabs
           type: string
-        new:
-          example: false
-          type: boolean
-        ownership:
-          example: 0
-          type: number
+        release_at:
+          example: '2018-01-02T06:00:00.000000Z'
+          format: date-time
+          type: string
         pro_flags_count:
           example: 22
           type: integer
         pro_machines_count:
           example: 15
           type: integer
-        release_at:
-          example: '2018-01-02T06:00:00.000000Z'
-          format: date-time
+        cover_img_url:
+          example: null
+          nullable: true
           type: string
+        state:
+          type: string
+        mini: 
+          type: boolean
+        identifier:
+          type: string
+        ownership:
+          example: 0
+          type: number
+        user_eligible_for_certificate:
+          example: false
+          type: boolean
+        new:
+          example: false
+          type: boolean
         skill_level:
           example: INTERMEDIATE
+          type: string
+        designated_category:
+          example: Red team_ Operator
           type: string
         team:
           example: red
           type: string
-        user_eligible_for_certificate:
-          example: false
-          type: boolean
+        level:
+          example: 1
+          type: integer
+        lab_servers_count:
+          example: 6
+          type: integer
+        cover_image_url:
+          type: string
+          nullable: true
       title: Prolab
       type: object
     prolab_data:
       description: Schema definition for Prolab Data
       properties:
-        active_users:
-          example: 15
+        id:
+          example: 1
           type: integer
-        cover_image_url:
-          example: null
-          nullable: true
+        name:
+          example: RastaLabs
           type: string
-        description:
-          example: <h4>RastaLabs</h4>...
-          format: html
+        version:
+          example: '1.3'
           type: string
         entry_points:
           items:
             example: 10.10.110.0/24
             type: string
           type: array
-        id:
-          example: 1
-          type: integer
-        lab_masters:
-          items:
-            $ref: '#/components/schemas/lab_master'
-          type: array
-        lab_servers_count:
-          example: 6
-          type: integer
-        name:
-          example: RastaLabs
+        description:
+          example: <h4>RastaLabs</h4>...
+          format: html
+          type: string
+        video_url:
+          example: null
+          nullable: true
           type: string
         pro_flags_count:
           example: 22
@@ -6671,11 +6668,27 @@ components:
         pro_machines_count:
           example: 15
           type: integer
-        version:
-          example: '1.3'
-          type: string
-        video_url:
+        cover_image_url:
           example: null
+          nullable: true
+          type: string
+        state:
+          type: string
+        mini:
+          type: boolean
+        identifier:
+          type: string
+        lab_servers_count:
+          example: 6
+          type: integer
+        active_users:
+          example: 15
+          type: integer
+        lab_masters:
+          items:
+            $ref: '#/components/schemas/lab_master'
+          type: array
+        writeup:
           nullable: true
           type: string
       title: Prolab Data
@@ -6762,26 +6775,16 @@ components:
     prolab_overview_data:
       description: Schema definition for Prolab Overview Data
       properties:
-        designated_level:
-          $ref: '#/components/schemas/designated_level'
-        excerpt:
-          example: null
-          nullable: true
-          type: string
         id:
           example: 1
           type: integer
-        lab_masters:
-          items:
-            $ref: '#/components/schemas/lab_master'
-          type: array
         name:
           example: RastaLabs
           type: string
-        new_version:
-          example: false
-          type: boolean
-        overview_image_url:
+        version:
+          example: '1.3'
+          type: string
+        excerpt:
           example: null
           nullable: true
           type: string
@@ -6791,14 +6794,32 @@ components:
         pro_machines_count:
           example: 15
           type: integer
+        social_links:
+          $ref: '#/components/schemas/social_links'
+        state:
+          type: string
+        mini:
+          type: boolean
+        identifier:
+          type: string
+        new_version:
+          example: false
+          type: boolean
+        overview_image_url:
+          example: null
+          nullable: true
+          type: string
         skill_level:
           example: INTERMEDIATE
           type: string
-        social_links:
-          $ref: '#/components/schemas/social_links'
-        version:
-          example: '1.3'
-          type: string
+        designated_level:
+          $ref: '#/components/schemas/designated_level'
+        lab_masters:
+          items:
+            $ref: '#/components/schemas/lab_master'
+          type: array
+        user_eligible_to_play:
+          type: boolean
       title: Prolab Overview Data
       type: object
     prolab_reviews_overview_data:
@@ -7805,12 +7826,52 @@ components:
       properties:
         data:
           properties:
-            description:
-              type: string
-            id:
-              type: integer
-            user_owns_count:
-              type: integer
+            data:
+              type: object
+              properties:
+                id:
+                  type: number
+                description:
+                  type: string
+                user_owns_count:
+                  type: number
+                academyModules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      name:
+                        type: string
+                      logo:
+                        type: string
+                      avatar:
+                        type: string
+                      difficulty:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          text:
+                            type: string
+                          title:
+                            type: string
+                          color:
+                            type: string
+                          level:
+                            type: number
+                      tier:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          number:
+                            type: number
+                          color:
+                            type: string
+                      url:
+                        type: string
           type: object
       title: Sherlock Info
       type: object
@@ -7850,6 +7911,10 @@ components:
         state:
           description: The state of the item.
           type: string
+        release_date:
+          type: string
+        pinned:
+          type: boolean
       title: Sherlock Item
       type: object
     sherlock_item_list:
@@ -8185,11 +8250,7 @@ components:
       title: Sp Machine Info
     sp_tier_response:
       description: Schema definition for Sp Tier Response
-      properties:
-        info:
-          items:
-            $ref: '#/components/schemas/sp_tier_info'
-          type: array
+      $ref: '#/components/schemas/sp_tier_info'
       title: Sp Tier Response
       type: object
     sp_profile_id_response:
@@ -8489,45 +8550,6 @@ components:
           $ref: '#/components/schemas/common_object'
       title: Team List Response
       type: object
-    team_member:
-      description: Schema definition for Team Member
-      properties:
-        avatar:
-          description: URL of the member's avatar image
-          format: uri
-          type: string
-        country_code:
-          description: The country code of the member's country
-          type: string
-        country_name:
-          description: The name of the country where the member is from
-          type: string
-        id:
-          description: The unique ID of the member
-          type: integer
-        name:
-          description: The username of the member
-          type: string
-        points:
-          description: The points earned by the member
-          type: integer
-        rank:
-          description: The rank of the member
-          type: integer
-        rank_text:
-          description: The textual representation of the member's rank
-          type: string
-        role:
-          description: The role of the member in the team (captain or member)
-          type: string
-        root_owns:
-          description: The number of root owns by the member
-          type: integer
-        user_owns:
-          description: The number of user owns by the member
-          type: integer
-      title: Team Member
-      type: object
     team_members_id_response:
       description: Schema definition for Team Members Id Response
       properties:
@@ -8554,12 +8576,91 @@ components:
     tracks_id_response:
       description: Schema definition for Tracks Id Response
       properties:
-        description:
-          type: string
         id:
-          type: integer
+          type: number
         name:
           type: string
+        description:
+          type: string
+        difficulty:
+          type: string
+        creator:
+          type: object
+          properties:
+            type:
+              type: string
+            id:
+              type: number
+            name:
+              type: string
+            avatar:
+              type: string
+        official:
+          type: boolean
+        staff_pick:
+          type: number
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+              type:
+                type: string
+              name:
+                type: string
+              difficulty:
+                type: string
+              difficulty_ratings:
+                type: object
+                properties:
+                  counterCake:
+                    type: number
+                  counterVeryEasy:
+                    type: number
+                  counterEasy:
+                    type: number
+                  counterTooEasy:
+                    type: number
+                  counterMedium:
+                    type: number
+                  counterBitHard:
+                    type: number
+                  counterHard:
+                    type: number
+                  counterTooHard:
+                    type: number
+                  counterExHard:
+                    type: number
+                  counterBrainFuck:
+                    type: number
+              avatar:
+                type: string
+              os:
+                type: string
+              category:
+                type: object
+              complete:
+                type: boolean
+        cover_image:
+          type: string
+        likes:
+          type: number
+        liked:
+          type: boolean
+        enrolled:
+          type: boolean
+        has_completion_message:
+          type: boolean
+        completed:
+          type: boolean
+        completion_url:
+          type: object
+        completion_message:
+          type: object
+        completion_cta:
+          type: object
       title: Tracks Id Response
       type: object
     tracks_response:
@@ -8610,6 +8711,112 @@ components:
                 example: 750
             required:
               - id
+    university_all_list_response:
+      description: Schema for University All List Response
+      properties:
+                  message:
+                    type: string
+                  section:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            has_auto_generated_logo:
+                              type: number
+                            cca2:
+                              type: string
+                            created_at:
+                              type: string
+                            users_count:
+                              type: number
+                            respected_by_count:
+                              type: number
+                            country:
+                              type: string
+                            user_avatars:
+                              type: array
+                              items:
+                                type: string
+                      first_page_url:
+                        type: string
+                      last_page_url:
+                        type: string
+                      next_page_url:
+                        type: string
+                      prev_page_url:
+                        type: object
+                      current_page:
+                        example: 1
+                        type: integer
+                      from:
+                        example: 1
+                        type: integer
+                      last_page:
+                        example: 11
+                        type: integer
+                      links:
+                        items:
+                          $ref: '#/components/schemas/pagination_link'
+                        type: array
+                      path:
+                        example: https://labs.hackthebox.com/api/v4/prolab/1/reviews
+                        type: string
+                      per_page:
+                        example: 15
+                        type: integer
+                      to:
+                        example: 15
+                        type: integer
+                      total:
+                        example: 162
+                        type: integer
+    university_members_response:
+      description: University Members Resposne
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        avatar:
+          type: string
+        rank:
+          type: string
+        points:
+          type: number
+        root_owns:
+          type: number
+        root_bloods_count:
+          type: number
+        user_bloods_count:
+          type: number
+        user_owns:
+          type: number
+        rank_text:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        role:
+          type: string
+        university:
+          type: object
+          properties:
+            id:
+              type: number
+            captain_id:
+              type: number
+        public:
+          type: number
     user_achievement_target_type_user_id_target_id_response:
       description: Schema definition for User Achievement Target Type User Id Target
       properties:
@@ -9367,6 +9574,538 @@ paths:
       summary: Battleground VPN
       tags:
       - Battlegrounds
+  /bg/match/history/koh:
+    get:
+      tags:
+      - Battlegrounds
+      description: Get /bg/match/history/koh
+      operationId: Get.api.v4.bg.match.history.koh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  match_history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        result:
+                          type: string
+                        flags_owned:
+                          type: number
+                        type:
+                          type: string
+                        game_mode:
+                          type: number
+                        created_at:
+                          type: string
+                        variations:
+                          type: array
+                          items:
+                            type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/bg/tournament/rankings/{rankings-id}':
+    get:
+      tags:
+      - Battlegrounds
+      description: 'Get /bg/tournament/rankings/{rankings-id}'
+      operationId: get_bg_tournament_rankings_battleground_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament_rankings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        last_win_time:
+                          type: string
+                        name:
+                          type: string
+                        wins:
+                          type: number
+                        rank_id:
+                          type: number
+                        total_games:
+                          type: number
+                        total_flags:
+                          type: number
+                        total_points:
+                          type: string
+                        id:
+                          type: number
+                        avatar:
+                          type: string
+                  user_rank:
+                    type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: rankings-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/bg/tournament/rankings/per/rank/{rank-id}':
+    get:
+      tags:
+      - Battlegrounds
+      description: 'Get /bg/tournament/rankings/per/rank/{rank-id}'
+      operationId: get_bg_tournament_rankings_per_rank_battleground_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tournament_rankings:
+                    type: object
+                    properties:
+                      Elite Hacker:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: string
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                      Omniscient:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: string
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                      Guru:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: number
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                      Hacker:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: string
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                      Pro Hacker:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: string
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                      Noob:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            last_win_time:
+                              type: string
+                            name:
+                              type: string
+                            wins:
+                              type: number
+                            rank_id:
+                              type: number
+                            total_games:
+                              type: number
+                            total_flags:
+                              type: number
+                            total_points:
+                              type: number
+                            id:
+                              type: number
+                            avatar:
+                              type: string
+                  user_rank:
+                    type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: rank-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /bg/match/history/ad:
+    get:
+      tags:
+      - Battlegrounds
+      description: Get /bg/match/history/ad
+      operationId: Get.api.v4.bg.match.history.ad
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  match_history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        result:
+                          type: string
+                        flags_owned:
+                          type: number
+                        type:
+                          type: string
+                        game_mode:
+                          type: number
+                        created_at:
+                          type: string
+                        variations:
+                          type: array
+                          items:
+                            type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/bg/scores/{scores-id}':
+    get:
+      tags:
+      - Battlegrounds
+      description: 'Get /bg/scores/{scores-id}'
+      operationId: get_bg_scores_battleground_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scores:
+                    type: object
+                    properties:
+                      teams:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            own_points:
+                              type: number
+                            availability_points:
+                              type: number
+                            reset_points:
+                              type: number
+                            total_points:
+                              type: number
+                            players:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: number
+                                  name:
+                                    type: string
+                                  external_id:
+                                    type: string
+                                  avatar:
+                                    type: string
+                                  total_owns:
+                                    type: number
+                                  own_points:
+                                    type: number
+                      myteam:
+                        type: number
+                      total_flags:
+                        type: number
+                  battleground:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      type:
+                        type: string
+                      game_mode:
+                        type: number
+                      duration:
+                        type: number
+                      starts_at:
+                        type: string
+                      ends_at:
+                        type: string
+                      winner_id:
+                        type: number
+                      surrender_id:
+                        type: object
+                      private:
+                        type: number
+                      free:
+                        type: number
+                      machines:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            team_id:
+                              type: object
+                            friendly_name:
+                              type: string
+                            os:
+                              type: string
+                            points:
+                              type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: scores-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /career/companies:
+    get:
+      tags:
+      - Career
+      description: Get /career/companies
+      operationId: get_career_companies
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        featured:
+                          type: boolean
+                        career_logo:
+                          type: string
+                        logo:
+                          type: string
+                        job_offers:
+                          type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/career/company/{company-id}':
+    get:
+      tags:
+      - Career
+      description: 'Get /career/company/{company-id}'
+      operationId: get_career_company_compand_id
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      company:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          url:
+                            type: string
+                          description:
+                            type: string
+                          featured:
+                            type: boolean
+                          logo:
+                            type: string
+                          latest_post:
+                            type: string
+                      jobs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            title:
+                              type: string
+                            country:
+                              type: object
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            company:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                id:
+                                  type: number
+                                url:
+                                  type: string
+                            external_employer_name:
+                              type: object
+                            external_link:
+                              type: object
+                            minimum_rank_id:
+                              type: number
+                            minimum_rank_name:
+                              type: string
+                            applied:
+                              type: boolean
+                            application_url:
+                              type: object
+                            has_application_url:
+                              type: boolean
+                            company_logo:
+                              type: string
+                            remote:
+                              type: object
+                            work_type:
+                              type: string
+                  meta:
+                    type: object
+                    properties:
+                      pages:
+                        type: number
+                      currentPage:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: company-id
+        in: path
+        required: true
+        schema:
+          type: string
   /career/featured:
     get:
       description: Returns a list of featured jobs
@@ -9391,6 +10130,83 @@ paths:
       summary: History of applied jobs
       tags:
       - Career
+  /career/info/{info-id}:
+    get:
+      tags:
+      - Career
+      description: 'Get /career/info/{info-id}'
+      operationId: 'get_career_info_info_id'
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      title:
+                        type: string
+                      country:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      company:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          id:
+                            type: number
+                          url:
+                            type: string
+                      external_employer_name:
+                        type: object
+                      external_link:
+                        type: string
+                      minimum_rank_id:
+                        type: number
+                      minimum_rank_name:
+                        type: string
+                      applied:
+                        type: boolean
+                      application_url:
+                        type: object
+                      has_application_url:
+                        type: boolean
+                      company_logo:
+                        type: string
+                      remote:
+                        type: object
+                      work_type:
+                        type: string
+                      description:
+                        type: string
+                      other_jobs:
+                        type: array
+                        items:
+                          type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: info-id
+        in: path
+        required: true
+        schema:
+          type: string
   /career/profile:
     get:
       description: Returns a list of profile information related to the user's career
@@ -9404,6 +10220,45 @@ paths:
       summary: Career profile
       tags:
       - Career
+  /career/requests:
+    get:
+      tags:
+      - Career
+      description: Get /career/requests
+      operationId: get_career_requests
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    properties:
+                      pages:
+                        type: number
+                      currentPage:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /career/search:
     get:
       description: Returns a list of all jobs that match the search query
@@ -9431,6 +10286,32 @@ paths:
       summary: Stats
       tags:
       - Career
+  /career/temporary/contact/optin:
+    post:
+      tags:
+      - Career
+      description: Post /career/temporary/contact/optin
+      operationId: post_career_temporary_contact_optin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                opt_in:
+                  type: boolean
+      responses:
+        '204':
+          description: No Content
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /challenge/activity/{challenge_id}:
     get:
       description: Provides a list of users that have completed the challenge
@@ -9663,6 +10544,28 @@ paths:
       summary: Get a write-up for a challenge
       tags:
       - Challenges
+  /challenge/{challenge_id}/writeup/official:
+    get:
+      tags:
+      - Challenges
+      description: 'Get /challenge/{challenge_id}/writeup/official'
+      operationId: get_challenge_writeup_official
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/pdf: { }
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - $ref: '#/components/parameters/challenge_id'
   /challenges:
     get:
       description: Porivdes a list of challenges with limited challenge info
@@ -9819,6 +10722,91 @@ paths:
       summary: Get Endgames machine list
       tags:
       - Endgames
+  /endgame/{endgame-id}/writeup:
+    get:
+      tags:
+      - Endgames
+      description: 'Get /endgame/{endgame-id}/writeup'
+      operationId: get_endgame_endgame_id_writeup
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      official:
+                        type: object
+                        properties:
+                          filename:
+                            type: string
+                          ratings_count:
+                            type: number
+                          liked_percentage:
+                            type: number
+                          threshold_for_display_reached:
+                            type: boolean
+                          user_liked:
+                            type: object
+                          sha256:
+                            type: string
+                          url:
+                            type: string
+                      writeups:
+                        type: array
+                        items:
+                          type: object
+                      user_submitted:
+                        type: array
+                        items:
+                          type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: endgame-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /endgame/{endgame-id}/writeup/official:
+    get:
+      tags:
+      - Endgames
+      description: 'Get /endgame/{endgame-id}/writeup/official'
+      operationId: get_endgame_endgame_id_writeup_official
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/pdf: { }
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: endgame-id
+        in: path
+        required: true
+        schema:
+          type: string
   /endgames:
     get:
       description: Retrieves information related to /endgames
@@ -10287,6 +11275,328 @@ paths:
       - Machines
     parameters:
     - $ref: '#/components/parameters/machine_id'
+  /machine/walkthrough/random:
+    get:
+      tags:
+      - Machines
+      description: Get /machine/walkthrough/random
+      operationId: get_machine_walkthrough_random
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      name:
+                        type: string
+                      avatar:
+                        type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /machine/todo/paginated:
+    get:
+      tags:
+      - Machines
+      description: Get /machine/todo/paginated
+      operationId: get_machine_todo_paginated
+      parameters:
+        - name: sort_type
+          in: query
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          schema:
+            type: string
+        - name: 'difficulty[]'
+          in: query
+          schema:
+            type: string
+        - name: 'os[]'
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        avatar:
+                          type: string
+                        name:
+                          type: string
+                        static_points:
+                          type: number
+                        sp_flag:
+                          type: number
+                        os:
+                          type: string
+                        points:
+                          type: number
+                        star:
+                          type: number
+                        release:
+                          type: string
+                        easy_month:
+                          type: number
+                        poweroff:
+                          type: number
+                        free:
+                          type: boolean
+                        difficulty:
+                          type: number
+                        difficultyText:
+                          type: string
+                        user_owns_count:
+                          type: number
+                        authUserInUserOwns:
+                          type: boolean
+                        root_owns_count:
+                          type: number
+                        authUserHasReviewed:
+                          type: boolean
+                        authUserInRootOwns:
+                          type: boolean
+                        isTodo:
+                          type: number
+                        is_competitive:
+                          type: boolean
+                        active:
+                          type: object
+                        feedbackForChart:
+                          type: object
+                          properties:
+                            counterCake:
+                              type: number
+                            counterVeryEasy:
+                              type: number
+                            counterEasy:
+                              type: number
+                            counterTooEasy:
+                              type: number
+                            counterMedium:
+                              type: number
+                            counterBitHard:
+                              type: number
+                            counterHard:
+                              type: number
+                            counterTooHard:
+                              type: number
+                            counterExHard:
+                              type: number
+                            counterBrainFuck:
+                              type: number
+                        ip:
+                          type: object
+                        playInfo:
+                          type: object
+                          properties:
+                            isActive:
+                              type: object
+                            expires_at:
+                              type: object
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                        recommended:
+                          type: number
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                      last:
+                        type: string
+                      prev:
+                        type: object
+                      next:
+                        type: string
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                      from:
+                        type: number
+                      last_page:
+                        type: number
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: object
+                            label:
+                              type: string
+                            active:
+                              type: boolean
+                      path:
+                        type: string
+                      per_page:
+                        type: number
+                      to:
+                        type: number
+                      total:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/machines/{machines-id}/adventure':
+    get:
+      tags:
+      - Machines
+      description: 'Get /machines/{machines-id}/adventure'
+      operationId: get_machine_machine_id_adventure
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                        title:
+                          type: string
+                        description:
+                          type: object
+                        hint:
+                          type: object
+                        type:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            text:
+                              type: string
+                        completed:
+                          type: boolean
+                        flag_rating:
+                          type: object
+                        masked_flag:
+                          type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: machines-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/machines/{machines-id}/tasks':
+    get:
+      tags:
+      - Machines
+      description: 'Get /machines/{machines-id}/tasks'
+      operationId: get_machine_machine_id_tasks
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        hint:
+                          type: string
+                        type:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            text:
+                              type: string
+                        task_type:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            text:
+                              type: string
+                        prerequisite_id:
+                          type: object
+                        completed:
+                          type: boolean
+                        masked_flag:
+                          type: string
+                        options:
+                          type: array
+                          items:
+                            type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: machines-id
+        in: path
+        required: true
+        schema:
+          type: string
   /navigation/main:
     get:
       description: Retrieve main navigation details.
@@ -10341,6 +11651,198 @@ paths:
       summary: Submit Problam flag
       tags:
       - Prolabs
+  '/prolab/{prolab-id}/progress':
+    get:
+      tags:
+      - Prolabs
+      description: 'Get /prolab/{prolab-id}/progress'
+      operationId: get_prolab_prolab_id_progress
+      responses:
+        '200':
+          description: OK
+          
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      ownership:
+                        type: number
+                      ownership_required_for_certification:
+                        type: number
+                      keyed_pro_lab_mile_stone:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            percent:
+                              type: number
+                            icon:
+                              type: string
+                            text:
+                              type: string
+                            description:
+                              type: string
+                            isMilestoneReached:
+                              type: boolean
+                            rarity:
+                              type: number
+                      user_eligible_for_certificate:
+                        type: boolean
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: prolab-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/prolab/{prolab-id}/reset':
+    get:
+      tags:
+      - Prolabs
+      description: 'Get /prolab/{prolab-id}/reset'
+      operationId: get_prolab_prolab_id_reset
+      responses:
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+    parameters:
+      - name: prolab-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/prolab/{prolab-id}/changelogs':
+    get:
+      tags:
+      - Prolabs
+      description: 'Get /prolab/{prolab-id}/changelogs'
+      operationId: get_prolab_prolab_id_changelogs
+      responses:
+        '200':
+          description: OK
+          
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: prolab-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/prolab/{prolab-id}/rating':
+    get:
+      tags:
+      - Prolabs
+      description: 'Get /prolab/{prolab-id}/rating'
+      operationId: get_prolab_prolab_id_rating
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      rating:
+                        type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: prolab-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /prolab/certificates:
+    get:
+      tags:
+      - Prolabs
+      description: Get /prolab/certificates
+      operationId: Get.api.v4.prolab.certificates
+      responses:
+        '200':
+          description: OK
+          
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/prolab/{prolab-id}/subscription':
+    get:
+      tags:
+      - Prolabs
+      description: 'Get /prolab/{prolab-id}/subscription'
+      operationId: get_prolab_prolab_id_subscription
+      responses:
+        '200':
+          description: OK
+          
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                      type:
+                        type: object
+                      name:
+                        type: string
+                      renews_at:
+                        type: string
+                      ends_at:
+                        type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: prolab-id
+        in: path
+        required: true
+        schema:
+          type: string
   /prolab/{prolab_id}/flags:
     get:
       description: Retrieves information related to /prolab/{prolab id}/flags
@@ -10676,7 +12178,7 @@ paths:
           $ref: '#/components/responses/generic_error_4xx'
       summary: Universities
       tags:
-      - Universities
+      - Ranking
   /rankings/university/best:
     get:
       description: Retrieves information related to /rankings/university/best
@@ -10688,7 +12190,7 @@ paths:
           $ref: '#/components/responses/generic_error_4xx'
       summary: 'University:  (Bearer''s) - Best for Period'
       tags:
-      - Universities
+      - Ranking
     parameters:
     - $ref: '#/components/parameters/period_query'
   /rankings/university/overview:
@@ -10702,7 +12204,7 @@ paths:
           $ref: '#/components/responses/generic_error_4xx'
       summary: 'University: (Bearer''s) - Overview'
       tags:
-      - Universities
+      - Ranking
     parameters:
     - $ref: '#/components/parameters/period_query'
   /rankings/university/ranking_bracket:
@@ -10716,7 +12218,7 @@ paths:
           $ref: '#/components/responses/generic_error_4xx'
       summary: 'University: (Bearer''s) - Ranking Bracket'
       tags:
-      - Universities
+      - Ranking
   /rankings/users:
     get:
       description: Retrieves information related to /rankings/users
@@ -10729,6 +12231,304 @@ paths:
       summary: Users
       tags:
       - Ranking
+  /rankings:
+    get:
+      tags:
+      - Rank
+      description: Get /rankings
+      operationId: Get.api.v4.rankings
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          avatar:
+                            type: string
+                          rank:
+                            type: number
+                          rank_growth:
+                            type: string
+                      team:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          avatar_url:
+                            type: string
+                          rank:
+                            type: number
+                          rank_growth:
+                            type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /rankings/user/best:
+    get:
+      tags:
+      - Rank
+      description: Get /rankings/user/best
+      operationId: Get.api.v4.rankings.user.best
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      rank:
+                        type: number
+                      date:
+                        type: string
+                      rank_chart_data:
+                        type: array
+                        items:
+                          type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /rankings/user/ranking_bracket:
+    get:
+      tags:
+      - Rank
+      description: Get /rankings/user/ranking_bracket
+      operationId: Get.api.v4.rankings.user.ranking_bracket
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      rank:
+                        type: number
+                      points:
+                        type: number
+                      points_for_next_bracket:
+                        type: number
+                      current_bracket:
+                        type: string
+                      next_bracket:
+                        type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /rankings/user/overview:
+    get:
+      tags:
+      - Rank
+      description: Get /rankings/user/overview
+      operationId: Get.api.v4.rankings.user.overview
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      points_diff:
+                        type: number
+                      points_growth:
+                        type: string
+                      ranks_diff:
+                        type: number
+                      chart_data:
+                        type: array
+                        items:
+                          type: number
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          avatar:
+                            type: string
+                          avatar_thumb:
+                            type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/rankings/university/ranking_bracket/{ranking_bracket-id}':
+    get:
+      tags:
+      - Rank
+      description: 'Get /rankings/university/ranking_bracket/{ranking_bracket-id}'
+      operationId: get_rankings_university_ranking_bracket_team_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      rank:
+                        type: number
+                      points:
+                        type: number
+                      points_for_next_bracket:
+                        type: object
+                      current_bracket:
+                        type: string
+                      next_bracket:
+                        type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: ranking_bracket-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /rankings/country/US/members:
+    get:
+      tags:
+      - Rank
+      description: Get /rankings/country/US/members
+      operationId: Get.api.v4.rankings.country.US.members
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      country_name:
+                        type: string
+                      rankings:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            points:
+                              type: number
+                            root_owns:
+                              type: number
+                            user_owns:
+                              type: number
+                            challenge_owns:
+                              type: number
+                            root_bloods:
+                              type: number
+                            user_bloods:
+                              type: number
+                            challenge_bloods:
+                              type: number
+                            fortress:
+                              type: number
+                            endgame:
+                              type: number
+                            name:
+                              type: string
+                            country:
+                              type: string
+                            level:
+                              type: string
+                            rank:
+                              type: number
+                            ranks_diff:
+                              type: number
+                            avatar_thumb:
+                              type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /review/challenge/{challenge_id}:
     get:
       description: Retrieves information related to /review/challenge/{challenge id}
@@ -10836,6 +12636,250 @@ paths:
       summary: Get completed machine flags for the current season
       tags:
       - Season
+  '/season/rewards/{rewards-id}':
+    get:
+      tags:
+      - Season
+      description: 'Get /season/rewards/{rewards-id}'
+      operationId: get_season_rewards_season_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reward_types:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            order:
+                              type: number
+                            groups:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: number
+                                  name:
+                                    type: string
+                                  subtitle:
+                                    type: string
+                                  description:
+                                    type: object
+                                  image:
+                                    type: string
+                                  reward_type_id:
+                                    type: number
+                                  order:
+                                    type: number
+                                  rewards:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: number
+                                        name:
+                                          type: string
+                                        image:
+                                          type: string
+                                        reward_group_id:
+                                          type: number
+                                        order:
+                                          type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: rewards-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/season/players/leaderboard/top/{top-id}':
+    get:
+      tags:
+      - Season
+      description: 'Get /season/players/leaderboard/top/{top-id}'
+      operationId: get_season_players_leaderboard_top_top_id
+      parameters:
+        - name: number
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resource_id:
+                          type: number
+                        rank:
+                          type: number
+                        league_rank:
+                          type: string
+                        name:
+                          type: string
+                        country:
+                          type: string
+                        avatar_thumb:
+                          type: string
+                        points:
+                          type: number
+                        user_owns:
+                          type: number
+                        root_owns:
+                          type: number
+                        user_bloods:
+                          type: number
+                        root_bloods:
+                          type: number
+                        is_respected:
+                          type: boolean
+                        last_own:
+                          type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: top-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /season/players/leaderboard:
+    get:
+      tags:
+      - Season
+      description: Get /season/players/leaderboard
+      operationId: get_season_players_leaderboard
+      parameters:
+        - name: season
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resource_id:
+                          type: number
+                        rank:
+                          type: number
+                        league_rank:
+                          type: string
+                        name:
+                          type: string
+                        country:
+                          type: string
+                        rank_trend:
+                          type: number
+                        positive_trend:
+                          type: boolean
+                        avatar_thumb:
+                          type: string
+                        points:
+                          type: number
+                        user_owns:
+                          type: number
+                        root_owns:
+                          type: number
+                        user_bloods:
+                          type: number
+                        root_bloods:
+                          type: number
+                        last_own:
+                          type: string
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                      last:
+                        type: string
+                      prev:
+                        type: object
+                      next:
+                        type: string
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                      from:
+                        type: number
+                      last_page:
+                        type: number
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: object
+                            label:
+                              type: string
+                            active:
+                              type: boolean
+                      path:
+                        type: string
+                      per_page:
+                        type: number
+                      to:
+                        type: number
+                      total:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /season/user/followers/{season_id}:
     get:
       description: Retrieve user followers for a specific season.
@@ -10885,10 +12929,44 @@ paths:
       summary: Get list of Sherlocks
       tags:
       - Sherlocks
+  /sherlocks/categories/list:
+    get:
+      tags:
+      - Sherlocks
+      description: Get /sherlocks/categories/list
+      operationId: Get.api.v4.sherlocks.categories.list
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  info:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        icon:
+                          type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /sherlocks/{sherlock_id}:
     get:
       description: Retrieve information for a specific Sherlock instance.
-      operationId: get_sherlocks_info
+      operationId: get_sherlocks_sherlock_id
       parameters:
       - $ref: '#/components/parameters/sherlock_id'
       responses:
@@ -11056,10 +13134,123 @@ paths:
       summary: 'Sidebar: changelog'
       tags:
       - Platform
+  /subscriptions/pricing:
+    get:
+      tags:
+      - Platform
+      description: Get /subscriptions/pricing
+      operationId: Get.api.v4.subscriptions.pricing
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  default_currency:
+                    type: string
+                  plans:
+                    type: object
+                    properties:
+                      monthly-prolabs-subscription:
+                        type: object
+                        properties:
+                          EUR:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+                          GBP:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+                          USD:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+                      annual-prolabs-subscription:
+                        type: object
+                        properties:
+                          EUR:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+                          GBP:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+                          USD:
+                            type: object
+                            properties:
+                              setup:
+                                type: number
+                              per_period:
+                                type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/invoice/quaderno/{quaderno-id}':
+    get:
+      tags:
+      - Platform
+      description: 'Get /invoice/quaderno/{quaderno-id}'
+      operationId: get_invoice_quaderno_invoice_id
+      parameters:
+        - name: auth_user_id
+          in: query
+          schema:
+            type: string
+        - name: expires
+          in: query
+          schema:
+            type: string
+        - name: signature
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/pdf: { }
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: quaderno-id
+        in: path
+        required: true
+        schema:
+          type: string
   /sp/tier/{tier_id}:
     get:
       description: Retrieve details of SP Tier.
-      operationId: get_sp_tier
+      operationId: get_sp_tier_tier_id
       responses:
         '200':
           $ref: '#/components/responses/get_sp_tier_200'
@@ -11281,6 +13472,69 @@ paths:
       description: ID of the Track
       schema:
         type: integer
+  /tracks/enroll/{enroll-id}':
+    post:
+      tags:
+      - Tracks
+      description: 'Post /tracks/enroll/{enroll-id}'
+      operationId: post_tracks_enroll_track_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enrolled:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: enroll-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/tracks/like/{like-id}':
+    post:
+      tags:
+      - Tracks
+      description: 'Post /tracks/like/{like-id}'
+      operationId: post_tracks_like_track_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  liked:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: like-id
+        in: path
+        required: true
+        schema:
+          type: string
+  
   /university/all/list:
     get:
       description: Retrieve a list of all universities.
@@ -11339,6 +13593,500 @@ paths:
       summary: Get owns statistics for a user
       tags:
       - Universities
+  /university/country/list:
+    get:
+      tags:
+      - Universities
+      description: Get /university/country/list
+      operationId: Get.api.v4.university.country.list
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  section:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            has_auto_generated_logo:
+                              type: number
+                            cca2:
+                              type: string
+                            created_at:
+                              type: string
+                            users_count:
+                              type: number
+                            respected_by_count:
+                              type: number
+                            country:
+                              type: string
+                            user_avatars:
+                              type: array
+                              items:
+                                type: string
+                      first_page_url:
+                        type: string
+                      from:
+                        type: number
+                      last_page:
+                        type: number
+                      last_page_url:
+                        type: string
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: object
+                            label:
+                              type: string
+                            active:
+                              type: boolean
+                      next_page_url:
+                        type: string
+                      path:
+                        type: string
+                      per_page:
+                        type: number
+                      prev_page_url:
+                        type: object
+                      to:
+                        type: number
+                      total:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /university/top/list:
+    get:
+      tags:
+      - Universities
+      description: Get /university/top/list
+      operationId: Get.api.v4.university.top.list
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  section:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            has_auto_generated_logo:
+                              type: number
+                            cca2:
+                              type: string
+                            rank:
+                              type: number
+                            created_at:
+                              type: string
+                            users_count:
+                              type: number
+                            respected_by_count:
+                              type: number
+                            country:
+                              type: string
+                            user_avatars:
+                              type: array
+                              items:
+                                type: string
+                      last_page:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /university/new/list:
+    get:
+      tags:
+      - Universities
+      description: Get /university/new/list
+      operationId: Get.api.v4.university.new.list
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  section:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            has_auto_generated_logo:
+                              type: number
+                            cca2:
+                              type: string
+                            created_at:
+                              type: string
+                            users_count:
+                              type: number
+                            respected_by_count:
+                              type: number
+                            country:
+                              type: string
+                            user_avatars:
+                              type: array
+                              items:
+                                type: string
+                      last_page:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/university/chart/challenge/categories/{categories-id}':
+    get:
+      tags:
+      - Universities
+      description: 'Get /university/chart/challenge/categories/{categories-id}'
+      operationId: get_university_chart_challenge_categories_team_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        university_percentage:
+                          type: number
+                        all_universitys_avg_percentage:
+                          type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: categories-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/university/chart/machines/attack/{attack-id}':
+    get:
+      tags:
+      - Universities
+      description: 'Get /university/chart/machines/attack/{attack-id}'
+      operationId: get_university_chart_machines_attack_team_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  machine_owns:
+                    type: object
+                    properties:
+                      solved:
+                        type: number
+                      total:
+                        type: number
+                  machine_attack_paths:
+                    type: object
+                    properties:
+                      Reconnaissance:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Web Site Structure Discovery:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      User Enumeration:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Fuzzing:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Configuration Analysis:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Binary Exploitation:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Binary Analysis:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Impersonation:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Pivoting:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+                      Packet Capture Analysis:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          avg_universitys_solved:
+                            type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: attack-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/university/activity/{activity-id}':
+    get:
+      tags:
+      - Universities
+      description: 'Get /university/activity/{activity-id}'
+      operationId: get_university_activity_team_id
+      responses:
+        '200':
+          description: OK
+          headers:
+            
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        public:
+                          type: number
+                        avatar_thumb:
+                          type: string
+                    date:
+                      type: string
+                    date_diff:
+                      type: string
+                    type:
+                      type: string
+                    first_blood:
+                      type: boolean
+                    object_type:
+                      type: string
+                    id:
+                      type: number
+                    name:
+                      type: string
+                    points:
+                      type: number
+                    challenge_category:
+                      type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: activity-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /university/my:
+    get:
+      tags:
+      - Universities
+      description: Get /university/my
+      operationId: Get.api.v4.university.my
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  section:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
   /user/achievement/{target_type}/{user_id}/{target_id}:
     get:
       description: Retrieves information related to /user/achievement/{target type}/{user
@@ -11736,6 +14484,396 @@ paths:
       summary: 'Bearer: Enrolled Tracks'
       tags:
       - User
+  '/user/profile/progress/sherlocks/{sherlocks-id}':
+    get:
+      tags:
+      - User
+      description: 'Get /user/profile/progress/sherlocks/{sherlocks-id}'
+      operationId: get_user_profile_progress_sherlocks_sherlock_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile:
+                    type: object
+                    properties:
+                      solved_tasks:
+                        type: number
+                      challenge_owns:
+                        type: object
+                        properties:
+                          solved:
+                            type: number
+                          total:
+                            type: number
+                          percentage:
+                            type: number
+                      challenge_categories:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            owned_flags:
+                              type: number
+                            total_flags:
+                              type: number
+                            completion_percentage:
+                              type: number
+                            avg_user_solved:
+                              type: number
+                      challenge_difficulties:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            owned_challenges:
+                              type: number
+                            total_challenges:
+                              type: number
+                            completion_percentage:
+                              type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: sherlocks-id
+        in: path
+        required: true
+        schema:
+          type: string
+  /user/profile/certificates:
+    get:
+      tags: 
+        - User
+      description: Get /user/profile/certificates
+      operationId: Get.api.v4.user.profile.certificates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ownedProLab:
+                    type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /user/subscriptions/cancellation/reasons:
+    get:
+      tags: 
+        - User
+      description: Get /user/subscriptions/cancellation/reasons
+      operationId: Get.api.v4.user.subscriptions.cancellation.reasons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        freetext:
+                          type: boolean
+                        children:
+                          type: array
+                          items:
+                            type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /user/career:
+    get:
+      tags:
+      - User
+      description: Get /user/career
+      operationId: Get.api.v4.user.career
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      cv:
+                        type: object
+                      email:
+                        type: string
+                      name:
+                        type: string
+                      phone:
+                        type: object
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /user/subscriptions/billing-history:
+    get:
+      tags:
+      - User
+      description: Get /user/subscriptions/billing-history
+      operationId: Get.api.v4.user.subscriptions.billing-history
+      parameters:
+        - name: per_page
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        date:
+                          type: string
+                        quaderno_invoice_id:
+                          type: string
+                        pdf_url:
+                          type: string
+                        amount:
+                          type: number
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                      last:
+                        type: string
+                      prev:
+                        type: object
+                      next:
+                        type: object
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                      from:
+                        type: number
+                      last_page:
+                        type: number
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: object
+                            label:
+                              type: string
+                            active:
+                              type: boolean
+                      path:
+                        type: string
+                      per_page:
+                        type: number
+                      to:
+                        type: number
+                      total:
+                        type: number
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /user/apptoken/list:
+    get:
+      tags:
+      - User
+      description: Get /user/apptoken/list
+      operationId: Get.api.v4.user.apptoken.list
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tokens:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        created_at:
+                          type: string
+                        expires_at:
+                          type: string
+                        last_seen:
+                          type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  /user/apptoken/create:
+    post:
+      tags:
+      - User
+      description: Post /user/apptoken/create
+      operationId: Post.api.v4.user.apptoken.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                expire_after:
+                  type: number
+      responses:
+        '200':
+          description: OK
+          headers:
+            x-ratelimit-limit:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  name:
+                    type: string
+                  created_at:
+                    type: string
+                  expires_at:
+                    type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+  '/user/disrespect/{disrespect-id}':
+    post:
+      tags:
+      - User
+      description: 'Post /user/disrespect/{disrespect-id}'
+      operationId: post_usere_disrespect_user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: disrespect-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/user/respect/{respect-id}':
+    post:
+      tags: 
+        - User
+      description: 'Post /user/respect/{respect-id}'
+      operationId: post_user_respect_user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: respect-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/user/unfollow/{unfollow-id}':
+    post:
+      tags:
+      - User
+      description: 'Post /user/unfollow/{unfollow-id}'
+      operationId: post_user_unfollow_user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: unfollow-id
+        in: path
+        required: true
+        schema:
+          type: string
+  '/user/follow/{follow-id}':
+    post:
+      tags:
+      - User
+      description: 'Post /user/follow/{follow-id}'
+      operationId: post_user_follow_user_id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+    parameters:
+      - name: follow-id
+        in: path
+        required: true
+        schema:
+          type: string
   /vm/extend:
     post:
       description: Extend the virtual machine.
@@ -11775,7 +14913,25 @@ paths:
           $ref: '#/components/responses/post_vm_spawn_200'
         '400':
           $ref: '#/components/responses/generic_error_4xx'
+        '500':
+          $ref: '#/components/responses/generic_error_5xx'
       summary: Spawn a machine / SP
+      tags:
+      - VM
+  /vm/terminate:
+    post:
+      description: Terminate a virtual machine.
+      operationId: post_vm_terminate
+      requestBody:
+        $ref: '#/components/requestBodies/post_vm_spawn_reset_extend_requestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/post_vm_spawn_200'
+        '400':
+          $ref: '#/components/responses/generic_error_4xx'
+        '500':
+          $ref: '#/components/responses/generic_error_5xx'
+      summary: Terminate a machine / SP
       tags:
       - VM
 security:
