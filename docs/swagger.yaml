@@ -11886,6 +11886,8 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Get VPN Server status
+      tags:
+        - Connection
   /connections:
     get:
       description: Shows a list of the last set vpn servers
@@ -11924,6 +11926,8 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Get Prolab VPN Servers
+      tags:
+        - Connection
   /connections/servers/switch/{vpnId}:
     post:
       description: See `/connections/servers` for valid ids
