@@ -1126,6 +1126,17 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
+    ConnectionStatusProductResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectionStatusProductResponse'
+      description: OK
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
     ConnectionStatusResponse:
       content:
         application/json:
@@ -1138,6 +1149,17 @@ components:
           schema:
             $ref: '#/components/schemas/ConnectionsResponse'
       description: Connections Response
+    ConnectionsServersProlabResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConnectionsServersProlabResponse'
+      description: OK
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
     ConnectionsServersResponse:
       content:
         application/json:
@@ -3390,38 +3412,38 @@ components:
       title: Battleground Flag Own Response
       type: object
     BgHistoryCurrentResponse:
-      title: Battleground History Battleground User ID Response
       description: Schema definition for Bg History Battleground User Id Response
-      type: object
       properties:
         battleground:
-          type: object
           properties:
-            id:
-              type: number
-            type:
-              type: string
             duration:
+              type: number
+            ends_at:
+              type: string
+            id:
               type: number
             starts_at:
               type: string
-            ends_at:
+            type:
               type: string
+          type: object
         history:
-          type: array
           items:
-            type: object
             properties:
+              created_at:
+                type: string
               id:
+                type: number
+              round:
                 type: number
               text:
                 type: string
-              round:
-                type: number
-              created_at:
-                type: string
               type:
                 type: string
+            type: object
+          type: array
+      title: Battleground History Battleground User ID Response
+      type: object
     BgLoadingStatusCurrentBgUserIdResponse:
       description: Loading Status Current BG User
       properties:
@@ -4654,6 +4676,43 @@ components:
           type: boolean
       title: Connection Server Switch Resposne
       type: object
+    ConnectionStatusProductResponse:
+      properties:
+        data:
+          properties:
+            connection:
+              nullable: true
+              properties:
+                down:
+                  type: number
+                ip4:
+                  type: string
+                ip6:
+                  type: string
+                name:
+                  type: string
+                through_pwnbox:
+                  type: boolean
+                up:
+                  type: number
+              type: object
+            location_type_friendly:
+              type: string
+            server:
+              properties:
+                friendly_name:
+                  type: string
+                hostname:
+                  type: string
+                id:
+                  type: number
+              type: object
+          type: object
+        status:
+          type: boolean
+        type:
+          type: string
+      type: object
     ConnectionStatusResponse:
       description: Schema definition for Connection Status Response
       items:
@@ -4776,6 +4835,143 @@ components:
         options:
           $ref: '#/components/schemas/Options'
       title: Connections Server Response
+      type: object
+    ConnectionsServersProlabResponse:
+      properties:
+        data:
+          properties:
+            assigned:
+              type: object
+            options:
+              properties:
+                EU:
+                  properties:
+                    EU - Free Pro Lab:
+                      properties:
+                        location:
+                          type: string
+                        name:
+                          type: string
+                        servers:
+                          properties:
+                            '453':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                            '454':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                    EU - Pro Lab:
+                      properties:
+                        location:
+                          type: string
+                        name:
+                          type: string
+                        servers:
+                          properties:
+                            '451':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                  type: object
+                US:
+                  properties:
+                    US - Free Pro Lab:
+                      properties:
+                        location:
+                          type: string
+                        name:
+                          type: string
+                        servers:
+                          properties:
+                            '455':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                            '456':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                    US - Pro Lab:
+                      properties:
+                        location:
+                          type: string
+                        name:
+                          type: string
+                        servers:
+                          properties:
+                            '452':
+                              properties:
+                                current_clients:
+                                  type: number
+                                friendly_name:
+                                  type: string
+                                full:
+                                  type: boolean
+                                id:
+                                  type: number
+                                location:
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                  type: object
+              type: object
+          type: object
+        status:
+          type: boolean
       type: object
     ContentStatsResponse:
       description: Schema definition for Content Stats Response
@@ -11673,6 +11869,23 @@ paths:
       summary: Current Active Connections
       tags:
         - Connection
+  /connection/status/{productName}:
+    get:
+      description: Get VPN Server status
+      operationId: getConnectionStatusProduct
+      parameters:
+        - description: Product type, ie lab, starting_point, endgames, fortresses
+          in: path
+          name: productName
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ConnectionStatusProductResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Get VPN Server status
   /connections:
     get:
       description: Shows a list of the last set vpn servers
@@ -11699,6 +11912,18 @@ paths:
       summary: list VPN servers
       tags:
         - Connection
+  /connections/servers/prolab/{prolabId}:
+    get:
+      description: Get Prolab VPN Servers
+      operationId: getConnectionsServersProlab
+      parameters:
+        - $ref: '#/components/parameters/ProlabId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ConnectionsServersProlabResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Get Prolab VPN Servers
   /connections/servers/switch/{vpnId}:
     post:
       description: See `/connections/servers` for valid ids
@@ -12702,18 +12927,6 @@ paths:
       summary: Countries
       tags:
         - Ranking
-  /rankings/country/US/members:
-    get:
-      description: Get Rankings Country Members
-      operationId: getRankingsCountryUSMembers
-      responses:
-        '200':
-          $ref: '#/components/responses/RankingsCountryMembersResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Get Rankings Country Members
-      tags:
-        - Ranking
   /rankings/country/best:
     get:
       description: Retrieves information related to /rankings/country/best
@@ -12752,6 +12965,25 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: 'Country: (Bearer''s) - Ranking Bracket'
+      tags:
+        - Ranking
+  /rankings/country/{countryShortName}/members:
+    get:
+      description: Get Rankings Country Members
+      operationId: getRankingsCountryUSMembers
+      parameters:
+        - description: Two letter short name for country, ie US, DE
+          in: path
+          name: countryShortName
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/RankingsCountryMembersResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Get Rankings Country Members
       tags:
         - Ranking
   /rankings/team/best:
