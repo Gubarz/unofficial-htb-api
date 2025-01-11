@@ -4827,13 +4827,18 @@ components:
     ConnectionsServerResponse:
       description: Schema definition for Connections Server Response
       properties:
-        assigned:
-          $ref: '#/components/schemas/AssignedServer'
-        disabled:
-          example: false
+        status:
           type: boolean
-        options:
-          $ref: '#/components/schemas/Options'
+        data:
+          type: object
+          properties: 
+            assigned:
+              $ref: '#/components/schemas/AssignedServer'
+            disabled:
+              example: false
+              type: boolean
+            options:
+              $ref: '#/components/schemas/Options'
       title: Connections Server Response
       type: object
     ConnectionsServersProlabResponse:
@@ -6980,7 +6985,9 @@ components:
       type: string
     Options:
       additionalProperties:
-        $ref: '#/components/schemas/ServerGroup'
+        additionalProperties: 
+          type: object
+          $ref: '#/components/schemas/ServerGroup'
       description: Schema definition for Options
       title: Options
       type: object
