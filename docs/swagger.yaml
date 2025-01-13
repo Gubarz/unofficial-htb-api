@@ -1945,7 +1945,8 @@
       RankingsCountriesResponse:
         content:
           application/json:
-            example: {}
+            schema:
+              $ref: '#/components/schemas/RankingsCountries'
         description: Rankings Countries Response
         headers:
           x-ratelimit-limit:
@@ -1955,7 +1956,8 @@
       RankingsCountryBestResponse:
         content:
           application/json:
-            example: {}
+            schema:
+              $ref: '#/components/schemas/RankingsCountryBest'
         description: Rankings Country Best Response
         headers:
           x-ratelimit-limit:
@@ -1976,7 +1978,8 @@
       RankingsCountryOverviewResponse:
         content:
           application/json:
-            example: {}
+            schema:
+              $ref: '#/components/schemas/RankingsCountryOverviewResponse'
         description: Rankings Country Overview Response
         headers:
           x-ratelimit-limit:
@@ -1986,7 +1989,8 @@
       RankingsCountryRankingBracketResponse:
         content:
           application/json:
-            example: {}
+            schema:
+              $ref: '#/components/schemas/RankingsCountrRankingBracketResponse'
         description: Rankings Country Bracket Response
         headers:
           x-ratelimit-limit:
@@ -2051,7 +2055,8 @@
       RankingsUniversitiesResponse:
         content:
           application/json:
-            example: {}
+            schema:
+              $ref: '#/components/schemas/RankingsUniversitiesResponse'
         description: Rankings Universities Response
         headers:
           x-ratelimit-limit:
@@ -2542,17 +2547,6 @@
             schema:
               $ref: '#/components/schemas/TeamInvitationsIdResponse'
         description: Team Invitations Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      TeamListResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TeamListResponse'
-        description: Team List Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -5363,33 +5357,6 @@
           type: object
         title: Home Battleground Card
         type: array
-      HomeProgressChallengeCard:
-        description: Schema definition for Home Challenge Card
-        items:
-          nullable: true
-          properties:
-            avatar:
-              type: string
-            categoryID:
-              type: integer
-            difficulty:
-              type: string
-            id:
-              type: number
-            name:
-              type: string
-            points:
-              nullable: true
-              type: string
-            type:
-              type: string
-            url:
-              type: string
-            urlName:
-              type: string
-          type: object
-        title: Home Challenge Card
-        type: array
       HomeProgressMachineCard:
         description: Schema definition for Home Machine Card
         items:
@@ -5989,7 +5956,46 @@
             $ref: '#/components/schemas/MachineOwnsCard'
         title: Machine Attack Details
         type: object
-      MachineCard:
+      MachineCard1:
+        description: Schema definition for Machine Card
+        properties:
+          avatar:
+            example: /storage/avatars/a2c2bd7b4e98ff8b782ed590896305a1.png
+            type: string
+          difficultyText:
+            example: Medium
+            type: string
+          id:
+            example: 601
+            type: integer
+          isTodo:
+            type: boolean
+          maker:
+            $ref: '#/components/schemas/MakerRecommended'
+          maker2:
+            $ref: '#/components/schemas/MakerRecommended'
+          name:
+            example: SolarLab
+            type: string
+          os:
+            example: Windows
+            type: string
+          points:
+            example: 30
+            type: integer
+          release:
+            example: '2024-05-11T16:00:00.000000Z'
+            format: date-time
+            type: string
+          retired:
+            example: 0
+            type: integer
+          typeCard:
+            example: seasonal
+            type: string
+        title: Machine Card
+        type: object
+      MachineCard2:
         description: Schema definition for Machine Card
         properties:
           authUserInRootOwns:
@@ -6005,53 +6011,42 @@
             example: Medium
             type: string
           feedbackForChart:
-            oneOf:
-              - nullable: true
-                properties:
-                  counterBitHard:
-                    example: 894
-                    type: integer
-                  counterBrainFuck:
-                    example: 255
-                    type: integer
-                  counterCake:
-                    example: 150
-                    type: integer
-                  counterEasy:
-                    example: 556
-                    type: integer
-                  counterExHard:
-                    example: 298
-                    type: integer
-                  counterHard:
-                    example: 1137
-                    type: integer
-                  counterMedium:
-                    example: 2367
-                    type: integer
-                  counterTooEasy:
-                    example: 813
-                    type: integer
-                  counterTooHard:
-                    example: 770
-                    type: integer
-                  counterVeryEasy:
-                    example: 169
-                    type: integer
-                type: object
+            nullable: true
+            properties:
+              counterBitHard:
+                example: 894
+                type: integer
+              counterBrainFuck:
+                example: 255
+                type: integer
+              counterCake:
+                example: 150
+                type: integer
+              counterEasy:
+                example: 556
+                type: integer
+              counterExHard:
+                example: 298
+                type: integer
+              counterHard:
+                example: 1137
+                type: integer
+              counterMedium:
+                example: 2367
+                type: integer
+              counterTooEasy:
+                example: 813
+                type: integer
+              counterTooHard:
+                example: 770
+                type: integer
+              counterVeryEasy:
+                example: 169
+                type: integer
+            type: object
           id:
             example: 601
             type: integer
-          isTodo:
-            example: false
-            oneOf:
-              - type: boolean
-              - format: int32
-                type: integer
-          maker:
-            $ref: '#/components/schemas/Maker'
-          maker2:
-            $ref: '#/components/schemas/Maker'
           name:
             example: SolarLab
             type: string
@@ -6092,8 +6087,28 @@
         description: Schema definition for Machine Changelog Id Response
         properties:
           info:
-            items: {}
             type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                user_id:
+                  type: integer
+                machine_id:
+                  type: integer
+                type:
+                  type: string
+                title:
+                  type: string
+                created_at:
+                  type: string
+                description:
+                  type: string
+                released:
+                  type: integer
+                updated_at:
+                  type: string
         title: Machine Changelog Id Response
         type: object
       MachineData:
@@ -6277,13 +6292,6 @@
                   user:
                     type: integer
                 type: object
-              '10':
-                properties:
-                  root:
-                    type: integer
-                  user:
-                    type: integer
-                type: object
               '2':
                 properties:
                   root:
@@ -6334,6 +6342,13 @@
                     type: integer
                 type: object
               '9':
+                properties:
+                  root:
+                    type: integer
+                  user:
+                    type: integer
+                type: object
+              '10':
                 properties:
                   root:
                     type: integer
@@ -6395,6 +6410,9 @@
       MachineProfileInfo:
         description: Schema definition for Machine Profile Info
         properties:
+          synopsis:
+            type: string
+            nullable: true
           academy_modules:
             items:
               $ref: '#/components/schemas/AcademyModule'
@@ -6406,9 +6424,10 @@
             example: 18H 6M 57S
             nullable: true
             type: string
-          authUserFirstuser_Time:
+          authUserFirstUserTime:
             example: 3H 47M 43S
             type: string
+            nullable: true
           authUserHasReviewed:
             example: false
             type: boolean
@@ -6427,20 +6446,11 @@
           can_access_walkthrough:
             example: false
             type: boolean
-          difficulty:
-            example: 48
-            type: integer
           difficultyText:
             example: Medium
             type: string
           feedbackForChart:
             $ref: '#/components/schemas/FeedbackForChart'
-          firstroot_bloodTime:
-            example: 1H 8M 12S
-            type: string
-          firstuser_bloodTime:
-            example: 0H 24M 32S
-            type: string
           free:
             example: true
             type: boolean
@@ -6459,23 +6469,11 @@
             format: ipv4
             nullable: true
             type: string
-          isCompleted:
-            example: true
-            type: boolean
           isGuidedEnabled:
             example: false
             type: boolean
           isTodo:
             type: boolean
-          lab_server:
-            example: null
-            nullable: true
-            type: object
-          last_reset_time:
-            example: null
-            format: date-time
-            nullable: true
-            type: string
           machine_mode:
             example: seasonal
             nullable: true
@@ -6493,6 +6491,7 @@
           ownRank:
             example: 292
             type: integer
+            nullable: true
           playInfo:
             $ref: '#/components/schemas/PlayInfo'
           points:
@@ -6511,9 +6510,6 @@
             type: integer
           rootBlood:
             $ref: '#/components/schemas/BloodInfo'
-          rootBloodAvatar:
-            example: /storage/avatars/62f89bc46559e4eed7931d77a6b77cb3.png
-            type: string
           root_owns_count:
             example: 1355
             type: integer
@@ -6542,9 +6538,6 @@
             type: integer
           userBlood:
             $ref: '#/components/schemas/BloodInfo'
-          userBloodAvatar:
-            example: /storage/avatars/52575667e1ee4999bd68c0a5937940ca.png
-            type: string
           user_can_review:
             example: false
             type: boolean
@@ -6569,6 +6562,8 @@
                 type: string
               difficultyText:
                 type: string
+              retired:
+                type: integer
               feedbackForChart:
                 properties:
                   counterBitHard:
@@ -6607,6 +6602,8 @@
             properties:
               avatar:
                 type: string
+              retired:
+                type: integer
               difficultyText:
                 type: string
               feedbackForChart:
@@ -6691,30 +6688,11 @@
       MachineReviewsUserIdResponse:
         description: Schema definition for Machine Reviews User Id Response
         properties:
-          info:
-            properties:
-              created_at:
-                type: string
-              id:
-                type: integer
-              machine_id:
-                type: integer
-              message:
-                type: string
-              released:
-                type: integer
-              stars:
-                format: float
-                type: number
-              title:
-                type: string
-              updated_at:
-                type: string
-              user_id:
-                type: integer
-            type: object
-        title: Machine Review User Id Response
+          message:
+            type: string
+            nullable: true
         type: object
+        title: Machine Review User Id Response
       MachineTagIdResponse:
         description: Schema definition for Machine Tag Id Response
         properties:
@@ -6743,46 +6721,63 @@
             type: array
         title: Machine Tag List Response
         type: object
+      BaseTask:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          hint:
+            type: string
+            nullable: true
+          type:
+            type: object
+            properties:
+              id:
+                type: integer
+              text:
+                type: string
+          task_type:
+            type: object
+            properties:
+              id:
+                type: integer
+              text:
+                type: string
+          prerequisite_id:
+            type: integer
+            nullable: true
+          completed:
+            type: boolean
+          masked_flag:
+            type: string
+          options:
+            type: array
+            items:
+              type: object
+      FlagRatingTask:
+        allOf:
+          - $ref: '#/components/schemas/BaseTask'
+          - type: object
+            properties:
+              flag_rating:
+                type: integer
+                minimum: 1
+                maximum: 5
+            required:
+              - flag_rating
       MachineTasksResponse:
+        type: object
         properties:
           data:
-            items:
-              properties:
-                completed:
-                  type: boolean
-                description:
-                  type: string
-                hint:
-                  type: string
-                id:
-                  type: number
-                masked_flag:
-                  type: string
-                options:
-                  items:
-                    type: object
-                  type: array
-                prerequisite_id:
-                  type: object
-                task_type:
-                  properties:
-                    id:
-                      type: number
-                    text:
-                      type: string
-                  type: object
-                title:
-                  type: string
-                type:
-                  properties:
-                    id:
-                      type: number
-                    text:
-                      type: string
-                  type: object
-              type: object
             type: array
-        type: object
+            items:
+              oneOf:
+                - $ref: '#/components/schemas/BaseTask'
+                - $ref: '#/components/schemas/FlagRatingTask'
       MachineUnreleasedResponse:
         description: Schema definition for Machine Unreleased Response
         properties:
@@ -6791,14 +6786,23 @@
               properties:
                 avatar:
                   type: string
-                cocreators:
-                  items: {}
+                coCreators:
+                  items:
+                    properties:
+                      avatar:
+                        type: string
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                    type: object
                   type: array
+                  nullable: true
                 difficulty:
                   type: integer
                 difficulty_text:
                   type: string
-                firstcreator:
+                firstCreator:
                   items:
                     properties:
                       avatar:
@@ -6841,7 +6845,7 @@
       MachineWalkthroughIdResponse:
         description: Schema definition for Machine Walkthrough Id Response
         properties:
-          info:
+          message:
             properties:
               official:
                 properties:
@@ -6849,9 +6853,22 @@
                     type: string
                   sha256:
                     type: string
+                  rating:
+                    type: number
+                  likedByUser:
+                    type: boolean
+                    nullable: true
+                  dislikedByUser:
+                    type: number
+                    nullable: true
+                  total_ratings:
+                    type: integer
+                  threshold_for_display_reached:
+                    type: integer
                 type: object
               under_review:
                 type: string
+                nullable: true
               video:
                 properties:
                   creator_avatar:
@@ -6863,21 +6880,26 @@
                   youtube_id:
                     type: string
                 type: object
+                nullable: true
               writeups:
                 items:
                   properties:
                     created_at:
                       type: string
-                    dislikedByuser_:
+                    disliked_by_user:
                       type: string
+                      nullable: true
                     id:
                       type: integer
                     language_code:
                       type: string
+                      nullable: true
                     language_name:
                       type: string
-                    likedByuser_:
+                      nullable: true
+                    liked_by_user:
                       type: string
+                      nullable: true
                     rating:
                       type: integer
                     total_ratings:
@@ -6931,13 +6953,17 @@
                 completed:
                   type: boolean
                 description:
-                  type: object
+                  type: string
+                  nullable: true
                 flag_rating:
-                  type: object
+                  type: number
+                  nullable: true
                 hint:
-                  type: object
+                  type: string
+                  nullable: true
                 id:
-                  type: object
+                  type: integer
+                  nullable: true
                 masked_flag:
                   type: string
                 title:
@@ -6954,31 +6980,40 @@
         type: object
       Maker:
         description: Schema definition for Maker
-        oneOf:
-          - additionalProperties: false
+        nullable: true
+        properties:
+          avatar:
             nullable: true
-            properties:
-              avatar:
-                nullable: true
-                type: string
-              id:
-                nullable: true
-                type: integer
-              isRespected:
-                nullable: true
-                type: boolean
-              name:
-                nullable: true
-                type: string
-              profile_url:
-                example: https://app.hackthebox.com/profile/389926
-                type: string
-            title: Maker
-            type: object
-          - example: []
-            items: {}
+            type: string
+          id:
             nullable: true
-            type: array
+            type: integer
+          isRespected:
+            nullable: true
+            type: boolean
+          name:
+            nullable: true
+            type: string
+          profile_url:
+            example: https://app.hackthebox.com/profile/389926
+            type: string
+        title: Maker
+        type: object
+      MakerRecommended:
+        description: Schema definition for Maker
+        nullable: true
+        properties:
+          avatar:
+            nullable: true
+            type: string
+          id:
+            nullable: true
+            type: integer
+          name:
+            nullable: true
+            type: string
+        title: Maker
+        type: object
       MatchPenaltyResponse:
         description: Schema definition for Match Penalty Response
         properties:
@@ -7188,6 +7223,10 @@
             type: integer
           weekly:
             type: object
+          respects:
+            type: integer
+          challenge_owns:
+            type: integer
         title: Own Stats
         type: object
       PaginatedMachineData:
@@ -7960,12 +7999,16 @@
                 type: boolean
               ends_at:
                 type: string
+                nullable: true
               name:
                 type: string
+                nullable: true
               renews_at:
                 type: string
+                nullable: true
               type:
                 type: object
+                nullable: true
             type: object
           status:
             type: boolean
@@ -8151,6 +8194,92 @@
           rank_growth:
             type: string
         type: object
+      RankingsCountries:
+        properties:
+          status:
+            type: boolean
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                rank:
+                  type: integer
+                country:
+                  type: string
+                members:
+                  type: integer
+                points:
+                  type: integer
+                root_owns:
+                  type: integer
+                user_owns:
+                  type: integer
+                challenge_owns:
+                  type: integer
+                root_bloods:
+                  type: integer
+                user_bloods:
+                  type: integer
+                fortress:
+                  type: integer
+                endgame:
+                  type: integer
+                name:
+                  type: string
+                ranks_diff:
+                  type: integer
+      RankingsCountryBest:
+        properties:
+          status:
+            type: boolean
+          data:
+            type: object
+            properties:
+              rank:
+                type: integer
+              date:
+                type: string
+              rank_chart_data:
+                type: array
+                items:
+                  type: integer
+      RankingsCountryOverviewResponse:
+        properties:
+          status:
+            type: boolean
+          data:
+            type: object
+            properties:
+              ranks_diff:
+                type: integer
+              points_diff:
+                type: integer
+              points_growth:
+                type: string
+              chart_data:
+                type: array
+                items:
+                  type: integer
+      RankingsCountrRankingBracketResponse:
+        properties:
+          status:
+            type: boolean
+          data:
+            type: object
+            properties:
+              rank:
+                type: integer
+              points:
+                type: integer
+              points_for_next_bracket:
+                type: integer
+                nullable: true
+              current_bracket:
+                type: string
+              next_bracket:
+                type: string
+                nullable: true
       RankingsCountryMembersResponse:
         properties:
           data:
@@ -8184,6 +8313,7 @@
                       type: number
                     ranks_diff:
                       type: number
+                      nullable: true
                     root_bloods:
                       type: number
                     root_owns:
@@ -8281,12 +8411,14 @@
                 type: string
               next_bracket:
                 type: string
+                nullable: true
               points:
                 format: int32
                 type: integer
               points_for_next_bracket:
                 format: int32
                 type: integer
+                nullable: true
               rank:
                 format: int32
                 type: integer
@@ -8295,6 +8427,46 @@
             type: boolean
         title: Rankings Team Ranking Bracket Response
         type: object
+      RankingsUniversitiesResponse:
+        type: object
+        properties:
+          status:
+            type: boolean
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                rank:
+                  type: integer
+                students:
+                  type: integer
+                points:
+                  type: integer
+                root_owns:
+                  type: integer
+                user_owns:
+                  type: integer
+                challenge_owns:
+                  type: integer
+                root_bloods:
+                  type: integer
+                user_bloods:
+                  type: integer
+                challenge_bloods:
+                  type: integer
+                fortress:
+                  type: integer
+                endgame:
+                  type: integer
+                id:
+                  type: integer
+                name:
+                  type: string
+                country:
+                  type: string
+                ranks_diff:
+                  type: integer
       RankingsTeamResponse:
         description: Schema definition for Rankings Team Response
         example:
@@ -8390,13 +8562,15 @@
               current_bracket:
                 type: string
               next_bracket:
-                type: object
+                type: string
+                nullable: true
               points:
-                type: number
+                type: integer
               points_for_next_bracket:
-                type: object
+                type: integer
+                nullable: true
               rank:
-                type: number
+                type: integer
             type: object
           status:
             type: boolean
@@ -8580,9 +8754,9 @@
         description: Schema definition for Recommended Machine Response
         properties:
           card1:
-            $ref: '#/components/schemas/MachineCard'
+            $ref: '#/components/schemas/MachineCard1'
           card2:
-            $ref: '#/components/schemas/MachineCard'
+            $ref: '#/components/schemas/MachineCard2'
           state:
             example:
               - seasonal
@@ -9010,10 +9184,12 @@
                   type: string
                 country:
                   type: string
+                  nullable: true
                 is_respected:
                   type: boolean
                 last_own:
                   type: string
+                  nullable: true
                 league_rank:
                   type: string
                 name:
@@ -9044,6 +9220,7 @@
                   type: string
                 country:
                   type: string
+                  nullable: true
                 last_own:
                   type: string
                 league_rank:
@@ -9088,11 +9265,13 @@
                       items:
                         properties:
                           description:
-                            type: object
+                            type: string
+                            nullable: true
                           id:
                             type: number
                           image:
                             type: string
+                            nullable: true
                           name:
                             type: string
                           order:
@@ -9116,6 +9295,7 @@
                             type: array
                           subtitle:
                             type: string
+                            nullable: true
                         type: object
                       type: array
                     id:
@@ -9143,6 +9323,7 @@
                       type: string
                     points:
                       type: integer
+                      nullable: true
                     user_avatar:
                       type: string
                   type: object
@@ -9156,6 +9337,7 @@
                       type: string
                     points:
                       type: integer
+                      nullable: true
                     user_avatar:
                       type: string
                   type: object
@@ -9447,6 +9629,7 @@
             type: string
           hint:
             type: string
+            nullable: true
           id:
             type: integer
           masked_flag:
@@ -9507,7 +9690,8 @@
             items:
               properties:
                 icon:
-                  type: object
+                  type: string
+                  nullable: true
                 id:
                   type: number
                 name:
@@ -9582,6 +9766,7 @@
                 type: integer
               machines:
                 items:
+                  type: object
                   properties:
                     avatar:
                       example: /storage/avatars/a9ddcda8d2f6eb388c6717de2caff896.png
@@ -9630,12 +9815,14 @@
                           hint:
                             example: A simple Google search will yield the answer. Use Camel Case.
                             type: string
+                            nullable: true
                           id:
                             example: 64
                             type: integer
                           masked_flag:
                             example: '********** ***** *******e'
                             type: string
+                            nullable: true
                           options:
                             example: []
                             items: {}
@@ -9658,9 +9845,21 @@
                       example: false
                       type: boolean
                     video:
-                      example: []
-                      items: {}
-                      type: array
+                      oneOf:
+                        - type: object
+                          properties:
+                            creator_id:
+                              type: integer
+                              example: 3769
+                            creator_name:
+                              type: string
+                              example: ippsec
+                            youtube_id:
+                              type: string
+                              example: 4BDFr-ZtlHE
+                        - type: array
+                          maxItems: 0
+                          example: []
                     walkthrough:
                       properties:
                         filename:
@@ -9674,7 +9873,6 @@
                       example: null
                       nullable: true
                       type: string
-                  type: object
                 type: array
               name:
                 example: Tier 1
@@ -9920,23 +10118,26 @@
             type: object
           country_code:
             type: string
+            nullable: true
           country_name:
             type: string
           cover_image_url:
-            format: nullable
             type: string
+            nullable: true
           description:
             type: string
           discord:
-            format: nullable
             type: string
+            nullable: true
           facebook:
-            format: nullable
+            nullable: true
             type: string
           id:
             format: int32
             type: integer
           is_respected:
+            type: boolean
+          join_request_sent:
             type: boolean
           motto:
             type: string
@@ -9948,7 +10149,7 @@
           public:
             type: boolean
           twitter:
-            format: nullable
+            nullable: true
             type: string
         title: Team Info Id Response
         type: object
@@ -9996,20 +10197,12 @@
         properties: {}
         title: Team Invitations Id Response
         type: object
-      TeamListResponse:
-        description: Schema definition for Team List Response
-        properties:
-          list:
-            $ref: '#/components/schemas/CommonObject'
-        title: Team List Response
-        type: object
       TeamMembersIdResponse:
         description: Schema definition for Team Members Id Response
-        properties:
-          members:
-            $ref: '#/components/schemas/CommonObject'
+        items:
+          $ref: '#/components/schemas/TeamMember'
         title: Team Members Id Response
-        type: object
+        type: array
       TeamsAttackPathCard:
         description: Schema definition for Teams Attack Path Card
         properties:
@@ -10046,17 +10239,22 @@
           completed:
             type: boolean
           completion_cta:
-            type: object
+            type: integer
+            nullable: true
           completion_message:
-            type: object
+            type: string
+            nullable: true
           completion_url:
-            type: object
+            type: string
+            nullable: true
           cover_image:
             type: string
+            nullable: true
           creator:
             properties:
               avatar:
                 type: string
+                nullable: true
               id:
                 type: number
               name:
@@ -10079,8 +10277,10 @@
               properties:
                 avatar:
                   type: string
+                  nullable: true
                 category:
-                  type: object
+                  type: string
+                  nullable: true
                 complete:
                   type: boolean
                 difficulty:
@@ -10114,6 +10314,7 @@
                   type: string
                 os:
                   type: string
+                  nullable: true
                 type:
                   type: string
               type: object
@@ -10513,6 +10714,44 @@
           root_owns:
             type: number
           university:
+            properties:
+              captain_id:
+                type: number
+              id:
+                type: number
+            type: object
+          user_bloods_count:
+            type: number
+          user_owns:
+            type: number
+      TeamMember:
+        description: University Members Resposne
+        properties:
+          avatar:
+            type: string
+          country_code:
+            type: string
+          country_name:
+            type: string
+          id:
+            type: number
+          name:
+            type: string
+          points:
+            type: number
+          public:
+            type: number
+          rank:
+            type: string
+          rank_text:
+            type: string
+          role:
+            type: string
+          root_bloods_count:
+            type: number
+          root_owns:
+            type: number
+          team:
             properties:
               captain_id:
                 type: number
@@ -13072,7 +13311,7 @@
           - description: Two letter short name for country, ie US, DE
             in: path
             name: countryShortName
-            required: false
+            required: true
             schema:
               type: string
         responses:
@@ -13087,6 +13326,8 @@
       get:
         description: lists the best global rank achieved, in set intervals for a given period (e.g. 1Y, 6M, 3M, 1M, 1W). Omiting team_id will retrieve Bearers current team. (variation 1)
         operationId: getRankingsTeamBest
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
         responses:
           '200':
             $ref: '#/components/responses/RankingsTeamBestResponse'
@@ -13245,16 +13486,12 @@
         summary: 'University: (Bearer''s) - Ranking Bracket'
         tags:
           - Ranking
-    /rankings/university/ranking_bracket/{ranking_bracket-id}:
+    /rankings/university/ranking_bracket/{universityId}:
       get:
         description: Get /rankings/university/ranking_bracket/{ranking_bracket-id}
         operationId: getRankingsUniversityRankingBracketId
         parameters:
-          - in: path
-            name: ranking_bracket-id
-            required: true
-            schema:
-              type: string
+          - $ref: '#/components/parameters/UniversityId'
         responses:
           '200':
             $ref: '#/components/responses/RankingsUniversityRankingBracketByIdResponse'
@@ -13853,18 +14090,6 @@
         summary: list team Invitations
         tags:
           - Team
-    /team/list:
-      get:
-        description: list the members of a team (both active and pending / invited), given its ID. (variation 1)
-        operationId: getTeamList
-        responses:
-          '200':
-            $ref: '#/components/responses/TeamListResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: list Hack The Box Teams
-        tags:
-          - Team
     /team/members/{teamId}:
       get:
         description: list the members of a team (both active and pending / invited), given its ID. (variation 2)
@@ -13879,13 +14104,6 @@
         summary: list team members
         tags:
           - Team
-      parameters:
-        - description: Team ID
-          in: query
-          name: id
-          required: true
-          schema:
-            type: integer
     /team/stats/owns/{teamId}:
       get:
         description: Retrieves information related to /team/stats/owns/{team id}
