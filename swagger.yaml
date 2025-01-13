@@ -1701,7 +1701,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CommonIdName'
+              $ref: '#/components/schemas/UserProfileActivityResponse'
         description: Profile Activity User Response
         headers:
           x-ratelimit-limit:
@@ -1718,7 +1718,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CommonIdName'
+              $ref: '#/components/schemas/UserProfileBloodsResponse'
         description: Profile Bloods User Response
         headers:
           x-ratelimit-limit:
@@ -1791,34 +1791,12 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ProfileProgressMachinesOsUserIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProfileProgressMachinesIdResponse'
-        description: Profile Progress Machines OS Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       ProfileProgressProlabUserIdResponse:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ProfileProgressProLabResponse'
         description: Profile Progress Prolab Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ProfileUserIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProfileIdRepsonse'
-        description: Profile User Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -2829,16 +2807,6 @@
           application/json:
             example: {}
         description: User Feedback Bug Areas Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      UserFeedbackImprovementAreasResponse:
-        content:
-          application/json:
-            example: {}
-        description: User Feedback Improvement Areas Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -4624,6 +4592,82 @@
             type: array
         title: Change Log Response
         type: object
+      UserProfileBloodsResponse:
+        type: object
+        properties:
+          profile:
+            type: object
+            properties:
+              bloods:
+                type: object
+                properties:
+                  machines:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        avatar:
+                          type: string
+                        os:
+                          type: string
+                        difficulty_text:
+                          type: string
+                        user_blood:
+                          type: boolean
+                        user_blood_difference:
+                          type: string
+                        root_blood:
+                          type: boolean
+                        root_blood_difference:
+                          type: string
+                  challenges:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        category_name:
+                          type: string
+                        difficulty_text:
+                          type: string
+                        blood_difference:
+                          type: string
+      UserProfileActivityResponse:
+        type: object
+        properties:
+          profile:
+            type: object
+            properties:
+              activity:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                    date_diff:
+                      type: string
+                    object_type:
+                      type: string
+                    type:
+                      type: string
+                    first_blood:
+                      type: boolean
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    points:
+                      type: integer
+                    machine_avatar:
+                      type: string
       CommonIdName:
         description: Schema definition for Common Id Name
         properties:
@@ -4632,10 +4676,6 @@
           name:
             type: string
         title: Common Id Name
-        type: object
-      CommonObject:
-        description: Schema definition for Common Object
-        title: Common Object
         type: object
       Company:
         description: Schema definition for Company
@@ -7499,7 +7539,7 @@
       ProfileIdRepsonse:
         description: Schema definition for Profile Id Repsonse
         properties:
-          profile:
+          userStats:
             properties:
               avatar:
                 type: string
@@ -7645,27 +7685,6 @@
                 type: array
             type: object
         title: Profile Progress Fortress Id Repsonse
-        type: object
-      ProfileProgressMachinesIdResponse:
-        description: Schema definition for Profile Progress Machines Id Response
-        properties:
-          profile:
-            properties:
-              operating_systems:
-                items:
-                  properties:
-                    completion_percentage:
-                      type: integer
-                    name:
-                      type: string
-                    owned_machines:
-                      type: integer
-                    total_machines:
-                      type: integer
-                  type: object
-                type: array
-            type: object
-        title: Profile Progress Machines Id Response
         type: object
       ProfileProgressProLabResponse:
         description: Schema definition for Profile Progress Prolab Response
@@ -10944,32 +10963,43 @@
             properties:
               cv:
                 type: object
+                nullable: true
               email:
                 type: string
               name:
                 type: string
               phone:
-                type: object
+                type: string
+                nullable: true
             type: object
         type: object
       UserConnectionStatusResponse:
         description: Schema definition for User Connection Status Response
         properties:
           connection:
-            properties:
-              down:
-                type: number
-              ip4:
-                type: string
-              ip6:
-                type: string
-              name:
-                type: string
-              through_pwnbox:
-                type: boolean
-              up:
-                type: number
-            type: object
+            oneOf:
+              - type: object
+                properties:
+                  down:
+                    type: number
+                    example: 123.45
+                  ip4:
+                    type: string
+                    example: 10.10.10.10
+                  ip6:
+                    type: string
+                    example: 2001:db8::1
+                  name:
+                    type: string
+                    example: tun0
+                  through_pwnbox:
+                    type: boolean
+                    example: false
+                  up:
+                    type: number
+                    example: 67.89
+              - type: string
+                example: not connected
           status:
             type: boolean
         title: User Connection Status Response
@@ -11143,8 +11173,10 @@
                 type: string
               next_rank:
                 type: string
+                nullable: true
               next_rank_points:
                 type: number
+                nullable: true
               points:
                 type: integer
               public:
@@ -11157,6 +11189,7 @@
                 type: number
               rank_requirement:
                 type: integer
+                nullable: true
               ranking:
                 type: integer
               respects:
@@ -11251,10 +11284,13 @@
         properties:
           email:
             type: string
-          email_notifications:
+          hide_machine_tags:
             type: integer
           public:
             type: integer
+          name_change_delay:
+            type: boolean
+            nullable: true
         title: User Settings Response
         type: object
       UserSubmissionsChallengesResponse:
@@ -11298,8 +11334,17 @@
       UserSubscriptionsBalanceResponse:
         description: Schema definition for User Subscriptions Balance Response
         properties:
-          balance:
-            type: integer
+          balances:
+            type: object
+            properties:
+              USD:
+                type: integer
+              GBP:
+                type: integer
+              EUR:
+                type: integer
+          default_currency:
+            type: string
         title: User Subscriptions Balance Response
         type: object
       UserSubscriptionsCancellationReasonsResponse:
@@ -11380,7 +11425,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.2
+    version: v0.1.3
   openapi: 3.0.0
   paths:
     /access/ovpnfile/{vpnId}/0:
@@ -14486,18 +14531,6 @@
         summary: 'Dashboard: list Bug Feedback Areas'
         tags:
           - User
-    /user/feedback/improvement/areas:
-      get:
-        description: Retrieves information related to /user/feedback/improvement/areas
-        operationId: getUserFeedbackImprovementAreas
-        responses:
-          '200':
-            $ref: '#/components/responses/UserFeedbackImprovementAreasResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'Dashboard: list Improvement Feedback Areas'
-        tags:
-          - User
     /user/follow/{userId}:
       parameters:
         - $ref: '#/components/parameters/UserId'
@@ -14698,20 +14731,6 @@
           - User
       parameters:
         - $ref: '#/components/parameters/UserId'
-    /user/profile/progress/machines/os/{userId}:
-      get:
-        description: Retrieves information related to /user/profile/progress/machines/os/{user id}
-        operationId: getUserProfileProgressMachinesOS
-        responses:
-          '200':
-            $ref: '#/components/responses/ProfileProgressMachinesOsUserIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'User Progress: machines (By OS)'
-        tags:
-          - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
     /user/profile/progress/prolab/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/prolab/{user id}
@@ -14726,12 +14745,12 @@
           - User
       parameters:
         - $ref: '#/components/parameters/UserId'
-    /user/profile/progress/sherlocks/{sherlockId}:
+    /user/profile/progress/sherlocks/{userId}:
       get:
         description: User Profile Progreess Sherlocks
         operationId: getUserProfileProgressSherlocks
         parameters:
-          - $ref: '#/components/parameters/SherlockId'
+          - $ref: '#/components/parameters/UserId'
         responses:
           '200':
             $ref: '#/components/responses/UserProfileProgressSherlocksResponse'
@@ -14752,20 +14771,6 @@
         summary: User Profile Summary
         tags:
           - User
-    /user/profile/{userId}:
-      get:
-        description: Retrieves information related to /user/profile/{user id}
-        operationId: getUserProfile
-        responses:
-          '200':
-            $ref: '#/components/responses/ProfileUserIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'User profile: Overview'
-        tags:
-          - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
     /user/respect/{userId}:
       parameters:
         - $ref: '#/components/parameters/UserId'
