@@ -1176,6 +1176,17 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      GameResetResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GameResetResponse'
+        description: Endgame Flags Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       EndgameEndgameIdMachinesResponse:
         content:
           application/json:
@@ -5014,6 +5025,16 @@
               - type: integer
         title: Endgame Id Flags Response
         type: object
+      GameResetResponse:
+        description: Vote Reset Endgame
+        type: object
+        properties:
+          message:
+            type: string
+            example: Voted
+          status:
+            type: boolean
+            example: true
       EndgameIdMachinesResponse:
         description: Schema definition for Endgame Id Machines Response
         properties:
@@ -12401,6 +12422,20 @@
         summary: Get Endgames flag list
         tags:
           - Endgames
+    /endgame/{endgameId}/reset:
+      get:
+        description: Vote Reset Endgame
+        operationId: getEndgameReset
+        parameters:
+          - $ref: '#/components/parameters/EndgameId'
+        responses:
+          '200':
+            $ref: '#/components/responses/GameResetResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Vote Reset Endgame
+        tags:
+          - Endgames
     /endgame/{endgameId}/machines:
       get:
         description: Retrieves information related to /endgame/{endgame id}/machines
@@ -12483,6 +12518,20 @@
           '400':
             $ref: '#/components/responses/MultiOwn400'
         summary: Submit flag
+        tags:
+          - Fortresses
+    /fortress/{fortressId}/reset:
+      post:
+        description: Vote Reset Fortress
+        operationId: getFortressReset
+        parameters:
+          - $ref: '#/components/parameters/FortressId'
+        responses:
+          '200':
+            $ref: '#/components/responses/GameResetResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Vote Reset Fortress
         tags:
           - Fortresses
     /fortress/{fortressId}/flags:
