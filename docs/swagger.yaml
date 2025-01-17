@@ -4967,7 +4967,7 @@
         properties:
           online_players:
             oneOf:
-              - type: number
+              - type: integer
               - type: string
         title: Dashboard Players
         type: object
@@ -10268,8 +10268,8 @@
       TracksIdResponse:
         type: object
         oneOf:
-          - $ref: '#/components/schemas/TrackErrorResponse'
           - $ref: '#/components/schemas/TrackSuccessResponse'
+          - $ref: '#/components/schemas/TrackErrorResponse'
       TrackErrorResponse:
         type: object
         required:
@@ -14310,12 +14310,12 @@
         summary: Univeritiy Country List
         tags:
           - Universities
-    /university/members/{teamId}:
+    /university/members/{universityId}:
       get:
         description: Retrieve the list of members of a team, including both active and pending/invited members
         operationId: getUniversityMembers
         parameters:
-          - $ref: '#/components/parameters/TeamId'
+          - $ref: '#/components/parameters/UniversityId'
         responses:
           '200':
             $ref: '#/components/responses/UniversityMembersTeamIdResponse'
@@ -14348,12 +14348,12 @@
         summary: Univeritiy New List
         tags:
           - Universities
-    /university/profile/{teamId}:
+    /university/profile/{universityId}:
       get:
         description: Retrieve the profile of a university by team ID.
         operationId: getUniversityProfile
         parameters:
-          - $ref: '#/components/parameters/TeamId'
+          - $ref: '#/components/parameters/UniversityId'
         responses:
           '200':
             $ref: '#/components/responses/UniversityProfileTeamIdResponse'
