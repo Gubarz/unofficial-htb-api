@@ -103,6 +103,13 @@
         required: true
         schema:
           type: integer
+      CompanyId:
+        description: ID of the company
+        in: path
+        name: companyId
+        required: true
+        schema:
+          type: integer
       Difficulty:
         description: Filter by difficulty level
         explode: true
@@ -3278,7 +3285,7 @@
                 availability_points:
                   type: integer
                 own_points:
-                  type: integer
+                  type: string
                 reset_points:
                   type: integer
                 team_id:
@@ -3516,13 +3523,14 @@
                     friendly_name:
                       type: string
                     id:
-                      type: number
+                      type: integer
                     os:
                       type: string
                     points:
                       type: number
                     team_id:
-                      type: object
+                      type: integer
+                      nullable: true
                   type: object
                 type: array
               private:
@@ -3530,7 +3538,8 @@
               starts_at:
                 type: string
               surrender_id:
-                type: object
+                type: integer
+                nullable: true
               type:
                 type: string
               winner_id:
@@ -3563,7 +3572,9 @@
                           name:
                             type: string
                           own_points:
-                            type: number
+                            oneOf:
+                              - type: string
+                              - type: number
                           total_owns:
                             type: number
                         type: object
@@ -3603,7 +3614,9 @@
             total_games:
               type: number
             total_points:
-              type: string
+              oneOf:
+                - type: string
+                - type: number
             wins:
               type: number
           type: object
@@ -3613,7 +3626,8 @@
           tournament_rankings:
             $ref: '#/components/schemas/BgTournamentRankDetail'
           user_rank:
-            type: object
+            type: string
+            nullable: true
         title: Battleground Tournament Ranking Response
         type: object
       BgTournamentRankingsPerRankResponse:
@@ -3634,7 +3648,8 @@
                 $ref: '#/components/schemas/BgTournamentRankDetail'
             type: object
           user_rank:
-            type: object
+            type: string
+            nullable: true
         type: object
       BgUserBattlegroundIdResponse:
         description: Schema definition for Bg User Get Battleground Id Response
@@ -3656,43 +3671,37 @@
                     type: boolean
                   current_bg_id:
                     type: integer
+                    nullable: true
                   current_bg_type:
                     type: string
+                    nullable: true
                   current_bg_user_id:
                     type: integer
+                    nullable: true
                   current_team_id:
                     type: integer
+                    nullable: true
                   hasBGPass:
                     type: boolean
+                    nullable: true
                   joining:
-                    properties:
-                      accepted_count:
-                        type: integer
-                      accepted_users:
-                        items:
-                          type: integer
-                        type: array
-                      expire_match_time:
-                        format: date-time
-                        type: string
-                      game_mode:
-                        type: integer
-                      hasVoted:
-                        type: boolean
-                      match_players:
-                        items:
-                          properties:
-                            avatar:
-                              type: string
-                            name:
-                              type: string
-                            user_id:
-                              type: integer
-                          type: object
-                        type: array
-                      type:
-                        type: string
-                    type: object
+                    oneOf:
+                      - type: boolean
+                        example: false
+                      - type: object
+                        properties:
+                          available:
+                            type: boolean
+                            example: true
+                          disqualified:
+                            type: boolean
+                            example: false
+                          region:
+                            type: string
+                            example: EU
+                          region_locked:
+                            type: boolean
+                            example: true
                   last_ad_tournament_id:
                     type: integer
                   last_koh_tournament_id:
@@ -3786,6 +3795,7 @@
                 example: koh
                 type: string
             type: object
+            nullable: true
         title: Battleground User Joining Info Response
         type: object
       BgUserKeyCurrentBgUserIdResponse:
@@ -4045,6 +4055,7 @@
                   type: string
                 external_link:
                   type: string
+                  nullable: true
                 has_application_url:
                   type: boolean
                 id:
@@ -4215,8 +4226,9 @@
             example: Composition
             type: string
           points:
-            example: '30'
-            type: string
+            oneOf:
+              - type: string
+              - type: number
           recommended:
             example: 0
             type: integer
@@ -11838,6 +11850,7 @@
         operationId: getCareerCompany
         parameters:
           - $ref: '#/components/parameters/Page'
+          - $ref: '#/components/parameters/CompanyId'
         responses:
           '200':
             $ref: '#/components/responses/CareerCompanyResponse'
@@ -11846,12 +11859,6 @@
         summary: Get Company Detail
         tags:
           - Career
-      parameters:
-        - in: path
-          name: companyId
-          required: true
-          schema:
-            type: string
     /career/featured:
       get:
         description: Returns a list of featured jobs
@@ -12001,6 +12008,8 @@
       get:
         description: Provides change details to a challenge
         operationId: getChallengeChangelog
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
         responses:
           '200':
             $ref: '#/components/responses/ChallengeChangelogChallengeIdResponse'
@@ -12009,8 +12018,6 @@
         summary: Changelog for a specific challenge
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
     /challenge/download/{challengeId}:
       get:
         description: Returns a zip file
@@ -12023,8 +12030,8 @@
         summary: Download zip file related to a specific challenge
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
     /challenge/info/{challengeId}:
       get:
         description: Provides a list of the challege details
@@ -12037,8 +12044,8 @@
         summary: Info details of the specific challenge
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
     /challenge/own:
       post:
         description: Submit flag for a challenge.
@@ -12117,8 +12124,8 @@
         summary: Bearer's review for challenge
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
     /challenge/start:
       post:
         description: Starts a challenge container with challenge_id
@@ -12199,8 +12206,8 @@
         summary: Get Official PDF Writeup
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
     /challenges:
       get:
         description: Porivdes a list of challenges with limited challenge info
@@ -12415,8 +12422,8 @@
         summary: Get Official PDF Writeup
         tags:
           - Endgames
-      parameters:
-        - $ref: '#/components/parameters/EndgameId'
+        parameters:
+          - $ref: '#/components/parameters/EndgameId'
     /endgames:
       get:
         description: Retrieves information related to /endgames
@@ -12599,8 +12606,8 @@
         summary: 'machine: Activity'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/changelog/{machineId}:
       get:
         description: Retrieves information related to /machine/changelog/{machine id}
@@ -12613,8 +12620,8 @@
         summary: 'machine: changelog'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/graph/activity/{machineId}/{period}:
       get:
         description: Retrieves information related to /machine/graph/activity/{machine id}/{period}
@@ -12642,8 +12649,8 @@
         summary: Machine Graph Matrix
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/graph/owns/difficulty/{machineId}:
       get:
         description: Retrieves machine graph difficulty
@@ -12656,8 +12663,8 @@
         summary: Get Machine Graph Difficulty
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/list/retired/paginated:
       get:
         description: Retrieve a paginated list of retired machines.
@@ -12703,8 +12710,8 @@
         summary: 'machine: Top 25 Owners'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/paginated:
       get:
         description: Retrieve a paginated list of machines.
@@ -12804,8 +12811,8 @@
         summary: Bearer's review for machine
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/stop:
       post:
         description: Stop a specific machine.
@@ -12842,8 +12849,8 @@
         summary: 'machine: tags (Attack Path, Sub, Language)'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/todo/paginated:
       get:
         description: Get /machine/todo/paginated
@@ -12923,8 +12930,8 @@
         summary: 'machine: list Walkthroughs'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machine/writeup/{machineId}:
       get:
         description: _response is of a pdf file
@@ -12937,8 +12944,8 @@
         summary: 'machine: Get Official Writeup (if Available) by machine ID'
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /machines/{machineId}/adventure:
       get:
         description: Get Machine Adventure
@@ -13137,8 +13144,8 @@
         summary: Prolab Progress
         tags:
           - Prolabs
-      parameters:
-        - $ref: '#/components/parameters/ProlabId'
+        parameters:
+          - $ref: '#/components/parameters/ProlabId'
     /prolab/{prolabId}/rating:
       get:
         description: Get /prolab/{prolabId}/rating
@@ -13172,8 +13179,8 @@
         summary: Unable to test Problab Reset
         tags:
           - Prolabs
-      parameters:
-        - $ref: '#/components/parameters/ProlabId'
+        parameters:
+          - $ref: '#/components/parameters/ProlabId'
     /prolab/{prolabId}/reviews:
       get:
         description: Retrieves information related to /prolab/{prolab id}/reviews
@@ -13186,14 +13193,14 @@
         summary: Get Pro Lab reviews (Paginated)
         tags:
           - Prolabs
-      parameters:
-        - $ref: '#/components/parameters/ProlabId'
-        - description: Page number
-          in: query
-          name: page
-          required: false
-          schema:
-            type: integer
+        parameters:
+          - $ref: '#/components/parameters/ProlabId'
+          - description: Page number
+            in: query
+            name: page
+            required: false
+            schema:
+              type: integer
     /prolab/{prolabId}/reviews_overview:
       get:
         description: Retrieves information related to /prolab/{prolab id}/reviews overview
@@ -13320,8 +13327,8 @@
         summary: 'Country:  (Bearer''s) - Best for Period'
         tags:
           - Ranking
-      parameters:
-        - $ref: '#/components/parameters/PeriodQuery'
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
     /rankings/country/overview:
       get:
         description: Retrieves information related to /rankings/country/overview
@@ -13334,8 +13341,8 @@
         summary: 'Country: (Bearer''s) - Overview'
         tags:
           - Ranking
-      parameters:
-        - $ref: '#/components/parameters/PeriodQuery'
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
     /rankings/country/ranking_bracket:
       get:
         description: Retrieves information related to /rankings/country/ranking bracket
@@ -13503,8 +13510,8 @@
         summary: 'University:  (Bearer''s) - Best for Period'
         tags:
           - Ranking
-      parameters:
-        - $ref: '#/components/parameters/PeriodQuery'
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
     /rankings/university/overview:
       get:
         description: Retrieves information related to /rankings/university/overview
@@ -13517,8 +13524,8 @@
         summary: 'University: (Bearer''s) - Overview'
         tags:
           - Ranking
-      parameters:
-        - $ref: '#/components/parameters/PeriodQuery'
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
     /rankings/university/ranking_bracket:
       get:
         description: Retrieves information related to /rankings/university/ranking bracket
@@ -13609,8 +13616,8 @@
         summary: challenge reviews
         tags:
           - Challenges
-      parameters:
-        - $ref: '#/components/parameters/ChallengeId'
+        parameters:
+          - $ref: '#/components/parameters/ChallengeId'
     /review/machine/{machineId}:
       get:
         description: Retrieves information related to /review/machine/{machine id}
@@ -13623,8 +13630,8 @@
         summary: machine reviews
         tags:
           - Machines
-      parameters:
-        - $ref: '#/components/parameters/MachineId'
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
     /review/sherlock/{sherlockId}:
       get:
         description: Retrieve reviews for a specific Sherlock instance.
@@ -14119,8 +14126,8 @@
         summary: Get team profile
         tags:
           - Team
-      parameters:
-        - $ref: '#/components/parameters/TeamId'
+        parameters:
+          - $ref: '#/components/parameters/TeamId'
     /team/invitations/{teamId}:
       get:
         description: list the pending team members who have requested to join a team, or who were requested by the team captain, but have not yet accepted / been approved.
@@ -14194,15 +14201,15 @@
         tags:
           - Tracks
     /tracks/like/{trackId}:
-      parameters:
-        - in: path
-          name: trackId
-          required: true
-          schema:
-            type: string
       post:
         description: Like a track
         operationId: postTracksLike
+        parameters:
+          - in: path
+            name: trackId
+            required: true
+            schema:
+              type: string
         responses:
           '200':
             $ref: '#/components/responses/TracksLikeResponse'
@@ -14223,13 +14230,13 @@
         summary: Get Track Details
         tags:
           - Tracks
-      parameters:
-        - description: ID of the Track
-          in: path
-          name: trackId
-          required: true
-          schema:
-            type: integer
+        parameters:
+          - description: ID of the Track
+            in: path
+            name: trackId
+            required: true
+            schema:
+              type: integer
     /university/activity/{universityId}:
       get:
         description: Univeritiy Activity
@@ -14389,20 +14396,20 @@
         summary: Validate Achievement / Own
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-        - description: Target ID
-          in: path
-          name: targetId
-          required: true
-          schema:
-            type: integer
-        - description: Target Type
-          in: path
-          name: targetType
-          required: true
-          schema:
-            type: string
+        parameters:
+          - $ref: '#/components/parameters/UserId'
+          - description: Target ID
+            in: path
+            name: targetId
+            required: true
+            schema:
+              type: integer
+          - description: Target Type
+            in: path
+            name: targetType
+            required: true
+            schema:
+              type: string
     /user/anonymized/id:
       get:
         description: Retrieves information related to /user/anonymized/id
@@ -14506,9 +14513,9 @@
         tags:
           - User
     /user/disrespect/{userId}:
-      parameters:
-        - $ref: '#/components/parameters/UserId'
       post:
+        parameters:
+          - $ref: '#/components/parameters/UserId'
         description: Remove respect from user
         operationId: postUserDisrespect
         responses:
@@ -14532,9 +14539,9 @@
         tags:
           - User
     /user/follow/{userId}:
-      parameters:
-        - $ref: '#/components/parameters/UserId'
       post:
+        parameters:
+          - $ref: '#/components/parameters/UserId'
         description: Follow a user
         operationId: postUserFollow
         responses:
@@ -14581,8 +14588,8 @@
         summary: 'User profile: Activity'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/badges/{userId}:
       get:
         description: Retrieves information related to /user/profile/badges/{user id}
@@ -14595,8 +14602,8 @@
         summary: 'User profile: badges'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/basic/{userId}:
       get:
         description: Retrieves information related to /user/profile/basic/{user id}
@@ -14609,8 +14616,8 @@
         summary: Other user's profile
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/bloods/{userId}:
       get:
         description: Retrieves information related to /user/profile/bloods/{user id}
@@ -14623,8 +14630,8 @@
         summary: 'User profile: Bloods'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/certificates:
       get:
         description: User Profile Certificates
@@ -14658,8 +14665,8 @@
         summary: 'User profile: machine Ownage Chart By Attack Path'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/content/{userId}:
       get:
         description: Retrieves information related to /user/profile/content/{user id}
@@ -14672,8 +14679,8 @@
         summary: 'User profile: Submitted Content'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/graph/{period}/{userId}:
       get:
         description: Retrieves information related to /user/profile/graph/{period}/{user id}
@@ -14686,9 +14693,9 @@
         summary: 'User profile: Achievement Graph'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-        - $ref: '#/components/parameters/PeriodPath'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
+          - $ref: '#/components/parameters/PeriodPath'
     /user/profile/progress/challenges/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/challenges/{user id}
@@ -14701,8 +14708,8 @@
         summary: 'User Progress: challenges (Total + by Category)'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/progress/endgame/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/endgame/{user id}
@@ -14715,8 +14722,8 @@
         summary: 'User Progress: Endgames'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/progress/fortress/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/fortress/{user id}
@@ -14729,8 +14736,8 @@
         summary: 'User Progress: fortress'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/progress/prolab/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/prolab/{user id}
@@ -14743,8 +14750,8 @@
         summary: 'User Progress: Pro Lab'
         tags:
           - User
-      parameters:
-        - $ref: '#/components/parameters/UserId'
+        parameters:
+          - $ref: '#/components/parameters/UserId'
     /user/profile/progress/sherlocks/{userId}:
       get:
         description: User Profile Progreess Sherlocks
@@ -14772,9 +14779,9 @@
         tags:
           - User
     /user/respect/{userId}:
-      parameters:
-        - $ref: '#/components/parameters/UserId'
       post:
+        parameters:
+          - $ref: '#/components/parameters/UserId'
         description: Respect a user
         operationId: postUserRespect
         responses:
@@ -14896,9 +14903,9 @@
         tags:
           - User
     /user/unfollow/{userId}:
-      parameters:
-        - $ref: '#/components/parameters/UserId'
       post:
+        parameters:
+          - $ref: '#/components/parameters/UserId'
         description: Unfollow a user
         operationId: postUserUnfollow
         responses:
