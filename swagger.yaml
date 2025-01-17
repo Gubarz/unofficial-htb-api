@@ -21,6 +21,16 @@
         required: true
         schema:
           type: integer
+      BattlegroundGameType:
+        description: Game Type
+        in: path
+        name: bgGameType
+        required: true
+        schema:
+          type: string
+          enum:
+            - ad
+            - koh
       BgUserId:
         description: Users battleground id
         in: path
@@ -227,6 +237,33 @@
             - starting_point
             - fortresses
           type: string
+      ProductPathv5:
+        description: Product Name
+        in: path
+        name: product
+        required: true
+        schema:
+          enum:
+            - machine
+          type: string
+      ProductPath:
+        description: Product Name
+        in: path
+        name: product
+        required: true
+        schema:
+          enum:
+            - machine
+            - challenge
+            - sherlock
+          type: string
+      ProductId:
+        description: ID of the Product
+        in: path
+        name: productId
+        required: true
+        schema:
+          type: integer
       ProlabId:
         description: ID of the Pro lab
         in: path
@@ -555,6 +592,16 @@
               $ref: '#/components/schemas/OwnMachineRequest'
         description: Body to post machine flag
         required: true
+      OwnRequest:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OwnRequest'
+        description: Body to post machine flag
+        required: true
       MachineReviewRequest:
         content:
           application/json:
@@ -693,22 +740,11 @@
             schema:
               $ref: '#/components/schemas/BgMatchAcceptResponse'
         description: Bg Match Accept Response
-      BgMatchHistoryAdResponse:
+      BgMatchHistoryResponse:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BgMatchHistoryAdResponse'
-        description: OK
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      BgMatchHistoryKohResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BgMatchHistoryKohResponse'
+              $ref: '#/components/schemas/BgMatchHistoryResponse'
         description: OK
         headers:
           x-ratelimit-limit:
@@ -1014,17 +1050,6 @@
             schema:
               $ref: '#/components/schemas/ChallengeRecommendedRetiredResponse'
         description: Challenge Recommended Retired Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ChallengeReviewsChallengeIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReviewsResponse'
-        description: Challenge Reviews Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -1524,17 +1549,6 @@
             schema:
               $ref: '#/components/schemas/MachineReviewResponse'
         description: Machine Review Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      MachineReviewsMachineIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReviewsResponse'
-        description: Machine Reviews Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -2144,7 +2158,7 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ReviewSherlockSherlockIdResponse:
+      ReviewProductResponse:
         content:
           application/json:
             schema:
@@ -2902,6 +2916,12 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      UserBannedResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserBannedResponse'
+        description: User Submissions Challenges Response
       UserSubmissionsMachinesResponse:
         content:
           application/json:
@@ -3454,7 +3474,7 @@
             type: string
         title: Battleground Match Accept Response
         type: object
-      BgMatchHistoryAdResponse:
+      BgMatchHistoryResponse:
         properties:
           match_history:
             $ref: '#/components/schemas/BgMatchHistoryDetail'
@@ -3481,12 +3501,6 @@
               type: array
           type: object
         type: array
-      BgMatchHistoryKohResponse:
-        properties:
-          match_history:
-            $ref: '#/components/schemas/BgMatchHistoryDetail'
-        title: Battleground Match History KOH Response
-        type: object
       BgMessagesCurrentBgUserIdResponse:
         description: Schema definition for Bg Messages Battleground User Id Response
         properties:
@@ -7260,6 +7274,23 @@
         description: Schema definition for Own Machine Request
         properties:
           difficultyText:
+            example: 50
+            type: integer
+          flag:
+            example: 0cc175b9c0f1b6a831c399e269772661
+            type: string
+          id:
+            example: 597
+            type: integer
+        required:
+          - id
+          - flag
+        title: Own Machine Request
+        type: object
+      OwnRequest:
+        description: Schema definition for Own Request
+        properties:
+          difficulty:
             example: 50
             type: integer
           flag:
@@ -11353,6 +11384,13 @@
             type: array
         title: User Submissions Challenges Response
         type: object
+      UserBannedResponse:
+        description: Schema definition for User Banned Response
+        properties:
+          banned:
+            type: boolean
+        title: User Banned Response
+        type: object
       UserSubmissionsMachineResponse:
         description: Schema definition for User Submissions Machine Response
         properties:
@@ -11477,9 +11515,25 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.4
+    version: v0.1.5
   openapi: 3.0.0
   paths:
+    /{product}/own:
+      post:
+        description: Submit flag on v5 API
+        operationId: postOwn
+        parameters:
+          - $ref: '#/components/parameters/ProductPathv5'
+        requestBody:
+          $ref: '#/components/requestBodies/OwnRequest'
+        responses:
+          '200':
+            $ref: '#/components/responses/MachineOwnResponse'
+          '400':
+            $ref: '#/components/responses/MachineOwn400'
+        summary: v5 Submit flag
+        tags:
+          - Flag
     /access/ovpnfile/{vpnId}/0:
       get:
         description: Fetches the UDP OpenVPN configuration file for the specified VPN ID, allowing the user to establish a VPN connection
@@ -11654,28 +11708,18 @@
         summary: Join BG match queue
         tags:
           - Battlegrounds
-    /bg/match/history/ad:
+    /bg/match/history/{bgGameType}:
       get:
-        description: Battleground Match History AD
-        operationId: getBgMatchHistoryAD
+        description: Battleground Match History
+        operationId: getBgMatchHistory
+        parameters:
+          - $ref: '#/components/parameters/BattlegroundGameType'
         responses:
           '200':
-            $ref: '#/components/responses/BgMatchHistoryAdResponse'
+            $ref: '#/components/responses/BgMatchHistoryResponse'
           '400':
             $ref: '#/components/responses/GenericError'
-        summary: Get Battleground Match History AD
-        tags:
-          - Battlegrounds
-    /bg/match/history/koh:
-      get:
-        description: Battleground Match History KOH
-        operationId: getBgMatchHistoryKoh
-        responses:
-          '200':
-            $ref: '#/components/responses/BgMatchHistoryKohResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Battleground Match History KOH
+        summary: Get Battleground Match History
         tags:
           - Battlegrounds
     /bg/match/penalty:
@@ -11716,28 +11760,18 @@
         summary: Get battleground available time slots
         tags:
           - Battlegrounds
-    /bg/player/count/ad:
+    /bg/player/count/{bgGameType}:
       get:
-        description: Retrieve player count for AD battleground.
-        operationId: getBgPlayerCountAD
+        description: Retrieve player count
+        operationId: getBgPlayerCount
+        parameters:
+          - $ref: '#/components/parameters/BattlegroundGameType'
         responses:
           '200':
             $ref: '#/components/responses/BgPlayerCountResponse'
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Summary for get /bg/player/count/ad
-        tags:
-          - Battlegrounds
-    /bg/player/count/koh:
-      get:
-        description: Retrieve player count for KOH battleground.
-        operationId: getBgPlayerCountKOH
-        responses:
-          '200':
-            $ref: '#/components/responses/BgPlayerCountResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Summary for get /bg/player/count/koh
         tags:
           - Battlegrounds
     /bg/player/queue/count:
@@ -12298,12 +12332,18 @@
         description: Get VPN Server status
         operationId: getConnectionStatusProduct
         parameters:
-          - description: Product type, ie lab, starting_point, endgames, fortresses
+          - description: Product Name
             in: path
             name: productName
             required: true
             schema:
               type: string
+              enum:
+                - competitive
+                - lab
+                - starting_point
+                - engame
+                - fortress
         responses:
           '200':
             $ref: '#/components/responses/ConnectionStatusProductResponse'
@@ -12523,7 +12563,7 @@
     /fortress/{fortressId}/reset:
       post:
         description: Vote Reset Fortress
-        operationId: getFortressReset
+        operationId: postFortressReset
         parameters:
           - $ref: '#/components/parameters/FortressId'
         responses:
@@ -13657,48 +13697,21 @@
         summary: Users
         tags:
           - Ranking
-    /review/challenge/{challengeId}:
+    /review/{product}/{productId}:
       get:
-        description: Retrieves information related to /review/challenge/{challenge id}
-        operationId: getReviewChallenge
+        description: Retrieves reviews
+        operationId: getReview
         responses:
           '200':
-            $ref: '#/components/responses/ChallengeReviewsChallengeIdResponse'
+            $ref: '#/components/responses/ReviewProductResponse'
           '400':
             $ref: '#/components/responses/GenericError'
-        summary: challenge reviews
+        summary: Retrieves reviews
         tags:
-          - Challenges
+          - Review
         parameters:
-          - $ref: '#/components/parameters/ChallengeId'
-    /review/machine/{machineId}:
-      get:
-        description: Retrieves information related to /review/machine/{machine id}
-        operationId: getReviewMachine
-        responses:
-          '200':
-            $ref: '#/components/responses/MachineReviewsMachineIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: machine reviews
-        tags:
-          - Machines
-        parameters:
-          - $ref: '#/components/parameters/MachineId'
-    /review/sherlock/{sherlockId}:
-      get:
-        description: Retrieve reviews for a specific Sherlock instance.
-        operationId: getReviewSherlock
-        parameters:
-          - $ref: '#/components/parameters/SherlockId'
-        responses:
-          '200':
-            $ref: '#/components/responses/ReviewSherlockSherlockIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get reviews for a Sherlock by ID
-        tags:
-          - Sherlocks
+          - $ref: '#/components/parameters/ProductId'
+          - $ref: '#/components/parameters/ProductPath'
     /search/fetch:
       get:
         description: Fetch search results.
@@ -14529,6 +14542,18 @@
         summary: User App Tokens List
         tags:
           - User
+    /user/banned:
+      get:
+        description: Retrieves if user is banned
+        operationId: getUserBanned
+        responses:
+          '200':
+            $ref: '#/components/responses/UserBannedResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: 'Bearer: Is Banned'
+        tags:
+          - User
     /user/career:
       get:
         description: Get /user/career
@@ -15032,7 +15057,15 @@
   security:
     - bearer: []
   servers:
-    - url: https://labs.hackthebox.com/api/v4
+    - url: https://labs.hackthebox.com/api/{version}
+      description: HTB API
+      variables:
+        version:
+          default: v4
+          enum:
+            - v4
+            - v5
+          description: API version
   tags:
     - description: Endpoints related to platform badges
       name: Badges
@@ -15046,6 +15079,8 @@
       name: Connection
     - description: Endpoints related to Endgames
       name: Endgames
+    - description: Flag Submissions
+      name: Flag
     - description: Endpoints related to Fortresses
       name: Fortresses
     - description: Endpoints related to the Home page banner
@@ -15060,6 +15095,8 @@
       name: PwnBox
     - description: Endpoints related to Rankings
       name: Ranking
+    - description: Product reviews
+      name: Review
     - description: Endpoints related to Seasons/Arenas
       name: Season
     - description: Endpoints related to Sherlocks
