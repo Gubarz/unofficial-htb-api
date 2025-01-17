@@ -4966,8 +4966,9 @@
         description: Schema definition for Dashboard Players
         properties:
           online_players:
-            example: '644'
-            type: string
+            oneOf:
+              - type: number
+              - type: string
         title: Dashboard Players
         type: object
       DesignatedLevel:
@@ -10265,6 +10266,24 @@
             type: array
         type: object
       TracksIdResponse:
+        type: object
+        oneOf:
+          - $ref: '#/components/schemas/TrackErrorResponse'
+          - $ref: '#/components/schemas/TrackSuccessResponse'
+      TrackErrorResponse:
+        type: object
+        required:
+          - status
+          - error
+        properties:
+          error:
+            type: string
+            example: Track not found
+          status:
+            type: string
+            enum: ["error"]
+            example: '0'
+      TrackSuccessResponse:
         description: Schema definition for Tracks Id Response
         properties:
           completed:
@@ -11437,7 +11456,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.3
+    version: v0.1.4
   openapi: 3.0.0
   paths:
     /access/ovpnfile/{vpnId}/0:
@@ -13319,6 +13338,8 @@
       get:
         description: Retrieves information related to /rankings/country/best
         operationId: getRankingsCountryBest
+        parameters:
+          - $ref: '#/components/parameters/PeriodQuery'
         responses:
           '200':
             $ref: '#/components/responses/RankingsCountryBestResponse'
@@ -13327,8 +13348,6 @@
         summary: 'Country:  (Bearer''s) - Best for Period'
         tags:
           - Ranking
-        parameters:
-          - $ref: '#/components/parameters/PeriodQuery'
     /rankings/country/overview:
       get:
         description: Retrieves information related to /rankings/country/overview
@@ -13394,12 +13413,7 @@
         operationId: getRankingsTeamBestId
         parameters:
           - $ref: '#/components/parameters/PeriodQuery'
-          - description: ID of the team
-            in: path
-            name: teamId
-            required: true
-            schema:
-              type: integer
+          - $ref: '#/components/parameters/TeamId'
         responses:
           '200':
             $ref: '#/components/responses/RankingsTeamBestResponse'
@@ -13428,12 +13442,7 @@
         operationId: getRankingsTeamOverviewId
         parameters:
           - $ref: '#/components/parameters/PeriodQuery'
-          - description: ID of the team
-            in: path
-            name: teamId
-            required: true
-            schema:
-              type: integer
+          - $ref: '#/components/parameters/TeamId'
         responses:
           '200':
             $ref: '#/components/responses/RankingsTeamOverviewResponse'
@@ -13459,12 +13468,7 @@
         description: lists the current team ranking bracket (e.g. "Top 20"), next ranking bracket, total points, points to achieve next bracket, and global rank. Omiting team_id will retrieve Bearers current team. (variation 2)
         operationId: getRankingsTeamRankingBracketId
         parameters:
-          - description: ID of the team
-            in: path
-            name: teamId
-            required: true
-            schema:
-              type: integer
+          - $ref: '#/components/parameters/TeamId'
         responses:
           '200':
             $ref: '#/components/responses/RankingsTeamRankingBracketResponse'
