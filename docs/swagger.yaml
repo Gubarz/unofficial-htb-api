@@ -1518,6 +1518,17 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      MachineWalkthroughOfficialFeedbackChoicesResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineWalkthroughOfficialFeedbackChoicesResponse'
+        description: Machine Walkthrough Official Feedback Choices Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       MachineWalkthroughRandomResponse:
         content:
           application/json:
@@ -2518,6 +2529,17 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      TodoUpdateResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoUpdateResponse'
+        description: Todo Update Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       TracksIdResponse:
         content:
           application/json:
@@ -2817,6 +2839,17 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      UserProfileProgressMachinesOsResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileProgressMachinesOsResponse'
+        description: OK
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       UserProfileProgressSherlocksResponse:
         content:
           application/json:
@@ -2873,6 +2906,17 @@
             schema:
               $ref: '#/components/schemas/UserSubscriptionBillingHistory'
         description: OK
+      UserSubscriptionThankYouResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSubscriptionThankYouResponse'
+        description: OK
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       UserSubscriptionsBalanceResponse:
         content:
           application/json:
@@ -6697,6 +6741,13 @@
             type: object
         title: Machine Walkthrough Id Response
         type: object
+      MachineWalkthroughOfficialFeedbackChoicesResponse:
+        properties:
+          feedback_choices:
+            items:
+              type: string
+            type: array
+        type: object
       MachineWalkthroughRandomResponse:
         properties:
           message:
@@ -9953,10 +10004,7 @@
       TeamInformationProfileResponse:
         description: Schema definition for Team Information Profile Response
         properties:
-          message:
-            type: string
           data:
-            type: object
             properties:
               avatar_url:
                 example: https://www.hackthebox.eu/storage/teams/8232e119d8f59aa83050a741631803a6.jpg
@@ -9992,6 +10040,9 @@
               points:
                 example: 1839
                 type: integer
+            type: object
+          message:
+            type: string
         title: Team Information Profile Response
         type: object
       TeamInvitationsIdResponse:
@@ -10071,6 +10122,19 @@
               required:
                 - id
               type: object
+            type: array
+        type: object
+      TodoUpdateResponse:
+        description: Todo Update Response
+        properties:
+          info:
+            items:
+              properties:
+                id:
+                  example: 613
+                  type: integer
+              type: object
+            nullable: true
             type: array
         type: object
       TrackErrorResponse:
@@ -11167,6 +11231,25 @@
                 type: object
             type: object
         type: object
+      UserProfileProgressMachinesOsResponse:
+        properties:
+          profile:
+            properties:
+              operating_systems:
+                items:
+                  properties:
+                    completion_percentage:
+                      type: number
+                    name:
+                      type: string
+                    owned_machines:
+                      type: number
+                    total_machines:
+                      type: number
+                  type: object
+                type: array
+            type: object
+        type: object
       UserProfileProgressSherlocksResponse:
         properties:
           profile:
@@ -11264,6 +11347,22 @@
           meta:
             $ref: '#/components/schemas/Meta'
         type: object
+      UserSubscriptionThankYouResponse:
+        properties:
+          subscription_details:
+            properties:
+              currency:
+                type: string
+              duration:
+                type: string
+              name:
+                type: string
+              price:
+                type: number
+              type:
+                type: string
+            type: object
+        type: object
       UserSubscriptionsBalanceResponse:
         description: Schema definition for User Subscriptions Balance Response
         properties:
@@ -11358,7 +11457,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.7
+    version: v0.1.8
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
@@ -12184,48 +12283,12 @@
         summary: Get VPN Server status
         tags:
           - Connection
-    /v4/connection/status/fortresses:
-      get:
-        description: Get VPN Server status
-        operationId: getConnectionStatusFortress
-        responses:
-          '200':
-            $ref: '#/components/responses/ConnectionStatusProductResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get VPN Server status
-        tags:
-          - Connection
-    /v4/connection/status/lab:
-      get:
-        description: Get VPN Server status
-        operationId: getConnectionStatusLab
-        responses:
-          '200':
-            $ref: '#/components/responses/ConnectionStatusProductResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get VPN Server status
-        tags:
-          - Connection
     /v4/connection/status/prolab/{prolabId}:
       get:
         description: Get VPN Server status
         operationId: getConnectionStatusProlab
         parameters:
           - $ref: '#/components/parameters/ProlabId'
-        responses:
-          '200':
-            $ref: '#/components/responses/ConnectionStatusProductResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get VPN Server status
-        tags:
-          - Connection
-    /v4/connection/status/starting_point:
-      get:
-        description: Get VPN Server status
-        operationId: getConnectionStatusStartingPoint
         responses:
           '200':
             $ref: '#/components/responses/ConnectionStatusProductResponse'
@@ -12243,6 +12306,10 @@
             name: productName
             required: true
             schema:
+              enum:
+                - starting_point
+                - lab
+                - fortresses
               type: string
         responses:
           '200':
@@ -12294,7 +12361,7 @@
           - Connection
     /v4/connections/servers/switch/{vpnId}:
       post:
-        description: See `/connections/servers` for valid ids
+        description: See `/v4/connections/servers` for valid ids
         operationId: postConnectionsServersSwitch
         parameters:
           - $ref: '#/components/parameters/VpnId'
@@ -12829,6 +12896,18 @@
         summary: 'machine: list Walkthrough Language options'
         tags:
           - Machines
+    /v4/machine/walkthroughs/official/feedback-choices:
+      get:
+        description: Retrieves Feedback Choices
+        operationId: getMachineWalkthroughOfficialFeedbackChoices
+        responses:
+          '200':
+            $ref: '#/components/responses/MachineWalkthroughOfficialFeedbackChoicesResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get Feedback Choices
+        tags:
+          - Machines
     /v4/machine/walkthroughs/{machineId}:
       get:
         description: Retrieves information related to /machine/walkthroughs/{machine id}
@@ -13072,9 +13151,9 @@
         tags:
           - Prolabs
     /v4/prolab/{prolabId}/reset:
-      get:
+      post:
         description: Reset Prolab
-        operationId: getProlabReset
+        operationId: postProlabReset
         parameters:
           - $ref: '#/components/parameters/ProlabId'
         responses:
@@ -14649,6 +14728,20 @@
         summary: 'User Progress: fortress'
         tags:
           - User
+    /v4/user/profile/progress/machines/os/{userId}:
+      get:
+        description: Get user os profile
+        operationId: getUserProfileProgressMachinesOs
+        parameters:
+          - $ref: '#/components/parameters/UserId'
+        responses:
+          '200':
+            $ref: '#/components/responses/UserProfileProgressMachinesOsResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get a user os profile
+        tags:
+          - User
     /v4/user/profile/progress/prolab/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/prolab/{user id}
@@ -14801,6 +14894,31 @@
         summary: 'Bearer: Recurly URL to Manage Subscriptions'
         tags:
           - User
+    /v4/user/subscriptions/thankyou:
+      get:
+        description: Get active Subscription details. See `/v4/subscriptions/pricing` for valid plan_codes
+        operationId: getUserSubscriptionThankYou
+        parameters:
+          - in: query
+            name: plan_code
+            required: true
+            schema:
+              enum:
+                - monthly-vip-subscription
+                - annual-vip-subscription
+                - monthly-dedivip-subscription
+                - annual-dedivip-subscription
+                - monthly-prolabs-subscription
+                - annual-prolabs-subscription
+              type: string
+        responses:
+          '200':
+            $ref: '#/components/responses/UserSubscriptionThankYouResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get active Subscription details
+        tags:
+          - User
     /v4/user/tracks:
       get:
         description: Retrieves information related to /user/tracks
@@ -14915,6 +15033,23 @@
         summary: Terminate a machine / SP
         tags:
           - VM
+    /v4/{product}/todo/update/{productId}:
+      post:
+        description: Update Todo list
+        operationId: postTodoUpdate
+        parameters:
+          - $ref: '#/components/parameters/ProductPath'
+          - $ref: '#/components/parameters/ProductId'
+        responses:
+          '200':
+            $ref: '#/components/responses/TodoUpdateResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Update Todo list
+        tags:
+          - Machines
+          - Sherlocks
+          - Challenges
     /v5/{product}/own:
       post:
         description: Submit flag on v5 API
