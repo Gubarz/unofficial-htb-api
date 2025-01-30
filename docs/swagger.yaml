@@ -107,7 +107,7 @@
           type: array
         style: form
       ChallengeId:
-        description: ID of the challenge container
+        description: ID of the product
         in: path
         name: challengeId
         required: true
@@ -137,14 +137,14 @@
           type: array
         style: form
       EndgameId:
-        description: ID of the Endgame
+        description: ID of the product
         in: path
         name: endgameId
         required: true
         schema:
           type: integer
       FortressId:
-        description: ID of the fortress
+        description: ID of the product
         in: path
         name: fortressId
         required: true
@@ -158,8 +158,18 @@
         schema:
           example: hack
           type: string
+      Leaderboard:
+        description: players or teams
+        in: path
+        name: leaderboard
+        required: true
+        schema:
+          enum:
+            - players
+            - teams
+          type: string
       MachineId:
-        description: ID of the machine
+        description: ID of the product
         in: path
         name: machineId
         required: true
@@ -238,7 +248,7 @@
             - fortresses
           type: string
       ProductId:
-        description: ID of the Product
+        description: ID of the product
         in: path
         name: productId
         required: true
@@ -255,7 +265,7 @@
             - challenge
             - sherlock
           type: string
-      ProductPathv5:
+      ProductPathOwnv5:
         description: Product Name
         in: path
         name: product
@@ -265,7 +275,7 @@
             - machine
           type: string
       ProlabId:
-        description: ID of the Pro lab
+        description: ID of the product
         in: path
         name: prolabId
         required: true
@@ -519,32 +529,14 @@
         required: true
       ChallengeOwnRequest:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChallengeOwnRequest'
           application/x-www-form-urlencoded:
             schema:
-              properties:
-                challenge_id:
-                  type: integer
-                difficulty:
-                  enum:
-                    - 10
-                    - 20
-                    - 30
-                    - 40
-                    - 50
-                    - 60
-                    - 70
-                    - 80
-                    - 90
-                    - 100
-                  type: integer
-                flag:
-                  type: string
-              required:
-                - challenge_id
-                - flag
-                - difficulty
-              type: object
-        description: Body to post challenge flag
+              $ref: '#/components/schemas/ChallengeOwnRequest'
+        description: Body to post machine flag
+        required: true
       ChallengeReviewRequest:
         content:
           application/x-www-form-urlencoded:
@@ -581,16 +573,6 @@
                 - challenge_id
               type: object
         description: use challenge_id
-        required: true
-      MachineOwnRequest:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OwnMachineRequest'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/OwnMachineRequest'
-        description: Body to post machine flag
         required: true
       MachineReviewRequest:
         content:
@@ -1020,30 +1002,6 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ChallengeOwn403:
-        content:
-          application/json:
-            example:
-              message: Incorrect flag
-            schema:
-              $ref: '#/components/schemas/Message'
-        description: Forbidden
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ChallengeOwnResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChallengeOwnResponse'
-        description: Challenge Own Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       ChallengeRecommendedResponse:
         content:
           application/json:
@@ -1201,17 +1159,6 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgameEndgameIdFlagsResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgameIdFlagsResponse'
-        description: Endgame Flags Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       EndgameEndgameIdMachinesResponse:
         content:
           application/json:
@@ -1262,17 +1209,6 @@
             schema:
               $ref: '#/components/schemas/EndgamesResponse'
         description: Endgames Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      FortressFortressIdFlagsResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FortressFlagsResponse'
-        description: Fortress Flags Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -1486,17 +1422,6 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      MachineOwnResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OwnMachineResponse'
-        description: Successful flag submission
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       MachineOwnsTopMachineIdResponse:
         content:
           application/json:
@@ -1571,6 +1496,17 @@
             schema:
               $ref: '#/components/schemas/MachineReviewResponse'
         description: Machine Review Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
+      MachineReviewsResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MachineReviewsResponse'
+        description: Machine Activity Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -1751,6 +1687,28 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
+      OwnResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnResponse'
+        description: Successful flag submission
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
+      ProductFlagsResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFlagsResponse'
+        description: Fortress Flags Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
       ProfileActivityUserIdResponse:
         content:
           application/json:
@@ -1880,12 +1838,6 @@
             schema:
               $ref: '#/components/schemas/ProlabIdFaqResponse'
         description: Prolab FAQ Response
-      ProlabflagsResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProlabIdFlagsResponse'
-        description: Prolab Flags Response
       ProlabinfoResponse:
         content:
           application/json:
@@ -4599,15 +4551,23 @@
             $ref: '#/components/schemas/Meta'
         title: Challenge List Response
         type: object
-      ChallengeOwnResponse:
-        description: Schema definition for Challenge Own Response
+      ChallengeOwnRequest:
+        description: Schema definition for Own Request
         properties:
-          message:
-            example: Congratulations!
+          challenge_id:
+            example: 597
+            type: integer
+          difficulty:
+            example: 50
+            type: integer
+          flag:
+            example: 0cc175b9c0f1b6a831c399e269772661
             type: string
-          user_rank:
-            $ref: '#/components/schemas/UserRank'
-        title: Challenge Own Response
+        required:
+          - difficulty
+          - challenge_id
+          - flag
+        title: Own Request
         type: object
       ChallengeRecommendedResponse:
         description: Schema definition for Challenge Recommended Response
@@ -5047,32 +5007,6 @@
             type: string
         title: Designated Level
         type: object
-      EndgameIdFlagsResponse:
-        description: Schema definition for Endgame Id Flags Response
-        properties:
-          data:
-            items:
-              properties:
-                id:
-                  type: integer
-                owned:
-                  oneOf:
-                    - type: boolean
-                    - type: integer
-                points:
-                  oneOf:
-                    - type: boolean
-                    - type: integer
-                title:
-                  type: string
-              type: object
-            type: array
-          status:
-            oneOf:
-              - type: boolean
-              - type: integer
-        title: Endgame Id Flags Response
-        type: object
       EndgameIdMachinesResponse:
         description: Schema definition for Endgame Id Machines Response
         properties:
@@ -5423,26 +5357,6 @@
           user_availability:
             $ref: '#/components/schemas/UserAvailability'
         title: Fortress Data
-        type: object
-      FortressFlagsResponse:
-        description: Schema definition for Fortress Flags Response
-        properties:
-          data:
-            items:
-              properties:
-                id:
-                  type: integer
-                owned:
-                  type: boolean
-                points:
-                  type: integer
-                title:
-                  type: string
-              type: object
-            type: array
-          status:
-            type: boolean
-        title: Fortress Flags Response
         type: object
       FortressIdResponse:
         description: Schema definition for Fortress Id Response
@@ -6834,6 +6748,56 @@
             type: array
         title: Machine Review Response
         type: object
+      MachineReviewsResponse:
+        properties:
+          average:
+            type: number
+          count:
+            type: number
+          message:
+            items:
+              properties:
+                authUserInHelpfulReviews:
+                  type: boolean
+                created_at:
+                  type: string
+                helpful_reviews:
+                  items:
+                    properties:
+                      id:
+                        type: number
+                      review_id:
+                        type: number
+                      user_id:
+                        type: number
+                    type: object
+                  type: array
+                helpful_reviews_count:
+                  type: number
+                id:
+                  type: number
+                message:
+                  type: string
+                released:
+                  type: number
+                stars:
+                  type: number
+                title:
+                  type: string
+                user:
+                  properties:
+                    avatar:
+                      type: string
+                    id:
+                      type: number
+                    name:
+                      type: string
+                  type: object
+                user_id:
+                  type: number
+              type: object
+            type: array
+        type: object
       MachineReviewsUserIdResponse:
         description: Schema definition for Machine Reviews User Id Response
         properties:
@@ -7225,18 +7189,6 @@
             type: object
         title: Navigation Main Response
         type: object
-      NewRank:
-        description: Schema definition for New Rank
-        properties:
-          id:
-            example: 3
-            type: integer
-          text:
-            example: null
-            nullable: true
-            type: string
-        title: New Rank
-        type: object
       NoticesResponse:
         description: Schema definition for Notices Response
         properties:
@@ -7283,34 +7235,6 @@
             type: integer
         title: Own Machine Error Response
         type: object
-      OwnMachineRequest:
-        description: Schema definition for Own Machine Request
-        properties:
-          difficultyText:
-            example: 50
-            type: integer
-          flag:
-            example: 0cc175b9c0f1b6a831c399e269772661
-            type: string
-          id:
-            example: 597
-            type: integer
-        required:
-          - id
-          - flag
-        title: Own Machine Request
-        type: object
-      OwnMachineResponse:
-        description: Schema definition for Own Machine Response
-        properties:
-          message:
-            example: machine owned successfully!
-            type: string
-          status:
-            example: 200
-            type: integer
-        title: Own Machine Response
-        type: object
       OwnRequest:
         description: Schema definition for Own Request
         properties:
@@ -7326,7 +7250,18 @@
         required:
           - id
           - flag
-        title: Own Machine Request
+        title: Own Request
+        type: object
+      OwnResponse:
+        description: Schema definition for Own Response
+        properties:
+          message:
+            example: machine owned successfully!
+            type: string
+          status:
+            example: 200
+            type: integer
+        title: Own Response
         type: object
       OwnStats:
         description: Schema definition for Own Stats
@@ -7482,6 +7417,18 @@
                 type: object
             type: object
         title: Player Queue Count Response
+        type: object
+      ProductFlagsResponse:
+        description: Schema definition for Prodcut Flags Response
+        properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Flag'
+            type: array
+          status:
+            example: true
+            type: boolean
+        title: Product Flags Response
         type: object
       ProfileBadgesIdRepsonse:
         description: Schema definition for Profile Badges Id Repsonse
@@ -7915,18 +7862,6 @@
             example: true
             type: boolean
         title: Prolab Id Faq Response
-        type: object
-      ProlabIdFlagsResponse:
-        description: Schema definition for Prolab Id Flags Response
-        properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Flag'
-            type: array
-          status:
-            example: true
-            type: boolean
-        title: Prolab Id Flags Response
         type: object
       ProlabIdInfoResponse:
         description: Schema definition for Prolab Id Info Response
@@ -11578,16 +11513,6 @@
                 type: number
             type: object
         type: object
-      UserRank:
-        description: Schema definition for User Rank
-        properties:
-          changed:
-            example: false
-            type: boolean
-          newRank:
-            $ref: '#/components/schemas/NewRank'
-        title: User Rank
-        type: object
       UserSettingsResponse:
         description: Schema definition for User Settings Response
         properties:
@@ -11734,10 +11659,10 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.6
+    version: v0.1.7
   openapi: 3.0.0
   paths:
-    /access/ovpnfile/{vpnId}/0:
+    /v4/access/ovpnfile/{vpnId}/0:
       get:
         description: Fetches the UDP OpenVPN configuration file for the specified VPN ID, allowing the user to establish a VPN connection
         operationId: getAccessOvpnfileVpnIdUDP
@@ -11751,7 +11676,7 @@
         summary: Download UDP VPN config
         tags:
           - Connection
-    /access/ovpnfile/{vpnId}/0/1:
+    /v4/access/ovpnfile/{vpnId}/0/1:
       get:
         description: Fetches the TCP OpenVPN configuration file for the specified VPN ID, allowing the user to establish a VPN connection
         operationId: getAccessOvpnfileVpnIdTCP
@@ -11765,7 +11690,7 @@
         summary: Download TCP VPN config
         tags:
           - Connection
-    /announcements:
+    /v4/announcements:
       get:
         description: Get Announcements
         operationId: getAnnouncements
@@ -11777,7 +11702,7 @@
         summary: Get Announcements
         tags:
           - Platform
-    /arena/own:
+    /v4/arena/own:
       post:
         description: Submit Seasonal Flag - MUST USE THIS TO GET POINTS FOR SEASON
         operationId: postArenaOwn
@@ -11791,7 +11716,7 @@
         summary: 'IMPORTANT: MUST USE FOR ACTIVE SEASON POINTS'
         tags:
           - Season
-    /badges:
+    /v4/badges:
       get:
         description: Returns a list of all available and obtained badges
         operationId: getBadges
@@ -11803,7 +11728,7 @@
         summary: List all platform badges
         tags:
           - Badges
-    /bg/event/current:
+    /v4/bg/event/current:
       get:
         description: Retrieve the current event details for a battleground.
         operationId: getBgEventCurrent
@@ -11815,7 +11740,7 @@
         summary: List battleground current event detail
         tags:
           - Battlegrounds
-    /bg/flag/own:
+    /v4/bg/flag/own:
       post:
         description: Submit flag
         operationId: postBgFlagOwn
@@ -11829,7 +11754,7 @@
         summary: Submit flag
         tags:
           - Battlegrounds
-    /bg/get/{bgUserId}:
+    /v4/bg/get/{bgUserId}:
       get:
         description: Retrieve battleground information for a specific user.
         operationId: getBgGet
@@ -11843,7 +11768,7 @@
         summary: BG Get BG User Id
         tags:
           - Battlegrounds
-    /bg/history/{bgUserId}:
+    /v4/bg/history/{bgUserId}:
       get:
         description: Retrieve the battleground history for a specific user.
         operationId: getBgHistory
@@ -11857,7 +11782,7 @@
         summary: BG History by BG User Id
         tags:
           - Battlegrounds
-    /bg/loading/status/{bgUserId}:
+    /v4/bg/loading/status/{bgUserId}:
       get:
         description: Retrieve loading status for a specific battleground user.
         operationId: getBgLoadingStatus
@@ -11871,10 +11796,16 @@
         summary: BG Loading Status by BG User Id
         tags:
           - Battlegrounds
-    /bg/lobby/messages/1:
+    /v4/bg/lobby/messages/{pageId}:
       get:
         description: Returns the main lobby messages
         operationId: getBgLobbyMessages
+        parameters:
+          - in: path
+            name: pageId
+            required: true
+            schema:
+              type: integer
         responses:
           '200':
             $ref: '#/components/responses/BgLobbyMessages1Response'
@@ -11883,7 +11814,7 @@
         summary: Main lobby messages
         tags:
           - Battlegrounds
-    /bg/machine/assignments/{bgUserId}:
+    /v4/bg/machine/assignments/{bgUserId}:
       get:
         description: Retrieve machine assignments for a specific battleground user.
         operationId: getBgMachineAssignments
@@ -11897,7 +11828,7 @@
         summary: BG Machine Assignements by BG User Id
         tags:
           - Battlegrounds
-    /bg/match/accept:
+    /v4/bg/match/accept:
       post:
         description: Accept a match in the battleground.
         operationId: postBgMatchAccept
@@ -11909,7 +11840,7 @@
         summary: BG Match Accept
         tags:
           - Battlegrounds
-    /bg/match/find:
+    /v4/bg/match/find:
       post:
         description: Sends request to be placed in queue to find a match
         operationId: postBgMatchFind
@@ -11923,7 +11854,7 @@
         summary: Join BG match queue
         tags:
           - Battlegrounds
-    /bg/match/history/{bgGameType}:
+    /v4/bg/match/history/{bgGameType}:
       get:
         description: Battleground Match History
         operationId: getBgMatchHistory
@@ -11937,7 +11868,7 @@
         summary: Get Battleground Match History
         tags:
           - Battlegrounds
-    /bg/match/penalty:
+    /v4/bg/match/penalty:
       get:
         description: Returns the number of penalties a user has received
         operationId: getBgMatchPenalty
@@ -11949,7 +11880,7 @@
         summary: Match penalty count
         tags:
           - Battlegrounds
-    /bg/messages/{bgUserId}:
+    /v4/bg/messages/{bgUserId}:
       get:
         description: Retrieve messages for a specific battleground user.
         operationId: getBgMessages
@@ -11963,7 +11894,7 @@
         summary: Get battleground messages for specific user
         tags:
           - Battlegrounds
-    /bg/open-times:
+    /v4/bg/open-times:
       get:
         description: Retrieve open times for the battleground.
         operationId: getBgOpenTimes
@@ -11975,7 +11906,7 @@
         summary: Get battleground available time slots
         tags:
           - Battlegrounds
-    /bg/player/count/{bgGameType}:
+    /v4/bg/player/count/{bgGameType}:
       get:
         description: Retrieve player count
         operationId: getBgPlayerCount
@@ -11989,7 +11920,7 @@
         summary: Summary for get /bg/player/count/ad
         tags:
           - Battlegrounds
-    /bg/player/queue/count:
+    /v4/bg/player/queue/count:
       get:
         description: Retrieve the queue count of players in the battleground.
         operationId: getBgPlayerQueueCount
@@ -12001,7 +11932,7 @@
         summary: Summary for get /bg/player/queue/count
         tags:
           - Battlegrounds
-    /bg/scores/{bgUserId}:
+    /v4/bg/scores/{bgUserId}:
       get:
         description: Battleground Scores
         operationId: getBgScores
@@ -12015,7 +11946,7 @@
         summary: Battleground Scores
         tags:
           - Battlegrounds
-    /bg/teams/get/{bgUserId}:
+    /v4/bg/teams/get/{bgUserId}:
       get:
         description: Retrieve team information for a specific battleground user.
         operationId: getBgTeamsGet
@@ -12029,7 +11960,7 @@
         summary: BG Teams Get by BG User Id
         tags:
           - Battlegrounds
-    /bg/tournament/rankings/per/rank/{tournamentId}:
+    /v4/bg/tournament/rankings/per/rank/{tournamentId}:
       get:
         description: Tournament Rankings Per Rank
         operationId: getBgTournamentRankingsPerRank
@@ -12043,7 +11974,7 @@
         summary: Tournament Rankings Per Rank
         tags:
           - Battlegrounds
-    /bg/tournament/rankings/{tournamentId}:
+    /v4/bg/tournament/rankings/{tournamentId}:
       get:
         description: Tournament Ranking
         operationId: getBgTournamentRankings
@@ -12057,7 +11988,7 @@
         summary: Tournament Ranking
         tags:
           - Battlegrounds
-    /bg/user/friends:
+    /v4/bg/user/friends:
       get:
         description: User Friends
         operationId: getBgUserFriends
@@ -12069,7 +12000,7 @@
         summary: User Friends
         tags:
           - Battlegrounds
-    /bg/user/get/{battlegroundId}:
+    /v4/bg/user/get/{battlegroundId}:
       get:
         description: Returns the users bg user id for a specific battleground.
         operationId: getBgUserGet
@@ -12083,7 +12014,7 @@
         summary: Returns current_bg_user_id
         tags:
           - Battlegrounds
-    /bg/user/info:
+    /v4/bg/user/info:
       get:
         description: Retrieve information about the battleground user.
         operationId: getBgUserInfo
@@ -12095,7 +12026,7 @@
         summary: Contains current_bg_user_id
         tags:
           - Battlegrounds
-    /bg/user/joining/info:
+    /v4/bg/user/joining/info:
       get:
         description: Retrieve joining information for a battleground user.
         operationId: getBgUserJoiningInfo
@@ -12107,7 +12038,7 @@
         summary: User Joining Info
         tags:
           - Battlegrounds
-    /bg/user/key/{bgUserId}:
+    /v4/bg/user/key/{bgUserId}:
       get:
         description: Returns ovpn in base64
         operationId: getBgUserKey
@@ -12121,7 +12052,7 @@
         summary: Battleground VPN
         tags:
           - Battlegrounds
-    /career/companies:
+    /v4/career/companies:
       get:
         description: Get /career/companies
         operationId: getCareerCompanies
@@ -12133,7 +12064,7 @@
         summary: Get list of companies
         tags:
           - Career
-    /career/company/{companyId}:
+    /v4/career/company/{companyId}:
       get:
         description: Get company detail
         operationId: getCareerCompany
@@ -12148,7 +12079,7 @@
         summary: Get Company Detail
         tags:
           - Career
-    /career/featured:
+    /v4/career/featured:
       get:
         description: Returns a list of featured jobs
         operationId: getCareerFeatured
@@ -12160,7 +12091,7 @@
         summary: Featured jobs
         tags:
           - Career
-    /career/history:
+    /v4/career/history:
       get:
         description: Returns a list of all jobs that the user has applied for
         operationId: getCareerHistory
@@ -12172,7 +12103,7 @@
         summary: History of applied jobs
         tags:
           - Career
-    /career/info/{jobId}:
+    /v4/career/info/{jobId}:
       get:
         description: Get career info
         operationId: getCareerInfo
@@ -12190,7 +12121,7 @@
         summary: Get Job Description
         tags:
           - Career
-    /career/profile:
+    /v4/career/profile:
       get:
         description: Returns a list of profile information related to the user's career settings
         operationId: getCareerProfile
@@ -12202,7 +12133,7 @@
         summary: Career profile
         tags:
           - Career
-    /career/requests:
+    /v4/career/requests:
       get:
         description: Get /career/requests
         operationId: getCareerRequests
@@ -12216,7 +12147,7 @@
         summary: Get Career Requests
         tags:
           - Career
-    /career/search:
+    /v4/career/search:
       get:
         description: Returns a list of all jobs that match the search query
         operationId: getCareerSearch
@@ -12230,7 +12161,7 @@
         summary: Search posted jobs
         tags:
           - Career
-    /career/stats:
+    /v4/career/stats:
       get:
         description: Returns a number of new jobs posted today and the total number of jobs posted on the platform
         operationId: getCareerStats
@@ -12242,7 +12173,7 @@
         summary: Stats
         tags:
           - Career
-    /career/temporary/contact/optin:
+    /v4/career/temporary/contact/optin:
       post:
         description: This is the toggle in the career page to allow companies to reach out to you
         operationId: postCareerTemporaryContactOptin
@@ -12267,7 +12198,7 @@
         summary: Optin to Career Contacting
         tags:
           - Career
-    /challenge/activity/{challengeId}:
+    /v4/challenge/activity/{challengeId}:
       get:
         description: Provides a list of users that have completed the challenge
         operationId: getChallengeActivity
@@ -12281,7 +12212,7 @@
         summary: List of owns related to a specific challenge
         tags:
           - Challenges
-    /challenge/categories/list:
+    /v4/challenge/categories/list:
       get:
         description: Provides a list of challenge catatories
         operationId: getChallengeCategoriesList
@@ -12293,7 +12224,7 @@
         summary: List categories
         tags:
           - Challenges
-    /challenge/changelog/{challengeId}:
+    /v4/challenge/changelog/{challengeId}:
       get:
         description: Provides change details to a challenge
         operationId: getChallengeChangelog
@@ -12307,7 +12238,7 @@
         summary: Changelog for a specific challenge
         tags:
           - Challenges
-    /challenge/download/{challengeId}:
+    /v4/challenge/download/{challengeId}:
       get:
         description: Returns a zip file
         operationId: getChallengeDownload
@@ -12321,7 +12252,7 @@
         summary: Download zip file related to a specific challenge
         tags:
           - Challenges
-    /challenge/info/{challengeId}:
+    /v4/challenge/info/{challengeId}:
       get:
         description: Provides a list of the challege details
         operationId: getChallengeInfo
@@ -12335,21 +12266,21 @@
         summary: Info details of the specific challenge
         tags:
           - Challenges
-    /challenge/own:
+    /v4/challenge/own:
       post:
-        description: Submit flag for a challenge.
+        description: Submit flag for Challenge
         operationId: postChallengeOwn
         requestBody:
           $ref: '#/components/requestBodies/ChallengeOwnRequest'
         responses:
           '200':
-            $ref: '#/components/responses/ChallengeOwnResponse'
-          '403':
-            $ref: '#/components/responses/ChallengeOwn403'
-        summary: Submit flag for challenge
+            $ref: '#/components/responses/OwnResponse'
+          '400':
+            $ref: '#/components/responses/MachineOwn400'
+        summary: Submit flag for Challenge
         tags:
           - Challenges
-    /challenge/recommended:
+    /v4/challenge/recommended:
       get:
         description: Provides information about a unreleased challenge along with a challenge that is about to retire
         operationId: getChallengeRecommended
@@ -12361,7 +12292,7 @@
         summary: Challenge Recommendation Cards
         tags:
           - Challenges
-    /challenge/recommended/retired:
+    /v4/challenge/recommended/retired:
       get:
         description: Provides information about two retired challenges
         operationId: getChallengeRecommendedRetired
@@ -12373,7 +12304,7 @@
         summary: Challenge Recommendation Cards (Retired)
         tags:
           - Challenges
-    /challenge/review:
+    /v4/challenge/review:
       post:
         description: Submits data for /challenge/review
         operationId: postChallengeReview
@@ -12387,7 +12318,7 @@
         summary: Submit challenge review
         tags:
           - Challenges
-    /challenge/review/helpful/{reviewId}:
+    /v4/challenge/review/helpful/{reviewId}:
       post:
         description: Submits data for /challenge/review/helpful/{review id}
         operationId: postChallengeHelpfull
@@ -12401,7 +12332,7 @@
         summary: Mark Review as helpful
         tags:
           - Challenges
-    /challenge/reviews/user/{challengeId}:
+    /v4/challenge/reviews/user/{challengeId}:
       get:
         description: Retrieves information related to /challenge/reviews/user/{challenge id}
         operationId: getChallengeReviewsUser
@@ -12415,7 +12346,7 @@
         summary: Bearer's review for challenge
         tags:
           - Challenges
-    /challenge/start:
+    /v4/challenge/start:
       post:
         description: Starts a challenge container with challenge_id
         operationId: postChallengeStart
@@ -12429,7 +12360,7 @@
         summary: Starts a challenge
         tags:
           - Challenges
-    /challenge/stop:
+    /v4/challenge/stop:
       post:
         description: Stops a challenge container with challenge_id
         operationId: postChallengeStop
@@ -12443,7 +12374,7 @@
         summary: Stops a challenge
         tags:
           - Challenges
-    /challenge/suggested:
+    /v4/challenge/suggested:
       get:
         description: Retrieves information related to /challenge/suggested
         operationId: getChallengeSuggested
@@ -12455,7 +12386,7 @@
         summary: challenge Suggestion
         tags:
           - Challenges
-    /challenge/todo/update/{challengeId}:
+    /v4/challenge/todo/update/{challengeId}:
       post:
         description: Mark or unmark challenge as ToDo
         operationId: postChallengeTodoUpdate
@@ -12469,7 +12400,7 @@
         summary: Mark Challenge as ToDo
         tags:
           - Challenges
-    /challenge/{challengeId}/writeup:
+    /v4/challenge/{challengeId}/writeup:
       get:
         description: Gets a write-up for a challenge from challenge id
         operationId: getChallengeWriteup
@@ -12483,7 +12414,7 @@
         summary: Get a write-up for a challenge
         tags:
           - Challenges
-    /challenge/{challengeId}/writeup/official:
+    /v4/challenge/{challengeId}/writeup/official:
       get:
         description: Get Official Writeup
         operationId: getChallengeWriteupOfficial
@@ -12497,7 +12428,7 @@
         summary: Get Official PDF Writeup
         tags:
           - Challenges
-    /challenges:
+    /v4/challenges:
       get:
         description: Porivdes a list of challenges with limited challenge info
         operationId: getChallenges
@@ -12518,7 +12449,7 @@
         summary: Get list of challenges
         tags:
           - Challenges
-    /changelogs:
+    /v4/changelogs:
       get:
         description: Possibly depreciated, no updates since 2021
         operationId: getChangelogs
@@ -12530,7 +12461,7 @@
         summary: 'Dashboard: Interface changelog'
         tags:
           - Platform
-    /connection/status:
+    /v4/connection/status:
       get:
         description: Retrieve the connection status.
         operationId: getConnectionStatus
@@ -12542,22 +12473,89 @@
         summary: Current Active Connections
         tags:
           - Connection
-    /connection/status/{productName}:
+    /v4/connection/status/competitive:
       get:
         description: Get VPN Server status
-        operationId: getConnectionStatusProduct
+        operationId: getConnectionStatusCompetitive
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/endgame:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusEndgame
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/fortress:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusFortress
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/lab:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusLab
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/prolab/{prolabId}:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusProlab
         parameters:
-          - description: Product Name
-            in: path
+          - $ref: '#/components/parameters/ProlabId'
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/starting_point:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusStartingPoint
+        responses:
+          '200':
+            $ref: '#/components/responses/ConnectionStatusProductResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get VPN Server status
+        tags:
+          - Connection
+    /v4/connection/status/{productName}:
+      get:
+        description: Get VPN Server status
+        operationId: getConnectionStatusProductname
+        parameters:
+          - in: path
             name: productName
             required: true
             schema:
-              enum:
-                - competitive
-                - lab
-                - starting_point
-                - engame
-                - fortress
               type: string
         responses:
           '200':
@@ -12567,7 +12565,7 @@
         summary: Get VPN Server status
         tags:
           - Connection
-    /connections:
+    /v4/connections:
       get:
         description: Shows a list of the last set vpn servers
         operationId: getConnections
@@ -12579,7 +12577,7 @@
         summary: Last set connections
         tags:
           - Connection
-    /connections/servers:
+    /v4/connections/servers:
       get:
         description: Retrieve a list of connection servers.
         operationId: getConnectionsServers
@@ -12593,7 +12591,7 @@
         summary: list VPN servers
         tags:
           - Connection
-    /connections/servers/prolab/{prolabId}:
+    /v4/connections/servers/prolab/{prolabId}:
       get:
         description: Get Prolab VPN Servers
         operationId: getConnectionsServersProlab
@@ -12607,7 +12605,7 @@
         summary: Get Prolab VPN Servers
         tags:
           - Connection
-    /connections/servers/switch/{vpnId}:
+    /v4/connections/servers/switch/{vpnId}:
       post:
         description: See `/connections/servers` for valid ids
         operationId: postConnectionsServersSwitch
@@ -12621,7 +12619,7 @@
         summary: Swtich VPN server
         tags:
           - Connection
-    /content/stats:
+    /v4/content/stats:
       get:
         description: Retrieves information related to /content/stats
         operationId: getContentStats
@@ -12633,7 +12631,7 @@
         summary: 'Dashboard: machine, challenge Counts'
         tags:
           - Platform
-    /endgame/writeups/languages:
+    /v4/endgame/writeups/languages:
       get:
         description: Languages for Writeups
         operationId: getEndgameWriteupLanguage
@@ -12645,7 +12643,7 @@
         summary: Get Languages for Writeups
         tags:
           - Endgames
-    /endgame/{endgameId}:
+    /v4/endgame/{endgameId}:
       get:
         description: Retrieves information related to /endgame/{endgame id}
         operationId: getEndgame
@@ -12659,9 +12657,9 @@
         summary: Get Endgames profile
         tags:
           - Endgames
-    /endgame/{endgameId}/flag:
+    /v4/endgame/{endgameId}/flag:
       post:
-        description: Submit the flag from endgame id
+        description: Submit flag
         operationId: postEndgameFlag
         parameters:
           - $ref: '#/components/parameters/EndgameId'
@@ -12672,24 +12670,24 @@
             $ref: '#/components/responses/MultiOwnResponse'
           '400':
             $ref: '#/components/responses/MultiOwn400'
-        summary: Submit Endgame flag
+        summary: Submit flag
         tags:
           - Endgames
-    /endgame/{endgameId}/flags:
+    /v4/endgame/{endgameId}/flags:
       get:
-        description: Retrieves information related to /endgame/{endgame id}/flags
-        operationId: getEndgameFlag
+        description: Retrieve flags for a specific endgame.
+        operationId: getEndgameFlags
         parameters:
           - $ref: '#/components/parameters/EndgameId'
         responses:
           '200':
-            $ref: '#/components/responses/EndgameEndgameIdFlagsResponse'
+            $ref: '#/components/responses/ProductFlagsResponse'
           '400':
             $ref: '#/components/responses/GenericError'
-        summary: Get Endgames flag list
+        summary: Get list of flags
         tags:
           - Endgames
-    /endgame/{endgameId}/machines:
+    /v4/endgame/{endgameId}/machines:
       get:
         description: Retrieves information related to /endgame/{endgame id}/machines
         operationId: getEndgameMachines
@@ -12703,7 +12701,7 @@
         summary: Get Endgames machine list
         tags:
           - Endgames
-    /endgame/{endgameId}/reset:
+    /v4/endgame/{endgameId}/reset:
       get:
         description: Vote Reset Endgame
         operationId: getEndgameReset
@@ -12717,7 +12715,7 @@
         summary: Vote Reset Endgame
         tags:
           - Endgames
-    /endgame/{endgameId}/writeup:
+    /v4/endgame/{endgameId}/writeup:
       get:
         description: Writeup
         operationId: getEndgameWriteup
@@ -12731,7 +12729,7 @@
         summary: Get Writeup
         tags:
           - Endgames
-    /endgame/{endgameId}/writeup/official:
+    /v4/endgame/{endgameId}/writeup/official:
       get:
         description: Official Writeup
         operationId: getEndgameWriteupOfficial
@@ -12745,7 +12743,7 @@
         summary: Get Official PDF Writeup
         tags:
           - Endgames
-    /endgames:
+    /v4/endgames:
       get:
         description: Retrieves information related to /endgames
         operationId: getEndgames
@@ -12757,7 +12755,7 @@
         summary: Get list of endgames
         tags:
           - Endgames
-    /fortress/{fortressId}:
+    /v4/fortress/{fortressId}:
       get:
         description: Retrieves information related to /fortress/{fortress id}
         operationId: getFortress
@@ -12771,9 +12769,9 @@
         summary: Get fortress profile
         tags:
           - Fortresses
-    /fortress/{fortressId}/flag:
+    /v4/fortress/{fortressId}/flag:
       post:
-        description: Submit the flag from fortress id
+        description: Submit flag
         operationId: postFortressFlag
         parameters:
           - $ref: '#/components/parameters/FortressId'
@@ -12787,7 +12785,7 @@
         summary: Submit flag
         tags:
           - Fortresses
-    /fortress/{fortressId}/flags:
+    /v4/fortress/{fortressId}/flags:
       get:
         description: Retrieve flags for a specific fortress.
         operationId: getFortressFlags
@@ -12795,13 +12793,13 @@
           - $ref: '#/components/parameters/FortressId'
         responses:
           '200':
-            $ref: '#/components/responses/FortressFortressIdFlagsResponse'
+            $ref: '#/components/responses/ProductFlagsResponse'
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Get list of flags
         tags:
           - Fortresses
-    /fortress/{fortressId}/reset:
+    /v4/fortress/{fortressId}/reset:
       post:
         description: Vote Reset Fortress
         operationId: postFortressReset
@@ -12815,7 +12813,7 @@
         summary: Vote Reset Fortress
         tags:
           - Fortresses
-    /fortresses:
+    /v4/fortresses:
       get:
         description: Retrieves information related to /fortresses
         operationId: getFortresses
@@ -12827,7 +12825,7 @@
         summary: Get list of fortresses
         tags:
           - Fortresses
-    /home/banners:
+    /v4/home/banners:
       get:
         description: Retrieves information related to /home/banners
         operationId: getHomeBanner
@@ -12839,7 +12837,7 @@
         summary: Home Banner
         tags:
           - Home
-    /home/recommended:
+    /v4/home/recommended:
       get:
         description: Retrieves information related to /home/recommended
         operationId: getHomeRecommended
@@ -12851,7 +12849,7 @@
         summary: Home Recommended
         tags:
           - Home
-    /home/user/progress:
+    /v4/home/user/progress:
       get:
         description: Retrieves information related to /home/user/progress
         operationId: getHomeUserProgress
@@ -12863,7 +12861,7 @@
         summary: Home User Progress
         tags:
           - Home
-    /home/user/todo:
+    /v4/home/user/todo:
       get:
         description: Retrieves information related to /home/user/todo
         operationId: getHomeUserTodo
@@ -12875,7 +12873,7 @@
         summary: Home User ToDo
         tags:
           - Home
-    /invoice/quaderno/{invoiceId}:
+    /v4/invoice/quaderno/{invoiceId}:
       get:
         description: Get invoice
         operationId: getInvoiceQuaderno
@@ -12905,7 +12903,7 @@
         summary: Get Invoice PDF
         tags:
           - Platform
-    /lab/list:
+    /v4/lab/list:
       get:
         description: Retrieves information related to /lab/list
         operationId: getLabList
@@ -12917,7 +12915,7 @@
         summary: 'Dashboard: list HTB servers (Connection Points)'
         tags:
           - Platform
-    /machine/active:
+    /v4/machine/active:
       get:
         description: Retrieves information related to /machine/active
         operationId: getMachineActive
@@ -12929,7 +12927,7 @@
         summary: Get active machine details
         tags:
           - Machines
-    /machine/activity/{machineId}:
+    /v4/machine/activity/{machineId}:
       get:
         description: Retrieves information related to /machine/activity/{machine id}
         operationId: getMachineActivity
@@ -12943,7 +12941,7 @@
         summary: 'machine: Activity'
         tags:
           - Machines
-    /machine/changelog/{machineId}:
+    /v4/machine/changelog/{machineId}:
       get:
         description: Retrieves information related to /machine/changelog/{machine id}
         operationId: getMachineChangelog
@@ -12957,7 +12955,7 @@
         summary: 'machine: changelog'
         tags:
           - Machines
-    /machine/graph/activity/{machineId}/{period}:
+    /v4/machine/graph/activity/{machineId}/{period}:
       get:
         description: Retrieves information related to /machine/graph/activity/{machine id}/{period}
         operationId: getMachineGraphActivity
@@ -12972,7 +12970,7 @@
         summary: 'Graph Data: Activity'
         tags:
           - Machines
-    /machine/graph/matrix/{machineId}:
+    /v4/machine/graph/matrix/{machineId}:
       get:
         description: Retrieves graph matrix
         operationId: getMachineGraphMatrix
@@ -12986,7 +12984,7 @@
         summary: Machine Graph Matrix
         tags:
           - Machines
-    /machine/graph/owns/difficulty/{machineId}:
+    /v4/machine/graph/owns/difficulty/{machineId}:
       get:
         description: Retrieves machine graph difficulty
         operationId: getMachineGraphOwnsDifficulty
@@ -13000,7 +12998,7 @@
         summary: Get Machine Graph Difficulty
         tags:
           - Machines
-    /machine/list/retired/paginated:
+    /v4/machine/list/retired/paginated:
       get:
         description: Retrieve a paginated list of retired machines.
         operationId: getMachineListRetiredPaginated
@@ -13019,21 +13017,21 @@
         summary: Get paginated list of retired machines
         tags:
           - Machines
-    /machine/own:
+    /v4/machine/own:
       post:
-        description: Submit flag to mark machine as completed
+        description: Submit flag for Machine
         operationId: postMachineOwn
         requestBody:
-          $ref: '#/components/requestBodies/MachineOwnRequest'
+          $ref: '#/components/requestBodies/OwnRequest'
         responses:
           '200':
-            $ref: '#/components/responses/MachineOwnResponse'
+            $ref: '#/components/responses/OwnResponse'
           '400':
             $ref: '#/components/responses/MachineOwn400'
-        summary: Submit machine flag
+        summary: Submit flag for Challenge or Machine
         tags:
           - Machines
-    /machine/owns/top/{machineId}:
+    /v4/machine/owns/top/{machineId}:
       get:
         description: Retrieves information related to /machine/owns/top/{machine id}
         operationId: getMachineOwnsTop
@@ -13047,7 +13045,7 @@
         summary: 'machine: Top 25 Owners'
         tags:
           - Machines
-    /machine/paginated:
+    /v4/machine/paginated:
       get:
         description: Retrieve a paginated list of machines.
         operationId: getMachinePaginated
@@ -13068,7 +13066,7 @@
         summary: Get paginated list of active machines
         tags:
           - Machines
-    /machine/play/{machineId}:
+    /v4/machine/play/{machineId}:
       post:
         description: Start playing a specific machine.
         operationId: postMachinePlay
@@ -13082,7 +13080,7 @@
         summary: Spawn a machine
         tags:
           - Machines
-    /machine/profile/{machineId}:
+    /v4/machine/profile/{machineId}:
       get:
         description: Retrieves information related to /machine/profile/{machine id}
         operationId: getMachineProfile
@@ -13096,7 +13094,7 @@
         summary: Get machine profile by ID
         tags:
           - Machines
-    /machine/recommended:
+    /v4/machine/recommended:
       get:
         description: Retrieves information related to /machine/recommended
         operationId: getMachineRecommended
@@ -13108,7 +13106,7 @@
         summary: Get recommended machines
         tags:
           - Machines
-    /machine/recommended/retired:
+    /v4/machine/recommended/retired:
       get:
         description: Retrieves information related to /machine/recommended/retired
         operationId: getMachineRecommendedRetired
@@ -13120,7 +13118,7 @@
         summary: machine Recommendation Card (Retired)
         tags:
           - Machines
-    /machine/review:
+    /v4/machine/review:
       post:
         description: Submit a review for a machine.
         operationId: postMachineReview
@@ -13134,7 +13132,7 @@
         summary: review a machine
         tags:
           - Machines
-    /machine/reviews/user/{machineId}:
+    /v4/machine/reviews/user/{machineId}:
       get:
         description: Retrieves information related to /machine/reviews/user/{machine id}
         operationId: getMachineReviewsUser
@@ -13148,7 +13146,22 @@
         summary: Bearer's review for machine
         tags:
           - Machines
-    /machine/stop:
+    /v4/machine/reviews/{machineId}:
+      get:
+        deprecated: true
+        description: Retrieves reviews for a machine
+        operationId: getMachineReviews
+        parameters:
+          - $ref: '#/components/parameters/MachineId'
+        responses:
+          '200':
+            $ref: '#/components/responses/MachineReviewsResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Use /reviews/{product}/{productId}/paginated
+        tags:
+          - Machines
+    /v4/machine/stop:
       post:
         description: Stop a specific machine.
         operationId: postMachineStop
@@ -13160,7 +13173,7 @@
         summary: Stop a machine
         tags:
           - Machines
-    /machine/tags/list:
+    /v4/machine/tags/list:
       get:
         description: Retrieve a list of machine tags.
         operationId: getMachineTagsList
@@ -13172,7 +13185,7 @@
         summary: Get machine tags list
         tags:
           - Machines
-    /machine/tags/{machineId}:
+    /v4/machine/tags/{machineId}:
       get:
         description: Retrieves information related to /machine/tags/{machine id}
         operationId: getMachineTags
@@ -13186,7 +13199,7 @@
         summary: 'machine: tags (Attack Path, Sub, Language)'
         tags:
           - Machines
-    /machine/todo/paginated:
+    /v4/machine/todo/paginated:
       get:
         description: Get /machine/todo/paginated
         operationId: getMachineTodoPaginated
@@ -13203,7 +13216,7 @@
         summary: Get Machine Todo List
         tags:
           - Machines
-    /machine/todo/update/{machineId}:
+    /v4/machine/todo/update/{machineId}:
       post:
         description: Adding and removing to/from ToDo list is the same request.
         operationId: postMachineTodoUpdate
@@ -13217,7 +13230,7 @@
         summary: Add or remove machine to/from the ToDo list
         tags:
           - Machines
-    /machine/unreleased:
+    /v4/machine/unreleased:
       get:
         description: Retrieves information related to /machine/unreleased
         operationId: getMachineUnreleased
@@ -13229,7 +13242,7 @@
         summary: list Release-Scheduled machines
         tags:
           - Machines
-    /machine/walkthrough/random:
+    /v4/machine/walkthrough/random:
       get:
         description: Get Rnadom Walkthrough
         operationId: getMachineWalkthroughRandom
@@ -13241,7 +13254,7 @@
         summary: Get Random Walkthrough
         tags:
           - Machines
-    /machine/walkthroughs/language/list:
+    /v4/machine/walkthroughs/language/list:
       get:
         description: Retrieves information related to /machine/walkthroughs/language/list
         operationId: getMachineWalkthroughsLanguageList
@@ -13253,7 +13266,7 @@
         summary: 'machine: list Walkthrough Language options'
         tags:
           - Machines
-    /machine/walkthroughs/{machineId}:
+    /v4/machine/walkthroughs/{machineId}:
       get:
         description: Retrieves information related to /machine/walkthroughs/{machine id}
         operationId: getMachineWalkthroughs
@@ -13267,7 +13280,7 @@
         summary: 'machine: list Walkthroughs'
         tags:
           - Machines
-    /machine/writeup/{machineId}:
+    /v4/machine/writeup/{machineId}:
       get:
         description: _response is of a pdf file
         operationId: getMachineWriteup
@@ -13281,7 +13294,7 @@
         summary: 'machine: Get Official Writeup (if Available) by machine ID'
         tags:
           - Machines
-    /machines/{machineId}/adventure:
+    /v4/machines/{machineId}/adventure:
       get:
         description: Get Machine Adventure
         operationId: getMachineAdventure
@@ -13295,7 +13308,7 @@
         summary: Get Machine Adventure
         tags:
           - Machines
-    /machines/{machineId}/tasks:
+    /v4/machines/{machineId}/tasks:
       get:
         description: Get Machine Tasks
         operationId: getMachineTasks
@@ -13309,7 +13322,7 @@
         summary: Get Machine Tasks
         tags:
           - Machines
-    /navigation/main:
+    /v4/navigation/main:
       get:
         description: Retrieve main navigation details.
         operationId: getNavigationMain
@@ -13321,7 +13334,7 @@
         summary: Get platform navigation details
         tags:
           - Platform
-    /notices:
+    /v4/notices:
       get:
         description: Retrieve notices.
         operationId: getNotices
@@ -13333,7 +13346,7 @@
         summary: Get platform notices
         tags:
           - Platform
-    /prolab/certificates:
+    /v4/prolab/certificates:
       get:
         description: Get /prolab/certificates
         operationId: getProlabCertificates
@@ -13356,7 +13369,7 @@
         summary: Get Certificates
         tags:
           - Prolabs
-    /prolab/{prolabId}/changelogs:
+    /v4/prolab/{prolabId}/changelogs:
       get:
         description: Get Prolab Changelog
         operationId: getProlabChangelogs
@@ -13381,7 +13394,7 @@
         summary: Changelogs
         tags:
           - Prolabs
-    /prolab/{prolabId}/faq:
+    /v4/prolab/{prolabId}/faq:
       get:
         description: Retrieves information related to /prolab/{prolab id}/faq
         operationId: getProlabFaq
@@ -13395,9 +13408,9 @@
         summary: Get Pro Lab FAQ
         tags:
           - Prolabs
-    /prolab/{prolabId}/flag:
+    /v4/prolab/{prolabId}/flag:
       post:
-        description: Submit the flag from Pro Lab id
+        description: Submit flag
         operationId: postProlabFlag
         parameters:
           - $ref: '#/components/parameters/ProlabId'
@@ -13408,24 +13421,24 @@
             $ref: '#/components/responses/MultiOwnResponse'
           '400':
             $ref: '#/components/responses/MultiOwn400'
-        summary: Submit Problam flag
+        summary: Submit flag
         tags:
           - Prolabs
-    /prolab/{prolabId}/flags:
+    /v4/prolab/{prolabId}/flags:
       get:
-        description: Retrieves information related to /prolab/{prolab id}/flags
+        description: Retrieve flags for a specific prolab.
         operationId: getProlabFlags
         parameters:
           - $ref: '#/components/parameters/ProlabId'
         responses:
           '200':
-            $ref: '#/components/responses/ProlabflagsResponse'
+            $ref: '#/components/responses/ProductFlagsResponse'
           '400':
             $ref: '#/components/responses/GenericError'
-        summary: Get Pro Lab flag list
+        summary: Get list of flags
         tags:
           - Prolabs
-    /prolab/{prolabId}/info:
+    /v4/prolab/{prolabId}/info:
       get:
         description: Retrieves information related to /prolab/{prolab id}/info
         operationId: getProlabInfo
@@ -13439,7 +13452,7 @@
         summary: Get Pro Lab Info
         tags:
           - Prolabs
-    /prolab/{prolabId}/machines:
+    /v4/prolab/{prolabId}/machines:
       get:
         description: Retrieves information related to /prolab/{prolab id}/machines
         operationId: getProlabMachines
@@ -13453,7 +13466,7 @@
         summary: Get Pro Lab machine list
         tags:
           - Prolabs
-    /prolab/{prolabId}/overview:
+    /v4/prolab/{prolabId}/overview:
       get:
         description: Retrieves information related to /prolab/{prolab id}/overview
         operationId: getProlabOverview
@@ -13467,7 +13480,7 @@
         summary: Get Pro Lab Overview
         tags:
           - Prolabs
-    /prolab/{prolabId}/progress:
+    /v4/prolab/{prolabId}/progress:
       get:
         description: Get Prolab Progress
         operationId: getProlabProgress
@@ -13481,7 +13494,7 @@
         summary: Prolab Progress
         tags:
           - Prolabs
-    /prolab/{prolabId}/rating:
+    /v4/prolab/{prolabId}/rating:
       get:
         description: Get /prolab/{prolabId}/rating
         operationId: getProlabRating
@@ -13495,7 +13508,7 @@
         summary: Prolab Rating
         tags:
           - Prolabs
-    /prolab/{prolabId}/reset:
+    /v4/prolab/{prolabId}/reset:
       get:
         description: Reset Prolab
         operationId: getProlabReset
@@ -13516,7 +13529,7 @@
         summary: Unable to test Problab Reset
         tags:
           - Prolabs
-    /prolab/{prolabId}/reviews:
+    /v4/prolab/{prolabId}/reviews:
       get:
         description: Retrieves information related to /prolab/{prolab id}/reviews
         operationId: getProlabReviews
@@ -13536,7 +13549,7 @@
         summary: Get Pro Lab reviews (Paginated)
         tags:
           - Prolabs
-    /prolab/{prolabId}/reviews_overview:
+    /v4/prolab/{prolabId}/reviews_overview:
       get:
         description: Retrieves information related to /prolab/{prolab id}/reviews overview
         operationId: getProlabReviewsOverview
@@ -13550,7 +13563,7 @@
         summary: Get Pro Lab reviews Overview
         tags:
           - Prolabs
-    /prolab/{prolabId}/subscription:
+    /v4/prolab/{prolabId}/subscription:
       get:
         description: Get Prolab Subscription
         operationId: getProlabSubscription
@@ -13564,7 +13577,7 @@
         summary: Subscription
         tags:
           - Prolabs
-    /prolabs:
+    /v4/prolabs:
       get:
         description: Retrieves information related to /prolabs
         operationId: getProlabs
@@ -13576,7 +13589,7 @@
         summary: Get list of Pro Labs
         tags:
           - Prolabs
-    /pwnbox/start:
+    /v4/pwnbox/start:
       post:
         description: Start a Pwnbox instance.
         operationId: postPwnboxStart
@@ -13590,7 +13603,7 @@
         summary: Start a Pwnbox instance
         tags:
           - PwnBox
-    /pwnbox/status:
+    /v4/pwnbox/status:
       get:
         description: Retrieve the status of a Pwnbox instance.
         operationId: getPwnboxStatus
@@ -13602,7 +13615,7 @@
         summary: Get status of a Pwnbox instance.
         tags:
           - PwnBox
-    /pwnbox/terminate:
+    /v4/pwnbox/terminate:
       post:
         description: Terminate a Pwnbox instance.
         operationId: postPwnboxTerminate
@@ -13614,7 +13627,7 @@
         summary: Stop Pwnbox
         tags:
           - PwnBox
-    /pwnbox/usage:
+    /v4/pwnbox/usage:
       get:
         description: Retrieve usage statistics for Pwnbox.
         operationId: getPwnboxUsage
@@ -13626,7 +13639,7 @@
         summary: Get usage statistics for Pwnbox
         tags:
           - PwnBox
-    /rankings:
+    /v4/rankings:
       get:
         description: Get /rankings
         operationId: getRankings
@@ -13638,7 +13651,7 @@
         summary: Rankings
         tags:
           - Ranking
-    /rankings/countries:
+    /v4/rankings/countries:
       get:
         description: Retrieves information related to /rankings/countries
         operationId: getRankingsCountries
@@ -13650,7 +13663,7 @@
         summary: Countries
         tags:
           - Ranking
-    /rankings/country/best:
+    /v4/rankings/country/best:
       get:
         description: Retrieves information related to /rankings/country/best
         operationId: getRankingsCountryBest
@@ -13664,7 +13677,7 @@
         summary: 'Country:  (Bearer''s) - Best for Period'
         tags:
           - Ranking
-    /rankings/country/overview:
+    /v4/rankings/country/overview:
       get:
         description: Retrieves information related to /rankings/country/overview
         operationId: getRankingsCountryOverview
@@ -13678,7 +13691,7 @@
         summary: 'Country: (Bearer''s) - Overview'
         tags:
           - Ranking
-    /rankings/country/ranking_bracket:
+    /v4/rankings/country/ranking_bracket:
       get:
         description: Retrieves information related to /rankings/country/ranking bracket
         operationId: getRankingsCountryRankingBracket
@@ -13690,7 +13703,7 @@
         summary: 'Country: (Bearer''s) - Ranking Bracket'
         tags:
           - Ranking
-    /rankings/country/{countryShortName}/members:
+    /v4/rankings/country/{countryShortName}/members:
       get:
         description: Get Rankings Country Members
         operationId: getRankingsCountryUSMembers
@@ -13709,7 +13722,7 @@
         summary: Get Rankings Country Members
         tags:
           - Ranking
-    /rankings/team/best:
+    /v4/rankings/team/best:
       get:
         description: lists the best global rank achieved, in set intervals for a given period (e.g. 1Y, 6M, 3M, 1M, 1W). Omiting team_id will retrieve Bearers current team. (variation 1)
         operationId: getRankingsTeamBest
@@ -13723,7 +13736,7 @@
         summary: Global Rank History for Bearer's team
         tags:
           - Ranking
-    /rankings/team/best/{teamId}:
+    /v4/rankings/team/best/{teamId}:
       get:
         description: lists the best global rank achieved, in set intervals for a given period (e.g. 1Y, 6M, 3M, 1M, 1W). Omiting team_id will retrieve Bearers current team. (variation 2)
         operationId: getRankingsTeamBestId
@@ -13738,7 +13751,7 @@
         summary: Global Rank History by Team Id
         tags:
           - Ranking
-    /rankings/team/overview:
+    /v4/rankings/team/overview:
       get:
         description: lists the best global rank, in set intervals for a given period (e.g. 1Y, 6M, 3M, 1M, 1W). Omit team_id for Bearers team. (variation 1)
         operationId: getRankingsTeamOverview
@@ -13752,7 +13765,7 @@
         summary: Global Points History for Bearer's team
         tags:
           - Ranking
-    /rankings/team/overview/{teamId}:
+    /v4/rankings/team/overview/{teamId}:
       get:
         description: lists the best global rank, in set intervals for a given period (e.g. 1Y, 6M, 3M, 1M, 1W). Omit team_id for Bearers team. (variation 2)
         operationId: getRankingsTeamOverviewId
@@ -13767,7 +13780,7 @@
         summary: Global Points History by Team Id
         tags:
           - Ranking
-    /rankings/team/ranking_bracket:
+    /v4/rankings/team/ranking_bracket:
       get:
         description: lists the current team ranking bracket (e.g. "Top 20"), next ranking bracket, total points, points to achieve next bracket, and global rank. Omiting team_id will retrieve Bearers current team. (variation 1)
         operationId: getRankingsTeamRankingBracket
@@ -13779,7 +13792,7 @@
         summary: Team Ranking Bracket
         tags:
           - Ranking
-    /rankings/team/ranking_bracket/{teamId}:
+    /v4/rankings/team/ranking_bracket/{teamId}:
       get:
         description: lists the current team ranking bracket (e.g. "Top 20"), next ranking bracket, total points, points to achieve next bracket, and global rank. Omiting team_id will retrieve Bearers current team. (variation 2)
         operationId: getRankingsTeamRankingBracketId
@@ -13793,7 +13806,7 @@
         summary: Team Ranking Bracket by Team Id
         tags:
           - Ranking
-    /rankings/teams:
+    /v4/rankings/teams:
       get:
         description: lists the highest-ranked teams on HTB.
         operationId: getRankingsTeams
@@ -13806,7 +13819,7 @@
         summary: list Top-Ranked Teams
         tags:
           - Ranking
-    /rankings/universities:
+    /v4/rankings/universities:
       get:
         description: Retrieves information related to /rankings/universities
         operationId: getRankingsUniversities
@@ -13818,7 +13831,7 @@
         summary: Universities
         tags:
           - Ranking
-    /rankings/university/best:
+    /v4/rankings/university/best:
       get:
         description: Retrieves information related to /rankings/university/best
         operationId: getRankingsUniversityBest
@@ -13832,7 +13845,7 @@
         summary: 'University:  (Bearer''s) - Best for Period'
         tags:
           - Ranking
-    /rankings/university/overview:
+    /v4/rankings/university/overview:
       get:
         description: Retrieves information related to /rankings/university/overview
         operationId: getRankingsUniversityOverview
@@ -13846,7 +13859,7 @@
         summary: 'University: (Bearer''s) - Overview'
         tags:
           - Ranking
-    /rankings/university/ranking_bracket:
+    /v4/rankings/university/ranking_bracket:
       get:
         description: Retrieves information related to /rankings/university/ranking bracket
         operationId: getRankingsUniversityRankingBracket
@@ -13858,7 +13871,7 @@
         summary: 'University: (Bearer''s) - Ranking Bracket'
         tags:
           - Ranking
-    /rankings/university/ranking_bracket/{universityId}:
+    /v4/rankings/university/ranking_bracket/{universityId}:
       get:
         description: Get /rankings/university/ranking_bracket/{ranking_bracket-id}
         operationId: getRankingsUniversityRankingBracketId
@@ -13872,7 +13885,7 @@
         summary: Get Ranking Univeritiy Brakcet By Id
         tags:
           - Ranking
-    /rankings/user/best:
+    /v4/rankings/user/best:
       get:
         description: Get /rankings/user/best
         operationId: getRankingsUserBest
@@ -13886,7 +13899,7 @@
         summary: Get Rankings User Best
         tags:
           - Ranking
-    /rankings/user/overview:
+    /v4/rankings/user/overview:
       get:
         description: Get /rankings/user/overview
         operationId: getRankingsUserOverview
@@ -13900,7 +13913,7 @@
         summary: Get Rankings User Overview
         tags:
           - Ranking
-    /rankings/user/ranking_bracket:
+    /v4/rankings/user/ranking_bracket:
       get:
         description: Get /rankings/user/ranking_bracket
         operationId: getRankingsUserRankingBracket
@@ -13912,7 +13925,7 @@
         summary: Get Rankings User Bracket
         tags:
           - Ranking
-    /rankings/users:
+    /v4/rankings/users:
       get:
         description: Retrieves information related to /rankings/users
         operationId: getRankingsUsers
@@ -13924,7 +13937,7 @@
         summary: Users
         tags:
           - Ranking
-    /review/{product}/{productId}:
+    /v4/review/{product}/{productId}:
       get:
         description: Retrieves reviews
         operationId: getReview
@@ -13939,7 +13952,7 @@
         summary: Retrieves reviews
         tags:
           - Review
-    /review/{product}/{productId}/paginated:
+    /v4/review/{product}/{productId}/paginated:
       get:
         description: Retrieves reviews
         operationId: getReviewPaginated
@@ -13954,7 +13967,7 @@
         summary: Retrieves reviews
         tags:
           - Review
-    /search/fetch:
+    /v4/search/fetch:
       get:
         description: Fetch search results.
         operationId: getSearchFetch
@@ -13969,7 +13982,7 @@
         summary: Fetch search results
         tags:
           - Platform
-    /season/end/{seasonId}/{userId}:
+    /v4/season/end/{seasonId}/{userId}:
       get:
         description: Retrieve user score for a season.
         operationId: getSeasonEnd
@@ -13984,7 +13997,7 @@
         summary: Get user score for a season
         tags:
           - Season
-    /season/list:
+    /v4/season/list:
       get:
         description: Retrieve a list of seasons.
         operationId: getSeasonList
@@ -13996,7 +14009,7 @@
         summary: Get list of seasons
         tags:
           - Season
-    /season/machine/active:
+    /v4/season/machine/active:
       get:
         description: Retrieve active season machines.
         operationId: getSeasonMachineActive
@@ -14008,7 +14021,7 @@
         summary: Get active machines for the current season
         tags:
           - Season
-    /season/machines:
+    /v4/season/machines:
       get:
         description: Retrieve machines for the current season.
         operationId: getSeasonMachines
@@ -14020,7 +14033,7 @@
         summary: Get season machines
         tags:
           - Season
-    /season/machines/completed/{seasonId}:
+    /v4/season/machines/completed/{seasonId}:
       get:
         description: Retrieve completed machines for a specific season.
         operationId: getSeasonMachinesCompleted
@@ -14034,39 +14047,7 @@
         summary: Get completed machine flags for the current season
         tags:
           - Season
-    /season/players/leaderboard:
-      get:
-        description: Get /season/players/leaderboard
-        operationId: getSeasonPlayersLeaderboard
-        parameters:
-          - in: query
-            name: season
-            schema:
-              type: string
-        responses:
-          '200':
-            $ref: '#/components/responses/SeasonPlayersLeaderboardResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Season Leaderboar
-        tags:
-          - Season
-    /season/players/leaderboard/top/{seasonId}:
-      get:
-        description: Season Top Leaderboard
-        operationId: getSeasonPlayersLeaderboardTop
-        parameters:
-          - $ref: '#/components/parameters/PeriodQuery'
-          - $ref: '#/components/parameters/SeasonId'
-        responses:
-          '200':
-            $ref: '#/components/responses/SeasonPlatersLeaderboardTopResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Season Leaderboard Top
-        tags:
-          - Season
-    /season/rewards/{seasonId}:
+    /v4/season/rewards/{seasonId}:
       get:
         description: Get Season Rewwards
         operationId: getSeasonRewards
@@ -14080,7 +14061,7 @@
         summary: Get Season Rewwards
         tags:
           - Season
-    /season/user/followers/{seasonId}:
+    /v4/season/user/followers/{seasonId}:
       get:
         description: Retrieve user followers for a specific season.
         operationId: getSeasonUserFollowers
@@ -14094,7 +14075,7 @@
         summary: Get top season users and top ranked followers for a user
         tags:
           - Season
-    /season/user/rank/{seasonId}:
+    /v4/season/user/rank/{seasonId}:
       get:
         description: Retrieve user rank for a specific season.
         operationId: getSeasonUserRank
@@ -14108,7 +14089,41 @@
         summary: Get user's rank for the current season
         tags:
           - Season
-    /sherlock/todo/update/{sherlockId}:
+    /v4/season/{leaderboard}/leaderboard:
+      get:
+        description: Get /season/players/leaderboard
+        operationId: getSeasonLeaderboard
+        parameters:
+          - $ref: '#/components/parameters/Leaderboard'
+          - in: query
+            name: season
+            schema:
+              type: string
+        responses:
+          '200':
+            $ref: '#/components/responses/SeasonPlayersLeaderboardResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Season Leaderboar
+        tags:
+          - Season
+    /v4/season/{leaderboard}/leaderboard/top/{seasonId}:
+      get:
+        description: Season Top Leaderboard
+        operationId: getSeasonLeaderboardTop
+        parameters:
+          - $ref: '#/components/parameters/Leaderboard'
+          - $ref: '#/components/parameters/PeriodQuery'
+          - $ref: '#/components/parameters/SeasonId'
+        responses:
+          '200':
+            $ref: '#/components/responses/SeasonPlatersLeaderboardTopResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Season Leaderboard Top
+        tags:
+          - Season
+    /v4/sherlock/todo/update/{sherlockId}:
       post:
         description: Marks a Sherlock as a ToDo or removes if already marked
         operationId: postSherlockTodoUpdate
@@ -14122,7 +14137,7 @@
         summary: Mark Sherlock as ToDo
         tags:
           - Sherlocks
-    /sherlocks:
+    /v4/sherlocks:
       get:
         description: Retrieve a list of Sherlock instances.
         operationId: getSherlocks
@@ -14143,7 +14158,7 @@
         summary: Get list of Sherlocks
         tags:
           - Sherlocks
-    /sherlocks/categories/list:
+    /v4/sherlocks/categories/list:
       get:
         description: Get Sherlocks Categories List
         operationId: getSherlocksCategoriesList
@@ -14155,7 +14170,7 @@
         summary: Get Sherlocks Categories List
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}:
+    /v4/sherlocks/{sherlockId}:
       get:
         description: Retrieve information for a specific Sherlock instance.
         operationId: getSherlocksId
@@ -14169,7 +14184,7 @@
         summary: Get Sherlock by Id
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/download_link:
+    /v4/sherlocks/{sherlockId}/download_link:
       get:
         description: Retrieve the download link for a specific Sherlock instance.
         operationId: getSherlocksDownloadlink
@@ -14183,7 +14198,7 @@
         summary: Get Download Url for Sherlock by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/info:
+    /v4/sherlocks/{sherlockId}/info:
       get:
         description: Retrieve detailed information for a specific Sherlock instance.
         operationId: getSherlocksInfo
@@ -14197,7 +14212,7 @@
         summary: Get info of Sherlock by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/play:
+    /v4/sherlocks/{sherlockId}/play:
       get:
         description: Start or continue playing a specific Sherlock instance.
         operationId: getSherlocksPlay
@@ -14211,7 +14226,7 @@
         summary: Does this do anything Sherlock by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/progress:
+    /v4/sherlocks/{sherlockId}/progress:
       get:
         description: Retrieve progress information for a specific Sherlock instance.
         operationId: getSherlocksProgress
@@ -14225,7 +14240,7 @@
         summary: Get progress of Sherlock item by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/tasks:
+    /v4/sherlocks/{sherlockId}/tasks:
       get:
         description: Retrieve tasks for a specific Sherlock instance.
         operationId: getSherlocksTasks
@@ -14239,7 +14254,7 @@
         summary: Get tasks for Sherlock by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/tasks/{taskId}/flag:
+    /v4/sherlocks/{sherlockId}/tasks/{taskId}/flag:
       post:
         description: Submit a flag for a specific task in a Sherlock instance.
         operationId: postSherlocksTasksFlag
@@ -14258,7 +14273,7 @@
         summary: Submit flag for a specific Sherlock task
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/writeup:
+    /v4/sherlocks/{sherlockId}/writeup:
       get:
         description: Retrieve a writeup for a specific Sherlock instance.
         operationId: getSherlocksWriteup
@@ -14272,7 +14287,7 @@
         summary: Get community write-up for Sherlock by ID
         tags:
           - Sherlocks
-    /sherlocks/{sherlockId}/writeup/official:
+    /v4/sherlocks/{sherlockId}/writeup/official:
       get:
         description: Retrieve the official writeup for a specific Sherlock instance.
         operationId: getSherlocksWriteupOfficial
@@ -14286,7 +14301,7 @@
         summary: Get official write-up for Sherlock by ID
         tags:
           - Sherlocks
-    /sidebar/announcement:
+    /v4/sidebar/announcement:
       get:
         description: Retrieves information related to /sidebar/announcement
         operationId: getSidebarAnnouncement
@@ -14298,7 +14313,7 @@
         summary: 'Sidebar: announcement'
         tags:
           - Platform
-    /sidebar/changelog:
+    /v4/sidebar/changelog:
       get:
         deprecated: true
         description: Retrieves information related to /sidebar/changelog
@@ -14311,7 +14326,7 @@
         summary: 'Sidebar: changelog'
         tags:
           - Platform
-    /sp/profile/{startingPointId}:
+    /v4/sp/profile/{startingPointId}:
       get:
         description: Retrieve the profile information for a specific starting point.
         operationId: getSPProfile
@@ -14325,7 +14340,7 @@
         summary: Summary for get /sp/profile/{startingPointId}
         tags:
           - Starting Point
-    /sp/task/flag:
+    /v4/sp/task/flag:
       post:
         description: Submit a flag for an SP task.
         operationId: postSPTaskFlag
@@ -14337,7 +14352,7 @@
         summary: Summary for post /sp/task/flag
         tags:
           - Starting Point
-    /sp/tier/{tierId}:
+    /v4/sp/tier/{tierId}:
       get:
         description: Retrieve details of SP Tier.
         operationId: getSPTier
@@ -14351,7 +14366,7 @@
         summary: Starting Point Tier Info
         tags:
           - Starting Point
-    /sp/tiers/progress:
+    /v4/sp/tiers/progress:
       get:
         description: Retrieve progress of SP tiers.
         operationId: getSPTiersProgress
@@ -14363,7 +14378,7 @@
         summary: Summary for get /sp/tiers/progress
         tags:
           - Starting Point
-    /subscriptions/pricing:
+    /v4/subscriptions/pricing:
       get:
         description: Get Subscription Pricing
         operationId: getSubscriptionsPricing
@@ -14380,7 +14395,7 @@
         summary: Get Subscription Pricing
         tags:
           - Platform
-    /team/activity/{teamId}:
+    /v4/team/activity/{teamId}:
       get:
         description: Retrieve a handful of recent team owns. (Does not indicate which member achieved each item)
         operationId: getTeamActivity
@@ -14394,7 +14409,7 @@
         summary: Get Recent team Activity
         tags:
           - Team
-    /team/chart/challenge/categories/{teamId}:
+    /v4/team/chart/challenge/categories/{teamId}:
       get:
         description: Retrieve challenge category charts for a team.
         operationId: getTeamChartChallengeCategories
@@ -14408,7 +14423,7 @@
         summary: Get Challenge Categories by Team ID
         tags:
           - Team
-    /team/chart/machines/attack/{teamId}:
+    /v4/team/chart/machines/attack/{teamId}:
       get:
         description: Gets team machine ownage per attack path (e.g. "Web", "Account Misconfiguration"), expressed for each path (and for the total set of machines) as number of machines owned (either user or root, apparently) versus the total number available.
         operationId: getTeamChartMachinesAttack
@@ -14422,7 +14437,7 @@
         summary: Get team Ownage by Attack Path
         tags:
           - Team
-    /team/graph/{teamId}:
+    /v4/team/graph/{teamId}:
       get:
         description: Get graph data for a team for a given duration (e.g. 1Y, 6M, 3M, 1M, 1W)
         operationId: getTeamGraph
@@ -14437,7 +14452,7 @@
         summary: Get team Graph for Duration
         tags:
           - Team
-    /team/info/{teamId}:
+    /v4/team/info/{teamId}:
       get:
         description: Retrieve the information profile for a team including captain, motto and other attributes.
         operationId: getTeamInfo
@@ -14451,7 +14466,7 @@
         summary: Get team profile
         tags:
           - Team
-    /team/invitations/{teamId}:
+    /v4/team/invitations/{teamId}:
       get:
         description: list the pending team members who have requested to join a team, or who were requested by the team captain, but have not yet accepted / been approved.
         operationId: getTeaminvItations
@@ -14465,7 +14480,7 @@
         summary: list team Invitations
         tags:
           - Team
-    /team/members/{teamId}:
+    /v4/team/members/{teamId}:
       get:
         description: list the members of a team (both active and pending / invited), given its ID. (variation 2)
         operationId: getTeaMmembers
@@ -14479,7 +14494,7 @@
         summary: list team members
         tags:
           - Team
-    /team/stats/owns/{teamId}:
+    /v4/team/stats/owns/{teamId}:
       get:
         description: Retrieves information related to /team/stats/owns/{team id}
         operationId: getTeamStatsOwns
@@ -14493,7 +14508,7 @@
         summary: Get team Statistics (Owns)
         tags:
           - Team
-    /tracks:
+    /v4/tracks:
       get:
         description: Retrieves information related to /tracks
         operationId: getTracks
@@ -14505,7 +14520,7 @@
         summary: list Available Tracks
         tags:
           - Tracks
-    /tracks/enroll/{trackId}':
+    /v4/tracks/enroll/{trackId}:
       post:
         description: Enroll to track
         operationId: postTracksEnroll
@@ -14523,7 +14538,7 @@
         summary: Enroll to track
         tags:
           - Tracks
-    /tracks/like/{trackId}:
+    /v4/tracks/like/{trackId}:
       post:
         description: Like a track
         operationId: postTracksLike
@@ -14541,7 +14556,7 @@
         summary: Like a track
         tags:
           - Tracks
-    /tracks/{trackId}:
+    /v4/tracks/{trackId}:
       get:
         description: Retrieves information related to /tracks/{id}
         operationId: getTracksId
@@ -14560,7 +14575,7 @@
         summary: Get Track Details
         tags:
           - Tracks
-    /university/activity/{universityId}:
+    /v4/university/activity/{universityId}:
       get:
         description: Univeritiy Activity
         operationId: getUniversityActivity
@@ -14574,7 +14589,7 @@
         summary: Univeritiy Activity
         tags:
           - Universities
-    /university/all/list:
+    /v4/university/all/list:
       get:
         description: Retrieve a list of all universities.
         operationId: getUniversityAllList
@@ -14589,7 +14604,7 @@
         summary: Retrieve information profile for teams
         tags:
           - Universities
-    /university/chart/challenge/categories/{universityId}:
+    /v4/university/chart/challenge/categories/{universityId}:
       get:
         description: Get Univeritiy Challenge Chart Categories
         operationId: getUniversityChartChallengeCategories
@@ -14603,7 +14618,7 @@
         summary: University Challenge Categories Chart
         tags:
           - Universities
-    /university/chart/machines/attack/{universityId}:
+    /v4/university/chart/machines/attack/{universityId}:
       get:
         description: University Machine Chart
         operationId: getUniversityChartMachinesAttack
@@ -14617,7 +14632,7 @@
         summary: University Machine Attack Chart
         tags:
           - Universities
-    /university/country/list:
+    /v4/university/country/list:
       get:
         description: Univeritiy Country List
         operationId: getUniversityCountryList
@@ -14629,7 +14644,7 @@
         summary: Univeritiy Country List
         tags:
           - Universities
-    /university/members/{universityId}:
+    /v4/university/members/{universityId}:
       get:
         description: Retrieve the list of members of a team, including both active and pending/invited members
         operationId: getUniversityMembers
@@ -14643,7 +14658,7 @@
         summary: Get team members
         tags:
           - Universities
-    /university/my:
+    /v4/university/my:
       get:
         description: My Univeritiy
         operationId: getUniversityMy
@@ -14655,7 +14670,7 @@
         summary: My Univeritiy
         tags:
           - Universities
-    /university/new/list:
+    /v4/university/new/list:
       get:
         description: Univeritiy New List
         operationId: getUniversityNewList
@@ -14667,7 +14682,7 @@
         summary: Univeritiy New List
         tags:
           - Universities
-    /university/profile/{universityId}:
+    /v4/university/profile/{universityId}:
       get:
         description: Retrieve the profile of a university by team ID.
         operationId: getUniversityProfile
@@ -14681,7 +14696,7 @@
         summary: Retrieve information profile for a specific team
         tags:
           - Universities
-    /university/stats/owns/{userId}:
+    /v4/university/stats/owns/{userId}:
       get:
         description: Retrieve owns statistics for a specific user identified by user_id
         operationId: getUniversityStatsOwns
@@ -14695,7 +14710,7 @@
         summary: Get owns statistics for a user
         tags:
           - Universities
-    /university/top/list:
+    /v4/university/top/list:
       get:
         description: Univeritiy Top List
         operationId: getUniversityTopList
@@ -14707,7 +14722,7 @@
         summary: Univeritiy Top List
         tags:
           - Universities
-    /user/achievement/{targetType}/{userId}/{targetId}:
+    /v4/user/achievement/{targetType}/{userId}/{targetId}:
       get:
         description: Validate Achievement / Own
         operationId: getUserAchievement
@@ -14733,7 +14748,7 @@
         summary: Validate Achievement / Own
         tags:
           - User
-    /user/anonymized/id:
+    /v4/user/anonymized/id:
       get:
         description: Retrieves information related to /user/anonymized/id
         operationId: getUserAnonymizedId
@@ -14745,7 +14760,7 @@
         summary: 'Bearer: Anonymous ID'
         tags:
           - User
-    /user/apptoken/create:
+    /v4/user/apptoken/create:
       post:
         description: User App Token Create
         operationId: postUserApptokenCreate
@@ -14767,7 +14782,7 @@
         summary: User App Token Create
         tags:
           - User
-    /user/apptoken/delete:
+    /v4/user/apptoken/delete:
       post:
         description: Delete app token, requires the name of the token
         operationId: postUserApptokenDelete
@@ -14787,7 +14802,7 @@
         summary: Delete App Token
         tags:
           - User
-    /user/apptoken/list:
+    /v4/user/apptoken/list:
       get:
         description: Get /user/apptoken/list
         operationId: getUserApptokenList
@@ -14799,7 +14814,7 @@
         summary: User App Tokens List
         tags:
           - User
-    /user/banned:
+    /v4/user/banned:
       get:
         description: Retrieves if user is banned
         operationId: getUserBanned
@@ -14811,7 +14826,7 @@
         summary: 'Bearer: Is Banned'
         tags:
           - User
-    /user/career:
+    /v4/user/career:
       get:
         description: Get /user/career
         operationId: getUserCareer
@@ -14823,7 +14838,7 @@
         summary: Get User Career
         tags:
           - User
-    /user/connection/status:
+    /v4/user/connection/status:
       get:
         description: Retrieves information related to /user/connection/status
         operationId: getUserConnectionStatus
@@ -14835,7 +14850,7 @@
         summary: 'Bearer: Connection Status [ Connected ]'
         tags:
           - User
-    /user/dashboard:
+    /v4/user/dashboard:
       get:
         description: Retrieves information related to /user/dashboard
         operationId: getUserDashboard
@@ -14847,7 +14862,7 @@
         summary: 'Dashboard: Various Platform Stats'
         tags:
           - User
-    /user/dashboard/tabloid:
+    /v4/user/dashboard/tabloid:
       get:
         description: Retrieves information related to /user/dashboard/tabloid
         operationId: getUserDashboardTabloid
@@ -14859,7 +14874,7 @@
         summary: 'Dashboard: Various Platform Stats'
         tags:
           - User
-    /user/disrespect/{userId}:
+    /v4/user/disrespect/{userId}:
       post:
         description: Remove respect from user
         operationId: postUserDisrespect
@@ -14873,7 +14888,7 @@
         summary: Remove respect from user
         tags:
           - User
-    /user/feedback/bug/areas:
+    /v4/user/feedback/bug/areas:
       get:
         description: Retrieves information related to /user/feedback/bug/areas
         operationId: getUserFeedbackBugAreas
@@ -14885,7 +14900,7 @@
         summary: 'Dashboard: list Bug Feedback Areas'
         tags:
           - User
-    /user/follow/{userId}:
+    /v4/user/follow/{userId}:
       post:
         description: Follow a user
         operationId: postUserFollow
@@ -14899,7 +14914,7 @@
         summary: Follow a user
         tags:
           - User
-    /user/followers:
+    /v4/user/followers:
       get:
         description: Retrieves information related to /user/followers
         operationId: getUserFollowers
@@ -14911,7 +14926,7 @@
         summary: 'Bearer: Followers'
         tags:
           - User
-    /user/info:
+    /v4/user/info:
       get:
         description: Retrieves information related to /user/info
         operationId: getUserInfo
@@ -14923,7 +14938,7 @@
         summary: Get user information
         tags:
           - User
-    /user/profile/activity/{userId}:
+    /v4/user/profile/activity/{userId}:
       get:
         description: Retrieves information related to /user/profile/activity/{user id}
         operationId: getUserProfileActivity
@@ -14937,7 +14952,7 @@
         summary: 'User profile: Activity'
         tags:
           - User
-    /user/profile/badges/{userId}:
+    /v4/user/profile/badges/{userId}:
       get:
         description: Retrieves information related to /user/profile/badges/{user id}
         operationId: getUserProfileBadges
@@ -14951,7 +14966,7 @@
         summary: 'User profile: badges'
         tags:
           - User
-    /user/profile/basic/{userId}:
+    /v4/user/profile/basic/{userId}:
       get:
         description: Retrieves information related to /user/profile/basic/{user id}
         operationId: getUserProfileBasic
@@ -14965,7 +14980,7 @@
         summary: Other user's profile
         tags:
           - User
-    /user/profile/bloods/{userId}:
+    /v4/user/profile/bloods/{userId}:
       get:
         description: Retrieves information related to /user/profile/bloods/{user id}
         operationId: getUserProfileBloods
@@ -14979,7 +14994,7 @@
         summary: 'User profile: Bloods'
         tags:
           - User
-    /user/profile/certificates:
+    /v4/user/profile/certificates:
       get:
         description: User Profile Certificates
         operationId: getUserProfileCertificates
@@ -15000,7 +15015,7 @@
         summary: User Profile Certificates
         tags:
           - User
-    /user/profile/chart/machines/attack/{userId}:
+    /v4/user/profile/chart/machines/attack/{userId}:
       get:
         description: Retrieves information related to /user/profile/chart/machines/attack/{user id}
         operationId: getUserProfileChartMachinesAttack
@@ -15014,7 +15029,7 @@
         summary: 'User profile: machine Ownage Chart By Attack Path'
         tags:
           - User
-    /user/profile/content/{userId}:
+    /v4/user/profile/content/{userId}:
       get:
         description: Retrieves information related to /user/profile/content/{user id}
         operationId: getUserProfileContent
@@ -15028,7 +15043,7 @@
         summary: 'User profile: Submitted Content'
         tags:
           - User
-    /user/profile/graph/{period}/{userId}:
+    /v4/user/profile/graph/{period}/{userId}:
       get:
         description: Retrieves information related to /user/profile/graph/{period}/{user id}
         operationId: getUserProfileGraph
@@ -15043,7 +15058,7 @@
         summary: 'User profile: Achievement Graph'
         tags:
           - User
-    /user/profile/progress/challenges/{userId}:
+    /v4/user/profile/progress/challenges/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/challenges/{user id}
         operationId: getUserProfileProgressChallenges
@@ -15057,7 +15072,7 @@
         summary: 'User Progress: challenges (Total + by Category)'
         tags:
           - User
-    /user/profile/progress/endgame/{userId}:
+    /v4/user/profile/progress/endgame/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/endgame/{user id}
         operationId: getUserProfileProgressEndgame
@@ -15071,7 +15086,7 @@
         summary: 'User Progress: Endgames'
         tags:
           - User
-    /user/profile/progress/fortress/{userId}:
+    /v4/user/profile/progress/fortress/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/fortress/{user id}
         operationId: getUserProfileProgressFortress
@@ -15085,7 +15100,7 @@
         summary: 'User Progress: fortress'
         tags:
           - User
-    /user/profile/progress/prolab/{userId}:
+    /v4/user/profile/progress/prolab/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/prolab/{user id}
         operationId: getUserProfileProgressProlab
@@ -15099,7 +15114,7 @@
         summary: 'User Progress: Pro Lab'
         tags:
           - User
-    /user/profile/progress/sherlocks/{userId}:
+    /v4/user/profile/progress/sherlocks/{userId}:
       get:
         description: User Profile Progreess Sherlocks
         operationId: getUserProfileProgressSherlocks
@@ -15113,7 +15128,7 @@
         summary: User Profile Progreess Sherlocks
         tags:
           - User
-    /user/profile/summary:
+    /v4/user/profile/summary:
       get:
         description: Retrieves information related to /user/profile/summary
         operationId: getUserProfileSummary
@@ -15125,7 +15140,7 @@
         summary: User Profile Summary
         tags:
           - User
-    /user/respect/{userId}:
+    /v4/user/respect/{userId}:
       post:
         description: Respect a user
         operationId: postUserRespect
@@ -15139,7 +15154,7 @@
         summary: Respect a user
         tags:
           - User
-    /user/settings:
+    /v4/user/settings:
       get:
         description: Retrieves information related to /user/settings
         operationId: getUserSettings
@@ -15151,7 +15166,7 @@
         summary: 'Bearer: Settings'
         tags:
           - User
-    /user/submissions/challenges:
+    /v4/user/submissions/challenges:
       get:
         description: Retrieves information related to /user/submissions/challenges
         operationId: getUserSubmissionsChallenges
@@ -15163,7 +15178,7 @@
         summary: 'Bearer: challenge Submissions'
         tags:
           - User
-    /user/submissions/machines:
+    /v4/user/submissions/machines:
       get:
         description: Retrieves information related to /user/submissions/machines
         operationId: getUserSubmissionsMachines
@@ -15175,7 +15190,7 @@
         summary: 'Bearer: machine Submissions'
         tags:
           - User
-    /user/subscriptions:
+    /v4/user/subscriptions:
       get:
         description: Retrieves information related to /user/subscriptions
         operationId: getUserSubscriptions
@@ -15187,7 +15202,7 @@
         summary: 'Bearer: Subscription Status'
         tags:
           - User
-    /user/subscriptions/balance:
+    /v4/user/subscriptions/balance:
       get:
         description: Retrieves information related to /user/subscriptions/balance
         operationId: getUserSubscriptionsBalance
@@ -15199,7 +15214,7 @@
         summary: 'Bearer: Subscription Balance'
         tags:
           - User
-    /user/subscriptions/billing-history:
+    /v4/user/subscriptions/billing-history:
       get:
         description: Get billing history for bearer's account
         operationId: getUserSubscriptionsBillingHistory
@@ -15213,7 +15228,7 @@
         summary: Get Billing History
         tags:
           - User
-    /user/subscriptions/cancellation/reasons:
+    /v4/user/subscriptions/cancellation/reasons:
       get:
         description: User Subscription Cancellation Reasons
         operationId: getUserSubscriptionsCancellationReasons
@@ -15225,7 +15240,7 @@
         summary: User Subscription Cancellation Reasons
         tags:
           - User
-    /user/subscriptions/manage/recurly:
+    /v4/user/subscriptions/manage/recurly:
       get:
         description: Retrieves information related to /user/subscriptions/manage/recurly
         operationId: getUserSubscriptionsManageRecurly
@@ -15237,7 +15252,7 @@
         summary: 'Bearer: Recurly URL to Manage Subscriptions'
         tags:
           - User
-    /user/tracks:
+    /v4/user/tracks:
       get:
         description: Retrieves information related to /user/tracks
         operationId: getUserTracks
@@ -15249,7 +15264,7 @@
         summary: 'Bearer: Enrolled Tracks'
         tags:
           - User
-    /user/unfollow/{userId}:
+    /v4/user/unfollow/{userId}:
       post:
         description: Unfollow a user
         operationId: postUserUnfollow
@@ -15263,7 +15278,7 @@
         summary: Unfollow a user
         tags:
           - User
-    /vm/extend:
+    /v4/vm/extend:
       post:
         description: Extend the virtual machine.
         operationId: postVMExtend
@@ -15277,7 +15292,7 @@
         summary: Extend a machine / SP
         tags:
           - VM
-    /vm/reset:
+    /v4/vm/reset:
       post:
         description: Reset the virtual machine.
         operationId: postVMReset
@@ -15291,7 +15306,7 @@
         summary: Reset a machine / SP
         tags:
           - VM
-    /vm/reset/vote:
+    /v4/vm/reset/vote:
       post:
         description: Reset the virtual machine.
         operationId: postVMResetVote
@@ -15305,7 +15320,7 @@
         summary: Vote to Reset a machine
         tags:
           - VM
-    /vm/reset/vote/accept:
+    /v4/vm/reset/vote/accept:
       post:
         description: Reset the virtual machine.
         operationId: postVMResetVoteAccept
@@ -15319,7 +15334,7 @@
         summary: Accept vote to Reset a machine
         tags:
           - VM
-    /vm/spawn:
+    /v4/vm/spawn:
       post:
         description: Spawn a virtual machine.
         operationId: postVMSpawn
@@ -15335,7 +15350,7 @@
         summary: Spawn a machine / SP
         tags:
           - VM
-    /vm/terminate:
+    /v4/vm/terminate:
       post:
         description: Terminate a virtual machine.
         operationId: postVMTerminate
@@ -15351,34 +15366,27 @@
         summary: Terminate a machine / SP
         tags:
           - VM
-    /{product}/own:
+    /v5/{product}/own:
       post:
         description: Submit flag on v5 API
-        operationId: postOwn
+        operationId: postProductOwn
         parameters:
-          - $ref: '#/components/parameters/ProductPathv5'
+          - $ref: '#/components/parameters/ProductPathOwnv5'
         requestBody:
           $ref: '#/components/requestBodies/OwnRequest'
         responses:
           '200':
-            $ref: '#/components/responses/MachineOwnResponse'
+            $ref: '#/components/responses/OwnResponse'
           '400':
             $ref: '#/components/responses/MachineOwn400'
         summary: v5 Submit flag
         tags:
-          - Flag
+          - Machines
   security:
     - bearer: []
   servers:
     - description: HTB API
-      url: https://labs.hackthebox.com/api/{version}
-      variables:
-        version:
-          default: v4
-          description: API version
-          enum:
-            - v4
-            - v5
+      url: https://labs.hackthebox.com/api
   tags:
     - description: Endpoints related to platform badges
       name: Badges
@@ -15392,8 +15400,6 @@
       name: Connection
     - description: Endpoints related to Endgames
       name: Endgames
-    - description: Flag Submissions
-      name: Flag
     - description: Endpoints related to Fortresses
       name: Fortresses
     - description: Endpoints related to the Home page banner
