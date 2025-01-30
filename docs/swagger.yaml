@@ -136,13 +136,6 @@
             type: string
           type: array
         style: form
-      EndgameId:
-        description: ID of the product
-        in: path
-        name: endgameId
-        required: true
-        schema:
-          type: integer
       FortressId:
         description: ID of the product
         in: path
@@ -602,7 +595,7 @@
               required:
                 - flag
               type: object
-        description: Body to post prolab/fortress/endgame flag
+        description: Body to post prolab/fortress
         required: true
       OwnRequest:
         content:
@@ -1154,61 +1147,6 @@
             schema:
               $ref: '#/components/schemas/ContentStatsResponse'
         description: Content Stats Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgameEndgameIdMachinesResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgameIdMachinesResponse'
-        description: Endgame Machines Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgameEndgameIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgameIdResponse'
-        description: Endgame Info Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgameWriteupResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgameWriteupResponse'
-        description: OK
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgameWriteupsLanguageResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgameWriteupLanguageResponse'
-        description: OK
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      EndgamesResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EndgamesResponse'
-        description: Endgames Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -1776,17 +1714,6 @@
             schema:
               $ref: '#/components/schemas/ProfileProgressChallengesIdRepsonse'
         description: Profile Progress Challenges Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      ProfileProgressEndgameUserIdResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProfileProgressEndgameIdRepsonse'
-        description: Profile Progress Endgame Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -4967,20 +4894,6 @@
             type: integer
         title: Content Stats Resposne
         type: object
-      Creator:
-        description: Schema definition for Creator
-        properties:
-          avatar_thumb:
-            example: /storage/avatars/dc1de03becebcd2b3d0db515230e876e_thumb.png
-            type: string
-          id:
-            example: 302
-            type: integer
-          name:
-            example: eks
-            type: string
-        title: Creator
-        type: object
       DashboardPlayers:
         description: Schema definition for Dashboard Players
         properties:
@@ -5006,204 +4919,6 @@
             example: red
             type: string
         title: Designated Level
-        type: object
-      EndgameIdMachinesResponse:
-        description: Schema definition for Endgame Id Machines Response
-        properties:
-          data:
-            items:
-              properties:
-                avatar_thumb_url:
-                  type: string
-                id:
-                  type: integer
-                name:
-                  type: string
-                os:
-                  type: string
-              type: object
-            type: array
-          status:
-            oneOf:
-              - type: boolean
-              - type: integer
-        title: Endgame Id Machine Response
-        type: object
-      EndgameIdResponse:
-        description: Schema definition for Endgame Id Response
-        properties:
-          data:
-            properties:
-              avatar_url:
-                type: string
-              completion_icon:
-                type: string
-              completion_text:
-                type: string
-              cover_image_url:
-                type: string
-              creators:
-                items:
-                  properties:
-                    avatar_thumb:
-                      type: string
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                  type: object
-                type: array
-              description:
-                type: string
-              endgame_reset_votes:
-                type: integer
-              entry_points:
-                items:
-                  type: string
-                type: array
-              has_user_finished:
-                type: boolean
-              id:
-                type: integer
-              is_deployment_ready:
-                type: boolean
-              most_recent_reset:
-                nullable: true
-                type: string
-              name:
-                type: string
-              players_completed:
-                type: integer
-              points:
-                type: string
-              retired:
-                oneOf:
-                  - type: boolean
-                  - type: integer
-              user_availability:
-                properties:
-                  available:
-                    type: boolean
-                  code:
-                    type: number
-                  message:
-                    nullable: true
-                    type: string
-                type: object
-              video_url:
-                nullable: true
-                type: string
-              vip:
-                oneOf:
-                  - type: boolean
-                  - type: integer
-            type: object
-          status:
-            oneOf:
-              - type: boolean
-              - type: integer
-        title: Endgame Id Resposne
-        type: object
-      EndgameWriteupLanguageResponse:
-        properties:
-          data:
-            items:
-              properties:
-                full_name:
-                  type: string
-                id:
-                  type: number
-                short_name:
-                  type: string
-              type: object
-            type: array
-          status:
-            type: boolean
-        type: object
-      EndgameWriteupResponse:
-        properties:
-          data:
-            properties:
-              official:
-                properties:
-                  filename:
-                    type: string
-                  liked_percentage:
-                    type: number
-                  ratings_count:
-                    type: number
-                  sha256:
-                    type: string
-                  threshold_for_display_reached:
-                    type: boolean
-                  url:
-                    type: string
-                  user_liked:
-                    type: object
-                type: object
-              user_submitted:
-                items:
-                  type: object
-                type: array
-              writeups:
-                items:
-                  type: object
-                type: array
-            type: object
-          status:
-            type: boolean
-        type: object
-      Endgames:
-        description: Schema definition for Endgames
-        properties:
-          avatar_url:
-            example: https://labs.hackthebox.com/storage/endgames/c4ca4238a0b923820dcc509a6f75849b.png
-            format: uri
-            type: string
-          cover_image_url:
-            example: https://labs.hackthebox.com/storage/endgames/c4ca4238a0b923820dcc509a6f75849b_cover.png
-            format: uri
-            type: string
-          creators:
-            items:
-              $ref: '#/components/schemas/Creator'
-            type: array
-          endgame_flags_count:
-            example: 5
-            type: integer
-          endgame_machines_count:
-            example: 2
-            type: integer
-          id:
-            example: 1
-            type: integer
-          name:
-            example: P.O.O.
-            type: string
-          new:
-            example: false
-            type: boolean
-          retired:
-            example: true
-            type: boolean
-          user_availability:
-            $ref: '#/components/schemas/UserAvailability'
-          vip:
-            example: true
-            type: boolean
-        title: Endgames
-        type: object
-      EndgamesResponse:
-        description: Schema definition for Endgames Response
-        properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Endgames'
-            type: array
-          status:
-            example: true
-            type: boolean
-        title: Endgames Response
         type: object
       FaqItem:
         description: Schema definition for Faq Item
@@ -7667,27 +7382,6 @@
             type: object
         title: Profile Progress Challenges Id Repsonse
         type: object
-      ProfileProgressEndgameIdRepsonse:
-        description: Schema definition for Profile Progress Endgame Id Repsonse
-        properties:
-          profile:
-            properties:
-              endgames:
-                items:
-                  properties:
-                    completion_percentage:
-                      type: integer
-                    name:
-                      type: string
-                    owned_flags:
-                      type: integer
-                    total_flags:
-                      type: integer
-                  type: object
-                type: array
-            type: object
-        title: Profile Progress Endgame Id Repsonse
-        type: object
       ProfileProgressFortressIdRepsonse:
         description: Schema definition for Profile Progress Fortress Id Repsonse
         properties:
@@ -8891,7 +8585,7 @@
           count:
             example: 118
             type: integer
-          info:
+          data:
             $ref: '#/components/schemas/ReviewMessage'
           links:
             $ref: '#/components/schemas/Links'
@@ -10259,40 +9953,45 @@
       TeamInformationProfileResponse:
         description: Schema definition for Team Information Profile Response
         properties:
-          avatar_url:
-            example: https://www.hackthebox.eu/storage/teams/8232e119d8f59aa83050a741631803a6.jpg
-            format: uri
+          message:
             type: string
-          captain:
-            $ref: '#/components/schemas/CommonIdName'
-          country_code:
-            example: NL
-            type: string
-          country_name:
-            example: Netherlands
-            type: string
-          cover_image_url:
-            format: uri
-            nullable: true
-            type: string
-          description:
-            example: Open for anyone who is polite, honest, nice, and willing to help others.
-            type: string
-          id:
-            example: 2102
-            type: integer
-          is_respected:
-            example: true
-            type: boolean
-          motto:
-            example: Hacking for the fun of it! Learning it as a bonus
-            type: string
-          name:
-            example: CommandlineKings
-            type: string
-          points:
-            example: 1839
-            type: integer
+          data:
+            type: object
+            properties:
+              avatar_url:
+                example: https://www.hackthebox.eu/storage/teams/8232e119d8f59aa83050a741631803a6.jpg
+                format: uri
+                type: string
+              captain:
+                $ref: '#/components/schemas/CommonIdName'
+              country_code:
+                example: NL
+                type: string
+              country_name:
+                example: Netherlands
+                type: string
+              cover_image_url:
+                format: uri
+                nullable: true
+                type: string
+              description:
+                example: Open for anyone who is polite, honest, nice, and willing to help others.
+                type: string
+              id:
+                example: 2102
+                type: integer
+              is_respected:
+                example: true
+                type: boolean
+              motto:
+                example: Hacking for the fun of it! Learning it as a bonus
+                type: string
+              name:
+                example: CommandlineKings
+                type: string
+              points:
+                example: 1839
+                type: integer
         title: Team Information Profile Response
         type: object
       TeamInvitationsIdResponse:
@@ -12485,19 +12184,7 @@
         summary: Get VPN Server status
         tags:
           - Connection
-    /v4/connection/status/endgame:
-      get:
-        description: Get VPN Server status
-        operationId: getConnectionStatusEndgame
-        responses:
-          '200':
-            $ref: '#/components/responses/ConnectionStatusProductResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get VPN Server status
-        tags:
-          - Connection
-    /v4/connection/status/fortress:
+    /v4/connection/status/fortresses:
       get:
         description: Get VPN Server status
         operationId: getConnectionStatusFortress
@@ -12631,130 +12318,6 @@
         summary: 'Dashboard: machine, challenge Counts'
         tags:
           - Platform
-    /v4/endgame/writeups/languages:
-      get:
-        description: Languages for Writeups
-        operationId: getEndgameWriteupLanguage
-        responses:
-          '200':
-            $ref: '#/components/responses/EndgameWriteupsLanguageResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get Languages for Writeups
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}:
-      get:
-        description: Retrieves information related to /endgame/{endgame id}
-        operationId: getEndgame
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/EndgameEndgameIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get Endgames profile
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/flag:
-      post:
-        description: Submit flag
-        operationId: postEndgameFlag
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        requestBody:
-          $ref: '#/components/requestBodies/MultiOwnRequest'
-        responses:
-          '200':
-            $ref: '#/components/responses/MultiOwnResponse'
-          '400':
-            $ref: '#/components/responses/MultiOwn400'
-        summary: Submit flag
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/flags:
-      get:
-        description: Retrieve flags for a specific endgame.
-        operationId: getEndgameFlags
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/ProductFlagsResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get list of flags
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/machines:
-      get:
-        description: Retrieves information related to /endgame/{endgame id}/machines
-        operationId: getEndgameMachines
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/EndgameEndgameIdMachinesResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get Endgames machine list
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/reset:
-      get:
-        description: Vote Reset Endgame
-        operationId: getEndgameReset
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/GameResetResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Vote Reset Endgame
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/writeup:
-      get:
-        description: Writeup
-        operationId: getEndgameWriteup
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/EndgameWriteupResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get Writeup
-        tags:
-          - Endgames
-    /v4/endgame/{endgameId}/writeup/official:
-      get:
-        description: Official Writeup
-        operationId: getEndgameWriteupOfficial
-        parameters:
-          - $ref: '#/components/parameters/EndgameId'
-        responses:
-          '200':
-            $ref: '#/components/responses/GenericPDFResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get Official PDF Writeup
-        tags:
-          - Endgames
-    /v4/endgames:
-      get:
-        description: Retrieves information related to /endgames
-        operationId: getEndgames
-        responses:
-          '200':
-            $ref: '#/components/responses/EndgamesResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get list of endgames
-        tags:
-          - Endgames
     /v4/fortress/{fortressId}:
       get:
         description: Retrieves information related to /fortress/{fortress id}
@@ -15072,20 +14635,6 @@
         summary: 'User Progress: challenges (Total + by Category)'
         tags:
           - User
-    /v4/user/profile/progress/endgame/{userId}:
-      get:
-        description: Retrieves information related to /user/profile/progress/endgame/{user id}
-        operationId: getUserProfileProgressEndgame
-        parameters:
-          - $ref: '#/components/parameters/UserId'
-        responses:
-          '200':
-            $ref: '#/components/responses/ProfileProgressEndgameUserIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'User Progress: Endgames'
-        tags:
-          - User
     /v4/user/profile/progress/fortress/{userId}:
       get:
         description: Retrieves information related to /user/profile/progress/fortress/{user id}
@@ -15398,8 +14947,6 @@
       name: Challenges
     - description: Endpoints related to VPN connections
       name: Connection
-    - description: Endpoints related to Endgames
-      name: Endgames
     - description: Endpoints related to Fortresses
       name: Fortresses
     - description: Endpoints related to the Home page banner
