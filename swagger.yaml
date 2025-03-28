@@ -12231,6 +12231,7 @@
         description: Porivdes a list of challenges with limited challenge info
         operationId: getChallenges
         parameters:
+          - $ref: '#/components/parameters/Page'
           - $ref: '#/components/parameters/PerPage'
           - $ref: '#/components/parameters/Status'
           - $ref: '#/components/parameters/State'
@@ -14125,7 +14126,7 @@
     /v4/team/members/{teamId}:
       get:
         description: list the members of a team (both active and pending / invited), given its ID. (variation 2)
-        operationId: getTeaMmembers
+        operationId: getTeamMembers
         parameters:
           - $ref: '#/components/parameters/TeamId'
         responses:
