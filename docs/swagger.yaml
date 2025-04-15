@@ -143,6 +143,13 @@
         required: true
         schema:
           type: integer
+      JobId:
+        description: ID of the Job
+        in: path
+        name: jobId
+        required: true
+        schema:
+          type: integer
       Keyword:
         description: Search String (variation 1)
         in: query
@@ -168,6 +175,13 @@
         required: true
         schema:
           type: integer
+      MachineName:
+        description: Name of the product
+        in: path
+        name: machineName
+        required: true
+        schema:
+          type: string
       Os:
         description: Filter by os
         explode: true
@@ -1662,7 +1676,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserProfileActivityResponse'
+              $ref: '#/components/schemas/UserActivity'
         description: Profile Activity User Response
         headers:
           x-ratelimit-limit:
@@ -3233,24 +3247,28 @@
             type: integer
         title: Badge
         type: object
+      BadgeCategories:
+        items:
+          $ref: '#/components/schemas/BadgeCategory'
+        type: array
+      BadgeCategory:
+        properties:
+          badges:
+            items:
+              $ref: '#/components/schemas/Badge'
+            type: array
+          description:
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+        type: object
       BadgesResponse:
         description: Schema definition for Badges Response
         properties:
           categories:
-            items:
-              properties:
-                badges:
-                  items:
-                    $ref: '#/components/schemas/Badge'
-                  type: array
-                description:
-                  type: string
-                id:
-                  type: integer
-                name:
-                  type: string
-              type: object
-            type: array
+            $ref: '#/components/schemas/BadgeCategories'
         title: Badges Response
         type: object
       BaseTask:
@@ -3874,117 +3892,79 @@
             $ref: '#/components/schemas/UserBasic'
         title: Blood Info
         type: object
+      CareerCompaniesItem:
+        properties:
+          career_logo:
+            nullable: true
+            type: string
+          featured:
+            type: boolean
+          id:
+            type: integer
+          job_offers:
+            type: number
+          logo:
+            nullable: true
+            type: string
+          name:
+            type: string
       CareerCompaniesResponse:
         properties:
           data:
             items:
-              properties:
-                career_logo:
-                  nullable: true
-                  type: string
-                featured:
-                  type: boolean
-                id:
-                  type: number
-                job_offers:
-                  type: number
-                logo:
-                  nullable: true
-                  type: string
-                name:
-                  type: string
+              $ref: '#/components/schemas/CareerCompaniesItem'
               type: object
             type: array
         title: Career Companies Response
         type: object
+      CareerCompany:
+        properties:
+          description:
+            type: string
+          featured:
+            type: boolean
+          id:
+            type: integer
+          latest_post:
+            nullable: true
+            type: string
+          logo:
+            type: string
+          name:
+            type: string
+          url:
+            type: string
+        type: object
+      CareerCompanyData:
+        properties:
+          company:
+            $ref: '#/components/schemas/CareerCompany'
+          jobs:
+            $ref: '#/components/schemas/CareerJobs'
+        type: object
       CareerCompanyResponse:
         properties:
           data:
-            properties:
-              company:
-                properties:
-                  description:
-                    type: string
-                  featured:
-                    type: boolean
-                  id:
-                    type: number
-                  latest_post:
-                    nullable: true
-                    type: string
-                  logo:
-                    type: string
-                  name:
-                    type: string
-                  url:
-                    type: string
-                type: object
-              jobs:
-                items:
-                  properties:
-                    application_url:
-                      nullable: true
-                      type: object
-                    applied:
-                      type: boolean
-                    company:
-                      properties:
-                        id:
-                          type: number
-                        name:
-                          type: string
-                        url:
-                          type: string
-                      type: object
-                    company_logo:
-                      type: string
-                    country:
-                      type: string
-                    created_at:
-                      type: string
-                    external_employer_name:
-                      nullable: true
-                      type: object
-                    external_link:
-                      nullable: true
-                      type: string
-                    has_application_url:
-                      type: boolean
-                    id:
-                      type: number
-                    minimum_rank_id:
-                      type: number
-                    minimum_rank_name:
-                      type: string
-                    remote:
-                      nullable: true
-                      type: string
-                    title:
-                      type: string
-                    updated_at:
-                      type: string
-                    work_type:
-                      type: string
-                  type: object
-                type: array
-            type: object
+            $ref: '#/components/schemas/CareerCompanyData'
           meta:
             $ref: '#/components/schemas/MetaAlt'
         type: object
+      CareerFeaturedData:
+        items:
+          properties:
+            id:
+              type: integer
+            logo:
+              type: string
+            name:
+              type: string
+          type: object
+        type: array
       CareerFeaturedResponse:
         description: Schema definition for Career Featured Response
         properties:
           data:
-            items:
-              properties:
-                id:
-                  type: integer
-                logo:
-                  type: string
-                name:
-                  type: string
-              type: object
-            type: array
+            $ref: '#/components/schemas/CareerFeaturedData'
         title: Career Featured Response
         type: object
       CareerHistoryResponse:
@@ -3998,60 +3978,116 @@
             $ref: '#/components/schemas/MetaAlt'
         title: Career History Response
         type: object
+      CareerInfoCompany:
+        properties:
+          id:
+            type: number
+          name:
+            type: string
+          url:
+            type: string
+        type: object
+      CareerInfoData:
+        properties:
+          application_url:
+            nullable: true
+            type: string
+          applied:
+            type: boolean
+          company:
+            $ref: '#/components/schemas/CareerInfoCompany'
+          company_logo:
+            type: string
+          country:
+            type: string
+          created_at:
+            type: string
+          description:
+            type: string
+          external_employer_name:
+            nullable: true
+            type: string
+          external_link:
+            nullable: true
+            type: string
+          has_application_url:
+            type: boolean
+          id:
+            type: number
+          minimum_rank_id:
+            type: number
+          minimum_rank_name:
+            type: string
+          other_jobs:
+            items:
+              type: object
+            type: array
+          remote:
+            nullable: true
+            type: boolean
+          title:
+            type: string
+          updated_at:
+            type: string
+          work_type:
+            type: string
+        type: object
       CareerInfoResponse:
         properties:
           data:
-            properties:
-              application_url:
-                nullable: true
-                type: string
-              applied:
-                type: boolean
-              company:
-                properties:
-                  id:
-                    type: number
-                  name:
-                    type: string
-                  url:
-                    type: string
-                type: object
-              company_logo:
-                type: string
-              country:
-                type: string
-              created_at:
-                type: string
-              description:
-                type: string
-              external_employer_name:
-                nullable: true
-                type: string
-              external_link:
-                nullable: true
-                type: string
-              has_application_url:
-                type: boolean
-              id:
-                type: number
-              minimum_rank_id:
-                type: number
-              minimum_rank_name:
-                type: string
-              other_jobs:
-                items:
-                  type: object
-                type: array
-              remote:
-                nullable: true
-                type: boolean
-              title:
-                type: string
-              updated_at:
-                type: string
-              work_type:
-                type: string
-            type: object
+            $ref: '#/components/schemas/CareerInfoData'
+        type: object
+      CareerJobItemComany:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          url:
+            type: string
+        type: object
+      CareerJobs:
+        items:
+          $ref: '#/components/schemas/CareerJobsItem'
+        type: array
+      CareerJobsItem:
+        properties:
+          application_url:
+            nullable: true
+            type: string
+          applied:
+            type: boolean
+          company:
+            $ref: '#/components/schemas/CareerJobItemComany'
+          company_logo:
+            type: string
+          country:
+            type: string
+          created_at:
+            type: string
+          external_employer_name:
+            nullable: true
+            type: string
+          external_link:
+            nullable: true
+            type: string
+          has_application_url:
+            type: boolean
+          id:
+            type: number
+          minimum_rank_id:
+            type: number
+          minimum_rank_name:
+            type: string
+          remote:
+            nullable: true
+            type: string
+          title:
+            type: string
+          updated_at:
+            type: string
+          work_type:
+            type: string
         type: object
       CareerProfileResponse:
         description: Schema definition for Career Profile Response
@@ -4427,95 +4463,97 @@
         type: object
       ChallengeList:
         description: Schema definition for Challenge List
-        items:
-          properties:
-            auth_user_has_reviewed:
-              example: false
-              type: boolean
-            avatar:
-              example: null
-              nullable: true
-              type: string
-            category_id:
-              example: 4
-              type: integer
-            category_name:
-              example: Pwn
-              type: string
-            difficulty:
-              example: Very Easy
-              type: string
-            difficulty_chart:
-              properties:
-                counterBitHard:
-                  example: 7
-                  type: integer
-                counterBrainFuck:
-                  example: 6
-                  type: integer
-                counterCake:
-                  example: 23
-                  type: integer
-                counterEasy:
-                  example: 26
-                  type: integer
-                counterExHard:
-                  example: 1
-                  type: integer
-                counterHard:
-                  example: 1
-                  type: integer
-                counterMedium:
-                  example: 9
-                  type: integer
-                counterTooEasy:
-                  example: 17
-                  type: integer
-                counterTooHard:
-                  example: 3
-                  type: integer
-                counterVeryEasy:
-                  example: 35
-                  type: integer
-              type: object
-            id:
-              example: 706
-              type: integer
-            is_owned:
-              example: false
-              type: boolean
-            name:
-              example: Regularity
-              type: string
-            pinned:
-              type: boolean
-            rating:
-              example: 4
-              format: float
-              nullable: true
-              type: number
-            rating_count:
-              example: 1
-              type: integer
-            release_date:
-              example: '2024-06-07T20:00:00.000000Z'
-              format: date-time
-              type: string
-            solves:
-              example: 132
-              type: integer
-            state:
-              example: retired
-              type: string
-            user_difficulty:
-              example: '3.33'
-              type: string
+        properties:
+          auth_user_has_reviewed:
+            example: false
+            type: boolean
+          avatar:
+            example: null
+            nullable: true
+            type: string
+          category_id:
+            example: 4
+            type: integer
+          category_name:
+            example: Pwn
+            type: string
+          difficulty:
+            example: Very Easy
+            type: string
+          difficulty_chart:
+            properties:
+              counterBitHard:
+                example: 7
+                type: integer
+              counterBrainFuck:
+                example: 6
+                type: integer
+              counterCake:
+                example: 23
+                type: integer
+              counterEasy:
+                example: 26
+                type: integer
+              counterExHard:
+                example: 1
+                type: integer
+              counterHard:
+                example: 1
+                type: integer
+              counterMedium:
+                example: 9
+                type: integer
+              counterTooEasy:
+                example: 17
+                type: integer
+              counterTooHard:
+                example: 3
+                type: integer
+              counterVeryEasy:
+                example: 35
+                type: integer
+            type: object
+          id:
+            example: 706
+            type: integer
+          is_owned:
+            example: false
+            type: boolean
+          name:
+            example: Regularity
+            type: string
+          pinned:
+            type: boolean
+          rating:
+            example: 4
+            format: float
+            nullable: true
+            type: number
+          rating_count:
+            example: 1
+            type: integer
+          release_date:
+            example: '2024-06-07T20:00:00.000000Z'
+            format: date-time
+            type: string
+          solves:
+            example: 132
+            type: integer
+          state:
+            example: retired
+            type: string
+          user_difficulty:
+            example: '3.33'
+            type: string
         title: Challenge List
+        type: object
       ChallengeListResponse:
         description: Schema definition for Challenge List Response
         properties:
           data:
-            $ref: '#/components/schemas/ChallengeList'
+            items:
+              $ref: '#/components/schemas/ChallengeList'
+            type: array
           links:
             $ref: '#/components/schemas/Links'
           meta:
@@ -5579,6 +5617,21 @@
             type: object
         title: Home User Todo Repsonse
         type: object
+      KeyedProLabMileStone:
+        properties:
+          description:
+            type: string
+          icon:
+            type: string
+          isMilestoneReached:
+            type: boolean
+          percent:
+            type: number
+          rarity:
+            type: number
+          text:
+            type: string
+        type: object
       LabCategory:
         description: Schema definition for Lab Category
         properties:
@@ -6282,7 +6335,7 @@
           info_status:
             example: null
             nullable: true
-            type: object
+            type: string
           ip:
             example: 10.10.10.10
             format: ipv4
@@ -7713,44 +7766,35 @@
             type: string
         title: Prolab Overview Data
         type: object
+      ProlabProgressData:
+        properties:
+          keyed_pro_lab_mile_stone:
+            items:
+              $ref: '#/components/schemas/KeyedProLabMileStone'
+            type: array
+          ownership:
+            type: number
+          ownership_required_for_certification:
+            type: number
+          user_eligible_for_certificate:
+            type: boolean
+        type: object
       ProlabProgressResponse:
         properties:
           data:
-            properties:
-              keyed_pro_lab_mile_stone:
-                items:
-                  properties:
-                    description:
-                      type: string
-                    icon:
-                      type: string
-                    isMilestoneReached:
-                      type: boolean
-                    percent:
-                      type: number
-                    rarity:
-                      type: number
-                    text:
-                      type: string
-                  type: object
-                type: array
-              ownership:
-                type: number
-              ownership_required_for_certification:
-                type: number
-              user_eligible_for_certificate:
-                type: boolean
-            type: object
+            $ref: '#/components/schemas/ProlabProgressData'
           status:
             type: boolean
+        type: object
+      ProlabRatingData:
+        properties:
+          rating:
+            type: string
         type: object
       ProlabRatingResponse:
         properties:
           data:
-            properties:
-              rating:
-                type: string
-            type: object
+            $ref: '#/components/schemas/ProlabRatingData'
         type: object
       ProlabReviewsOverviewData:
         description: Schema definition for Prolab Reviews Overview Data
@@ -7768,41 +7812,46 @@
             type: number
         title: Prolab Reviews Overview Data
         type: object
+      ProlabSubscription:
+        properties:
+          active:
+            type: boolean
+          ends_at:
+            nullable: true
+            type: string
+          name:
+            nullable: true
+            type: string
+          renews_at:
+            nullable: true
+            type: string
+          type:
+            nullable: true
+            type: string
+        type: object
       ProlabSubscriptionResponse:
         properties:
           data:
-            properties:
-              active:
-                type: boolean
-              ends_at:
-                nullable: true
-                type: string
-              name:
-                nullable: true
-                type: string
-              renews_at:
-                nullable: true
-                type: string
-              type:
-                nullable: true
-                type: object
-            type: object
+            $ref: '#/components/schemas/ProlabSubscription'
           status:
             type: boolean
+        type: object
+      ProlabsData:
+        description: Inner container for Prolabs response
+        properties:
+          count:
+            example: 6
+            type: integer
+          labs:
+            items:
+              $ref: '#/components/schemas/Prolab'
+            type: array
         type: object
       ProlabsResponse:
         description: Schema definition for Prolabs Response
         properties:
           data:
-            properties:
-              count:
-                example: 6
-                type: integer
-              labs:
-                items:
-                  $ref: '#/components/schemas/Prolab'
-                type: array
-            type: object
+            $ref: '#/components/schemas/ProlabsData'
           status:
             example: true
             type: boolean
@@ -9253,6 +9302,29 @@
             type: object
         title: Server Group
         type: object
+      SherlockCategory:
+        properties:
+          icon:
+            nullable: true
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+        type: object
+      SherlockDetail:
+        properties:
+          academyModules:
+            items:
+              $ref: '#/components/schemas/AcademyModule'
+            type: array
+          description:
+            type: string
+          id:
+            type: integer
+          user_owns_count:
+            type: integer
+        type: object
       SherlockDownloadLink:
         description: Schema definition for Sherlock Download Link
         properties:
@@ -9265,54 +9337,7 @@
         description: Schema definition for Sherlock Info
         properties:
           data:
-            properties:
-              data:
-                properties:
-                  academyModules:
-                    items:
-                      properties:
-                        avatar:
-                          type: string
-                        difficulty:
-                          properties:
-                            color:
-                              type: string
-                            id:
-                              type: number
-                            level:
-                              type: number
-                            text:
-                              type: string
-                            title:
-                              type: string
-                          type: object
-                        id:
-                          type: number
-                        logo:
-                          type: string
-                        name:
-                          type: string
-                        tier:
-                          properties:
-                            color:
-                              type: string
-                            name:
-                              type: string
-                            number:
-                              type: number
-                          type: object
-                        url:
-                          type: string
-                      type: object
-                    type: array
-                  description:
-                    type: string
-                  id:
-                    type: number
-                  user_owns_count:
-                    type: number
-                type: object
-            type: object
+            $ref: '#/components/schemas/SherlockDetail'
         title: Sherlock Info
         type: object
       SherlockItem:
@@ -9327,12 +9352,6 @@
           category_name:
             type: string
           difficulty:
-            enum:
-              - Very Easy
-              - Easy
-              - Medium
-              - Hard
-              - Insane
             type: string
           id:
             type: integer
@@ -9424,47 +9443,45 @@
             type: object
         title: Sherlock Named Item
         type: object
+      SherlockPlay:
+        properties:
+          creators:
+            items:
+              $ref: '#/components/schemas/Maker'
+            type: array
+          file_name:
+            type: string
+          file_size:
+            type: string
+          id:
+            type: integer
+          scenario:
+            type: string
+        type: object
       SherlockPlayResponse:
         description: Schema definition for Sherlock Play Response
         properties:
           data:
-            properties:
-              creators:
-                items:
-                  $ref: '#/components/schemas/Maker'
-                type: array
-              file_name:
-                example: campfire-2.zip
-                type: string
-              file_size:
-                example: 24 KB
-                type: string
-              id:
-                example: 736
-                type: integer
-              scenario:
-                example: Forela's Network is constantly under attack. The security system raised an alert about an old admin account requesting a ticket from KDC on a domain controller. Inventory shows that this user account is not used as of now so you are tasked to take a look at this. This may be an AsREP roasting attack as anyone can request any user's ticket which has preauthentication disabled.
-                type: string
-            type: object
-        title: Sherlock Play Response
+            $ref: '#/components/schemas/SherlockPlay'
         type: object
       SherlockProgress:
         description: Schema definition for Sherlock Progress
         properties:
           data:
-            properties:
-              is_owned:
-                type: boolean
-              own_rank:
-                type: integer
-              progress:
-                type: integer
-              tasks_answered:
-                type: integer
-              total_tasks:
-                type: integer
-            type: object
-        title: Sherlock Progress
+            $ref: '#/components/schemas/SherlockProgressData'
+        type: object
+      SherlockProgressData:
+        properties:
+          is_owned:
+            type: boolean
+          own_rank:
+            type: integer
+          progress:
+            type: integer
+          tasks_answered:
+            type: integer
+          total_tasks:
+            type: integer
         type: object
       SherlockTask:
         description: Schema definition for Sherlock Task
@@ -9506,45 +9523,41 @@
             type: object
         title: Sherlock Task
         type: object
+      SherlockTaskArray:
+        items:
+          $ref: '#/components/schemas/SherlockTask'
+        type: array
       SherlockTasksList:
         description: Schema definition for Sherlock Tasks List
         properties:
           data:
-            items:
-              $ref: '#/components/schemas/SherlockTask'
-            type: array
-        title: Sherlock Tasks List
+            $ref: '#/components/schemas/SherlockTaskArray'
         type: object
       SherlockWriteup:
         description: Schema definition for Sherlock Writeup
         properties:
           data:
-            properties:
-              official:
-                properties:
-                  filename:
-                    type: string
-                  sha256:
-                    type: string
-                  url:
-                    type: string
-                type: object
-            type: object
-        title: Sherlock Writeup
+            $ref: '#/components/schemas/SherlockWriteupData'
+        type: object
+      SherlockWriteupData:
+        properties:
+          official:
+            $ref: '#/components/schemas/SherlockWriteupOfficial'
+        type: object
+      SherlockWriteupOfficial:
+        properties:
+          filename:
+            type: string
+          sha256:
+            type: string
+          url:
+            type: string
         type: object
       SherlocksCategoriesListResponse:
         properties:
           info:
             items:
-              properties:
-                icon:
-                  nullable: true
-                  type: string
-                id:
-                  type: number
-                name:
-                  type: string
-              type: object
+              $ref: '#/components/schemas/SherlockCategory'
             type: array
         type: object
       SidebarAnnouncementResponse:
@@ -10110,18 +10123,20 @@
             type: integer
         title: Teams Attack Path Card
         type: object
+      TodoItem:
+        properties:
+          id:
+            example: 750
+            type: integer
+        required:
+          - id
+        type: object
       TodoResponse:
         description: Response for ToDos
         properties:
           info:
             items:
-              properties:
-                id:
-                  example: 750
-                  type: integer
-              required:
-                - id
-              type: object
+              $ref: '#/components/schemas/TodoItem'
             type: array
         type: object
       TodoUpdateResponse:
@@ -10761,6 +10776,39 @@
             type: object
         title: User Achievement Target Type User Id Target Id Response
         type: object
+      UserActivity:
+        properties:
+          profile:
+            properties:
+              activity:
+                items:
+                  $ref: '#/components/schemas/UserActivityItem'
+                type: array
+            type: object
+        type: object
+      UserActivityItem:
+        properties:
+          date:
+            type: string
+          date_diff:
+            type: string
+          first_blood:
+            type: boolean
+          flag_title:
+            type: string
+          id:
+            type: integer
+          machine_avatar:
+            type: string
+          name:
+            type: string
+          object_type:
+            type: string
+          points:
+            type: integer
+          type:
+            type: string
+        type: object
       UserAnonymizedIdResponse:
         description: Schema definition for User Anonymized Id Response
         properties:
@@ -11069,119 +11117,94 @@
             $ref: '#/components/schemas/UserInfo'
         title: User Info Response
         type: object
-      UserProfileActivityResponse:
+      UserProfile:
         properties:
-          profile:
+          avatar:
+            type: string
+          country_code:
+            type: string
+          country_name:
+            type: string
+          current_rank_progress:
+            type: integer
+          description:
+            type: string
+          github:
+            nullable: true
+            type: string
+          id:
+            type: integer
+          isDedicatedVip:
+            type: boolean
+          isFollowed:
+            type: boolean
+          isRespected:
+            type: boolean
+          isVip:
+            type: boolean
+          linkedin:
+            nullable: true
+            type: string
+          name:
+            type: string
+          next_rank:
+            nullable: true
+            type: string
+          next_rank_points:
+            nullable: true
+            type: number
+          points:
+            type: integer
+          public:
+            type: boolean
+          rank:
+            type: string
+          rank_id:
+            type: integer
+          rank_ownership:
+            type: number
+          rank_requirement:
+            nullable: true
+            type: integer
+          ranking:
+            type: integer
+          respects:
+            type: integer
+          system_bloods:
+            type: integer
+          system_owns:
+            type: integer
+          team:
             properties:
-              activity:
-                items:
-                  properties:
-                    date:
-                      type: string
-                    date_diff:
-                      type: string
-                    first_blood:
-                      type: boolean
-                    id:
-                      type: integer
-                    machine_avatar:
-                      type: string
-                    name:
-                      type: string
-                    object_type:
-                      type: string
-                    points:
-                      type: integer
-                    type:
-                      type: string
-                  type: object
-                type: array
+              avatar:
+                type: string
+              id:
+                type: integer
+              name:
+                type: string
+              ranking:
+                type: integer
             type: object
+          timezone:
+            type: string
+          twitter:
+            nullable: true
+            type: string
+          university_name:
+            nullable: true
+            type: string
+          user_bloods:
+            type: integer
+          user_owns:
+            type: integer
         type: object
+      UserProfileActivityResponse:
+        $ref: '#/components/schemas/UserActivity'
       UserProfileBasicIdResponse:
         description: Schema definition for User Profile Basic Id Response
         properties:
           profile:
-            properties:
-              avatar:
-                type: string
-              country_code:
-                type: string
-              country_name:
-                type: string
-              current_rank_progress:
-                type: integer
-              description:
-                type: string
-              github:
-                nullable: true
-                type: string
-              id:
-                type: integer
-              isDedicatedVip:
-                type: boolean
-              isFollowed:
-                type: boolean
-              isRespected:
-                type: boolean
-              isVip:
-                type: boolean
-              linkedin:
-                nullable: true
-                type: string
-              name:
-                type: string
-              next_rank:
-                nullable: true
-                type: string
-              next_rank_points:
-                nullable: true
-                type: number
-              points:
-                type: integer
-              public:
-                type: boolean
-              rank:
-                type: string
-              rank_id:
-                type: integer
-              rank_ownership:
-                type: number
-              rank_requirement:
-                nullable: true
-                type: integer
-              ranking:
-                type: integer
-              respects:
-                type: integer
-              system_bloods:
-                type: integer
-              system_owns:
-                type: integer
-              team:
-                properties:
-                  avatar:
-                    type: string
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  ranking:
-                    type: integer
-                type: object
-              timezone:
-                type: string
-              twitter:
-                nullable: true
-                type: string
-              university_name:
-                nullable: true
-                type: string
-              user_bloods:
-                type: integer
-              user_owns:
-                type: integer
-            type: object
+            $ref: '#/components/schemas/UserProfile'
         title: User Profile Basic Id Response
         type: object
       UserProfileBloodsResponse:
@@ -11457,7 +11480,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.1.8
+    version: v0.1.14
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
@@ -11906,11 +11929,7 @@
         description: Get career info
         operationId: getCareerInfo
         parameters:
-          - in: path
-            name: jobId
-            required: true
-            schema:
-              type: string
+          - $ref: '#/components/parameters/JobId'
         responses:
           '200':
             $ref: '#/components/responses/CareerInfoResponse'
@@ -12635,6 +12654,7 @@
         operationId: getMachineListRetiredPaginated
         parameters:
           - $ref: '#/components/parameters/PerPage'
+          - $ref: '#/components/parameters/Page'
           - $ref: '#/components/parameters/ShowCompleted'
           - $ref: '#/components/parameters/SortBy'
           - $ref: '#/components/parameters/SortType'
@@ -12714,7 +12734,7 @@
     /v4/machine/profile/{machineId}:
       get:
         description: Retrieves information related to /machine/profile/{machine id}
-        operationId: getMachineProfile
+        operationId: getMachineProfileById
         parameters:
           - $ref: '#/components/parameters/MachineId'
         responses:
@@ -12723,6 +12743,20 @@
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Get machine profile by ID
+        tags:
+          - Machines
+    /v4/machine/profile/{machineName}:
+      get:
+        description: Retrieves information related to /machine/profile/{machine id}
+        operationId: getMachineProfileByName
+        parameters:
+          - $ref: '#/components/parameters/MachineName'
+        responses:
+          '200':
+            $ref: '#/components/responses/MachineProfileMachineIdResponse'
+          '400':
+            $ref: '#/components/responses/GenericError'
+        summary: Get machine profile by Name
         tags:
           - Machines
     /v4/machine/recommended:
@@ -13793,6 +13827,7 @@
           - $ref: '#/components/parameters/Keyword'
           - $ref: '#/components/parameters/Status'
           - $ref: '#/components/parameters/PerPage'
+          - $ref: '#/components/parameters/Page'
         responses:
           '200':
             $ref: '#/components/responses/SherlocksResponse'
@@ -15115,3 +15150,4 @@
       name: User
     - description: Endpoints related to spawning VMs for Machines and Starting Point
       name: VM
+  
