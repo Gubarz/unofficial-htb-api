@@ -1230,6 +1230,12 @@
             schema:
               $ref: '#/components/schemas/Message'
         description: Generic Error Response
+      Generic400Error:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Generic400Message'
+        description: Generic Error Response
       GenericError5xx:
         content:
           application/json:
@@ -1877,8 +1883,8 @@
           application/json:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/PwnboxStatusRunningResponse'
                 - $ref: '#/components/schemas/PwnboxStatusNotRunningResponse'
+                - $ref: '#/components/schemas/PwnboxStatusRunningResponse'
         description: Pwnbox Status Response
         headers:
           x-ratelimit-limit:
@@ -3107,7 +3113,8 @@
         description: Schema definition for Active Machine Response
         properties:
           info:
-            $ref: '#/components/schemas/ActiveMachineInfo'
+            allOf: 
+              - $ref: '#/components/schemas/ActiveMachineInfo'
             nullable: true
         title: Active Machine Response
         type: object
@@ -3852,7 +3859,8 @@
         description: Schema definition for Bg User Joining Info Response
         properties:
           info:
-            $ref: '#/components/schemas/BgUserJoiningInfo'
+            allOf:
+              - $ref: '#/components/schemas/BgUserJoiningInfo'
             nullable: true
         title: Battleground User Joining Info Response
         type: object
@@ -4144,6 +4152,7 @@
             type: string
           work_type:
             type: string
+            nullable: true
         type: object
       CareerSearchResponse:
         description: Schema definition for Career Search Response
@@ -4173,6 +4182,7 @@
           icon:
             example: https://labs.hackthebox.com/storage/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
             type: string
+            nullable: true
           id:
             example: 21
             type: integer
@@ -4827,7 +4837,8 @@
       ConnectionStatusProductData:
         properties:
           connection:
-            $ref: '#/components/schemas/Connection'
+            allOf: 
+              -  $ref: '#/components/schemas/Connection'
             nullable: true
           location_type_friendly:
             type: string
@@ -4862,8 +4873,8 @@
         type: object
       ConnectionsData:
         properties:
-          competitive:
-            $ref: '#/components/schemas/ConnectionDataCompetitive'
+          release_arena:
+            $ref: '#/components/schemas/ConnectionLab'
           fortresses:
             $ref: '#/components/schemas/ConnectionLab'
           lab:
@@ -5039,12 +5050,15 @@
           $ref: '#/components/schemas/Flag'
         type: array
       FlagsToNextRank:
-        properties:
-          obtained:
-            type: integer
-          total:
-            type: integer
-        type: object
+        oneOf:
+        - type: object
+          properties:
+            obtained:
+              type: integer
+            total:
+              type: integer
+        - type: array
+          maxItems: 0
       FollowerItems:
         items:
           $ref: '#/components/schemas/TopUserItem'
@@ -5879,6 +5893,8 @@
           retired:
             example: 0
             type: integer
+          retired_id:
+            type: integer
           typeCard:
             example: seasonal
             type: string
@@ -6414,12 +6430,14 @@
             type: integer
           message:
             type: string
+            nullable: true
           released:
             type: number
           stars:
             type: number
           title:
             type: string
+            nullable: true
           user:
             $ref: '#/components/schemas/UserBasicInfo'
           user_id:
@@ -6536,7 +6554,8 @@
             nullable: true
             type: string
           video:
-            $ref: '#/components/schemas/MachineWalkthroughVideo'
+            allOf: 
+              -  $ref: '#/components/schemas/MachineWalkthroughVideo'
             nullable: true
           writeups:
             $ref: '#/components/schemas/MachineWalkthroughMessageWriteupsItems'
@@ -6878,6 +6897,9 @@
             type: string
           url:
             type: string
+          video_url:
+            example: https://www.youtube.com/watch?v=bv08UcIL1po
+            type: string
         type: object
       OpenVpn:
         description: Schema definition for Open Vpn
@@ -7050,6 +7072,7 @@
         properties:
           player_count:
             type: integer
+          
         title: Player Count Response
         type: object
       PlayerQueueCountResponse:
@@ -7326,8 +7349,8 @@
             type: string
           id:
             type: integer
-          isVip:
-            type: integer
+          subscription:
+            type: string
           linkedin:
             nullable: true
             type: string
@@ -7443,6 +7466,8 @@
           active_users:
             example: 15
             type: integer
+          can_interact:
+            type: boolean
           cover_image_url:
             example: null
             nullable: true
@@ -7515,6 +7540,13 @@
             example: true
             type: boolean
         title: Prolab Id Info Response
+        type: object
+      Generic400Message:
+        properties: 
+          message:
+            type: string
+          status:
+            type: boolean
         type: object
       ProlabIdMachineResponse:
         description: Schema definition for Prolab Id Machine Response
@@ -7630,7 +7662,9 @@
       ProlabRatingData:
         properties:
           rating:
-            type: string
+            oneOf:
+              - type: string
+              - type: number
         type: object
       ProlabRatingResponse:
         properties:
@@ -7661,6 +7695,8 @@
         type: object
       ProlabSubscription:
         properties:
+          subscription_period:
+            type: string
           active:
             type: boolean
           ends_at:
@@ -7781,15 +7817,12 @@
         title: Pwnbox Start Response
         type: object
       PwnboxStatusNotRunningResponse:
+        required: 
+          - message
         description: Schema definition for Pwnbox Status Not Running Response
         properties:
           message:
             type: string
-          status:
-            type: string
-        required:
-          - message
-          - status
         title: Pwnbox Status Not Running Response
         type: object
       PwnboxStatusRUnningData:
@@ -7829,6 +7862,8 @@
             type: string
         type: object
       PwnboxStatusRunningResponse:
+        required: 
+          - data
         description: Schema definition for Pwnbox Status Running Response
         properties:
           data:
@@ -8046,8 +8081,17 @@
           status:
             type: boolean
         type: object
+      Country:
+        type: object
+        properties:
+          code:
+            type: string
+          name:
+            type: string
       RankingsCountryOverviewData:
         properties:
+          country:
+            $ref: "#/components/schemas/Country"
           chart_data:
             $ref: '#/components/schemas/IntArray'
           points_diff:
@@ -9244,6 +9288,8 @@
           name:
             example: Safecracker
             type: string
+          play_methods:
+            $ref: "#/components/schemas/StringArray"
           rating:
             example: 4.555555555555555
             type: number
@@ -9748,7 +9794,7 @@
           can_delete_avatar:
             type: boolean
           captain:
-            $ref: '#/components/schemas/CommonIdName'
+            $ref: '#/components/schemas/LabMaster'
           country_code:
             nullable: true
             type: string
@@ -9972,6 +10018,8 @@
             $ref: '#/components/schemas/BgTournamentRankDetail'
           Pro Hacker:
             $ref: '#/components/schemas/BgTournamentRankDetail'
+          Script Kiddie:
+            $ref: '#/components/schemas/BgTournamentRankDetail'
         type: object
       TrackErrorResponse:
         properties:
@@ -10146,18 +10194,21 @@
             $ref: '#/components/schemas/UniversityListItems'
           first_page_url:
             type: string
+            nullable: true
           from:
             example: 1
             type: integer
           last_page:
             example: 11
             type: integer
+            nullable: true
           last_page_url:
             type: string
           links:
             $ref: '#/components/schemas/PaginationLinks'
           next_page_url:
             type: string
+            nullable: true
           path:
             example: https://labs.hackthebox.com/api/v4/prolab/1/reviews
             type: string
@@ -10166,6 +10217,7 @@
             type: integer
           prev_page_url:
             type: object
+            nullable: true
           to:
             example: 15
             type: integer
@@ -10957,6 +11009,7 @@
         properties:
           amount:
             type: number
+            nullable: true
           date:
             type: string
           description:
@@ -11006,7 +11059,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.2.1
+    version: v0.2.2
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
@@ -11856,7 +11909,7 @@
           '200':
             $ref: '#/components/responses/ConnectionStatusProductResponse'
           '400':
-            $ref: '#/components/responses/GenericError'
+            $ref: '#/components/responses/Generic400Error'
         summary: Get VPN Server status
         tags:
           - Connection
@@ -11878,7 +11931,7 @@
           '200':
             $ref: '#/components/responses/ConnectionStatusProductResponse'
           '400':
-            $ref: '#/components/responses/GenericError'
+            $ref: '#/components/responses/Generic400Error'
         summary: Get VPN Server status
         tags:
           - Connection
