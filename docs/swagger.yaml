@@ -3026,6 +3026,8 @@
       AcademyModule:
         description: Academy Module Item
         properties:
+          aggregates:
+            $ref: "#/components/schemas/StringArray"
           avatar:
             example: https://academy.hackthebox.com/storage/modules/19/avatar.png
             type: string
@@ -4128,6 +4130,9 @@
           created_at:
             format: date-time
             type: string
+          country:
+            type: string
+            nullable: true
           external_employer_name:
             nullable: true
             type: string
@@ -4561,6 +4566,17 @@
           name:
             type: string
         type: object
+      MachineOwnsTabloid:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          avatar_url:
+            type: string
+          avatar_thump_url: #should be thumb...
+            type: string
+        type: object
       ChallengeRecommendedResponse:
         description: Schema definition for Challenge Recommended Response
         properties:
@@ -4618,6 +4634,8 @@
             type: integer
           name:
             type: string
+          play_methods:
+            $ref: "#/components/schemas/StringArray"
           url_name:
             type: string
         type: object
@@ -4758,6 +4776,19 @@
             type: string
           machine:
             $ref: '#/components/schemas/ConnectionDataMachine'
+        type: object
+      PublicUserProfileBasic:
+        properties:
+          avatar_thumb:
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+          public:
+            oneOf: 
+              -  type: string
+              - type: integer
         type: object
       ConnectionDataMachine:
         properties:
@@ -5299,11 +5330,11 @@
         type: object
       HomeProgressTracksCard:
         description: Schema definition for Home Tracks Card
-        items:
+        additionalProperties:
           $ref: '#/components/schemas/HomeProgresTracksCardItem'
           nullable: true
         title: Home Tracks Card
-        type: array
+        type: object
       HomeRecommendedChallengeCard:
         description: Schema definition for Home Challenge Card
         items:
@@ -5456,6 +5487,8 @@
             type: string
           points:
             type: integer
+          progress:
+            type: string
           type:
             type: string
           url:
@@ -5546,32 +5579,36 @@
           url:
             type: string
         type: object
+      HomeUserProgressFortressItem:
+        properties:
+          avatar:
+            example: /storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
+            type: string
+          id:
+            example: 1
+            type: integer
+          name:
+            example: Jet
+            type: string
+          percentage:
+            example: 54.55
+            format: float
+            type: number
+          points:
+            example: 100
+            type: integer
+          url:
+            example: /fortresses/1
+            type: string
+        type: object
+      HomeUserProgressFortressesCard:
+        additionalProperties:
+          $ref: "#/components/schemas/HomeUserProgressFortressItem"
+        type: object
       HomeUserProgressData:
         properties:
           fortresses:
-            additionalProperties:
-              properties:
-                avatar:
-                  example: /storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
-                  type: string
-                id:
-                  example: 1
-                  type: integer
-                name:
-                  example: Jet
-                  type: string
-                percentage:
-                  example: 54.55
-                  format: float
-                  type: number
-                points:
-                  example: 100
-                  type: integer
-                url:
-                  example: /fortresses/1
-                  type: string
-              type: object
-            type: object
+            $ref: "#/components/schemas/HomeUserProgressFortressesCard"
           machines:
             $ref: '#/components/schemas/HomeProgressMachineCard'
           prolabs:
@@ -6163,7 +6200,9 @@
           own_date:
             type: string
           postition:
-            type: integer
+            oneOf:
+              - type: string
+              - type: integer
           rank_id:
             type: integer
           rank_text:
@@ -6321,7 +6360,6 @@
         title: Machine Profile Info
         type: object
       MachineProfileResponse:
-        additionalProperties: false
         description: Schema definition for Machine Profile Response
         properties:
           info:
@@ -6442,6 +6480,10 @@
             $ref: '#/components/schemas/UserBasicInfo'
           user_id:
             type: integer
+          difficulty:
+            type: string
+          featured:
+            type: string
         type: object
       MachineReviewsResponse:
         properties:
@@ -6968,6 +7010,22 @@
             type: integer
         title: Own Response
         type: object
+      Weekly:
+        type: object
+        properties: 
+          user_owns:
+            type: integer
+          system_owns:
+            type: integer
+          challenge_owns:
+            type: integer
+          first_bloods:
+            type: integer
+          respects:
+            type: integer
+          week_end_date:
+            type: string
+            format: date
       OwnStats:
         description: Schema definition for Own Stats
         properties:
@@ -6985,6 +7043,8 @@
             type: integer
           weekly:
             type: object
+            additionalProperties: 
+              $ref: "#/components/schemas/Weekly"
         title: Own Stats
         type: object
       OwnsItems:
@@ -7000,12 +7060,22 @@
             type: integer
           id:
             type: integer
+          machine_id:
+            type: integer
+          machine_flag_id:
+            type: integer
+          machiine:
+            $ref: "#/components/schemas/MachineOwnsTabloid"
           sync_source: {}
           updated_at:
             type: string
           user:
             $ref: '#/components/schemas/UserOwnsUser'
           user_id:
+            type: integer
+          vpn_server_id:
+            type: integer
+          sp_flag:
             type: integer
         type: object
       PaginatedMachineData:
@@ -7163,25 +7233,25 @@
         type: object
       ProfileChartMachineAttackProfileMachineAttackPaths:
         properties:
-          Active Directory:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Arbitrary File Upload:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Binary Exploit:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          File Misconfiguration:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Injection:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          LFI:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
           Password Reuse:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Patch Management:
+          Security Tools:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          SQLi:
+          Web Site Structure Discovery:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Web:
+          Authentication:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Software & OS exploitation:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Injections:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Source Code Analysis:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Common Applications:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Reconnaissance:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Password Cracking:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
         type: object
       ProfileContentIdResponse:
@@ -7256,6 +7326,8 @@
             type: integer
           total:
             type: integer
+          percentage:
+            type: number
         type: object
       ProfileProgressChallengesIdRepsonse:
         description: Schema definition for Profile Progress Challenges Id Repsonse
@@ -7303,10 +7375,14 @@
         type: object
       ProfileProgressProfile:
         properties:
+          solved_tasks:
+            type: integer
           challenge_categories:
             $ref: '#/components/schemas/ProfileProgressChallengeItems'
           challenge_owns:
             $ref: '#/components/schemas/ProfileProgressChallengeOwns'
+          challenge_difficulties:
+            $ref: '#/components/schemas/ChallengeDifficulties'
         type: object
       ProfileProgressProfileFortresses:
         items:
@@ -7328,31 +7404,52 @@
           total_machines:
             type: integer
         type: object
+      Growths:
+        type: object
+        properties: 
+          rank:
+            type: integer
+          previous_rank:
+            type: integer
+          rank_growth: 
+            type: number
+          points: 
+            type: integer
+          previous_points:
+            type: integer
+          points_growth:
+            type: number
+          compared_to_date:
+            type: string
+            format: date-time
+      RankingGraphStats:
+        type: object
+        properties: 
+          points_diff:
+            type: integer
+          points_growth:
+            type: number
+          ranks_diff:
+            type: integer
+          chart_data:
+            $ref: "#/components/schemas/IntArray"
       ProfileProgressProlabItems:
         items:
           $ref: '#/components/schemas/ProfileProgressProlabItem'
         type: array
       ProfileUserStats:
         properties:
-          avatar:
-            type: string
-          country_code:
-            type: string
-          country_name:
-            type: string
+          growths:
+            $ref: "#/components/schemas/Growths"
+          rankingGraphStats:
+             $ref: "#/components/schemas/RankingGraphStats"
+          sso_id:
+            type: boolean
           current_rank_progress:
             type: number
-          description:
-            type: string
-          github:
-            nullable: true
-            type: string
           id:
             type: integer
           subscription:
-            type: string
-          linkedin:
-            nullable: true
             type: string
           name:
             type: string
@@ -7389,11 +7486,6 @@
                   ranking:
                     type: integer
                 type: object
-          timezone:
-            type: string
-          twitter:
-            nullable: true
-            type: string
           university_name:
             nullable: true
             type: string
@@ -7405,9 +7497,6 @@
       Prolab:
         description: Schema definition for Prolab
         properties:
-          cover_image_url:
-            nullable: true
-            type: string
           cover_img_url:
             example: null
             nullable: true
@@ -8544,6 +8633,10 @@
           user_id:
             example: 234234
             type: integer
+          difficulty:
+            type: string
+          featured:
+            type: string
         type: object
       ReviewOverview:
         description: Schema definition for Review Overview
@@ -9238,6 +9331,8 @@
           state:
             description: The state of the item.
             type: string
+          play_methods:
+            $ref: "#/components/schemas/StringArray"
         title: Sherlock Item
         type: object
       SherlockItemList:
@@ -9487,10 +9582,6 @@
             type: string
           difficultyText:
             example: Very Easy
-            type: string
-          forum_discussion_id:
-            example: null
-            nullable: true
             type: string
           id:
             example: 402
@@ -9834,12 +9925,8 @@
         type: object
       TeamInformationProfileData:
         properties:
-          avatar_url:
-            example: https://www.hackthebox.eu/storage/teams/8232e119d8f59aa83050a741631803a6.jpg
-            format: uri
-            type: string
           captain:
-            $ref: '#/components/schemas/CommonIdName'
+            $ref: '#/components/schemas/LabMaster'
           country_code:
             example: NL
             type: string
@@ -9862,12 +9949,38 @@
           motto:
             example: Hacking for the fun of it! Learning it as a bonus
             type: string
+            nullable: true
           name:
             example: CommandlineKings
             type: string
           points:
             example: 1839
             type: integer
+          twitter:
+            nullable: true
+            type: string
+          facebook:
+            nullable: true
+            type: string
+          logo_url:
+            type: string
+            nullable: true
+          has_auto_generated_logo:
+            oneOf: 
+              -  type: integer
+              -  type: boolean
+          active:
+            oneOf: 
+              -  type: integer
+              -  type: boolean
+          discord:
+            type: string
+          url:
+            type: string
+          join_request_sent:
+            oneOf: 
+              -  type: integer
+              -  type: boolean
         type: object
       TeamInformationProfileResponse:
         description: Schema definition for Team Information Profile Response
@@ -10178,8 +10291,10 @@
             type: number
           type:
             type: string
+          machine_avatar:
+            type: string
           user:
-            $ref: '#/components/schemas/ConnectionDataMachine'
+            $ref: '#/components/schemas/PublicUserProfileBasic'
         type: object
       UniversityActivityResponse:
         items:
@@ -10275,22 +10390,26 @@
             $ref: '#/components/schemas/UniversityListItems'
           first_page_url:
             type: string
+            nullable: true
           from:
             type: number
           last_page:
             type: number
           last_page_url:
             type: string
+            nullable: true
           links:
             $ref: '#/components/schemas/UniversityAllListLinksItems'
           next_page_url:
             type: string
+            nullable: true
           path:
             type: string
           per_page:
             type: number
           prev_page_url:
             type: object
+            nullable: true
           to:
             type: number
           total:
@@ -10337,6 +10456,7 @@
             type: string
           country_code:
             type: string
+            nullable: true
           country_name:
             type: string
           id:
@@ -10449,6 +10569,16 @@
             type: string
           name:
             type: string
+          id:
+            type: integer
+          retired:
+            oneOf: 
+              - type: boolean
+              - type: integer
+          starting_point:
+            oneOf: 
+              - type: boolean
+              - type: integer
         type: object
       UserAchievementTarTypeUserIdTarIdResponse:
         description: Schema definition for User Achievement Target Type User Id Target
@@ -10463,12 +10593,17 @@
         type: object
       UserAchievementTarTypeUserOwn:
         properties:
-          date:
-            type: string
           points:
             type: integer
           rank:
             type: integer
+          date_iso8601:
+            type: string
+            format: date-time
+            example: "2024-07-14T06:51:22+00:00"
+          date:
+            type: string
+            example: "14 Jul 2024"
         type: object
       UserActivity:
         properties:
@@ -10477,6 +10612,8 @@
         type: object
       UserActivityItem:
         properties:
+          challenge_category:
+            type: string
           date:
             type: string
           date_diff:
@@ -10513,6 +10650,8 @@
           id:
             type: string
           user_hash:
+            type: string
+          account_id:
             type: string
         title: User Anonymized Id Response
         type: object
@@ -10664,16 +10803,35 @@
             $ref: '#/components/schemas/UserFollowerInfo'
         title: User Followers Response
         type: object
+      UserFriendsItem:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          status:
+            type: string
+          avatar:
+            type: string
+          canInvite:
+            type: boolean
+          matches_played:
+            type: integer
+          max_matches_count:
+            type: integer
       UserFriendsResponse:
         description: Schema definition for User Friends Response
-        items: {}
-        title: User Friends Response
         type: array
+        items:
+          $ref: "#/components/schemas/UserFriendsItem"
+        title: User Friends Response
       UserInfo:
         description: Schema definition for User Info
         properties:
-          TwoFaEnabled:
-            example: true
+          hasTeamInvitation:
+            type: boolean
+          isServerVIP:
             type: boolean
           avatar:
             example: string
@@ -10699,9 +10857,6 @@
           hasAppTokens:
             example: true
             type: boolean
-          hasteam_Invitation:
-            example: false
-            type: boolean
           id:
             example: 0
             type: integer
@@ -10726,15 +10881,9 @@
           is_sso_connected:
             example: true
             type: boolean
-          isserverVIP:
-            example: true
-            type: boolean
           name:
             example: string
             type: string
-          onboarding_completed:
-            example: true
-            type: boolean
           onboarding_tutorial_complete:
             example: 1
             type: integer
@@ -10854,6 +11003,11 @@
             type: integer
           user_owns:
             type: integer
+          university:
+            type: string
+            nullable: true
+          sso_id:
+            type: boolean
         type: object
       UserProfileActivityResponse:
         $ref: '#/components/schemas/UserActivity'
@@ -11059,7 +11213,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.2.2
+    version: v0.2.6
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
