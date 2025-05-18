@@ -5,13 +5,13 @@
         description: Total requests allowed
         schema:
           example: 15
-          format: int32
+          format: int
           type: integer
       XRateLimitRemainingHeader:
         description: Remaining requests allowed
         schema:
           example: 14
-          format: int32
+          format: int
           type: integer
     parameters:
       AfterDate:
@@ -49,69 +49,13 @@
       Category:
         description: |
           Filter by category. You can provide multiple values. For example,
-          category=15&category=20.
-  
-          | Name                | Id |
-          | ------------------- | -- |
-          | DFIR                | 14 |
-          | Cloud               | 15 |
-          | Malware Analysis    | 16 |
-          | SOC                 | 17 |
-          | Threat Intelligence | 19 |
-          | Campaign            | 20 |
+          category[]=15&category[]=20. See /v4/{productName}/categories/list for full list
         explode: true
         in: query
-        name: category
+        name: category[]
         schema:
           items:
-            enum:
-              - '14'
-              - '15'
-              - '16'
-              - '17'
-              - '19'
-              - '20'
-            type: string
-          type: array
-        style: form
-      CategoryChallenge:
-        description: |
-          Filter by category. You can provide multiple values. For example,
-          category=6&category=8.
-  
-          | Name        | Id |
-          | ----------- | -- |
-          | AI - ML     | 21 |
-          | Blockchain  | 12 |
-          | Crypto      | 2  |
-          | Forensics   | 7  |
-          | GamePwn     | 11 |
-          | Hardware    | 10 |
-          | Misc        | 6  |
-          | Mobile      | 8  |
-          | OSINT       | 9  |
-          | Pwn         | 4  |
-          | Reversing   | 1  |
-          | Web         | 5  |
-        explode: true
-        in: query
-        name: category
-        schema:
-          items:
-            enum:
-              - '1'
-              - '2'
-              - '4'
-              - '5'
-              - '6'
-              - '7'
-              - '8'
-              - '9'
-              - '10'
-              - '11'
-              - '12'
-              - '21'
-            type: string
+            type: integer
           type: array
         style: form
       ChallengeId:
@@ -121,10 +65,10 @@
         required: true
         schema:
           type: integer
-      ChallengeName:
-        description: Name of the product
+      ChallengeSlug:
+        description: ID or Name of the product
         in: path
-        name: challengeName
+        name: challengeSlug
         required: true
         schema:
           type: string
@@ -190,10 +134,10 @@
         required: true
         schema:
           type: integer
-      MachineName:
-        description: Name of the product
+      MachineSlug:
+        description: Can be the ID or Name of a box
         in: path
-        name: machineName
+        name: machineSlug
         required: true
         schema:
           type: string
@@ -356,6 +300,13 @@
         required: true
         schema:
           type: integer
+      SherlockSlug:
+        description: ID or Name of the Sherlock
+        in: path
+        name: sherlockSlug
+        required: true
+        schema:
+          type: string
       SherlockSortBy:
         description: Attribute to sort by
         in: query
@@ -477,7 +428,7 @@
         schema:
           enum:
             - 1
-          format: int32
+          format: int
           type: integer
       TournamentId:
         description: ID of the Tournament
@@ -984,7 +935,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChallengeCategoriesListResponse'
+              $ref: '#/components/schemas/CategoriesListResponse'
         description: Challenge Categories List Response
         headers:
           x-ratelimit-limit:
@@ -1224,17 +1175,17 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      GenericError:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Message'
-        description: Generic Error Response
       Generic400Error:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Generic400Message'
+        description: Generic Error Response
+      GenericError:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
         description: Generic Error Response
       GenericError5xx:
         content:
@@ -1440,7 +1391,7 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      MachineProfileMachineIdResponse:
+      MachineProfileMachineResponse:
         content:
           application/json:
             schema:
@@ -2262,7 +2213,7 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SherlocksCategoriesListResponse'
+              $ref: '#/components/schemas/CategoriesListResponse'
         description: OK
         headers:
           x-ratelimit-limit:
@@ -2567,8 +2518,19 @@
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TodoUpdateResponse'
+              $ref: '#/components/schemas/UpdateResponse'
         description: Todo Update Response
+        headers:
+          x-ratelimit-limit:
+            $ref: '#/components/headers/XRateLimitHeader'
+          x-ratelimit-remaining:
+            $ref: '#/components/headers/XRateLimitRemainingHeader'
+      TracksEnrollResponse:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TracksEnrollResponse'
+        description: OK
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -2602,17 +2564,6 @@
             schema:
               $ref: '#/components/schemas/TracksResponse'
         description: Tracks Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      TraksEnrollResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TraksEnrollResponse'
-        description: OK
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -2791,12 +2742,6 @@
             schema:
               $ref: '#/components/schemas/UserBannedResponse'
         description: User Submissions Challenges Response
-      UserCareerResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserCareerResponse'
-        description: OK
       UserConnectionStatusResponse:
         content:
           application/json:
@@ -2830,21 +2775,11 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      UserFeedbackBugAreasResponse:
-        content:
-          application/json:
-            example: {}
-        description: User Feedback Bug Areas Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       UserFollowersResponse:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserFollowersResponse'
+              $ref: '#/components/schemas/UpdateResponse'
         description: User Followers Response
         headers:
           x-ratelimit-limit:
@@ -2923,17 +2858,6 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      UserSubmissionsMachinesResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserSubmissionsMachineResponse'
-        description: User Submissions Machines Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
       UserSubscriptionBillingHistory:
         content:
           application/json:
@@ -2951,12 +2875,12 @@
             $ref: '#/components/headers/XRateLimitHeader'
           x-ratelimit-remaining:
             $ref: '#/components/headers/XRateLimitRemainingHeader'
-      VmExtendResponse:
+      VMResponse:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Message'
-        description: VM Reset Response
+              $ref: '#/components/schemas/Messagesuccess'
+        description: Vm Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -2975,30 +2899,6 @@
                 value:
                   message: Too many reset machine attempts. Try again later!
         description: Vm Reset Bad Request
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      VmResetResponse:
-        content:
-          application/json:
-            example:
-              message: Carpediem will be reset in 1 minute.
-            schema:
-              $ref: '#/components/schemas/Message'
-        description: VM Reset Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      VmSpawnResponse:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Messagesuccess'
-        description: Vm Spawn Response
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -3027,7 +2927,7 @@
         description: Academy Module Item
         properties:
           aggregates:
-            $ref: "#/components/schemas/StringArray"
+            $ref: '#/components/schemas/StringArray'
           avatar:
             example: https://academy.hackthebox.com/storage/modules/19/avatar.png
             type: string
@@ -3111,14 +3011,15 @@
             nullable: true
             type: integer
         type: object
+      ActiveMachineInfoWrapper:
+        allOf:
+          - $ref: '#/components/schemas/ActiveMachineInfo'
+        nullable: true
+        type: object
       ActiveMachineResponse:
-        description: Schema definition for Active Machine Response
         properties:
           info:
-            allOf: 
-              - $ref: '#/components/schemas/ActiveMachineInfo'
-            nullable: true
-        title: Active Machine Response
+            $ref: '#/components/schemas/ActiveMachineInfoWrapper'
         type: object
       Announcement:
         description: Schema definition for Announcement
@@ -3452,6 +3353,21 @@
             $ref: '#/components/schemas/BgHistoryCurrentHistoryItems'
         title: Battleground History Battleground User ID Response
         type: object
+      BgJoiningInfo:
+        properties:
+          available:
+            example: true
+            type: boolean
+          disqualified:
+            example: false
+            type: boolean
+          region:
+            example: EU
+            type: string
+          region_locked:
+            example: true
+            type: boolean
+        type: object
       BgLoadingStatusCurrentBgUserIdResponse:
         description: Loading Status Current BG User
         properties:
@@ -3626,9 +3542,7 @@
           name:
             type: string
           own_points:
-            oneOf:
-              - type: string
-              - type: number
+            type: integer
           total_owns:
             type: number
         type: object
@@ -3709,9 +3623,7 @@
           total_games:
             type: integer
           total_points:
-            oneOf:
-              - type: string
-              - type: integer
+            type: integer
           wins:
             type: number
         type: object
@@ -3762,20 +3674,7 @@
             oneOf:
               - example: false
                 type: boolean
-              - properties:
-                  available:
-                    example: true
-                    type: boolean
-                  disqualified:
-                    example: false
-                    type: boolean
-                  region:
-                    example: EU
-                    type: string
-                  region_locked:
-                    example: true
-                    type: boolean
-                type: object
+              - $ref: '#/components/schemas/BgJoiningInfo'
           last_ad_tournament_id:
             type: integer
           last_koh_tournament_id:
@@ -3864,6 +3763,7 @@
             allOf:
               - $ref: '#/components/schemas/BgUserJoiningInfo'
             nullable: true
+            type: object
         title: Battleground User Joining Info Response
         type: object
       BgUserKeyCurrentBgUserIdResponse:
@@ -4127,12 +4027,12 @@
             $ref: '#/components/schemas/CompanyBasic'
           company_logo:
             type: string
+          country:
+            nullable: true
+            type: string
           created_at:
             format: date-time
             type: string
-          country:
-            type: string
-            nullable: true
           external_employer_name:
             nullable: true
             type: string
@@ -4156,8 +4056,8 @@
             format: date-time
             type: string
           work_type:
-            type: string
             nullable: true
+            type: string
         type: object
       CareerSearchResponse:
         description: Schema definition for Career Search Response
@@ -4186,14 +4086,24 @@
         properties:
           icon:
             example: https://labs.hackthebox.com/storage/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
-            type: string
             nullable: true
+            type: string
           id:
             example: 21
             type: integer
           name:
             example: AI - ML
             type: string
+        type: object
+      CategoriesListInfo:
+        items:
+          $ref: '#/components/schemas/CategoriesItem'
+        type: array
+      CategoriesListResponse:
+        description: Schema definition for Categories List Response
+        properties:
+          info:
+            $ref: '#/components/schemas/CategoriesListInfo'
         type: object
       ChallengActivityActivities:
         items:
@@ -4304,9 +4214,7 @@
           play_methods:
             $ref: '#/components/schemas/StringArray'
           points:
-            oneOf:
-              - type: string
-              - type: number
+            type: integer
           recommended:
             example: 0
             type: integer
@@ -4436,17 +4344,6 @@
           total_flags:
             type: integer
         type: object
-      CategoriesListInfo:
-        items:
-          $ref: '#/components/schemas/CategoriesItem'
-        type: array
-      ChallengeCategoriesListResponse:
-        description: Schema definition for Challenge Categories List Response
-        properties:
-          info:
-            $ref: '#/components/schemas/CategoriesListInfo'
-        title: Challenge Categories List Response
-        type: object
       ChallengeChangelogIdResponse:
         description: Schema definition for Challenge Changelog Id Response
         properties:
@@ -4499,6 +4396,8 @@
             type: string
           pinned:
             type: boolean
+          play_methods:
+            $ref: '#/components/schemas/StringArray'
           rating:
             example: 4
             format: float
@@ -4510,6 +4409,10 @@
           release_date:
             example: '2024-06-07T20:00:00.000000Z'
             format: date-time
+            type: string
+          retires:
+            format: date
+            nullable: true
             type: string
           solves:
             example: 132
@@ -4564,17 +4467,6 @@
           id:
             type: integer
           name:
-            type: string
-        type: object
-      MachineOwnsTabloid:
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          avatar_url:
-            type: string
-          avatar_thump_url: #should be thumb...
             type: string
         type: object
       ChallengeRecommendedResponse:
@@ -4635,7 +4527,7 @@
           name:
             type: string
           play_methods:
-            $ref: "#/components/schemas/StringArray"
+            $ref: '#/components/schemas/StringArray'
           url_name:
             type: string
         type: object
@@ -4764,32 +4656,6 @@
           up:
             type: number
         type: object
-      ConnectionDataCompetitive:
-        properties:
-          assigned_server:
-            $ref: '#/components/schemas/ServerConnection'
-          available:
-            type: boolean
-          can_access:
-            type: boolean
-          location_type_friendly:
-            type: string
-          machine:
-            $ref: '#/components/schemas/ConnectionDataMachine'
-        type: object
-      PublicUserProfileBasic:
-        properties:
-          avatar_thumb:
-            type: string
-          id:
-            type: integer
-          name:
-            type: string
-          public:
-            oneOf: 
-              -  type: string
-              - type: integer
-        type: object
       ConnectionDataMachine:
         properties:
           avatar_thumb_url:
@@ -4868,9 +4734,10 @@
       ConnectionStatusProductData:
         properties:
           connection:
-            allOf: 
-              -  $ref: '#/components/schemas/Connection'
+            allOf:
+              - $ref: '#/components/schemas/Connection'
             nullable: true
+            type: object
           location_type_friendly:
             type: string
           server:
@@ -4904,14 +4771,14 @@
         type: object
       ConnectionsData:
         properties:
-          release_arena:
-            $ref: '#/components/schemas/ConnectionLab'
           fortresses:
             $ref: '#/components/schemas/ConnectionLab'
           lab:
             $ref: '#/components/schemas/ConnectionLab'
           pro_labs:
             $ref: '#/components/schemas/ConnectionProlab'
+          release_arena:
+            $ref: '#/components/schemas/ConnectionLab'
           starting_point:
             $ref: '#/components/schemas/ConnectionLab'
         type: object
@@ -4969,13 +4836,18 @@
             type: integer
         title: Content Stats Resposne
         type: object
+      Country:
+        properties:
+          code:
+            type: string
+          name:
+            type: string
+        type: object
       DashboardPlayers:
         description: Schema definition for Dashboard Players
         properties:
           online_players:
-            oneOf:
-              - type: integer
-              - type: string
+            type: string
         title: Dashboard Players
         type: object
       DashboardTabloid:
@@ -5034,6 +4906,9 @@
             example: 35
             type: integer
         type: object
+      EmptyArray:
+        maxItems: 0
+        type: array
       FaqItem:
         description: Schema definition for Faq Item
         properties:
@@ -5068,28 +4943,30 @@
       FlagRatingTask:
         allOf:
           - $ref: '#/components/schemas/BaseTask'
-          - properties:
-              flag_rating:
-                maximum: 5
-                minimum: 1
-                type: integer
-            required:
-              - flag_rating
-            type: object
+          - $ref: '#/components/schemas/FlagRatingTaskExtension'
+      FlagRatingTaskExtension:
+        properties:
+          flag_rating:
+            maximum: 5
+            minimum: 1
+            type: integer
+        required:
+          - flag_rating
+        type: object
       FlagsItems:
         items:
           $ref: '#/components/schemas/Flag'
         type: array
       FlagsToNextRank:
         oneOf:
-        - type: object
-          properties:
-            obtained:
-              type: integer
-            total:
-              type: integer
-        - type: array
-          maxItems: 0
+          - properties:
+              obtained:
+                type: integer
+              total:
+                type: integer
+            type: object
+          - maxItems: 0
+            type: array
       FollowerItems:
         items:
           $ref: '#/components/schemas/TopUserItem'
@@ -5200,10 +5077,35 @@
             example: true
             type: boolean
         type: object
+      Generic400Message:
+        properties:
+          message:
+            type: string
+          status:
+            type: boolean
+        type: object
       GroupItems:
         items:
           $ref: '#/components/schemas/SeasonRewardGroupItem'
         type: array
+      Growths:
+        properties:
+          compared_to_date:
+            format: date-time
+            type: string
+          points:
+            type: integer
+          points_growth:
+            type: number
+          previous_points:
+            type: integer
+          previous_rank:
+            type: integer
+          rank:
+            type: integer
+          rank_growth:
+            type: number
+        type: object
       HelpfulReviews:
         properties:
           id:
@@ -5329,10 +5231,9 @@
             type: string
         type: object
       HomeProgressTracksCard:
-        description: Schema definition for Home Tracks Card
         additionalProperties:
           $ref: '#/components/schemas/HomeProgresTracksCardItem'
-          nullable: true
+        description: Schema definition for Home Tracks Card
         title: Home Tracks Card
         type: object
       HomeRecommendedChallengeCard:
@@ -5356,7 +5257,7 @@
             type: string
           points:
             nullable: true
-            type: object
+            type: integer
           type:
             type: string
           url:
@@ -5489,8 +5390,6 @@
             type: integer
           progress:
             type: string
-          type:
-            type: string
           url:
             type: string
         type: object
@@ -5563,7 +5462,7 @@
         properties:
           avatar:
             nullable: true
-            type: object
+            type: string
           difficulty:
             type: string
           id:
@@ -5578,6 +5477,19 @@
             type: number
           url:
             type: string
+        type: object
+      HomeUserProgressData:
+        properties:
+          fortresses:
+            $ref: '#/components/schemas/HomeUserProgressFortressesCard'
+          machines:
+            $ref: '#/components/schemas/HomeProgressMachineCard'
+          prolabs:
+            $ref: '#/components/schemas/HomeProgressProlabCard'
+          sps:
+            $ref: '#/components/schemas/SpsCard'
+          tracks:
+            $ref: '#/components/schemas/HomeProgressTracksCard'
         type: object
       HomeUserProgressFortressItem:
         properties:
@@ -5603,20 +5515,7 @@
         type: object
       HomeUserProgressFortressesCard:
         additionalProperties:
-          $ref: "#/components/schemas/HomeUserProgressFortressItem"
-        type: object
-      HomeUserProgressData:
-        properties:
-          fortresses:
-            $ref: "#/components/schemas/HomeUserProgressFortressesCard"
-          machines:
-            $ref: '#/components/schemas/HomeProgressMachineCard'
-          prolabs:
-            $ref: '#/components/schemas/HomeProgressProlabCard'
-          sps:
-            $ref: '#/components/schemas/SpsCard'
-          tracks:
-            $ref: '#/components/schemas/HomeProgressTracksCard'
+          $ref: '#/components/schemas/HomeUserProgressFortressItem'
         type: object
       HomeUserProgressResponse:
         description: Schema definition for Home User Progress Response
@@ -5643,10 +5542,19 @@
             $ref: '#/components/schemas/HomeUserTodoData'
         title: Home User Todo Repsonse
         type: object
+      InfoArray:
+        items:
+          $ref: '#/components/schemas/Item'
+        type: array
       IntArray:
         items:
           type: integer
         type: array
+      Item:
+        properties:
+          id:
+            type: integer
+        type: object
       KeyedProLabMileStone:
         properties:
           description:
@@ -5708,23 +5616,9 @@
         items:
           $ref: '#/components/schemas/LabServer'
         type: array
-      LabMaster:
-        description: Schema definition for Lab Master
-        properties:
-          avatar_thumb:
-            example: /storage/avatars/2b44f5ca5458931c49e1fa57da6705c1_thumb.png
-            type: string
-          id:
-            example: 11649
-            type: integer
-          name:
-            example: RastaMouse
-            type: string
-        title: Lab Master
-        type: object
       LabMasterItems:
         items:
-          $ref: '#/components/schemas/LabMaster'
+          $ref: '#/components/schemas/UserIdNameThumb'
         type: array
       LabServer:
         description: Schema definition for Lab Server
@@ -6057,10 +5951,7 @@
             nullable: true
             type: string
           isTodo:
-            oneOf:
-              - type: boolean
-              - format: int32
-                type: integer
+            type: integer
           is_competitive:
             type: boolean
           labels:
@@ -6096,8 +5987,19 @@
         description: Schema definition for Machine Graph Activity Id Response
         properties:
           info:
-            $ref: '#/components/schemas/MacnineGraphActivityInfo'
+            $ref: '#/components/schemas/MachineGraphActivityInfo'
         title: Machine Graph Activity Id Response
+        type: object
+      MachineGraphActivityInfo:
+        properties:
+          periods:
+            $ref: '#/components/schemas/PeriodsStringArray'
+          resets:
+            $ref: '#/components/schemas/IntArray'
+          system_owns:
+            $ref: '#/components/schemas/IntArray'
+          user_owns:
+            $ref: '#/components/schemas/IntArray'
         type: object
       MachineGraphMatrixIdResponse:
         description: Schema definition for Machine Graph Matrix Id Response
@@ -6174,6 +6076,17 @@
         items:
           $ref: '#/components/schemas/MachineOwnsTopItem'
         type: array
+      MachineOwnsTabloid:
+        properties:
+          avatar_thump_url:
+            type: string
+          avatar_url:
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+        type: object
       MachineOwnsTopIdResponse:
         description: Schema definition for Machine Owns Top Id Response
         properties:
@@ -6188,21 +6101,15 @@
           id:
             type: integer
           is_root_blood:
-            oneOf:
-              - type: boolean
-              - type: integer
+            type: boolean
           is_user_blood:
-            oneOf:
-              - type: boolean
-              - type: integer
+            type: boolean
           name:
             type: string
           own_date:
             type: string
           postition:
-            oneOf:
-              - type: string
-              - type: integer
+            type: string
           rank_id:
             type: integer
           rank_text:
@@ -6460,6 +6367,11 @@
             type: boolean
           created_at:
             type: string
+          difficulty:
+            nullable: true
+            type: integer
+          featured:
+            type: string
           helpful_reviews:
             $ref: '#/components/schemas/HelpfulReviewsItems'
           helpful_reviews_count:
@@ -6467,23 +6379,19 @@
           id:
             type: integer
           message:
-            type: string
             nullable: true
+            type: string
           released:
             type: number
           stars:
             type: number
           title:
-            type: string
             nullable: true
+            type: string
           user:
             $ref: '#/components/schemas/UserBasicInfo'
           user_id:
             type: integer
-          difficulty:
-            type: string
-          featured:
-            type: string
         type: object
       MachineReviewsResponse:
         properties:
@@ -6596,9 +6504,7 @@
             nullable: true
             type: string
           video:
-            allOf: 
-              -  $ref: '#/components/schemas/MachineWalkthroughVideo'
-            nullable: true
+            $ref: '#/components/schemas/MachineWalkthroughMessageVideo'
           writeups:
             $ref: '#/components/schemas/MachineWalkthroughMessageWriteupsItems'
         type: object
@@ -6620,6 +6526,11 @@
             type: integer
           total_ratings:
             type: integer
+        type: object
+      MachineWalkthroughMessageVideo:
+        allOf:
+          - $ref: '#/components/schemas/MachineWalkthroughVideo'
+        nullable: true
         type: object
       MachineWalkthroughMessageWriteupsItem:
         properties:
@@ -6733,17 +6644,6 @@
         items:
           $ref: '#/components/schemas/TagCategory'
         type: array
-      MacnineGraphActivityInfo:
-        properties:
-          periods:
-            $ref: '#/components/schemas/PeriodsStringArray'
-          resets:
-            $ref: '#/components/schemas/IntArray'
-          system_owns:
-            $ref: '#/components/schemas/IntArray'
-          user_owns:
-            $ref: '#/components/schemas/IntArray'
-        type: object
       Maker:
         description: Schema definition for Maker
         nullable: true
@@ -6759,9 +6659,6 @@
             type: boolean
           name:
             nullable: true
-            type: string
-          profile_url:
-            example: https://app.hackthebox.com/profile/389926
             type: string
         title: Maker
         type: object
@@ -6822,8 +6719,10 @@
         description: Schema definition for Message
         properties:
           message:
-            description: Return message (variation 1)
+            description: Return message (variation 2)
             type: string
+          success:
+            type: boolean
         title: Message
         type: object
       Meta:
@@ -7010,22 +6909,6 @@
             type: integer
         title: Own Response
         type: object
-      Weekly:
-        type: object
-        properties: 
-          user_owns:
-            type: integer
-          system_owns:
-            type: integer
-          challenge_owns:
-            type: integer
-          first_bloods:
-            type: integer
-          respects:
-            type: integer
-          week_end_date:
-            type: string
-            format: date
       OwnStats:
         description: Schema definition for Own Stats
         properties:
@@ -7042,9 +6925,9 @@
           user_owns:
             type: integer
           weekly:
+            additionalProperties:
+              $ref: '#/components/schemas/Weekly'
             type: object
-            additionalProperties: 
-              $ref: "#/components/schemas/Weekly"
         title: Own Stats
         type: object
       OwnsItems:
@@ -7060,12 +6943,14 @@
             type: integer
           id:
             type: integer
-          machine_id:
-            type: integer
+          machiine:
+            $ref: '#/components/schemas/MachineOwnsTabloid'
           machine_flag_id:
             type: integer
-          machiine:
-            $ref: "#/components/schemas/MachineOwnsTabloid"
+          machine_id:
+            type: integer
+          sp_flag:
+            type: integer
           sync_source: {}
           updated_at:
             type: string
@@ -7074,8 +6959,6 @@
           user_id:
             type: integer
           vpn_server_id:
-            type: integer
-          sp_flag:
             type: integer
         type: object
       PaginatedMachineData:
@@ -7142,7 +7025,6 @@
         properties:
           player_count:
             type: integer
-          
         title: Player Count Response
         type: object
       PlayerQueueCountResponse:
@@ -7233,25 +7115,25 @@
         type: object
       ProfileChartMachineAttackProfileMachineAttackPaths:
         properties:
-          Password Reuse:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Security Tools:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Web Site Structure Discovery:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
           Authentication:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Software & OS exploitation:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Injections:
-            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Source Code Analysis:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
           Common Applications:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-          Reconnaissance:
+          Injections:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
           Password Cracking:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Password Reuse:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Reconnaissance:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Security Tools:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Software & OS exploitation:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Source Code Analysis:
+            $ref: '#/components/schemas/ProfileChartMachineAttackCard'
+          Web Site Structure Discovery:
             $ref: '#/components/schemas/ProfileChartMachineAttackCard'
         type: object
       ProfileContentIdResponse:
@@ -7322,12 +7204,12 @@
         type: array
       ProfileProgressChallengeOwns:
         properties:
+          percentage:
+            type: number
           solved:
             type: integer
           total:
             type: integer
-          percentage:
-            type: number
         type: object
       ProfileProgressChallengesIdRepsonse:
         description: Schema definition for Profile Progress Challenges Id Repsonse
@@ -7375,14 +7257,14 @@
         type: object
       ProfileProgressProfile:
         properties:
-          solved_tasks:
-            type: integer
           challenge_categories:
             $ref: '#/components/schemas/ProfileProgressChallengeItems'
-          challenge_owns:
-            $ref: '#/components/schemas/ProfileProgressChallengeOwns'
           challenge_difficulties:
             $ref: '#/components/schemas/ChallengeDifficulties'
+          challenge_owns:
+            $ref: '#/components/schemas/ProfileProgressChallengeOwns'
+          solved_tasks:
+            type: integer
         type: object
       ProfileProgressProfileFortresses:
         items:
@@ -7404,53 +7286,18 @@
           total_machines:
             type: integer
         type: object
-      Growths:
-        type: object
-        properties: 
-          rank:
-            type: integer
-          previous_rank:
-            type: integer
-          rank_growth: 
-            type: number
-          points: 
-            type: integer
-          previous_points:
-            type: integer
-          points_growth:
-            type: number
-          compared_to_date:
-            type: string
-            format: date-time
-      RankingGraphStats:
-        type: object
-        properties: 
-          points_diff:
-            type: integer
-          points_growth:
-            type: number
-          ranks_diff:
-            type: integer
-          chart_data:
-            $ref: "#/components/schemas/IntArray"
       ProfileProgressProlabItems:
         items:
           $ref: '#/components/schemas/ProfileProgressProlabItem'
         type: array
       ProfileUserStats:
         properties:
-          growths:
-            $ref: "#/components/schemas/Growths"
-          rankingGraphStats:
-             $ref: "#/components/schemas/RankingGraphStats"
-          sso_id:
-            type: boolean
           current_rank_progress:
             type: number
+          growths:
+            $ref: '#/components/schemas/Growths'
           id:
             type: integer
-          subscription:
-            type: string
           name:
             type: string
           next_rank:
@@ -7469,23 +7316,20 @@
             type: integer
           ranking:
             type: integer
+          rankingGraphStats:
+            $ref: '#/components/schemas/RankingGraphStats'
           respects:
             type: integer
+          sso_id:
+            type: boolean
+          subscription:
+            type: string
           system_bloods:
             type: integer
           system_owns:
             type: integer
           team:
-            oneOf:
-              - nullable: true
-                properties:
-                  avatar:
-                    type: string
-                  name:
-                    type: string
-                  ranking:
-                    type: integer
-                type: object
+            $ref: '#/components/schemas/ProfileUserTeamWrapper'
           university_name:
             nullable: true
             type: string
@@ -7493,6 +7337,20 @@
             type: integer
           user_owns:
             type: integer
+        type: object
+      ProfileUserTeamInfo:
+        properties:
+          avatar:
+            type: string
+          name:
+            type: string
+          ranking:
+            type: integer
+        type: object
+      ProfileUserTeamWrapper:
+        nullable: true
+        oneOf:
+          - $ref: '#/components/schemas/ProfileUserTeamInfo'
         type: object
       Prolab:
         description: Schema definition for Prolab
@@ -7630,13 +7488,6 @@
             type: boolean
         title: Prolab Id Info Response
         type: object
-      Generic400Message:
-        properties: 
-          message:
-            type: string
-          status:
-            type: boolean
-        type: object
       ProlabIdMachineResponse:
         description: Schema definition for Prolab Id Machine Response
         properties:
@@ -7751,9 +7602,7 @@
       ProlabRatingData:
         properties:
           rating:
-            oneOf:
-              - type: string
-              - type: number
+            type: string
         type: object
       ProlabRatingResponse:
         properties:
@@ -7784,8 +7633,6 @@
         type: object
       ProlabSubscription:
         properties:
-          subscription_period:
-            type: string
           active:
             type: boolean
           ends_at:
@@ -7796,6 +7643,8 @@
             type: string
           renews_at:
             nullable: true
+            type: string
+          subscription_period:
             type: string
           type:
             nullable: true
@@ -7826,6 +7675,17 @@
             example: true
             type: boolean
         title: Prolabs Response
+        type: object
+      PublicUserProfileBasic:
+        properties:
+          avatar_thumb:
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+          public:
+            type: integer
         type: object
       PwnboxRequest:
         description: Schema definition for Pwnbox Request
@@ -7906,12 +7766,12 @@
         title: Pwnbox Start Response
         type: object
       PwnboxStatusNotRunningResponse:
-        required: 
-          - message
         description: Schema definition for Pwnbox Status Not Running Response
         properties:
           message:
             type: string
+        required:
+          - message
         title: Pwnbox Status Not Running Response
         type: object
       PwnboxStatusRUnningData:
@@ -7951,12 +7811,12 @@
             type: string
         type: object
       PwnboxStatusRunningResponse:
-        required: 
-          - data
         description: Schema definition for Pwnbox Status Running Response
         properties:
           data:
             $ref: '#/components/schemas/PwnboxStatusRUnningData'
+        required:
+          - data
         title: Pwnbox Status Running Response
         type: object
       PwnboxUsageResponse:
@@ -7978,41 +7838,6 @@
             type: integer
         title: Pwnbox Usage Response
         type: object
-      RaningsUserData:
-        properties:
-          avatar_thumb:
-            type: string
-          challenge_bloods:
-            type: integer
-          challenge_owns:
-            type: integer
-          country:
-            nullable: true
-            type: string
-          fortress:
-            type: integer
-          id:
-            type: integer
-          level:
-            type: string
-          name:
-            type: string
-          points:
-            type: integer
-          rank:
-            type: integer
-          ranks_diff:
-            nullable: true
-            type: integer
-          root_bloods:
-            type: integer
-          root_owns:
-            type: integer
-          user_bloods:
-            type: integer
-          user_owns:
-            type: integer
-        type: object
       RankingCountryMemberData:
         properties:
           country_name:
@@ -8024,19 +7849,6 @@
         items:
           $ref: '#/components/schemas/RankingsItem'
         type: array
-      RankingDataUserProperties:
-        properties:
-          avatar:
-            type: string
-          id:
-            type: integer
-          name:
-            type: string
-          rank:
-            type: number
-          rank_growth:
-            type: string
-        type: object
       RankingDataTeamProperties:
         properties:
           avatar_url:
@@ -8046,9 +7858,33 @@
           name:
             type: string
           rank:
-            type: number
+            type: integer
           rank_growth:
             type: string
+        type: object
+      RankingDataUserProperties:
+        properties:
+          avatar:
+            type: string
+          id:
+            type: integer
+          name:
+            type: string
+          rank:
+            type: integer
+          rank_growth:
+            type: string
+        type: object
+      RankingGraphStats:
+        properties:
+          chart_data:
+            $ref: '#/components/schemas/IntArray'
+          points_diff:
+            type: integer
+          points_growth:
+            type: number
+          ranks_diff:
+            type: integer
         type: object
       RankingTeam:
         properties:
@@ -8057,14 +7893,14 @@
           avatar_url:
             type: string
           id:
-            format: int32
+            format: int
             type: integer
           name:
             type: string
         type: object
       RankingUserDataItems:
         items:
-          $ref: '#/components/schemas/RaningsUserData'
+          $ref: '#/components/schemas/RankingsUserData'
         type: array
       RankingUserInfo:
         properties:
@@ -8084,11 +7920,11 @@
           next_bracket:
             type: string
           points:
-            type: number
+            type: integer
           points_for_next_bracket:
             type: number
           rank:
-            type: number
+            type: integer
         type: object
       RankingsBracketData:
         properties:
@@ -8170,19 +8006,12 @@
           status:
             type: boolean
         type: object
-      Country:
-        type: object
-        properties:
-          code:
-            type: string
-          name:
-            type: string
       RankingsCountryOverviewData:
         properties:
-          country:
-            $ref: "#/components/schemas/Country"
           chart_data:
             $ref: '#/components/schemas/IntArray'
+          country:
+            $ref: '#/components/schemas/Country'
           points_diff:
             type: integer
           points_growth:
@@ -8251,7 +8080,7 @@
             format: date
             type: string
           rank:
-            format: int32
+            format: int
             type: integer
           rank_chart_data:
             $ref: '#/components/schemas/IntArray'
@@ -8270,42 +8099,42 @@
           avatar_thumb_url:
             type: string
           challenge_bloods:
-            format: int32
+            format: int
             type: integer
           challenge_owns:
-            format: int32
+            format: int
             type: integer
           country:
             nullable: true
             type: string
           fortress:
-            format: int32
+            format: int
             type: integer
           id:
-            format: int32
+            format: int
             type: integer
           name:
             type: string
           points:
-            format: int32
+            format: int
             type: integer
           rank:
-            format: int32
+            format: int
             type: integer
           ranks_diff:
             nullable: true
             type: integer
           root_bloods:
-            format: int32
+            format: int
             type: integer
           root_owns:
-            format: int32
+            format: int
             type: integer
           user_bloods:
-            format: int32
+            format: int
             type: integer
           user_owns:
-            format: int32
+            format: int
             type: integer
         type: object
       RankingsTeamItems:
@@ -8317,7 +8146,7 @@
           chart_data:
             $ref: '#/components/schemas/IntArray'
           points_diff:
-            format: int32
+            format: int
             type: integer
           points_growth:
             type: string
@@ -8344,14 +8173,14 @@
             nullable: true
             type: string
           points:
-            format: int32
+            format: int
             type: integer
           points_for_next_bracket:
-            format: int32
+            format: int
             nullable: true
             type: integer
           rank:
-            format: int32
+            format: int
             type: integer
         type: object
       RankingsTeamRankingBracketResponse:
@@ -8476,6 +8305,41 @@
           status:
             type: boolean
         type: object
+      RankingsUserData:
+        properties:
+          avatar_thumb:
+            type: string
+          challenge_bloods:
+            type: integer
+          challenge_owns:
+            type: integer
+          country:
+            nullable: true
+            type: string
+          fortress:
+            type: integer
+          id:
+            type: integer
+          level:
+            type: string
+          name:
+            type: string
+          points:
+            type: integer
+          rank:
+            type: integer
+          ranks_diff:
+            nullable: true
+            type: integer
+          root_bloods:
+            type: integer
+          root_owns:
+            type: integer
+          user_bloods:
+            type: integer
+          user_owns:
+            type: integer
+        type: object
       RankingsUserOverviewData:
         properties:
           chart_data:
@@ -8509,9 +8373,7 @@
           data:
             $ref: '#/components/schemas/RankingUserDataItems'
           status:
-            oneOf:
-              - type: integer
-              - type: boolean
+            type: boolean
         title: Rankings Users Response
         type: object
       RecommendedCard:
@@ -8607,6 +8469,11 @@
             example: '2023-01-28T21:42:53.000000Z'
             format: date-time
             type: string
+          difficulty:
+            nullable: true
+            type: integer
+          featured:
+            type: string
           helpful_reviews:
             $ref: '#/components/schemas/HelpfulReviewsItems'
           helpful_reviews_count:
@@ -8633,10 +8500,6 @@
           user_id:
             example: 234234
             type: integer
-          difficulty:
-            type: string
-          featured:
-            type: string
         type: object
       ReviewOverview:
         description: Schema definition for Review Overview
@@ -8691,7 +8554,7 @@
             example: I really enjoyed the lab for a Red team_ experience
             type: string
           user:
-            $ref: '#/components/schemas/LabMaster'
+            $ref: '#/components/schemas/UserIdNameThumb'
           user_in_helpful_pro_feedbacks:
             example: false
             type: boolean
@@ -8756,9 +8619,7 @@
           joboffers:
             $ref: '#/components/schemas/SearchJobOffersItems'
           machines:
-            additionalProperties:
-              $ref: '#/components/schemas/SearchFetchMachinesItem'
-            type: object
+            $ref: '#/components/schemas/SearchMachinesItems'
           teams:
             $ref: '#/components/schemas/SearchTeamItems'
           users:
@@ -8774,6 +8635,10 @@
       SearchJobOffersItems:
         items:
           $ref: '#/components/schemas/SearchJobOfferItem'
+        type: array
+      SearchMachinesItems:
+        items:
+          $ref: '#/components/schemas/SearchFetchMachinesItem'
         type: array
       SearchTeamItem:
         properties:
@@ -8825,7 +8690,7 @@
           avatar:
             type: string
           cocreators:
-            $ref: '#/components/schemas/ObjectArray'
+            $ref: '#/components/schemas/UserBasicInfoItems'
           creator:
             $ref: '#/components/schemas/UserBasicInfoItems'
           difficulty_text:
@@ -9070,23 +8935,23 @@
           name:
             type: string
           points:
-            type: number
+            type: integer
           positive_trend:
             type: boolean
           rank:
-            type: number
+            type: integer
           rank_trend:
             type: number
           resource_id:
             type: integer
           root_bloods:
-            type: number
+            type: integer
           root_owns:
-            type: number
+            type: integer
           user_bloods:
-            type: number
+            type: integer
           user_owns:
-            type: number
+            type: integer
         type: object
       SeasonPlayersLeaderboardDataItems:
         items:
@@ -9109,11 +8974,11 @@
       SeasonRank:
         properties:
           current:
-            type: number
+            type: integer
           suffix:
             type: string
           total:
-            type: number
+            type: integer
         type: object
       SeasonRewardGroupItem:
         properties:
@@ -9128,7 +8993,7 @@
           name:
             type: string
           order:
-            type: number
+            type: integer
           reward_type_id:
             type: integer
           rewards:
@@ -9318,6 +9183,8 @@
             type: string
           pinned:
             type: boolean
+          play_methods:
+            $ref: '#/components/schemas/StringArray'
           progress:
             type: integer
           rating:
@@ -9326,13 +9193,15 @@
             type: integer
           release_date:
             type: string
+          retires:
+            format: date
+            nullable: true
+            type: string
           solves:
             type: integer
           state:
             description: The state of the item.
             type: string
-          play_methods:
-            $ref: "#/components/schemas/StringArray"
         title: Sherlock Item
         type: object
       SherlockItemList:
@@ -9384,7 +9253,7 @@
             example: Safecracker
             type: string
           play_methods:
-            $ref: "#/components/schemas/StringArray"
+            $ref: '#/components/schemas/StringArray'
           rating:
             example: 4.555555555555555
             type: number
@@ -9493,11 +9362,6 @@
           data:
             $ref: '#/components/schemas/WriteupData'
         type: object
-      SherlocksCategoriesListResponse:
-        properties:
-          info:
-            $ref: '#/components/schemas/CategoriesListInfo'
-        type: object
       SidebarAnnouncementResponse:
         description: Schema definition for Sidebar Announcement Response
         properties:
@@ -9568,13 +9432,6 @@
             example: Tier 1
             type: string
         type: object
-      SpTierInfo:
-        description: Schema definition for Sp Tier Info
-        properties:
-          data:
-            $ref: '#/components/schemas/SpTierData'
-        title: Sp Machine Info
-        type: object
       SpTierMachine:
         properties:
           avatar:
@@ -9614,21 +9471,7 @@
             example: false
             type: boolean
           video:
-            oneOf:
-              - properties:
-                  creator_id:
-                    example: 3769
-                    type: integer
-                  creator_name:
-                    example: ippsec
-                    type: string
-                  youtube_id:
-                    example: 4BDFr-ZtlHE
-                    type: string
-                type: object
-              - example: []
-                maxItems: 0
-                type: array
+            $ref: '#/components/schemas/Video'
           walkthrough:
             $ref: '#/components/schemas/SpTierMachineWalkthroughItem'
           youtube_id:
@@ -9688,9 +9531,11 @@
           $ref: '#/components/schemas/SpTiersProgressItem'
         type: array
       SpTierResponse:
-        $ref: '#/components/schemas/SpTierInfo'
-        description: Schema definition for Sp Tier Response
-        title: Sp Tier Response
+        description: Schema definition for Sp Tier Info
+        properties:
+          data:
+            $ref: '#/components/schemas/SpTierData'
+        title: Sp Machine Info
         type: object
       SpTierTasksItems:
         items:
@@ -9885,7 +9730,7 @@
           can_delete_avatar:
             type: boolean
           captain:
-            $ref: '#/components/schemas/LabMaster'
+            $ref: '#/components/schemas/UserIdNameThumb'
           country_code:
             nullable: true
             type: string
@@ -9903,7 +9748,7 @@
             nullable: true
             type: string
           id:
-            format: int32
+            format: int
             type: integer
           is_respected:
             type: boolean
@@ -9914,7 +9759,7 @@
           name:
             type: string
           points:
-            format: int32
+            format: int
             type: integer
           public:
             type: boolean
@@ -9925,8 +9770,10 @@
         type: object
       TeamInformationProfileData:
         properties:
+          active:
+            type: integer
           captain:
-            $ref: '#/components/schemas/LabMaster'
+            $ref: '#/components/schemas/UserIdNameThumb'
           country_code:
             example: NL
             type: string
@@ -9940,16 +9787,29 @@
           description:
             example: Open for anyone who is polite, honest, nice, and willing to help others.
             type: string
+          discord:
+            nullable: true
+            type: string
+          facebook:
+            nullable: true
+            type: string
+          has_auto_generated_logo:
+            type: integer
           id:
             example: 2102
             type: integer
           is_respected:
             example: true
             type: boolean
+          join_request_sent:
+            type: boolean
+          logo_url:
+            nullable: true
+            type: string
           motto:
             example: Hacking for the fun of it! Learning it as a bonus
-            type: string
             nullable: true
+            type: string
           name:
             example: CommandlineKings
             type: string
@@ -9959,28 +9819,8 @@
           twitter:
             nullable: true
             type: string
-          facebook:
-            nullable: true
-            type: string
-          logo_url:
-            type: string
-            nullable: true
-          has_auto_generated_logo:
-            oneOf: 
-              -  type: integer
-              -  type: boolean
-          active:
-            oneOf: 
-              -  type: integer
-              -  type: boolean
-          discord:
-            type: string
           url:
             type: string
-          join_request_sent:
-            oneOf: 
-              -  type: integer
-              -  type: boolean
         type: object
       TeamInformationProfileResponse:
         description: Schema definition for Team Information Profile Response
@@ -10098,12 +9938,6 @@
         properties:
           info:
             $ref: '#/components/schemas/TodoInfoItems'
-        type: object
-      TodoUpdateResponse:
-        description: Todo Update Response
-        properties:
-          info:
-            $ref: '#/components/schemas/UserFollowerInfo'
         type: object
       TopUserItem:
         properties:
@@ -10229,6 +10063,11 @@
           type:
             type: string
         type: object
+      TracksEnrollResponse:
+        properties:
+          enrolled:
+            type: boolean
+        type: object
       TracksIdResponse:
         oneOf:
           - $ref: '#/components/schemas/TrackSuccessResponse'
@@ -10249,9 +10088,7 @@
           name:
             type: string
           official:
-            oneOf:
-              - type: boolean
-              - type: integer
+            type: boolean
           staff_pick:
             type: integer
         type: object
@@ -10266,11 +10103,6 @@
           $ref: '#/components/schemas/TracksItems'
         title: Tracks Response
         type: array
-      TraksEnrollResponse:
-        properties:
-          enrolled:
-            type: boolean
-        type: object
       UniversityAcitivtyItem:
         properties:
           challenge_category:
@@ -10283,6 +10115,8 @@
             type: boolean
           id:
             type: integer
+          machine_avatar:
+            type: string
           name:
             type: string
           object_type:
@@ -10291,8 +10125,6 @@
             type: number
           type:
             type: string
-          machine_avatar:
-            type: string
           user:
             $ref: '#/components/schemas/PublicUserProfileBasic'
         type: object
@@ -10300,68 +10132,24 @@
         items:
           $ref: '#/components/schemas/UniversityAcitivtyItem'
         type: array
-      UniversityAllListData:
-        properties:
-          current_page:
-            example: 1
-            type: integer
-          data:
-            $ref: '#/components/schemas/UniversityListItems'
-          first_page_url:
-            type: string
-            nullable: true
-          from:
-            example: 1
-            type: integer
-          last_page:
-            example: 11
-            type: integer
-            nullable: true
-          last_page_url:
-            type: string
-          links:
-            $ref: '#/components/schemas/PaginationLinks'
-          next_page_url:
-            type: string
-            nullable: true
-          path:
-            example: https://labs.hackthebox.com/api/v4/prolab/1/reviews
-            type: string
-          per_page:
-            example: 15
-            type: integer
-          prev_page_url:
-            type: object
-            nullable: true
-          to:
-            example: 15
-            type: integer
-          total:
-            example: 162
-            type: integer
-        type: object
-      UniversityAllListLinksItems:
-        items:
-          $ref: '#/components/schemas/PaginationLink'
-        type: array
       UniversityAllListResponse:
         description: Schema for University All List Response
         properties:
           data:
-            $ref: '#/components/schemas/UniversityAllListData'
+            $ref: '#/components/schemas/UniversityListData'
           message:
             type: string
           section:
             type: string
       UniversityChartChallengeCategoriesItem:
         properties:
-          all_universitys_avg_percentage:
+          all_teams_avg_percentage:
             type: number
           id:
             type: integer
           name:
             type: string
-          university_percentage:
+          team_percentage:
             type: number
         type: object
       UniversityChartChallengeCategoriesItems:
@@ -10382,47 +10170,53 @@
           machine_owns:
             $ref: '#/components/schemas/MachineOwns'
         type: object
-      UniversityCountryListData:
-        properties:
-          current_page:
-            type: number
-          data:
-            $ref: '#/components/schemas/UniversityListItems'
-          first_page_url:
-            type: string
-            nullable: true
-          from:
-            type: number
-          last_page:
-            type: number
-          last_page_url:
-            type: string
-            nullable: true
-          links:
-            $ref: '#/components/schemas/UniversityAllListLinksItems'
-          next_page_url:
-            type: string
-            nullable: true
-          path:
-            type: string
-          per_page:
-            type: number
-          prev_page_url:
-            type: object
-            nullable: true
-          to:
-            type: number
-          total:
-            type: number
-        type: object
       UniversityCountryListResponse:
         properties:
           data:
-            $ref: '#/components/schemas/UniversityCountryListData'
+            $ref: '#/components/schemas/UniversityListData'
           message:
             type: string
           section:
             type: string
+        type: object
+      UniversityListData:
+        properties:
+          current_page:
+            example: 1
+            type: integer
+          data:
+            $ref: '#/components/schemas/UniversityListItems'
+          first_page_url:
+            nullable: true
+            type: string
+          from:
+            example: 1
+            type: integer
+          last_page:
+            example: 11
+            nullable: true
+            type: integer
+          last_page_url:
+            type: string
+          links:
+            $ref: '#/components/schemas/PaginationLinks'
+          next_page_url:
+            nullable: true
+            type: string
+          path:
+            type: string
+          per_page:
+            example: 15
+            type: integer
+          prev_page_url:
+            nullable: true
+            type: integer
+          to:
+            example: 15
+            type: integer
+          total:
+            example: 162
+            type: integer
         type: object
       UniversityListItem:
         properties:
@@ -10433,17 +10227,17 @@
           created_at:
             type: string
           has_auto_generated_logo:
-            type: number
+            type: integer
           id:
             type: integer
           name:
             type: string
           respected_by_count:
-            type: number
+            type: integer
           user_avatars:
             $ref: '#/components/schemas/StringArray'
           users_count:
-            type: number
+            type: integer
         type: object
       UniversityListItems:
         items:
@@ -10455,8 +10249,8 @@
           avatar:
             type: string
           country_code:
-            type: string
             nullable: true
+            type: string
           country_name:
             type: string
           id:
@@ -10464,9 +10258,9 @@
           name:
             type: string
           points:
-            type: number
+            type: integer
           public:
-            type: number
+            type: integer
           rank:
             type: string
           rank_text:
@@ -10474,15 +10268,15 @@
           role:
             type: string
           root_bloods_count:
-            type: number
+            type: integer
           root_owns:
-            type: number
+            type: integer
           university:
             $ref: '#/components/schemas/TeamMemberTeam'
           user_bloods_count:
-            type: number
+            type: integer
           user_owns:
-            type: number
+            type: integer
       UniversityMyResponse:
         properties:
           data:
@@ -10524,7 +10318,7 @@
           created_at:
             type: string
           has_auto_generated_logo:
-            type: number
+            type: integer
           id:
             type: integer
           name:
@@ -10532,11 +10326,11 @@
           rank:
             type: number
           respected_by_count:
-            type: number
+            type: integer
           user_avatars:
             $ref: '#/components/schemas/StringArray'
           users_count:
-            type: number
+            type: integer
         type: object
       UniversityTopListItems:
         items:
@@ -10563,58 +10357,80 @@
             nullable: true
             type: string
         type: object
-      UserAchievementTarTypeUser:
+      UpdateResponse:
+        description: Update Response
+        properties:
+          info:
+            $ref: '#/components/schemas/InfoArray'
+        type: object
+      UserAchievementMachineTypeUser:
         properties:
           avatar:
             type: string
           name:
             type: string
-          id:
-            type: integer
           retired:
-            oneOf: 
-              - type: boolean
-              - type: integer
+            type: boolean
           starting_point:
-            oneOf: 
-              - type: boolean
-              - type: integer
+            type: boolean
         type: object
       UserAchievementTarTypeUserIdTarIdResponse:
         description: Schema definition for User Achievement Target Type User Id Target
         properties:
           machine:
-            $ref: '#/components/schemas/UserAchievementTarTypeUser'
+            $ref: '#/components/schemas/UserAchievementMachineTypeUser'
           own:
             $ref: '#/components/schemas/UserAchievementTarTypeUserOwn'
           user:
-            $ref: '#/components/schemas/UserAchievementTarTypeUser'
+            $ref: '#/components/schemas/UserBasicInfo'
         title: User Achievement Target Type User Id Target Id Response
         type: object
       UserAchievementTarTypeUserOwn:
         properties:
+          date:
+            example: 14 Jul 2024
+            type: string
+          date_iso8601:
+            example: '2024-07-14T06:51:22+00:00'
+            format: date-time
+            type: string
           points:
             type: integer
           rank:
             type: integer
-          date_iso8601:
-            type: string
-            format: date-time
-            example: "2024-07-14T06:51:22+00:00"
-          date:
-            type: string
-            example: "14 Jul 2024"
         type: object
       UserActivity:
         properties:
           profile:
             $ref: '#/components/schemas/UserActivityProfile'
         type: object
-      UserActivityItem:
+      UserActivityItemChallenge:
         properties:
           challenge_category:
             type: string
           date:
+            format: date-time
+            type: string
+          date_diff:
+            type: string
+          first_blood:
+            type: boolean
+          id:
+            type: integer
+          name:
+            type: string
+          points:
+            type: integer
+          type:
+            type: string
+        required:
+          - challenge_category
+          - type
+        type: object
+      UserActivityItemFortress:
+        properties:
+          date:
+            format: date-time
             type: string
           date_diff:
             type: string
@@ -10624,16 +10440,38 @@
             type: string
           id:
             type: integer
-          machine_avatar:
-            type: string
           name:
-            type: string
-          object_type:
             type: string
           points:
             type: integer
           type:
             type: string
+        required:
+          - flag_title
+          - type
+        type: object
+      UserActivityItemMachine:
+        properties:
+          date:
+            format: date-time
+            type: string
+          date_diff:
+            type: string
+          first_blood:
+            type: boolean
+          id:
+            type: integer
+          machine_avatar:
+            type: string
+          name:
+            type: string
+          points:
+            type: integer
+          type:
+            type: string
+        required:
+          - machine_avatar
+          - type
         type: object
       UserActivityProfile:
         properties:
@@ -10642,16 +10480,21 @@
         type: object
       UserActivityProfileActivity:
         items:
-          $ref: '#/components/schemas/UserActivityItem'
+          discriminator:
+            propertyName: type
+          oneOf:
+            - $ref: '#/components/schemas/UserActivityItemFortress'
+            - $ref: '#/components/schemas/UserActivityItemChallenge'
+            - $ref: '#/components/schemas/UserActivityItemMachine'
         type: array
       UserAnonymizedIdResponse:
         description: Schema definition for User Anonymized Id Response
         properties:
+          account_id:
+            type: string
           id:
             type: string
           user_hash:
-            type: string
-          account_id:
             type: string
         title: User Anonymized Id Response
         type: object
@@ -10726,24 +10569,6 @@
           $ref: '#/components/schemas/UserBasicInfo'
         nullable: true
         type: array
-      UserCareerData:
-        properties:
-          cv:
-            nullable: true
-            type: object
-          email:
-            type: string
-          name:
-            type: string
-          phone:
-            nullable: true
-            type: string
-        type: object
-      UserCareerResponse:
-        properties:
-          data:
-            $ref: '#/components/schemas/UserCareerData'
-        type: object
       UserConnectionStatusResponse:
         description: Schema definition for User Connection Status Response
         properties:
@@ -10787,52 +10612,46 @@
           dashboard_tabloid:
             $ref: '#/components/schemas/DashboardTabloid'
         type: object
-      UserFollowerInfo:
-        items:
-          $ref: '#/components/schemas/UserFollowerItem'
-        type: array
-      UserFollowerItem:
+      UserFriendsItem:
         properties:
+          avatar:
+            type: string
+          canInvite:
+            type: boolean
           id:
             type: integer
-        type: object
-      UserFollowersResponse:
-        description: Schema definition for User Followers Response
-        properties:
-          info:
-            $ref: '#/components/schemas/UserFollowerInfo'
-        title: User Followers Response
-        type: object
-      UserFriendsItem:
-        type: object
-        properties:
-          id:
+          matches_played:
+            type: integer
+          max_matches_count:
             type: integer
           name:
             type: string
           status:
             type: string
-          avatar:
-            type: string
-          canInvite:
-            type: boolean
-          matches_played:
-            type: integer
-          max_matches_count:
-            type: integer
+        type: object
       UserFriendsResponse:
         description: Schema definition for User Friends Response
-        type: array
         items:
-          $ref: "#/components/schemas/UserFriendsItem"
+          $ref: '#/components/schemas/UserFriendsItem'
         title: User Friends Response
+        type: array
+      UserIdNameThumb:
+        description: Schema definition for Lab Master
+        properties:
+          avatar_thumb:
+            example: /storage/avatars/2b44f5ca5458931c49e1fa57da6705c1_thumb.png
+            type: string
+          id:
+            example: 11649
+            type: integer
+          name:
+            example: RastaMouse
+            type: string
+        title: Lab Master
+        type: object
       UserInfo:
         description: Schema definition for User Info
         properties:
-          hasTeamInvitation:
-            type: boolean
-          isServerVIP:
-            type: boolean
           avatar:
             example: string
             type: string
@@ -10857,6 +10676,8 @@
           hasAppTokens:
             example: true
             type: boolean
+          hasTeamInvitation:
+            type: boolean
           id:
             example: 0
             type: integer
@@ -10874,6 +10695,8 @@
             type: boolean
           isModerator:
             example: false
+            type: boolean
+          isServerVIP:
             type: boolean
           isVip:
             example: false
@@ -10985,6 +10808,8 @@
             type: integer
           respects:
             type: integer
+          sso_id:
+            type: boolean
           system_bloods:
             type: integer
           system_owns:
@@ -10996,6 +10821,9 @@
           twitter:
             nullable: true
             type: string
+          university:
+            nullable: true
+            type: string
           university_name:
             nullable: true
             type: string
@@ -11003,14 +10831,7 @@
             type: integer
           user_owns:
             type: integer
-          university:
-            type: string
-            nullable: true
-          sso_id:
-            type: boolean
         type: object
-      UserProfileActivityResponse:
-        $ref: '#/components/schemas/UserActivity'
       UserProfileBasicIdResponse:
         description: Schema definition for User Profile Basic Id Response
         properties:
@@ -11138,14 +10959,6 @@
             type: array
         title: User Submissions Challenges Response
         type: object
-      UserSubmissionsMachineResponse:
-        description: Schema definition for User Submissions Machine Response
-        properties:
-          submission_machines:
-            items: {}
-            type: array
-        title: User Submissions Machine Response
-        type: object
       UserSubscriptionBillingHistory:
         properties:
           data:
@@ -11162,8 +10975,8 @@
       UserSubscriptionBillingItem:
         properties:
           amount:
-            type: number
             nullable: true
+            type: number
           date:
             type: string
           description:
@@ -11195,6 +11008,35 @@
           $ref: '#/components/schemas/UserTrackItem'
         title: User Tracks Response
         type: array
+      Video:
+        oneOf:
+          - $ref: '#/components/schemas/VideoObject'
+          - $ref: '#/components/schemas/EmptyArray'
+      VideoObject:
+        properties:
+          creator_id:
+            type: integer
+          creator_name:
+            type: string
+          youtube_id:
+            type: string
+        type: object
+      Weekly:
+        properties:
+          challenge_owns:
+            type: integer
+          first_bloods:
+            type: integer
+          respects:
+            type: integer
+          system_owns:
+            type: integer
+          user_owns:
+            type: integer
+          week_end_date:
+            format: date
+            type: string
+        type: object
       WriteupData:
         properties:
           official:
@@ -11213,7 +11055,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.2.6
+    version: v0.2.35
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
@@ -11805,26 +11647,12 @@
         summary: Download zip file related to a specific challenge
         tags:
           - Challenges
-    /v4/challenge/info/{challengeId}:
+    /v4/challenge/info/{challengeSlug}:
       get:
-        description: Provides a list of the challege details
-        operationId: getChallengeInfoById
+        description: Provides a list of the challege details by id or name
+        operationId: getChallengeInfo
         parameters:
-          - $ref: '#/components/parameters/ChallengeId'
-        responses:
-          '200':
-            $ref: '#/components/responses/ChallengeInfoChallengeResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Info details of the specific challenge
-        tags:
-          - Challenges
-    /v4/challenge/info/{challengeName}:
-      get:
-        description: Provides a list of the challege details
-        operationId: getChallengeInfoByName
-        parameters:
-          - $ref: '#/components/parameters/ChallengeName'
+          - $ref: '#/components/parameters/ChallengeSlug'
         responses:
           '200':
             $ref: '#/components/responses/ChallengeInfoChallengeResponse'
@@ -12007,7 +11835,7 @@
           - $ref: '#/components/parameters/SortBy'
           - $ref: '#/components/parameters/SortType'
           - $ref: '#/components/parameters/Difficulty'
-          - $ref: '#/components/parameters/CategoryChallenge'
+          - $ref: '#/components/parameters/Category'
           - $ref: '#/components/parameters/Todo'
         responses:
           '200':
@@ -12481,32 +12309,18 @@
         summary: Spawn a machine
         tags:
           - Machines
-    /v4/machine/profile/{machineId}:
+    /v4/machine/profile/{machineSlug}:
       get:
-        description: Retrieves information related to /machine/profile/{machine id}
-        operationId: getMachineProfileById
+        description: Retrieves profile information by id or name
+        operationId: getMachineProfile
         parameters:
-          - $ref: '#/components/parameters/MachineId'
+          - $ref: '#/components/parameters/MachineSlug'
         responses:
           '200':
-            $ref: '#/components/responses/MachineProfileMachineIdResponse'
+            $ref: '#/components/responses/MachineProfileMachineResponse'
           '400':
             $ref: '#/components/responses/GenericError'
-        summary: Get machine profile by ID
-        tags:
-          - Machines
-    /v4/machine/profile/{machineName}:
-      get:
-        description: Retrieves information related to /machine/profile/{machine id}
-        operationId: getMachineProfileByName
-        parameters:
-          - $ref: '#/components/parameters/MachineName'
-        responses:
-          '200':
-            $ref: '#/components/responses/MachineProfileMachineIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get machine profile by Name
+        summary: Get machine profile by id or name
         tags:
           - Machines
     /v4/machine/recommended:
@@ -13598,24 +13412,10 @@
         summary: Get Sherlocks Categories List
         tags:
           - Sherlocks
-    /v4/sherlocks/{sherlockId}:
-      get:
-        description: Retrieve information for a specific Sherlock instance.
-        operationId: getSherlocksId
-        parameters:
-          - $ref: '#/components/parameters/SherlockId'
-        responses:
-          '200':
-            $ref: '#/components/responses/SherlocksNameResponse'
-          '404':
-            $ref: '#/components/responses/SherlocksSherlockId404'
-        summary: Get Sherlock by Id
-        tags:
-          - Sherlocks
     /v4/sherlocks/{sherlockId}/download_link:
       get:
         description: Retrieve the download link for a specific Sherlock instance.
-        operationId: getSherlocksDownloadlink
+        operationId: getSherlockDownloadlink
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13629,7 +13429,7 @@
     /v4/sherlocks/{sherlockId}/info:
       get:
         description: Retrieve detailed information for a specific Sherlock instance.
-        operationId: getSherlocksInfo
+        operationId: getSherlockInfo
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13643,7 +13443,7 @@
     /v4/sherlocks/{sherlockId}/play:
       get:
         description: Start or continue playing a specific Sherlock instance.
-        operationId: getSherlocksPlay
+        operationId: getSherlockPlay
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13657,7 +13457,7 @@
     /v4/sherlocks/{sherlockId}/progress:
       get:
         description: Retrieve progress information for a specific Sherlock instance.
-        operationId: getSherlocksProgress
+        operationId: getSherlockProgress
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13671,7 +13471,7 @@
     /v4/sherlocks/{sherlockId}/tasks:
       get:
         description: Retrieve tasks for a specific Sherlock instance.
-        operationId: getSherlocksTasks
+        operationId: getSherlockTasks
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13685,7 +13485,7 @@
     /v4/sherlocks/{sherlockId}/tasks/{taskId}/flag:
       post:
         description: Submit a flag for a specific task in a Sherlock instance.
-        operationId: postSherlocksTasksFlag
+        operationId: postSherlockTasksFlag
         parameters:
           - $ref: '#/components/parameters/SherlockId'
           - $ref: '#/components/parameters/TaskId'
@@ -13704,7 +13504,7 @@
     /v4/sherlocks/{sherlockId}/writeup:
       get:
         description: Retrieve a writeup for a specific Sherlock instance.
-        operationId: getSherlocksWriteup
+        operationId: getSherlockWriteup
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13718,7 +13518,7 @@
     /v4/sherlocks/{sherlockId}/writeup/official:
       get:
         description: Retrieve the official writeup for a specific Sherlock instance.
-        operationId: getSherlocksWriteupOfficial
+        operationId: getSherlockWriteupOfficial
         parameters:
           - $ref: '#/components/parameters/SherlockId'
         responses:
@@ -13727,6 +13527,20 @@
           '404':
             $ref: '#/components/responses/SherlocksSherlockId404'
         summary: Get official write-up for Sherlock by ID
+        tags:
+          - Sherlocks
+    /v4/sherlocks/{sherlockSlug}:
+      get:
+        description: Retrieve information for a specific Sherlock instance.
+        operationId: getSherlock
+        parameters:
+          - $ref: '#/components/parameters/SherlockSlug'
+        responses:
+          '200':
+            $ref: '#/components/responses/SherlocksNameResponse'
+          '404':
+            $ref: '#/components/responses/SherlocksSherlockId404'
+        summary: Get Sherlock by Id
         tags:
           - Sherlocks
     /v4/sidebar/announcement:
@@ -13943,7 +13757,7 @@
               type: string
         responses:
           '200':
-            $ref: '#/components/responses/TraksEnrollResponse'
+            $ref: '#/components/responses/TracksEnrollResponse'
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Enroll to track
@@ -14237,18 +14051,6 @@
         summary: 'Bearer: Is Banned'
         tags:
           - User
-    /v4/user/career:
-      get:
-        description: Get /user/career
-        operationId: getUserCareer
-        responses:
-          '200':
-            $ref: '#/components/responses/UserCareerResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Get User Career
-        tags:
-          - User
     /v4/user/connection/status:
       get:
         description: Retrieves information related to /user/connection/status
@@ -14297,18 +14099,6 @@
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Remove respect from user
-        tags:
-          - User
-    /v4/user/feedback/bug/areas:
-      get:
-        description: Retrieves information related to /user/feedback/bug/areas
-        operationId: getUserFeedbackBugAreas
-        responses:
-          '200':
-            $ref: '#/components/responses/UserFeedbackBugAreasResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'Dashboard: list Bug Feedback Areas'
         tags:
           - User
     /v4/user/follow/{userId}:
@@ -14589,18 +14379,6 @@
         summary: 'Bearer: challenge Submissions'
         tags:
           - User
-    /v4/user/submissions/machines:
-      get:
-        description: Retrieves information related to /user/submissions/machines
-        operationId: getUserSubmissionsMachines
-        responses:
-          '200':
-            $ref: '#/components/responses/UserSubmissionsMachinesResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: 'Bearer: machine Submissions'
-        tags:
-          - User
     /v4/user/subscriptions/billing-history:
       get:
         description: Get billing history for bearer's account
@@ -14649,7 +14427,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmExtendResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/GenericError'
         summary: Extend a machine / SP
@@ -14663,7 +14441,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmResetResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/VmReset400'
         summary: Reset a machine / SP
@@ -14677,7 +14455,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmResetResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/VmReset400'
         summary: Vote to Reset a machine
@@ -14691,7 +14469,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmResetResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/VmReset400'
         summary: Accept vote to Reset a machine
@@ -14705,7 +14483,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmSpawnResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/GenericError'
           '500':
@@ -14721,7 +14499,7 @@
           $ref: '#/components/requestBodies/VirtualMachineRequest'
         responses:
           '200':
-            $ref: '#/components/responses/VmSpawnResponse'
+            $ref: '#/components/responses/VMResponse'
           '400':
             $ref: '#/components/responses/GenericError'
           '500':
