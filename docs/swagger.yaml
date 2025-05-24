@@ -1339,14 +1339,14 @@
                   message: RouterSpace root is already owned.
                   status: 400
               already_owned_user:
-                summary: user_ is already owned
+                summary: User is already owned
                 value:
                   message: RouterSpace user is already owned.
                   status: 400
               invalid_flag:
                 summary: Incorrect flag submission
                 value:
-                  message: Incorrect flag!
+                  message: Incorrect flag.
                   status: 400
             schema:
               $ref: '#/components/schemas/OwnMachineErrorResponse'
@@ -1373,19 +1373,6 @@
             schema:
               $ref: '#/components/schemas/PaginatedMachineData'
         description: Machine Paginated Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      MachinePlayMachineIdResponse:
-        content:
-          application/json:
-            example:
-              message: Playing machine.
-            schema:
-              $ref: '#/components/schemas/Message'
-        description: Successful play request
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -1452,19 +1439,6 @@
             schema:
               $ref: '#/components/schemas/MachineReviewsUserIdResponse'
         description: Machine Reviews User Response
-        headers:
-          x-ratelimit-limit:
-            $ref: '#/components/headers/XRateLimitHeader'
-          x-ratelimit-remaining:
-            $ref: '#/components/headers/XRateLimitRemainingHeader'
-      MachineStopResponse:
-        content:
-          application/json:
-            example:
-              message: Stopped playing machine.
-            schema:
-              $ref: '#/components/schemas/Message'
-        description: Successful stop request
         headers:
           x-ratelimit-limit:
             $ref: '#/components/headers/XRateLimitHeader'
@@ -6035,8 +6009,6 @@
         properties:
           '1':
             $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
-          '10':
-            $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
           '2':
             $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
           '3':
@@ -6052,6 +6024,8 @@
           '8':
             $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
           '9':
+            $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
+          '10':
             $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItem'
         type: object
       MachineOwns:
@@ -11055,7 +11029,7 @@
       name: ''
       url: ' '
     title: HTB Unofficial API
-    version: v0.2.35
+    version: v0.2.39
   openapi: 3.0.0
   paths:
     /v4/access/ovpnfile/{vpnId}/0:
@@ -12295,20 +12269,6 @@
         summary: Get paginated list of active machines
         tags:
           - Machines
-    /v4/machine/play/{machineId}:
-      post:
-        description: Start playing a specific machine.
-        operationId: postMachinePlay
-        parameters:
-          - $ref: '#/components/parameters/MachineId'
-        responses:
-          '200':
-            $ref: '#/components/responses/MachinePlayMachineIdResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Spawn a machine
-        tags:
-          - Machines
     /v4/machine/profile/{machineSlug}:
       get:
         description: Retrieves profile information by id or name
@@ -12390,18 +12350,6 @@
         summary: Use /reviews/{product}/{productId}/paginated
         tags:
           - Machines
-    /v4/machine/stop:
-      post:
-        description: Stop a specific machine.
-        operationId: postMachineStop
-        responses:
-          '200':
-            $ref: '#/components/responses/MachineStopResponse'
-          '400':
-            $ref: '#/components/responses/GenericError'
-        summary: Stop a machine
-        tags:
-          - Machines
     /v4/machine/tags/list:
       get:
         description: Retrieve a list of machine tags.
@@ -12463,6 +12411,9 @@
       get:
         description: Retrieves information related to /machine/unreleased
         operationId: getMachineUnreleased
+        parameters:
+          - $ref: '#/components/parameters/Page'
+          - $ref: '#/components/parameters/PerPage'
         responses:
           '200':
             $ref: '#/components/responses/MachineUnreleasedResponse'
