@@ -1,0 +1,16 @@
+properties:
+  all_teams_avg_percentage:
+    example: 6.72
+    format: float
+    type: number
+  id:
+    example: 1
+    type: integer
+  name:
+    example: Reversing
+    type: string
+  team_percentage:
+    example: 23.53
+    format: float
+    type: number
+type: object

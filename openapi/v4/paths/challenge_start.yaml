@@ -1,0 +1,13 @@
+post:
+  description: Starts a challenge container with challenge_id
+  operationId: postChallengeStart
+  requestBody:
+    $ref: ../components/requestBodies/ChallengeStartStopRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeStartResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Starts a challenge
+  tags:
+    - Challenges

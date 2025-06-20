@@ -1,0 +1,31 @@
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http
+info:
+  contact:
+    name: ' '
+  description: >-
+    The undocumented public API v5 for the Hack The Box platform. This OpenAPI
+    specification is community-maintained and reverse-engineered. This project 
+    is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API v5
+  version: v0.3.0
+openapi: 3.0.4
+paths:
+  /machine/own:
+    $ref: paths/machine_own.yaml
+security:
+  - bearer: []
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/v5
+tags:
+  - description: Endpoints related to Machines
+    name: Machines
+    x-displayName: Machines

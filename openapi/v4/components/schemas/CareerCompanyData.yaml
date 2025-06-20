@@ -1,0 +1,6 @@
+properties:
+  company:
+    $ref: ./CareerCompany.yaml
+  jobs:
+    $ref: ./CareerJobs.yaml
+type: object

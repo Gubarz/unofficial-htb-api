@@ -1,0 +1,6 @@
+description: Schema definition for Profile Badges Id Repsonse
+properties:
+  badges:
+    $ref: ./ProfileBadgesItems.yaml
+title: Profile Badges Id Repsonse
+type: object

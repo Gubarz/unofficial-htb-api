@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/anonymized/id
+  operationId: getUserAnonymizedId
+  responses:
+    '200':
+      $ref: ../components/responses/UserAnonymizedIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Bearer: Anonymous ID'
+  tags:
+    - User

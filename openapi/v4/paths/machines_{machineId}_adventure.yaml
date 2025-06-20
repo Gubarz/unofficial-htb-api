@@ -1,0 +1,13 @@
+get:
+  description: Get Machine Adventure
+  operationId: getMachineAdventure
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachinesAdventureResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Machine Adventure
+  tags:
+    - Machines

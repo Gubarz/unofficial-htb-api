@@ -1,0 +1,4 @@
+properties:
+  data:
+    $ref: ./SeasonPlayersLeaderBoardTopData.yaml
+type: object

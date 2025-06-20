@@ -1,0 +1,30 @@
+properties:
+  created_at:
+    type: string
+  disliked_by_user:
+    nullable: true
+    type: string
+  id:
+    type: integer
+  language_code:
+    nullable: true
+    type: string
+  language_name:
+    nullable: true
+    type: string
+  liked_by_user:
+    nullable: true
+    type: string
+  rating:
+    type: integer
+  total_ratings:
+    type: integer
+  url:
+    type: string
+  user_avatar:
+    type: string
+  user_id:
+    type: integer
+  user_name:
+    type: string
+type: object

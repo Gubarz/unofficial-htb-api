@@ -1,0 +1,9 @@
+description: Schema definition for Prolab Id Machine Response
+properties:
+  data:
+    $ref: ./ProlabMachineData.yaml
+  status:
+    example: true
+    type: boolean
+title: Prolab Id Machine Response
+type: object

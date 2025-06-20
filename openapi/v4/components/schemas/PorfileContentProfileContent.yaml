@@ -1,0 +1,10 @@
+properties:
+  challenges:
+    items: {}
+    type: array
+  machines:
+    $ref: ./ProfileContentMachineItems.yaml
+  writeups:
+    items: {}
+    type: array
+type: object

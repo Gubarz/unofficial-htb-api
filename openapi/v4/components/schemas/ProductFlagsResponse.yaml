@@ -1,0 +1,9 @@
+description: Schema definition for Prodcut Flags Response
+properties:
+  data:
+    $ref: ./FlagsItems.yaml
+  status:
+    example: true
+    type: boolean
+title: Product Flags Response
+type: object

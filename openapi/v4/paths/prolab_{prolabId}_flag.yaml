@@ -1,0 +1,15 @@
+post:
+  description: Submit flag
+  operationId: postProlabFlag
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  requestBody:
+    $ref: ../components/requestBodies/MultiOwnRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MultiOwnResponse.yaml
+    '400':
+      $ref: ../components/responses/MultiOwn400.yaml
+  summary: Submit flag
+  tags:
+    - Prolabs

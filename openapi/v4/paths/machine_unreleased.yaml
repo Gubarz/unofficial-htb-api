@@ -1,0 +1,17 @@
+get:
+  description: Retrieves information related to /machine/unreleased
+  operationId: getMachineUnreleased
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Difficulty.yaml
+    - $ref: ../components/parameters/Os.yaml
+    - $ref: ../components/parameters/Keyword.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineUnreleasedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list Release-Scheduled machines
+  tags:
+    - Machines

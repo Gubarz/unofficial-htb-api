@@ -1,0 +1,18 @@
+description: Schema definition for Pwnbox Usage Response
+properties:
+  active_minutes:
+    type: integer
+  allowed:
+    type: integer
+  minutes:
+    type: integer
+  remaining:
+    type: integer
+  sessions:
+    type: integer
+  total:
+    type: integer
+  used:
+    type: integer
+title: Pwnbox Usage Response
+type: object

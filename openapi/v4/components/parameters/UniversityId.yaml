@@ -1,0 +1,6 @@
+description: ID of the Univeritiy
+in: path
+name: universityId
+required: true
+schema:
+  type: integer

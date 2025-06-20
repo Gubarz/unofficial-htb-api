@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /fortresses
+  operationId: getFortresses
+  responses:
+    '200':
+      $ref: ../components/responses/FortressesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get list of fortresses
+  tags:
+    - Fortresses

@@ -1,0 +1,12 @@
+description: Schema definition for Connection Server Switch Response
+properties:
+  data:
+    $ref: ./ServerConnection.yaml
+  message:
+    example: VPN server switched
+    type: string
+  status:
+    example: true
+    type: boolean
+title: Connection Server Switch Resposne
+type: object

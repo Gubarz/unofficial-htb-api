@@ -1,0 +1,15 @@
+properties:
+  average_ratings:
+    nullable: true
+    type: number
+  completion_percentage:
+    type: integer
+  name:
+    type: string
+  owned_flags:
+    type: integer
+  total_flags:
+    type: integer
+  total_machines:
+    type: integer
+type: object

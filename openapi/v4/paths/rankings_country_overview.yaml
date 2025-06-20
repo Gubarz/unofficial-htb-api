@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /rankings/country/overview
+  operationId: getRankingsCountryOverview
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsCountryOverviewResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Country: (Bearer''s) - Overview'
+  tags:
+    - Ranking

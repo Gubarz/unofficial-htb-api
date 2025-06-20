@@ -1,0 +1,28 @@
+description: Schema definition for Review Prolab
+properties:
+  created_at:
+    example: '2024-03-31T20:40:55.000000Z'
+    format: date-time
+    type: string
+  difficulty:
+    example: 8
+    type: integer
+  helpful_pro_feedbacks_count:
+    example: 1
+    type: integer
+  id:
+    example: 929
+    type: integer
+  rating:
+    example: 5
+    type: integer
+  text:
+    example: I really enjoyed the lab for a Red team_ experience
+    type: string
+  user:
+    $ref: ./UserIdNameThumb.yaml
+  user_in_helpful_pro_feedbacks:
+    example: false
+    type: boolean
+title: Review
+type: object

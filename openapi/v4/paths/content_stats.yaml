@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /content/stats
+  operationId: getContentStats
+  responses:
+    '200':
+      $ref: ../components/responses/ContentStatsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Dashboard: machine, challenge Counts'
+  tags:
+    - Platform

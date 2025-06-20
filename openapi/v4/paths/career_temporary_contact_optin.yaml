@@ -1,0 +1,24 @@
+post:
+  description: This is the toggle in the career page to allow companies to reach out to you
+  operationId: postCareerTemporaryContactOptin
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            opt_in:
+              type: boolean
+          type: object
+  responses:
+    '204':
+      description: No Content
+      headers:
+        x-ratelimit-limit:
+          $ref: ../components/headers/XRateLimitHeader.yaml
+        x-ratelimit-remaining:
+          $ref: ../components/headers/XRateLimitRemainingHeader.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Optin to Career Contacting
+  tags:
+    - Career

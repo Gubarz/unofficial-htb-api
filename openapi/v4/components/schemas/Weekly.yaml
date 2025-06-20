@@ -1,0 +1,15 @@
+properties:
+  challenge_owns:
+    type: integer
+  first_bloods:
+    type: integer
+  respects:
+    type: integer
+  system_owns:
+    type: integer
+  user_owns:
+    type: integer
+  week_end_date:
+    format: date
+    type: string
+type: object

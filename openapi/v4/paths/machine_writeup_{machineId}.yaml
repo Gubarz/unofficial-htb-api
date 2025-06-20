@@ -1,0 +1,13 @@
+get:
+  description: _response is of a pdf file
+  operationId: getMachineWriteup
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineWriteupMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: Get Official Writeup (if Available) by machine ID'
+  tags:
+    - Machines

@@ -1,0 +1,6 @@
+description: Schema definition for Season User Rank
+properties:
+  data:
+    $ref: ./SeasonUserRankData.yaml
+title: Season User Rank
+type: object

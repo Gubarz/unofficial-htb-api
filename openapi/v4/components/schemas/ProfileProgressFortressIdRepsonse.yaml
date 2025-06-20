@@ -1,0 +1,6 @@
+description: Schema definition for Profile Progress Fortress Id Repsonse
+properties:
+  profile:
+    $ref: ./ProfileProgressFortressProfile.yaml
+title: Profile Progress Fortress Id Repsonse
+type: object

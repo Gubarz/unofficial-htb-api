@@ -1,0 +1,6 @@
+description: Schema definition for Profile Graph Period Id Response
+properties:
+  profile:
+    $ref: ./ProfileGraopPeriodProfile.yaml
+title: Profile Graph Period Id Response
+type: object

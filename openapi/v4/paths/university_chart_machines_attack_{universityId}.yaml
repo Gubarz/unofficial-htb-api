@@ -1,0 +1,13 @@
+get:
+  description: University Machine Chart
+  operationId: getUniversityChartMachinesAttack
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityChartMachinesAttackResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: University Machine Attack Chart
+  tags:
+    - Universities

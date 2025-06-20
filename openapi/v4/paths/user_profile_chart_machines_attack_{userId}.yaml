@@ -1,0 +1,15 @@
+get:
+  description: >-
+    Retrieves information related to /user/profile/chart/machines/attack/{user
+    id}
+  operationId: getUserProfileChartMachinesAttack
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProfileChartMachinesAttackUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'User profile: machine Ownage Chart By Attack Path'
+  tags:
+    - User

@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /home/banners
+  operationId: getHomeBanner
+  responses:
+    '200':
+      $ref: ../components/responses/HomeBannersResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Home Banner
+  tags:
+    - Home

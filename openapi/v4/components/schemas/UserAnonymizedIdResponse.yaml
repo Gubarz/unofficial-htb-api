@@ -1,0 +1,10 @@
+description: Schema definition for User Anonymized Id Response
+properties:
+  account_id:
+    type: string
+  id:
+    type: string
+  user_hash:
+    type: string
+title: User Anonymized Id Response
+type: object

@@ -1,0 +1,14 @@
+properties:
+  chart_data:
+    $ref: ./IntArray.yaml
+  points_diff:
+    format: int
+    type: integer
+  points_growth:
+    type: string
+  ranks_diff:
+    nullable: true
+    type: integer
+  team:
+    $ref: ./RankingTeam.yaml
+type: object

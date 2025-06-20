@@ -1,0 +1,6 @@
+properties:
+  id:
+    type: integer
+  pivot:
+    $ref: ./ProfileBadgesItemPivot.yaml
+type: object

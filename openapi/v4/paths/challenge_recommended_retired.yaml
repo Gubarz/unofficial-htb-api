@@ -1,0 +1,11 @@
+get:
+  description: Provides information about two retired challenges
+  operationId: getChallengeRecommendedRetired
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeRecommendedRetiredResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Challenge Recommendation Cards (Retired)
+  tags:
+    - Challenges

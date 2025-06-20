@@ -1,0 +1,12 @@
+properties:
+  freelance:
+    nullable: true
+    type: string
+  full_time:
+    nullable: true
+    type: string
+  opt_in:
+    type: boolean
+  skills:
+    $ref: ./StringArray.yaml
+type: object

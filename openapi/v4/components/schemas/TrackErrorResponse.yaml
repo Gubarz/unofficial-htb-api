@@ -1,0 +1,13 @@
+properties:
+  error:
+    example: Track not found
+    type: string
+  status:
+    enum:
+      - error
+    example: '0'
+    type: string
+required:
+  - status
+  - error
+type: object

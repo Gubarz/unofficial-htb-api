@@ -1,0 +1,12 @@
+get:
+  description: Retrieves Feedback Choices
+  operationId: getMachineWalkthroughOfficialFeedbackChoices
+  responses:
+    '200':
+      $ref: >-
+        ../components/responses/MachineWalkthroughOfficialFeedbackChoicesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Feedback Choices
+  tags:
+    - Machines

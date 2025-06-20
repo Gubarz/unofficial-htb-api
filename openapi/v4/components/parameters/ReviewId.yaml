@@ -1,0 +1,6 @@
+description: Review ID
+in: path
+name: reviewId
+required: true
+schema:
+  type: integer

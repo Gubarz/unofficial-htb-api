@@ -1,0 +1,17 @@
+post:
+  description: Like a track
+  operationId: postTracksLike
+  parameters:
+    - in: path
+      name: trackId
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/TracksLikeResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Like a track
+  tags:
+    - Tracks

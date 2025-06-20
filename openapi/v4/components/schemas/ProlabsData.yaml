@@ -1,0 +1,8 @@
+description: Inner container for Prolabs response
+properties:
+  count:
+    example: 6
+    type: integer
+  labs:
+    $ref: ./ProlabDataItems.yaml
+type: object

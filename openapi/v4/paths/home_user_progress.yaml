@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /home/user/progress
+  operationId: getHomeUserProgress
+  responses:
+    '200':
+      $ref: ../components/responses/HomeUserProgressResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Home User Progress
+  tags:
+    - Home

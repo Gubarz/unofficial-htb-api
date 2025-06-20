@@ -1,0 +1,11 @@
+get:
+  description: Returns a list of all jobs that the user has applied for
+  operationId: getCareerHistory
+  responses:
+    '200':
+      $ref: ../components/responses/CareerHistoryResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: History of applied jobs
+  tags:
+    - Career

@@ -1,0 +1,13 @@
+post:
+  description: See `/v4/connections/servers` for valid ids
+  operationId: postConnectionsServersSwitch
+  parameters:
+    - $ref: ../components/parameters/VpnId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionsServersSwitchVpnIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Swtich VPN server
+  tags:
+    - Connection

@@ -1,0 +1,8 @@
+description: Schema definition for Challenge Changelog Id Response
+properties:
+  data:
+    $ref: ./StringArray.yaml
+  status:
+    type: boolean
+title: Challenge Change Log Id Response
+type: object

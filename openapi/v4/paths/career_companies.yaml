@@ -1,0 +1,11 @@
+get:
+  description: Get /career/companies
+  operationId: getCareerCompanies
+  responses:
+    '200':
+      $ref: ../components/responses/CareerCompaniesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get list of companies
+  tags:
+    - Career

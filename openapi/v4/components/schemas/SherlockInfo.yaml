@@ -1,0 +1,6 @@
+description: Schema definition for Sherlock Info
+properties:
+  data:
+    $ref: ./SherlockDetail.yaml
+title: Sherlock Info
+type: object

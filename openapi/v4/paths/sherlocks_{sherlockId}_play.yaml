@@ -1,0 +1,13 @@
+get:
+  description: Start or continue playing a specific Sherlock instance.
+  operationId: getSherlockPlay
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksSherlockIdPlayResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Does this do anything Sherlock by ID
+  tags:
+    - Sherlocks

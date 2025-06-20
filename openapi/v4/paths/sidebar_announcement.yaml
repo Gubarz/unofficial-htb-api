@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /sidebar/announcement
+  operationId: getSidebarAnnouncement
+  responses:
+    '200':
+      $ref: ../components/responses/SidebarAnnouncementResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Sidebar: announcement'
+  tags:
+    - Platform

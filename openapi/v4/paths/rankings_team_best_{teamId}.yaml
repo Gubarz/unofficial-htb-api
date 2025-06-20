@@ -1,0 +1,17 @@
+get:
+  description: >-
+    lists the best global rank achieved, in set intervals for a given period
+    (e.g. 1Y, 6M, 3M, 1M, 1W). Omiting team_id will retrieve Bearers current
+    team.
+  operationId: getRankingsTeamBestId
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsTeamBestResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Global Rank History by Team Id
+  tags:
+    - Ranking

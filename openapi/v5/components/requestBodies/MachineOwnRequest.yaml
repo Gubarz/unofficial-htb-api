@@ -1,0 +1,19 @@
+content:
+  application/json:
+    examples:
+      MachineOwnRequest:
+        $ref: ../examples/MachineOwnRequest.yaml
+      MachineOwnRequestWithDifficulty:
+        $ref: ../examples/MachineOwnRequestWithDifficulty.yaml
+    schema:
+      $ref: ../schemas/MachineOwnRequest.yaml
+  application/x-www-form-urlencoded:
+    examples:
+      MachineOwnRequest:
+        $ref: ../examples/MachineOwnRequest.yaml
+      MachineOwnRequestWithDifficulty:
+        $ref: ../examples/MachineOwnRequestWithDifficulty.yaml
+    schema:
+      $ref: ../schemas/MachineOwnRequest.yaml
+description: Body to post machine flag
+required: true

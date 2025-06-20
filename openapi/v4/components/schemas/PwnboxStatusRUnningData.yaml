@@ -1,0 +1,35 @@
+properties:
+  created_at:
+    format: date-time
+    type: string
+  expires_at:
+    format: date-time
+    type: string
+  flock_id:
+    type: integer
+  hostname:
+    type: string
+  id:
+    type: integer
+  is_ready:
+    type: boolean
+  life_remaining:
+    type: integer
+  location:
+    type: string
+  proxy_url:
+    type: string
+  spectate_url:
+    type: string
+  status:
+    type: string
+  updated_at:
+    format: date-time
+    type: string
+  username:
+    type: string
+  vnc_password:
+    type: string
+  vnc_view_only_password:
+    type: string
+type: object

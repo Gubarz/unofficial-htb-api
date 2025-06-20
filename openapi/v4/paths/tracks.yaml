@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /tracks
+  operationId: getTracks
+  responses:
+    '200':
+      $ref: ../components/responses/TracksResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list Available Tracks
+  tags:
+    - Tracks

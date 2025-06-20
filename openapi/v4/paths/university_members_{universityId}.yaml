@@ -1,0 +1,15 @@
+get:
+  description: >-
+    Retrieve the list of members of a team, including both active and
+    pending/invited members
+  operationId: getUniversityMembers
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityMembersTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get team members
+  tags:
+    - Universities

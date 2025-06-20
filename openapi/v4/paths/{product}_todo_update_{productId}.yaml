@@ -1,0 +1,16 @@
+post:
+  description: Update Todo list
+  operationId: postTodoUpdate
+  parameters:
+    - $ref: ../components/parameters/ProductPath.yaml
+    - $ref: ../components/parameters/ProductId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TodoUpdateResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Update Todo list
+  tags:
+    - Machines
+    - Sherlocks
+    - Challenges

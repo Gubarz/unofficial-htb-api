@@ -1,0 +1,22 @@
+properties:
+  Authentication:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Common Applications:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Injections:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Password Cracking:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Password Reuse:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Reconnaissance:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Security Tools:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Software & OS exploitation:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Source Code Analysis:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+  Web Site Structure Discovery:
+    $ref: ./ProfileChartMachineAttackCard.yaml
+type: object

@@ -1,0 +1,4 @@
+oneOf:
+  - $ref: ./TrackSuccessResponse.yaml
+  - $ref: ./TrackErrorResponse.yaml
+type: object

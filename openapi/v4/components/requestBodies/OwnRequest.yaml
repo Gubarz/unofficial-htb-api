@@ -1,0 +1,9 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/OwnRequest.yaml
+  application/x-www-form-urlencoded:
+    schema:
+      $ref: ../schemas/OwnRequest.yaml
+description: Body to post machine flag
+required: true

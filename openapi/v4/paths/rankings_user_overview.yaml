@@ -1,0 +1,13 @@
+get:
+  description: Get /rankings/user/overview
+  operationId: getRankingsUserOverview
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsUserOverviewResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Rankings User Overview
+  tags:
+    - Ranking

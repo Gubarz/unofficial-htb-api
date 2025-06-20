@@ -1,0 +1,6 @@
+properties:
+  season_flags:
+    type: integer
+  season_pwned_flags:
+    type: integer
+type: object

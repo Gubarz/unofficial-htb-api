@@ -1,0 +1,6 @@
+description: Schema definition for Machine Changelog Id Response
+properties:
+  info:
+    $ref: ./MachineChangeLogItems.yaml
+title: Machine Changelog Id Response
+type: object

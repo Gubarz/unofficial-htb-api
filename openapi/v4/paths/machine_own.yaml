@@ -1,0 +1,14 @@
+post:
+  description: Submit flag for Machine
+  deprecated: true
+  operationId: postMachineOwn
+  requestBody:
+    $ref: ../components/requestBodies/OwnRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/OwnResponse.yaml
+    '400':
+      $ref: ../components/responses/MachineOwn400.yaml
+  summary: See v5 api. Submit flag for Challenge or Machine
+  tags:
+    - Machines

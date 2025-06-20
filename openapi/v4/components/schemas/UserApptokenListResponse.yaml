@@ -1,0 +1,4 @@
+properties:
+  tokens:
+    $ref: ./UserApptokenListItems.yaml
+type: object

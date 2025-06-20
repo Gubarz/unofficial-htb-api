@@ -1,0 +1,10 @@
+description: Schema definition for Prolab Id Reviews Response
+properties:
+  data:
+    $ref: ./ProlabReviewData.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Prolab Id Reviews Response
+type: object

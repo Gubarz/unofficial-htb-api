@@ -1,0 +1,12 @@
+properties:
+  description:
+    type: string
+  groups:
+    $ref: ./GroupItems.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  order:
+    type: number
+type: object

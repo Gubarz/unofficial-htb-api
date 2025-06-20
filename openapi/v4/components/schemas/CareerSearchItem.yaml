@@ -1,0 +1,42 @@
+properties:
+  application_url:
+    nullable: true
+    type: string
+  applied:
+    type: boolean
+  company:
+    $ref: ./CompanyBasic.yaml
+  company_logo:
+    type: string
+  country:
+    nullable: true
+    type: string
+  created_at:
+    format: date-time
+    type: string
+  external_employer_name:
+    nullable: true
+    type: string
+  external_link:
+    nullable: true
+    type: string
+  has_application_url:
+    type: boolean
+  id:
+    type: integer
+  minimum_rank_id:
+    type: integer
+  minimum_rank_name:
+    type: string
+  remote:
+    nullable: true
+    type: string
+  title:
+    type: string
+  updated_at:
+    format: date-time
+    type: string
+  work_type:
+    nullable: true
+    type: string
+type: object

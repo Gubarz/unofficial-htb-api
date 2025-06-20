@@ -1,0 +1,4 @@
+items:
+  $ref: ./AcademyModule.yaml
+nullable: true
+type: array

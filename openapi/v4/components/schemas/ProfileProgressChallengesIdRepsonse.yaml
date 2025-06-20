@@ -1,0 +1,6 @@
+description: Schema definition for Profile Progress Challenges Id Repsonse
+properties:
+  profile:
+    $ref: ./ProfileProgressProfile.yaml
+title: Profile Progress Challenges Id Repsonse
+type: object

@@ -1,0 +1,13 @@
+delete:
+  description: delete the invitation
+  operationId: deleteTeamInviteReject
+  parameters:
+    - $ref: ../components/parameters/RequestId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/Generic400Error.yaml
+  summary: Delete Invitation
+  tags:
+    - Team

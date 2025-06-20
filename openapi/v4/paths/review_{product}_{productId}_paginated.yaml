@@ -1,0 +1,14 @@
+get:
+  description: Retrieves reviews
+  operationId: getReviewPaginated
+  parameters:
+    - $ref: ../components/parameters/ProductId.yaml
+    - $ref: ../components/parameters/ProductPath.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ReviewProductPaginatedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Retrieves reviews
+  tags:
+    - Review

@@ -1,0 +1,13 @@
+description: >
+  Filter by category. You can provide multiple values. For example,
+
+  category[]=15&category[]=20. See /v4/{productName}/categories/list for full
+  list
+explode: true
+in: query
+name: category[]
+schema:
+  items:
+    type: integer
+  type: array
+style: form

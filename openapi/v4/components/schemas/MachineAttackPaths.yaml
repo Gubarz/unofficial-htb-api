@@ -1,0 +1,22 @@
+properties:
+  Binary Analysis:
+    $ref: ./MachineAttackPathItem.yaml
+  Binary Exploitation:
+    $ref: ./MachineAttackPathItem.yaml
+  Configuration Analysis:
+    $ref: ./MachineAttackPathItem.yaml
+  Fuzzing:
+    $ref: ./MachineAttackPathItem.yaml
+  Impersonation:
+    $ref: ./MachineAttackPathItem.yaml
+  Packet Capture Analysis:
+    $ref: ./MachineAttackPathItem.yaml
+  Pivoting:
+    $ref: ./MachineAttackPathItem.yaml
+  Reconnaissance:
+    $ref: ./MachineAttackPathItem.yaml
+  User Enumeration:
+    $ref: ./MachineAttackPathItem.yaml
+  Web Site Structure Discovery:
+    $ref: ./MachineAttackPathItem.yaml
+type: object

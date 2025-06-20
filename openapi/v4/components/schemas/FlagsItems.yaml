@@ -1,0 +1,3 @@
+items:
+  $ref: ./Flag.yaml
+type: array

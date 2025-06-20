@@ -1,0 +1,13 @@
+get:
+  description: Retrieves profile information by id or name
+  operationId: getMachineProfile
+  parameters:
+    - $ref: ../components/parameters/MachineSlug.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineProfileMachineResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get machine profile by id or name
+  tags:
+    - Machines

@@ -1,0 +1,32 @@
+properties:
+  date:
+    example: '2024-11-20T22:36:18.000000Z'
+    format: date-time
+    type: string
+  date_diff:
+    example: 10 hours ago
+    type: string
+  first_blood:
+    example: false
+    type: boolean
+  id:
+    example: 9
+    type: integer
+  machine_avatar:
+    example: /storage/avatars/0d6275efbd5e48fcdc96e61b9724ae5e_thumb.png
+    type: string
+  name:
+    example: Arctic
+    type: string
+  object_type:
+    example: machine
+    type: string
+  points:
+    example: 0
+    type: integer
+  type:
+    example: user
+    type: string
+  user:
+    $ref: ./TeamActivityUser.yaml
+type: object

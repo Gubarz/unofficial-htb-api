@@ -1,0 +1,13 @@
+post:
+  description: Submit flag
+  operationId: postMachineOwn
+  requestBody:
+    $ref: ../components/requestBodies/MachineOwnRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineOwnResponse.yaml
+    '400':
+      $ref: ../components/responses/MachineOwn400Response.yaml
+  summary: Submit flag
+  tags:
+    - Machines

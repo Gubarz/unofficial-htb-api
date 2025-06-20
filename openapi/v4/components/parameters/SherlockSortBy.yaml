@@ -1,0 +1,10 @@
+description: Attribute to sort by
+in: query
+name: sort_by
+schema:
+  enum:
+    - solves
+    - category
+    - rating
+    - name
+  type: string

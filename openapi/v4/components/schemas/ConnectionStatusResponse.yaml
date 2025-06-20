@@ -1,0 +1,5 @@
+description: Schema definition for Connection Status Response
+items:
+  $ref: ./ConnectionStatusItem.yaml
+title: Connection Status Response
+type: array

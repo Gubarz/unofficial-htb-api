@@ -1,0 +1,6 @@
+description: Schema definition for Machine Review Response
+properties:
+  message:
+    $ref: ./MachineReviewMessageItems.yaml
+title: Machine Review Response
+type: object

@@ -1,0 +1,8 @@
+description: Schema definition for Rankings Team Best Response
+properties:
+  data:
+    $ref: ./RankingsTeamBestData.yaml
+  status:
+    type: boolean
+title: Rankings Team Best Response
+type: object

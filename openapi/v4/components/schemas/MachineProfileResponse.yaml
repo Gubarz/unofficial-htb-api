@@ -1,0 +1,6 @@
+description: Schema definition for Machine Profile Response
+properties:
+  info:
+    $ref: ./MachineProfileInfo.yaml
+title: Machine Profile Response
+type: object

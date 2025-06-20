@@ -1,0 +1,8 @@
+description: Schema definition for Label
+properties:
+  color:
+    type: string
+  name:
+    type: string
+title: Label
+type: object

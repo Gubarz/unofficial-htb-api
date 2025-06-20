@@ -1,0 +1,13 @@
+get:
+  description: Retrieve detailed information for a specific Sherlock instance.
+  operationId: getSherlockInfo
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksSherlockIdInfoResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Get info of Sherlock by ID
+  tags:
+    - Sherlocks

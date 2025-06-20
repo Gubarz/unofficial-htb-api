@@ -1,0 +1,6 @@
+description: Schema definition for Home Challenge Card
+items:
+  $ref: ./HomeTodoChallengeCardItem.yaml
+  nullable: true
+title: Home Challenge Card
+type: array

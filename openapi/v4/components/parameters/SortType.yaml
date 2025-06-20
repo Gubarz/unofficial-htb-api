@@ -1,0 +1,9 @@
+description: Sort type (asc or desc)
+in: query
+name: sort_type
+required: false
+schema:
+  enum:
+    - asc
+    - desc
+  type: string

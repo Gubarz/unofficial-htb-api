@@ -1,0 +1,25 @@
+content:
+  application/json:
+    schema:
+      properties:
+        flag:
+          type: string
+        id:
+          type: integer
+      required:
+        - flag
+        - id
+      type: object
+  application/x-www-form-urlencoded:
+    schema:
+      properties:
+        flag:
+          type: string
+        id:
+          type: integer
+      required:
+        - flag
+        - id
+      type: object
+description: Body to post prolab/fortress
+required: true

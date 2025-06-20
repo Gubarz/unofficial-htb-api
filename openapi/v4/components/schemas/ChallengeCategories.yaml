@@ -1,0 +1,12 @@
+properties:
+  avg_user_solved:
+    type: number
+  completion_percentage:
+    type: number
+  name:
+    type: string
+  owned_flags:
+    type: number
+  total_flags:
+    type: number
+type: object

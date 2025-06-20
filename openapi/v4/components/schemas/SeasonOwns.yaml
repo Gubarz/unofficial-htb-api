@@ -1,0 +1,8 @@
+properties:
+  root:
+    $ref: ./BloodsObtained.yaml
+  total_machines:
+    type: integer
+  user:
+    $ref: ./BloodsObtained.yaml
+type: object

@@ -1,0 +1,8 @@
+properties:
+  image:
+    type: string
+  link:
+    type: string
+  new_window:
+    type: boolean
+type: object

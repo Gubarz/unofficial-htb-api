@@ -1,0 +1,12 @@
+description: One of ["1Y", "6M", "3M", "1M", "1W"]
+in: path
+name: period
+required: true
+schema:
+  enum:
+    - 1Y
+    - 6M
+    - 3M
+    - 1M
+    - 1W
+  type: string

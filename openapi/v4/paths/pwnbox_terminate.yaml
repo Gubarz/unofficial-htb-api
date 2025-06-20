@@ -1,0 +1,11 @@
+post:
+  description: Terminate a Pwnbox instance.
+  operationId: postPwnboxTerminate
+  responses:
+    '204':
+      $ref: ../components/responses/PwnboxTerminate204.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Stop Pwnbox
+  tags:
+    - PwnBox

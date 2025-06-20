@@ -1,0 +1,14 @@
+description: Schema definition for Pagination Link
+properties:
+  active:
+    example: true
+    type: boolean
+  label:
+    example: '1'
+    type: string
+  url:
+    example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
+    nullable: true
+    type: string
+title: Pagination Link
+type: object

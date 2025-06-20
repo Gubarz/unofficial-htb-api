@@ -1,0 +1,10 @@
+description: Schema definition for Paginated Machine Data
+properties:
+  data:
+    $ref: ./PaginatedMachineDataItems.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Paginated Machine Data
+type: object

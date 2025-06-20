@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /rankings/users
+  operationId: getRankingsUsers
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsUsersResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Users
+  tags:
+    - Ranking

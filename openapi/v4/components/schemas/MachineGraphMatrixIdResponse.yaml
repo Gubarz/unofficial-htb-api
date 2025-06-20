@@ -1,0 +1,6 @@
+description: Schema definition for Machine Graph Matrix Id Response
+properties:
+  info:
+    $ref: ./MachineGraphMatrixInfo.yaml
+title: Machine Graph Matrix Id Response
+type: object

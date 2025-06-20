@@ -1,0 +1,46 @@
+properties:
+  challenges:
+    type: integer
+  created_at:
+    format: date-time
+    type: string
+  endgame:
+    type: integer
+  fc:
+    type: integer
+  fortress:
+    type: integer
+  fr:
+    type: integer
+  fu:
+    type: integer
+  id:
+    type: integer
+  ownership:
+    type: string
+  points:
+    type: integer
+  pro:
+    type: integer
+  rank:
+    type: integer
+  respect:
+    type: integer
+  roots:
+    type: integer
+  sr:
+    type: integer
+  su:
+    type: integer
+  tr:
+    type: integer
+  tu:
+    type: integer
+  updated_at:
+    format: date-time
+    type: string
+  user_id:
+    type: integer
+  users:
+    type: integer
+type: object

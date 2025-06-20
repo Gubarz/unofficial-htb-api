@@ -1,0 +1,8 @@
+properties:
+  date:
+    type: string
+  rank:
+    type: number
+  rank_chart_data:
+    $ref: ./IntArray.yaml
+type: object

@@ -1,0 +1,11 @@
+get:
+  description: Get Rnadom Walkthrough
+  operationId: getMachineWalkthroughRandom
+  responses:
+    '200':
+      $ref: ../components/responses/MachineWalkthroughRandomResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Random Walkthrough
+  tags:
+    - Machines

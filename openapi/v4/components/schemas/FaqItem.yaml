@@ -1,0 +1,16 @@
+description: Schema definition for Faq Item
+properties:
+  answer:
+    example: >-
+      Individual Pro Labs subscriptions do not come with a write-up for users.
+      Only our Enterprise-level Pro Labs subscriptions provide a write-up to the
+      lab masters for documentation, training, and research purposes.
+    type: string
+  generic:
+    example: true
+    type: boolean
+  question:
+    example: Do Pro Lab subscriptions provide a write-up?
+    type: string
+title: FAQ Item
+type: object

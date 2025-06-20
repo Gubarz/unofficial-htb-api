@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./CareerCompanyData.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+type: object

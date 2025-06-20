@@ -1,0 +1,14 @@
+get:
+  description: Fetch search results.
+  operationId: getSearchFetch
+  parameters:
+    - $ref: ../components/parameters/Query.yaml
+    - $ref: ../components/parameters/SearchTags.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SearchFetchResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Fetch search results
+  tags:
+    - Platform

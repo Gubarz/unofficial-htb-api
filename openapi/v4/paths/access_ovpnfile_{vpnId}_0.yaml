@@ -1,0 +1,15 @@
+get:
+  description: >-
+    Fetches the UDP OpenVPN configuration file for the specified VPN ID,
+    allowing the user to establish a VPN connection
+  operationId: getAccessOvpnfileVpnIdUDP
+  parameters:
+    - $ref: ../components/parameters/VpnId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/AccessOvpnfileVpnId0Response.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Download UDP VPN config
+  tags:
+    - Connection

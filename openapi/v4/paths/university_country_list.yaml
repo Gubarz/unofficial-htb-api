@@ -1,0 +1,11 @@
+get:
+  description: Univeritiy Country List
+  operationId: getUniversityCountryList
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityCountryListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Univeritiy Country List
+  tags:
+    - Universities

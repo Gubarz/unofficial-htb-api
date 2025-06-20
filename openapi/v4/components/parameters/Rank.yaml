@@ -1,0 +1,9 @@
+description: Rank integer
+explode: true
+in: query
+name: rank[]
+required: false
+schema:
+  items:
+    type: integer
+  type: array

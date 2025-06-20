@@ -1,0 +1,23 @@
+properties:
+  avatar:
+    nullable: true
+    type: string
+  category:
+    nullable: true
+    type: string
+  complete:
+    type: boolean
+  difficulty:
+    type: string
+  difficulty_ratings:
+    $ref: ./DifficultyChart.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    nullable: true
+    type: string
+  type:
+    type: string
+type: object

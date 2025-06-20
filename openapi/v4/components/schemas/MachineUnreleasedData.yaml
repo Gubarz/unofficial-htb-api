@@ -1,0 +1,22 @@
+properties:
+  avatar:
+    type: string
+  coCreators:
+    $ref: ./UserBasicInfoItems.yaml
+  difficulty:
+    type: integer
+  difficulty_text:
+    type: string
+  firstCreator:
+    $ref: ./UserBasicInfoItems.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+  release:
+    type: string
+  retiring:
+    $ref: ./MachineRetiring.yaml
+type: object

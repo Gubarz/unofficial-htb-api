@@ -1,0 +1,6 @@
+description: Schema definition for Home Sps Card
+items:
+  $ref: ./SpsCardItem.yaml
+  nullable: true
+title: Home SPS Card
+type: array

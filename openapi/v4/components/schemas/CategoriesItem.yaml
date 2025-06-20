@@ -1,0 +1,13 @@
+properties:
+  icon:
+    example: >-
+      https://labs.hackthebox.com/storage/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
+    nullable: true
+    type: string
+  id:
+    example: 21
+    type: integer
+  name:
+    example: AI - ML
+    type: string
+type: object

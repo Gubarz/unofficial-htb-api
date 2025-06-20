@@ -1,0 +1,9 @@
+description: Omit for both
+in: query
+name: show_completed
+required: false
+schema:
+  enum:
+    - incomplete
+    - complete
+  type: string

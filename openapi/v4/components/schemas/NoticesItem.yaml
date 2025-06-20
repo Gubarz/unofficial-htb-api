@@ -1,0 +1,14 @@
+properties:
+  dismissible:
+    type: boolean
+  id:
+    type: integer
+  message:
+    type: string
+  type:
+    type: string
+  url:
+    type: string
+  url_exact:
+    type: boolean
+type: object

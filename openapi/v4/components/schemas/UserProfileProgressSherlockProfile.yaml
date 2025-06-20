@@ -1,0 +1,10 @@
+properties:
+  challenge_categories:
+    $ref: ./UserProfileProgressSherlockProfileChallengeCategoriesItems.yaml
+  challenge_difficulties:
+    $ref: ./UserProfileProgressSherlockProfileChallengeDifficultiesItems.yaml
+  challenge_owns:
+    $ref: ./UserProfileProgressSherlockProfileChallengeOwns.yaml
+  solved_tasks:
+    type: number
+type: object

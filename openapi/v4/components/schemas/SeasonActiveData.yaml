@@ -1,0 +1,70 @@
+properties:
+  active:
+    type: boolean
+  avatar:
+    type: string
+  cocreators:
+    $ref: ./UserBasicInfoItemsWithRespect.yaml
+  creator:
+    $ref: ./UserBasicInfoItemsWithRespect.yaml
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  info_status:
+    nullable: true
+    type: string
+  ip:
+    example: 10.10.10.10
+    format: ipv4
+    nullable: true
+    type: string
+  is_owned_root:
+    type: boolean
+  is_owned_user:
+    type: boolean
+  is_released:
+    type: boolean
+  is_root_blood:
+    type: boolean
+  is_user_blood:
+    type: boolean
+  maker_id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+  play_info:
+    $ref: ./PlayInfo.yaml
+  points:
+    type: integer
+  poweroff:
+    type: integer
+  production:
+    type: boolean
+  release:
+    format: date-time
+    type: string
+  release_time:
+    format: date-time
+    type: string
+  retired:
+    type: boolean
+  root_blood_points:
+    type: integer
+  root_own_points:
+    type: integer
+  root_points:
+    type: integer
+  static_points:
+    type: integer
+  unknown:
+    type: boolean
+  user_blood_points:
+    type: integer
+  user_own_points:
+    type: integer
+  user_points:
+    type: integer
+type: object

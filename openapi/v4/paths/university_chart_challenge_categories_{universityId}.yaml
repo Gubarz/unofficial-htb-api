@@ -1,0 +1,13 @@
+get:
+  description: Get Univeritiy Challenge Chart Categories
+  operationId: getUniversityChartChallengeCategories
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityChartChallengeCategoriesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: University Challenge Categories Chart
+  tags:
+    - Universities

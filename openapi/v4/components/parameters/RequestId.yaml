@@ -1,0 +1,6 @@
+description: Request ID
+in: path
+name: requestId
+required: true
+schema:
+  type: integer

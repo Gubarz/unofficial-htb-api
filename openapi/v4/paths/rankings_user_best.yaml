@@ -1,0 +1,13 @@
+get:
+  description: Get /rankings/user/best
+  operationId: getRankingsUserBest
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsUserBestResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Rankings User Best
+  tags:
+    - Ranking

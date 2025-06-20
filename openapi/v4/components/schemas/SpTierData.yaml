@@ -1,0 +1,13 @@
+properties:
+  description:
+    example: You need to walk before you can run
+    type: string
+  id:
+    example: 2
+    type: integer
+  machines:
+    $ref: ./SpTierMachineItems.yaml
+  name:
+    example: Tier 1
+    type: string
+type: object

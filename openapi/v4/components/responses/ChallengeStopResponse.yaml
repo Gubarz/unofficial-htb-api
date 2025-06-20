@@ -1,0 +1,12 @@
+content:
+  application/json:
+    example:
+      message: Container Stopped
+    schema:
+      $ref: ../schemas/Messagesuccess.yaml
+description: Challenge Stop Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

@@ -1,0 +1,5 @@
+additionalProperties:
+  $ref: ./HomeProgresTracksCardItem.yaml
+description: Schema definition for Home Tracks Card
+title: Home Tracks Card
+type: object

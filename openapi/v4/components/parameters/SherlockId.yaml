@@ -1,0 +1,6 @@
+description: ID of the Sherlock
+in: path
+name: sherlockId
+required: true
+schema:
+  type: integer

@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /machine/walkthroughs/{machine id}
+  operationId: getMachineWalkthroughs
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineWalkthroughsMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: list Walkthroughs'
+  tags:
+    - Machines

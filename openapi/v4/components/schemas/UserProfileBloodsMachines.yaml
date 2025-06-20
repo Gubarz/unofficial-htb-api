@@ -1,0 +1,20 @@
+properties:
+  avatar:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+  root_blood:
+    type: boolean
+  root_blood_difference:
+    type: string
+  user_blood:
+    type: boolean
+  user_blood_difference:
+    type: string
+type: object

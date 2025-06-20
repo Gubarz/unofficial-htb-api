@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /prolab/{prolab id}/info
+  operationId: getProlabInfo
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabinfoResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Pro Lab Info
+  tags:
+    - Prolabs

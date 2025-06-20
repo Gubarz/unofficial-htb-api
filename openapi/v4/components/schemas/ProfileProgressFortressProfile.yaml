@@ -1,0 +1,4 @@
+properties:
+  fortresses:
+    $ref: ./ProfileProgressProfileFortresses.yaml
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Retrieve flags for a specific fortress.
+  operationId: getFortressFlags
+  parameters:
+    - $ref: ../components/parameters/FortressId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProductFlagsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get list of flags
+  tags:
+    - Fortresses

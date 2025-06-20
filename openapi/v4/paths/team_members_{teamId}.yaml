@@ -1,0 +1,15 @@
+get:
+  description: >-
+    list the members of a team (both active and pending / invited), given its
+    ID.
+  operationId: getTeamMembers
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamMembersTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list team members
+  tags:
+    - Team

@@ -1,0 +1,13 @@
+get:
+  description: Retrieve user followers for a specific season.
+  operationId: getSeasonUserFollowers
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonUserFollowersSeasonIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get top season users and top ranked followers for a user
+  tags:
+    - Season

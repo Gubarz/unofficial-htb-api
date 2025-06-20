@@ -1,0 +1,13 @@
+description: Schema definition for Own Error Response
+properties:
+  message:
+    example: Incorrect flag.
+    type: string
+  status:
+    example: 400
+    type: integer
+required:
+  - message
+  - status
+title: Own Error Response
+type: object

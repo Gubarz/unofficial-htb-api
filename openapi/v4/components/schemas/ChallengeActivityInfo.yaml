@@ -1,0 +1,4 @@
+properties:
+  activity:
+    $ref: ./ChallengActivityActivities.yaml
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Retrieve tasks for a specific Sherlock instance.
+  operationId: getSherlockTasks
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksSherlockIdTasksResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Get tasks for Sherlock by ID
+  tags:
+    - Sherlocks

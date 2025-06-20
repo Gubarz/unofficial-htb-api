@@ -1,0 +1,8 @@
+description: Schema definition for Rankings Users Response
+properties:
+  data:
+    $ref: ./RankingUserDataItems.yaml
+  status:
+    type: boolean
+title: Rankings Users Response
+type: object

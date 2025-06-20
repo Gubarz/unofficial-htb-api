@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./ConnectionsServersProlabData.yaml
+  status:
+    type: boolean
+type: object

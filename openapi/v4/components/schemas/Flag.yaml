@@ -1,0 +1,16 @@
+description: Schema definition for Flag
+properties:
+  id:
+    example: 1
+    type: integer
+  owned:
+    example: false
+    type: boolean
+  points:
+    example: 5
+    type: integer
+  title:
+    example: Connect
+    type: string
+title: Flag
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /rankings/country/best
+  operationId: getRankingsCountryBest
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsCountryBestResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Country:  (Bearer''s) - Best for Period'
+  tags:
+    - Ranking

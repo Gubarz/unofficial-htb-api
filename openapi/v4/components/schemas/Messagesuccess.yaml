@@ -1,0 +1,9 @@
+description: Schema definition for Message
+properties:
+  message:
+    description: Return message and success
+    type: string
+  success:
+    type: boolean
+title: Message
+type: object

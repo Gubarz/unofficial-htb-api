@@ -1,0 +1,6 @@
+description: Schema definition for Home Recommended Repsonse
+properties:
+  data:
+    $ref: ./HomeRecommendedData.yaml
+title: Home Recommended Repsonse
+type: object

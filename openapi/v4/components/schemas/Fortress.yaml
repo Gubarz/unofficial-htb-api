@@ -1,0 +1,26 @@
+description: Schema definition for Fortress
+properties:
+  cover_image_url:
+    example: >-
+      https://labs.hackthebox.com/storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_cover_small.png
+    format: uri
+    type: string
+  id:
+    example: 1
+    type: integer
+  image:
+    example: >-
+      https://labs.hackthebox.com/storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
+    format: uri
+    type: string
+  name:
+    example: Jet
+    type: string
+  new:
+    example: false
+    type: boolean
+  number_of_flags:
+    example: 11
+    type: integer
+title: Fortress
+type: object

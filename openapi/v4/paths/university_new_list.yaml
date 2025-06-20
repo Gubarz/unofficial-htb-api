@@ -1,0 +1,11 @@
+get:
+  description: Univeritiy New List
+  operationId: getUniversityNewList
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityNewListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Univeritiy New List
+  tags:
+    - Universities

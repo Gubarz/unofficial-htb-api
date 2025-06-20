@@ -1,0 +1,10 @@
+description: Schema definition for Blood Info
+properties:
+  blood_difference:
+    type: string
+  created_at:
+    type: string
+  user:
+    $ref: ./UserBasicInfo.yaml
+title: Blood Info
+type: object

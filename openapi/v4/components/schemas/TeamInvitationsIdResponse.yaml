@@ -1,0 +1,13 @@
+description: Schema definition for Team Invitations Id Response
+properties:
+  exception:
+    nullable: true
+    type: string
+  headers:
+    type: object
+  original:
+    items:
+      $ref: ./UserEntry.yaml
+    type: array
+title: Team Invitations Id Response
+type: object

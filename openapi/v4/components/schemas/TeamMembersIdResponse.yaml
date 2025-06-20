@@ -1,0 +1,5 @@
+description: Schema definition for Team Members Id Response
+items:
+  $ref: ./TeamMember.yaml
+title: Team Members Id Response
+type: array

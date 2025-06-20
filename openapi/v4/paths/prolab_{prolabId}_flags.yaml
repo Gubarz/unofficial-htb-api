@@ -1,0 +1,13 @@
+get:
+  description: Retrieve flags for a specific prolab.
+  operationId: getProlabFlags
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProductFlagsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get list of flags
+  tags:
+    - Prolabs

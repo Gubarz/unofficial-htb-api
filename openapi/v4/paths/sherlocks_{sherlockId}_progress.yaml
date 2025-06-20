@@ -1,0 +1,13 @@
+get:
+  description: Retrieve progress information for a specific Sherlock instance.
+  operationId: getSherlockProgress
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksSherlockIdProgressResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Get progress of Sherlock item by ID
+  tags:
+    - Sherlocks

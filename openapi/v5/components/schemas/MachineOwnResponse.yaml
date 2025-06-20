@@ -1,0 +1,64 @@
+description: Schema definition for Machine Own Response
+properties:
+  blood_points:
+    example: 0
+    type: integer
+  blood_taken:
+    example: 0
+    type: integer
+  id:
+    example: 665
+    type: integer
+  is_starting_point:
+    example: false
+    type: boolean
+  league_rank:
+    $ref: ./RankUpdate.yaml
+    nullable: true
+    type: object
+  machine_completed:
+    example: false
+    type: boolean
+  machine_pwned:
+    example: false
+    type: boolean
+  machine_state:
+    example: open
+    type: string
+  message:
+    example: You pwned the User Flag!
+    type: string
+  own_type:
+    enum:
+      - Root
+      - User
+    example: User
+    type: string
+  points:
+    example: 50
+    type: integer
+  status:
+    example: 200
+    type: integer
+  success:
+    example: true
+    type: boolean
+  user_rank:
+    $ref: ./RankUpdate.yaml
+    nullable: true
+    type: object
+required:
+  - message
+  - status
+  - success
+  - own_type
+  - id
+  - points
+  - machine_completed
+  - machine_pwned
+  - machine_state
+  - is_starting_point
+  - blood_taken
+  - blood_points
+title: Own Response
+type: object

@@ -1,0 +1,11 @@
+get:
+  description: Univeritiy Top List
+  operationId: getUniversityTopList
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityTopListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Univeritiy Top List
+  tags:
+    - Universities

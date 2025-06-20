@@ -1,0 +1,11 @@
+get:
+  description: Retrieve main navigation details.
+  operationId: getNavigationMain
+  responses:
+    '200':
+      $ref: ../components/responses/NavigationMainResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get platform navigation details
+  tags:
+    - Platform

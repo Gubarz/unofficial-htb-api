@@ -1,0 +1,13 @@
+description: Schema definition for User Availability
+properties:
+  available:
+    example: true
+    type: boolean
+  code:
+    example: 0
+    type: integer
+  message:
+    nullable: true
+    type: string
+title: User Availability
+type: object

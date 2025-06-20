@@ -1,0 +1,15 @@
+get:
+  description: Season Top Leaderboard
+  operationId: getSeasonLeaderboardTop
+  parameters:
+    - $ref: ../components/parameters/Leaderboard.yaml
+    - $ref: ../components/parameters/PeriodQuery.yaml
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonPlatersLeaderboardTopResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Season Leaderboard Top
+  tags:
+    - Season

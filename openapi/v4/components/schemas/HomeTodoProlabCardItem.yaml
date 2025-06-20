@@ -1,0 +1,19 @@
+properties:
+  avatar:
+    nullable: true
+    type: string
+  difficulty:
+    type: string
+  id:
+    type: integer
+  identifier:
+    type: string
+  name:
+    type: string
+  points:
+    type: string
+  progress:
+    type: number
+  url:
+    type: string
+type: object

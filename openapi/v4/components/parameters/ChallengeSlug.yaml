@@ -1,0 +1,6 @@
+description: ID or Name of the product
+in: path
+name: challengeSlug
+required: true
+schema:
+  type: string

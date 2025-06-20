@@ -1,0 +1,16 @@
+description: Filter by os
+explode: true
+in: query
+name: os
+required: false
+schema:
+  items:
+    enum:
+      - linux
+      - windows
+      - freebsd
+      - openbsd
+      - other
+    type: string
+  type: array
+style: form

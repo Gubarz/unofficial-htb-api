@@ -1,0 +1,14 @@
+get:
+  description: Retrieves information related to /user/profile/graph/{period}/{user id}
+  operationId: getUserProfileGraph
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/PeriodPath.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProfileGraphPeriodUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'User profile: Achievement Graph'
+  tags:
+    - User

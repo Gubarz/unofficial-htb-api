@@ -1,0 +1,10 @@
+description: Schema definition for Own Machine Error Response
+properties:
+  message:
+    example: Incorrect flag!
+    type: string
+  status:
+    example: 400
+    type: integer
+title: Own Machine Error Response
+type: object

@@ -1,0 +1,20 @@
+description: Schema definition for Company
+properties:
+  description:
+    example: <p>Jet.com is currently looking for Security Engineers in the USA.</p>...
+    format: html
+    type: string
+  id:
+    example: 3
+    type: integer
+  image:
+    example: https://labs.hackthebox.com/storage/companies/3.png
+    type: string
+  name:
+    example: Jet.com
+    type: string
+  url:
+    example: https://jet.com/careers
+    type: string
+title: Company
+type: object

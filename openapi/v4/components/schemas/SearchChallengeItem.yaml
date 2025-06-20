@@ -1,0 +1,14 @@
+properties:
+  challenge_category_id:
+    example: 10
+    type: integer
+  description:
+    example: Our agents got caught during a mission...
+    type: string
+  id:
+    example: 217
+    type: integer
+  value:
+    example: Walkie Hackie
+    type: string
+type: object

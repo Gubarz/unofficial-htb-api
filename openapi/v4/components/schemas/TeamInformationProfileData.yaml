@@ -1,0 +1,53 @@
+properties:
+  active:
+    type: integer
+  captain:
+    $ref: ./UserIdNameThumb.yaml
+  country_code:
+    example: NL
+    type: string
+  country_name:
+    example: Netherlands
+    type: string
+  cover_image_url:
+    format: uri
+    nullable: true
+    type: string
+  description:
+    example: Open for anyone who is polite, honest, nice, and willing to help others.
+    type: string
+  discord:
+    nullable: true
+    type: string
+  facebook:
+    nullable: true
+    type: string
+  has_auto_generated_logo:
+    type: integer
+  id:
+    example: 2102
+    type: integer
+  is_respected:
+    example: true
+    type: boolean
+  join_request_sent:
+    type: boolean
+  logo_url:
+    nullable: true
+    type: string
+  motto:
+    example: Hacking for the fun of it! Learning it as a bonus
+    nullable: true
+    type: string
+  name:
+    example: CommandlineKings
+    type: string
+  points:
+    example: 1839
+    type: integer
+  twitter:
+    nullable: true
+    type: string
+  url:
+    type: string
+type: object

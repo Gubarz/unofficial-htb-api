@@ -1,0 +1,7 @@
+description: Schema definition for Message
+properties:
+  message:
+    description: Return message
+    type: string
+title: Message
+type: object

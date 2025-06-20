@@ -1,0 +1,13 @@
+get:
+  description: Retrieve challenge category charts for a team.
+  operationId: getTeamChartChallengeCategories
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamChartChallengeTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Challenge Categories by Team ID
+  tags:
+    - Team

@@ -1,0 +1,17 @@
+description: Schema definition for Maker
+nullable: true
+properties:
+  avatar:
+    nullable: true
+    type: string
+  id:
+    nullable: true
+    type: integer
+  isRespected:
+    nullable: true
+    type: boolean
+  name:
+    nullable: true
+    type: string
+title: Maker
+type: object

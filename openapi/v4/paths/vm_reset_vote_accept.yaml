@@ -1,0 +1,13 @@
+post:
+  description: Reset the virtual machine.
+  operationId: postVMResetVoteAccept
+  requestBody:
+    $ref: ../components/requestBodies/VirtualMachineRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/VMResponse.yaml
+    '400':
+      $ref: ../components/responses/VmReset400.yaml
+  summary: Accept vote to Reset a machine
+  tags:
+    - VM

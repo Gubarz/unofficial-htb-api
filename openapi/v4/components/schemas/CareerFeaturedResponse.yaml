@@ -1,0 +1,6 @@
+description: Schema definition for Career Featured Response
+properties:
+  data:
+    $ref: ./CareerFeaturedData.yaml
+title: Career Featured Response
+type: object

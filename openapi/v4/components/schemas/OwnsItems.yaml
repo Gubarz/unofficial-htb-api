@@ -1,0 +1,30 @@
+properties:
+  challenge:
+    $ref: ./ChallengeOwns.yaml
+  challenge_id:
+    type: integer
+  created_at:
+    type: string
+  deleted_at: {}
+  deleted_index_fix:
+    type: integer
+  id:
+    type: integer
+  machiine:
+    $ref: ./MachineOwnsTabloid.yaml
+  machine_flag_id:
+    type: integer
+  machine_id:
+    type: integer
+  sp_flag:
+    type: integer
+  sync_source: {}
+  updated_at:
+    type: string
+  user:
+    $ref: ./UserOwnsUser.yaml
+  user_id:
+    type: integer
+  vpn_server_id:
+    type: integer
+type: object

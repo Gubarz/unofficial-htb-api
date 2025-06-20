@@ -1,0 +1,9 @@
+description: Schema definition for Task Flag Response
+properties:
+  message:
+    example: Task flag owned!
+    type: string
+  user_task:
+    $ref: ./UserTask.yaml
+title: Task Flag Response
+type: object

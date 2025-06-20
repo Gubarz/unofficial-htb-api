@@ -1,0 +1,14 @@
+get:
+  description: Get /rankings/university/ranking_bracket/{ranking_bracket-id}
+  operationId: getRankingsUniversityRankingBracketId
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: >-
+        ../components/responses/RankingsUniversityRankingBracketByIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Ranking Univeritiy Brakcet By Id
+  tags:
+    - Ranking

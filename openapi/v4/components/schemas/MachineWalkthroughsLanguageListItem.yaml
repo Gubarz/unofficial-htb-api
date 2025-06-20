@@ -1,0 +1,8 @@
+properties:
+  full_name:
+    type: string
+  id:
+    type: integer
+  short_name:
+    type: string
+type: object

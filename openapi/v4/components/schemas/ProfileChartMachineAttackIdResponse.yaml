@@ -1,0 +1,6 @@
+description: Schema definition for Profile Chart Machine Attack Id Response
+properties:
+  profile:
+    $ref: ./ProfileChartMachineAttackProfile.yaml
+title: Profile Chart Machine Attack Id Response
+type: object

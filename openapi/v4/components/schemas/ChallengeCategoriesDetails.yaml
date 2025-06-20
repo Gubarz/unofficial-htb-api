@@ -1,0 +1,8 @@
+description: Schema definition for Challenge Categories Details
+properties:
+  data:
+    $ref: ./ChallengeCategoriesData.yaml
+  status:
+    example: true
+    type: boolean
+type: object

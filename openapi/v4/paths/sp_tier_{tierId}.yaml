@@ -1,0 +1,13 @@
+get:
+  description: Retrieve details of SP Tier.
+  operationId: getSPTier
+  parameters:
+    - $ref: ../components/parameters/TierId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SpTierResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Starting Point Tier Info
+  tags:
+    - Starting Point

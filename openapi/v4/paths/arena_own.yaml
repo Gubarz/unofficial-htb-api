@@ -1,0 +1,15 @@
+post:
+  description: Submit Seasonal Flag - MUST USE THIS TO GET POINTS FOR SEASON
+  operationId: postArenaOwn
+  requestBody:
+    $ref: ../components/requestBodies/ArenaOwnRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MultiOwnResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Error.yaml
+    '500':
+      $ref: ../components/responses/ArenaOwnErrorResponse.yaml
+  summary: 'IMPORTANT: MUST USE FOR ACTIVE SEASON POINTS'
+  tags:
+    - Season

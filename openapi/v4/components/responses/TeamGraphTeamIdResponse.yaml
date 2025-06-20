@@ -1,0 +1,10 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/TeamGraphIdResponse.yaml
+description: Team Graph Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

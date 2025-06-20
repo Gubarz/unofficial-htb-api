@@ -1,0 +1,11 @@
+get:
+  description: Returns a list of profile information related to the user's career settings
+  operationId: getCareerProfile
+  responses:
+    '200':
+      $ref: ../components/responses/CareerProfileResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Career profile
+  tags:
+    - Career

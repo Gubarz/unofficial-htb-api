@@ -1,0 +1,5 @@
+description: Schema definition for User Tracks Response
+items:
+  $ref: ./UserTrackItem.yaml
+title: User Tracks Response
+type: array

@@ -1,0 +1,14 @@
+get:
+  description: Retrieve a list of all universities.
+  operationId: getUniversityAllList
+  parameters:
+    - $ref: ../components/parameters/Search.yaml
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityAllListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Retrieve information profile for teams
+  tags:
+    - Universities

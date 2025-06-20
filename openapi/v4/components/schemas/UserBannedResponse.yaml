@@ -1,0 +1,6 @@
+description: Schema definition for User Banned Response
+properties:
+  banned:
+    type: boolean
+title: User Banned Response
+type: object

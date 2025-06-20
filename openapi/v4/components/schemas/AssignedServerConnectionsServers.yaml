@@ -1,0 +1,19 @@
+description: Schema definition for Assigned Server
+nullable: true
+properties:
+  current_clients:
+    example: 85
+    type: integer
+  friendly_name:
+    example: US VIP+ 1
+    type: string
+  id:
+    example: 289
+    type: integer
+  location:
+    example: US
+    type: string
+  location_type_friendly:
+    type: string
+title: Assigned Server
+type: object

@@ -1,0 +1,15 @@
+description: Filter by difficulty level
+explode: true
+in: query
+name: difficulty
+required: false
+schema:
+  items:
+    enum:
+      - easy
+      - medium
+      - hard
+      - insane
+    type: string
+  type: array
+style: form

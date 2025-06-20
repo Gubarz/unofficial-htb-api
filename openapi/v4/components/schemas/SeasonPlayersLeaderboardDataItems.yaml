@@ -1,0 +1,3 @@
+items:
+  $ref: ./SeasonPlayersLeaderboardDataItem.yaml
+type: array

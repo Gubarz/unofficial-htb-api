@@ -1,0 +1,20 @@
+description: Schema definition for Announcement
+properties:
+  created_at:
+    example: '2023-12-12T15:55:50.000000Z'
+    format: date-time
+    type: string
+  id:
+    example: 113
+    type: integer
+  title:
+    example: >-
+      Hack The Box named a global leader in Cybersecurity Skills and Training
+      Platforms.
+    type: string
+  updated_at:
+    example: '2023-12-12T15:55:50.000000Z'
+    format: date-time
+    type: string
+title: Announcement
+type: object

@@ -1,0 +1,54 @@
+description: Schema definition for Prolab
+properties:
+  cover_img_url:
+    example: null
+    nullable: true
+    type: string
+  designated_category:
+    example: Red team_ Operator
+    type: string
+  id:
+    example: 1
+    type: integer
+  identifier:
+    type: string
+  lab_servers_count:
+    example: 6
+    type: integer
+  level:
+    example: 1
+    type: integer
+  mini:
+    type: boolean
+  name:
+    example: RastaLabs
+    type: string
+  new:
+    example: false
+    type: boolean
+  ownership:
+    example: 0
+    type: number
+  pro_flags_count:
+    example: 22
+    type: integer
+  pro_machines_count:
+    example: 15
+    type: integer
+  release_at:
+    example: '2018-01-02T06:00:00.000000Z'
+    format: date-time
+    type: string
+  skill_level:
+    example: INTERMEDIATE
+    type: string
+  state:
+    type: string
+  team:
+    example: red
+    type: string
+  user_eligible_for_certificate:
+    example: false
+    type: boolean
+title: Prolab
+type: object

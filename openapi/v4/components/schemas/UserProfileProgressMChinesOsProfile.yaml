@@ -1,0 +1,4 @@
+properties:
+  operating_systems:
+    $ref: ./OperatyingSystemsItems.yaml
+type: object

@@ -1,0 +1,15 @@
+get:
+  description: >-
+    lists the best global rank, in set intervals for a given period (e.g. 1Y,
+    6M, 3M, 1M, 1W). Omit team_id for Bearers team.
+  operationId: getRankingsTeamOverview
+  parameters:
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsTeamOverviewResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Global Points History for Bearer's team
+  tags:
+    - Ranking

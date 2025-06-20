@@ -1,0 +1,13 @@
+description: Schema definition for Challenge Recommended Response
+properties:
+  card1:
+    $ref: ./RecommendedCard.yaml
+  card2:
+    $ref: ./RecommendedCard.yaml
+  state:
+    $ref: ./StringArray.yaml
+    example:
+      - coming
+      - retiring
+title: Challenge Recommended Response
+type: object

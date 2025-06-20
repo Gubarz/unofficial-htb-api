@@ -1,0 +1,7 @@
+description: Get items after a date in the past
+in: query
+name: after_date
+required: false
+schema:
+  format: date
+  type: string

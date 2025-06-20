@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /prolab/{prolab id}/machines
+  operationId: getProlabMachines
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabmachinesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Pro Lab machine list
+  tags:
+    - Prolabs

@@ -1,0 +1,7 @@
+properties:
+  assigned:
+    nullable: true
+    type: object
+  options:
+    $ref: ./Options.yaml
+type: object

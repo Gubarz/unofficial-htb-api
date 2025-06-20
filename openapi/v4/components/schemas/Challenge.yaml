@@ -1,0 +1,151 @@
+description: Schema definition for Challenge
+properties:
+  authUserHasReviewed:
+    example: false
+    type: boolean
+  reviews_count:
+    type: integer
+  play_info:
+    $ref: ./PlayInfoAlt.yaml
+  docker_status:
+    nullable: true
+    type: string
+  show_go_vip:
+    type: boolean
+  has_changelog:
+    type: boolean
+  authUserSolve:
+    example: false
+    type: boolean
+  authUserSolveTime:
+    example: null
+    nullable: true
+    type: string
+  can_access_walkthough:
+    type: boolean
+  category_name:
+    example: Crypto
+    type: string
+  creator2_avatar:
+    example: null
+    nullable: true
+    type: string
+  creator2_id:
+    example: null
+    nullable: true
+    type: integer
+  creator2_name:
+    example: null
+    nullable: true
+    type: string
+  creator_avatar:
+    example: /storage/avatars/2a956277f4de5800bf659c63cbbd140b.png
+    type: string
+  creator_id:
+    example: 185587
+    type: integer
+  creator_name:
+    example: DaysOfLife
+    type: string
+  description:
+    example: >-
+      The more the merrier, right? We decided to mash two of the best
+      cryptosytems together for the best product...
+    type: string
+  difficulty:
+    example: Medium
+    type: string
+  difficulty_chart:
+    $ref: ./DifficultyChart.yaml
+  dislikeByAuthUser:
+    example: false
+    type: boolean
+  dislikes:
+    example: 0
+    type: integer
+  docker:
+    example: true
+    nullable: true
+    type: boolean
+  docker_ip:
+    example: null
+    nullable: true
+    type: string
+  docker_ports:
+    example: null
+    nullable: true
+    type: string
+  download:
+    example: true
+    type: boolean
+  first_blood_time:
+    example: 0H 39M 49S
+    type: string
+  first_blood_user:
+    example: sampriti
+    type: string
+  first_blood_user_avatar:
+    example: /storage/avatars/03d6176149e9fe81c83590dd4e7a5225.png
+    type: string
+  first_blood_user_id:
+    example: 836
+    type: integer
+  id:
+    example: 206
+    type: integer
+  isRespected:
+    example: false
+    type: boolean
+  isRespected2:
+    example: null
+    nullable: true
+    type: boolean
+  isTodo:
+    example: false
+    type: boolean
+  likeByAuthUser:
+    example: false
+    type: boolean
+  likes:
+    example: 0
+    type: integer
+  name:
+    example: Composition
+    type: string
+  play_methods:
+    $ref: ./StringArray.yaml
+  points:
+    type: integer
+  recommended:
+    example: 0
+    type: integer
+  release_date:
+    example: '2021-04-02T20:00:00.000000Z'
+    format: date-time
+    type: string
+  released:
+    example: 1
+    type: integer
+  retired:
+    example: true
+    type: boolean
+  sha256:
+    example: b3edd221b1ca7ae93673ddcbdfe5dbe2109998db2865f0e1b8ec5cc9fac56492
+    type: string
+  solves:
+    example: 704
+    type: integer
+  stars:
+    example: 4.8
+    format: float
+    type: number
+  state:
+    example: retired
+    type: string
+  tags:
+    $ref: ./StringArray.yaml
+  user_can_review:
+    example: true
+    type: boolean
+title: Challenge
+type: object

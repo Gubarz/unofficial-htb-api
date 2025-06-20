@@ -1,0 +1,18 @@
+post:
+  description: Submit a flag for a specific task in a Sherlock instance.
+  operationId: postSherlockTasksFlag
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+    - $ref: ../components/parameters/TaskId.yaml
+  requestBody:
+    $ref: ../components/requestBodies/SherlocksTasksFlagRequest.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/SherlocksSherlockIdTasksTaskIdFlag201.yaml
+    '400':
+      $ref: ../components/responses/SherlocksSherlockIdTasksTaskIdFlag400.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Submit flag for a specific Sherlock task
+  tags:
+    - Sherlocks

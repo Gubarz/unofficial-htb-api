@@ -1,0 +1,26 @@
+description: Academy Module Item
+properties:
+  aggregates:
+    $ref: ./StringArray.yaml
+  avatar:
+    example: https://academy.hackthebox.com/storage/modules/19/avatar.png
+    type: string
+  difficulty:
+    $ref: ./AcademyDifficulty.yaml
+  id:
+    example: 19
+    type: integer
+  logo:
+    example: https://academy.hackthebox.com/storage/modules/19/avatar.png
+    type: string
+  name:
+    example: Network Enumeration with Nmap
+    type: string
+  tier:
+    $ref: ./AcademyTiers.yaml
+  url:
+    example: >-
+      https://academy.hackthebox.com/course/preview/network-enumeration-with-nmap
+    type: string
+title: Academy Module
+type: object

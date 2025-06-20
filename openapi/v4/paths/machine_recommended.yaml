@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /machine/recommended
+  operationId: getMachineRecommended
+  responses:
+    '200':
+      $ref: ../components/responses/MachineRecommendedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get recommended machines
+  tags:
+    - Machines

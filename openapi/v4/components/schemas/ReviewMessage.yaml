@@ -1,0 +1,5 @@
+description: Schema definition for Review Message
+items:
+  $ref: ./ReviewMessageItem.yaml
+title: Review Message
+type: array

@@ -1,0 +1,5 @@
+description: Schema definition for Sherlock Progress
+properties:
+  data:
+    $ref: ./SherlockProgressData.yaml
+type: object

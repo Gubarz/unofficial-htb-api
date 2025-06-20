@@ -1,0 +1,18 @@
+properties:
+  difficulty:
+    type: string
+  id:
+    type: integer
+  machine_avatar:
+    type: string
+  name:
+    type: string
+  os:
+    type: string
+  rating:
+    type: string
+  system_owns:
+    type: integer
+  user_owns:
+    type: integer
+type: object

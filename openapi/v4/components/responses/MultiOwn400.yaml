@@ -1,0 +1,16 @@
+content:
+  application/json:
+    examples:
+      invalid_flag:
+        summary: Incorrect flag submission
+        value:
+          message: wrong flag
+          status: 0
+    schema:
+      $ref: ../schemas/OwnMachineErrorResponse.yaml
+description: Multi Own Bad Request
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

@@ -1,0 +1,15 @@
+post:
+  description: Terminate a virtual machine.
+  operationId: postVMTerminate
+  requestBody:
+    $ref: ../components/requestBodies/VirtualMachineRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/VMResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+    '500':
+      $ref: ../components/responses/GenericError5xx.yaml
+  summary: Terminate a machine / SP
+  tags:
+    - VM

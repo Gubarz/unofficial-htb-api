@@ -1,0 +1,12 @@
+properties:
+  filename:
+    type: string
+  sha256:
+    type: string
+  url:
+    type: string
+  video_url:
+    example: https://www.youtube.com/watch?v=bv08UcIL1po
+    type: string
+    nullable: true
+type: object

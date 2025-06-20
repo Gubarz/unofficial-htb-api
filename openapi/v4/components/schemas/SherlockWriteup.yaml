@@ -1,0 +1,5 @@
+description: Schema definition for Sherlock Writeup
+properties:
+  data:
+    $ref: ./WriteupData.yaml
+type: object

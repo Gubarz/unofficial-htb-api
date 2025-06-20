@@ -1,0 +1,13 @@
+get:
+  description: >-
+    Provides information about a unreleased challenge along with a challenge
+    that is about to retire
+  operationId: getChallengeRecommended
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeRecommendedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Challenge Recommendation Cards
+  tags:
+    - Challenges

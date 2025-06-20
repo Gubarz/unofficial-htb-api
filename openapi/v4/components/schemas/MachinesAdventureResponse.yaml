@@ -1,0 +1,4 @@
+properties:
+  data:
+    $ref: ./MachinesAdventureItems.yaml
+type: object

@@ -1,0 +1,8 @@
+properties:
+  points:
+    $ref: ./IntArray.yaml
+  rank:
+    $ref: ./IntArray.yaml
+  respect:
+    $ref: ./IntArray.yaml
+type: object

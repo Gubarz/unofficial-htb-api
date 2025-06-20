@@ -1,0 +1,6 @@
+properties:
+  new_today:
+    type: integer
+  total_job_offers:
+    type: integer
+type: object

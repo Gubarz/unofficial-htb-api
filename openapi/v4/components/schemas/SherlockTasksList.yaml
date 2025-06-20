@@ -1,0 +1,5 @@
+description: Schema definition for Sherlock Tasks List
+properties:
+  data:
+    $ref: ./SherlockTaskArray.yaml
+type: object

@@ -1,0 +1,16 @@
+description: Schema definition for Own Request
+properties:
+  difficulty:
+    example: 50
+    type: integer
+  flag:
+    example: 0cc175b9c0f1b6a831c399e269772661
+    type: string
+  id:
+    example: 597
+    type: integer
+required:
+  - id
+  - flag
+title: Own Request
+type: object

@@ -1,0 +1,15 @@
+get:
+  description: >-
+    list the pending team members who have requested to join a team, or who were
+    requested by the team captain, but have not yet accepted / been approved.
+  operationId: getTeamInvitations
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamInvitationsTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list team Invitations
+  tags:
+    - Team

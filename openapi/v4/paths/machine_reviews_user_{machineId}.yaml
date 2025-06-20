@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /machine/reviews/user/{machine id}
+  operationId: getMachineReviewsUser
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineReviewsUserMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Bearer's review for machine
+  tags:
+    - Machines

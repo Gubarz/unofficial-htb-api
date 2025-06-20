@@ -1,0 +1,28 @@
+description: Schema definition for Recommended Card Retired
+properties:
+  category_name:
+    example: AI - ML
+    type: string
+  difficulty:
+    example: Medium
+    type: string
+  id:
+    example: 753
+    type: integer
+  name:
+    example: Prometheon
+    type: string
+  release_date:
+    example: '2024-08-09T20:00:00.000000Z'
+    type: string
+  retired:
+    example: true
+    type: boolean
+  state:
+    example: retired
+    type: string
+  url_name:
+    example: prometheon
+    type: string
+title: Recommended Card Retired
+type: object

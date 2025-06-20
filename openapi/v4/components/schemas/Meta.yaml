@@ -1,0 +1,27 @@
+description: Schema definition for Meta
+properties:
+  current_page:
+    example: 1
+    type: integer
+  from:
+    example: 1
+    type: integer
+  last_page:
+    example: 11
+    type: integer
+  links:
+    $ref: ./PaginationLinks.yaml
+  path:
+    example: https://labs.hackthebox.com/api/v4/prolab/1/reviews
+    type: string
+  per_page:
+    example: 15
+    type: integer
+  to:
+    example: 15
+    type: integer
+  total:
+    example: 162
+    type: integer
+title: Meta
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Get Official Writeup
+  operationId: getChallengeWriteupOfficial
+  parameters:
+    - $ref: ../components/parameters/ChallengeId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericPDFResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Official PDF Writeup
+  tags:
+    - Challenges

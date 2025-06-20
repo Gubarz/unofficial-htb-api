@@ -1,0 +1,11 @@
+get:
+  description: Retrieve usage statistics for Pwnbox.
+  operationId: getPwnboxUsage
+  responses:
+    '200':
+      $ref: ../components/responses/PwnboxUsageResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get usage statistics for Pwnbox
+  tags:
+    - PwnBox

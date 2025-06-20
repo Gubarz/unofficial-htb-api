@@ -1,0 +1,14 @@
+properties:
+  challenges:
+    $ref: ./HomeRecommendedChallengeCard.yaml
+  machines:
+    $ref: ./HomeRecommendedMachineCard.yaml
+  prolabs:
+    $ref: ./HomeRecommendedProlabCard.yaml
+  sherlocks:
+    $ref: ./HomeRecommendedSherlocksCard.yaml
+  sps:
+    $ref: ./SpsCard.yaml
+  tracks:
+    $ref: ./HomeRecommendedTracksCard.yaml
+type: object

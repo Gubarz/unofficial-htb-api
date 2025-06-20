@@ -1,0 +1,5 @@
+properties:
+  data:
+    $ref: ./SeasonRewardsData.yaml
+title: Season Rewards Resposne
+type: object

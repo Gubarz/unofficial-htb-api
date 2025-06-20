@@ -1,0 +1,8 @@
+description: Schema definition for Team Graph Id Response
+properties:
+  data:
+    $ref: ./TeamGraphData.yaml
+  status:
+    type: boolean
+title: Team Graph Id Response
+type: object

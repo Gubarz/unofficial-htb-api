@@ -1,0 +1,22 @@
+properties:
+  Binary Analysis:
+    $ref: ./TeamsAttackPathCard.yaml
+  Binary Exploitation:
+    $ref: ./TeamsAttackPathCard.yaml
+  Configuration Analysis:
+    $ref: ./TeamsAttackPathCard.yaml
+  Fuzzing:
+    $ref: ./TeamsAttackPathCard.yaml
+  Impersonation:
+    $ref: ./TeamsAttackPathCard.yaml
+  Packet Capture Analysis:
+    $ref: ./TeamsAttackPathCard.yaml
+  Pivoting:
+    $ref: ./TeamsAttackPathCard.yaml
+  Reconnaissance:
+    $ref: ./TeamsAttackPathCard.yaml
+  User Enumeration:
+    $ref: ./TeamsAttackPathCard.yaml
+  Web Site Structure Discovery:
+    $ref: ./TeamsAttackPathCard.yaml
+type: object

@@ -1,0 +1,9 @@
+description: Schema definition for Prolabs Response
+properties:
+  data:
+    $ref: ./ProlabsData.yaml
+  status:
+    example: true
+    type: boolean
+title: Prolabs Response
+type: object

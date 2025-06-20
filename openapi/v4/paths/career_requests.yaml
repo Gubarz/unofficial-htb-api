@@ -1,0 +1,13 @@
+get:
+  description: Get /career/requests
+  operationId: getCareerRequests
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/CareerRequestsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Career Requests
+  tags:
+    - Career

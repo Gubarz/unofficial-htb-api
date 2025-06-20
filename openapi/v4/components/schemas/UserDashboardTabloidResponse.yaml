@@ -1,0 +1,4 @@
+properties:
+  dashboard_tabloid:
+    $ref: ./DashboardTabloid.yaml
+type: object

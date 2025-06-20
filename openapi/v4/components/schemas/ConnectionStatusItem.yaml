@@ -1,0 +1,12 @@
+properties:
+  connection:
+    $ref: ./Connection.yaml
+  location_type_friendly:
+    type: string
+  server:
+    $ref: ./ConnectionStatusServer.yaml
+  type:
+    type: string
+  connection_type:
+    type: string
+type: object

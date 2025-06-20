@@ -1,0 +1,48 @@
+properties:
+  auth_user_has_reviewed:
+    type: boolean
+  avatar:
+    example: /storage/challenges/cbcb58ac2e496207586df2854b17995f.png
+    type: string
+  category_id:
+    example: 16
+    type: integer
+  category_name:
+    example: Malware Analysis
+    type: string
+  difficulty:
+    example: Insane
+    type: string
+  favorite:
+    type: boolean
+  id:
+    example: 565
+    type: integer
+  isTodo:
+    type: boolean
+  name:
+    example: Safecracker
+    type: string
+  play_methods:
+    $ref: ./StringArray.yaml
+  rating:
+    example: 4.555555555555555
+    type: number
+  rating_count:
+    example: 18
+    type: integer
+  release_at:
+    format: date-time
+    type: string
+  retired:
+    type: boolean
+  show_go_vip:
+    type: boolean
+  state:
+    example: retired_free
+    type: string
+  tags:
+    $ref: ./StringArray.yaml
+  writeup_visible:
+    type: boolean
+type: object

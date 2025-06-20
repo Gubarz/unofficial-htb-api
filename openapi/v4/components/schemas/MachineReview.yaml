@@ -1,0 +1,10 @@
+description: Schema definition for Machine Review
+properties:
+  id:
+    example: 444
+    type: integer
+  reviewed:
+    example: true
+    type: boolean
+title: Machine Review
+type: object

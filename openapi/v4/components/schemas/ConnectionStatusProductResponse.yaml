@@ -1,0 +1,8 @@
+properties:
+  data:
+    $ref: ./ConnectionStatusProductData.yaml
+  status:
+    type: boolean
+  type:
+    type: string
+type: object

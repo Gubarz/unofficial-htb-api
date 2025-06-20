@@ -1,0 +1,34 @@
+description: Schema definition for Recommended Card
+properties:
+  category_name:
+    example: AI - ML
+    type: string
+  difficulty:
+    example: Medium
+    type: string
+  id:
+    example: 753
+    type: integer
+  name:
+    example: Prometheon
+    type: string
+  rating:
+    example: 0
+    type: number
+  release_date:
+    example: '2024-08-09T20:00:00.000000Z'
+    type: string
+  retire_challenge_id:
+    example: 445
+    type: integer
+  retired:
+    example: false
+    type: boolean
+  state:
+    example: unreleased
+    type: string
+  url_name:
+    example: prometheon
+    type: string
+title: Recommended Card
+type: object

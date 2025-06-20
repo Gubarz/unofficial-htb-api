@@ -1,0 +1,11 @@
+get:
+  description: Retrieve notices.
+  operationId: getNotices
+  responses:
+    '200':
+      $ref: ../components/responses/NoticesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get platform notices
+  tags:
+    - Platform

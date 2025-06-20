@@ -1,0 +1,13 @@
+get:
+  description: Univeritiy Activity
+  operationId: getUniversityActivity
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityActivityResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Univeritiy Activity
+  tags:
+    - Universities

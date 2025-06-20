@@ -1,0 +1,15 @@
+properties:
+  career_logo:
+    nullable: true
+    type: string
+  featured:
+    type: boolean
+  id:
+    type: integer
+  job_offers:
+    type: number
+  logo:
+    nullable: true
+    type: string
+  name:
+    type: string

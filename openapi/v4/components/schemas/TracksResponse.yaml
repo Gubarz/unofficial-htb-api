@@ -1,0 +1,5 @@
+description: Schema definition for Tracks Response
+items:
+  $ref: ./TracksItems.yaml
+title: Tracks Response
+type: array

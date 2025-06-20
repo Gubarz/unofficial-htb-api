@@ -1,0 +1,6 @@
+description: Schema definition for Change Logs Response
+properties:
+  changelogs:
+    $ref: ./ChangeLogsItems.yaml
+title: Change Log Response
+type: object

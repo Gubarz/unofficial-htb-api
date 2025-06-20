@@ -1,0 +1,13 @@
+post:
+  description: Submit flag for Challenge
+  operationId: postChallengeOwn
+  requestBody:
+    $ref: ../components/requestBodies/ChallengeOwnRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/OwnResponse.yaml
+    '400':
+      $ref: ../components/responses/MachineOwn400.yaml
+  summary: Submit flag for Challenge
+  tags:
+    - Challenges

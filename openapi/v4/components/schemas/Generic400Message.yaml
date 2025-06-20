@@ -1,0 +1,6 @@
+properties:
+  message:
+    type: string
+  status:
+    type: boolean
+type: object

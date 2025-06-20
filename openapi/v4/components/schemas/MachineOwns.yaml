@@ -1,0 +1,6 @@
+properties:
+  solved:
+    type: number
+  total:
+    type: number
+type: object

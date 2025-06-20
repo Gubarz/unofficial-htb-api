@@ -1,0 +1,11 @@
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    nullable: true
+    type: integer
+  user_avatar:
+    type: string
+type: object

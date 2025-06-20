@@ -1,0 +1,30 @@
+properties:
+  challenge_bloods:
+    type: integer
+  challenge_owns:
+    type: integer
+  country:
+    type: string
+  fortress:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    type: integer
+  rank:
+    type: integer
+  ranks_diff:
+    type: integer
+  root_bloods:
+    type: integer
+  root_owns:
+    type: integer
+  students:
+    type: integer
+  user_bloods:
+    type: integer
+  user_owns:
+    type: integer
+type: object

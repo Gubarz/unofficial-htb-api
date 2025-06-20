@@ -1,0 +1,9 @@
+description: players or teams
+in: path
+name: leaderboard
+required: true
+schema:
+  enum:
+    - players
+    - teams
+  type: string

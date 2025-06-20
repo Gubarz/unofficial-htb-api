@@ -1,0 +1,19 @@
+description: Schema definition for Lab List Response
+properties:
+  disabled:
+    example: false
+    type: boolean
+  lab_categories:
+    $ref: ./LabListCategoriesItems.yaml
+  lab_category_code:
+    example: usdedivip
+    type: string
+  release_arena_labs:
+    $ref: ./LabListCategoriesItems.yaml
+  server_id:
+    example: 289
+    type: integer
+  servers:
+    $ref: ./LabListServersItems.yaml
+title: Lab List Response
+type: object

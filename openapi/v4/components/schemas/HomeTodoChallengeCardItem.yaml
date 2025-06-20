@@ -1,0 +1,19 @@
+properties:
+  avatar:
+    type: string
+  challenge_category_id:
+    type: integer
+  difficulty:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    nullable: true
+    type: string
+  url:
+    type: string
+  url_name:
+    type: string
+type: object

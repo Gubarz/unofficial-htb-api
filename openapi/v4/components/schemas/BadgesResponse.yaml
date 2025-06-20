@@ -1,0 +1,6 @@
+description: Schema definition for Badges Response
+properties:
+  categories:
+    $ref: ./BadgeCategories.yaml
+title: Badges Response
+type: object

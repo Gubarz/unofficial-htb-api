@@ -1,0 +1,20 @@
+description: Schema definition for Change Log
+properties:
+  changes:
+    $ref: ./Changes.yaml
+  created_at:
+    example: '2021-11-12T10:38:24.000000Z'
+    format: date-time
+    type: string
+  description:
+    example: null
+    nullable: true
+    type: string
+  id:
+    example: 41
+    type: integer
+  version:
+    example: 3.18.0
+    type: string
+title: Change Log
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Get Prolab VPN Servers
+  operationId: getConnectionsServersProlab
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionsServersProlabResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Prolab VPN Servers
+  tags:
+    - Connection

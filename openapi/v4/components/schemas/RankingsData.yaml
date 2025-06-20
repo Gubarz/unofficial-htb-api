@@ -1,0 +1,7 @@
+properties:
+  team:
+    $ref: ./RankingDataTeamProperties.yaml
+    nullable: true
+  user:
+    $ref: ./RankingDataUserProperties.yaml
+type: object

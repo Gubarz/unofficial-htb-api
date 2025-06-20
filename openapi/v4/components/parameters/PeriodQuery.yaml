@@ -1,0 +1,13 @@
+description: One of ["1Y", "6M", "3M", "1M", "1W"]
+in: query
+name: period
+required: true
+schema:
+  default: 1W
+  enum:
+    - 1Y
+    - 6M
+    - 3M
+    - 1M
+    - 1W
+  type: string

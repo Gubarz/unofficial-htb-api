@@ -1,0 +1,9 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SpawnExtendRequest.yaml
+  application/x-www-form-urlencoded:
+    schema:
+      $ref: ../schemas/SpawnExtendRequest.yaml
+description: Body to post spawn or reset vm
+required: true

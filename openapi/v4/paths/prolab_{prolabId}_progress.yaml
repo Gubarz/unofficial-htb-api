@@ -1,0 +1,13 @@
+get:
+  description: Get Prolab Progress
+  operationId: getProlabProgress
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabProgressResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Prolab Progress
+  tags:
+    - Prolabs

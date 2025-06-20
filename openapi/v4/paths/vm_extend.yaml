@@ -1,0 +1,13 @@
+post:
+  description: Extend the virtual machine.
+  operationId: postVMExtend
+  requestBody:
+    $ref: ../components/requestBodies/VirtualMachineRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/VMExtendResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Extend a machine / SP
+  tags:
+    - VM

@@ -1,0 +1,5 @@
+properties:
+  data:
+    $ref: ./RankingsCountriesItems.yaml
+  status:
+    type: boolean

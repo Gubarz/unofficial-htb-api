@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /user/profile/basic/{user id}
+  operationId: getUserProfileBasic
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileBasicUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Other user's profile
+  tags:
+    - User

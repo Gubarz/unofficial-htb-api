@@ -1,0 +1,6 @@
+description: Schema definition for Season Active
+properties:
+  data:
+    $ref: ./SeasonActiveData.yaml
+title: Season Active
+type: object

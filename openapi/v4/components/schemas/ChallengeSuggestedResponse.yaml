@@ -1,0 +1,10 @@
+description: Schema definition for Challenge Suggested Response
+properties:
+  data:
+    $ref: ./ChallengeSuggestedData.yaml
+  message:
+    type: string
+  status:
+    type: boolean
+title: Challenge Suggested Response
+type: object

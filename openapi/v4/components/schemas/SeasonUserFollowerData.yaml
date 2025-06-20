@@ -1,0 +1,6 @@
+properties:
+  top_ranked_followers:
+    $ref: ./FollowerItems.yaml
+  top_season_users:
+    $ref: ./FollowerItems.yaml
+type: object

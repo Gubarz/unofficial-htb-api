@@ -1,0 +1,12 @@
+properties:
+  assigned_server:
+    $ref: ./ServerConnection.yaml
+  can_access:
+    type: boolean
+  location_type_friendly:
+    type: string
+  available:
+    type: boolean
+  machine:
+    $ref: ./ConnectionMachine.yaml
+type: object

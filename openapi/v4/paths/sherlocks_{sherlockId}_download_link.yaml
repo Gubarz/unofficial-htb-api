@@ -1,0 +1,13 @@
+get:
+  description: Retrieve the download link for a specific Sherlock instance.
+  operationId: getSherlockDownloadlink
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksDownloadLinkResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Get Download Url for Sherlock by ID
+  tags:
+    - Sherlocks

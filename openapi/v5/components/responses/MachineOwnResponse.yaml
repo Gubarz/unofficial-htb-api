@@ -1,0 +1,13 @@
+content:
+  application/json:
+    examples:
+      MachineOwnSuccess:
+        $ref: ../examples/MachineOwnSuccess.yaml
+    schema:
+      $ref: ../schemas/MachineOwnResponse.yaml
+description: Successful flag submission
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

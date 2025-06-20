@@ -1,0 +1,18 @@
+properties:
+  dislikedByUser:
+    nullable: true
+    type: number
+  filename:
+    type: string
+  likedByUser:
+    nullable: true
+    type: boolean
+  rating:
+    type: number
+  sha256:
+    type: string
+  threshold_for_display_reached:
+    type: integer
+  total_ratings:
+    type: integer
+type: object

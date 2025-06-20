@@ -1,0 +1,21 @@
+get:
+  description: Get VPN Server status
+  operationId: getConnectionStatusProductname
+  parameters:
+    - in: path
+      name: productName
+      required: true
+      schema:
+        enum:
+          - starting_point
+          - lab
+          - fortresses
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionStatusProductResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Error.yaml
+  summary: Get VPN Server status
+  tags:
+    - Connection

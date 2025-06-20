@@ -1,0 +1,17 @@
+get:
+  description: Get /machine/todo/paginated
+  operationId: getMachineTodoPaginated
+  parameters:
+    - $ref: ../components/parameters/SortType.yaml
+    - $ref: ../components/parameters/Keyword.yaml
+    - $ref: ../components/parameters/Difficulty.yaml
+    - $ref: ../components/parameters/ShowCompleted.yaml
+    - $ref: ../components/parameters/Os.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachinePaginatedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Machine Todo List
+  tags:
+    - Machines

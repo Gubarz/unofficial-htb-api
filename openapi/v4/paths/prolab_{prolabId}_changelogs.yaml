@@ -1,0 +1,24 @@
+get:
+  description: Get Prolab Changelog
+  operationId: getProlabChangelogs
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  type: object
+                type: array
+              status:
+                type: boolean
+            type: object
+      description: OK
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Changelogs
+  tags:
+    - Prolabs

@@ -1,0 +1,4 @@
+nullable: true
+oneOf:
+  - $ref: ./ProfileUserTeamInfo.yaml
+type: object

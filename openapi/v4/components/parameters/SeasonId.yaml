@@ -1,0 +1,6 @@
+description: ID of the Season
+in: path
+name: seasonId
+required: true
+schema:
+  type: integer

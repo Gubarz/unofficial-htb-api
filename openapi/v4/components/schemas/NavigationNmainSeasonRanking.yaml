@@ -1,0 +1,12 @@
+properties:
+  latest_season:
+    $ref: ./CommonIdName.yaml
+  league:
+    type: string
+  rank:
+    type: integer
+  rank_suffix:
+    type: string
+  upcoming_season:
+    $ref: ./UpcomingSeason.yaml
+type: object

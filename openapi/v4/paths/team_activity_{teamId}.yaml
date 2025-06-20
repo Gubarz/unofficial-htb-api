@@ -1,0 +1,15 @@
+get:
+  description: >-
+    Retrieve a handful of recent team owns. (Does not indicate which member
+    achieved each item)
+  operationId: getTeamActivity
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamActivityTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Recent team Activity
+  tags:
+    - Team

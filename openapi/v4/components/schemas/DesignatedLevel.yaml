@@ -1,0 +1,20 @@
+description: Schema definition for Designated Level
+properties:
+  category:
+    example: Red team_ Operator
+    type: string
+  description:
+    example: >-
+      Hone your offensive tradecraft with a Red team_ Operator Level I lab. From
+      gaining a foothold and establishing situational awareness, to exploiting
+      interactive users and "living off the land", this will put your skills to
+      the test.
+    type: string
+  level:
+    example: 1
+    type: integer
+  team:
+    example: red
+    type: string
+title: Designated Level
+type: object

@@ -1,0 +1,4 @@
+properties:
+  profile:
+    $ref: ./UserProfileProgressSherlockProfile.yaml
+type: object

@@ -1,0 +1,4 @@
+summary: User is already owned
+value:
+  message: RouterSpace user is already owned.
+  status: 400

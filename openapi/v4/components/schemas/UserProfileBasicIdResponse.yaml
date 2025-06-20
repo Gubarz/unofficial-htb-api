@@ -1,0 +1,6 @@
+description: Schema definition for User Profile Basic Id Response
+properties:
+  profile:
+    $ref: ./UserProfile.yaml
+title: User Profile Basic Id Response
+type: object

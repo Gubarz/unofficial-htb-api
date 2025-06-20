@@ -1,0 +1,19 @@
+get:
+  description: Retrieves information related to /prolab/{prolab id}/reviews
+  operationId: getProlabReviews
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+    - description: Page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabreviewsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Pro Lab reviews (Paginated)
+  tags:
+    - Prolabs

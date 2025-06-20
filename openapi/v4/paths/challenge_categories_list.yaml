@@ -1,0 +1,11 @@
+get:
+  description: Provides a list of challenge catatories
+  operationId: getChallengeCategoriesList
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeCategoriesListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: List categories
+  tags:
+    - Challenges

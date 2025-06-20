@@ -1,0 +1,10 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/RankingsTeamBestResponse.yaml
+description: Rankings Team Best Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

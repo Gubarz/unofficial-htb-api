@@ -1,0 +1,5 @@
+description: Schema definition for Sherlock Play Response
+properties:
+  data:
+    $ref: ./SherlockPlay.yaml
+type: object

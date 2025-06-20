@@ -1,0 +1,16 @@
+get:
+  description: Returns a list of all jobs that match the search query
+  operationId: getCareerSearch
+  parameters:
+    - $ref: ../components/parameters/SearchQuery.yaml
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/AfterDate.yaml
+    - $ref: ../components/parameters/Rank.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/CareerSearchResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Search posted jobs
+  tags:
+    - Career

@@ -1,0 +1,25 @@
+get:
+  description: Validate Achievement / Own
+  operationId: getUserAchievement
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - description: Target ID
+      in: path
+      name: targetId
+      required: true
+      schema:
+        type: integer
+    - description: Target Type
+      in: path
+      name: targetType
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/UserAchievementTarTypeUserIdTarIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Validate Achievement / Own
+  tags:
+    - User

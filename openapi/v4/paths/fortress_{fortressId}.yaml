@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /fortress/{fortress id}
+  operationId: getFortress
+  parameters:
+    - $ref: ../components/parameters/FortressId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/FortressFortressIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get fortress profile
+  tags:
+    - Fortresses

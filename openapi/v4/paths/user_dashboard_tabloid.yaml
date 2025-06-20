@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/dashboard/tabloid
+  operationId: getUserDashboardTabloid
+  responses:
+    '200':
+      $ref: ../components/responses/UserDashboardTabloidResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Dashboard: Various Platform Stats'
+  tags:
+    - User

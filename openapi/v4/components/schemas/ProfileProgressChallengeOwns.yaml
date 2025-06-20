@@ -1,0 +1,8 @@
+properties:
+  percentage:
+    type: number
+  solved:
+    type: integer
+  total:
+    type: integer
+type: object

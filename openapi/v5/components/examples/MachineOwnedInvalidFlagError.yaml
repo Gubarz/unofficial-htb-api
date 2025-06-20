@@ -1,0 +1,4 @@
+summary: Incorrect flag submission
+value:
+  message: Incorrect flag.
+  status: 400

@@ -1,0 +1,10 @@
+properties:
+  assigned_server:
+    $ref: ./ServerConnection.yaml
+  can_access:
+    type: boolean
+  fullhouse:
+    $ref: ./ConnectionProlabLab.yaml
+  solar:
+    $ref: ./ConnectionProlabLab.yaml
+type: object

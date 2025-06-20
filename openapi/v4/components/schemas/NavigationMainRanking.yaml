@@ -1,0 +1,10 @@
+properties:
+  current_xp:
+    type: number
+  id:
+    type: integer
+  name:
+    type: string
+  next_rank_xp:
+    type: number
+type: object

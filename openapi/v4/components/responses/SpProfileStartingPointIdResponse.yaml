@@ -1,0 +1,10 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SpProfileIdResponse.yaml
+description: Sp Profile Starting Point Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

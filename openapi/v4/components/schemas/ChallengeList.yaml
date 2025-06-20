@@ -1,0 +1,60 @@
+description: Schema definition for Challenge List
+properties:
+  auth_user_has_reviewed:
+    example: false
+    type: boolean
+  avatar:
+    example: null
+    nullable: true
+    type: string
+  category_id:
+    example: 4
+    type: integer
+  category_name:
+    example: Pwn
+    type: string
+  difficulty:
+    example: Very Easy
+    type: string
+  difficulty_chart:
+    $ref: ./DifficultyChart.yaml
+  id:
+    example: 706
+    type: integer
+  is_owned:
+    example: false
+    type: boolean
+  name:
+    example: Regularity
+    type: string
+  pinned:
+    type: boolean
+  play_methods:
+    $ref: ./StringArray.yaml
+  rating:
+    example: 4
+    format: float
+    nullable: true
+    type: number
+  rating_count:
+    example: 1
+    type: integer
+  release_date:
+    example: '2024-06-07T20:00:00.000000Z'
+    format: date-time
+    type: string
+  retires:
+    format: date
+    nullable: true
+    type: string
+  solves:
+    example: 132
+    type: integer
+  state:
+    example: retired
+    type: string
+  user_difficulty:
+    example: '3.33'
+    type: string
+title: Challenge List
+type: object

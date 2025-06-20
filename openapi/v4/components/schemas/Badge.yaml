@@ -1,0 +1,28 @@
+description: Schema definition for Badge
+properties:
+  badge_category_id:
+    example: 1
+    type: integer
+  color:
+    example: gold
+    nullable: true
+    type: string
+  description_en:
+    example: Has been in the Top 10 of the Hall of Fame.
+    type: string
+  icon:
+    example: far fa-list-ol
+    type: string
+  id:
+    example: 2
+    type: integer
+  name:
+    example: Top 10
+    type: string
+  rarity:
+    type: number
+  users_count:
+    example: 326
+    type: integer
+title: Badge
+type: object

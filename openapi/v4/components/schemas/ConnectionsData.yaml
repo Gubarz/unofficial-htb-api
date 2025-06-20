@@ -1,0 +1,12 @@
+properties:
+  fortresses:
+    $ref: ./ConnectionLab.yaml
+  lab:
+    $ref: ./ConnectionLab.yaml
+  pro_labs:
+    $ref: ./ConnectionProlab.yaml
+  competitive:
+    $ref: ./ConnectionCompetitive.yaml
+  starting_point:
+    $ref: ./ConnectionLab.yaml
+type: object

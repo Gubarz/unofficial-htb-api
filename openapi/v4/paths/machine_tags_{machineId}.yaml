@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /machine/tags/{machine id}
+  operationId: getMachineTags
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineTagsMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: tags (Attack Path, Sub, Language)'
+  tags:
+    - Machines

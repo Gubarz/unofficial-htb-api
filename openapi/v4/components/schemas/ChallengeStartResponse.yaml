@@ -1,0 +1,10 @@
+description: Schema definition for Challenge Start Response
+properties:
+  id:
+    example: 1214160
+    type: integer
+  message:
+    example: Instance Created!
+    type: string
+title: Challenge Start Response
+type: object

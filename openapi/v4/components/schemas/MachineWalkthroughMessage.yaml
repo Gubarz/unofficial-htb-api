@@ -1,0 +1,11 @@
+properties:
+  official:
+    $ref: ./MachineWalkthroughMessageOfficial.yaml
+  under_review:
+    nullable: true
+    type: string
+  video:
+    $ref: ./MachineWalkthroughMessageVideo.yaml
+  writeups:
+    $ref: ./MachineWalkthroughMessageWriteupsItems.yaml
+type: object

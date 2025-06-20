@@ -1,0 +1,19 @@
+description: Schema definition for Change
+properties:
+  changelog_id:
+    example: 41
+    type: integer
+  id:
+    example: 146
+    type: integer
+  text:
+    example: >-
+      We have introduced a new paid submission initiative, aiming to further
+      improve the quality of our challenges and reward our valuable community
+      members who wish to contribute to our weekly release roadmap.
+    type: string
+  type:
+    example: change
+    type: string
+title: Change
+type: object

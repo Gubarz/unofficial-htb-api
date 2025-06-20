@@ -1,0 +1,12 @@
+properties:
+  avatar:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+type: object

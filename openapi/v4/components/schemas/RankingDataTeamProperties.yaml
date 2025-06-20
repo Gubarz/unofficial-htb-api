@@ -1,0 +1,12 @@
+properties:
+  avatar_url:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  rank:
+    type: integer
+  rank_growth:
+    type: string
+type: object

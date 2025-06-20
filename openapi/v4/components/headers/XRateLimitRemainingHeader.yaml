@@ -1,0 +1,5 @@
+description: Remaining requests allowed
+schema:
+  example: 14
+  format: int
+  type: integer

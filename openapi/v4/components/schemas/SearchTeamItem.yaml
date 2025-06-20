@@ -1,0 +1,15 @@
+properties:
+  avatar:
+    example: 45c166d697d65080d54501403b433256.jpg
+    type: string
+  id:
+    example: 3174
+    type: integer
+  motto:
+    example: Be sure, be secure!
+    nullable: true
+    type: string
+  value:
+    example: HACK
+    type: string
+type: object

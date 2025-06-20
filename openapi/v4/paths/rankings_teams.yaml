@@ -1,0 +1,12 @@
+get:
+  description: lists the highest-ranked teams on HTB.
+  operationId: getRankingsTeams
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsTeamsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list Top-Ranked Teams
+  tags:
+    - Ranking

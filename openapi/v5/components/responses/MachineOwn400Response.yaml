@@ -1,0 +1,17 @@
+content:
+  application/json:
+    examples:
+      MachineOwnedRootAlreadyError:
+        $ref: ../examples/MachineOwnedRootAlreadyError.yaml
+      MachineOwnedUserAlreadyError:
+        $ref: ../examples/MachineOwnedUserAlreadyError.yaml
+      invalidFlag:
+        $ref: ../examples/MachineOwnedInvalidFlagError.yaml
+    schema:
+      $ref: ../schemas/MachineOwnErrorResponse.yaml
+description: Machine Own Bad Request
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

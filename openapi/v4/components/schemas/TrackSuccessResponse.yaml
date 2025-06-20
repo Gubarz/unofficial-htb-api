@@ -1,0 +1,42 @@
+description: Schema definition for Tracks Id Response
+properties:
+  completed:
+    type: boolean
+  completion_cta:
+    nullable: true
+    type: integer
+  completion_message:
+    nullable: true
+    type: string
+  completion_url:
+    nullable: true
+    type: string
+  cover_image:
+    nullable: true
+    type: string
+  creator:
+    $ref: ./TracksCreator.yaml
+  description:
+    type: string
+  difficulty:
+    type: string
+  enrolled:
+    type: boolean
+  has_completion_message:
+    type: boolean
+  id:
+    type: integer
+  items:
+    $ref: ./TrackSuccessItemsItems.yaml
+  liked:
+    type: boolean
+  likes:
+    type: integer
+  name:
+    type: string
+  official:
+    type: boolean
+  staff_pick:
+    type: number
+title: Tracks Id Response
+type: object

@@ -1,0 +1,6 @@
+description: Schema definition for Home User Progress Response
+properties:
+  data:
+    $ref: ./HomeUserProgressData.yaml
+title: Home User Progress Response
+type: object

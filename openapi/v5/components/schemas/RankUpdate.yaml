@@ -1,0 +1,9 @@
+properties:
+  changed:
+    example: false
+    type: boolean
+  newRank:
+    $ref: ./NewRank.yaml
+    nullable: true
+    type: object
+type: object

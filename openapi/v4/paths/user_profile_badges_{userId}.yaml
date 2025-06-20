@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /user/profile/badges/{user id}
+  operationId: getUserProfileBadges
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProfileBadgesUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'User profile: badges'
+  tags:
+    - User

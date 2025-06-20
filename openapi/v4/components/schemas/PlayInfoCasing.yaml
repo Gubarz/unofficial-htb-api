@@ -1,0 +1,20 @@
+description: Schema definition for Play Info
+properties:
+  active_player_count:
+    example: 1
+    type: integer
+  expires_at:
+    format: date-time
+    nullable: true
+    type: string
+  isActive:
+    nullable: true
+    type: boolean
+  isSpawned:
+    nullable: true
+    type: boolean
+  isSpawning:
+    nullable: true
+    type: boolean
+title: Play Info
+type: object

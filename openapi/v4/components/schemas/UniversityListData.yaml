@@ -1,0 +1,38 @@
+properties:
+  current_page:
+    example: 1
+    type: integer
+  data:
+    $ref: ./UniversityListItems.yaml
+  first_page_url:
+    nullable: true
+    type: string
+  from:
+    example: 1
+    type: integer
+  last_page:
+    example: 11
+    nullable: true
+    type: integer
+  last_page_url:
+    type: string
+  links:
+    $ref: ./PaginationLinks.yaml
+  next_page_url:
+    nullable: true
+    type: string
+  path:
+    type: string
+  per_page:
+    example: 15
+    type: integer
+  prev_page_url:
+    nullable: true
+    type: integer
+  to:
+    example: 15
+    type: integer
+  total:
+    example: 162
+    type: integer
+type: object

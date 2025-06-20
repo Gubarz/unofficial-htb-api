@@ -1,0 +1,62 @@
+description: Schema definition for Machine Data
+properties:
+  active:
+    nullable: true
+    type: boolean
+  authUserHasReviewed:
+    type: boolean
+  authUserInRootOwns:
+    type: boolean
+  authUserInUserOwns:
+    type: boolean
+  avatar:
+    type: string
+  difficulty:
+    type: integer
+  difficultyText:
+    type: string
+  easy_month:
+    type: integer
+  feedbackForChart:
+    $ref: ./DifficultyChart.yaml
+  free:
+    type: boolean
+  id:
+    type: integer
+  ip:
+    format: ipv4
+    nullable: true
+    type: string
+  isTodo:
+    type: boolean
+  is_competitive:
+    type: boolean
+  labels:
+    $ref: ./LabelItems.yaml
+  name:
+    type: string
+  os:
+    type: string
+  playInfo:
+    $ref: ./MachinePlayInfo.yaml
+  points:
+    type: integer
+  poweroff:
+    type: integer
+  recommended:
+    type: integer
+  release:
+    format: date-time
+    type: string
+  root_owns_count:
+    type: integer
+  sp_flag:
+    type: integer
+  star:
+    type: number
+  static_points:
+    type: integer
+  user_owns_count:
+    type: integer
+title: Machine Data
+type: object

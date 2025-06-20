@@ -1,0 +1,8 @@
+description: Schema definition for Pwnbox Status Not Running Response
+properties:
+  message:
+    type: string
+required:
+  - message
+title: Pwnbox Status Not Running Response
+type: object

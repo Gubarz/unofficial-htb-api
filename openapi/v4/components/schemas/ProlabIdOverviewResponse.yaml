@@ -1,0 +1,9 @@
+description: Schema definition for Prolab Id Overview Response
+properties:
+  data:
+    $ref: ./ProlabOverviewData.yaml
+  status:
+    example: true
+    type: boolean
+title: Prolab Id Overview Response
+type: object

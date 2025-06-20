@@ -1,0 +1,10 @@
+description: Schema definition for User Achievement Target Type User Id Target
+properties:
+  machine:
+    $ref: ./UserAchievementMachineTypeUser.yaml
+  own:
+    $ref: ./UserAchievementTarTypeUserOwn.yaml
+  user:
+    $ref: ./UserBasicInfo.yaml
+title: User Achievement Target Type User Id Target Id Response
+type: object

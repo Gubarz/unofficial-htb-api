@@ -1,0 +1,17 @@
+properties:
+  color:
+    example: success
+    type: string
+  id:
+    example: 3
+    type: integer
+  level:
+    example: 3
+    type: integer
+  text:
+    example: Easy
+    type: string
+  title:
+    example: Easy
+    type: string
+type: object

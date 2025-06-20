@@ -1,0 +1,6 @@
+description: Schema definition for Home Machine Card
+items:
+  $ref: ./HomeRecommendedMachineCardItem.yaml
+  nullable: true
+title: Home Machine Card
+type: array

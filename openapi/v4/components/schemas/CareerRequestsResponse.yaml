@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./ObjectArray.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+type: object

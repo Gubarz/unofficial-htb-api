@@ -1,0 +1,6 @@
+description: ID or Name of the Sherlock
+in: path
+name: sherlockSlug
+required: true
+schema:
+  type: string

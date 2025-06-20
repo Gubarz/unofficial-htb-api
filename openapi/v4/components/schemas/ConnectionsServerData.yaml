@@ -1,0 +1,9 @@
+properties:
+  assigned:
+    $ref: ./AssignedServerConnectionsServers.yaml
+  disabled:
+    example: false
+    type: boolean
+  options:
+    $ref: ./Options.yaml
+type: object

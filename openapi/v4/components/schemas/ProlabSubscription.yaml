@@ -1,0 +1,18 @@
+properties:
+  active:
+    type: boolean
+  ends_at:
+    nullable: true
+    type: string
+  name:
+    nullable: true
+    type: string
+  renews_at:
+    nullable: true
+    type: string
+  subscription_period:
+    type: string
+  type:
+    nullable: true
+    type: string
+type: object

@@ -1,0 +1,24 @@
+summary: Own Success
+value:
+  blood_points: 0
+  blood_taken: 0
+  id: 665
+  is_starting_point: false
+  league_rank:
+    changed: false
+    newRank:
+      id: 2
+      text: Silver
+  machine_completed: false
+  machine_pwned: false
+  machine_state: open
+  message: You pwned the User Flag!
+  own_type: User
+  points: 50
+  status: 200
+  success: true
+  user_rank:
+    changed: false
+    newRank:
+      id: 5
+      text: null

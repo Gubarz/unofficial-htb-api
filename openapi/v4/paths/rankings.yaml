@@ -1,0 +1,11 @@
+get:
+  description: Get /rankings
+  operationId: getRankings
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Rankings
+  tags:
+    - Ranking

@@ -1,0 +1,4 @@
+properties:
+  info:
+    $ref: ./ActiveMachineInfoWrapper.yaml
+type: object

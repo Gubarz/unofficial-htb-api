@@ -1,0 +1,6 @@
+description: Can be the ID or Name of a box
+in: path
+name: machineSlug
+required: true
+schema:
+  type: string

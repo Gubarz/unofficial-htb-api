@@ -1,0 +1,11 @@
+get:
+  description: Retrieve progress of SP tiers.
+  operationId: getSPTiersProgress
+  responses:
+    '200':
+      $ref: ../components/responses/SpTiersProgressResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Summary for get /sp/tiers/progress
+  tags:
+    - Starting Point

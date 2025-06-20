@@ -1,0 +1,5 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ProlabsResponse.yaml
+description: Prolabs response

@@ -1,0 +1,4 @@
+properties:
+  reward_types:
+    $ref: ./SeasonRewardTypes.yaml
+type: object

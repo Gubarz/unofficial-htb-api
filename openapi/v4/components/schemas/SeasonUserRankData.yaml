@@ -1,0 +1,14 @@
+properties:
+  flags_to_next_rank:
+    $ref: ./FlagsToNextRank.yaml
+  league:
+    type: string
+  rank:
+    type: integer
+  rank_suffix:
+    type: string
+  total_ranks:
+    type: integer
+  total_season_points:
+    type: integer
+type: object

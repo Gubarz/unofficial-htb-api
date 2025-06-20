@@ -1,0 +1,6 @@
+properties:
+  root:
+    type: integer
+  user:
+    type: integer
+type: object

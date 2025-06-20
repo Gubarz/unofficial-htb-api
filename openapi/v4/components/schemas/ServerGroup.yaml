@@ -1,0 +1,14 @@
+description: Schema definition for Server Group
+properties:
+  location:
+    example: EU
+    type: string
+  name:
+    example: EU - Free
+    type: string
+  servers:
+    additionalProperties:
+      $ref: ./Server.yaml
+    type: object
+title: Server Group
+type: object

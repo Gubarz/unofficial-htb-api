@@ -1,0 +1,13 @@
+get:
+  description: Provides a list of the challege details by id or name
+  operationId: getChallengeInfo
+  parameters:
+    - $ref: ../components/parameters/ChallengeSlug.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeInfoChallengeResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Info details of the specific challenge
+  tags:
+    - Challenges

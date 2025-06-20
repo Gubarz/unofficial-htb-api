@@ -1,0 +1,41 @@
+description: Schema definition for Sherlock Item
+properties:
+  auth_user_has_reviewed:
+    type: boolean
+  avatar:
+    type: string
+  category_id:
+    type: integer
+  category_name:
+    type: string
+  difficulty:
+    type: string
+  id:
+    type: integer
+  is_owned:
+    type: boolean
+  name:
+    type: string
+  pinned:
+    type: boolean
+  play_methods:
+    $ref: ./StringArray.yaml
+  progress:
+    type: integer
+  rating:
+    type: number
+  rating_count:
+    type: integer
+  release_date:
+    type: string
+  retires:
+    format: date
+    nullable: true
+    type: string
+  solves:
+    type: integer
+  state:
+    description: The state of the item.
+    type: string
+title: Sherlock Item
+type: object

@@ -1,0 +1,12 @@
+content:
+  application/json:
+    schema:
+      oneOf:
+        - $ref: ../schemas/PwnboxStatusNotRunningResponse.yaml
+        - $ref: ../schemas/PwnboxStatusRunningResponse.yaml
+description: Pwnbox Status Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

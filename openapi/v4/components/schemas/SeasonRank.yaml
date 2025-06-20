@@ -1,0 +1,8 @@
+properties:
+  current:
+    type: integer
+  suffix:
+    type: string
+  total:
+    type: integer
+type: object

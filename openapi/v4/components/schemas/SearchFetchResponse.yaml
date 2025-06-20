@@ -1,0 +1,14 @@
+description: Schema definition for Search Fetch Response
+properties:
+  challenges:
+    $ref: ./SearchChallengesItems.yaml
+  joboffers:
+    $ref: ./SearchJobOffersItems.yaml
+  machines:
+    $ref: ./SearchMachinesItems.yaml
+  teams:
+    $ref: ./SearchTeamItems.yaml
+  users:
+    $ref: ./SearchUsersItems.yaml
+title: Search Fetch Response
+type: object

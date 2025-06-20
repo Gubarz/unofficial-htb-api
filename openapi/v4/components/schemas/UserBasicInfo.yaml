@@ -1,0 +1,13 @@
+nullable: true
+properties:
+  avatar:
+    example: /storage/avatars/3453459704ee924e218ba13453453453.png
+    type: string
+  id:
+    example: 234234
+    type: integer
+  name:
+    example: aname
+    type: string
+title: Review User
+type: object

@@ -1,0 +1,12 @@
+properties:
+  challenge_owns:
+    $ref: ./IntArray.yaml
+  first_bloods:
+    $ref: ./IntArray.yaml
+  respects:
+    $ref: ./IntArray.yaml
+  system_owns:
+    $ref: ./IntArray.yaml
+  user_owns:
+    $ref: ./IntArray.yaml
+type: object

@@ -1,0 +1,21 @@
+properties:
+  avatar:
+    type: string
+  categoryID:
+    type: integer
+  difficulty:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    nullable: true
+    type: integer
+  type:
+    type: string
+  url:
+    type: string
+  urlName:
+    type: string
+type: object

@@ -1,0 +1,6 @@
+description: Schema definition for Notices Response
+properties:
+  data:
+    $ref: ./NoticeDataItems.yaml
+title: Notices Response
+type: object

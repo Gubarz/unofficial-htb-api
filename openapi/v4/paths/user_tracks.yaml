@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/tracks
+  operationId: getUserTracks
+  responses:
+    '200':
+      $ref: ../components/responses/UserTracksResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Bearer: Enrolled Tracks'
+  tags:
+    - User

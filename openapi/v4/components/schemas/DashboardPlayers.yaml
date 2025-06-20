@@ -1,0 +1,6 @@
+description: Schema definition for Dashboard Players
+properties:
+  online_players:
+    type: string
+title: Dashboard Players
+type: object

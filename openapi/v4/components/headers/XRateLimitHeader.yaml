@@ -1,0 +1,5 @@
+description: Total requests allowed
+schema:
+  example: 15
+  format: int
+  type: integer

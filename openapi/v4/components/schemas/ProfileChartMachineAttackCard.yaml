@@ -1,0 +1,11 @@
+description: Schema definition for Profile Chart Machine Attack Card
+properties:
+  avg_user_solved:
+    example: 0.403
+    type: number
+  solved:
+    type: integer
+  total:
+    type: integer
+title: Profile Chart Machine Attack Card
+type: object

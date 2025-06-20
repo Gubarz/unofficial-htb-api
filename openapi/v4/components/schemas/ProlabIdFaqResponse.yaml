@@ -1,0 +1,9 @@
+description: Schema definition for Prolab Id Faq Response
+properties:
+  data:
+    $ref: ./ProlabFaqData.yaml
+  status:
+    example: true
+    type: boolean
+title: Prolab Id Faq Response
+type: object

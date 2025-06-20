@@ -1,0 +1,20 @@
+properties:
+  avatar:
+    type: string
+  difficultyText:
+    type: string
+  feedbackForChart:
+    $ref: ./DifficultyChart.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+  release:
+    type: string
+  retired:
+    type: integer
+  retired_date:
+    type: string
+type: object

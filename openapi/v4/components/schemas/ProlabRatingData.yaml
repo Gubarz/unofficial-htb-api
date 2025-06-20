@@ -1,0 +1,4 @@
+properties:
+  rating:
+    type: string
+type: object

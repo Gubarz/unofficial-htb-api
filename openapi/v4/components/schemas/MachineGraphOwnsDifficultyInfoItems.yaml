@@ -1,0 +1,22 @@
+properties:
+  '1':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '2':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '3':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '4':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '5':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '6':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '7':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '8':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '9':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+  '10':
+    $ref: ./MachineGraphOwnsDifficultyInfoItem.yaml
+type: object

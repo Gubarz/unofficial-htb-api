@@ -1,0 +1,22 @@
+get:
+  description: Retrieve a paginated list of retired machines.
+  operationId: getMachineListRetiredPaginated
+  parameters:
+    - $ref: ../components/parameters/Free.yaml
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/ShowCompleted.yaml
+    - $ref: ../components/parameters/SortBy.yaml
+    - $ref: ../components/parameters/SortType.yaml
+    - $ref: ../components/parameters/Difficulty.yaml
+    - $ref: ../components/parameters/Os.yaml
+    - $ref: ../components/parameters/Tags.yaml
+    - $ref: ../components/parameters/Keyword.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachinePaginatedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get paginated list of retired machines
+  tags:
+    - Machines

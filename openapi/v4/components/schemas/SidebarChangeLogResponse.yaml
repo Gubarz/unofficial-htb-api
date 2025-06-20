@@ -1,0 +1,6 @@
+description: Schema definition for Sidebar Change Log Response
+properties:
+  changelog:
+    $ref: ./SidebarChangeLog.yaml
+title: Sidebar Change Log Response
+type: object

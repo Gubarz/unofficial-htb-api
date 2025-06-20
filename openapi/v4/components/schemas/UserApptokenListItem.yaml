@@ -1,0 +1,10 @@
+properties:
+  created_at:
+    type: string
+  expires_at:
+    type: string
+  last_seen:
+    type: string
+  name:
+    type: string
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Provides change details to a challenge
+  operationId: getChallengeChangelog
+  parameters:
+    - $ref: ../components/parameters/ChallengeId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeChangelogChallengeIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Changelog for a specific challenge
+  tags:
+    - Challenges

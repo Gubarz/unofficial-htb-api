@@ -1,0 +1,13 @@
+get:
+  description: Retrieve the profile information for a specific starting point.
+  operationId: getSPProfile
+  parameters:
+    - $ref: ../components/parameters/StartingPointId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SpProfileStartingPointIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Summary for get /sp/profile/{startingPointId}
+  tags:
+    - Starting Point

@@ -1,0 +1,11 @@
+get:
+  description: Returns a list of all available and obtained badges
+  operationId: getBadges
+  responses:
+    '200':
+      $ref: ../components/responses/BadgesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: List all platform badges
+  tags:
+    - Badges

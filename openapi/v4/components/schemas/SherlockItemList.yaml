@@ -1,0 +1,10 @@
+description: Schema definition for Sherlock Item List
+properties:
+  data:
+    $ref: ./SherlockListData.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Sherlock Item List
+type: object

@@ -1,0 +1,8 @@
+description: Schema definition for Machine Recommended Retired Response
+properties:
+  card1:
+    $ref: ./MachineRecommendedRetiredCard.yaml
+  card2:
+    $ref: ./MachineRecommendedRetiredCard.yaml
+title: Machine Recommended Retired Response
+type: object

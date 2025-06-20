@@ -1,0 +1,13 @@
+post:
+  description: Stops a challenge container with challenge_id
+  operationId: postChallengeStop
+  requestBody:
+    $ref: ../components/requestBodies/ChallengeStartStopRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeStopResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Stops a challenge
+  tags:
+    - Challenges

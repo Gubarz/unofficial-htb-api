@@ -1,0 +1,7 @@
+description: Schema definition for Own Error Response
+properties:
+  message:
+    example: Incorrect flag!
+    type: string
+title: Arena Own Error Response
+type: object

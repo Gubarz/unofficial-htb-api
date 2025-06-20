@@ -1,0 +1,10 @@
+properties:
+  completion_percentage:
+    type: number
+  name:
+    type: string
+  owned_machines:
+    type: number
+  total_machines:
+    type: number
+type: object

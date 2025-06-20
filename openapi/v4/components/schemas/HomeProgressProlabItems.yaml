@@ -1,0 +1,19 @@
+properties:
+  avatar:
+    nullable: true
+    type: string
+  difficulty:
+    type: string
+  id:
+    type: integer
+  identifier:
+    type: string
+  name:
+    type: string
+  percentage:
+    example: 54.55
+    format: float
+    type: number
+  points:
+    type: string
+type: object

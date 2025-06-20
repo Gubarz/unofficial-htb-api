@@ -1,0 +1,13 @@
+get:
+  description: >-
+    Returns a number of new jobs posted today and the total number of jobs
+    posted on the platform
+  operationId: getCareerStats
+  responses:
+    '200':
+      $ref: ../components/responses/CareerStatsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Stats
+  tags:
+    - Career

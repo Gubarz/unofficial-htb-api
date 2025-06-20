@@ -1,0 +1,14 @@
+get:
+  description: Retrieve user score for a season.
+  operationId: getSeasonEnd
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonEndResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get user score for a season
+  tags:
+    - Season

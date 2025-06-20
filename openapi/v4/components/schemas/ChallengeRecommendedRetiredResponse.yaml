@@ -1,0 +1,8 @@
+description: Schema definition for Challenge Recommended Retired Response
+properties:
+  card1:
+    $ref: ./RecommendedCardRetired.yaml
+  card2:
+    $ref: ./RecommendedCardRetired.yaml
+title: Challenge Recommended Retired Response
+type: object

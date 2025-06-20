@@ -1,0 +1,6 @@
+description: Schema definition for Machine Activity Id Response
+properties:
+  info:
+    $ref: ./MachineActivityInfo.yaml
+title: Machine Activity Id Response
+type: object

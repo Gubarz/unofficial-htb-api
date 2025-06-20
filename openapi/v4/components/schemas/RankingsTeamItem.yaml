@@ -1,0 +1,42 @@
+properties:
+  avatar_thumb_url:
+    type: string
+  challenge_bloods:
+    format: int
+    type: integer
+  challenge_owns:
+    format: int
+    type: integer
+  country:
+    nullable: true
+    type: string
+  fortress:
+    format: int
+    type: integer
+  id:
+    format: int
+    type: integer
+  name:
+    type: string
+  points:
+    format: int
+    type: integer
+  rank:
+    format: int
+    type: integer
+  ranks_diff:
+    nullable: true
+    type: integer
+  root_bloods:
+    format: int
+    type: integer
+  root_owns:
+    format: int
+    type: integer
+  user_bloods:
+    format: int
+    type: integer
+  user_owns:
+    format: int
+    type: integer
+type: object

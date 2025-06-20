@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /home/user/todo
+  operationId: getHomeUserTodo
+  responses:
+    '200':
+      $ref: ../components/responses/HomeUserTodoResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Home User ToDo
+  tags:
+    - Home

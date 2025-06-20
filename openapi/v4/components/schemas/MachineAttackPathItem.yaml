@@ -1,0 +1,10 @@
+properties:
+  avg_universitys_solved:
+    type: number
+  name:
+    type: string
+  solved:
+    type: number
+  total:
+    type: number
+type: object

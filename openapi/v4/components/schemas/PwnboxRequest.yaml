@@ -1,0 +1,16 @@
+description: Schema definition for Pwnbox Request
+properties:
+  location:
+    enum:
+      - us-east
+      - us-west
+      - uk
+      - ca
+      - in
+      - de
+      - au
+    type: string
+required:
+  - location
+title: Pwnbox Request
+type: object

@@ -1,0 +1,23 @@
+properties:
+  avatar:
+    type: string
+  difficulty:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  os:
+    type: string
+  points:
+    nullable: true
+    type: number
+  root_flag:
+    type: boolean
+  root_flag_only:
+    type: boolean
+  url:
+    type: string
+  user_flag:
+    type: boolean
+type: object

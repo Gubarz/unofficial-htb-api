@@ -1,0 +1,6 @@
+properties:
+  country_name:
+    type: string
+  rankings:
+    $ref: ./RankingCountryRankingsItems.yaml
+type: object

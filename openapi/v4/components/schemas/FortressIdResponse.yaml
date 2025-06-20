@@ -1,0 +1,9 @@
+description: Schema definition for Fortress Id Response
+properties:
+  data:
+    $ref: ./FortressData.yaml
+  status:
+    example: true
+    type: boolean
+title: Fortress Id Response
+type: object

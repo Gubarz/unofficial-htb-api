@@ -1,0 +1,4 @@
+properties:
+  prolabs:
+    $ref: ./ProfileProgressProlabItems.yaml
+type: object

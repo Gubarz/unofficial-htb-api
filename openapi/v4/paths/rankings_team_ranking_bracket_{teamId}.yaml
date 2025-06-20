@@ -1,0 +1,16 @@
+get:
+  description: >-
+    lists the current team ranking bracket (e.g. "Top 20"), next ranking
+    bracket, total points, points to achieve next bracket, and global rank.
+    Omiting team_id will retrieve Bearers current team.
+  operationId: getRankingsTeamRankingBracketId
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsTeamRankingBracketResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Team Ranking Bracket by Team Id
+  tags:
+    - Ranking

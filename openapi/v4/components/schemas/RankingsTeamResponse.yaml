@@ -1,0 +1,41 @@
+description: Schema definition for Rankings Team Response
+example:
+  data:
+    - Userbloods: 36
+      avatar_thumb_url: >-
+        https://www.hackthebox.eu/storage/teams/6a5dfac4be1502501489fc0f5a24b667_thumb.jpg
+      challenge_bloods: 28
+      challenge_owns: 149
+      country: EU
+      fortress: 26
+      id: 1750
+      name: TheAteam
+      points: 2436
+      rank: 1
+      ranks_diff: 0
+      root_bloods: 45
+      root_owns: 187
+      user_owns: 187
+    - Userbloods: 3
+      avatar_thumb_url: >-
+        https://www.hackthebox.eu/storage/teams/52d080a3e172c33fd6886a37e7288491_thumb.jpg
+      challenge_bloods: 6
+      challenge_owns: 149
+      country: US
+      fortress: 26
+      id: 1709
+      name: BirdsArentReal
+      points: 2190
+      rank: 2
+      ranks_diff: 0
+      root_bloods: 2
+      root_owns: 187
+      user_owns: 187
+  status: true
+properties:
+  data:
+    $ref: ./RankingsTeamItems.yaml
+  status:
+    type: boolean
+title: Rankings Team Response
+type: object

@@ -1,0 +1,5 @@
+items:
+  oneOf:
+    - $ref: ./BaseTask.yaml
+    - $ref: ./FlagRatingTask.yaml
+type: array

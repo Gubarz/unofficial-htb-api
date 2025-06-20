@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/info
+  operationId: getUserInfo
+  responses:
+    '200':
+      $ref: ../components/responses/UserInfoResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get user information
+  tags:
+    - User

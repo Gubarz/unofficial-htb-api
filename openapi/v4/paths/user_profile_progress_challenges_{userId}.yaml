@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /user/profile/progress/challenges/{user id}
+  operationId: getUserProfileProgressChallenges
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProfileProgressChallengesUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'User Progress: challenges (Total + by Category)'
+  tags:
+    - User

@@ -1,0 +1,7 @@
+additionalProperties:
+  additionalProperties:
+    $ref: ./ServerGroup.yaml
+  type: object
+description: Schema definition for Options
+title: Options
+type: object

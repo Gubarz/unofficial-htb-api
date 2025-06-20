@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./ProlabProgressData.yaml
+  status:
+    type: boolean
+type: object

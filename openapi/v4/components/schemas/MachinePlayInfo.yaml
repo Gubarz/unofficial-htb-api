@@ -1,0 +1,8 @@
+properties:
+  expires_at:
+    nullable: true
+    type: string
+  isActive:
+    nullable: true
+    type: boolean
+type: object

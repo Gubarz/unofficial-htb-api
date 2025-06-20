@@ -1,0 +1,6 @@
+description: Schema definition for Machine Tags List Response
+properties:
+  info:
+    $ref: ./MachinetagsListInfoItems.yaml
+title: Machine Tag List Response
+type: object

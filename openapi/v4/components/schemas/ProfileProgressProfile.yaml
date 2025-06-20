@@ -1,0 +1,10 @@
+properties:
+  challenge_categories:
+    $ref: ./ProfileProgressChallengeItems.yaml
+  challenge_difficulties:
+    $ref: ./ChallengeDifficulties.yaml
+  challenge_owns:
+    $ref: ./ProfileProgressChallengeOwns.yaml
+  solved_tasks:
+    type: integer
+type: object

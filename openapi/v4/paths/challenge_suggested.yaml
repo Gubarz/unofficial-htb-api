@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /challenge/suggested
+  operationId: getChallengeSuggested
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeSuggestedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: challenge Suggestion
+  tags:
+    - Challenges

@@ -1,0 +1,3 @@
+items:
+  $ref: ./MachinesAdventureItem.yaml
+type: array

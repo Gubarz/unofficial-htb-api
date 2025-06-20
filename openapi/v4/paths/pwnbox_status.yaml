@@ -1,0 +1,11 @@
+get:
+  description: Retrieve the status of a Pwnbox instance.
+  operationId: getPwnboxStatus
+  responses:
+    '200':
+      $ref: ../components/responses/PwnboxStatusResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get status of a Pwnbox instance.
+  tags:
+    - PwnBox

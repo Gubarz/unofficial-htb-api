@@ -1,0 +1,9 @@
+description: Schema definition for Spawn Request
+properties:
+  machine_id:
+    example: 597
+    type: integer
+required:
+  - machine_id
+title: Spawn Request
+type: object

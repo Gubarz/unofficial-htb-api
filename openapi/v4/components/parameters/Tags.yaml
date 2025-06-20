@@ -1,0 +1,10 @@
+description: Filter by tag ID. Can be repeated.
+explode: true
+in: query
+name: tags
+required: false
+schema:
+  items:
+    type: integer
+  type: array
+style: form

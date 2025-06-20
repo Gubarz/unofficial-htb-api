@@ -1,0 +1,10 @@
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  tier:
+    type: string
+  tier_frame:
+    type: string
+type: object

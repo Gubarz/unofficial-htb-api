@@ -1,0 +1,13 @@
+description: Schema definition for User Settings Response
+properties:
+  email:
+    type: string
+  hide_machine_tags:
+    type: integer
+  name_change_delay:
+    nullable: true
+    type: boolean
+  public:
+    type: integer
+title: User Settings Response
+type: object

@@ -1,0 +1,6 @@
+description: ID of the vpn server
+in: path
+name: vpnId
+required: true
+schema:
+  type: integer

@@ -1,0 +1,6 @@
+description: Schema definition for Pwnbox Start Response
+properties:
+  data:
+    $ref: ./PwnboxStartData.yaml
+title: Pwnbox Start Response
+type: object

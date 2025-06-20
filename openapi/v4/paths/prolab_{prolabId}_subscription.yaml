@@ -1,0 +1,13 @@
+get:
+  description: Get Prolab Subscription
+  operationId: getProlabSubscription
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabSubscriptionResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Subscription
+  tags:
+    - Prolabs

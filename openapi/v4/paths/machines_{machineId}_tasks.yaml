@@ -1,0 +1,13 @@
+get:
+  description: Get Machine Tasks
+  operationId: getMachineTasks
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineTasksResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Machine Tasks
+  tags:
+    - Machines

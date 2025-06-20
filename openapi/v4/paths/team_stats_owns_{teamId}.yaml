@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /team/stats/owns/{team id}
+  operationId: getTeamStatsOwns
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamStatsOwnsTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get team Statistics (Owns)
+  tags:
+    - Team

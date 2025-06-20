@@ -1,0 +1,10 @@
+properties:
+  periods:
+    $ref: ./PeriodsStringArray.yaml
+  resets:
+    $ref: ./IntArray.yaml
+  system_owns:
+    $ref: ./IntArray.yaml
+  user_owns:
+    $ref: ./IntArray.yaml
+type: object

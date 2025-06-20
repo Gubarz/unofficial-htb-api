@@ -1,0 +1,11 @@
+apis:
+  openapi@v4:
+    root: openapi/v4/openapi.yaml
+    output: dist/openapi.v4.yaml
+  openapi@v5:
+    root: openapi/v5/openapi.yaml
+    output: dist/openapi.v5.yaml
+extends:
+  - recommended 
+rules:
+  no-ambiguous-paths: off # HackTheBox has overlapping paths; valid by design

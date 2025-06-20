@@ -1,0 +1,53 @@
+description: Schema definition for Fortress Data
+properties:
+  company:
+    $ref: ./Company.yaml
+  completion_message:
+    example: null
+    nullable: true
+    type: string
+  cover_image_url:
+    example: >-
+      https://labs.hackthebox.com/storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_cover_full.png
+    type: string
+  description:
+    example: >-
+      Lift off with this introductory fortress from Jet! Featuring interesting
+      web vectors and challenges, this fortress is perfect for those getting
+      started.
+    type: string
+  flags:
+    $ref: ./FlagsItems.yaml
+  has_completion_message:
+    example: false
+    type: boolean
+  id:
+    example: 1
+    type: integer
+  image:
+    example: >-
+      https://labs.hackthebox.com/storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
+    type: string
+  ip:
+    example: 10.13.37.10
+    format: ipv4
+    type: string
+  name:
+    example: Jet
+    type: string
+  players_completed:
+    example: 2504
+    type: integer
+  points:
+    example: '100'
+    type: string
+  progress_percent:
+    example: 0
+    type: number
+  reset_votes:
+    example: 0
+    type: integer
+  user_availability:
+    $ref: ./UserAvailability.yaml
+title: Fortress Data
+type: object

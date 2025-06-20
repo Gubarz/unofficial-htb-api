@@ -1,0 +1,14 @@
+description: Schema definition for Sidebar Change Log
+properties:
+  created_at:
+    example: '2021-11-12T10:38:24.000000Z'
+    format: date-time
+    type: string
+  id:
+    example: 41
+    type: integer
+  version:
+    example: 3.18.0
+    type: string
+title: Sidebar Change Log
+type: object

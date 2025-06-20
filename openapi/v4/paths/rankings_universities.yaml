@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /rankings/universities
+  operationId: getRankingsUniversities
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsUniversitiesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Universities
+  tags:
+    - Ranking

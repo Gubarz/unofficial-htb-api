@@ -1,0 +1,10 @@
+description: Schema definition for Tag
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  tag_category_id:
+    type: integer
+title: Tag
+type: object

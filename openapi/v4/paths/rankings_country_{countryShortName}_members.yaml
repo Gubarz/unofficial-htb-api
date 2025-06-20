@@ -1,0 +1,18 @@
+get:
+  description: Get Rankings Country Members
+  operationId: getRankingsCountryUSMembers
+  parameters:
+    - description: Two letter short name for country, ie US, DE
+      in: path
+      name: countryShortName
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsCountryMembersResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Rankings Country Members
+  tags:
+    - Ranking

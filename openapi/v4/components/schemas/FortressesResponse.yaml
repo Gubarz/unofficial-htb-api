@@ -1,0 +1,11 @@
+description: Schema definition for Fortresses Response
+properties:
+  data:
+    additionalProperties:
+      $ref: ./Fortress.yaml
+    type: object
+  status:
+    example: true
+    type: boolean
+title: Fortresses Response
+type: object

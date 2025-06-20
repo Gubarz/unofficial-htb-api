@@ -1,0 +1,6 @@
+properties:
+  id:
+    type: integer
+  text:
+    type: string
+type: object

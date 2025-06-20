@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/profile/summary
+  operationId: getUserProfileSummary
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileSummaryResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: User Profile Summary
+  tags:
+    - User

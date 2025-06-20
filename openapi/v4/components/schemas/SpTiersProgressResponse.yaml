@@ -1,0 +1,6 @@
+description: Schema definition for Sp Tiers Progress Response
+properties:
+  data:
+    $ref: ./SpTierProgressItems.yaml
+title: Sp Tiers Progress Response
+type: object

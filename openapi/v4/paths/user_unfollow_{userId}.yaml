@@ -1,0 +1,13 @@
+post:
+  description: Unfollow a user
+  operationId: postUserUnfollow
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Unfollow a user
+  tags:
+    - User

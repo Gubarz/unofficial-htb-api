@@ -1,0 +1,12 @@
+properties:
+  avatar:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  retired:
+    type: boolean
+  starting_point:
+    type: boolean
+type: object

@@ -1,0 +1,10 @@
+properties:
+  avatar:
+    type: string
+  avatar_thumb:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+type: object

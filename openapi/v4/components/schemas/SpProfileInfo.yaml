@@ -1,0 +1,9 @@
+properties:
+  ip:
+    example: 10.10.10.10
+    format: ipv4
+    nullable: true
+    type: string
+  playInfo:
+    $ref: ./PlayInfoCasing.yaml
+type: object

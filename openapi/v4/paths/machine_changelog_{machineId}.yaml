@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /machine/changelog/{machine id}
+  operationId: getMachineChangelog
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineChangelogMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: changelog'
+  tags:
+    - Machines

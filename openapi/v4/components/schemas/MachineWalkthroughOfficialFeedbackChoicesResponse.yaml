@@ -1,0 +1,4 @@
+properties:
+  feedback_choices:
+    $ref: ./StringArray.yaml
+type: object

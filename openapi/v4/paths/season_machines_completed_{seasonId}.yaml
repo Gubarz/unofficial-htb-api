@@ -1,0 +1,13 @@
+get:
+  description: Retrieve completed machines for a specific season.
+  operationId: getSeasonMachinesCompleted
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonMachinesCompletedSeasonIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get completed machine flags for the current season
+  tags:
+    - Season

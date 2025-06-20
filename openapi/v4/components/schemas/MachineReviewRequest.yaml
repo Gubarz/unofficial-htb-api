@@ -1,0 +1,22 @@
+description: Schema definition for Machine Review Request
+properties:
+  headline:
+    example: Very funny machine
+    type: string
+  id:
+    example: 444
+    type: integer
+  review:
+    example: It is not so immediate but it is very funny!
+    type: string
+  stars:
+    example: 5
+    format: float
+    type: number
+required:
+  - id
+  - stars
+  - headline
+  - review
+title: Machine Review Request
+type: object

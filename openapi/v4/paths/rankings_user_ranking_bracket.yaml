@@ -1,0 +1,11 @@
+get:
+  description: Get /rankings/user/ranking_bracket
+  operationId: getRankingsUserRankingBracket
+  responses:
+    '200':
+      $ref: ../components/responses/RankingsUserRankingBracketResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Rankings User Bracket
+  tags:
+    - Ranking

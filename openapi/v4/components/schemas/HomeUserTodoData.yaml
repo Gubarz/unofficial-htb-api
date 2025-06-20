@@ -1,0 +1,10 @@
+properties:
+  challenges:
+    $ref: ./HomeTodoChallengeCard.yaml
+  machines:
+    $ref: ./HomeTodoMachineCard.yaml
+  prolabs:
+    $ref: ./HomeTodoProlabCard.yaml
+  tracks:
+    $ref: ./HomeRecommendedTracksCard.yaml
+type: object

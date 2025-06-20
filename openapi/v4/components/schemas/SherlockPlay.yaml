@@ -1,0 +1,14 @@
+properties:
+  creators:
+    $ref: ./SherlockPlayCreatorsItems.yaml
+  file_name:
+    type: string
+  file_size:
+    type: string
+  id:
+    type: integer
+  scenario:
+    type: string
+  play_info:
+    $ref: ./PlayInfoAlt.yaml
+type: object

@@ -1,0 +1,35 @@
+properties:
+  user_points:
+    type: integer
+  active:
+    type: boolean
+  avatar:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  is_user_blood:
+    type: boolean
+  is_owned_root:
+    type: boolean
+  is_owned_user:
+    type: boolean
+  is_released:
+    type: boolean
+  is_root_blood:
+    type: boolean
+  name:
+    type: string
+  os:
+    type: string
+  release_time:
+    format: date-time
+    type: string
+  root_points:
+    type: integer
+  unknown:
+    type: boolean
+  production:
+    type: integer
+type: object

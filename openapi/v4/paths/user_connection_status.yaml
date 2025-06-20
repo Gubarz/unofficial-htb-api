@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/connection/status
+  operationId: getUserConnectionStatus
+  responses:
+    '200':
+      $ref: ../components/responses/UserConnectionStatusResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Bearer: Connection Status [ Connected ]'
+  tags:
+    - User

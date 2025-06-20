@@ -1,0 +1,10 @@
+properties:
+  academyModules:
+    $ref: ./AcademyModulesItems.yaml
+  description:
+    type: string
+  id:
+    type: integer
+  user_owns_count:
+    type: integer
+type: object

@@ -1,0 +1,8 @@
+properties:
+  creator_id:
+    type: integer
+  creator_name:
+    type: string
+  youtube_id:
+    type: string
+type: object

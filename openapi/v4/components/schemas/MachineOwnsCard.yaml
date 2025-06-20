@@ -1,0 +1,10 @@
+description: Schema definition for Machine Owns Card
+properties:
+  solved:
+    example: 100
+    type: integer
+  total:
+    example: 204
+    type: integer
+title: Machine Owns Card
+type: object

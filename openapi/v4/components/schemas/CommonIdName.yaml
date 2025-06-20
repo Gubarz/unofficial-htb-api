@@ -1,0 +1,8 @@
+description: Schema definition for Common Id Name
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+title: Common Id Name
+type: object

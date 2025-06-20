@@ -1,0 +1,6 @@
+description: Schema definition for Machine Tag Id Response
+properties:
+  info:
+    $ref: ./MachineTagInfo.yaml
+title: Machine Tag Id Response
+type: object

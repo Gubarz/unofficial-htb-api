@@ -1,0 +1,13 @@
+get:
+  description: Get /prolab/{prolabId}/rating
+  operationId: getProlabRating
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ProlabRatingResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Prolab Rating
+  tags:
+    - Prolabs

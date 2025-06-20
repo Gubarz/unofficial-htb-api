@@ -1,0 +1,11 @@
+content:
+  application/pdf:
+    schema:
+      format: binary
+      type: string
+description: Sherlock Official Writeup Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

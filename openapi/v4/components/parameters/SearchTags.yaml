@@ -1,0 +1,15 @@
+description: Search Term
+in: query
+name: tags
+required: false
+schema:
+  items:
+    enum:
+      - machines
+      - challenges
+      - users
+      - teams
+    type: string
+  maxItems: 1
+  minItems: 1
+  type: array

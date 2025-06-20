@@ -1,0 +1,15 @@
+description: >-
+  Filter by state. You can provide multiple values. For example,
+  state=active&state=retired.
+explode: true
+in: query
+name: state
+schema:
+  items:
+    enum:
+      - active
+      - retired
+      - unreleased
+    type: string
+  type: array
+style: form

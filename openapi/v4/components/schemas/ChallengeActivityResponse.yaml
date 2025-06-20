@@ -1,0 +1,6 @@
+description: Schema definition for Challenge Activity Response
+properties:
+  info:
+    $ref: ./ChallengeActivityInfo.yaml
+title: Challenge Activity Response
+type: object

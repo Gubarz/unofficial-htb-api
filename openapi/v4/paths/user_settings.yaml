@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /user/settings
+  operationId: getUserSettings
+  responses:
+    '200':
+      $ref: ../components/responses/UserSettingsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Bearer: Settings'
+  tags:
+    - User

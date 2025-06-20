@@ -1,0 +1,10 @@
+content:
+  application/json:
+    example:
+      message: No results for this sherlock
+description: Not Found
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

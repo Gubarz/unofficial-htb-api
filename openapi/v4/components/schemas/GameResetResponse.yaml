@@ -1,0 +1,9 @@
+description: Vote Reset Game
+properties:
+  message:
+    example: Voted
+    type: string
+  status:
+    example: true
+    type: boolean
+type: object

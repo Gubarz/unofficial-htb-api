@@ -1,0 +1,13 @@
+get:
+  description: Retrieve a writeup for a specific Sherlock instance.
+  operationId: getSherlockWriteup
+  parameters:
+    - $ref: ../components/parameters/SherlockId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksSherlockIdWriteupResponse.yaml
+    '404':
+      $ref: ../components/responses/SherlocksSherlockId404.yaml
+  summary: Get community write-up for Sherlock by ID
+  tags:
+    - Sherlocks

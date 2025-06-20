@@ -1,0 +1,7 @@
+description: Schema definition for Sherlock Download Link
+properties:
+  expires_in:
+    type: integer
+  url:
+    type: string
+title: Sherlock Download Link

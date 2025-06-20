@@ -1,0 +1,4 @@
+properties:
+  liked:
+    type: boolean
+type: object

@@ -1,0 +1,13 @@
+properties:
+  date:
+    example: 14 Jul 2024
+    type: string
+  date_iso8601:
+    example: '2024-07-14T06:51:22+00:00'
+    format: date-time
+    type: string
+  points:
+    type: integer
+  rank:
+    type: integer
+type: object

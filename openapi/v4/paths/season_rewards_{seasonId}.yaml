@@ -1,0 +1,13 @@
+get:
+  description: Get Season Rewwards
+  operationId: getSeasonRewards
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonRewardsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Season Rewwards
+  tags:
+    - Season

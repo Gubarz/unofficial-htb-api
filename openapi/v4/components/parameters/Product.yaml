@@ -1,0 +1,11 @@
+description: Select vpn server
+in: query
+name: product
+required: true
+schema:
+  enum:
+    - competitive
+    - labs
+    - starting_point
+    - fortresses
+  type: string

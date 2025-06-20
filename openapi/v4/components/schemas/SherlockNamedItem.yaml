@@ -1,0 +1,6 @@
+description: Schema definition for Sherlock Named Item
+properties:
+  data:
+    $ref: ./SherlockNamedItemData.yaml
+title: Sherlock Named Item
+type: object

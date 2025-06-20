@@ -1,0 +1,10 @@
+description: Schema definition for Tag Category
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  tags:
+    $ref: ./TagCategoryTagsItems.yaml
+title: Tag Category
+type: object

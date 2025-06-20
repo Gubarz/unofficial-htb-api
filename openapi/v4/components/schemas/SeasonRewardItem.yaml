@@ -1,0 +1,12 @@
+properties:
+  id:
+    type: integer
+  image:
+    type: string
+  name:
+    type: string
+  order:
+    type: number
+  reward_group_id:
+    type: integer
+type: object

@@ -1,0 +1,10 @@
+content:
+  text/plain:
+    schema:
+      $ref: ../schemas/OpenVpn.yaml
+description: Returns open_vpn file
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

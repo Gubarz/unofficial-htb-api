@@ -1,0 +1,10 @@
+description: Schema definition for Social Links
+properties:
+  discord:
+    example: https://discord.gg/RnFKvTPYer
+    type: string
+  forum:
+    example: https://forum.hackthebox.com/c/content/prolabs/18
+    type: string
+title: Social Links
+type: object

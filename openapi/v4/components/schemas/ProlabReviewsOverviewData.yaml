@@ -1,0 +1,13 @@
+description: Schema definition for Prolab Reviews Overview Data
+properties:
+  feedbacks:
+    $ref: ./ProlabReviewOverviewFeedbackItems.yaml
+  total_number_of_ratings:
+    example: 0
+    type: integer
+  users_average_rating:
+    example: 0
+    format: float
+    type: number
+title: Prolab Reviews Overview Data
+type: object

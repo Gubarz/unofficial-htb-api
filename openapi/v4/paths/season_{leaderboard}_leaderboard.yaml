@@ -1,0 +1,17 @@
+get:
+  description: Get /season/players/leaderboard
+  operationId: getSeasonLeaderboard
+  parameters:
+    - $ref: ../components/parameters/Leaderboard.yaml
+    - in: query
+      name: season
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonPlayersLeaderboardResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Season Leaderboar
+  tags:
+    - Season

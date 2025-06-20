@@ -1,0 +1,486 @@
+openapi: 3.0.4
+info:
+  contact:
+    name: ' '
+  description: >-
+    The undocumented public API v4 for the Hack The Box platform. This OpenAPI
+    specification is community-maintained and reverse-engineered. This project 
+    is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API v4
+  version: v0.3.0
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/v4
+security:
+  - bearer: []
+tags:
+  - description: Endpoints related to platform badges
+    name: Badges
+  - description: Endpoints related to Careers
+    name: Career
+  - description: Endpoints related to Challenges
+    name: Challenges
+  - description: Endpoints related to VPN connections
+    name: Connection
+  - description: Endpoints related to Fortresses
+    name: Fortresses
+  - description: Endpoints related to the Home page banner
+    name: Home
+  - description: Endpoints related to Machines
+    name: Machines
+  - description: Endpoints related to the platform (General)
+    name: Platform
+  - description: Endpoints related to ProLabs
+    name: Prolabs
+  - description: Endpoints related to PwnBox
+    name: PwnBox
+  - description: Endpoints related to Rankings
+    name: Ranking
+  - description: Product reviews
+    name: Review
+  - description: Endpoints related to Seasons/Arenas
+    name: Season
+  - description: Endpoints related to Sherlocks
+    name: Sherlocks
+  - description: Endpoints related to Starting Point
+    name: Starting Point
+  - description: Endpoints related to Team Rankings
+    name: Team
+  - description: Endpoints related to Tracks
+    name: Tracks
+  - description: Endpoints related to University Rankings
+    name: Universities
+  - description: Endpoints related to User Profiles
+    name: User
+  - description: Endpoints related to spawning VMs for Machines and Starting Point
+    name: VM
+paths:
+  /access/ovpnfile/{vpnId}/0:
+    $ref: paths/access_ovpnfile_{vpnId}_0.yaml
+  /access/ovpnfile/{vpnId}/0/1:
+    $ref: paths/access_ovpnfile_{vpnId}_0_1.yaml
+  /announcements:
+    $ref: paths/announcements.yaml
+  /arena/own:
+    $ref: paths/arena_own.yaml
+  /badges:
+    $ref: paths/badges.yaml
+  /career/companies:
+    $ref: paths/career_companies.yaml
+  /career/company/{companyId}:
+    $ref: paths/career_company_{companyId}.yaml
+  /career/featured:
+    $ref: paths/career_featured.yaml
+  /career/history:
+    $ref: paths/career_history.yaml
+  /career/info/{jobId}:
+    $ref: paths/career_info_{jobId}.yaml
+  /career/profile:
+    $ref: paths/career_profile.yaml
+  /career/requests:
+    $ref: paths/career_requests.yaml
+  /career/search:
+    $ref: paths/career_search.yaml
+  /career/stats:
+    $ref: paths/career_stats.yaml
+  /career/temporary/contact/optin:
+    $ref: paths/career_temporary_contact_optin.yaml
+  /challenge/activity/{challengeId}:
+    $ref: paths/challenge_activity_{challengeId}.yaml
+  /challenge/categories/list:
+    $ref: paths/challenge_categories_list.yaml
+  /challenge/changelog/{challengeId}:
+    $ref: paths/challenge_changelog_{challengeId}.yaml
+  /challenge/download/{challengeId}:
+    $ref: paths/challenge_download_{challengeId}.yaml
+  /challenge/info/{challengeSlug}:
+    $ref: paths/challenge_info_{challengeSlug}.yaml
+  /challenge/own:
+    $ref: paths/challenge_own.yaml
+  /challenge/recommended:
+    $ref: paths/challenge_recommended.yaml
+  /challenge/recommended/retired:
+    $ref: paths/challenge_recommended_retired.yaml
+  /challenge/review:
+    $ref: paths/challenge_review.yaml
+  /challenge/review/helpful/{reviewId}:
+    $ref: paths/challenge_review_helpful_{reviewId}.yaml
+  /challenge/reviews/user/{challengeId}:
+    $ref: paths/challenge_reviews_user_{challengeId}.yaml
+  /challenge/start:
+    $ref: paths/challenge_start.yaml
+  /challenge/stop:
+    $ref: paths/challenge_stop.yaml
+  /challenge/suggested:
+    $ref: paths/challenge_suggested.yaml
+  /challenge/{challengeId}/writeup:
+    $ref: paths/challenge_{challengeId}_writeup.yaml
+  /challenge/{challengeId}/writeup/official:
+    $ref: paths/challenge_{challengeId}_writeup_official.yaml
+  /challenges:
+    $ref: paths/challenges.yaml
+  /changelogs:
+    $ref: paths/changelogs.yaml
+  /connection/status:
+    $ref: paths/connection_status.yaml
+  /connection/status/competitive:
+    $ref: paths/connection_status_competitive.yaml
+  /connection/status/prolab/{prolabId}:
+    $ref: paths/connection_status_prolab_{prolabId}.yaml
+  /connection/status/{productName}:
+    $ref: paths/connection_status_{productName}.yaml
+  /connections:
+    $ref: paths/connections.yaml
+  /connections/servers:
+    $ref: paths/connections_servers.yaml
+  /connections/servers/prolab/{prolabId}:
+    $ref: paths/connections_servers_prolab_{prolabId}.yaml
+  /connections/servers/switch/{vpnId}:
+    $ref: paths/connections_servers_switch_{vpnId}.yaml
+  /content/stats:
+    $ref: paths/content_stats.yaml
+  /fortress/{fortressId}:
+    $ref: paths/fortress_{fortressId}.yaml
+  /fortress/{fortressId}/flag:
+    $ref: paths/fortress_{fortressId}_flag.yaml
+  /fortress/{fortressId}/flags:
+    $ref: paths/fortress_{fortressId}_flags.yaml
+  /fortress/{fortressId}/reset:
+    $ref: paths/fortress_{fortressId}_reset.yaml
+  /fortresses:
+    $ref: paths/fortresses.yaml
+  /home/banners:
+    $ref: paths/home_banners.yaml
+  /home/recommended:
+    $ref: paths/home_recommended.yaml
+  /home/user/progress:
+    $ref: paths/home_user_progress.yaml
+  /home/user/todo:
+    $ref: paths/home_user_todo.yaml
+  /lab/list:
+    $ref: paths/lab_list.yaml
+  /machine/active:
+    $ref: paths/machine_active.yaml
+  /machine/activity/{machineId}:
+    $ref: paths/machine_activity_{machineId}.yaml
+  /machine/changelog/{machineId}:
+    $ref: paths/machine_changelog_{machineId}.yaml
+  /machine/graph/activity/{machineId}/{period}:
+    $ref: paths/machine_graph_activity_{machineId}_{period}.yaml
+  /machine/creators/{machineId}:
+    $ref: paths/machine_creators_{machineId}.yaml
+  /machine/graph/matrix/{machineId}:
+    $ref: paths/machine_graph_matrix_{machineId}.yaml
+  /machine/graph/owns/difficulty/{machineId}:
+    $ref: paths/machine_graph_owns_difficulty_{machineId}.yaml
+  /machine/list/retired/paginated:
+    $ref: paths/machine_list_retired_paginated.yaml
+  /machine/own:
+    $ref: paths/machine_own.yaml
+  /machine/owns/top/{machineId}:
+    $ref: paths/machine_owns_top_{machineId}.yaml
+  /machine/paginated:
+    $ref: paths/machine_paginated.yaml
+  /machine/profile/{machineSlug}:
+    $ref: paths/machine_profile_{machineSlug}.yaml
+  /machine/recommended:
+    $ref: paths/machine_recommended.yaml
+  /machine/recommended/retired:
+    $ref: paths/machine_recommended_retired.yaml
+  /machine/review:
+    $ref: paths/machine_review.yaml
+  /machine/reviews/user/{machineId}:
+    $ref: paths/machine_reviews_user_{machineId}.yaml
+  /machine/reviews/{machineId}:
+    $ref: paths/machine_reviews_{machineId}.yaml
+  /machine/tags/list:
+    $ref: paths/machine_tags_list.yaml
+  /machine/tags/{machineId}:
+    $ref: paths/machine_tags_{machineId}.yaml
+  /machine/todo/paginated:
+    $ref: paths/machine_todo_paginated.yaml
+  /machine/unreleased:
+    $ref: paths/machine_unreleased.yaml
+  /machine/walkthrough/random:
+    $ref: paths/machine_walkthrough_random.yaml
+  /machine/walkthroughs/language/list:
+    $ref: paths/machine_walkthroughs_language_list.yaml
+  /machine/walkthroughs/official/feedback-choices:
+    $ref: paths/machine_walkthroughs_official_feedback-choices.yaml
+  /machine/walkthroughs/{machineId}:
+    $ref: paths/machine_walkthroughs_{machineId}.yaml
+  /machine/writeup/{machineId}:
+    $ref: paths/machine_writeup_{machineId}.yaml
+  /machines/{machineId}/adventure:
+    $ref: paths/machines_{machineId}_adventure.yaml
+  /machines/{machineId}/tasks:
+    $ref: paths/machines_{machineId}_tasks.yaml
+  /navigation/main:
+    $ref: paths/navigation_main.yaml
+  /notices:
+    $ref: paths/notices.yaml
+  /prolab/{prolabId}/changelogs:
+    $ref: paths/prolab_{prolabId}_changelogs.yaml
+  /prolab/{prolabId}/faq:
+    $ref: paths/prolab_{prolabId}_faq.yaml
+  /prolab/{prolabId}/flag:
+    $ref: paths/prolab_{prolabId}_flag.yaml
+  /prolab/{prolabId}/flags:
+    $ref: paths/prolab_{prolabId}_flags.yaml
+  /prolab/{prolabId}/info:
+    $ref: paths/prolab_{prolabId}_info.yaml
+  /prolab/{prolabId}/machines:
+    $ref: paths/prolab_{prolabId}_machines.yaml
+  /prolab/{prolabId}/overview:
+    $ref: paths/prolab_{prolabId}_overview.yaml
+  /prolab/{prolabId}/progress:
+    $ref: paths/prolab_{prolabId}_progress.yaml
+  /prolab/{prolabId}/rating:
+    $ref: paths/prolab_{prolabId}_rating.yaml
+  /prolab/{prolabId}/reviews:
+    $ref: paths/prolab_{prolabId}_reviews.yaml
+  /prolab/{prolabId}/reviews_overview:
+    $ref: paths/prolab_{prolabId}_reviews_overview.yaml
+  /prolab/{prolabId}/subscription:
+    $ref: paths/prolab_{prolabId}_subscription.yaml
+  /prolabs:
+    $ref: paths/prolabs.yaml
+  /pwnbox/start:
+    $ref: paths/pwnbox_start.yaml
+  /pwnbox/status:
+    $ref: paths/pwnbox_status.yaml
+  /pwnbox/terminate:
+    $ref: paths/pwnbox_terminate.yaml
+  /pwnbox/usage:
+    $ref: paths/pwnbox_usage.yaml
+  /rankings:
+    $ref: paths/rankings.yaml
+  /rankings/countries:
+    $ref: paths/rankings_countries.yaml
+  /rankings/country/best:
+    $ref: paths/rankings_country_best.yaml
+  /rankings/country/overview:
+    $ref: paths/rankings_country_overview.yaml
+  /rankings/country/ranking_bracket:
+    $ref: paths/rankings_country_ranking_bracket.yaml
+  /rankings/country/{countryShortName}/members:
+    $ref: paths/rankings_country_{countryShortName}_members.yaml
+  /rankings/team/best:
+    $ref: paths/rankings_team_best.yaml
+  /rankings/team/best/{teamId}:
+    $ref: paths/rankings_team_best_{teamId}.yaml
+  /rankings/team/overview:
+    $ref: paths/rankings_team_overview.yaml
+  /rankings/team/overview/{teamId}:
+    $ref: paths/rankings_team_overview_{teamId}.yaml
+  /rankings/team/ranking_bracket:
+    $ref: paths/rankings_team_ranking_bracket.yaml
+  /rankings/team/ranking_bracket/{teamId}:
+    $ref: paths/rankings_team_ranking_bracket_{teamId}.yaml
+  /rankings/teams:
+    $ref: paths/rankings_teams.yaml
+  /rankings/universities:
+    $ref: paths/rankings_universities.yaml
+  /rankings/university/ranking_bracket/{universityId}:
+    $ref: paths/rankings_university_ranking_bracket_{universityId}.yaml
+  /rankings/user/best:
+    $ref: paths/rankings_user_best.yaml
+  /rankings/user/overview:
+    $ref: paths/rankings_user_overview.yaml
+  /rankings/user/ranking_bracket:
+    $ref: paths/rankings_user_ranking_bracket.yaml
+  /rankings/users:
+    $ref: paths/rankings_users.yaml
+  /review/{product}/{productId}:
+    $ref: paths/review_{product}_{productId}.yaml
+  /review/{product}/{productId}/paginated:
+    $ref: paths/review_{product}_{productId}_paginated.yaml
+  /search/fetch:
+    $ref: paths/search_fetch.yaml
+  /season/end/{seasonId}/{userId}:
+    $ref: paths/season_end_{seasonId}_{userId}.yaml
+  /season/list:
+    $ref: paths/season_list.yaml
+  /season/machine/active:
+    $ref: paths/season_machine_active.yaml
+  /season/machines:
+    $ref: paths/season_machines.yaml
+  /season/machines/completed/{seasonId}:
+    $ref: paths/season_machines_completed_{seasonId}.yaml
+  /season/rewards/{seasonId}:
+    $ref: paths/season_rewards_{seasonId}.yaml
+  /season/user/followers/{seasonId}:
+    $ref: paths/season_user_followers_{seasonId}.yaml
+  /season/user/rank/{seasonId}:
+    $ref: paths/season_user_rank_{seasonId}.yaml
+  /season/{leaderboard}/leaderboard:
+    $ref: paths/season_{leaderboard}_leaderboard.yaml
+  /season/{leaderboard}/leaderboard/top/{seasonId}:
+    $ref: paths/season_{leaderboard}_leaderboard_top_{seasonId}.yaml
+  /sherlocks:
+    $ref: paths/sherlocks.yaml
+  /sherlocks/categories/list:
+    $ref: paths/sherlocks_categories_list.yaml
+  /sherlocks/{sherlockId}/download_link:
+    $ref: paths/sherlocks_{sherlockId}_download_link.yaml
+  /sherlocks/{sherlockId}/info:
+    $ref: paths/sherlocks_{sherlockId}_info.yaml
+  /sherlocks/{sherlockId}/play:
+    $ref: paths/sherlocks_{sherlockId}_play.yaml
+  /sherlocks/{sherlockId}/progress:
+    $ref: paths/sherlocks_{sherlockId}_progress.yaml
+  /sherlocks/{sherlockId}/tasks:
+    $ref: paths/sherlocks_{sherlockId}_tasks.yaml
+  /sherlocks/{sherlockId}/tasks/{taskId}/flag:
+    $ref: paths/sherlocks_{sherlockId}_tasks_{taskId}_flag.yaml
+  /sherlocks/{sherlockId}/writeup:
+    $ref: paths/sherlocks_{sherlockId}_writeup.yaml
+  /sherlocks/{sherlockId}/writeup/official:
+    $ref: paths/sherlocks_{sherlockId}_writeup_official.yaml
+  /sherlocks/{sherlockSlug}:
+    $ref: paths/sherlocks_{sherlockSlug}.yaml
+  /sidebar/announcement:
+    $ref: paths/sidebar_announcement.yaml
+  /sidebar/changelog:
+    $ref: paths/sidebar_changelog.yaml
+  /sp/profile/{startingPointId}:
+    $ref: paths/sp_profile_{startingPointId}.yaml
+  /sp/task/flag:
+    $ref: paths/sp_task_flag.yaml
+  /sp/tier/{tierId}:
+    $ref: paths/sp_tier_{tierId}.yaml
+  /sp/tiers/progress:
+    $ref: paths/sp_tiers_progress.yaml
+  /team/activity/{teamId}:
+    $ref: paths/team_activity_{teamId}.yaml
+  /team/chart/challenge/categories/{teamId}:
+    $ref: paths/team_chart_challenge_categories_{teamId}.yaml
+  /team/chart/machines/attack/{teamId}:
+    $ref: paths/team_chart_machines_attack_{teamId}.yaml
+  /team/graph/{teamId}:
+    $ref: paths/team_graph_{teamId}.yaml
+  /team/info/{teamId}:
+    $ref: paths/team_info_{teamId}.yaml
+  /team/invitations/{teamId}:
+    $ref: paths/team_invitations_{teamId}.yaml
+  /team/kick/{userId}:
+    $ref: paths/team_kick_{userId}.yaml
+  /team/members/{teamId}:
+    $ref: paths/team_members_{teamId}.yaml
+  /team/stats/owns/{teamId}:
+    $ref: paths/team_stats_owns_{teamId}.yaml
+  /team/{requestId}/invite/accept:
+    $ref: paths/team_{requestId}_invite_accept.yaml
+  /team/{requestId}/invite/reject:
+    $ref: paths/team_{requestId}_invite_reject.yaml
+  /tracks:
+    $ref: paths/tracks.yaml
+  /tracks/enroll/{trackId}:
+    $ref: paths/tracks_enroll_{trackId}.yaml
+  /tracks/like/{trackId}:
+    $ref: paths/tracks_like_{trackId}.yaml
+  /tracks/{trackId}:
+    $ref: paths/tracks_{trackId}.yaml
+  /university/activity/{universityId}:
+    $ref: paths/university_activity_{universityId}.yaml
+  /university/all/list:
+    $ref: paths/university_all_list.yaml
+  /university/chart/challenge/categories/{universityId}:
+    $ref: paths/university_chart_challenge_categories_{universityId}.yaml
+  /university/chart/machines/attack/{universityId}:
+    $ref: paths/university_chart_machines_attack_{universityId}.yaml
+  /university/country/list:
+    $ref: paths/university_country_list.yaml
+  /university/members/{universityId}:
+    $ref: paths/university_members_{universityId}.yaml
+  /university/new/list:
+    $ref: paths/university_new_list.yaml
+  /university/profile/{universityId}:
+    $ref: paths/university_profile_{universityId}.yaml
+  /university/stats/owns/{userId}:
+    $ref: paths/university_stats_owns_{userId}.yaml
+  /university/top/list:
+    $ref: paths/university_top_list.yaml
+  /user/achievement/{targetType}/{userId}/{targetId}:
+    $ref: paths/user_achievement_{targetType}_{userId}_{targetId}.yaml
+  /user/anonymized/id:
+    $ref: paths/user_anonymized_id.yaml
+  /user/apptoken/create:
+    $ref: paths/user_apptoken_create.yaml
+  /user/apptoken/delete:
+    $ref: paths/user_apptoken_delete.yaml
+  /user/apptoken/list:
+    $ref: paths/user_apptoken_list.yaml
+  /user/banned:
+    $ref: paths/user_banned.yaml
+  /user/connection/status:
+    $ref: paths/user_connection_status.yaml
+  /user/dashboard:
+    $ref: paths/user_dashboard.yaml
+  /user/dashboard/tabloid:
+    $ref: paths/user_dashboard_tabloid.yaml
+  /user/disrespect/{userId}:
+    $ref: paths/user_disrespect_{userId}.yaml
+  /user/follow/{userId}:
+    $ref: paths/user_follow_{userId}.yaml
+  /user/followers:
+    $ref: paths/user_followers.yaml
+  /user/info:
+    $ref: paths/user_info.yaml
+  /user/profile/activity/{userId}:
+    $ref: paths/user_profile_activity_{userId}.yaml
+  /user/profile/badges/{userId}:
+    $ref: paths/user_profile_badges_{userId}.yaml
+  /user/profile/basic/{userId}:
+    $ref: paths/user_profile_basic_{userId}.yaml
+  /user/profile/bloods/{userId}:
+    $ref: paths/user_profile_bloods_{userId}.yaml
+  /user/profile/chart/machines/attack/{userId}:
+    $ref: paths/user_profile_chart_machines_attack_{userId}.yaml
+  /user/profile/content/{userId}:
+    $ref: paths/user_profile_content_{userId}.yaml
+  /user/profile/graph/{period}/{userId}:
+    $ref: paths/user_profile_graph_{period}_{userId}.yaml
+  /user/profile/progress/challenges/{userId}:
+    $ref: paths/user_profile_progress_challenges_{userId}.yaml
+  /user/profile/progress/fortress/{userId}:
+    $ref: paths/user_profile_progress_fortress_{userId}.yaml
+  /user/profile/progress/machines/os/{userId}:
+    $ref: paths/user_profile_progress_machines_os_{userId}.yaml
+  /user/profile/progress/prolab/{userId}:
+    $ref: paths/user_profile_progress_prolab_{userId}.yaml
+  /user/profile/progress/sherlocks/{userId}:
+    $ref: paths/user_profile_progress_sherlocks_{userId}.yaml
+  /user/profile/summary:
+    $ref: paths/user_profile_summary.yaml
+  /user/respect/{userId}:
+    $ref: paths/user_respect_{userId}.yaml
+  /user/settings:
+    $ref: paths/user_settings.yaml
+  /user/tracks:
+    $ref: paths/user_tracks.yaml
+  /user/unfollow/{userId}:
+    $ref: paths/user_unfollow_{userId}.yaml
+  /vm/extend:
+    $ref: paths/vm_extend.yaml
+  /vm/reset:
+    $ref: paths/vm_reset.yaml
+  /vm/reset/vote:
+    $ref: paths/vm_reset_vote.yaml
+  /vm/reset/vote/accept:
+    $ref: paths/vm_reset_vote_accept.yaml
+  /vm/spawn:
+    $ref: paths/vm_spawn.yaml
+  /vm/terminate:
+    $ref: paths/vm_terminate.yaml
+  /{product}/todo/update/{productId}:
+    $ref: paths/{product}_todo_update_{productId}.yaml
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http

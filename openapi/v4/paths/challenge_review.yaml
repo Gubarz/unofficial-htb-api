@@ -1,0 +1,13 @@
+post:
+  description: Submits data for /challenge/review
+  operationId: postChallengeReview
+  requestBody:
+    $ref: ../components/requestBodies/ChallengeReviewRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Submit challenge review
+  tags:
+    - Challenges

@@ -1,0 +1,13 @@
+get:
+  description: Retrieves graph matrix
+  operationId: getMachineGraphMatrix
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineGraphMatrixMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Machine Graph Matrix
+  tags:
+    - Machines

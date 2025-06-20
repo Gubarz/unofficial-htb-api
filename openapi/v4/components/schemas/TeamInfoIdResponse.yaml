@@ -1,0 +1,46 @@
+description: Schema definition for Team Info Id Response
+properties:
+  avatar_url:
+    type: string
+  can_delete_avatar:
+    type: boolean
+  captain:
+    $ref: ./UserIdNameThumb.yaml
+  country_code:
+    nullable: true
+    type: string
+  country_name:
+    type: string
+  cover_image_url:
+    nullable: true
+    type: string
+  description:
+    nullable: true
+    type: string
+  discord:
+    nullable: true
+    type: string
+  facebook:
+    nullable: true
+    type: string
+  id:
+    format: int
+    type: integer
+  is_respected:
+    type: boolean
+  join_request_sent:
+    type: boolean
+  motto:
+    type: string
+  name:
+    type: string
+  points:
+    format: int
+    type: integer
+  public:
+    type: boolean
+  twitter:
+    nullable: true
+    type: string
+title: Team Info Id Response
+type: object

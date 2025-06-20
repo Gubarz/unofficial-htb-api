@@ -1,0 +1,19 @@
+content:
+  application/json:
+    examples:
+      already_voted:
+        summary: user_ already voted
+        value:
+          message: >-
+            Faculty was not reset. user_ has already voted for resetting a
+            machine.
+      voted_too_many_times:
+        summary: Voted too many times
+        value:
+          message: Too many reset machine attempts. Try again later!
+description: Vm Reset Bad Request
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

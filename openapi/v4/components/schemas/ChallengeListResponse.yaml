@@ -1,0 +1,10 @@
+description: Schema definition for Challenge List Response
+properties:
+  data:
+    $ref: ./ChallengeListData.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Challenge List Response
+type: object

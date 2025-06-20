@@ -1,0 +1,8 @@
+properties:
+  aggregate:
+    $ref: ./MatrixInfo.yaml
+  maker:
+    $ref: ./MatrixInfo.yaml
+  user:
+    $ref: ./MatrixInfo.yaml
+type: object

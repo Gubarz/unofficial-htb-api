@@ -1,0 +1,5 @@
+properties:
+  data:
+    $ref: ./CareerCompaniesDataItems.yaml
+title: Career Companies Response
+type: object

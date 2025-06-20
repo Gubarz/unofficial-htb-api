@@ -1,0 +1,25 @@
+properties:
+  active:
+    type: boolean
+  background_image:
+    type: string
+  end_date:
+    format: date-time
+    type: string
+  id:
+    type: integer
+  is_visible:
+    type: boolean
+  logo:
+    type: string
+  name:
+    type: string
+  start_date:
+    format: date-time
+    type: string
+  state:
+    type: string
+  subtitle:
+    nullable: true
+    type: string
+type: object

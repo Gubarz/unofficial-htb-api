@@ -1,0 +1,31 @@
+properties:
+  authUserInHelpfulReviews:
+    type: boolean
+  created_at:
+    type: string
+  difficulty:
+    nullable: true
+    type: integer
+  featured:
+    type: integer
+  helpful_reviews:
+    $ref: ./HelpfulReviewsItems.yaml
+  helpful_reviews_count:
+    type: number
+  id:
+    type: integer
+  message:
+    nullable: true
+    type: string
+  released:
+    type: number
+  stars:
+    type: number
+  title:
+    nullable: true
+    type: string
+  user:
+    $ref: ./UserBasicInfo.yaml
+  user_id:
+    type: integer
+type: object

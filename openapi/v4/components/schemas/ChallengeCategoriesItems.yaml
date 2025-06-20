@@ -1,0 +1,13 @@
+properties:
+  avg_user_solved:
+    example: 0.403
+    type: number
+  completion_percentage:
+    type: integer
+  name:
+    type: string
+  owned_flags:
+    type: integer
+  total_flags:
+    type: integer
+type: object

@@ -1,0 +1,14 @@
+get:
+  description: Get company detail
+  operationId: getCareerCompany
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/CompanyId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/CareerCompanyResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Company Detail
+  tags:
+    - Career

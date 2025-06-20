@@ -1,0 +1,5 @@
+description: Schema definition for Categories List Response
+properties:
+  info:
+    $ref: ./CategoriesListInfo.yaml
+type: object

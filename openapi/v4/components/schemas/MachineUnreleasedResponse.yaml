@@ -1,0 +1,10 @@
+description: Schema definition for Machine Unreleased Response
+properties:
+  data:
+    $ref: ./MachineUnreleasedDataItems.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Machine Unreleased Response
+type: object

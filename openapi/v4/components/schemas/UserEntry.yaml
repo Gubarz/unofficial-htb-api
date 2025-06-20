@@ -1,0 +1,12 @@
+properties:
+  id:
+    type: integer
+  team_id:
+    type: integer
+  user:
+    $ref: ./User.yaml
+  user_id:
+    type: integer
+  user_request:
+    type: integer
+type: object

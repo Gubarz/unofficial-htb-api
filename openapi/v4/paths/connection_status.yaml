@@ -1,0 +1,11 @@
+get:
+  description: Retrieve the connection status.
+  operationId: getConnectionStatus
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionStatusResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Current Active Connections
+  tags:
+    - Connection

@@ -1,0 +1,47 @@
+properties:
+  current_rank_progress:
+    type: number
+  growths:
+    $ref: ./Growths.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  next_rank:
+    type: string
+  next_rank_points:
+    type: number
+  points:
+    type: integer
+  rank:
+    type: string
+  rank_id:
+    type: integer
+  rank_ownership:
+    type: number
+  rank_requirement:
+    type: integer
+  ranking:
+    type: integer
+  rankingGraphStats:
+    $ref: ./RankingGraphStats.yaml
+  respects:
+    type: integer
+  sso_id:
+    type: boolean
+  subscription:
+    type: string
+  system_bloods:
+    type: integer
+  system_owns:
+    type: integer
+  team:
+    $ref: ./ProfileUserTeamWrapper.yaml
+  university_name:
+    nullable: true
+    type: string
+  user_bloods:
+    type: integer
+  user_owns:
+    type: integer
+type: object

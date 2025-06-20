@@ -1,0 +1,16 @@
+description: Schema definition for Reviews Response
+properties:
+  average:
+    example: 3.3
+    format: float
+    type: number
+  count:
+    example: 118
+    type: integer
+  data:
+    $ref: ./ReviewMessage.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+title: Reviews

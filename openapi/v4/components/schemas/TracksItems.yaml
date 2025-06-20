@@ -1,0 +1,34 @@
+required:
+  - id
+  - name
+  - creator
+  - official
+  - staff_pick
+  - difficulty
+  - cover_image
+  - likes
+properties:
+  cover_image:
+    type: string
+    example: /storage/tracks/61.png
+  creator:
+    $ref: ./TracksCreator.yaml
+  difficulty:
+    type: string
+    description: Difficulty level (e.g., Very Easy, Easy, Medium, Hard, etc.)
+    example: Easy
+  id:
+    type: integer
+    example: 61
+  likes:
+    type: integer
+    example: 92
+  name:
+    type: string
+    example: Detecting Active Directory Attacks
+  official:
+    type: boolean
+    example: true
+  staff_pick:
+    type: integer
+type: object

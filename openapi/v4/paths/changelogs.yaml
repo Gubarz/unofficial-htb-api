@@ -1,0 +1,11 @@
+get:
+  description: Possibly depreciated, no updates since 2021
+  operationId: getChangelogs
+  responses:
+    '200':
+      $ref: ../components/responses/ChangelogsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Dashboard: Interface changelog'
+  tags:
+    - Platform

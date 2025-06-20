@@ -1,0 +1,13 @@
+get:
+  description: Retrieves information related to /machine/owns/top/{machine id}
+  operationId: getMachineOwnsTop
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineOwnsTopMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: Top 25 Owners'
+  tags:
+    - Machines

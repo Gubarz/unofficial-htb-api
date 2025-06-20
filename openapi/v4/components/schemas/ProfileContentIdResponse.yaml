@@ -1,0 +1,6 @@
+description: Schema definition for Profile Content Id Response
+properties:
+  profile:
+    $ref: ./PorfileContentProfile.yaml
+title: Profile Content Id Response
+type: object

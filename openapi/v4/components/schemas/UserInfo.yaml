@@ -1,0 +1,86 @@
+description: Schema definition for User Info
+properties:
+  avatar:
+    example: string
+    type: string
+  beta_tester:
+    example: 0
+    type: integer
+  canAccessDedilab:
+    example: false
+    type: boolean
+  canAccessVIP:
+    example: true
+    type: boolean
+  can_delete_avatar:
+    example: false
+    type: boolean
+  dunning_exists:
+    example: false
+    type: boolean
+  email:
+    example: string
+    type: string
+  hasAppTokens:
+    example: true
+    type: boolean
+  hasTeamInvitation:
+    type: boolean
+  id:
+    example: 0
+    type: integer
+  identifier:
+    example: string
+    type: string
+  isBGModerator:
+    example: false
+    type: boolean
+  isChatBanned:
+    example: false
+    type: boolean
+  isDedicatedVip:
+    example: true
+    type: boolean
+  isModerator:
+    example: false
+    type: boolean
+  isServerVIP:
+    type: boolean
+  isVip:
+    example: false
+    type: boolean
+  is_sso_connected:
+    example: true
+    type: boolean
+  name:
+    example: string
+    type: string
+  onboarding_tutorial_complete:
+    example: 1
+    type: integer
+  opt_in:
+    example: 0
+    type: integer
+  rank_id:
+    example: 3
+    type: integer
+  server_id:
+    example: 0
+    type: integer
+  subscription_plan:
+    example: string
+    type: string
+  team:
+    $ref: ./ConnectionDataMachine.yaml
+  timezone:
+    example: string
+    type: string
+  university:
+    example: null
+    nullable: true
+    type: string
+  verified:
+    example: true
+    type: boolean
+title: User Info
+type: object

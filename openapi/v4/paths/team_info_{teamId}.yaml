@@ -1,0 +1,15 @@
+get:
+  description: >-
+    Retrieve the information profile for a team including captain, motto and
+    other attributes.
+  operationId: getTeamInfo
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamInfoTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get team profile
+  tags:
+    - Team

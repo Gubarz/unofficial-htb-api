@@ -1,0 +1,12 @@
+properties:
+  is_owned:
+    type: boolean
+  own_rank:
+    type: integer
+  progress:
+    type: integer
+  tasks_answered:
+    type: integer
+  total_tasks:
+    type: integer
+type: object

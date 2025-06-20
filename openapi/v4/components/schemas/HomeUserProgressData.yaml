@@ -1,0 +1,12 @@
+properties:
+  fortresses:
+    $ref: ./HomeUserProgressFortressesCard.yaml
+  machines:
+    $ref: ./HomeProgressMachineCard.yaml
+  prolabs:
+    $ref: ./HomeProgressProlabCard.yaml
+  sps:
+    $ref: ./SpsCard.yaml
+  tracks:
+    $ref: ./HomeProgressTracksCard.yaml
+type: object

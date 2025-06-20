@@ -1,0 +1,14 @@
+properties:
+  current_bracket:
+    type: string
+  next_bracket:
+    nullable: true
+    type: string
+  points:
+    type: integer
+  points_for_next_bracket:
+    nullable: true
+    type: integer
+  rank:
+    type: integer
+type: object

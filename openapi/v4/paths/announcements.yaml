@@ -1,0 +1,11 @@
+get:
+  description: Get Announcements
+  operationId: getAnnouncements
+  responses:
+    '200':
+      $ref: ../components/responses/AnnouncementResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Announcements
+  tags:
+    - Platform

@@ -1,0 +1,12 @@
+properties:
+  blood_difference:
+    type: string
+  category_name:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+type: object

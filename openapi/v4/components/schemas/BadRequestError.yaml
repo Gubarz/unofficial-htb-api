@@ -1,0 +1,6 @@
+description: Schema definition for Bad Request Error
+properties:
+  message:
+    type: string
+title: Bad Request Error
+type: object

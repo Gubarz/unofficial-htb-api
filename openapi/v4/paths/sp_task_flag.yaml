@@ -1,0 +1,11 @@
+post:
+  description: Submit a flag for an SP task.
+  operationId: postSPTaskFlag
+  responses:
+    '200':
+      $ref: ../components/responses/SpTaskFlagResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Summary for post /sp/task/flag
+  tags:
+    - Starting Point

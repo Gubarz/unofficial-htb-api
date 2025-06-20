@@ -1,19 +1,72 @@
-<!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Swagger UI</title>
-    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
-    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>HTB API Docs</title>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+  <style>
+    #version-selector {
+      position: absolute;
+      top: 13px;
+      right: 100px;
+      z-index: 999;
+      padding: 8px 12px;
+      font-size: 20px;
+      border-radius: 4px;
+      border: 5px solid #5eff00;
+      background-color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <select id="version-selector">
+    <option value="v4">v4</option>
+    <option value="v5">v5</option>
+  </select>
 
-  <body>
-    <div id="swagger-ui"></div>
-    <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
-    <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-    <script src="./swagger-initializer.js" charset="UTF-8"> </script>
-  </body>
+  <div id="swagger-ui"></div>
+
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
+  <script>
+    function getSelectedVersion() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("version") || "v4";
+    }
+
+    function loadUI(version) {
+      const file = version === "v5" ? "openapi.v5.yaml" : "openapi.v4.yaml";
+      const url = `https://raw.githubusercontent.com/gubarz/unofficial-htb-api/latest/${file}`;
+
+      window.ui = SwaggerUIBundle({
+        url: url,
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+    }
+
+    document.getElementById("version-selector").addEventListener("change", function () {
+      const selectedVersion = this.value;
+      const url = new URL(window.location.href);
+      url.searchParams.set("version", selectedVersion);
+      window.location.href = url.toString();
+    });
+
+    // Set dropdown value to match query param
+    const currentVersion = getSelectedVersion();
+    document.getElementById("version-selector").value = currentVersion;
+
+    // Load initial UI
+    loadUI(currentVersion);
+  </script>
+</body>
 </html>

@@ -1,0 +1,11 @@
+get:
+  description: Returns a list of featured jobs
+  operationId: getCareerFeatured
+  responses:
+    '200':
+      $ref: ../components/responses/CareerFeaturedResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Featured jobs
+  tags:
+    - Career

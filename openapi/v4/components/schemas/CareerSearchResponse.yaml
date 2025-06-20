@@ -1,0 +1,8 @@
+description: Schema definition for Career Search Response
+properties:
+  data:
+    $ref: ./CareerSearchData.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+title: Career Search Response
+type: object

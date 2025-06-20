@@ -1,0 +1,13 @@
+get:
+  description: Retrieve user rank for a specific season.
+  operationId: getSeasonUserRank
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonUserRankSeasonIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get user's rank for the current season
+  tags:
+    - Season

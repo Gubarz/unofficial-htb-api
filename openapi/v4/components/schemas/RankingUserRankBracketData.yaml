@@ -1,0 +1,12 @@
+properties:
+  current_bracket:
+    type: string
+  next_bracket:
+    type: string
+  points:
+    type: integer
+  points_for_next_bracket:
+    type: number
+  rank:
+    type: integer
+type: object

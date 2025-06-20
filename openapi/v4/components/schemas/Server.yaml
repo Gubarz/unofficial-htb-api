@@ -1,0 +1,19 @@
+description: Schema definition for Server
+properties:
+  current_clients:
+    example: 85
+    type: integer
+  friendly_name:
+    example: US VIP+ 1
+    type: string
+  full:
+    example: false
+    type: boolean
+  id:
+    example: 289
+    type: integer
+  location:
+    example: US
+    type: string
+title: Server
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Gets a write-up for a challenge from challenge id
+  operationId: getChallengeWriteup
+  parameters:
+    - $ref: ../components/parameters/ChallengeId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ChallengeWriteupResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get a write-up for a challenge
+  tags:
+    - Challenges

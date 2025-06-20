@@ -1,0 +1,13 @@
+post:
+  description: Start a Pwnbox instance.
+  operationId: postPwnboxStart
+  requestBody:
+    $ref: ../components/requestBodies/PwnboxStartRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PwnboxStartResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Start a Pwnbox instance
+  tags:
+    - PwnBox

@@ -1,0 +1,4 @@
+properties:
+  official:
+    $ref: ./OfficialWriteup.yaml
+type: object

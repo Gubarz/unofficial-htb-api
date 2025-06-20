@@ -1,0 +1,14 @@
+description: Schema definition for VM Extend
+properties:
+  message:
+    description: Return message success
+    example: Machine extended.
+    type: string
+  success:
+    type: boolean
+  expirationDate:
+    type: string
+    example: '2024-08-09T11:00:58.000000Z'
+    format: date-time
+title: Message
+type: object

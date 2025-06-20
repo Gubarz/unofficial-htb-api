@@ -1,0 +1,6 @@
+description: Schema definition for User Dashboard Response
+properties:
+  dashboard_players:
+    $ref: ./DashboardPlayers.yaml
+title: User Dashboard Response
+type: object

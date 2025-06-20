@@ -1,0 +1,6 @@
+properties:
+  activity:
+    $ref: ./MachineActivityItems.yaml
+  server:
+    type: string
+type: object

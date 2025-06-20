@@ -1,0 +1,8 @@
+description: Schema definition for Rankings Team Overview Response
+properties:
+  data:
+    $ref: ./RankingsTeamOverviewData.yaml
+  status:
+    type: boolean
+title: Rankings Team Overview Response
+type: object

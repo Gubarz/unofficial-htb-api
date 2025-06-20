@@ -1,0 +1,13 @@
+get:
+  description: Retrieve owns statistics for a specific user identified by user_id
+  operationId: getUniversityStatsOwns
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityStatsOwnsUserIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get owns statistics for a user
+  tags:
+    - Universities

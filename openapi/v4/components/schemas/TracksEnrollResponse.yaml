@@ -1,0 +1,4 @@
+properties:
+  enrolled:
+    type: boolean
+type: object

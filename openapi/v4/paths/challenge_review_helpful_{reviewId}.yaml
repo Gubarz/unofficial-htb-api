@@ -1,0 +1,13 @@
+post:
+  description: Submits data for /challenge/review/helpful/{review id}
+  operationId: postChallengeHelpfull
+  parameters:
+    - $ref: ../components/parameters/ReviewId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Mark Review as helpful
+  tags:
+    - Challenges

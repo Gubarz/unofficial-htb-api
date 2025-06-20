@@ -1,0 +1,15 @@
+description: Schema definition for Teams Attack Path Card
+properties:
+  avg_teams_solved:
+    example: 0.1403438192620737
+    type: number
+  name:
+    type: string
+  solved:
+    example: 20
+    type: integer
+  total:
+    example: 100
+    type: integer
+title: Teams Attack Path Card
+type: object

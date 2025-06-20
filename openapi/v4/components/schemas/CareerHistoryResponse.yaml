@@ -1,0 +1,8 @@
+description: Schema definition for Career History Response
+properties:
+  data:
+    $ref: ./StringArray.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+title: Career History Response
+type: object

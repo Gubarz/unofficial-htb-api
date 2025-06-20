@@ -1,0 +1,6 @@
+description: Schema definition for Sp Profile Id Response
+properties:
+  info:
+    $ref: ./SpProfileInfo.yaml
+title: Sp Profile Id Response
+type: object

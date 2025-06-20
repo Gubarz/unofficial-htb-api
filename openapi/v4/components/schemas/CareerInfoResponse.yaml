@@ -1,0 +1,4 @@
+properties:
+  data:
+    $ref: ./CareerInfoData.yaml
+type: object

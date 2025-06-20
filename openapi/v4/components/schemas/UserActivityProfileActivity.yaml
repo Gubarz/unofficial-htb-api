@@ -1,0 +1,3 @@
+items:
+  $ref: ./UserActivityItem.yaml
+type: array

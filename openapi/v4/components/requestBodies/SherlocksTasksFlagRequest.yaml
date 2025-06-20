@@ -1,0 +1,17 @@
+content:
+  application/json:
+    schema:
+      properties:
+        flag:
+          example: 3x4mp1e_fl4g
+          type: string
+      type: object
+  application/x-www-form-urlencoded:
+    schema:
+      properties:
+        flag:
+          example: 3x4mp1e_fl4g
+          type: string
+      type: object
+description: Body to post sherlock flag
+required: true

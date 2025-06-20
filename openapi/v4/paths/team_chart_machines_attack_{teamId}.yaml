@@ -1,0 +1,17 @@
+get:
+  description: >-
+    Gets team machine ownage per attack path (e.g. "Web", "Account
+    Misconfiguration"), expressed for each path (and for the total set of
+    machines) as number of machines owned (either user or root, apparently)
+    versus the total number available.
+  operationId: getTeamChartMachinesAttack
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamChartMachinesAttackTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get team Ownage by Attack Path
+  tags:
+    - Team

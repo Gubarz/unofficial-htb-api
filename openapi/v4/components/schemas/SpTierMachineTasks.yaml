@@ -1,0 +1,33 @@
+properties:
+  description:
+    example: What does the acronym SQL stand for?
+    type: string
+  flag:
+    example: Structured Query Language
+    type: string
+  hint:
+    example: A simple Google search will yield the answer. Use Camel Case.
+    nullable: true
+    type: string
+  id:
+    example: 64
+    type: integer
+  masked_flag:
+    example: '********** ***** *******e'
+    nullable: true
+    type: string
+  options:
+    $ref: ./ObjectArray.yaml
+  task_type:
+    example: 0
+    type: integer
+  title:
+    example: Task 1
+    type: string
+  type:
+    example: 0
+    type: integer
+  user_completions_count:
+    example: 1
+    type: integer
+type: object

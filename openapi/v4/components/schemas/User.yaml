@@ -1,0 +1,28 @@
+properties:
+  avatar_thumb:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    type: integer
+  rank_name:
+    type: string
+  ranking:
+    oneOf:
+      - type: integer
+      - enum:
+          - unranked
+        type: string
+  rankings:
+    items:
+      $ref: ./UserRanking.yaml
+    type: array
+  respected_by_count:
+    type: integer
+  root_owns_count:
+    type: integer
+  user_owns_count:
+    type: integer
+type: object

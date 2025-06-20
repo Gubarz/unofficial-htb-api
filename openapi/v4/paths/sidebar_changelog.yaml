@@ -1,0 +1,12 @@
+get:
+  deprecated: true
+  description: Retrieves information related to /sidebar/changelog
+  operationId: getSidebarChangelog
+  responses:
+    '200':
+      $ref: ../components/responses/SidebarChangelogResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Sidebar: changelog'
+  tags:
+    - Platform

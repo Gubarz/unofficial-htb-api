@@ -1,0 +1,12 @@
+content:
+  application/json:
+    schema:
+      items:
+        $ref: ../schemas/UniversityMembersResponse.yaml
+      type: array
+description: University Members Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

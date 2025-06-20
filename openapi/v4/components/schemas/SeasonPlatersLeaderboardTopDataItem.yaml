@@ -1,0 +1,30 @@
+properties:
+  avatar_thumb:
+    type: string
+  country:
+    nullable: true
+    type: string
+  is_respected:
+    type: boolean
+  last_own:
+    nullable: true
+    type: string
+  league_rank:
+    type: string
+  name:
+    type: string
+  points:
+    type: number
+  rank:
+    type: number
+  resource_id:
+    type: integer
+  root_bloods:
+    type: number
+  root_owns:
+    type: number
+  user_bloods:
+    type: number
+  user_owns:
+    type: number
+type: object

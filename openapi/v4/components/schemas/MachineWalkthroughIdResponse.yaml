@@ -1,0 +1,6 @@
+description: Schema definition for Machine Walkthrough Id Response
+properties:
+  message:
+    $ref: ./MachineWalkthroughMessage.yaml
+title: Machine Walkthrough Id Response
+type: object

@@ -1,0 +1,6 @@
+description: Schema definition for Home Banner Response
+properties:
+  data:
+    $ref: ./HomeBannerItems.yaml
+title: Home Banner Response
+type: object

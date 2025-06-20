@@ -1,0 +1,6 @@
+description: ID of the task
+in: path
+name: taskId
+required: true
+schema:
+  type: integer

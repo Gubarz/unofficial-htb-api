@@ -1,0 +1,10 @@
+properties:
+  category:
+    $ref: ./CommonIdName.yaml
+  challenge_category_id:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+type: object

@@ -1,0 +1,11 @@
+properties:
+  color:
+    example: success
+    type: string
+  name:
+    example: Tier I
+    type: string
+  number:
+    example: 1
+    type: integer
+type: object

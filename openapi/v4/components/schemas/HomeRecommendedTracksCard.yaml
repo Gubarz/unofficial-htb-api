@@ -1,0 +1,6 @@
+description: Schema definition for Home Tracks Card
+items:
+  $ref: ./HomeRecommendedTracksCardItem.yaml
+  nullable: true
+title: Home Tracks Card
+type: array

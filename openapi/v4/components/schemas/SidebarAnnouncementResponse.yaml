@@ -1,0 +1,5 @@
+description: Schema definition for Sidebar Announcement Response
+properties:
+  announcement:
+    $ref: ./Announcement.yaml
+type: object

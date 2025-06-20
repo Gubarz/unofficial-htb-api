@@ -1,0 +1,44 @@
+properties:
+  avatar:
+    example: /storage/avatars/23e804513a47e8f20bc865d0419946e1.png
+    type: string
+  expires_at:
+    example: '2024-05-18 17:42:04'
+    type: string
+  id:
+    example: 597
+    type: integer
+  ip:
+    example: 10.129.56.30
+    format: ipv4
+    nullable: true
+    type: string
+  isSpawning:
+    example: false
+    type: boolean
+  lab_server:
+    example: vip_lab
+    type: string
+  name:
+    example: Usage
+    type: string
+  tier_id:
+    example: null
+    nullable: true
+    type: string
+  type:
+    example: Free
+    type: string
+  voted:
+    example: null
+    nullable: true
+    type: string
+  voting:
+    example: null
+    nullable: true
+    type: string
+  vpn_server_id:
+    example: 289
+    nullable: true
+    type: integer
+type: object

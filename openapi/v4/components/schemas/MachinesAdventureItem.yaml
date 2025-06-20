@@ -1,0 +1,22 @@
+properties:
+  completed:
+    type: boolean
+  description:
+    nullable: true
+    type: string
+  flag_rating:
+    nullable: true
+    type: number
+  hint:
+    nullable: true
+    type: string
+  id:
+    nullable: true
+    type: integer
+  masked_flag:
+    type: string
+  title:
+    type: string
+  type:
+    $ref: ./TaskType.yaml
+type: object

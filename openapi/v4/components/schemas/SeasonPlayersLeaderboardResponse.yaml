@@ -1,0 +1,8 @@
+properties:
+  data:
+    $ref: ./SeasonPlayersLeaderboardDataItems.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+type: object

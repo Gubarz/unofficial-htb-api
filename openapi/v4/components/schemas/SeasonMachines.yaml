@@ -1,0 +1,6 @@
+description: Schema definition for Season Machines
+properties:
+  data:
+    $ref: ./SeasonMachinesDataItems.yaml
+title: Season Machines
+type: object

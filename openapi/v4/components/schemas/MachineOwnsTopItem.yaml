@@ -1,0 +1,26 @@
+properties:
+  avatar:
+    type: string
+  id:
+    type: integer
+  is_root_blood:
+    type: boolean
+  is_user_blood:
+    type: boolean
+  name:
+    type: string
+  own_date:
+    type: string
+  position:
+    type: integer
+  rank_id:
+    type: integer
+  rank_text:
+    type: string
+  root_own_time:
+    type: string
+  user_own_date:
+    type: string
+  user_own_time:
+    type: string
+type: object

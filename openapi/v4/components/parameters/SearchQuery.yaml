@@ -1,0 +1,6 @@
+description: Search Param
+in: query
+name: search_query
+required: false
+schema:
+  type: string

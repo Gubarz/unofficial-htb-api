@@ -1,0 +1,53 @@
+description: Schema definition for Pwnbox Start Data
+properties:
+  created_at:
+    example: '2024-05-21T04:07:34.000000Z'
+    format: date-time
+    type: string
+  expires_at:
+    example: '2024-05-21T12:07:34.000000Z'
+    format: date-time
+    type: string
+  flock_id:
+    example: 2059436
+    type: integer
+  hostname:
+    example: htb-jiczlqw6tg.htb-cloud.com
+    type: string
+  id:
+    example: 232502
+    type: integer
+  is_ready:
+    example: null
+    nullable: true
+    type: boolean
+  life_remaining:
+    example: 479
+    type: integer
+  location:
+    example: us-east
+    type: string
+  proxy_url:
+    example: proxy-us-east.htb-cloud.com
+    type: string
+  status:
+    example: deploying
+    type: string
+  updated_at:
+    example: '2024-05-21T04:07:34.000000Z'
+    format: date-time
+    type: string
+  username:
+    example: null
+    nullable: true
+    type: string
+  vnc_password:
+    example: null
+    nullable: true
+    type: string
+  vnc_view_only_password:
+    example: null
+    nullable: true
+    type: string
+title: Pwnbox Start Data
+type: object

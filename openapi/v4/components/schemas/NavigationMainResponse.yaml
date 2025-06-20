@@ -1,0 +1,6 @@
+description: Schema definition for Navigation Main Response
+properties:
+  data:
+    $ref: ./NavigationMainData.yaml
+title: Navigation Main Response
+type: object

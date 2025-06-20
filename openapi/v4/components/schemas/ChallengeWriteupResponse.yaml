@@ -1,0 +1,6 @@
+description: Schema definition for Challenge Writeup Response
+properties:
+  data:
+    $ref: ./WriteupData.yaml
+title: Challenge writeups
+type: object

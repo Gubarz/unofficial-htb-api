@@ -1,0 +1,13 @@
+post:
+  description: Vote Reset Fortress
+  operationId: postFortressReset
+  parameters:
+    - $ref: ../components/parameters/FortressId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GameResetResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Vote Reset Fortress
+  tags:
+    - Fortresses

@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./RankingsData.yaml
+  status:
+    type: boolean
+type: object

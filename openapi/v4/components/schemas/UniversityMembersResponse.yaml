@@ -1,0 +1,33 @@
+description: University Members Resposne
+properties:
+  avatar:
+    type: string
+  country_code:
+    nullable: true
+    type: string
+  country_name:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    type: integer
+  public:
+    type: integer
+  rank:
+    type: string
+  rank_text:
+    type: string
+  role:
+    type: string
+  root_bloods_count:
+    type: integer
+  root_owns:
+    type: integer
+  university:
+    $ref: ./TeamMemberTeam.yaml
+  user_bloods_count:
+    type: integer
+  user_owns:
+    type: integer

@@ -1,0 +1,16 @@
+description: Schema definition for Review Overview
+properties:
+  rating:
+    example: 5
+    type: integer
+  text:
+    example: >-
+      The lab was one of the best CTF challenges I've come across. For a long
+      time, I felt that it would be an awesome thing to have a platform where
+      you can train your domain kung fu skills. Rastamouse and HTB made that
+      happen. Amazing, Hard, Fun, Real. Thanks
+    type: string
+  user:
+    $ref: ./CommonIdName.yaml
+title: Review Overview
+type: object

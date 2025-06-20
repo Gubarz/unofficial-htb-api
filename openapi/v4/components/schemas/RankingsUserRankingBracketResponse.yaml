@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./RankingUserRankBracketData.yaml
+  status:
+    type: boolean
+type: object

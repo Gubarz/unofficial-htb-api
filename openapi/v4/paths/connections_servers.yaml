@@ -1,0 +1,13 @@
+get:
+  description: Retrieve a list of connection servers.
+  operationId: getConnectionsServers
+  parameters:
+    - $ref: ../components/parameters/Product.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionsServersResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: list VPN servers
+  tags:
+    - Connection

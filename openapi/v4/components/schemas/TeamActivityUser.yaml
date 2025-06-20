@@ -1,0 +1,14 @@
+properties:
+  avatar_thumb:
+    example: /storage/avatars/sdfgs45345edrgsdfsd374fb23452d_thumb.png
+    type: string
+  id:
+    example: 1234
+    type: integer
+  name:
+    example: ABC123
+    type: string
+  public:
+    example: 0
+    type: integer
+type: object

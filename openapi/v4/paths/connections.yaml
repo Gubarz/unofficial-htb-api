@@ -1,0 +1,11 @@
+get:
+  description: Shows a list of the last set vpn servers
+  operationId: getConnections
+  responses:
+    '200':
+      $ref: ../components/responses/ConnectionsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Last set connections
+  tags:
+    - Connection

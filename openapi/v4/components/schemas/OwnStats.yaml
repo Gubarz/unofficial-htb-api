@@ -1,0 +1,20 @@
+description: Schema definition for Own Stats
+properties:
+  challenge_owns:
+    type: integer
+  first_bloods:
+    type: integer
+  rank:
+    type: integer
+  respects:
+    type: integer
+  system_owns:
+    type: integer
+  user_owns:
+    type: integer
+  weekly:
+    additionalProperties:
+      $ref: ./Weekly.yaml
+    type: object
+title: Own Stats
+type: object

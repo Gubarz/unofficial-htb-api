@@ -1,0 +1,17 @@
+properties:
+  description:
+    type: string
+  featured:
+    type: boolean
+  id:
+    type: integer
+  latest_post:
+    nullable: true
+    type: string
+  logo:
+    type: string
+  name:
+    type: string
+  url:
+    type: string
+type: object

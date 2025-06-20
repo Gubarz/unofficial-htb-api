@@ -1,0 +1,8 @@
+properties:
+  ranking:
+    $ref: ./NavigationMainRanking.yaml
+  season_ranking:
+    $ref: ./NavigationNmainSeasonRanking.yaml
+  sso_linked:
+    type: boolean
+type: object

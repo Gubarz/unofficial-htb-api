@@ -1,0 +1,13 @@
+post:
+  description: Follow a user
+  operationId: postUserFollow
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Follow a user
+  tags:
+    - User

@@ -1,0 +1,6 @@
+description: Schema definition for Machine Walkthroughs Language List Response
+properties:
+  info:
+    $ref: ./MachineWalkthroughsLanguageListItems.yaml
+title: Machine Walkthroughs Language List Response
+type: object

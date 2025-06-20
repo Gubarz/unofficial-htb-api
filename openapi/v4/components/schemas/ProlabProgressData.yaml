@@ -1,0 +1,10 @@
+properties:
+  keyed_pro_lab_mile_stone:
+    $ref: ./KeyedProlabMileStoneItems.yaml
+  ownership:
+    type: number
+  ownership_required_for_certification:
+    type: number
+  user_eligible_for_certificate:
+    type: boolean
+type: object

@@ -1,0 +1,14 @@
+properties:
+  description:
+    type: string
+  icon:
+    type: string
+  isMilestoneReached:
+    type: boolean
+  percent:
+    type: number
+  rarity:
+    type: number
+  text:
+    type: string
+type: object

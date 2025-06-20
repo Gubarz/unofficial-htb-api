@@ -1,0 +1,13 @@
+post:
+  description: Removes a team member from the team. Requires Captain of the team
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  operationId: postTeamKickUser
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Remove Team member
+  tags:
+    - Team

@@ -1,0 +1,13 @@
+get:
+  description: Retrieves the creator(s) basic information for a machine
+  operationId: getMachineCreators
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineCreatorResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Gets the creator(s) of a machine
+  tags:
+    - Machines

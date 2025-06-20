@@ -1,0 +1,12 @@
+properties:
+  avatar:
+    type: string
+  completion_percentage:
+    type: integer
+  free_machine_completion_percentage:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+type: object

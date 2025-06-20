@@ -1,0 +1,6 @@
+description: ID of the product
+in: path
+name: challengeId
+required: true
+schema:
+  type: integer

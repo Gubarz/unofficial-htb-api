@@ -1,0 +1,6 @@
+properties:
+  data:
+    $ref: ./UniversityChartChallengeCategoriesItems.yaml
+  status:
+    type: boolean
+type: object

@@ -1,0 +1,10 @@
+description: Schema definition for Content Stats Response
+properties:
+  challenges:
+    example: 533
+    type: integer
+  machines:
+    example: 388
+    type: integer
+title: Content Stats Resposne
+type: object

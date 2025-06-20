@@ -1,0 +1,30 @@
+description: Schema definition for User Connection Status Response
+properties:
+  connection:
+    oneOf:
+      - properties:
+          down:
+            example: 123.45
+            type: number
+          ip4:
+            example: 10.10.10.10
+            type: string
+          ip6:
+            example: 2001:db8::1
+            type: string
+          name:
+            example: tun0
+            type: string
+          through_pwnbox:
+            example: false
+            type: boolean
+          up:
+            example: 67.89
+            type: number
+        type: object
+      - example: not connected
+        type: string
+  status:
+    type: boolean
+title: User Connection Status Response
+type: object

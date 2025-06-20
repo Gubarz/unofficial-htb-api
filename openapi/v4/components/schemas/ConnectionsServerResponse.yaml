@@ -1,0 +1,8 @@
+description: Schema definition for Connections Server Response
+properties:
+  data:
+    $ref: ./ConnectionsServerData.yaml
+  status:
+    type: boolean
+title: Connections Server Response
+type: object

@@ -1,0 +1,40 @@
+properties:
+  authUserInHelpfulReviews:
+    example: false
+    type: boolean
+  created_at:
+    example: '2023-01-28T21:42:53.000000Z'
+    format: date-time
+    type: string
+  difficulty:
+    nullable: true
+    type: integer
+  featured:
+    type: integer
+  helpful_reviews:
+    $ref: ./HelpfulReviewsItems.yaml
+  helpful_reviews_count:
+    example: 0
+    type: integer
+  id:
+    example: 3242342
+    type: integer
+  message:
+    example: User was great, would user again
+    type: string
+  released:
+    example: 1
+    type: integer
+  stars:
+    example: 5
+    type: integer
+  title:
+    example: A++++
+    nullable: true
+    type: string
+  user:
+    $ref: ./UserBasicInfo.yaml
+  user_id:
+    example: 234234
+    type: integer
+type: object

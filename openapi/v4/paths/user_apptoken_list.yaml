@@ -1,0 +1,11 @@
+get:
+  description: Get /user/apptoken/list
+  operationId: getUserApptokenList
+  responses:
+    '200':
+      $ref: ../components/responses/UserApptokenListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: User App Tokens List
+  tags:
+    - User

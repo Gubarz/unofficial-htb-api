@@ -1,0 +1,8 @@
+description: Schema definition for Machine Attack Details
+properties:
+  machine_attack_paths:
+    $ref: ./TeamMachineAttackPaths.yaml
+  machine_owns:
+    $ref: ./MachineOwnsCard.yaml
+title: Machine Attack Details
+type: object

@@ -1,0 +1,17 @@
+properties:
+  compared_to_date:
+    format: date-time
+    type: string
+  points:
+    type: integer
+  points_growth:
+    type: number
+  previous_points:
+    type: integer
+  previous_rank:
+    type: integer
+  rank:
+    type: integer
+  rank_growth:
+    type: number
+type: object

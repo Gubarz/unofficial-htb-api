@@ -1,0 +1,11 @@
+get:
+  description: Get Sherlocks Categories List
+  operationId: getSherlocksCategoriesList
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksCategoriesListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Sherlocks Categories List
+  tags:
+    - Sherlocks

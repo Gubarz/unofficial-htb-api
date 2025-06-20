@@ -1,0 +1,10 @@
+properties:
+  avatar:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  ranking:
+    type: integer
+type: object

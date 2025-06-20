@@ -1,0 +1,18 @@
+properties:
+  avatar:
+    example: b99c956ef89135920805452930f99f71.png
+    type: string
+  id:
+    example: 176
+    type: integer
+  isSp:
+    example: false
+    type: boolean
+  tierId:
+    example: null
+    nullable: true
+    type: string
+  value:
+    example: Hackback
+    type: string
+type: object

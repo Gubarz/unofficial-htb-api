@@ -1,0 +1,21 @@
+properties:
+  avatar:
+    example: /storage/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
+    type: string
+  id:
+    example: 1
+    type: integer
+  name:
+    example: Jet
+    type: string
+  percentage:
+    example: 54.55
+    format: float
+    type: number
+  points:
+    example: 100
+    type: integer
+  url:
+    example: /fortresses/1
+    type: string
+type: object

@@ -1,0 +1,9 @@
+oneOf:
+  - properties:
+      obtained:
+        type: integer
+      total:
+        type: integer
+    type: object
+  - maxItems: 0
+    type: array

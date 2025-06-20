@@ -1,0 +1,16 @@
+get:
+  description: >-
+    Retrieves information related to /machine/graph/activity/{machine
+    id}/{period}
+  operationId: getMachineGraphActivity
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+    - $ref: ../components/parameters/PeriodPath.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineGraphActivityMachineIdPeriodResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'Graph Data: Activity'
+  tags:
+    - Machines

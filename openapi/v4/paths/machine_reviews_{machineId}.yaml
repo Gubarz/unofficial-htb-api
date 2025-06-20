@@ -1,0 +1,14 @@
+get:
+  deprecated: true
+  description: Retrieves reviews for a machine
+  operationId: getMachineReviews
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineReviewsResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Use /reviews/{product}/{productId}/paginated
+  tags:
+    - Machines

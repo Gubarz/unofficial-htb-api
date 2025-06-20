@@ -1,0 +1,6 @@
+properties:
+  machine_attack_paths:
+    $ref: ./MachineAttackPaths.yaml
+  machine_owns:
+    $ref: ./MachineOwns.yaml
+type: object

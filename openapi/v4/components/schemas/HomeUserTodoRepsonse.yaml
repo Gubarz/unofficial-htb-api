@@ -1,0 +1,6 @@
+description: Schema definition for Home User Todo Repsonse
+properties:
+  data:
+    $ref: ./HomeUserTodoData.yaml
+title: Home User Todo Repsonse
+type: object

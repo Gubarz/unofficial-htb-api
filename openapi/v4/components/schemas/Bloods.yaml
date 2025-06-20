@@ -1,0 +1,6 @@
+properties:
+  challenges:
+    $ref: ./BloodsChallengesItems.yaml
+  machines:
+    $ref: ./BloodsMachinesItems.yaml
+type: object

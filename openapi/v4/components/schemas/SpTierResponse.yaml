@@ -1,0 +1,6 @@
+description: Schema definition for Sp Tier Info
+properties:
+  data:
+    $ref: ./SpTierData.yaml
+title: Sp Machine Info
+type: object

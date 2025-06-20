@@ -1,0 +1,6 @@
+description: Schema definition for Machine Graph Owns Difficulty Id Response
+properties:
+  info:
+    $ref: ./MachineGraphOwnsDifficultyInfoItems.yaml
+title: Machine Graph Owns Difficulty Id Response
+type: object

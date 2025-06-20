@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /machine/walkthroughs/language/list
+  operationId: getMachineWalkthroughsLanguageList
+  responses:
+    '200':
+      $ref: ../components/responses/MachineWalkthroughsLanguageListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: 'machine: list Walkthrough Language options'
+  tags:
+    - Machines

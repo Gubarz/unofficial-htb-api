@@ -1,0 +1,145 @@
+description: Schema definition for Machine Profile Info
+properties:
+  academy_modules:
+    $ref: ./AcademyModulesItems.yaml
+  active:
+    type: boolean
+  authUserFirstRootTime:
+    example: 18H 6M 57S
+    nullable: true
+    type: string
+  authUserFirstUserTime:
+    example: 3H 47M 43S
+    nullable: true
+    type: string
+  authUserHasReviewed:
+    example: false
+    type: boolean
+  authUserHasSubmittedMatrix:
+    example: false
+    type: boolean
+  authUserInRootOwns:
+    example: true
+    type: boolean
+  authUserInUserOwns:
+    example: true
+    type: boolean
+  avatar:
+    example: /storage/avatars/a2c2bd7b4e98ff8b782ed590896305a1.png
+    type: string
+  can_access_walkthrough:
+    example: false
+    type: boolean
+  difficultyText:
+    example: Medium
+    type: string
+  feedbackForChart:
+    $ref: ./DifficultyChart.yaml
+  free:
+    example: true
+    type: boolean
+  has_changelog:
+    example: false
+    type: boolean
+  id:
+    example: 601
+    type: integer
+  info_status:
+    example: null
+    nullable: true
+    type: string
+  ip:
+    example: 10.10.10.10
+    format: ipv4
+    nullable: true
+    type: string
+  isGuidedEnabled:
+    example: false
+    type: boolean
+  isTodo:
+    type: boolean
+  machine_mode:
+    example: seasonal
+    nullable: true
+    type: string
+  maker:
+    $ref: ./Maker.yaml
+  maker2:
+    $ref: ./Maker.yaml
+  name:
+    example: SolarLab
+    type: string
+  os:
+    example: Windows
+    type: string
+  ownRank:
+    example: 292
+    nullable: true
+    type: integer
+  playInfo:
+    $ref: ./PlayInfoAlt.yaml
+  points:
+    example: 30
+    type: integer
+  recommended:
+    type: boolean
+  release:
+    example: '2024-05-11T19:00:00.000000Z'
+    format: date-time
+    type: string
+  retired:
+    type: boolean
+  reviews_count:
+    example: 71
+    type: integer
+  rootBlood:
+    $ref: ./BloodInfo.yaml
+  root_owns_count:
+    example: 1355
+    type: integer
+  season_id:
+    example: 5
+    nullable: true
+    type: integer
+  show_go_vip:
+    example: false
+    type: boolean
+  show_go_vip_server:
+    example: false
+    type: boolean
+  sp_flag:
+    example: 0
+    type: integer
+  stars:
+    example: 4.6
+    format: float
+    type: number
+  start_mode:
+    example: spawn
+    type: string
+  static_points:
+    example: 30
+    type: integer
+  synopsis:
+    nullable: true
+    type: string
+  userBlood:
+    $ref: ./BloodInfo.yaml
+  user_can_review:
+    example: false
+    type: boolean
+  user_owns_count:
+    example: 1573
+    type: integer
+  priceTier:
+    type: integer
+  requiredSubscription:
+    type: string
+    nullable: true
+  switchServerWarning:
+    type: string
+    nullable: true
+  isSingleFlag:
+    type: boolean
+title: Machine Profile Info
+type: object

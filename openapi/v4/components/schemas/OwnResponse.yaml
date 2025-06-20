@@ -1,0 +1,10 @@
+description: Schema definition for Own Response
+properties:
+  message:
+    example: machine owned successfully!
+    type: string
+  status:
+    example: 200
+    type: integer
+title: Own Response
+type: object

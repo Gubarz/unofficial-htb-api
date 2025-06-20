@@ -1,0 +1,8 @@
+properties:
+  flag_rating:
+    maximum: 5
+    minimum: 1
+    type: integer
+required:
+  - flag_rating
+type: object

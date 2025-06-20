@@ -1,0 +1,3 @@
+items:
+  $ref: ./Label.yaml
+type: array

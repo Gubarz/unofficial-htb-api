@@ -1,0 +1,20 @@
+properties:
+  cca2:
+    type: string
+  country:
+    type: string
+  created_at:
+    type: string
+  has_auto_generated_logo:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  respected_by_count:
+    type: integer
+  user_avatars:
+    $ref: ./StringArray.yaml
+  users_count:
+    type: integer
+type: object

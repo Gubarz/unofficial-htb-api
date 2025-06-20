@@ -1,0 +1,17 @@
+post:
+  description: Enroll to track
+  operationId: postTracksEnroll
+  parameters:
+    - in: path
+      name: trackId
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: ../components/responses/TracksEnrollResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Enroll to track
+  tags:
+    - Tracks

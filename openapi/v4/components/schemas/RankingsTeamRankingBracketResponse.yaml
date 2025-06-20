@@ -1,0 +1,16 @@
+description: Schema definition for Rankings Team Ranking Bracket Response
+example:
+  data:
+    current_bracket: Top 20
+    next_bracket: Top 10
+    points: 1839
+    points_for_next_bracket: 107
+    rank: 14
+  status: true
+properties:
+  data:
+    $ref: ./RankingsTeamRankingBacketData.yaml
+  status:
+    type: boolean
+title: Rankings Team Ranking Bracket Response
+type: object

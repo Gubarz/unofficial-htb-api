@@ -1,0 +1,4 @@
+summary: Root is already owned
+value:
+  message: RouterSpace root is already owned.
+  status: 400

@@ -1,0 +1,8 @@
+description: Schema definition for Team Information Profile Response
+properties:
+  data:
+    $ref: ./TeamInformationProfileData.yaml
+  message:
+    type: string
+title: Team Information Profile Response
+type: object

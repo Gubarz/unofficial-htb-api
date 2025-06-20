@@ -1,0 +1,24 @@
+properties:
+  challenge_category:
+    type: string
+  date:
+    type: string
+  date_diff:
+    type: string
+  first_blood:
+    type: boolean
+  id:
+    type: integer
+  machine_avatar:
+    type: string
+  name:
+    type: string
+  object_type:
+    type: string
+  points:
+    type: number
+  type:
+    type: string
+  user:
+    $ref: ./PublicUserProfileBasic.yaml
+type: object

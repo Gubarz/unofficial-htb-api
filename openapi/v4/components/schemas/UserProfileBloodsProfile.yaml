@@ -1,0 +1,4 @@
+properties:
+  bloods:
+    $ref: ./Bloods.yaml
+type: object

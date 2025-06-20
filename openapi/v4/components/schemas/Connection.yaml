@@ -1,0 +1,14 @@
+properties:
+  down:
+    type: number
+  ip4:
+    type: string
+  ip6:
+    type: string
+  name:
+    type: string
+  through_pwnbox:
+    type: boolean
+  up:
+    type: number
+type: object

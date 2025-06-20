@@ -1,0 +1,8 @@
+properties:
+  data:
+    $ref: ./UniversityNewListData.yaml
+  message:
+    type: string
+  section:
+    type: string
+type: object

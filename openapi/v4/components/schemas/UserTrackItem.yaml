@@ -1,0 +1,6 @@
+properties:
+  complete:
+    type: integer
+  id:
+    type: integer
+type: object

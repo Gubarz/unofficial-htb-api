@@ -1,0 +1,6 @@
+description: Schema definition for Season List Response
+properties:
+  data:
+    $ref: ./SeasonListData.yaml
+title: Season List Response
+type: object

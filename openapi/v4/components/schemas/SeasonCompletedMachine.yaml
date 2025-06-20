@@ -1,0 +1,6 @@
+description: Schema definition for Season Completed Machine
+properties:
+  data:
+    $ref: ./SeasonCompletedMachineData.yaml
+title: Season Completed Machine
+type: object

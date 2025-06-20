@@ -1,0 +1,11 @@
+properties:
+  category:
+    example: Category
+    type: string
+  id:
+    example: 694
+    type: integer
+  name:
+    example: Vulnerability Assessment
+    type: string
+type: object

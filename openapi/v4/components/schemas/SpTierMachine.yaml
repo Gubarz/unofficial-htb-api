@@ -1,0 +1,46 @@
+properties:
+  avatar:
+    example: /storage/avatars/a9ddcda8d2f6eb388c6717de2caff896.png
+    type: string
+  difficultyText:
+    example: Very Easy
+    type: string
+  id:
+    example: 402
+    type: integer
+  info_status:
+    example: null
+    nullable: true
+    type: string
+  name:
+    example: Appointment
+    type: string
+  order:
+    example: 10
+    type: integer
+  os:
+    example: Linux
+    type: string
+  rootOwn:
+    example: true
+    type: boolean
+  sp_flag:
+    example: 1
+    type: integer
+  static_points:
+    example: 0
+    type: integer
+  tasks:
+    $ref: ./SpTierTasksItems.yaml
+  userOwn:
+    example: false
+    type: boolean
+  video:
+    $ref: ./Video.yaml
+  walkthrough:
+    $ref: ./SpTierMachineWalkthroughItem.yaml
+  youtube_id:
+    example: null
+    nullable: true
+    type: string
+type: object

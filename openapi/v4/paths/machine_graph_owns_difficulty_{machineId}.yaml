@@ -1,0 +1,13 @@
+get:
+  description: Retrieves machine graph difficulty
+  operationId: getMachineGraphOwnsDifficulty
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachineGraphOwnsDifficultyMachineIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Machine Graph Difficulty
+  tags:
+    - Machines

@@ -1,0 +1,12 @@
+properties:
+  ctf:
+    type: number
+  custom:
+    type: number
+  cve:
+    type: number
+  enum:
+    type: number
+  real:
+    type: number
+type: object

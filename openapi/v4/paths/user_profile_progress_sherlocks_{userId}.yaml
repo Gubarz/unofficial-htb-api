@@ -1,0 +1,13 @@
+get:
+  description: User Profile Progreess Sherlocks
+  operationId: getUserProfileProgressSherlocks
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileProgressSherlocksResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: User Profile Progreess Sherlocks
+  tags:
+    - User

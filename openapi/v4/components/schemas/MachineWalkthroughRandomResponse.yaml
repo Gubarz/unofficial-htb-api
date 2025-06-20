@@ -1,0 +1,4 @@
+properties:
+  message:
+    $ref: ./UserBasicInfo.yaml
+type: object

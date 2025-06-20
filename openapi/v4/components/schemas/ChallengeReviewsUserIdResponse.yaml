@@ -1,0 +1,7 @@
+description: Schema definition for Challenge Reviews User Id Response
+properties:
+  info:
+    nullable: true
+    type: string
+title: Challenge Reviews User Id Response
+type: object

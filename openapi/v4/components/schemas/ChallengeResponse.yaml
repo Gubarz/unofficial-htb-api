@@ -1,0 +1,6 @@
+description: Schema definition for Challenge Id Response
+properties:
+  challenge:
+    $ref: ./Challenge.yaml
+title: Challenge Id Response
+type: object

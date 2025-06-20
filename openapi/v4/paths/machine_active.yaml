@@ -1,0 +1,11 @@
+get:
+  description: Retrieves information related to /machine/active
+  operationId: getMachineActive
+  responses:
+    '200':
+      $ref: ../components/responses/MachineActiveResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get active machine details
+  tags:
+    - Machines

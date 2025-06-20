@@ -1,0 +1,4 @@
+properties:
+  data:
+    $ref: ./MachineTasksData.yaml
+type: object

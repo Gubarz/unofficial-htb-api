@@ -1,0 +1,8 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PwnboxRequest.yaml
+  application/x-www-form-urlencoded:
+    schema:
+      $ref: ../schemas/PwnboxRequest.yaml
+description: Body to post start of pwnbox

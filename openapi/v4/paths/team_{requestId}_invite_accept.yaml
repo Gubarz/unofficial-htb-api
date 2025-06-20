@@ -1,0 +1,13 @@
+post:
+  description: accept the invitation
+  operationId: postTeamInviteAccept
+  parameters:
+    - $ref: ../components/parameters/RequestId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GenericSuccess2xx.yaml
+    '400':
+      $ref: ../components/responses/Generic400Error.yaml
+  summary: Accept Invitation
+  tags:
+    - Team

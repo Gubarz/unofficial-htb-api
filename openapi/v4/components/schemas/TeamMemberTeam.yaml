@@ -1,0 +1,6 @@
+properties:
+  captain_id:
+    type: integer
+  id:
+    type: integer
+type: object

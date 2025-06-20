@@ -1,0 +1,16 @@
+content:
+  application/json:
+    examples:
+      invalid_flag:
+        summary: Correct flag submission
+        value:
+          message: changeme
+          status: 1
+    schema:
+      $ref: ../schemas/OwnMachineErrorResponse.yaml
+description: Multi Own Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

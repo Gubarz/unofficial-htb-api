@@ -1,0 +1,47 @@
+description: Schema definition for Prolab Overview Data
+properties:
+  designated_level:
+    $ref: ./DesignatedLevel.yaml
+  excerpt:
+    example: null
+    nullable: true
+    type: string
+  id:
+    example: 1
+    type: integer
+  identifier:
+    type: string
+  lab_masters:
+    $ref: ./LabMasterItems.yaml
+  mini:
+    type: boolean
+  name:
+    example: RastaLabs
+    type: string
+  new_version:
+    example: false
+    type: boolean
+  overview_image_url:
+    example: null
+    nullable: true
+    type: string
+  pro_flags_count:
+    example: 22
+    type: integer
+  pro_machines_count:
+    example: 15
+    type: integer
+  skill_level:
+    example: INTERMEDIATE
+    type: string
+  social_links:
+    $ref: ./SocialLinks.yaml
+  state:
+    type: string
+  user_eligible_to_play:
+    type: boolean
+  version:
+    example: '1.3'
+    type: string
+title: Prolab Overview Data
+type: object

@@ -1,0 +1,10 @@
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ConnectionsServerResponse.yaml
+description: Connections Servers Response
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

@@ -1,0 +1,6 @@
+description: Schema definition for Profile Progress Prolab Response
+properties:
+  profile:
+    $ref: ./ProfileProgressProLabProfile.yaml
+title: Profile Progress ProLab Response
+type: object

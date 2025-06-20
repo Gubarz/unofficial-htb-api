@@ -1,0 +1,5 @@
+description: Schema definition for Team Activity Id Response
+items:
+  $ref: ./TeamActivityItem.yaml
+title: Team Activity Id Response
+type: array

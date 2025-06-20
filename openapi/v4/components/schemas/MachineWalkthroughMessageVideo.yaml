@@ -1,0 +1,4 @@
+allOf:
+  - $ref: ./MachineWalkthroughVideo.yaml
+nullable: true
+type: object

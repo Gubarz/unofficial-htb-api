@@ -1,0 +1,26 @@
+description: Schema definition for Challenge Activity
+properties:
+  created_at:
+    example: '2020-02-07T20:03:28.000000Z'
+    format: date-time
+    type: string
+  date:
+    example: February 7th, 2020 10:03 pm
+    type: string
+  date_diff:
+    example: 4 years ago
+    type: string
+  type:
+    example: blood
+    type: string
+  user_avatar:
+    example: /storage/avatars/fd5b946aaadbb0254014fa10a22dd403.png
+    type: string
+  user_id:
+    example: 82600
+    type: integer
+  user_name:
+    example: del_KZx497Ju
+    type: string
+title: Challenge Activity
+type: object

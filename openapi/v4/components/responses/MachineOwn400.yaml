@@ -1,0 +1,26 @@
+content:
+  application/json:
+    examples:
+      already_owned_root:
+        summary: Root is already owned
+        value:
+          message: RouterSpace root is already owned.
+          status: 400
+      already_owned_user:
+        summary: User is already owned
+        value:
+          message: RouterSpace user is already owned.
+          status: 400
+      invalid_flag:
+        summary: Incorrect flag submission
+        value:
+          message: Incorrect flag.
+          status: 400
+    schema:
+      $ref: ../schemas/OwnMachineErrorResponse.yaml
+description: Machine Own Bad Request
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

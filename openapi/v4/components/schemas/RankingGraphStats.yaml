@@ -1,0 +1,10 @@
+properties:
+  chart_data:
+    $ref: ./IntArray.yaml
+  points_diff:
+    type: integer
+  points_growth:
+    type: number
+  ranks_diff:
+    type: integer
+type: object

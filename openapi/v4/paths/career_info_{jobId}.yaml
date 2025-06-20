@@ -1,0 +1,13 @@
+get:
+  description: Get career info
+  operationId: getCareerInfo
+  parameters:
+    - $ref: ../components/parameters/JobId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/CareerInfoResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Job Description
+  tags:
+    - Career

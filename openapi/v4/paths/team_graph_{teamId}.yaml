@@ -1,0 +1,14 @@
+get:
+  description: Get graph data for a team for a given duration (e.g. 1Y, 6M, 3M, 1M, 1W)
+  operationId: getTeamGraph
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/TeamGraphTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get team Graph for Duration
+  tags:
+    - Team

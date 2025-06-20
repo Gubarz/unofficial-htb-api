@@ -1,0 +1,12 @@
+properties:
+  chart_data:
+    $ref: ./IntArray.yaml
+  country:
+    $ref: ./Country.yaml
+  points_diff:
+    type: integer
+  points_growth:
+    type: string
+  ranks_diff:
+    type: integer
+type: object

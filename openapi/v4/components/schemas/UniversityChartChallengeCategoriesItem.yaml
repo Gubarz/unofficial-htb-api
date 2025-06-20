@@ -1,0 +1,10 @@
+properties:
+  all_teams_avg_percentage:
+    type: number
+  id:
+    type: integer
+  name:
+    type: string
+  team_percentage:
+    type: number
+type: object

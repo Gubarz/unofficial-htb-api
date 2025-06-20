@@ -1,0 +1,4 @@
+description: Schema definition for Open Vpn
+format: binary
+title: Open VPN
+type: string

@@ -1,0 +1,10 @@
+description: Product Name
+in: path
+name: product
+required: true
+schema:
+  enum:
+    - machine
+    - challenge
+    - sherlock
+  type: string

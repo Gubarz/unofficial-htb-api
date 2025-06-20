@@ -1,0 +1,8 @@
+properties:
+  avatar:
+    type: string
+  name:
+    type: string
+  ranking:
+    type: integer
+type: object

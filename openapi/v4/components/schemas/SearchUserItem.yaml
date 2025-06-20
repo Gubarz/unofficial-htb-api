@@ -1,0 +1,11 @@
+properties:
+  avatar:
+    example: 23531cbb5210aebc5a094e8f18e10ec5.png
+    type: string
+  id:
+    example: 85187
+    type: integer
+  value:
+    example: hack
+    type: string
+type: object

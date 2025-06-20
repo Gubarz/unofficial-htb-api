@@ -1,0 +1,20 @@
+properties:
+  created_at:
+    type: string
+  description:
+    type: string
+  id:
+    type: integer
+  machine_id:
+    type: integer
+  released:
+    type: integer
+  title:
+    type: string
+  type:
+    type: string
+  updated_at:
+    type: string
+  user_id:
+    type: integer
+type: object

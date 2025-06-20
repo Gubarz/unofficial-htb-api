@@ -1,0 +1,4 @@
+items:
+  $ref: ./UserBasicInfo.yaml
+nullable: true
+type: array

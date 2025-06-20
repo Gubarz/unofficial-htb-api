@@ -1,0 +1,10 @@
+properties:
+  owns:
+    $ref: ./SeasonOwns.yaml
+  rank:
+    $ref: ./SeasonRank.yaml
+  season:
+    $ref: ./SeasonEndSeason.yaml
+  user:
+    $ref: ./UserBasicInfo.yaml
+type: object

@@ -1,0 +1,13 @@
+get:
+  description: Retrieve the profile of a university by team ID.
+  operationId: getUniversityProfile
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityProfileTeamIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Retrieve information profile for a specific team
+  tags:
+    - Universities

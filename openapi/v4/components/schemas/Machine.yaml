@@ -1,0 +1,17 @@
+description: Schema definition for Machine
+properties:
+  avatar_thumb_url:
+    example: >-
+      https://labs.hackthebox.com/storage/avatars/f85bcb72ecffef8a5b2afd2fbc3ac153_thumb.png
+    type: string
+  id:
+    example: 1
+    type: integer
+  name:
+    example: RASTA-DC01
+    type: string
+  os:
+    example: Windows
+    type: string
+title: Machine
+type: object

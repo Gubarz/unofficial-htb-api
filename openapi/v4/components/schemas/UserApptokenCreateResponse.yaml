@@ -1,0 +1,10 @@
+properties:
+  access_token:
+    type: string
+  created_at:
+    type: string
+  expires_at:
+    type: string
+  name:
+    type: string
+type: object

@@ -1,0 +1,21 @@
+get:
+  description: Retrieve a list of Sherlock instances.
+  operationId: getSherlocks
+  parameters:
+    - $ref: ../components/parameters/SortType.yaml
+    - $ref: ../components/parameters/Difficulty.yaml
+    - $ref: ../components/parameters/State.yaml
+    - $ref: ../components/parameters/SherlockSortBy.yaml
+    - $ref: ../components/parameters/Category.yaml
+    - $ref: ../components/parameters/Keyword.yaml
+    - $ref: ../components/parameters/Status.yaml
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SherlocksResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get list of Sherlocks
+  tags:
+    - Sherlocks

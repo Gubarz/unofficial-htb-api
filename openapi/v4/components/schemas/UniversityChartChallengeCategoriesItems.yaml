@@ -1,0 +1,3 @@
+items:
+  $ref: ./UniversityChartChallengeCategoriesItem.yaml
+type: array

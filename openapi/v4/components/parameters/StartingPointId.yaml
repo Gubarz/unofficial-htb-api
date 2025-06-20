@@ -1,0 +1,6 @@
+description: Starting Point Id
+in: path
+name: startingPointId
+required: true
+schema:
+  type: integer

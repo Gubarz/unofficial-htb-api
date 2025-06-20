@@ -1,0 +1,8 @@
+description: Schema definition for Pwnbox Status Running Response
+properties:
+  data:
+    $ref: ./PwnboxStatusRUnningData.yaml
+required:
+  - data
+title: Pwnbox Status Running Response
+type: object

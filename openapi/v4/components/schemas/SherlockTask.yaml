@@ -1,0 +1,28 @@
+description: Schema definition for Sherlock Task
+properties:
+  completed:
+    type: boolean
+  description:
+    type: string
+  flag:
+    type: string
+  hint:
+    nullable: true
+    type: string
+  id:
+    type: integer
+  masked_flag:
+    type: string
+  options:
+    $ref: ./ObjectArray.yaml
+  prerequisite_id:
+    nullable: true
+    type: integer
+  task_type:
+    $ref: ./TaskType.yaml
+  title:
+    type: string
+  type:
+    $ref: ./TaskType.yaml
+title: Sherlock Task
+type: object

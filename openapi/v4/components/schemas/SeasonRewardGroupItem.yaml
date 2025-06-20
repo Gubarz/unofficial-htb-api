@@ -1,0 +1,21 @@
+properties:
+  description:
+    nullable: true
+    type: string
+  id:
+    type: integer
+  image:
+    nullable: true
+    type: string
+  name:
+    type: string
+  order:
+    type: integer
+  reward_type_id:
+    type: integer
+  rewards:
+    $ref: ./SeasonRewardsItems.yaml
+  subtitle:
+    nullable: true
+    type: string
+type: object

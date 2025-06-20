@@ -1,0 +1,6 @@
+description: Schema definition for User Info Response
+properties:
+  info:
+    $ref: ./UserInfo.yaml
+title: User Info Response
+type: object

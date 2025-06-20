@@ -1,0 +1,52 @@
+description: Schema definition for Prolab Data
+properties:
+  active_users:
+    example: 15
+    type: integer
+  can_interact:
+    type: boolean
+  cover_image_url:
+    example: null
+    nullable: true
+    type: string
+  description:
+    example: <h4>RastaLabs</h4>...
+    format: html
+    type: string
+  entry_points:
+    $ref: ./StringArray.yaml
+  id:
+    example: 1
+    type: integer
+  identifier:
+    type: string
+  lab_masters:
+    $ref: ./LabMasterItems.yaml
+  lab_servers_count:
+    example: 6
+    type: integer
+  mini:
+    type: boolean
+  name:
+    example: RastaLabs
+    type: string
+  pro_flags_count:
+    example: 22
+    type: integer
+  pro_machines_count:
+    example: 15
+    type: integer
+  state:
+    type: string
+  version:
+    example: '1.3'
+    type: string
+  video_url:
+    example: null
+    nullable: true
+    type: string
+  writeup:
+    nullable: true
+    type: string
+title: Prolab Data
+type: object

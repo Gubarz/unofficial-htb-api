@@ -1,0 +1,18 @@
+get:
+  description: Retrieves information related to /tracks/{id}
+  operationId: getTracksId
+  parameters:
+    - description: ID of the Track
+      in: path
+      name: trackId
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      $ref: ../components/responses/TracksIdResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get Track Details
+  tags:
+    - Tracks

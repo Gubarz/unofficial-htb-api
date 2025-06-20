@@ -1,0 +1,12 @@
+properties:
+  assigned_server:
+    $ref: ./ServerConnection.yaml
+    nullable: true
+  can_access:
+    type: boolean
+  location_type_friendly:
+    nullable: true
+    type: string
+  pro_lab:
+    $ref: ./CommonIdName.yaml
+type: object

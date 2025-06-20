@@ -1,0 +1,13 @@
+description: Schema definition for Recommended Machine Response
+properties:
+  card1:
+    $ref: ./MachineCard1.yaml
+  card2:
+    $ref: ./MachineCard2.yaml
+  state:
+    $ref: ./StringArray.yaml
+    example:
+      - seasonal
+      - staff_pick
+title: Recommended Machine Response
+type: object
