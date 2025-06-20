@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+      - 'latest'
 
 permissions:
   contents: write
@@ -29,7 +30,7 @@ jobs:
           redocly bundle openapi@v4 --output openapi.v4.yaml
           redocly bundle openapi@v5 --output openapi.v5.yaml
 
-      - name: Create GitHub Release from tag
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
