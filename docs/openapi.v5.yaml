@@ -1,0 +1,277 @@
+openapi: 3.0.4
+info:
+  contact:
+    name: ' '
+  description: The undocumented public API v5 for the Hack The Box platform. This OpenAPI specification is community-maintained and reverse-engineered. This project  is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API v5
+  version: v0.3.0
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/v5
+security:
+  - bearer: []
+tags:
+  - description: Endpoints related to Machines
+    name: Machines
+    x-displayName: Machines
+paths:
+  /machine/own:
+    post:
+      description: Submit flag
+      operationId: postMachineOwn
+      requestBody:
+        $ref: '#/components/requestBodies/MachineOwnRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/MachineOwnResponse'
+        '400':
+          $ref: '#/components/responses/MachineOwn400Response'
+      summary: Submit flag
+      tags:
+        - Machines
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http
+  schemas:
+    MachineOwnRequest:
+      description: Schema definition for Own Request
+      properties:
+        difficulty:
+          example: 50
+          type: integer
+        flag:
+          description: MD5 hash of the machine flag
+          example: 0cc175b9c0f1b6a831c399e269772661
+          type: string
+        id:
+          description: The machine ID
+          example: 597
+          type: integer
+      required:
+        - id
+        - flag
+      title: Own Request
+      type: object
+    NewRank:
+      properties:
+        id:
+          example: 5
+          type: integer
+        text:
+          nullable: true
+          type: string
+      type: object
+    RankUpdate:
+      properties:
+        changed:
+          example: false
+          type: boolean
+        newRank:
+          $ref: '#/components/schemas/NewRank'
+          nullable: true
+          type: object
+      type: object
+    MachineOwnResponse:
+      description: Schema definition for Machine Own Response
+      properties:
+        blood_points:
+          example: 0
+          type: integer
+        blood_taken:
+          example: 0
+          type: integer
+        id:
+          example: 665
+          type: integer
+        is_starting_point:
+          example: false
+          type: boolean
+        league_rank:
+          $ref: '#/components/schemas/RankUpdate'
+          nullable: true
+          type: object
+        machine_completed:
+          example: false
+          type: boolean
+        machine_pwned:
+          example: false
+          type: boolean
+        machine_state:
+          example: open
+          type: string
+        message:
+          example: You pwned the User Flag!
+          type: string
+        own_type:
+          enum:
+            - Root
+            - User
+          example: User
+          type: string
+        points:
+          example: 50
+          type: integer
+        status:
+          example: 200
+          type: integer
+        success:
+          example: true
+          type: boolean
+        user_rank:
+          $ref: '#/components/schemas/RankUpdate'
+          nullable: true
+          type: object
+      required:
+        - message
+        - status
+        - success
+        - own_type
+        - id
+        - points
+        - machine_completed
+        - machine_pwned
+        - machine_state
+        - is_starting_point
+        - blood_taken
+        - blood_points
+      title: Own Response
+      type: object
+    MachineOwnErrorResponse:
+      description: Schema definition for Own Error Response
+      properties:
+        message:
+          example: Incorrect flag.
+          type: string
+        status:
+          example: 400
+          type: integer
+      required:
+        - message
+        - status
+      title: Own Error Response
+      type: object
+  examples:
+    MachineOwnRequest:
+      summary: Own Request
+      value:
+        flag: 0cc175b9c0f1b6a831c399e269772661
+        id: 597
+    MachineOwnRequestWithDifficulty:
+      summary: Own Request With Difficulty
+      value:
+        difficulty: 50
+        flag: 0cc175b9c0f1b6a831c399e269772661
+        id: 597
+    MachineOwnSuccess:
+      summary: Own Success
+      value:
+        blood_points: 0
+        blood_taken: 0
+        id: 665
+        is_starting_point: false
+        league_rank:
+          changed: false
+          newRank:
+            id: 2
+            text: Silver
+        machine_completed: false
+        machine_pwned: false
+        machine_state: open
+        message: You pwned the User Flag!
+        own_type: User
+        points: 50
+        status: 200
+        success: true
+        user_rank:
+          changed: false
+          newRank:
+            id: 5
+            text: null
+    MachineOwnedRootAlreadyError:
+      summary: Root is already owned
+      value:
+        message: RouterSpace root is already owned.
+        status: 400
+    MachineOwnedUserAlreadyError:
+      summary: User is already owned
+      value:
+        message: RouterSpace user is already owned.
+        status: 400
+    MachineOwnedInvalidFlagError:
+      summary: Incorrect flag submission
+      value:
+        message: Incorrect flag.
+        status: 400
+  requestBodies:
+    MachineOwnRequest:
+      content:
+        application/json:
+          examples:
+            MachineOwnRequest:
+              $ref: '#/components/examples/MachineOwnRequest'
+            MachineOwnRequestWithDifficulty:
+              $ref: '#/components/examples/MachineOwnRequestWithDifficulty'
+          schema:
+            $ref: '#/components/schemas/MachineOwnRequest'
+        application/x-www-form-urlencoded:
+          examples:
+            MachineOwnRequest:
+              $ref: '#/components/examples/MachineOwnRequest'
+            MachineOwnRequestWithDifficulty:
+              $ref: '#/components/examples/MachineOwnRequestWithDifficulty'
+          schema:
+            $ref: '#/components/schemas/MachineOwnRequest'
+      description: Body to post machine flag
+      required: true
+  headers:
+    XRateLimitHeader:
+      description: Total requests allowed
+      schema:
+        example: 15
+        format: int
+        type: integer
+    XRateLimitRemainingHeader:
+      description: Remaining requests allowed
+      schema:
+        example: 14
+        format: int
+        type: integer
+  responses:
+    MachineOwnResponse:
+      content:
+        application/json:
+          examples:
+            MachineOwnSuccess:
+              $ref: '#/components/examples/MachineOwnSuccess'
+          schema:
+            $ref: '#/components/schemas/MachineOwnResponse'
+      description: Successful flag submission
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    MachineOwn400Response:
+      content:
+        application/json:
+          examples:
+            MachineOwnedRootAlreadyError:
+              $ref: '#/components/examples/MachineOwnedRootAlreadyError'
+            MachineOwnedUserAlreadyError:
+              $ref: '#/components/examples/MachineOwnedUserAlreadyError'
+            invalidFlag:
+              $ref: '#/components/examples/MachineOwnedInvalidFlagError'
+          schema:
+            $ref: '#/components/schemas/MachineOwnErrorResponse'
+      description: Machine Own Bad Request
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
