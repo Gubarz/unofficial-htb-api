@@ -8517,6 +8517,7 @@ components:
           type: object
         - maxItems: 0
           type: array
+          items: {}
     SeasonUserRankData:
       properties:
         flags_to_next_rank:
@@ -9015,6 +9016,7 @@ components:
     EmptyArray:
       maxItems: 0
       type: array
+      items: {}
     Video:
       oneOf:
         - $ref: '#/components/schemas/VideoObject'
