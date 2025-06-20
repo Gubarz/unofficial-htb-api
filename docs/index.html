@@ -37,7 +37,7 @@
 
     function loadUI(version) {
       const file = version === "v5" ? "openapi.v5.yaml" : "openapi.v4.yaml";
-      const url = `https://github.com/gubarz/unofficial-htb-api/releases/download/latest/${file}`;
+      const url = `./${file}`;
 
       window.ui = SwaggerUIBundle({
         url: url,

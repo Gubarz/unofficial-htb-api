@@ -3,8 +3,7 @@ name: Build & Release OpenAPI Bundles
 on:
   push:
     tags:
-      - 'v*'
-      - 'latest'
+      - 'v*'  # Triggers on version tag pushes like v0.3.0
 
 permissions:
   contents: write
@@ -30,7 +29,21 @@ jobs:
           redocly bundle openapi@v4 --output openapi.v4.yaml
           redocly bundle openapi@v5 --output openapi.v5.yaml
 
-      - name: Create GitHub Release
+      - name: Copy specs to docs/ for GitHub Pages
+        run: |
+          mkdir -p docs
+          cp openapi.v4.yaml docs/openapi.v4.yaml
+          cp openapi.v5.yaml docs/openapi.v5.yaml
+
+      - name: Commit bundled specs to docs/ dir
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/openapi.v*.yaml
+          git commit -m "Update bundled OpenAPI specs in docs/"
+          git push
+
+      - name: Create GitHub Release from tag
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
