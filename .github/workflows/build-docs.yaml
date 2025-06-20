@@ -3,10 +3,10 @@ name: Build & Release OpenAPI Bundles
 on:
   push:
     tags:
-      - 'v*'  # Triggers on version tag pushes like v0.3.0
+      - 'v*'
 
 permissions:
-  contents: write
+  contents: write 
 
 jobs:
   bundle-and-release:
@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -35,13 +38,13 @@ jobs:
           cp openapi.v4.yaml docs/openapi.v4.yaml
           cp openapi.v5.yaml docs/openapi.v5.yaml
 
-      - name: Commit bundled specs to docs/ dir
+      - name: Commit and push updated docs/ (if changed)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/openapi.v*.yaml
-          git commit -m "Update bundled OpenAPI specs in docs/"
-          git push
+          git diff --cached --quiet || git commit -m "Update bundled OpenAPI specs in docs/"
+          git push origin HEAD:main
 
       - name: Create GitHub Release from tag
         uses: softprops/action-gh-release@v2
