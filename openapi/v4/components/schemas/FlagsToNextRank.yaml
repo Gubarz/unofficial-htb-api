@@ -7,3 +7,4 @@ oneOf:
     type: object
   - maxItems: 0
     type: array
+    items: {}
