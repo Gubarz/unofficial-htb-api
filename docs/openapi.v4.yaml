@@ -3971,6 +3971,10 @@ components:
           type: boolean
       title: Challenge Change Log Id Response
       type: object
+    IntArray:
+      items:
+        type: integer
+      type: array
     PlayInfoAlt:
       type: object
       properties:
@@ -3985,8 +3989,7 @@ components:
           type: string
           nullable: true
         ports:
-          type: object
-          nullable: true
+          $ref: '#/components/schemas/IntArray'
       description: Alternate structure of PlayInfo used in Sherlocks and Challenges
     DifficultyChart:
       properties:
@@ -5643,10 +5646,6 @@ components:
     PeriodsStringArray:
       items:
         $ref: '#/components/schemas/StringArray'
-      type: array
-    IntArray:
-      items:
-        type: integer
       type: array
     MachineGraphActivityInfo:
       properties:
@@ -9459,9 +9458,9 @@ components:
         name:
           type: string
         points:
-          type: number
+          type: integer
         public:
-          type: number
+          type: integer
         rank:
           type: string
         rank_text:
@@ -9469,15 +9468,15 @@ components:
         role:
           type: string
         root_bloods_count:
-          type: number
+          type: integer
         root_owns:
-          type: number
+          type: integer
         team:
           $ref: '#/components/schemas/TeamMemberTeam'
         user_bloods_count:
-          type: number
+          type: integer
         user_owns:
-          type: number
+          type: integer
     TeamMembersIdResponse:
       description: Schema definition for Team Members Id Response
       items:
