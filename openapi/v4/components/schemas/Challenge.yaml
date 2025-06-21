@@ -115,7 +115,9 @@ properties:
   play_methods:
     $ref: ./StringArray.yaml
   points:
-    type: integer
+    oneOf: 
+      - type: integer
+      - type: string
   recommended:
     example: 0
     type: integer
