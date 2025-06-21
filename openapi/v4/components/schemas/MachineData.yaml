@@ -28,7 +28,9 @@ properties:
     nullable: true
     type: string
   isTodo:
-    type: boolean
+    oneOf: 
+      - type: boolean
+      - type: integer
   is_competitive:
     type: boolean
   labels:
