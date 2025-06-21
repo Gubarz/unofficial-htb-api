@@ -6,7 +6,7 @@ properties:
   country_name:
     type: string
   current_rank_progress:
-    type: integer
+    type: number
   github:
     nullable: true
     type: string
