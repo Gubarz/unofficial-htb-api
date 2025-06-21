@@ -7,7 +7,7 @@ info:
     name: The Unlicense
     url: https://unlicense.org/
   title: HTB Unofficial API v4
-  version: v0.3.0
+  version: v0.3.2
 servers:
   - description: HTB API
     url: https://labs.hackthebox.com/api/v4
@@ -5816,7 +5816,9 @@ components:
           nullable: true
           type: string
         isTodo:
-          type: boolean
+          oneOf:
+            - type: boolean
+            - type: integer
         is_competitive:
           type: boolean
         labels:
