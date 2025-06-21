@@ -11,6 +11,5 @@ properties:
     type: string
     nullable: true
   ports:
-    type: object
-    nullable: true
+    $ref: ./IntArray.yaml
 description: Alternate structure of PlayInfo used in Sherlocks and Challenges

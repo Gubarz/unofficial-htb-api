@@ -12,9 +12,9 @@ properties:
   name:
     type: string
   points:
-    type: number
+    type: integer
   public:
-    type: number
+    type: integer
   rank:
     type: string
   rank_text:
@@ -22,12 +22,12 @@ properties:
   role:
     type: string
   root_bloods_count:
-    type: number
+    type: integer
   root_owns:
-    type: number
+    type: integer
   team:
     $ref: ./TeamMemberTeam.yaml
   user_bloods_count:
-    type: number
+    type: integer
   user_owns:
-    type: number
+    type: integer
