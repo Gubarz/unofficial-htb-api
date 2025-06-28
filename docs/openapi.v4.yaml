@@ -6529,6 +6529,7 @@ components:
         os:
           type: string
         release:
+          format: date-time
           type: string
         retiring:
           $ref: '#/components/schemas/MachineRetiring'
