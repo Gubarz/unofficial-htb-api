@@ -10459,6 +10459,18 @@ components:
         ranking:
           type: integer
       type: object
+    UserProfileUniversityTeam:
+      properties:
+        logo_thumb_url:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        ranking:
+          type: integer
+      type: object
+      nullable: true
     UserProfile:
       properties:
         avatar:
@@ -10524,8 +10536,7 @@ components:
           nullable: true
           type: string
         university:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/UserProfileUniversityTeam'
         university_name:
           nullable: true
           type: string
