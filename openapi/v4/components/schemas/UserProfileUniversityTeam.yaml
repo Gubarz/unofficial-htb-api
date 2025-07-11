@@ -1,0 +1,11 @@
+properties:
+  logo_thumb_url:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  ranking:
+    type: integer
+type: object
+nullable: true

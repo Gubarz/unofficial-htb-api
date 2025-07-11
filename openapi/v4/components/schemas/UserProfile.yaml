@@ -62,8 +62,7 @@ properties:
     nullable: true
     type: string
   university:
-    nullable: true
-    type: string
+    $ref: ./UserProfileUniversityTeam.yaml
   university_name:
     nullable: true
     type: string
