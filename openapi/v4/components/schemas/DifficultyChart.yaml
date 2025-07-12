@@ -1,32 +1,36 @@
-properties:
-  counterBitHard:
-    example: 7
-    type: integer
-  counterBrainFuck:
-    example: 6
-    type: integer
-  counterCake:
-    example: 23
-    type: integer
-  counterEasy:
-    example: 26
-    type: integer
-  counterExHard:
-    example: 1
-    type: integer
-  counterHard:
-    example: 1
-    type: integer
-  counterMedium:
-    example: 9
-    type: integer
-  counterTooEasy:
-    example: 17
-    type: integer
-  counterTooHard:
-    example: 3
-    type: integer
-  counterVeryEasy:
-    example: 35
-    type: integer
-type: object
+oneOf:
+  - type: array
+    items: {}
+    maxItems: 0  # Since it's always an empty array
+  - type: object
+    properties:
+      counterBitHard:
+        example: 7
+        type: integer
+      counterBrainFuck:
+        example: 6
+        type: integer
+      counterCake:
+        example: 23
+        type: integer
+      counterEasy:
+        example: 26
+        type: integer
+      counterExHard:
+        example: 1
+        type: integer
+      counterHard:
+        example: 1
+        type: integer
+      counterMedium:
+        example: 9
+        type: integer
+      counterTooEasy:
+        example: 17
+        type: integer
+      counterTooHard:
+        example: 3
+        type: integer
+      counterVeryEasy:
+        example: 35
+        type: integer
