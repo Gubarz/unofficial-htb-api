@@ -1,0 +1,7 @@
+properties: 
+  name:
+    type: string
+  difficulty:
+    type: string
+type: object
+nullable: true
