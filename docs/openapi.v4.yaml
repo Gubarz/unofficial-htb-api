@@ -4377,6 +4377,14 @@ components:
           $ref: '#/components/schemas/WriteupData'
       title: Challenge writeups
       type: object
+    ChallengeRetires:
+      properties:
+        name:
+          type: string
+        difficulty:
+          type: string
+      type: object
+      nullable: true
     ChallengeList:
       description: Schema definition for Challenge List
       properties:
@@ -4424,9 +4432,7 @@ components:
           format: date-time
           type: string
         retires:
-          format: date
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/ChallengeRetires'
         solves:
           example: 132
           type: integer
