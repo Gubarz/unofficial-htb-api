@@ -2146,6 +2146,7 @@ paths:
       operationId: getTeamActivity
       parameters:
         - $ref: '#/components/parameters/TeamId'
+        - $ref: '#/components/parameters/NPastDays'
       responses:
         '200':
           $ref: '#/components/responses/TeamActivityTeamIdResponse'
@@ -3452,6 +3453,13 @@ components:
       required: true
       schema:
         type: integer
+    NPastDays:
+      description: number of past days, max 90
+      in: query
+      name: n_past_days
+      required: false
+      schema:
+        type: integer
     RequestId:
       description: Request ID
       in: path
@@ -4107,6 +4115,10 @@ components:
         download:
           example: true
           type: boolean
+        file_name:
+          type: string
+        file_size:
+          type: string
         first_blood_time:
           example: 0H 39M 49S
           type: string
@@ -4178,6 +4190,8 @@ components:
         user_can_review:
           example: true
           type: boolean
+        user_submitted_difficulty:
+          type: integer
       title: Challenge
       type: object
     ChallengeResponse:
@@ -6011,6 +6025,27 @@ components:
           type: string
       title: Maker
       type: object
+    PlayInfo:
+      description: Schema definition for Play Info
+      properties:
+        active_player_count:
+          example: 1
+          type: integer
+        expires_at:
+          format: date-time
+          nullable: true
+          type: string
+        is_active:
+          nullable: true
+          type: boolean
+        is_spawned:
+          nullable: true
+          type: boolean
+        is_spawning:
+          nullable: true
+          type: boolean
+      title: Play Info
+      type: object
     UserBasicInfo:
       nullable: true
       properties:
@@ -6116,7 +6151,7 @@ components:
           nullable: true
           type: integer
         playInfo:
-          $ref: '#/components/schemas/PlayInfoAlt'
+          $ref: '#/components/schemas/PlayInfo'
         points:
           example: 30
           type: integer
@@ -6419,11 +6454,17 @@ components:
           type: string
         released:
           type: number
+        review:
+          type: string
+          nullable: true
         stars:
           type: number
         title:
           nullable: true
           type: string
+        headline:
+          type: string
+          nullable: true
         user:
           $ref: '#/components/schemas/UserBasicInfo'
         user_id:
@@ -8031,6 +8072,12 @@ components:
         user_id:
           example: 234234
           type: integer
+        headline:
+          type: string
+          nullable: true
+        review:
+          type: string
+          nullable: true
       type: object
     ReviewMessage:
       description: Schema definition for Review Message
@@ -8259,27 +8306,6 @@ components:
         data:
           $ref: '#/components/schemas/SeasonListData'
       title: Season List Response
-      type: object
-    PlayInfo:
-      description: Schema definition for Play Info
-      properties:
-        active_player_count:
-          example: 1
-          type: integer
-        expires_at:
-          format: date-time
-          nullable: true
-          type: string
-        is_active:
-          nullable: true
-          type: boolean
-        is_spawned:
-          nullable: true
-          type: boolean
-        is_spawning:
-          nullable: true
-          type: boolean
-      title: Play Info
       type: object
     SeasonActiveData:
       properties:
@@ -8887,6 +8913,8 @@ components:
           $ref: '#/components/schemas/StringArray'
         writeup_visible:
           type: boolean
+        user_can_review:
+          type: boolean
       type: object
     SherlockNamedItem:
       description: Schema definition for Sherlock Named Item
@@ -9155,14 +9183,22 @@ components:
           example: 0
           type: integer
       type: object
+      required:
+        - public
+        - name
+        - id
     TeamActivityItem:
       properties:
+        challenge_category:
+          type: string
         date:
           example: '2024-11-20T22:36:18.000000Z'
           format: date-time
           type: string
         date_diff:
           example: 10 hours ago
+          type: string
+        flag_title:
           type: string
         first_blood:
           example: false
@@ -9188,6 +9224,16 @@ components:
         user:
           $ref: '#/components/schemas/TeamActivityUser'
       type: object
+      required:
+        - date
+        - date_diff
+        - id
+        - name
+        - object_type
+        - points
+        - type
+        - user
+        - first_blood
     TeamActivityIdResponse:
       description: Schema definition for Team Activity Id Response
       items:
@@ -10374,6 +10420,8 @@ components:
         verified:
           example: true
           type: boolean
+        subscriptionType:
+          type: string
       title: User Info
       type: object
     UserInfoResponse:
@@ -10760,18 +10808,16 @@ components:
         $ref: '#/components/schemas/ChallengeCategoriesItems'
       type: array
     ChallengeDifficulties:
-      type: array
-      items:
-        type: object
-        properties:
-          completion_percentage:
-            type: number
-          name:
-            type: string
-          owned_challenges:
-            type: number
-          total_challenges:
-            type: number
+      type: object
+      properties:
+        completion_percentage:
+          type: number
+        name:
+          type: string
+        owned_challenges:
+          type: number
+        total_challenges:
+          type: number
     ProfileProgressChallengeOwns:
       properties:
         percentage:
