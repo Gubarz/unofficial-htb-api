@@ -1,0 +1,6 @@
+description: number of past days, max 90
+in: query
+name: n_past_days
+required: false
+schema:
+  type: integer

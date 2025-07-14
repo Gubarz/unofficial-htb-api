@@ -1,12 +1,10 @@
-type: array
-items:
-  type: object
-  properties:
-    completion_percentage:
-      type: number
-    name:
-      type: string
-    owned_challenges:
-      type: number
-    total_challenges:
-      type: number
+type: object
+properties:
+  completion_percentage:
+    type: number
+  name:
+    type: string
+  owned_challenges:
+    type: number
+  total_challenges:
+    type: number

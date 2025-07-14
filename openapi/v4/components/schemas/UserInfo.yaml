@@ -82,5 +82,7 @@ properties:
   verified:
     example: true
     type: boolean
+  subscriptionType:
+    type: string
 title: User Info
 type: object

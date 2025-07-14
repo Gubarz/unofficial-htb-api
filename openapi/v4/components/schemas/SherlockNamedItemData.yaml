@@ -45,4 +45,6 @@ properties:
     $ref: ./StringArray.yaml
   writeup_visible:
     type: boolean
+  user_can_review:
+    type: boolean
 type: object

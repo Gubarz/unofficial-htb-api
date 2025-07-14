@@ -5,6 +5,7 @@ get:
   operationId: getTeamActivity
   parameters:
     - $ref: ../components/parameters/TeamId.yaml
+    - $ref: ../components/parameters/NPastDays.yaml
   responses:
     '200':
       $ref: ../components/responses/TeamActivityTeamIdResponse.yaml

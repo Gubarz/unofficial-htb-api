@@ -19,11 +19,17 @@ properties:
     type: string
   released:
     type: number
+  review:
+    type: string
+    nullable: true
   stars:
     type: number
   title:
     nullable: true
     type: string
+  headline:
+    type: string
+    nullable: true
   user:
     $ref: ./UserBasicInfo.yaml
   user_id:

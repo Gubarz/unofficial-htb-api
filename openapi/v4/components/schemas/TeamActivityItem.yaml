@@ -1,10 +1,14 @@
 properties:
+  challenge_category:
+    type: string
   date:
     example: '2024-11-20T22:36:18.000000Z'
     format: date-time
     type: string
   date_diff:
     example: 10 hours ago
+    type: string
+  flag_title:
     type: string
   first_blood:
     example: false
@@ -30,3 +34,13 @@ properties:
   user:
     $ref: ./TeamActivityUser.yaml
 type: object
+required: 
+  - date
+  - date_diff
+  - id
+  - name
+  - object_type
+  - points
+  - type
+  - user
+  - first_blood

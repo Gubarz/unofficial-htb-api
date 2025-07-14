@@ -77,7 +77,7 @@ properties:
     nullable: true
     type: integer
   playInfo:
-    $ref: ./PlayInfoAlt.yaml
+    $ref: ./PlayInfo.yaml
   points:
     example: 30
     type: integer

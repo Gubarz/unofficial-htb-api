@@ -37,4 +37,10 @@ properties:
   user_id:
     example: 234234
     type: integer
+  headline:
+    type: string
+    nullable: true
+  review:
+    type: string
+    nullable: true
 type: object

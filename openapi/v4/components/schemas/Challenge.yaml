@@ -78,6 +78,10 @@ properties:
   download:
     example: true
     type: boolean
+  file_name:
+    type: string
+  file_size:
+    type: string
   first_blood_time:
     example: 0H 39M 49S
     type: string
@@ -149,5 +153,7 @@ properties:
   user_can_review:
     example: true
     type: boolean
+  user_submitted_difficulty:
+    type: integer
 title: Challenge
 type: object

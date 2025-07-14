@@ -12,3 +12,7 @@ properties:
     example: 0
     type: integer
 type: object
+required: 
+  - public
+  - name
+  - id
