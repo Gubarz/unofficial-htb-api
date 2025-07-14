@@ -1,11 +1,12 @@
 description: Filter by difficulty level
 explode: true
 in: query
-name: difficulty
+name: difficulty[]
 required: false
 schema:
   items:
     enum:
+      - very-easy
       - easy
       - medium
       - hard
