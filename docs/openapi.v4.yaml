@@ -530,18 +530,6 @@ paths:
       summary: Current Active Connections
       tags:
         - Connection
-  /connection/status/competitive:
-    get:
-      description: Get VPN Server status
-      operationId: getConnectionStatusCompetitive
-      responses:
-        '200':
-          $ref: '#/components/responses/ConnectionStatusProductResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Get VPN Server status
-      tags:
-        - Connection
   /connection/status/prolab/{prolabId}:
     get:
       description: Get VPN Server status
@@ -561,15 +549,7 @@ paths:
       description: Get VPN Server status
       operationId: getConnectionStatusProductname
       parameters:
-        - in: path
-          name: productName
-          required: true
-          schema:
-            enum:
-              - starting_point
-              - lab
-              - fortresses
-            type: string
+        - $ref: '#/components/parameters/ProductName'
       responses:
         '200':
           $ref: '#/components/responses/ConnectionStatusProductResponse'
@@ -3212,6 +3192,18 @@ components:
       required: true
       schema:
         type: integer
+    ProductName:
+      description: Select vpn server
+      in: path
+      name: productName
+      required: true
+      schema:
+        enum:
+          - competitive
+          - labs
+          - starting_point
+          - fortresses
+        type: string
     Product:
       description: Select vpn server
       in: query
