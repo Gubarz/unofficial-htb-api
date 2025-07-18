@@ -126,8 +126,6 @@ paths:
     $ref: paths/changelogs.yaml
   /connection/status:
     $ref: paths/connection_status.yaml
-  /connection/status/competitive:
-    $ref: paths/connection_status_competitive.yaml
   /connection/status/prolab/{prolabId}:
     $ref: paths/connection_status_prolab_{prolabId}.yaml
   /connection/status/{productName}:
