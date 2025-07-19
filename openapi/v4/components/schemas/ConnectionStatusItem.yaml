@@ -4,7 +4,7 @@ properties:
   location_type_friendly:
     type: string
   server:
-    $ref: ./ConnectionStatusServer.yaml
+    $ref: ./ConnectionServer.yaml
   type:
     type: string
   connection_type:

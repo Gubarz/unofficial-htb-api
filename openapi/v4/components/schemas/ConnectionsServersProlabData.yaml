@@ -1,7 +1,6 @@
 properties:
   assigned:
-    nullable: true
-    type: object
+    $ref: ./AssignedServerConnectionsServers.yaml
   options:
     $ref: ./Options.yaml
 type: object

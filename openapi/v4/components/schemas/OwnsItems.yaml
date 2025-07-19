@@ -10,7 +10,7 @@ properties:
     type: integer
   id:
     type: integer
-  machiine:
+  machine:
     $ref: ./MachineOwnsTabloid.yaml
   machine_flag_id:
     type: integer

@@ -15,5 +15,7 @@ properties:
     type: string
   location_type_friendly:
     type: string
+  pro_lab_id:
+    type: integer
 title: Assigned Server
 type: object

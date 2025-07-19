@@ -2,7 +2,7 @@ description: Schema definition for Machine Creator Resposne
 properties:
   creator:
     $ref: ./UserBasicInfoItemsWithRespect.yaml
-  cocreator:
+  cocreators:
     $ref: ./UserBasicInfoItemsWithRespect.yaml
 type: object
 title: Machine Creator Response

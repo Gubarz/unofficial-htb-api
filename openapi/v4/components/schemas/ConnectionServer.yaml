@@ -5,4 +5,6 @@ properties:
     type: string
   id:
     type: integer
+  pro_lab_id:
+    type: integer
 type: object
