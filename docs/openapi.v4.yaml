@@ -4604,13 +4604,15 @@ components:
         up:
           type: number
       type: object
-    ConnectionStatusServer:
+    ConnectionServer:
       properties:
         friendly_name:
           type: string
         hostname:
           type: string
         id:
+          type: integer
+        pro_lab_id:
           type: integer
       type: object
     ConnectionStatusItem:
@@ -4620,7 +4622,7 @@ components:
         location_type_friendly:
           type: string
         server:
-          $ref: '#/components/schemas/ConnectionStatusServer'
+          $ref: '#/components/schemas/ConnectionServer'
         type:
           type: string
         connection_type:
@@ -4632,15 +4634,6 @@ components:
         $ref: '#/components/schemas/ConnectionStatusItem'
       title: Connection Status Response
       type: array
-    ConnectionServer:
-      properties:
-        friendly_name:
-          type: string
-        hostname:
-          type: string
-        id:
-          type: integer
-      type: object
     ConnectionStatusProductData:
       properties:
         connection:
@@ -4781,6 +4774,8 @@ components:
           type: string
         location_type_friendly:
           type: string
+        pro_lab_id:
+          type: integer
       title: Assigned Server
       type: object
     Server:
@@ -4848,8 +4843,7 @@ components:
     ConnectionsServersProlabData:
       properties:
         assigned:
-          nullable: true
-          type: object
+          $ref: '#/components/schemas/AssignedServerConnectionsServers'
         options:
           $ref: '#/components/schemas/Options'
       type: object
@@ -5712,7 +5706,7 @@ components:
       properties:
         creator:
           $ref: '#/components/schemas/UserBasicInfoItemsWithRespect'
-        cocreator:
+        cocreators:
           $ref: '#/components/schemas/UserBasicInfoItemsWithRespect'
       type: object
       title: Machine Creator Response
@@ -6028,13 +6022,13 @@ components:
           format: date-time
           nullable: true
           type: string
-        is_active:
+        isActive:
           nullable: true
           type: boolean
-        is_spawned:
+        isSpawning:
           nullable: true
           type: boolean
-        is_spawning:
+        isSpawned:
           nullable: true
           type: boolean
       title: Play Info
@@ -9851,13 +9845,13 @@ components:
           type: string
     UniversityChartChallengeCategoriesItem:
       properties:
-        all_teams_avg_percentage:
+        all_universitys_avg_percentage:
           type: number
         id:
           type: integer
         name:
           type: string
-        team_percentage:
+        university_percentage:
           type: number
       type: object
     UniversityChartChallengeCategoriesItems:
@@ -10262,7 +10256,7 @@ components:
           type: integer
         id:
           type: integer
-        machiine:
+        machine:
           $ref: '#/components/schemas/MachineOwnsTabloid'
         machine_flag_id:
           type: integer
