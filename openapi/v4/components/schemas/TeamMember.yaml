@@ -16,7 +16,9 @@ properties:
   public:
     type: integer
   rank:
-    type: string
+    oneOf: 
+      - type: integer
+      - type: string
   rank_text:
     type: string
   role:

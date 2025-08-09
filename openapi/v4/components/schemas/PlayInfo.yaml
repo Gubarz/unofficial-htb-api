@@ -7,13 +7,13 @@ properties:
     format: date-time
     nullable: true
     type: string
-  isActive:
+  is_active:
     nullable: true
     type: boolean
-  isSpawning:
+  is_spawned:
     nullable: true
     type: boolean
-  isSpawned:
+  is_spawning:
     nullable: true
     type: boolean
 title: Play Info
