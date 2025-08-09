@@ -6,6 +6,9 @@ properties:
   country:
     nullable: true
     type: string
+  country_name:
+    nullable: true
+    type: string
   last_own:
     type: string
   league_rank:
