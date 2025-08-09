@@ -18,4 +18,8 @@ properties:
   subtitle:
     nullable: true
     type: string
+  rank_up_requirement:
+    type: string
+  flags_needed:
+    type: integer
 type: object
