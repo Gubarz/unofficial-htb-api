@@ -22,4 +22,13 @@ properties:
   subtitle:
     nullable: true
     type: string
+  current_week:
+    type: integer
+    nullable: true
+  weeks:
+    type: integer
+  players:
+    type: integer
+  new_background_image:
+    type: string
 type: object
