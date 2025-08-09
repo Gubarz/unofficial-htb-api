@@ -32,4 +32,8 @@ properties:
     type: boolean
   production:
     type: integer
+  rating:
+    type: integer
+  ratingCount:
+    type: integer
 type: object
