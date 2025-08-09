@@ -11,4 +11,14 @@ properties:
     type: integer
   total_season_points:
     type: integer
+  next_rank:
+    type: integer
+  root_owns:
+    type: integer
+  root_bloods:
+    type: integer
+  user_owns:
+    type: integer
+  user_bloods:
+    type: integer
 type: object
