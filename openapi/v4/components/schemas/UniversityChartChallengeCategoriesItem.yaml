@@ -1,10 +1,10 @@
 properties:
-  all_universitys_avg_percentage:
+  all_teams_avg_percentage:
     type: number
   id:
     type: integer
   name:
     type: string
-  university_percentage:
+  team_percentage:
     type: number
 type: object

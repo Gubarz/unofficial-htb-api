@@ -1,7 +1,7 @@
 properties:
-  Authentication:
+  Web Application:
     $ref: ./ProfileChartMachineAttackCard.yaml
-  Common Applications:
+  Vulnerability Assessment:
     $ref: ./ProfileChartMachineAttackCard.yaml
   Injections:
     $ref: ./ProfileChartMachineAttackCard.yaml
@@ -17,6 +17,6 @@ properties:
     $ref: ./ProfileChartMachineAttackCard.yaml
   Source Code Analysis:
     $ref: ./ProfileChartMachineAttackCard.yaml
-  Web Site Structure Discovery:
+  Enterprise Network:
     $ref: ./ProfileChartMachineAttackCard.yaml
 type: object

@@ -77,7 +77,7 @@ properties:
     nullable: true
     type: integer
   playInfo:
-    $ref: ./PlayInfo.yaml
+    $ref: ./PlayInfoCasing.yaml
   points:
     example: 30
     type: integer

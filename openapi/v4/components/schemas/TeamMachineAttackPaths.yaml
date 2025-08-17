@@ -1,22 +1,22 @@
 properties:
-  Binary Analysis:
+  Vulnerability Assessment:
     $ref: ./TeamsAttackPathCard.yaml
-  Binary Exploitation:
+  Web Application:
     $ref: ./TeamsAttackPathCard.yaml
-  Configuration Analysis:
+  Forensics:
     $ref: ./TeamsAttackPathCard.yaml
-  Fuzzing:
+  Mobile:
     $ref: ./TeamsAttackPathCard.yaml
-  Impersonation:
+  Enterprise Network:
     $ref: ./TeamsAttackPathCard.yaml
-  Packet Capture Analysis:
+  Person:
     $ref: ./TeamsAttackPathCard.yaml
-  Pivoting:
+  Security Operations:
     $ref: ./TeamsAttackPathCard.yaml
-  Reconnaissance:
+  Niche Technologies:
     $ref: ./TeamsAttackPathCard.yaml
-  User Enumeration:
+  Cloud:
     $ref: ./TeamsAttackPathCard.yaml
-  Web Site Structure Discovery:
+  Blockchain:
     $ref: ./TeamsAttackPathCard.yaml
 type: object
