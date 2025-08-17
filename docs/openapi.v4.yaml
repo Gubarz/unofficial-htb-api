@@ -6012,7 +6012,7 @@ components:
           type: string
       title: Maker
       type: object
-    PlayInfo:
+    PlayInfoCasing:
       description: Schema definition for Play Info
       properties:
         active_player_count:
@@ -6022,13 +6022,13 @@ components:
           format: date-time
           nullable: true
           type: string
-        is_active:
+        isActive:
           nullable: true
           type: boolean
-        is_spawned:
+        isSpawned:
           nullable: true
           type: boolean
-        is_spawning:
+        isSpawning:
           nullable: true
           type: boolean
       title: Play Info
@@ -6138,7 +6138,7 @@ components:
           nullable: true
           type: integer
         playInfo:
-          $ref: '#/components/schemas/PlayInfo'
+          $ref: '#/components/schemas/PlayInfoCasing'
         points:
           example: 30
           type: integer
@@ -8282,6 +8282,15 @@ components:
         subtitle:
           nullable: true
           type: string
+        current_week:
+          type: integer
+          nullable: true
+        weeks:
+          type: integer
+        players:
+          type: integer
+        new_background_image:
+          type: string
       type: object
     SeasonListData:
       items:
@@ -8293,6 +8302,27 @@ components:
         data:
           $ref: '#/components/schemas/SeasonListData'
       title: Season List Response
+      type: object
+    PlayInfo:
+      description: Schema definition for Play Info
+      properties:
+        active_player_count:
+          example: 1
+          type: integer
+        expires_at:
+          format: date-time
+          nullable: true
+          type: string
+        is_active:
+          nullable: true
+          type: boolean
+        is_spawned:
+          nullable: true
+          type: boolean
+        is_spawning:
+          nullable: true
+          type: boolean
+      title: Play Info
       type: object
     SeasonActiveData:
       properties:
@@ -8407,6 +8437,10 @@ components:
           type: boolean
         production:
           type: integer
+        rating:
+          type: integer
+        ratingCount:
+          type: integer
       type: object
     SeasonMachinesDataItems:
       items:
@@ -8471,6 +8505,10 @@ components:
         subtitle:
           nullable: true
           type: string
+        rank_up_requirement:
+          type: string
+        flags_needed:
+          type: integer
       type: object
     GroupItems:
       items:
@@ -8559,6 +8597,16 @@ components:
           type: integer
         total_season_points:
           type: integer
+        next_rank:
+          type: integer
+        root_owns:
+          type: integer
+        root_bloods:
+          type: integer
+        user_owns:
+          type: integer
+        user_bloods:
+          type: integer
       type: object
     SeasonUserRank:
       description: Schema definition for Season User Rank
@@ -8574,6 +8622,9 @@ components:
         avatar_thumb:
           type: string
         country:
+          nullable: true
+          type: string
+        country_name:
           nullable: true
           type: string
         last_own:
@@ -8957,27 +9008,6 @@ components:
           $ref: '#/components/schemas/SidebarChangeLog'
       title: Sidebar Change Log Response
       type: object
-    PlayInfoCasing:
-      description: Schema definition for Play Info
-      properties:
-        active_player_count:
-          example: 1
-          type: integer
-        expires_at:
-          format: date-time
-          nullable: true
-          type: string
-        isActive:
-          nullable: true
-          type: boolean
-        isSpawned:
-          nullable: true
-          type: boolean
-        isSpawning:
-          nullable: true
-          type: boolean
-      title: Play Info
-      type: object
     SpProfileInfo:
       properties:
         ip:
@@ -9275,25 +9305,25 @@ components:
       type: object
     TeamMachineAttackPaths:
       properties:
-        Binary Analysis:
+        Vulnerability Assessment:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Binary Exploitation:
+        Web Application:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Configuration Analysis:
+        Forensics:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Fuzzing:
+        Mobile:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Impersonation:
+        Enterprise Network:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Packet Capture Analysis:
+        Person:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Pivoting:
+        Security Operations:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Reconnaissance:
+        Niche Technologies:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        User Enumeration:
+        Cloud:
           $ref: '#/components/schemas/TeamsAttackPathCard'
-        Web Site Structure Discovery:
+        Blockchain:
           $ref: '#/components/schemas/TeamsAttackPathCard'
       type: object
     MachineOwnsCard:
@@ -9847,13 +9877,13 @@ components:
           type: string
     UniversityChartChallengeCategoriesItem:
       properties:
-        all_universitys_avg_percentage:
+        all_teams_avg_percentage:
           type: number
         id:
           type: integer
         name:
           type: string
-        university_percentage:
+        team_percentage:
           type: number
       type: object
     UniversityChartChallengeCategoriesItems:
@@ -9880,25 +9910,25 @@ components:
       type: object
     MachineAttackPaths:
       properties:
-        Binary Analysis:
+        Web Application:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Binary Exploitation:
+        Enterprise Network:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Configuration Analysis:
+        Forensics:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Fuzzing:
+        Mobile:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Impersonation:
+        Niche Technologies:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Packet Capture Analysis:
+        Vulnerability Assessment:
           $ref: '#/components/schemas/MachineAttackPathItem'
-        Pivoting:
+        Person:
+          $ref: '#/components/schemas/MachineAttackPathItem'
+        Security Operations:
+          $ref: '#/components/schemas/MachineAttackPathItem'
+        IoT:
           $ref: '#/components/schemas/MachineAttackPathItem'
         Reconnaissance:
-          $ref: '#/components/schemas/MachineAttackPathItem'
-        User Enumeration:
-          $ref: '#/components/schemas/MachineAttackPathItem'
-        Web Site Structure Discovery:
           $ref: '#/components/schemas/MachineAttackPathItem'
       type: object
     MachineOwns:
@@ -10672,9 +10702,9 @@ components:
       type: object
     ProfileChartMachineAttackProfileMachineAttackPaths:
       properties:
-        Authentication:
+        Web Application:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Common Applications:
+        Vulnerability Assessment:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
         Injections:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
@@ -10690,7 +10720,7 @@ components:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
         Source Code Analysis:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Web Site Structure Discovery:
+        Enterprise Network:
           $ref: '#/components/schemas/ProfileChartMachineAttackCard'
       type: object
     ProfileChartMachineAttackProfile:
