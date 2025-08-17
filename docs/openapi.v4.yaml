@@ -4742,7 +4742,7 @@ components:
           $ref: '#/components/schemas/ConnectionLab'
         pro_labs:
           $ref: '#/components/schemas/ConnectionProlab'
-        competitive:
+        release_arena:
           $ref: '#/components/schemas/ConnectionCompetitive'
         starting_point:
           $ref: '#/components/schemas/ConnectionLab'
@@ -5966,8 +5966,6 @@ components:
     AcademyModule:
       description: Academy Module Item
       properties:
-        aggregates:
-          $ref: '#/components/schemas/StringArray'
         avatar:
           example: https://academy.hackthebox.com/storage/modules/19/avatar.png
           type: string
