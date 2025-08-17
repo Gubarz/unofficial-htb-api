@@ -1,7 +1,5 @@
 description: Academy Module Item
 properties:
-  aggregates:
-    $ref: ./StringArray.yaml
   avatar:
     example: https://academy.hackthebox.com/storage/modules/19/avatar.png
     type: string

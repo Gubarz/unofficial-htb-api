@@ -5,7 +5,7 @@ properties:
     $ref: ./ConnectionLab.yaml
   pro_labs:
     $ref: ./ConnectionProlab.yaml
-  competitive:
+  release_arena:
     $ref: ./ConnectionCompetitive.yaml
   starting_point:
     $ref: ./ConnectionLab.yaml
