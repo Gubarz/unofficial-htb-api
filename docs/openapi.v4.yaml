@@ -8703,6 +8703,16 @@ components:
         data:
           $ref: '#/components/schemas/SeasonPlayersLeaderBoardTopData'
       type: object
+    SherlockRetires:
+      properties:
+        name:
+          type: string
+        difficulty:
+          type: string
+        avatar_url:
+          type: string
+      type: object
+      nullable: true
     SherlockItem:
       description: Schema definition for Sherlock Item
       properties:
@@ -8730,14 +8740,14 @@ components:
           type: integer
         rating:
           type: number
+          nullable: true
         rating_count:
           type: integer
         release_date:
           type: string
         retires:
-          format: date
+          $ref: '#/components/schemas/SherlockRetires'
           nullable: true
-          type: string
         solves:
           type: integer
         state:
