@@ -1,0 +1,9 @@
+properties: 
+  name:
+    type: string
+  difficulty:
+    type: string
+  avatar_url:
+    type: string
+type: object
+nullable: true

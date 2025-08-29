@@ -24,14 +24,14 @@ properties:
     type: integer
   rating:
     type: number
+    nullable: true
   rating_count:
     type: integer
   release_date:
     type: string
   retires:
-    format: date
+    $ref: ./SherlockRetires.yaml
     nullable: true
-    type: string
   solves:
     type: integer
   state:
