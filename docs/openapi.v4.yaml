@@ -1071,7 +1071,7 @@ paths:
         - Machines
   /machine/walkthrough/random:
     get:
-      description: Get Rnadom Walkthrough
+      description: Get Random Walkthrough
       operationId: getMachineWalkthroughRandom
       responses:
         '200':
@@ -7731,7 +7731,7 @@ components:
           type: boolean
       title: Rankings Team Overview Response
       type: object
-    RankingsTeamRankingBacketData:
+    RankingsTeamRankingBracketData:
       properties:
         current_bracket:
           type: string
@@ -7761,7 +7761,7 @@ components:
         status: true
       properties:
         data:
-          $ref: '#/components/schemas/RankingsTeamRankingBacketData'
+          $ref: '#/components/schemas/RankingsTeamRankingBracketData'
         status:
           type: boolean
       title: Rankings Team Ranking Bracket Response
