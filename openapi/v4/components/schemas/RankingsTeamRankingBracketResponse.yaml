@@ -9,7 +9,7 @@ example:
   status: true
 properties:
   data:
-    $ref: ./RankingsTeamRankingBacketData.yaml
+    $ref: ./RankingsTeamRankingBracketData.yaml
   status:
     type: boolean
 title: Rankings Team Ranking Bracket Response
