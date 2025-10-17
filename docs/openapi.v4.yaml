@@ -3267,7 +3267,7 @@ components:
       description: Filter by os
       explode: true
       in: query
-      name: os
+      name: os[]
       required: false
       schema:
         items:
