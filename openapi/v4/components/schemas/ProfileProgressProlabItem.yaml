@@ -12,4 +12,8 @@ properties:
     type: integer
   total_machines:
     type: integer
+  mini:
+    type: boolean
+  avatar:
+    type: string
 type: object

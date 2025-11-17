@@ -1,12 +1,12 @@
+description: Schema definition for Latest Season
 properties:
   id:
     type: integer
   name:
     type: string
-  icon:
+  state:
     type: string
-  description:
+  background_image:
     type: string
-  pivot:
-    $ref: ./ProfileBadgesItemPivot.yaml
+title: Latest Season
 type: object

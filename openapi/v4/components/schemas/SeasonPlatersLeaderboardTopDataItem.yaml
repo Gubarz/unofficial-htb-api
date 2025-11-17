@@ -27,4 +27,6 @@ properties:
     type: number
   user_owns:
     type: number
+  country_name:
+    type: string
 type: object

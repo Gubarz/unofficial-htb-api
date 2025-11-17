@@ -1,6 +1,6 @@
 properties:
   latest_season:
-    $ref: ./CommonIdName.yaml
+    $ref: ./LatestSeason.yaml
   league:
     type: string
   rank:

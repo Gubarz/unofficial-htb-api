@@ -31,4 +31,6 @@ properties:
     type: integer
   new_background_image:
     type: string
+  trailer:
+    type: string
 type: object

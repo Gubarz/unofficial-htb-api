@@ -8,4 +8,7 @@ properties:
   name:
     nullable: true
     type: string
+  background_image:
+    type: string
+    nullable: true
 type: object

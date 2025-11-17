@@ -8,4 +8,6 @@ properties:
   number:
     example: 1
     type: integer
+  id:
+    type: integer
 type: object
