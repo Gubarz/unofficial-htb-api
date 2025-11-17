@@ -5968,6 +5968,8 @@ components:
         number:
           example: 1
           type: integer
+        id:
+          type: integer
       type: object
     AcademyModule:
       description: Academy Module Item
@@ -6809,6 +6811,19 @@ components:
         next_rank_xp:
           type: number
       type: object
+    LatestSeason:
+      description: Schema definition for Latest Season
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        state:
+          type: string
+        background_image:
+          type: string
+      title: Latest Season
+      type: object
     UpcomingSeason:
       properties:
         date:
@@ -6820,11 +6835,14 @@ components:
         name:
           nullable: true
           type: string
+        background_image:
+          type: string
+          nullable: true
       type: object
     NavigationNmainSeasonRanking:
       properties:
         latest_season:
-          $ref: '#/components/schemas/CommonIdName'
+          $ref: '#/components/schemas/LatestSeason'
         league:
           type: string
         rank:
@@ -8295,6 +8313,8 @@ components:
           type: integer
         new_background_image:
           type: string
+        trailer:
+          type: string
       type: object
     SeasonListData:
       items:
@@ -8703,6 +8723,8 @@ components:
           type: number
         user_owns:
           type: number
+        country_name:
+          type: string
       type: object
     SeasonPlayersLeaderBoardTopData:
       items:
@@ -10535,6 +10557,12 @@ components:
       properties:
         id:
           type: integer
+        name:
+          type: string
+        icon:
+          type: string
+        description:
+          type: string
         pivot:
           $ref: '#/components/schemas/ProfileBadgesItemPivot'
       type: object
@@ -10809,6 +10837,9 @@ components:
         writeups:
           items: {}
           type: array
+        sherlocks:
+          items: {}
+          type: array
       type: object
     PorfileContentProfile:
       properties:
@@ -10972,6 +11003,10 @@ components:
           type: integer
         total_machines:
           type: integer
+        mini:
+          type: boolean
+        avatar:
+          type: string
       type: object
     ProfileProgressProlabItems:
       items:
