@@ -4487,6 +4487,9 @@ components:
         label:
           example: '1'
           type: string
+        page:
+          example: 1
+          type: integer
         url:
           example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
           nullable: true
@@ -4707,9 +4710,9 @@ components:
           $ref: '#/components/schemas/ServerConnection'
         can_access:
           type: boolean
-        fullhouse:
+        puppet:
           $ref: '#/components/schemas/ConnectionProlabLab'
-        solar:
+        mythical:
           $ref: '#/components/schemas/ConnectionProlabLab'
       type: object
     ConnectionMachine:
@@ -4743,6 +4746,8 @@ components:
         pro_labs:
           $ref: '#/components/schemas/ConnectionProlab'
         release_arena:
+          $ref: '#/components/schemas/ConnectionCompetitive'
+        competitive:
           $ref: '#/components/schemas/ConnectionCompetitive'
         starting_point:
           $ref: '#/components/schemas/ConnectionLab'
@@ -5513,6 +5518,7 @@ components:
       type: array
     LabListResponse:
       description: Schema definition for Lab List Response
+      deprecated: true
       properties:
         disabled:
           example: false
@@ -8439,6 +8445,10 @@ components:
           type: integer
         ratingCount:
           type: integer
+        user_blood_points:
+          type: integer
+        root_blood_points:
+          type: integer
       type: object
     SeasonMachinesDataItems:
       items:
@@ -8956,7 +8966,7 @@ components:
           example: retired_free
           type: string
         tags:
-          $ref: '#/components/schemas/StringArray'
+          $ref: '#/components/schemas/Tag'
         writeup_visible:
           type: boolean
         user_can_review:
@@ -10380,6 +10390,9 @@ components:
         can_delete_avatar:
           example: false
           type: boolean
+        currency:
+          type: string
+          example: USD
         dunning_exists:
           example: false
           type: boolean
@@ -10389,6 +10402,9 @@ components:
         hasAppTokens:
           example: true
           type: boolean
+        hasReviewedPlatform:
+          type: boolean
+          example: false
         hasTeamInvitation:
           type: boolean
         id:
@@ -10543,6 +10559,10 @@ components:
           type: string
         ranking:
           type: integer
+        logo_thumb_url:
+          type: string
+        member_count:
+          type: integer
       type: object
     UserProfileUniversityTeam:
       properties:
@@ -10628,6 +10648,17 @@ components:
         user_bloods:
           type: integer
         user_owns:
+          type: integer
+        followed_by_count:
+          type: integer
+        user_respects:
+          type: integer
+        joined_date:
+          type: string
+          format: date-time
+        user_follows:
+          type: integer
+        challenge_bloods:
           type: integer
       type: object
     UserProfileBasicIdResponse:
@@ -11093,6 +11124,8 @@ components:
         user_bloods:
           type: integer
         user_owns:
+          type: integer
+        challenge_bloods:
           type: integer
       type: object
     ProfileIdRepsonse:
