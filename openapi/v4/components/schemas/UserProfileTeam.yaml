@@ -7,4 +7,8 @@ properties:
     type: string
   ranking:
     type: integer
+  logo_thumb_url:
+    type: string
+  member_count:
+    type: integer
 type: object

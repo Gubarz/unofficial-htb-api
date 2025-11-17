@@ -3,8 +3,8 @@ properties:
     $ref: ./ServerConnection.yaml
   can_access:
     type: boolean
-  fullhouse:
+  puppet:
     $ref: ./ConnectionProlabLab.yaml
-  solar:
+  mythical:
     $ref: ./ConnectionProlabLab.yaml
 type: object

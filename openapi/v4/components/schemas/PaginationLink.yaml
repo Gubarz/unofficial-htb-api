@@ -6,6 +6,9 @@ properties:
   label:
     example: '1'
     type: string
+  page:
+    example: 1
+    type: integer
   url:
     example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
     nullable: true

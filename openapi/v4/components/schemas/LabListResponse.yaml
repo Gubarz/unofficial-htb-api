@@ -1,4 +1,5 @@
 description: Schema definition for Lab List Response
+deprecated: true
 properties:
   disabled:
     example: false

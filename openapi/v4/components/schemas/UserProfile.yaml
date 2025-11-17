@@ -70,4 +70,15 @@ properties:
     type: integer
   user_owns:
     type: integer
+  followed_by_count:
+    type: integer
+  user_respects:
+    type: integer
+  joined_date:
+    type: string
+    format: date-time
+  user_follows:
+    type: integer
+  challenge_bloods:
+    type: integer
 type: object

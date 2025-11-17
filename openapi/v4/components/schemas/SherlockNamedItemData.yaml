@@ -42,7 +42,7 @@ properties:
     example: retired_free
     type: string
   tags:
-    $ref: ./StringArray.yaml
+    $ref: ./Tag.yaml
   writeup_visible:
     type: boolean
   user_can_review:

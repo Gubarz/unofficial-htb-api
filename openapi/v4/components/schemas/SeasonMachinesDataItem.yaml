@@ -36,4 +36,8 @@ properties:
     type: integer
   ratingCount:
     type: integer
+  user_blood_points:
+    type: integer
+  root_blood_points:
+    type: integer
 type: object

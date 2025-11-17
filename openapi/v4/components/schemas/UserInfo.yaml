@@ -15,6 +15,9 @@ properties:
   can_delete_avatar:
     example: false
     type: boolean
+  currency:
+    type: string
+    example: "USD"
   dunning_exists:
     example: false
     type: boolean
@@ -24,6 +27,9 @@ properties:
   hasAppTokens:
     example: true
     type: boolean
+  hasReviewedPlatform:
+    type: boolean
+    example: false
   hasTeamInvitation:
     type: boolean
   id:

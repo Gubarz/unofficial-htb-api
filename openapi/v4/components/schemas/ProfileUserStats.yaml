@@ -44,4 +44,6 @@ properties:
     type: integer
   user_owns:
     type: integer
+  challenge_bloods:
+    type: integer
 type: object
