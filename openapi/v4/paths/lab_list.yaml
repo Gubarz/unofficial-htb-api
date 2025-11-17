@@ -1,4 +1,5 @@
 get:
+  deprecated: true
   description: Retrieves information related to /lab/list
   operationId: getLabList
   responses:
