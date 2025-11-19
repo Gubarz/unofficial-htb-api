@@ -12401,7 +12401,7 @@ components:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
     SearchFetchResponse:
       content:
-        text/html:
+        application/json:
           schema:
             $ref: '#/components/schemas/SearchFetchResponse'
       description: Search results
