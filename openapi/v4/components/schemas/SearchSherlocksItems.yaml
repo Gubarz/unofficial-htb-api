@@ -1,0 +1,3 @@
+items:
+  $ref: ./SearchSherlockItem.yaml
+type: array

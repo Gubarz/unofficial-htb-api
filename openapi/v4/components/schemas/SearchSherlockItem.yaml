@@ -1,0 +1,20 @@
+properties:
+  avatar:
+    type: string
+    example: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/9246444d94f081e3549803b928260f56.png
+  challenge_category_id:
+    example: 16
+    type: integer
+  category_name:
+    type: string
+    example: Malware Analysis
+  description:
+    example: In this Sherlock, players will investigate the Demodex rootkit attributed to Salt Typhoon.
+    type: string
+  id:
+    example: 1006
+    type: integer
+  value:
+    example: SalineBreeze-2
+    type: string
+type: object
