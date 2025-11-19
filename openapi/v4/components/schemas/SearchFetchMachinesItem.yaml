@@ -11,7 +11,7 @@ properties:
   tierId:
     example: null
     nullable: true
-    type: string
+    type: integer
   value:
     example: Hackback
     type: string

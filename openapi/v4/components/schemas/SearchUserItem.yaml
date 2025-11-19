@@ -2,6 +2,7 @@ properties:
   avatar:
     example: 23531cbb5210aebc5a094e8f18e10ec5.png
     type: string
+    nullable: true
   id:
     example: 85187
     type: integer
