@@ -8177,7 +8177,7 @@ components:
         tierId:
           example: null
           nullable: true
-          type: string
+          type: integer
         value:
           example: Hackback
           type: string
@@ -8211,6 +8211,7 @@ components:
         avatar:
           example: 23531cbb5210aebc5a094e8f18e10ec5.png
           type: string
+          nullable: true
         id:
           example: 85187
           type: integer
