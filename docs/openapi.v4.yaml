@@ -8139,6 +8139,9 @@ components:
         challenge_category_id:
           example: 10
           type: integer
+        category_name:
+          type: string
+          example: Pwn
         description:
           example: Our agents got caught during a mission...
           type: string
