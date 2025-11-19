@@ -5,8 +5,6 @@ properties:
     type: integer
   name:
     type: string
-  play_methods:
-    $ref: ./StringArray.yaml
   url_name:
     type: string
 type: object

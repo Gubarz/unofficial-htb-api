@@ -1,7 +1,7 @@
 description: Filter by tag ID. Can be repeated.
 explode: true
 in: query
-name: tags
+name: tag[]
 required: false
 schema:
   items:

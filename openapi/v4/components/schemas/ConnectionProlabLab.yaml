@@ -8,5 +8,5 @@ properties:
     nullable: true
     type: string
   pro_lab:
-    $ref: ./CommonIdName.yaml
+    $ref: ./IdNameIdentifier.yaml
 type: object

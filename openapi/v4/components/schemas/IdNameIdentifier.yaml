@@ -1,0 +1,10 @@
+description: Schema definition for Id Name Identifier
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  identifier:
+    type: string
+title: Id Name Identifier
+type: object

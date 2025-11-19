@@ -9,6 +9,7 @@ properties:
   page:
     example: 1
     type: integer
+    nullable: true
   url:
     example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
     nullable: true
