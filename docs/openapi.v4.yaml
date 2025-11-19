@@ -496,6 +496,7 @@ paths:
         - $ref: '#/components/parameters/SortBy'
         - $ref: '#/components/parameters/SortType'
         - $ref: '#/components/parameters/Difficulty'
+        - $ref: '#/components/parameters/Keyword'
         - $ref: '#/components/parameters/Category'
         - $ref: '#/components/parameters/Todo'
       responses:
@@ -3164,6 +3165,14 @@ components:
           type: string
         type: array
       style: form
+    Keyword:
+      description: Search String
+      in: query
+      name: keyword
+      required: false
+      schema:
+        example: hack
+        type: string
     Category:
       description: |
         Filter by category. You can provide multiple values. For example,
@@ -3292,14 +3301,6 @@ components:
           type: integer
         type: array
       style: form
-    Keyword:
-      description: Search String
-      in: query
-      name: keyword
-      required: false
-      schema:
-        example: hack
-        type: string
     MachineSlug:
       description: Can be the ID or Name of a box
       in: path
