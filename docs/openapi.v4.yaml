@@ -744,6 +744,7 @@ paths:
         - Home
   /lab/list:
     get:
+      deprecated: true
       description: Retrieves information related to /lab/list
       operationId: getLabList
       responses:
@@ -3284,7 +3285,7 @@ components:
       description: Filter by tag ID. Can be repeated.
       explode: true
       in: query
-      name: tags
+      name: tag[]
       required: false
       schema:
         items:
@@ -4347,8 +4348,6 @@ components:
           type: integer
         name:
           type: string
-        play_methods:
-          $ref: '#/components/schemas/StringArray'
         url_name:
           type: string
       type: object
@@ -4490,6 +4489,7 @@ components:
         page:
           example: 1
           type: integer
+          nullable: true
         url:
           example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
           nullable: true
@@ -4682,14 +4682,16 @@ components:
         location_type_friendly:
           type: string
       type: object
-    CommonIdName:
-      description: Schema definition for Common Id Name
+    IdNameIdentifier:
+      description: Schema definition for Id Name Identifier
       properties:
         id:
           type: integer
         name:
           type: string
-      title: Common Id Name
+        identifier:
+          type: string
+      title: Id Name Identifier
       type: object
     ConnectionProlabLab:
       properties:
@@ -4702,7 +4704,7 @@ components:
           nullable: true
           type: string
         pro_lab:
-          $ref: '#/components/schemas/CommonIdName'
+          $ref: '#/components/schemas/IdNameIdentifier'
       type: object
     ConnectionProlab:
       properties:
@@ -5518,7 +5520,6 @@ components:
       type: array
     LabListResponse:
       description: Schema definition for Lab List Response
-      deprecated: true
       properties:
         disabled:
           example: false
@@ -7210,6 +7211,15 @@ components:
         meta:
           $ref: '#/components/schemas/Meta'
       title: Prolab Id Reviews Response
+      type: object
+    CommonIdName:
+      description: Schema definition for Common Id Name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      title: Common Id Name
       type: object
     ReviewOverview:
       description: Schema definition for Review Overview
