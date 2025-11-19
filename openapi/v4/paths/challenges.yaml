@@ -9,6 +9,7 @@ get:
     - $ref: ../components/parameters/SortBy.yaml
     - $ref: ../components/parameters/SortType.yaml
     - $ref: ../components/parameters/Difficulty.yaml
+    - $ref: ../components/parameters/Keyword.yaml
     - $ref: ../components/parameters/Category.yaml
     - $ref: ../components/parameters/Todo.yaml
   responses:
