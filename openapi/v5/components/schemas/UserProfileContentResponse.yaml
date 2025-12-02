@@ -1,0 +1,10 @@
+description: Schema definition for User profile content responses.
+type: object
+properties:
+  data:
+    $ref: ./UserProfileContentData.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+required:
+  - data
+  - meta

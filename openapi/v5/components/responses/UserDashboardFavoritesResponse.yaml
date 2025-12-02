@@ -1,0 +1,8 @@
+description: User Dashboard favorites results
+content:
+  application/json:
+    examples:
+      UserDashboardFavorites:
+        $ref: ../examples/UserDashboardFavoritesSuccess.yaml
+    schema:
+      $ref: ../schemas/UserDashboardFavoritesResponse.yaml

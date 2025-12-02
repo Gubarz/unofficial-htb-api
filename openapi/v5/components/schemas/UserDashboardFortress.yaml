@@ -1,0 +1,41 @@
+description: Summary information for fortress cards surfaced on dashboard views.
+type: object
+properties:
+  points:
+    type: integer
+    description: Points available for the fortress.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL for the fortress avatar.
+  solvesCount:
+    type: integer
+    description: Number of user solves recorded.
+  tasksCompleted:
+    type: integer
+    description: Completed fortress tasks.
+  tasksTotal:
+    type: integer
+    description: Total fortress tasks.
+  progress:
+    type: integer
+    description: Completion percentage for the fortress.
+  id:
+    type: integer
+    description: Fortress identifier.
+  name:
+    type: string
+    description: Fortress display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Fortress).
+required:
+  - points
+  - avatarUrl
+  - solvesCount
+  - tasksCompleted
+  - tasksTotal
+  - progress
+  - id
+  - name
+  - type

@@ -1,0 +1,65 @@
+description: Summary information for Pro Lab entries shown on dashboard endpoints.
+type: object
+properties:
+  url:
+    type: string
+    description: Relative link to the Pro Lab overview.
+  identifier:
+    type: string
+    description: Short identifier or slug.
+  difficulty:
+    type: string
+    nullable: true
+    description: Reported difficulty for the lab.
+  avatar:
+    type: string
+    nullable: true
+    description: Relative asset path for the lab image.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL for the lab image.
+  categoryName:
+    type: string
+    description: Track or certification name associated with the lab.
+  rating:
+    type: number
+    format: float
+    nullable: true
+    description: Average participant rating.
+  ratingCount:
+    type: integer
+    description: Number of participant ratings.
+  progress:
+    type: integer
+    description: Completion percentage inside the lab.
+  tasksCompleted:
+    type: integer
+    description: Completed task count.
+  tasksTotal:
+    type: integer
+    description: Total task count.
+  id:
+    type: integer
+    description: Pro Lab identifier.
+  name:
+    type: string
+    description: Pro Lab display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Pro Lab).
+required:
+  - url
+  - identifier
+  - difficulty
+  - avatar
+  - avatarUrl
+  - categoryName
+  - rating
+  - ratingCount
+  - progress
+  - tasksCompleted
+  - tasksTotal
+  - id
+  - name
+  - type

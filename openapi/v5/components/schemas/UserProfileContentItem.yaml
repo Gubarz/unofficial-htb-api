@@ -1,0 +1,5 @@
+description: One of the possible content entries returned for a user profile.
+oneOf:
+  - $ref: ./UserProfileContentItemMachine.yaml
+  - $ref: ./UserProfileContentItemChallenge.yaml
+  - $ref: ./UserProfileContentItemSherlock.yaml

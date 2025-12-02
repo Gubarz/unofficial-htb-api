@@ -26,6 +26,14 @@ paths:
     $ref: paths/machines.yaml
   /user/profile/activity/{userId}:
     $ref: paths/user_profile_activity_{userId}.yaml
+  /user/profile/content/{userId}:
+    $ref: paths/user_profile_content_{userId}.yaml
+  /user/profile/dashboard/favorites:
+    $ref: paths/user_dashboard_favorites.yaml
+  /user/profile/dashboard/inprogress:
+    $ref: paths/user_dashboard_inprogress.yaml
+  /user/profile/dashboard/recommended:
+    $ref: paths/user_dashboard_recommended.yaml
 security:
   - bearer: []
 servers:

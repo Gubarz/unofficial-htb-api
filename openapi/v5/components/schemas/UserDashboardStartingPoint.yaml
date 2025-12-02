@@ -1,0 +1,49 @@
+description: Summary information for a Starting Point tier card.
+type: object
+properties:
+  description:
+    type: string
+    description: Short tier description shown in the dashboard.
+  completionPercentage:
+    type: integer
+    description: Overall completion percentage for the tier.
+  freeMachineCompletionPercentage:
+    type: integer
+    description: Completion percentage for free machines within the tier.
+  avatar:
+    type: string
+    description: Relative asset path for the tier avatar.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL to the tier avatar.
+  progress:
+    type: integer
+    description: Percentage progress toward finishing the tier.
+  tasksCompleted:
+    type: integer
+    description: Number of tasks completed.
+  tasksTotal:
+    type: integer
+    description: Total number of tasks available.
+  id:
+    type: integer
+    description: Tier identifier.
+  name:
+    type: string
+    description: Tier display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Starting Point).
+required:
+  - description
+  - completionPercentage
+  - freeMachineCompletionPercentage
+  - avatar
+  - avatarUrl
+  - progress
+  - tasksCompleted
+  - tasksTotal
+  - id
+  - name
+  - type

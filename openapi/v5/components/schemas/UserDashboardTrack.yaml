@@ -1,0 +1,49 @@
+description: Summary information for track cards surfaced on dashboard views.
+type: object
+properties:
+  avatar:
+    type: string
+    description: Relative asset path for the track image.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL for the track image.
+  url:
+    type: string
+    description: Relative link to the track landing page.
+  difficulty:
+    type: string
+    description: Difficulty level assigned to the track.
+  likeCount:
+    type: integer
+    description: Number of likes.
+  progress:
+    type: integer
+    description: Completion percentage inside the track.
+  tasksCompleted:
+    type: integer
+    description: Number of completed tasks.
+  tasksTotal:
+    type: integer
+    description: Total number of tasks.
+  id:
+    type: integer
+    description: Track identifier.
+  name:
+    type: string
+    description: Track display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Track).
+required:
+  - avatar
+  - avatarUrl
+  - url
+  - difficulty
+  - likeCount
+  - progress
+  - tasksCompleted
+  - tasksTotal
+  - id
+  - name
+  - type

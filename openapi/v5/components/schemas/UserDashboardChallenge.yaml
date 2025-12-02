@@ -1,0 +1,70 @@
+description: Summary information for a challenge card surfaced on dashboard endpoints.
+type: object
+properties:
+  difficulty:
+    type: string
+    description: Challenge difficulty label.
+  url:
+    type: string
+    description: Relative link to the challenge page.
+  avatar:
+    type: string
+    description: Relative asset path for the challenge category icon.
+  urlName:
+    type: string
+    description: Challenge slug used in URLs.
+  points:
+    type: integer
+    nullable: true
+    description: Points available for the challenge.
+  categoryID:
+    type: integer
+    description: Numerical identifier for the challenge category.
+  categoryName:
+    type: string
+    description: Name of the challenge category.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL for the challenge avatar.
+  rating:
+    type: number
+    format: float
+    nullable: true
+    description: Average user rating for the challenge.
+  ratingCount:
+    type: integer
+    description: Number of rating submissions.
+  progress:
+    type: integer
+    nullable: true
+    description: Completion percentage for the challenge if applicable.
+  status:
+    type: string
+    nullable: true
+    description: Availability label such as vip.
+  id:
+    type: integer
+    description: Challenge identifier.
+  name:
+    type: string
+    description: Challenge display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Retired Challenge).
+required:
+  - difficulty
+  - url
+  - avatar
+  - urlName
+  - points
+  - categoryID
+  - categoryName
+  - avatarUrl
+  - rating
+  - ratingCount
+  - progress
+  - status
+  - id
+  - name
+  - type

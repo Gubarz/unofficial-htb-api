@@ -1,0 +1,4 @@
+description: Collection of user profile content entries.
+type: array
+items:
+  $ref: ./UserProfileContentItem.yaml

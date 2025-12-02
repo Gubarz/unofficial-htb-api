@@ -1,0 +1,16 @@
+get:
+  description: User Profile Content
+  operationId: getUserProfileContent
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/UserProfileContentType.yaml
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileContentResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: User Profile Content
+  tags:
+    - User

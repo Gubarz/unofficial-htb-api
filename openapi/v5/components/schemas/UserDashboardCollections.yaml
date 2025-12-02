@@ -1,0 +1,46 @@
+description: Collections returned by dashboard endpoints such as favorites, in progress, and recommended.
+type: object
+properties:
+  machines:
+    type: array
+    description: Machines relevant to the dashboard section.
+    items:
+      $ref: ./UserDashboardMachine.yaml
+  startingPoints:
+    type: array
+    description: Starting Point tiers associated with the user.
+    items:
+      $ref: ./UserDashboardStartingPoint.yaml
+  challenges:
+    type: array
+    description: Challenge cards curated for the user.
+    items:
+      $ref: ./UserDashboardChallenge.yaml
+  sherlocks:
+    type: array
+    description: Sherlock investigations that match the dashboard filter.
+    items:
+      $ref: ./UserDashboardSherlock.yaml
+  proLabs:
+    type: array
+    description: Pro Lab recommendations or progress items.
+    items:
+      $ref: ./UserDashboardProlab.yaml
+  tracks:
+    type: array
+    description: Tracks highlighted for the user.
+    items:
+      $ref: ./UserDashboardTrack.yaml
+  fortresses:
+    type: array
+    description: Fortresses relevant to the dashboard view.
+    items:
+      $ref: ./UserDashboardFortress.yaml
+required:
+  - machines
+  - startingPoints
+  - challenges
+  - sherlocks
+  - proLabs
+  - tracks
+  - fortresses

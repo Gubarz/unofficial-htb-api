@@ -1,0 +1,11 @@
+get:
+  description: User Dashboard Recommended
+  operationId: getUserDashboardRecommended
+  responses:
+    '200':
+      $ref: ../components/responses/UserDashboardRecommendedResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: User Dashboard Recommended
+  tags:
+    - User

@@ -1,0 +1,121 @@
+summary: Dashboard recommended snapshot
+value:
+  machines:
+    - os: Linux
+      difficulty: Hard
+      avatar: /avatars/f6634ed8d93806d70d330297d7c90ee2.png
+      url: /machines/Store
+      user_flag: false
+      root_flag: false
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/f6634ed8d93806d70d330297d7c90ee2.png
+      points: null
+      rating: 5
+      ratingCount: 5
+      tasksCompleted: 0
+      tasksTotal: 2
+      progress: 0
+      guided: false
+      status: vip+
+      id: 790
+      name: Store
+      type: Retired Machine
+    - os: Linux
+      difficulty: Hard
+      avatar: /avatars/d12fa2e84c31a94e402fdc765a0e9125.png
+      url: /machines/Dump
+      user_flag: false
+      root_flag: false
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/d12fa2e84c31a94e402fdc765a0e9125.png
+      points: null
+      rating: 5
+      ratingCount: 3
+      tasksCompleted: 0
+      tasksTotal: 2
+      progress: 0
+      guided: false
+      status: vip+
+      id: 793
+      name: Dump
+      type: Retired Machine
+  startingPoints: []
+  challenges:
+    - difficulty: Hard
+      url: /challenges/modern-typer
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      urlName: modern-typer
+      points: null
+      categoryID: 4
+      categoryName: Pwn
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      rating: 5
+      ratingCount: 58
+      progress: null
+      status: vip
+      id: 203
+      name: Modern Typer
+      type: Retired Challenge
+    - difficulty: Hard
+      url: /challenges/tictacpwn
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      urlName: tictacpwn
+      points: null
+      categoryID: 4
+      categoryName: Pwn
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      rating: 5
+      ratingCount: 28
+      progress: null
+      status: vip
+      id: 205
+      name: TicTacPwn
+      type: Retired Challenge
+  sherlocks:
+    - urlName: sillyeli
+      difficulty: Hard
+      url: /sherlocks/sillyeli
+      categoryID: 14
+      categoryName: DFIR
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
+      rating: 4.9
+      ratingCount: 17
+      tasksCompleted: 0
+      tasksTotal: 16
+      progress: 0
+      status: null
+      id: 1024
+      name: SillyEli
+      type: Active Sherlock
+    - urlName: optinseltrace24-6-sleigh-slayer
+      difficulty: Hard
+      url: /sherlocks/optinseltrace24-6-sleigh-slayer
+      categoryID: 14
+      categoryName: DFIR
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
+      rating: 4.9
+      ratingCount: 8
+      tasksCompleted: 0
+      tasksTotal: 24
+      progress: 0
+      status: vip
+      id: 834
+      name: 'OpTinselTrace24-6: Sleigh Slayer'
+      type: Retired Sherlock
+  proLabs:
+    - url: /prolabs/overview/puppet
+      identifier: PUPPET
+      difficulty: ADVANCED
+      avatar: null
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/b6d767d2f8ed5d21a44b0e5886680cb9_avatar.svg
+      categoryName: Red Team Operator Level I
+      rating: 4.6
+      ratingCount: 22
+      progress: 25
+      tasksCompleted: 1
+      tasksTotal: 4
+      id: 22
+      name: Puppet
+      type: Pro Lab
+  tracks: []
+  fortresses: []

@@ -1,0 +1,8 @@
+description: User Dashboard recommendations tailored to the user
+content:
+  application/json:
+    examples:
+      UserDashboardRecommended:
+        $ref: ../examples/UserDashboardRecommendedSuccess.yaml
+    schema:
+      $ref: ../schemas/UserDashboardRecommendedResponse.yaml

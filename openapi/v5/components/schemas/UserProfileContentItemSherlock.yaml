@@ -1,0 +1,43 @@
+description: Sherlock investigation entry returned by the user profile content feed.
+type: object
+properties:
+  avatar:
+    type: string
+    format: uri
+    description: Absolute URL to the Sherlock avatar.
+  id:
+    type: integer
+    description: Sherlock identifier.
+  name:
+    type: string
+    description: Sherlock display name.
+  categoryName:
+    type: string
+    description: Category the Sherlock belongs to.
+  starRating:
+    type: number
+    format: float
+    description: Average star rating.
+  difficulty:
+    type: string
+    description: Sherlock difficulty label.
+  ownCount:
+    type: integer
+    description: User completion count.
+  releaseDate:
+    type: string
+    format: date-time
+    description: Sherlock release timestamp.
+  ratingCount:
+    type: integer
+    description: Total user ratings recorded.
+required:
+  - avatar
+  - id
+  - name
+  - categoryName
+  - starRating
+  - difficulty
+  - ownCount
+  - releaseDate
+  - ratingCount

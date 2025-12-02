@@ -1,0 +1,10 @@
+description: Product type to filter by
+in: query
+name: type
+required: true
+schema:
+  enum:
+    - machine
+    - challenge
+    - sherlock
+  type: string

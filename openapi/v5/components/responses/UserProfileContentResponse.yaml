@@ -1,0 +1,12 @@
+description: User profile content filtered listing
+content:
+  application/json:
+    examples:
+      UserProfileContentMachines:
+        $ref: ../examples/UserProfileContentMachineSuccess.yaml
+      UserProfileContentChallenges:
+        $ref: ../examples/UserProfileContentChallengeSuccess.yaml
+      UserProfileContentSherlocks:
+        $ref: ../examples/UserProfileContentSherlockSuccess.yaml
+    schema:
+      $ref: ../schemas/UserProfileContentResponse.yaml

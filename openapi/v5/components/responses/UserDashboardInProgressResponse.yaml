@@ -1,0 +1,8 @@
+description: User Dashboard items the user is currently progressing through
+content:
+  application/json:
+    examples:
+      UserDashboardInProgress:
+        $ref: ../examples/UserDashboardInProgressSuccess.yaml
+    schema:
+      $ref: ../schemas/UserDashboardInProgressResponse.yaml

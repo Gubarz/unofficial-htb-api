@@ -1,0 +1,47 @@
+description: Machine entry returned by the user profile content feed.
+type: object
+properties:
+  id:
+    type: integer
+    description: Machine identifier.
+  name:
+    type: string
+    description: Machine display name.
+  os:
+    type: string
+    description: Operating system of the machine.
+  machineAvatar:
+    type: string
+    format: uri
+    description: Absolute URL to the machine avatar.
+  difficulty:
+    type: string
+    description: Machine difficulty label.
+  starRating:
+    type: number
+    format: float
+    description: Average star rating.
+  userOwnCount:
+    type: integer
+    description: Number of user owns for the profile owner.
+  rootOwnCount:
+    type: integer
+    description: Number of root owns for the profile owner.
+  releaseDate:
+    type: string
+    format: date-time
+    description: Machine release timestamp.
+  ratingCount:
+    type: integer
+    description: Number of ratings submitted for the machine.
+required:
+  - id
+  - name
+  - os
+  - machineAvatar
+  - difficulty
+  - starRating
+  - userOwnCount
+  - rootOwnCount
+  - releaseDate
+  - ratingCount

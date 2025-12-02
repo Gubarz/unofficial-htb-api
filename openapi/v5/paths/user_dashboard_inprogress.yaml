@@ -1,0 +1,11 @@
+get:
+  description: User Dashboard In Progress
+  operationId: getUserDashboardInProgress
+  responses:
+    '200':
+      $ref: ../components/responses/UserDashboardInProgressResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: User Dashboard In Progress
+  tags:
+    - User

@@ -1,0 +1,72 @@
+description: Summary information for Sherlock investigations displayed in dashboard feeds.
+type: object
+properties:
+  urlName:
+    type: string
+    description: Sherlock slug used in URLs.
+  difficulty:
+    type: string
+    description: Difficulty rating for the Sherlock.
+  url:
+    type: string
+    description: Relative link to the Sherlock page.
+  categoryID:
+    type: integer
+    description: Numerical identifier for the Sherlock category.
+  categoryName:
+    type: string
+    description: Human readable category label.
+  avatar:
+    type: string
+    description: Relative asset path for the Sherlock image.
+  avatarUrl:
+    type: string
+    format: uri
+    description: Absolute URL for the Sherlock image.
+  rating:
+    type: number
+    format: float
+    nullable: true
+    description: Average user rating.
+  ratingCount:
+    type: integer
+    description: Count of user ratings.
+  tasksCompleted:
+    type: integer
+    description: Number of Sherlock tasks completed.
+  tasksTotal:
+    type: integer
+    description: Total Sherlock tasks available.
+  progress:
+    type: integer
+    description: Completion percentage.
+  status:
+    type: string
+    nullable: true
+    description: Availability label.
+  id:
+    type: integer
+    description: Sherlock identifier.
+  name:
+    type: string
+    description: Sherlock display name.
+  type:
+    type: string
+    description: Resource type label (e.g., Retired Sherlock).
+required:
+  - urlName
+  - difficulty
+  - url
+  - categoryID
+  - categoryName
+  - avatar
+  - avatarUrl
+  - rating
+  - ratingCount
+  - tasksCompleted
+  - tasksTotal
+  - progress
+  - status
+  - id
+  - name
+  - type
