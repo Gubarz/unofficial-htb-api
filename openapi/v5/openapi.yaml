@@ -15,17 +15,29 @@ info:
     name: The Unlicense
     url: https://unlicense.org/
   title: HTB Unofficial API v5
-  version: v0.3.0
+  version: v0.4.0
 openapi: 3.0.4
 paths:
+  /connections:
+    $ref: paths/connections.yaml
   /machine/own:
     $ref: paths/machine_own.yaml
+  /machines:
+    $ref: paths/machines.yaml
+  /user/profile/activity/{userId}:
+    $ref: paths/user_profile_activity_{userId}.yaml
 security:
   - bearer: []
 servers:
   - description: HTB API
     url: https://labs.hackthebox.com/api/v5
 tags:
+  - description: Endpoints related to Connections
+    name: Connections
+    x-displayName: Connections
   - description: Endpoints related to Machines
     name: Machines
     x-displayName: Machines
+  - description: Endpoints related to User
+    name: User
+    x-displayName: User

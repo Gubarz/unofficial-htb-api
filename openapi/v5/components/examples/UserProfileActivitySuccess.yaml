@@ -1,0 +1,51 @@
+summary: User profile activity
+value:
+  data:
+    - fortressId: 3
+      fortressName: Context
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1c383cd30b7c298ab50293adfecb7b18_logo.svg
+      type: fortress
+      id: 35
+      name: But we have SSL!?
+      points: 20
+      ownDate: 2025-09-26T13:23:21.000Z
+    - blood: false
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+      type: root
+      id: 751
+      name: Imagery
+      points: 30
+      ownDate: 2025-09-27T20:48:56.000Z
+    - blood: false
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+      type: user
+      id: 751
+      name: Imagery
+      points: 15
+      ownDate: 2025-09-27T20:29:12.000Z
+    - blood: false
+      categoryName: Crypto
+      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c81e728d9d4c2f636f067f89cc14862c.svg
+      type: challenge
+      id: 639
+      name: POPO
+      points: 3
+      ownDate: 2025-09-23T13:43:32.000Z
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/abd815286ba1007abfbb8415b83ae2cf.png
+      type: sherlock
+      id: 632
+      name: Unit42
+      points: 0
+      ownDate: 2024-04-12T02:47:40.000Z
+    - prolabId: 4
+      prolabName: Dante
+      prolabIdentifier: DANTE
+      type: prolab
+      id: 106
+      name: One misconfig to rule them all...
+      points: 10
+      ownDate: 2023-06-19T04:59:09.000Z
+  meta:
+    page: 1
+    lastPage: 4
+    totalItems: 50

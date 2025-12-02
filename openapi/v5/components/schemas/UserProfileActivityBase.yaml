@@ -1,0 +1,25 @@
+type: object
+properties:
+  type:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  points:
+    type: integer
+  ownDate:
+    type: string
+    format: date-time
+  avatar:
+    type: string
+    format: uri
+  blood:
+    type: boolean
+    nullable: true
+required:
+  - type
+  - id
+  - name
+  - points
+  - ownDate

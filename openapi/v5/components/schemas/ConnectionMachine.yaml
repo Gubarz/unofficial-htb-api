@@ -1,0 +1,8 @@
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar_thumb_url:
+    type: string
+type: object

@@ -1,0 +1,12 @@
+allOf:
+  - $ref: ConnectionBase.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - prolab
+      pro_lab:
+        $ref: ConnectionProlab.yaml
+    required:
+      - pro_lab

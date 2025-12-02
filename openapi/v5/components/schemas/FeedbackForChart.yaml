@@ -1,0 +1,22 @@
+type: object
+properties:
+  counterCake:
+    type: integer
+  counterVeryEasy:
+    type: integer
+  counterEasy:
+    type: integer
+  counterTooEasy:
+    type: integer
+  counterMedium:
+    type: integer
+  counterBitHard:
+    type: integer
+  counterHard:
+    type: integer
+  counterTooHard:
+    type: integer
+  counterExHard:
+    type: integer
+  counterBrainFuck:
+    type: integer

@@ -1,0 +1,13 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+  isRespected:
+    type: boolean
+  profile_url:
+    type: string
+    nullable: true

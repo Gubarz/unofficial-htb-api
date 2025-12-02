@@ -1,0 +1,13 @@
+description: Schema definition for Generic Error Response
+properties:
+  message:
+    example: Some Error Message.
+    type: string
+  status:
+    example: 400
+    type: integer
+required:
+  - message
+  - status
+title: Generic Error Response
+type: object

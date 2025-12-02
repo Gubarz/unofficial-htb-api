@@ -1,0 +1,15 @@
+oneOf:
+  - $ref: UserProfileActivityFortress.yaml
+  - $ref: UserProfileActivityMachineOwn.yaml
+  - $ref: UserProfileActivityChallenge.yaml
+  - $ref: UserProfileActivitySherlock.yaml
+  - $ref: UserProfileActivityProlab.yaml
+discriminator:
+  propertyName: type
+  mapping:
+    fortress: UserProfileActivityFortress.yaml
+    root: UserProfileActivityMachineOwn.yaml
+    user: UserProfileActivityMachineOwn.yaml
+    challenge: UserProfileActivityChallenge.yaml
+    sherlock: UserProfileActivitySherlock.yaml
+    prolab: UserProfileActivityProlab.yaml

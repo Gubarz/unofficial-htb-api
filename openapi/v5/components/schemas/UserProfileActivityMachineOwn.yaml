@@ -1,0 +1,12 @@
+type: object
+allOf:
+  - $ref: UserProfileActivityMachineBase.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - root
+          - user
+    required:
+      - type

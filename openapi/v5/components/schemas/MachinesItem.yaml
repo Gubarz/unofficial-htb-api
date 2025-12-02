@@ -1,0 +1,110 @@
+description: Schema definition for a Machine card
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+  os:
+    type: string
+  points:
+    type: integer
+  rating:
+    type: number
+  ratingCount:
+    type: integer
+  releaseDate:
+    type: string
+    format: date-time
+  retiredDate:
+    type: string
+    format: date-time
+    nullable: true
+  free:
+    type: boolean
+  difficulty:
+    type: integer
+  difficultyText:
+    type: string
+  userOwnsCount:
+    type: integer
+  authUserInUserOwns:
+    type: boolean
+  rootOwnsCount:
+    type: integer
+  authUserHasReviewed:
+    type: boolean
+  authUserInRootOwns:
+    type: boolean
+  todo:
+    type: boolean
+  competitive:
+    type: boolean
+  active:
+    type: boolean
+    nullable: true
+  feedbackForChart:
+    $ref: ./FeedbackForChart.yaml
+  ip:
+    type: string
+    nullable: true
+  playInfo:
+    $ref: ./MachinePlayInfo.yaml
+  labels:
+    type: array
+    items:
+      $ref: ./MachineLabel.yaml
+  recommended:
+    type: boolean
+  priceTier:
+    type: integer
+  requiredSubscription:
+    type: string
+    nullable: true
+  firstCreator:
+    $ref: ./MachineCreator.yaml
+  cocreators:
+    type: array
+    items:
+      $ref: ./MachineCreator.yaml
+  retiring:
+    $ref: ./MachineRetiring.yaml
+  state:
+    type: string
+  taskCompletionPercentage:
+    type: string
+  spFlag:
+    type: integer
+  isSingleFlag:
+    type: boolean
+required:
+  - id
+  - name
+  - avatar
+  - os
+  - points
+  - rating
+  - ratingCount
+  - releaseDate
+  - free
+  - difficulty
+  - difficultyText
+  - userOwnsCount
+  - authUserInUserOwns
+  - rootOwnsCount
+  - authUserHasReviewed
+  - authUserInRootOwns
+  - todo
+  - competitive
+  - feedbackForChart
+  - playInfo
+  - labels
+  - recommended
+  - priceTier
+  - firstCreator
+  - cocreators
+  - state
+  - taskCompletionPercentage
+  - spFlag
+  - isSingleFlag

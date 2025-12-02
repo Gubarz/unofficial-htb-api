@@ -1,0 +1,4 @@
+summary: Generic Error Response
+value:
+  message: Some Error Message.
+  status: 400

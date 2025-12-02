@@ -1,0 +1,18 @@
+description: Schema definition for Links
+properties:
+  first:
+    example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
+    type: string
+  last:
+    example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=11
+    type: string
+  next:
+    example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=2
+    nullable: true
+    type: string
+  prev:
+    example: null
+    nullable: true
+    type: string
+title: Links
+type: object

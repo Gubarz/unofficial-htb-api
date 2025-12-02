@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      Generic400Error:
+        $ref: ../examples/Generic400Response.yaml
+    schema:
+      $ref: ../schemas/Generic400Response.yaml
+description: Generic 400 Response

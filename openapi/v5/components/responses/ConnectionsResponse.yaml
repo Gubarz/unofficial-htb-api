@@ -1,0 +1,9 @@
+content:
+  application/json:
+    examples:
+      ConnectionsSuccess:
+        $ref: ../examples/ConnectionsSuccess.yaml
+    schema:
+      $ref: ../schemas/ConnectionsResponse.yaml
+description: Connections Successful
+

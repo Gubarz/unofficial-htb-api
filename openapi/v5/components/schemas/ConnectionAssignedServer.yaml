@@ -1,0 +1,11 @@
+type: object
+nullable: true
+properties:
+  id:
+    type: integer
+  friendly_name:
+    type: string
+  current_clients:
+    type: integer
+  location:
+    type: string

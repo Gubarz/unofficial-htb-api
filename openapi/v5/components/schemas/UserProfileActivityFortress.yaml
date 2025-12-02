@@ -1,0 +1,17 @@
+type: object
+allOf:
+  - $ref: UserProfileActivityBase.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - fortress
+      fortressId:
+        type: integer
+      fortressName:
+        type: string
+    required:
+      - type
+      - fortressId
+      - fortressName

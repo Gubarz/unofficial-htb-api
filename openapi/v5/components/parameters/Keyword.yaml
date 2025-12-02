@@ -1,0 +1,7 @@
+description: Search String
+in: query
+name: keyword
+required: false
+schema:
+  example: hack
+  type: string

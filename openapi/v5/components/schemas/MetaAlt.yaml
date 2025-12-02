@@ -1,0 +1,12 @@
+type: object
+properties:
+  page:
+    type: integer
+  lastPage:
+    type: integer
+  totalItems:
+    type: integer
+required:
+  - page
+  - lastPage
+  - totalItems

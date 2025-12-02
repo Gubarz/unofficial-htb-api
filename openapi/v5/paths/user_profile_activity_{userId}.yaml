@@ -1,0 +1,15 @@
+get:
+  description: User Profile Activity
+  operationId: getUserProfileActivity
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileActivityResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: User Profile Activity
+  tags:
+    - User

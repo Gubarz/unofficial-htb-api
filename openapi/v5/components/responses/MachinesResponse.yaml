@@ -1,0 +1,9 @@
+content:
+  application/json:
+    examples:
+      MachinesAllSuccess:
+        $ref: ../examples/MachinesSuccess.yaml
+    schema:
+      $ref: ../schemas/MachinesResponse.yaml
+description: Machines Successful
+

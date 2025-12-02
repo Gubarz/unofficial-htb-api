@@ -1,0 +1,18 @@
+type: object
+properties:
+  isSpawned:
+    type: boolean
+    nullable: true
+  isSpawning:
+    type: boolean
+    nullable: true
+  isActive:
+    type: boolean
+    nullable: true
+  active_player_count:
+    type: integer
+    nullable: true
+  expires_at:
+    type: string
+    format: date-time
+    nullable: true

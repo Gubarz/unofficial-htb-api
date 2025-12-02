@@ -1,0 +1,13 @@
+description: Schema definition for Machines list responses
+type: object
+properties:
+  data:
+    $ref: ./MachinesData.yaml
+  links:
+    $ref: ./Links.yaml
+  meta:
+    $ref: ./Meta.yaml
+required:
+  - data
+  - links
+  - meta

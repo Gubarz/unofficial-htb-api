@@ -1,0 +1,59 @@
+summary: Assigned Servers
+value:
+  data:
+    - type: labs
+      location_type_friendly: US - VIP+
+      assigned_server:
+        id: 289
+        friendly_name: US VIP+ 1
+        current_clients: 146
+        location: US
+
+    - type: starting_point
+      location_type_friendly: US - Starting Point
+      assigned_server:
+        id: 441
+        friendly_name: US StartingPoint 2
+        current_clients: 107
+        location: US
+
+    - type: fortresses
+      location_type_friendly: US - Fortress
+      assigned_server:
+        id: 19
+        friendly_name: US Fortress 1
+        current_clients: 8
+        location: US
+
+    - type: prolab
+      pro_lab:
+        id: 22
+        name: Puppet
+        identifier: PUPPET
+      location_type_friendly: US - Mini Pro Lab Free
+      assigned_server:
+        id: 527
+        friendly_name: US Mini Pro Lab Free 2
+        current_clients: 1
+        location: US
+
+    - type: prolab
+      pro_lab:
+        id: 25
+        name: Mythical
+        identifier: MYTHICAL
+      location_type_friendly: null
+      assigned_server: null
+
+    - type: competitive
+      available: true
+      location_type_friendly: US - Release Arena
+      assigned_server:
+        id: 268
+        friendly_name: US Release Arena 1
+        current_clients: 47
+        location: US
+      machine:
+        id: 811
+        name: Gavel
+        avatar_thumb_url: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/2e446c813e2fa67622764672b9df57bb_thumb.png

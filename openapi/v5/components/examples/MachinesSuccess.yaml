@@ -1,0 +1,91 @@
+summary: Machines Success
+value:
+  data:
+    - id: 305
+      avatar: "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/d80af3fb0b6f832f1ef47f18dbe9d8cf.png"
+      name: "Sunday"
+      os: "Linux"
+      points: 20
+      rating: 4
+      ratingCount: 688
+      releaseDate: "2018-08-04T16:00:00.000Z"
+      retiredDate: "2020-09-05T16:00:00.000Z"
+      free: true
+      difficulty: 52
+      difficultyText: "Easy"
+      userOwnsCount: 61732
+      authUserInUserOwns: true
+      rootOwnsCount: 55180
+      authUserHasReviewed: false
+      authUserInRootOwns: true
+      todo: false
+      competitive: true
+      active: true
+      feedbackForChart: 
+        counterCake: 47
+        counterVeryEasy: 33
+        counterEasy: 170
+        counterTooEasy: 248
+        counterMedium: 404
+        counterBitHard: 186
+        counterHard: 114
+        counterTooHard: 32
+        counterExHard: 6
+        counterBrainFuck: 16
+      ip: "10.10.10.76"
+      playInfo:
+        isSpawned: true
+        isSpawning: false
+        isActive: true
+        active_player_count: 0
+        expires_at: "2099-12-31T23:59:59.000000Z"
+      labels:
+        - color: "blue"
+          name: "STAFF PICK"
+      recommended: false
+      priceTier: 1
+      requiredSubscription: null
+      firstCreator:
+        id: 83
+        name: "stukov"
+        avatar: "https://account.hackthebox.com/storage/users/287d7cd6-dca7-4951-8f26-60a347b65d37-avatar.jpg"
+        isRespected: false
+        profile_url: "https://app.hackthebox.com/profile/83"
+      cocreators: []
+      retiring: null
+      state: "free"
+      taskCompletionPercentage: "0%"
+      spFlag: 0
+      isSingleFlag: false
+  links:
+    first: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=1&status=active"
+    last: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=4&status=active"
+    prev: null
+    next: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active"
+  meta:
+    current_page: 1
+    from: 1
+    last_page: 4
+    links:
+      - url: null
+        label: "&laquo; Previous"
+        active: false
+      - url: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=1&status=active"
+        label: "1"
+        active: true
+      - url: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active"
+        label: "2"
+        active: false
+      - url: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=3&status=active"
+        label: "3"
+        active: false
+      - url: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=4&status=active"
+        label: "4"
+        active: false
+      - url: "https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active"
+        label: "Next &raquo;"
+        active: false
+    path: "https://www.hackthebox.com/api/v5/machines"
+    per_page: 6
+    to: 6
+    total: 24

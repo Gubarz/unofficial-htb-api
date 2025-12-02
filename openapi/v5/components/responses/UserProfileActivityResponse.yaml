@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      UserProfileActivity:
+        $ref: ../examples/UserProfileActivitySuccess.yaml
+    schema:
+      $ref: ../schemas/UserProfileActivityResponse.yaml
+description: User Profile Activity Successful

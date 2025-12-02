@@ -1,0 +1,10 @@
+description: Schema definition for User profile activity responses
+type: object
+properties:
+  data:
+    $ref: ./UserProfileActivityData.yaml
+  meta:
+    $ref: ./MetaAlt.yaml
+required:
+  - data
+  - meta

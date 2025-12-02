@@ -1,0 +1,21 @@
+get:
+  description: Machines 
+  operationId: getMachines
+  parameters:
+    - $ref: ../components/parameters/PerPage.yaml
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/State.yaml
+    - $ref: ../components/parameters/Keyword.yaml
+    - $ref: ../components/parameters/MachineDifficulty.yaml
+    - $ref: ../components/parameters/Os.yaml
+    - $ref: ../components/parameters/ShowCompleted.yaml
+    - $ref: ../components/parameters/SortBy.yaml
+    - $ref: ../components/parameters/SortType.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/MachinesResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: Get Machines
+  tags:
+    - Machines

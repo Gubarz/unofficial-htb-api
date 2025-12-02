@@ -1,0 +1,10 @@
+allOf:
+  - $ref: ConnectionBase.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - labs
+          - starting_point
+          - fortresses

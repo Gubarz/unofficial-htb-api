@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ConnectionBase.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - competitive
+      available:
+        type: boolean
+      machine:
+        $ref: ConnectionMachine.yaml
+    required:
+      - available

@@ -1,0 +1,8 @@
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  identifier:
+    type: string
+type: object

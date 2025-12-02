@@ -1,0 +1,9 @@
+type: object
+allOf:
+  - $ref: UserProfileActivityBase.yaml
+  - type: object
+    properties:
+      blood:
+        type: boolean
+    required:
+      - blood

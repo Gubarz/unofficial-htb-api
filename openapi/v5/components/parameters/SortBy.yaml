@@ -1,0 +1,13 @@
+description: Field to sort by
+in: query
+name: sort_by
+required: false
+schema:
+  enum:
+    - release-date
+    - name
+    - user-owns
+    - system-owns
+    - rating
+    - user-difficulty
+  type: string

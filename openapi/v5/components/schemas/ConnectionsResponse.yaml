@@ -1,0 +1,6 @@
+description: Schema definition for Connections Response
+properties:
+  data:
+    $ref: ./ConnectionsData.yaml
+title: Connections Response
+type: object

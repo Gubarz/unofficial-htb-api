@@ -1,0 +1,13 @@
+type: object
+nullable: true
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+  os:
+    type: string
+  difficultyText:
+    type: string
