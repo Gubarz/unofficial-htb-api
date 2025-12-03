@@ -1,0 +1,11 @@
+description: >-
+  limits retired results to free machines, values must either be 1 for true or 0
+  for false or omit the parameter for no filter
+in: query
+name: free
+required: false
+schema:
+  enum:
+    - 1
+    - 0
+  type: integer
