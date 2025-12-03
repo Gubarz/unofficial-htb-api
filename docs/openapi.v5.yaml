@@ -7,17 +7,35 @@ info:
     name: The Unlicense
     url: https://unlicense.org/
   title: HTB Unofficial API v5
-  version: v0.3.0
+  version: v0.4.0
 servers:
   - description: HTB API
     url: https://labs.hackthebox.com/api/v5
 security:
   - bearer: []
 tags:
+  - description: Endpoints related to Connections
+    name: Connections
+    x-displayName: Connections
   - description: Endpoints related to Machines
     name: Machines
     x-displayName: Machines
+  - description: Endpoints related to User
+    name: User
+    x-displayName: User
 paths:
+  /connections:
+    get:
+      description: VPN Connections
+      operationId: getConnections
+      responses:
+        '200':
+          $ref: '#/components/responses/ConnectionsResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get VPN Connections
+      tags:
+        - Connections
   /machine/own:
     post:
       description: Submit flag
@@ -32,6 +50,97 @@ paths:
       summary: Submit flag
       tags:
         - Machines
+  /machines:
+    get:
+      description: Machines
+      operationId: getMachines
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/Keyword'
+        - $ref: '#/components/parameters/MachineDifficulty'
+        - $ref: '#/components/parameters/Os'
+        - $ref: '#/components/parameters/ShowCompleted'
+        - $ref: '#/components/parameters/SortBy'
+        - $ref: '#/components/parameters/SortType'
+      responses:
+        '200':
+          $ref: '#/components/responses/MachinesResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get Machines
+      tags:
+        - Machines
+  /user/profile/activity/{userId}:
+    get:
+      description: User Profile Activity
+      operationId: getUserProfileActivity
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileActivityResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Profile Activity
+      tags:
+        - User
+  /user/profile/content/{userId}:
+    get:
+      description: User Profile Content
+      operationId: getUserProfileContent
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/UserProfileContentType'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileContentResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Profile Content
+      tags:
+        - User
+  /user/profile/dashboard/favorites:
+    get:
+      description: User Dashboard Favorites
+      operationId: getUserDashboardFavorites
+      responses:
+        '200':
+          $ref: '#/components/responses/UserDashboardFavoritesResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Dashboard Favorites
+      tags:
+        - User
+  /user/profile/dashboard/inprogress:
+    get:
+      description: User Dashboard In Progress
+      operationId: getUserDashboardInProgress
+      responses:
+        '200':
+          $ref: '#/components/responses/UserDashboardInProgressResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Dashboard In Progress
+      tags:
+        - User
+  /user/profile/dashboard/recommended:
+    get:
+      description: User Dashboard Recommended
+      operationId: getUserDashboardRecommended
+      responses:
+        '200':
+          $ref: '#/components/responses/UserDashboardRecommendedResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Dashboard Recommended
+      tags:
+        - User
 components:
   securitySchemes:
     bearer:
@@ -39,6 +148,125 @@ components:
       scheme: bearer
       type: http
   schemas:
+    ConnectionLabEntry:
+      allOf:
+        - $ref: '#/components/schemas/ConnectionBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - labs
+                - starting_point
+                - fortresses
+    ConnectionProLabEntry:
+      allOf:
+        - $ref: '#/components/schemas/ConnectionBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - prolab
+            pro_lab:
+              $ref: '#/components/schemas/ConnectionProlab'
+          required:
+            - pro_lab
+    ConnectionCompetitiveEntry:
+      allOf:
+        - $ref: '#/components/schemas/ConnectionBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - competitive
+            available:
+              type: boolean
+            machine:
+              $ref: '#/components/schemas/ConnectionMachine'
+          required:
+            - available
+    ConnectionAssignedServer:
+      type: object
+      nullable: true
+      properties:
+        id:
+          type: integer
+        friendly_name:
+          type: string
+        current_clients:
+          type: integer
+        location:
+          type: string
+    ConnectionBase:
+      type: object
+      properties:
+        type:
+          type: string
+        location_type_friendly:
+          type: string
+          nullable: true
+        assigned_server:
+          $ref: '#/components/schemas/ConnectionAssignedServer'
+      required:
+        - type
+    ConnectionProlab:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        identifier:
+          type: string
+      type: object
+    ConnectionMachine:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar_thumb_url:
+          type: string
+      type: object
+    Connection:
+      oneOf:
+        - $ref: '#/components/schemas/ConnectionLabEntry'
+        - $ref: '#/components/schemas/ConnectionProLabEntry'
+        - $ref: '#/components/schemas/ConnectionCompetitiveEntry'
+      discriminator:
+        propertyName: type
+        mapping:
+          labs: '#/components/schemas/ConnectionLabEntry'
+          starting_point: '#/components/schemas/ConnectionLabEntry'
+          fortresses: '#/components/schemas/ConnectionLabEntry'
+          prolab: '#/components/schemas/ConnectionProLabEntry'
+          competitive: '#/components/schemas/ConnectionCompetitiveEntry'
+    ConnectionsData:
+      items:
+        $ref: '#/components/schemas/Connection'
+      type: array
+    ConnectionsResponse:
+      description: Schema definition for Connections Response
+      properties:
+        data:
+          $ref: '#/components/schemas/ConnectionsData'
+      title: Connections Response
+      type: object
+    Generic400Response:
+      description: Schema definition for Generic Error Response
+      properties:
+        message:
+          example: Some Error Message.
+          type: string
+        status:
+          example: 400
+          type: integer
+      required:
+        - message
+        - status
+      title: Generic Error Response
+      type: object
     MachineOwnRequest:
       description: Schema definition for Own Request
       properties:
@@ -156,7 +384,1148 @@ components:
         - status
       title: Own Error Response
       type: object
+    FeedbackForChart:
+      type: object
+      properties:
+        counterCake:
+          type: integer
+        counterVeryEasy:
+          type: integer
+        counterEasy:
+          type: integer
+        counterTooEasy:
+          type: integer
+        counterMedium:
+          type: integer
+        counterBitHard:
+          type: integer
+        counterHard:
+          type: integer
+        counterTooHard:
+          type: integer
+        counterExHard:
+          type: integer
+        counterBrainFuck:
+          type: integer
+    MachinePlayInfo:
+      type: object
+      properties:
+        isSpawned:
+          type: boolean
+          nullable: true
+        isSpawning:
+          type: boolean
+          nullable: true
+        isActive:
+          type: boolean
+          nullable: true
+        active_player_count:
+          type: integer
+          nullable: true
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+    MachineLabel:
+      type: object
+      properties:
+        color:
+          type: string
+        name:
+          type: string
+    MachineCreator:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: string
+        isRespected:
+          type: boolean
+        profile_url:
+          type: string
+          nullable: true
+    MachineRetiring:
+      type: object
+      nullable: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: string
+        os:
+          type: string
+        difficultyText:
+          type: string
+    MachinesItem:
+      description: Schema definition for a Machine card
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: string
+        os:
+          type: string
+        points:
+          type: integer
+        rating:
+          type: number
+        ratingCount:
+          type: integer
+        releaseDate:
+          type: string
+          format: date-time
+        retiredDate:
+          type: string
+          format: date-time
+          nullable: true
+        free:
+          type: boolean
+        difficulty:
+          type: integer
+        difficultyText:
+          type: string
+        userOwnsCount:
+          type: integer
+        authUserInUserOwns:
+          type: boolean
+        rootOwnsCount:
+          type: integer
+        authUserHasReviewed:
+          type: boolean
+        authUserInRootOwns:
+          type: boolean
+        todo:
+          type: boolean
+        competitive:
+          type: boolean
+        active:
+          type: boolean
+          nullable: true
+        feedbackForChart:
+          $ref: '#/components/schemas/FeedbackForChart'
+        ip:
+          type: string
+          nullable: true
+        playInfo:
+          $ref: '#/components/schemas/MachinePlayInfo'
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/MachineLabel'
+        recommended:
+          type: boolean
+        priceTier:
+          type: integer
+        requiredSubscription:
+          type: string
+          nullable: true
+        firstCreator:
+          $ref: '#/components/schemas/MachineCreator'
+        cocreators:
+          type: array
+          items:
+            $ref: '#/components/schemas/MachineCreator'
+        retiring:
+          $ref: '#/components/schemas/MachineRetiring'
+        state:
+          type: string
+        taskCompletionPercentage:
+          type: string
+        spFlag:
+          type: integer
+        isSingleFlag:
+          type: boolean
+      required:
+        - id
+        - name
+        - avatar
+        - os
+        - points
+        - rating
+        - ratingCount
+        - releaseDate
+        - free
+        - difficulty
+        - difficultyText
+        - userOwnsCount
+        - authUserInUserOwns
+        - rootOwnsCount
+        - authUserHasReviewed
+        - authUserInRootOwns
+        - todo
+        - competitive
+        - feedbackForChart
+        - playInfo
+        - labels
+        - recommended
+        - priceTier
+        - firstCreator
+        - cocreators
+        - state
+        - taskCompletionPercentage
+        - spFlag
+        - isSingleFlag
+    MachinesData:
+      type: array
+      items:
+        $ref: '#/components/schemas/MachinesItem'
+    Links:
+      description: Schema definition for Links
+      properties:
+        first:
+          example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
+          type: string
+        last:
+          example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=11
+          type: string
+        next:
+          example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=2
+          nullable: true
+          type: string
+        prev:
+          example: null
+          nullable: true
+          type: string
+      title: Links
+      type: object
+    PaginationLink:
+      description: Schema definition for Pagination Link
+      properties:
+        active:
+          example: true
+          type: boolean
+        label:
+          example: '1'
+          type: string
+        page:
+          example: 1
+          type: integer
+          nullable: true
+        url:
+          example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
+          nullable: true
+          type: string
+      title: Pagination Link
+      type: object
+    PaginationLinks:
+      items:
+        $ref: '#/components/schemas/PaginationLink'
+      type: array
+    Meta:
+      description: Schema definition for Meta
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        from:
+          example: 1
+          type: integer
+        last_page:
+          example: 11
+          type: integer
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+        path:
+          example: https://labs.hackthebox.com/api/v4/prolab/1/reviews
+          type: string
+        per_page:
+          example: 15
+          type: integer
+        to:
+          example: 15
+          type: integer
+        total:
+          example: 162
+          type: integer
+      title: Meta
+      type: object
+    MachinesResponse:
+      description: Schema definition for Machines list responses
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MachinesData'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+      required:
+        - data
+        - links
+        - meta
+    UserProfileActivityFortress:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - fortress
+            fortressId:
+              type: integer
+            fortressName:
+              type: string
+          required:
+            - type
+            - fortressId
+            - fortressName
+    UserProfileActivityMachineOwn:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - root
+                - user
+          required:
+            - type
+    UserProfileActivityChallenge:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - challenge
+            categoryName:
+              type: string
+          required:
+            - type
+            - categoryName
+    UserProfileActivitySherlock:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - sherlock
+          required:
+            - type
+    UserProfileActivityProlab:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - prolab
+            prolabId:
+              type: integer
+            prolabName:
+              type: string
+            prolabIdentifier:
+              type: string
+          required:
+            - type
+            - prolabId
+            - prolabName
+            - prolabIdentifier
+    UserProfileActivityBase:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        points:
+          type: integer
+        ownDate:
+          type: string
+          format: date-time
+        avatar:
+          type: string
+          format: uri
+        blood:
+          type: boolean
+          nullable: true
+      required:
+        - type
+        - id
+        - name
+        - points
+        - ownDate
+    UserProfileActivityMachineBase:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            blood:
+              type: boolean
+          required:
+            - blood
+    UserProfileActivityItem:
+      oneOf:
+        - $ref: '#/components/schemas/UserProfileActivityFortress'
+        - $ref: '#/components/schemas/UserProfileActivityMachineOwn'
+        - $ref: '#/components/schemas/UserProfileActivityChallenge'
+        - $ref: '#/components/schemas/UserProfileActivitySherlock'
+        - $ref: '#/components/schemas/UserProfileActivityProlab'
+      discriminator:
+        propertyName: type
+        mapping:
+          fortress: '#/components/schemas/UserProfileActivityFortress'
+          root: '#/components/schemas/UserProfileActivityMachineOwn'
+          user: '#/components/schemas/UserProfileActivityMachineOwn'
+          challenge: '#/components/schemas/UserProfileActivityChallenge'
+          sherlock: '#/components/schemas/UserProfileActivitySherlock'
+          prolab: '#/components/schemas/UserProfileActivityProlab'
+    UserProfileActivityData:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserProfileActivityItem'
+    MetaAlt:
+      type: object
+      properties:
+        page:
+          type: integer
+        lastPage:
+          type: integer
+        totalItems:
+          type: integer
+      required:
+        - page
+        - lastPage
+        - totalItems
+    UserProfileActivityResponse:
+      description: Schema definition for User profile activity responses
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserProfileActivityData'
+        meta:
+          $ref: '#/components/schemas/MetaAlt'
+      required:
+        - data
+        - meta
+    UserProfileContentItemMachine:
+      description: Machine entry returned by the user profile content feed.
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Machine identifier.
+        name:
+          type: string
+          description: Machine display name.
+        os:
+          type: string
+          description: Operating system of the machine.
+        machineAvatar:
+          type: string
+          format: uri
+          description: Absolute URL to the machine avatar.
+        difficulty:
+          type: string
+          description: Machine difficulty label.
+        starRating:
+          type: number
+          format: float
+          description: Average star rating.
+        userOwnCount:
+          type: integer
+          description: Number of user owns for the profile owner.
+        rootOwnCount:
+          type: integer
+          description: Number of root owns for the profile owner.
+        releaseDate:
+          type: string
+          format: date-time
+          description: Machine release timestamp.
+        ratingCount:
+          type: integer
+          description: Number of ratings submitted for the machine.
+      required:
+        - id
+        - name
+        - os
+        - machineAvatar
+        - difficulty
+        - starRating
+        - userOwnCount
+        - rootOwnCount
+        - releaseDate
+        - ratingCount
+    UserProfileContentItemChallenge:
+      description: Challenge entry returned by the user profile content feed.
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Challenge identifier.
+        name:
+          type: string
+          description: Challenge display name.
+        categoryName:
+          type: string
+          description: Challenge category name.
+        starRating:
+          type: number
+          format: float
+          description: Average star rating.
+        difficulty:
+          type: string
+          description: Challenge difficulty label.
+        ownCount:
+          type: integer
+          description: User completion count.
+        releaseDate:
+          type: string
+          format: date-time
+          description: Challenge release timestamp.
+        ratingCount:
+          type: integer
+          description: Number of ratings recorded for the challenge.
+      required:
+        - id
+        - name
+        - categoryName
+        - starRating
+        - difficulty
+        - ownCount
+        - releaseDate
+        - ratingCount
+    UserProfileContentItemSherlock:
+      description: Sherlock investigation entry returned by the user profile content feed.
+      type: object
+      properties:
+        avatar:
+          type: string
+          format: uri
+          description: Absolute URL to the Sherlock avatar.
+        id:
+          type: integer
+          description: Sherlock identifier.
+        name:
+          type: string
+          description: Sherlock display name.
+        categoryName:
+          type: string
+          description: Category the Sherlock belongs to.
+        starRating:
+          type: number
+          format: float
+          description: Average star rating.
+        difficulty:
+          type: string
+          description: Sherlock difficulty label.
+        ownCount:
+          type: integer
+          description: User completion count.
+        releaseDate:
+          type: string
+          format: date-time
+          description: Sherlock release timestamp.
+        ratingCount:
+          type: integer
+          description: Total user ratings recorded.
+      required:
+        - avatar
+        - id
+        - name
+        - categoryName
+        - starRating
+        - difficulty
+        - ownCount
+        - releaseDate
+        - ratingCount
+    UserProfileContentItem:
+      description: One of the possible content entries returned for a user profile.
+      oneOf:
+        - $ref: '#/components/schemas/UserProfileContentItemMachine'
+        - $ref: '#/components/schemas/UserProfileContentItemChallenge'
+        - $ref: '#/components/schemas/UserProfileContentItemSherlock'
+    UserProfileContentData:
+      description: Collection of user profile content entries.
+      type: array
+      items:
+        $ref: '#/components/schemas/UserProfileContentItem'
+    UserProfileContentResponse:
+      description: Schema definition for User profile content responses.
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserProfileContentData'
+        meta:
+          $ref: '#/components/schemas/MetaAlt'
+      required:
+        - data
+        - meta
+    UserDashboardMachine:
+      description: Summary information for a machine card shown on dashboard endpoints.
+      type: object
+      properties:
+        os:
+          type: string
+          description: Operating system of the machine.
+        difficulty:
+          type: string
+          description: Difficulty label as shown in the UI.
+        avatar:
+          type: string
+          description: Relative asset path for the machine avatar.
+        url:
+          type: string
+          description: Relative link to the machine detail page.
+        user_flag:
+          type: boolean
+          description: Indicates whether the user captured the user flag.
+        root_flag:
+          type: boolean
+          description: Indicates whether the user captured the root flag.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the machine avatar.
+        points:
+          type: integer
+          nullable: true
+          description: Points awarded for the machine.
+        rating:
+          type: number
+          format: float
+          nullable: true
+          description: Average user rating.
+        ratingCount:
+          type: integer
+          description: Number of ratings submitted.
+        tasksCompleted:
+          type: integer
+          description: Tasks completed within the machine entry.
+        tasksTotal:
+          type: integer
+          description: Total tasks available for the machine entry.
+        progress:
+          type: integer
+          description: Overall completion percentage.
+        guided:
+          type: boolean
+          description: Whether the machine is part of a guided experience.
+        status:
+          type: string
+          nullable: true
+          description: Subscription requirement or availability label.
+        id:
+          type: integer
+          description: Internal machine identifier.
+        name:
+          type: string
+          description: Machine display name.
+        type:
+          type: string
+          description: Machine status label (e.g., Active Machine).
+      required:
+        - os
+        - difficulty
+        - avatar
+        - url
+        - user_flag
+        - root_flag
+        - avatarUrl
+        - points
+        - rating
+        - ratingCount
+        - tasksCompleted
+        - tasksTotal
+        - progress
+        - guided
+        - status
+        - id
+        - name
+        - type
+    UserDashboardStartingPoint:
+      description: Summary information for a Starting Point tier card.
+      type: object
+      properties:
+        description:
+          type: string
+          description: Short tier description shown in the dashboard.
+        completionPercentage:
+          type: integer
+          description: Overall completion percentage for the tier.
+        freeMachineCompletionPercentage:
+          type: integer
+          description: Completion percentage for free machines within the tier.
+        avatar:
+          type: string
+          description: Relative asset path for the tier avatar.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL to the tier avatar.
+        progress:
+          type: integer
+          description: Percentage progress toward finishing the tier.
+        tasksCompleted:
+          type: integer
+          description: Number of tasks completed.
+        tasksTotal:
+          type: integer
+          description: Total number of tasks available.
+        id:
+          type: integer
+          description: Tier identifier.
+        name:
+          type: string
+          description: Tier display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Starting Point).
+      required:
+        - description
+        - completionPercentage
+        - freeMachineCompletionPercentage
+        - avatar
+        - avatarUrl
+        - progress
+        - tasksCompleted
+        - tasksTotal
+        - id
+        - name
+        - type
+    UserDashboardChallenge:
+      description: Summary information for a challenge card surfaced on dashboard endpoints.
+      type: object
+      properties:
+        difficulty:
+          type: string
+          description: Challenge difficulty label.
+        url:
+          type: string
+          description: Relative link to the challenge page.
+        avatar:
+          type: string
+          description: Relative asset path for the challenge category icon.
+        urlName:
+          type: string
+          description: Challenge slug used in URLs.
+        points:
+          type: integer
+          nullable: true
+          description: Points available for the challenge.
+        categoryID:
+          type: integer
+          description: Numerical identifier for the challenge category.
+        categoryName:
+          type: string
+          description: Name of the challenge category.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the challenge avatar.
+        rating:
+          type: number
+          format: float
+          nullable: true
+          description: Average user rating for the challenge.
+        ratingCount:
+          type: integer
+          description: Number of rating submissions.
+        progress:
+          type: integer
+          nullable: true
+          description: Completion percentage for the challenge if applicable.
+        status:
+          type: string
+          nullable: true
+          description: Availability label such as vip.
+        id:
+          type: integer
+          description: Challenge identifier.
+        name:
+          type: string
+          description: Challenge display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Retired Challenge).
+      required:
+        - difficulty
+        - url
+        - avatar
+        - urlName
+        - points
+        - categoryID
+        - categoryName
+        - avatarUrl
+        - rating
+        - ratingCount
+        - progress
+        - status
+        - id
+        - name
+        - type
+    UserDashboardSherlock:
+      description: Summary information for Sherlock investigations displayed in dashboard feeds.
+      type: object
+      properties:
+        urlName:
+          type: string
+          description: Sherlock slug used in URLs.
+        difficulty:
+          type: string
+          description: Difficulty rating for the Sherlock.
+        url:
+          type: string
+          description: Relative link to the Sherlock page.
+        categoryID:
+          type: integer
+          description: Numerical identifier for the Sherlock category.
+        categoryName:
+          type: string
+          description: Human readable category label.
+        avatar:
+          type: string
+          description: Relative asset path for the Sherlock image.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the Sherlock image.
+        rating:
+          type: number
+          format: float
+          nullable: true
+          description: Average user rating.
+        ratingCount:
+          type: integer
+          description: Count of user ratings.
+        tasksCompleted:
+          type: integer
+          description: Number of Sherlock tasks completed.
+        tasksTotal:
+          type: integer
+          description: Total Sherlock tasks available.
+        progress:
+          type: integer
+          description: Completion percentage.
+        status:
+          type: string
+          nullable: true
+          description: Availability label.
+        id:
+          type: integer
+          description: Sherlock identifier.
+        name:
+          type: string
+          description: Sherlock display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Retired Sherlock).
+      required:
+        - urlName
+        - difficulty
+        - url
+        - categoryID
+        - categoryName
+        - avatar
+        - avatarUrl
+        - rating
+        - ratingCount
+        - tasksCompleted
+        - tasksTotal
+        - progress
+        - status
+        - id
+        - name
+        - type
+    UserDashboardProlab:
+      description: Summary information for Pro Lab entries shown on dashboard endpoints.
+      type: object
+      properties:
+        url:
+          type: string
+          description: Relative link to the Pro Lab overview.
+        identifier:
+          type: string
+          description: Short identifier or slug.
+        difficulty:
+          type: string
+          nullable: true
+          description: Reported difficulty for the lab.
+        avatar:
+          type: string
+          nullable: true
+          description: Relative asset path for the lab image.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the lab image.
+        categoryName:
+          type: string
+          description: Track or certification name associated with the lab.
+        rating:
+          type: number
+          format: float
+          nullable: true
+          description: Average participant rating.
+        ratingCount:
+          type: integer
+          description: Number of participant ratings.
+        progress:
+          type: integer
+          description: Completion percentage inside the lab.
+        tasksCompleted:
+          type: integer
+          description: Completed task count.
+        tasksTotal:
+          type: integer
+          description: Total task count.
+        id:
+          type: integer
+          description: Pro Lab identifier.
+        name:
+          type: string
+          description: Pro Lab display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Pro Lab).
+      required:
+        - url
+        - identifier
+        - difficulty
+        - avatar
+        - avatarUrl
+        - categoryName
+        - rating
+        - ratingCount
+        - progress
+        - tasksCompleted
+        - tasksTotal
+        - id
+        - name
+        - type
+    UserDashboardTrack:
+      description: Summary information for track cards surfaced on dashboard views.
+      type: object
+      properties:
+        avatar:
+          type: string
+          description: Relative asset path for the track image.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the track image.
+        url:
+          type: string
+          description: Relative link to the track landing page.
+        difficulty:
+          type: string
+          description: Difficulty level assigned to the track.
+        likeCount:
+          type: integer
+          description: Number of likes.
+        progress:
+          type: integer
+          description: Completion percentage inside the track.
+        tasksCompleted:
+          type: integer
+          description: Number of completed tasks.
+        tasksTotal:
+          type: integer
+          description: Total number of tasks.
+        id:
+          type: integer
+          description: Track identifier.
+        name:
+          type: string
+          description: Track display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Track).
+      required:
+        - avatar
+        - avatarUrl
+        - url
+        - difficulty
+        - likeCount
+        - progress
+        - tasksCompleted
+        - tasksTotal
+        - id
+        - name
+        - type
+    UserDashboardFortress:
+      description: Summary information for fortress cards surfaced on dashboard views.
+      type: object
+      properties:
+        points:
+          type: integer
+          description: Points available for the fortress.
+        avatarUrl:
+          type: string
+          format: uri
+          description: Absolute URL for the fortress avatar.
+        solvesCount:
+          type: integer
+          description: Number of user solves recorded.
+        tasksCompleted:
+          type: integer
+          description: Completed fortress tasks.
+        tasksTotal:
+          type: integer
+          description: Total fortress tasks.
+        progress:
+          type: integer
+          description: Completion percentage for the fortress.
+        id:
+          type: integer
+          description: Fortress identifier.
+        name:
+          type: string
+          description: Fortress display name.
+        type:
+          type: string
+          description: Resource type label (e.g., Fortress).
+      required:
+        - points
+        - avatarUrl
+        - solvesCount
+        - tasksCompleted
+        - tasksTotal
+        - progress
+        - id
+        - name
+        - type
+    UserDashboardCollections:
+      description: Collections returned by dashboard endpoints such as favorites, in progress, and recommended.
+      type: object
+      properties:
+        machines:
+          type: array
+          description: Machines relevant to the dashboard section.
+          items:
+            $ref: '#/components/schemas/UserDashboardMachine'
+        startingPoints:
+          type: array
+          description: Starting Point tiers associated with the user.
+          items:
+            $ref: '#/components/schemas/UserDashboardStartingPoint'
+        challenges:
+          type: array
+          description: Challenge cards curated for the user.
+          items:
+            $ref: '#/components/schemas/UserDashboardChallenge'
+        sherlocks:
+          type: array
+          description: Sherlock investigations that match the dashboard filter.
+          items:
+            $ref: '#/components/schemas/UserDashboardSherlock'
+        proLabs:
+          type: array
+          description: Pro Lab recommendations or progress items.
+          items:
+            $ref: '#/components/schemas/UserDashboardProlab'
+        tracks:
+          type: array
+          description: Tracks highlighted for the user.
+          items:
+            $ref: '#/components/schemas/UserDashboardTrack'
+        fortresses:
+          type: array
+          description: Fortresses relevant to the dashboard view.
+          items:
+            $ref: '#/components/schemas/UserDashboardFortress'
+      required:
+        - machines
+        - startingPoints
+        - challenges
+        - sherlocks
+        - proLabs
+        - tracks
+        - fortresses
+    UserDashboardFavoritesResponse:
+      description: Schema definition for the /user/dashboard/favorites endpoint response.
+      allOf:
+        - $ref: '#/components/schemas/UserDashboardCollections'
+    UserDashboardInProgressResponse:
+      description: Schema definition for the /user/dashboard/inprogress endpoint response.
+      allOf:
+        - $ref: '#/components/schemas/UserDashboardCollections'
+    UserDashboardRecommendedResponse:
+      description: Schema definition for the /user/dashboard/recommended endpoint response.
+      allOf:
+        - $ref: '#/components/schemas/UserDashboardCollections'
   examples:
+    ConnectionsSuccess:
+      summary: Assigned Servers
+      value:
+        data:
+          - type: labs
+            location_type_friendly: US - VIP+
+            assigned_server:
+              id: 289
+              friendly_name: US VIP+ 1
+              current_clients: 146
+              location: US
+          - type: starting_point
+            location_type_friendly: US - Starting Point
+            assigned_server:
+              id: 441
+              friendly_name: US StartingPoint 2
+              current_clients: 107
+              location: US
+          - type: fortresses
+            location_type_friendly: US - Fortress
+            assigned_server:
+              id: 19
+              friendly_name: US Fortress 1
+              current_clients: 8
+              location: US
+          - type: prolab
+            pro_lab:
+              id: 22
+              name: Puppet
+              identifier: PUPPET
+            location_type_friendly: US - Mini Pro Lab Free
+            assigned_server:
+              id: 527
+              friendly_name: US Mini Pro Lab Free 2
+              current_clients: 1
+              location: US
+          - type: prolab
+            pro_lab:
+              id: 25
+              name: Mythical
+              identifier: MYTHICAL
+            location_type_friendly: null
+            assigned_server: null
+          - type: competitive
+            available: true
+            location_type_friendly: US - Release Arena
+            assigned_server:
+              id: 268
+              friendly_name: US Release Arena 1
+              current_clients: 47
+              location: US
+            machine:
+              id: 811
+              name: Gavel
+              avatar_thumb_url: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/2e446c813e2fa67622764672b9df57bb_thumb.png
+    Generic400Response:
+      summary: Generic Error Response
+      value:
+        message: Some Error Message.
+        status: 400
     MachineOwnRequest:
       summary: Own Request
       value:
@@ -208,6 +1577,749 @@ components:
       value:
         message: Incorrect flag.
         status: 400
+    MachinesSuccess:
+      summary: Machines Success
+      value:
+        data:
+          - id: 305
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/d80af3fb0b6f832f1ef47f18dbe9d8cf.png
+            name: Sunday
+            os: Linux
+            points: 20
+            rating: 4
+            ratingCount: 688
+            releaseDate: '2018-08-04T16:00:00.000Z'
+            retiredDate: '2020-09-05T16:00:00.000Z'
+            free: true
+            difficulty: 52
+            difficultyText: Easy
+            userOwnsCount: 61732
+            authUserInUserOwns: true
+            rootOwnsCount: 55180
+            authUserHasReviewed: false
+            authUserInRootOwns: true
+            todo: false
+            competitive: true
+            active: true
+            feedbackForChart:
+              counterCake: 47
+              counterVeryEasy: 33
+              counterEasy: 170
+              counterTooEasy: 248
+              counterMedium: 404
+              counterBitHard: 186
+              counterHard: 114
+              counterTooHard: 32
+              counterExHard: 6
+              counterBrainFuck: 16
+            ip: 10.10.10.76
+            playInfo:
+              isSpawned: true
+              isSpawning: false
+              isActive: true
+              active_player_count: 0
+              expires_at: '2099-12-31T23:59:59.000000Z'
+            labels:
+              - color: blue
+                name: STAFF PICK
+            recommended: false
+            priceTier: 1
+            requiredSubscription: null
+            firstCreator:
+              id: 83
+              name: stukov
+              avatar: https://account.hackthebox.com/storage/users/287d7cd6-dca7-4951-8f26-60a347b65d37-avatar.jpg
+              isRespected: false
+              profile_url: https://app.hackthebox.com/profile/83
+            cocreators: []
+            retiring: null
+            state: free
+            taskCompletionPercentage: 0%
+            spFlag: 0
+            isSingleFlag: false
+        links:
+          first: https://www.hackthebox.com/api/v5/machines?per_page=6&page=1&status=active
+          last: https://www.hackthebox.com/api/v5/machines?per_page=6&page=4&status=active
+          prev: null
+          next: https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active
+        meta:
+          current_page: 1
+          from: 1
+          last_page: 4
+          links:
+            - url: null
+              label: '&laquo; Previous'
+              active: false
+            - url: https://www.hackthebox.com/api/v5/machines?per_page=6&page=1&status=active
+              label: '1'
+              active: true
+            - url: https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active
+              label: '2'
+              active: false
+            - url: https://www.hackthebox.com/api/v5/machines?per_page=6&page=3&status=active
+              label: '3'
+              active: false
+            - url: https://www.hackthebox.com/api/v5/machines?per_page=6&page=4&status=active
+              label: '4'
+              active: false
+            - url: https://www.hackthebox.com/api/v5/machines?per_page=6&page=2&status=active
+              label: Next &raquo;
+              active: false
+          path: https://www.hackthebox.com/api/v5/machines
+          per_page: 6
+          to: 6
+          total: 24
+    UserProfileActivitySuccess:
+      summary: User profile activity
+      value:
+        data:
+          - fortressId: 3
+            fortressName: Context
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1c383cd30b7c298ab50293adfecb7b18_logo.svg
+            type: fortress
+            id: 35
+            name: But we have SSL!?
+            points: 20
+            ownDate: '2025-09-26T13:23:21.000Z'
+          - blood: false
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+            type: root
+            id: 751
+            name: Imagery
+            points: 30
+            ownDate: '2025-09-27T20:48:56.000Z'
+          - blood: false
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+            type: user
+            id: 751
+            name: Imagery
+            points: 15
+            ownDate: '2025-09-27T20:29:12.000Z'
+          - blood: false
+            categoryName: Crypto
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c81e728d9d4c2f636f067f89cc14862c.svg
+            type: challenge
+            id: 639
+            name: POPO
+            points: 3
+            ownDate: '2025-09-23T13:43:32.000Z'
+          - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/abd815286ba1007abfbb8415b83ae2cf.png
+            type: sherlock
+            id: 632
+            name: Unit42
+            points: 0
+            ownDate: '2024-04-12T02:47:40.000Z'
+          - prolabId: 4
+            prolabName: Dante
+            prolabIdentifier: DANTE
+            type: prolab
+            id: 106
+            name: One misconfig to rule them all...
+            points: 10
+            ownDate: '2023-06-19T04:59:09.000Z'
+        meta:
+          page: 1
+          lastPage: 4
+          totalItems: 50
+    UserProfileContentMachineSuccess:
+      summary: User profile content filtered by machines
+      value:
+        data:
+          - id: 814
+            name: MonitorsFour
+            os: Windows
+            machineAvatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/c7878dd8dba2eb248a89584ec958a5b8.png
+            difficulty: Easy
+            starRating: 0
+            userOwnCount: 0
+            rootOwnCount: 0
+            releaseDate: '2025-12-06T19:00:00.000Z'
+            ratingCount: 0
+        meta:
+          page: 1
+          lastPage: 2
+          totalItems: 18
+    UserProfileContentChallengeSuccess:
+      summary: User profile content filtered by challenges
+      value:
+        data:
+          - id: 1063
+            name: Untrusted Node
+            categoryName: Quantum
+            starRating: 0
+            difficulty: Medium
+            ownCount: 0
+            releaseDate: '2025-12-05T21:00:00.000Z'
+            ratingCount: 0
+        meta:
+          page: 1
+          lastPage: 1
+          totalItems: 8
+    UserProfileContentSherlockSuccess:
+      summary: User profile content filtered by sherlocks
+      value:
+        data:
+          - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/a1519de5b5d44b31a01de013b9b51a80.png
+            id: 1072
+            name: 'Holmes 2025 3: The Enduring Echo'
+            categoryName: DFIR
+            starRating: 0
+            difficulty: Easy
+            ownCount: 0
+            releaseDate: '2025-12-04T19:00:00.000Z'
+            ratingCount: 0
+        meta:
+          page: 1
+          lastPage: 1
+          totalItems: 6
+    UserDashboardFavoritesSuccess:
+      summary: Dashboard favorites snapshot
+      value:
+        machines:
+          - os: Linux
+            difficulty: Medium
+            avatar: /avatars/243db542f3168e3393c4cabf699a665e.png
+            url: /machines/Giveback
+            user_flag: true
+            root_flag: true
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/243db542f3168e3393c4cabf699a665e.png
+            points: 30
+            rating: 2.9
+            ratingCount: 219
+            tasksCompleted: 2
+            tasksTotal: 2
+            progress: 100
+            guided: false
+            status: null
+            id: 796
+            name: Giveback
+            type: Active Machine
+          - os: Linux
+            difficulty: Easy
+            avatar: /avatars/3ec233f1bf70b096a66f8a452e7cd52f.png
+            url: /machines/PermX
+            user_flag: true
+            root_flag: true
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/3ec233f1bf70b096a66f8a452e7cd52f.png
+            points: null
+            rating: 4.6
+            ratingCount: 480
+            tasksCompleted: 2
+            tasksTotal: 2
+            progress: 100
+            guided: false
+            status: vip
+            id: 613
+            name: PermX
+            type: Retired Machine
+          - os: Linux
+            difficulty: Hard
+            avatar: /avatars/2d22afd496c5ae6f6c51ca24bf3719e1.png
+            url: /machines/BigBang
+            user_flag: true
+            root_flag: true
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/2d22afd496c5ae6f6c51ca24bf3719e1.png
+            points: null
+            rating: 4.2
+            ratingCount: 111
+            tasksCompleted: 2
+            tasksTotal: 2
+            progress: 100
+            guided: false
+            status: vip
+            id: 645
+            name: BigBang
+            type: Retired Machine
+        startingPoints: []
+        challenges:
+          - difficulty: Very Easy
+            url: /challenges/flag-command
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+            urlName: flag-command
+            points: null
+            categoryID: 5
+            categoryName: Web
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+            rating: 4.5
+            ratingCount: 157
+            progress: null
+            status: null
+            id: 646
+            name: Flag Command
+            type: Retired Challenge
+          - difficulty: Very Easy
+            url: /challenges/distract-and-destroy
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
+            urlName: distract-and-destroy
+            points: 10
+            categoryID: 12
+            categoryName: Blockchain
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
+            rating: 4.6
+            ratingCount: 65
+            progress: 100
+            status: null
+            id: 501
+            name: Distract and Destroy
+            type: Active Challenge
+          - difficulty: Very Easy
+            url: /challenges/writing-on-the-wall
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            urlName: writing-on-the-wall
+            points: null
+            categoryID: 4
+            categoryName: Pwn
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            rating: 4.8
+            ratingCount: 8
+            progress: null
+            status: vip
+            id: 663
+            name: Writing on the Wall
+            type: Retired Challenge
+        sherlocks:
+          - urlName: campfire-2
+            difficulty: Very Easy
+            url: /sherlocks/campfire-2
+            categoryID: 14
+            categoryName: DFIR
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/6bc24fc1ab650b25b4114e93a98f1eba.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/6bc24fc1ab650b25b4114e93a98f1eba.png
+            rating: 4.7
+            ratingCount: 93
+            tasksCompleted: 0
+            tasksTotal: 5
+            progress: 0
+            status: null
+            id: 736
+            name: Campfire-2
+            type: Retired Sherlock
+        proLabs: []
+        tracks:
+          - avatar: /tracks/60.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/60.png
+            url: /tracks/Active-Directory-Exploitation
+            difficulty: Easy
+            likeCount: 280
+            progress: 27
+            tasksCompleted: 3
+            tasksTotal: 11
+            id: 60
+            name: Active Directory Exploitation
+            type: Track
+          - avatar: /tracks/8.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/8.png
+            url: /tracks/Synack-Red-Team
+            difficulty: Medium
+            likeCount: 813
+            progress: 0
+            tasksCompleted: 0
+            tasksTotal: 16
+            id: 8
+            name: Synack Red Team
+            type: Track
+        fortresses: []
+    UserDashboardInProgressSuccess:
+      summary: Dashboard in-progress snapshot
+      value:
+        machines:
+          - os: Windows
+            difficulty: Medium
+            avatar: /avatars/ea0bd450c67da1efd2058c2cab9400cf.png
+            url: /machines/Compiled
+            user_flag: true
+            root_flag: false
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/ea0bd450c67da1efd2058c2cab9400cf.png
+            points: null
+            rating: 4.1
+            ratingCount: 95
+            tasksCompleted: 1
+            tasksTotal: 10
+            progress: 10
+            guided: true
+            status: vip
+            id: 618
+            name: Compiled
+            type: Retired Machine
+        startingPoints:
+          - description: The key is a strong foundation
+            completionPercentage: 55
+            freeMachineCompletionPercentage: 100
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/abaa159b15e1bcde9045ba65f73eb5be.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/abaa159b15e1bcde9045ba65f73eb5be.png
+            progress: 55
+            tasksCompleted: 39
+            tasksTotal: 71
+            id: 1
+            name: Tier 0
+            type: Starting Point
+          - description: You need to walk before you can run
+            completionPercentage: 11
+            freeMachineCompletionPercentage: 22
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/90376b468f867417eca35808bb6742ae.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/90376b468f867417eca35808bb6742ae.png
+            progress: 11
+            tasksCompleted: 11
+            tasksTotal: 96
+            id: 2
+            name: Tier 1
+            type: Starting Point
+          - description: Don't forget to contemplate
+            completionPercentage: 1
+            freeMachineCompletionPercentage: 2
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/4739247316226a94e765c9a6c18f407b.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/4739247316226a94e765c9a6c18f407b.png
+            progress: 1
+            tasksCompleted: 1
+            tasksTotal: 76
+            id: 3
+            name: Tier 2
+            type: Starting Point
+        challenges: []
+        sherlocks:
+          - urlName: meerkat
+            difficulty: Easy
+            url: /sherlocks/meerkat
+            categoryID: 17
+            categoryName: SOC
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/94c7bb58efc3b337800875b5d382a072.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/94c7bb58efc3b337800875b5d382a072.png
+            rating: 4.7
+            ratingCount: 384
+            tasksCompleted: 7
+            tasksTotal: 10
+            progress: 70
+            status: null
+            id: 552
+            name: Meerkat
+            type: Retired Sherlock
+          - urlName: bft
+            difficulty: Very Easy
+            url: /sherlocks/bft
+            categoryID: 14
+            categoryName: DFIR
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/26dd0dbc6e3f4c8043749885523d6a25.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/26dd0dbc6e3f4c8043749885523d6a25.png
+            rating: 4.7
+            ratingCount: 107
+            tasksCompleted: 3
+            tasksTotal: 6
+            progress: 50
+            status: null
+            id: 633
+            name: BFT
+            type: Retired Sherlock
+        proLabs:
+          - url: /prolabs/overview/dante
+            identifier: DANTE
+            difficulty: null
+            avatar: null
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/a87ff679a2f3e71d9181a67b7542122c_avatar.svg
+            categoryName: Red Team Operator Level I
+            rating: 4.7
+            ratingCount: 570
+            progress: 70
+            tasksCompleted: 19
+            tasksTotal: 27
+            id: 4
+            name: Dante
+            type: Pro Lab
+          - url: /prolabs/overview/puppet
+            identifier: PUPPET
+            difficulty: null
+            avatar: null
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/b6d767d2f8ed5d21a44b0e5886680cb9_avatar.svg
+            categoryName: Red Team Operator Level I
+            rating: 4.6
+            ratingCount: 22
+            progress: 25
+            tasksCompleted: 1
+            tasksTotal: 4
+            id: 22
+            name: Puppet
+            type: Pro Lab
+        tracks:
+          - avatar: /tracks/52.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/52.png
+            url: /tracks/Intro-to-Red-Team
+            difficulty: Easy
+            likeCount: 761
+            progress: 47
+            tasksCompleted: 7
+            tasksTotal: 15
+            id: 52
+            name: Intro to Red Team
+            type: Track
+          - avatar: /tracks/60.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/60.png
+            url: /tracks/Active-Directory-Exploitation
+            difficulty: Easy
+            likeCount: 280
+            progress: 27
+            tasksCompleted: 3
+            tasksTotal: 11
+            id: 60
+            name: Active Directory Exploitation
+            type: Track
+        fortresses:
+          - points: 100
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
+            solvesCount: 3188
+            tasksCompleted: 6
+            tasksTotal: 11
+            progress: 55
+            id: 1
+            name: Jet
+            type: Fortress
+          - points: 160
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/eccbc87e4b5ce2fe28308fd9f2a7baf3_logo.svg
+            solvesCount: 1806
+            tasksCompleted: 2
+            tasksTotal: 7
+            progress: 29
+            id: 3
+            name: Context
+            type: Fortress
+          - points: 220
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/8f14e45fceea167a5a36dedd4bea2543_logo.svg
+            solvesCount: 785
+            tasksCompleted: 1
+            tasksTotal: 10
+            progress: 10
+            id: 7
+            name: AWS
+            type: Fortress
+    UserDashboardRecommendedSuccess:
+      summary: Dashboard recommended snapshot
+      value:
+        machines:
+          - os: Linux
+            difficulty: Hard
+            avatar: /avatars/f6634ed8d93806d70d330297d7c90ee2.png
+            url: /machines/Store
+            user_flag: false
+            root_flag: false
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/f6634ed8d93806d70d330297d7c90ee2.png
+            points: null
+            rating: 5
+            ratingCount: 5
+            tasksCompleted: 0
+            tasksTotal: 2
+            progress: 0
+            guided: false
+            status: vip+
+            id: 790
+            name: Store
+            type: Retired Machine
+          - os: Linux
+            difficulty: Hard
+            avatar: /avatars/d12fa2e84c31a94e402fdc765a0e9125.png
+            url: /machines/Dump
+            user_flag: false
+            root_flag: false
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/d12fa2e84c31a94e402fdc765a0e9125.png
+            points: null
+            rating: 5
+            ratingCount: 3
+            tasksCompleted: 0
+            tasksTotal: 2
+            progress: 0
+            guided: false
+            status: vip+
+            id: 793
+            name: Dump
+            type: Retired Machine
+        startingPoints: []
+        challenges:
+          - difficulty: Hard
+            url: /challenges/modern-typer
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            urlName: modern-typer
+            points: null
+            categoryID: 4
+            categoryName: Pwn
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            rating: 5
+            ratingCount: 58
+            progress: null
+            status: vip
+            id: 203
+            name: Modern Typer
+            type: Retired Challenge
+          - difficulty: Hard
+            url: /challenges/tictacpwn
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            urlName: tictacpwn
+            points: null
+            categoryID: 4
+            categoryName: Pwn
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+            rating: 5
+            ratingCount: 28
+            progress: null
+            status: vip
+            id: 205
+            name: TicTacPwn
+            type: Retired Challenge
+        sherlocks:
+          - urlName: sillyeli
+            difficulty: Hard
+            url: /sherlocks/sillyeli
+            categoryID: 14
+            categoryName: DFIR
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
+            rating: 4.9
+            ratingCount: 17
+            tasksCompleted: 0
+            tasksTotal: 16
+            progress: 0
+            status: null
+            id: 1024
+            name: SillyEli
+            type: Active Sherlock
+          - urlName: optinseltrace24-6-sleigh-slayer
+            difficulty: Hard
+            url: /sherlocks/optinseltrace24-6-sleigh-slayer
+            categoryID: 14
+            categoryName: DFIR
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
+            rating: 4.9
+            ratingCount: 8
+            tasksCompleted: 0
+            tasksTotal: 24
+            progress: 0
+            status: vip
+            id: 834
+            name: 'OpTinselTrace24-6: Sleigh Slayer'
+            type: Retired Sherlock
+        proLabs:
+          - url: /prolabs/overview/puppet
+            identifier: PUPPET
+            difficulty: ADVANCED
+            avatar: null
+            avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/b6d767d2f8ed5d21a44b0e5886680cb9_avatar.svg
+            categoryName: Red Team Operator Level I
+            rating: 4.6
+            ratingCount: 22
+            progress: 25
+            tasksCompleted: 1
+            tasksTotal: 4
+            id: 22
+            name: Puppet
+            type: Pro Lab
+        tracks: []
+        fortresses: []
+  responses:
+    ConnectionsResponse:
+      content:
+        application/json:
+          examples:
+            ConnectionsSuccess:
+              $ref: '#/components/examples/ConnectionsSuccess'
+          schema:
+            $ref: '#/components/schemas/ConnectionsResponse'
+      description: Connections Successful
+    Generic400Response:
+      content:
+        application/json:
+          examples:
+            Generic400Error:
+              $ref: '#/components/examples/Generic400Response'
+          schema:
+            $ref: '#/components/schemas/Generic400Response'
+      description: Generic 400 Response
+    MachineOwnResponse:
+      content:
+        application/json:
+          examples:
+            MachineOwnSuccess:
+              $ref: '#/components/examples/MachineOwnSuccess'
+          schema:
+            $ref: '#/components/schemas/MachineOwnResponse'
+      description: Successful flag submission
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    MachineOwn400Response:
+      content:
+        application/json:
+          examples:
+            MachineOwnedRootAlreadyError:
+              $ref: '#/components/examples/MachineOwnedRootAlreadyError'
+            MachineOwnedUserAlreadyError:
+              $ref: '#/components/examples/MachineOwnedUserAlreadyError'
+            invalidFlag:
+              $ref: '#/components/examples/MachineOwnedInvalidFlagError'
+          schema:
+            $ref: '#/components/schemas/MachineOwnErrorResponse'
+      description: Machine Own Bad Request
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    MachinesResponse:
+      content:
+        application/json:
+          examples:
+            MachinesAllSuccess:
+              $ref: '#/components/examples/MachinesSuccess'
+          schema:
+            $ref: '#/components/schemas/MachinesResponse'
+      description: Machines Successful
+    UserProfileActivityResponse:
+      content:
+        application/json:
+          examples:
+            UserProfileActivity:
+              $ref: '#/components/examples/UserProfileActivitySuccess'
+          schema:
+            $ref: '#/components/schemas/UserProfileActivityResponse'
+      description: User Profile Activity Successful
+    UserProfileContentResponse:
+      description: User profile content filtered listing
+      content:
+        application/json:
+          examples:
+            UserProfileContentMachines:
+              $ref: '#/components/examples/UserProfileContentMachineSuccess'
+            UserProfileContentChallenges:
+              $ref: '#/components/examples/UserProfileContentChallengeSuccess'
+            UserProfileContentSherlocks:
+              $ref: '#/components/examples/UserProfileContentSherlockSuccess'
+          schema:
+            $ref: '#/components/schemas/UserProfileContentResponse'
+    UserDashboardFavoritesResponse:
+      description: User Dashboard favorites results
+      content:
+        application/json:
+          examples:
+            UserDashboardFavorites:
+              $ref: '#/components/examples/UserDashboardFavoritesSuccess'
+          schema:
+            $ref: '#/components/schemas/UserDashboardFavoritesResponse'
+    UserDashboardInProgressResponse:
+      description: User Dashboard items the user is currently progressing through
+      content:
+        application/json:
+          examples:
+            UserDashboardInProgress:
+              $ref: '#/components/examples/UserDashboardInProgressSuccess'
+          schema:
+            $ref: '#/components/schemas/UserDashboardInProgressResponse'
+    UserDashboardRecommendedResponse:
+      description: User Dashboard recommendations tailored to the user
+      content:
+        application/json:
+          examples:
+            UserDashboardRecommended:
+              $ref: '#/components/examples/UserDashboardRecommendedSuccess'
+          schema:
+            $ref: '#/components/schemas/UserDashboardRecommendedResponse'
   requestBodies:
     MachineOwnRequest:
       content:
@@ -242,36 +2354,128 @@ components:
         example: 14
         format: int
         type: integer
-  responses:
-    MachineOwnResponse:
-      content:
-        application/json:
-          examples:
-            MachineOwnSuccess:
-              $ref: '#/components/examples/MachineOwnSuccess'
-          schema:
-            $ref: '#/components/schemas/MachineOwnResponse'
-      description: Successful flag submission
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    MachineOwn400Response:
-      content:
-        application/json:
-          examples:
-            MachineOwnedRootAlreadyError:
-              $ref: '#/components/examples/MachineOwnedRootAlreadyError'
-            MachineOwnedUserAlreadyError:
-              $ref: '#/components/examples/MachineOwnedUserAlreadyError'
-            invalidFlag:
-              $ref: '#/components/examples/MachineOwnedInvalidFlagError'
-          schema:
-            $ref: '#/components/schemas/MachineOwnErrorResponse'
-      description: Machine Own Bad Request
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
+  parameters:
+    PerPage:
+      description: Limit results per page
+      in: query
+      name: per_page
+      required: false
+      schema:
+        maximum: 100
+        minimum: 5
+        type: integer
+    Page:
+      description: Page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+    State:
+      description: Filter by state. You can provide multiple values. For example, state=active&state=retired.
+      explode: true
+      in: query
+      name: state
+      schema:
+        items:
+          enum:
+            - active
+            - retired
+            - unreleased
+          type: string
+        type: array
+      style: form
+    Keyword:
+      description: Search String
+      in: query
+      name: keyword
+      required: false
+      schema:
+        example: hack
+        type: string
+    MachineDifficulty:
+      description: Filter by difficulty level
+      explode: true
+      in: query
+      name: difficulty[]
+      required: false
+      schema:
+        items:
+          enum:
+            - very-easy
+            - easy
+            - medium
+            - hard
+            - insane
+          type: string
+        type: array
+      style: form
+    Os:
+      description: Filter by os
+      explode: true
+      in: query
+      name: os[]
+      required: false
+      schema:
+        items:
+          enum:
+            - linux
+            - windows
+            - freebsd
+            - openbsd
+            - other
+          type: string
+        type: array
+      style: form
+    ShowCompleted:
+      description: Omit for both
+      in: query
+      name: show_completed
+      required: false
+      schema:
+        enum:
+          - incomplete
+          - complete
+        type: string
+    SortBy:
+      description: Field to sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+          - release-date
+          - name
+          - user-owns
+          - system-owns
+          - rating
+          - user-difficulty
+        type: string
+    SortType:
+      description: Sort type (asc or desc)
+      in: query
+      name: sort_type
+      required: false
+      schema:
+        enum:
+          - asc
+          - desc
+        type: string
+    UserId:
+      description: ID of the user
+      in: path
+      name: userId
+      required: true
+      schema:
+        type: integer
+    UserProfileContentType:
+      description: Product type to filter by
+      in: query
+      name: type
+      required: true
+      schema:
+        enum:
+          - machine
+          - challenge
+          - sherlock
+        type: string
