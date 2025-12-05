@@ -4,10 +4,10 @@ name: sort_by
 required: false
 schema:
   enum:
-    - release-date
+    - release_date
     - name
-    - user-owns
-    - system-owns
+    - user_owns
+    - system_owns
     - rating
-    - user-difficulty
+    - user_difficulty
   type: string

@@ -1,0 +1,9 @@
+description: Filter ToDo
+in: query
+name: todo
+required: false
+schema:
+  enum:
+    - 1
+  format: int
+  type: integer

@@ -6,7 +6,6 @@ required: false
 schema:
   items:
     enum:
-      - very-easy
       - easy
       - medium
       - hard
