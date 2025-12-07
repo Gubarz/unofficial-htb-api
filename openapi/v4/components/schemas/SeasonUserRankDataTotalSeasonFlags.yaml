@@ -1,6 +1,6 @@
 type: object
 properties:
   obtained:
-    type: int
+    type: integer
   total:
-    type: int
+    type: integer
