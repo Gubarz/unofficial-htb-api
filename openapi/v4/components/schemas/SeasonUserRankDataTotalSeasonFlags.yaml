@@ -1,0 +1,6 @@
+type: object
+properties:
+  obtained:
+    type: int
+  total:
+    type: int

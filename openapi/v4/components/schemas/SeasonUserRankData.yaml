@@ -21,4 +21,6 @@ properties:
     type: integer
   user_bloods:
     type: integer
+  total_season_flags:
+    $ref: ./SeasonUserRankDataTotalSeasonFlags.yaml
 type: object
