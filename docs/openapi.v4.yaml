@@ -8157,16 +8157,6 @@ components:
       items:
         $ref: '#/components/schemas/SearchChallengeItem'
       type: array
-    SearchJobOfferItem:
-      properties:
-        id:
-          example: '644'
-          type: string
-      type: object
-    SearchJobOffersItems:
-      items:
-        $ref: '#/components/schemas/SearchJobOfferItem'
-      type: array
     SearchFetchMachinesItem:
       properties:
         avatar:
@@ -8227,19 +8217,44 @@ components:
       items:
         $ref: '#/components/schemas/SearchUserItem'
       type: array
+    SearchSherlockItem:
+      properties:
+        avatar:
+          type: string
+          example: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/9246444d94f081e3549803b928260f56.png
+        challenge_category_id:
+          example: 16
+          type: integer
+        category_name:
+          type: string
+          example: Malware Analysis
+        description:
+          example: In this Sherlock, players will investigate the Demodex rootkit attributed to Salt Typhoon.
+          type: string
+        id:
+          example: 1006
+          type: integer
+        value:
+          example: SalineBreeze-2
+          type: string
+      type: object
+    SearchSherlocksItems:
+      items:
+        $ref: '#/components/schemas/SearchSherlockItem'
+      type: array
     SearchFetchResponse:
       description: Schema definition for Search Fetch Response
       properties:
         challenges:
           $ref: '#/components/schemas/SearchChallengesItems'
-        joboffers:
-          $ref: '#/components/schemas/SearchJobOffersItems'
         machines:
           $ref: '#/components/schemas/SearchMachinesItems'
         teams:
           $ref: '#/components/schemas/SearchTeamItems'
         users:
           $ref: '#/components/schemas/SearchUsersItems'
+        sherlocks:
+          $ref: '#/components/schemas/SearchSherlocksItems'
       title: Search Fetch Response
       type: object
     BloodsObtained:
@@ -8626,6 +8641,13 @@ components:
         - maxItems: 0
           type: array
           items: {}
+    SeasonUserRankDataTotalSeasonFlags:
+      type: object
+      properties:
+        obtained:
+          type: int
+        total:
+          type: int
     SeasonUserRankData:
       properties:
         flags_to_next_rank:
@@ -8650,6 +8672,8 @@ components:
           type: integer
         user_bloods:
           type: integer
+        total_season_flags:
+          $ref: '#/components/schemas/SeasonUserRankDataTotalSeasonFlags'
       type: object
     SeasonUserRank:
       description: Schema definition for Season User Rank
