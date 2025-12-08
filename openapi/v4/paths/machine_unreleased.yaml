@@ -1,5 +1,6 @@
 get:
   description: Retrieves information related to /machine/unreleased
+  deprecated: true
   operationId: getMachineUnreleased
   parameters:
     - $ref: ../components/parameters/Page.yaml

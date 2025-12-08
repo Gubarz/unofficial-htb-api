@@ -1,5 +1,6 @@
 get:
   description: Retrieve a paginated list of machines.
+  deprecated: true
   operationId: getMachinePaginated
   parameters:
     - $ref: ../components/parameters/PerPage.yaml

@@ -1,5 +1,6 @@
 get:
   description: Get /machine/todo/paginated
+  deprecated: true
   operationId: getMachineTodoPaginated
   parameters:
     - $ref: ../components/parameters/SortType.yaml

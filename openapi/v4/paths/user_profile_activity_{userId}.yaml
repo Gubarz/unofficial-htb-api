@@ -1,5 +1,6 @@
 get:
   description: Retrieves information related to /user/profile/activity/{user id}
+  deprecated: true
   operationId: getUserProfileActivity
   parameters:
     - $ref: ../components/parameters/UserId.yaml

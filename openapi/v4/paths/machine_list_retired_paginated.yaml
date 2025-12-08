@@ -1,5 +1,6 @@
 get:
   description: Retrieve a paginated list of retired machines.
+  deprecated: true
   operationId: getMachineListRetiredPaginated
   parameters:
     - $ref: ../components/parameters/Free.yaml
