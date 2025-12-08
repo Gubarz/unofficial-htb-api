@@ -3,6 +3,7 @@ get:
   operationId: getUserProfileBadges
   parameters:
     - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/Rare.yaml
   responses:
     '200':
       $ref: ../components/responses/ProfileBadgesUserIdResponse.yaml

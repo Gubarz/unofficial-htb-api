@@ -1,0 +1,8 @@
+description: Number of rare badges to retrieve
+in: query
+name: rare
+required: false
+schema:
+  maximum: 20
+  minimum: 1
+  type: integer

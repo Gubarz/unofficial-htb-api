@@ -314,6 +314,8 @@ paths:
     $ref: paths/season_user_followers_{seasonId}.yaml
   /season/user/rank/{seasonId}:
     $ref: paths/season_user_rank_{seasonId}.yaml
+  /season/user/{userId}/ranks:
+    $ref: paths/season_user_{userId}_ranks.yaml
   /season/{leaderboard}/leaderboard:
     $ref: paths/season_{leaderboard}_leaderboard.yaml
   /season/{leaderboard}/leaderboard/top/{seasonId}:
