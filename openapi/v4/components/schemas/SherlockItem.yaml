@@ -37,5 +37,7 @@ properties:
   state:
     description: The state of the item.
     type: string
+  tags:
+    $ref: ./TagCategoryTagsItems.yaml
 title: Sherlock Item
 type: object

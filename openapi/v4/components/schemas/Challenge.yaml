@@ -149,7 +149,7 @@ properties:
     example: retired
     type: string
   tags:
-    $ref: ./StringArray.yaml
+    $ref: ./TagCategoryTagsItems.yaml
   user_can_review:
     example: true
     type: boolean

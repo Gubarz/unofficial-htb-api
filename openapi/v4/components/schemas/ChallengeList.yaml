@@ -54,5 +54,7 @@ properties:
   user_difficulty:
     example: '3.33'
     type: string
+  labels:
+    $ref: ./LabelItems.yaml
 title: Challenge List
 type: object
