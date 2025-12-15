@@ -856,6 +856,7 @@ paths:
   /machine/list/retired/paginated:
     get:
       description: Retrieve a paginated list of retired machines.
+      deprecated: true
       operationId: getMachineListRetiredPaginated
       parameters:
         - $ref: '#/components/parameters/Free'
@@ -908,6 +909,7 @@ paths:
   /machine/paginated:
     get:
       description: Retrieve a paginated list of machines.
+      deprecated: true
       operationId: getMachinePaginated
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1038,6 +1040,7 @@ paths:
   /machine/todo/paginated:
     get:
       description: Get /machine/todo/paginated
+      deprecated: true
       operationId: getMachineTodoPaginated
       parameters:
         - $ref: '#/components/parameters/SortType'
@@ -1056,6 +1059,7 @@ paths:
   /machine/unreleased:
     get:
       description: Retrieves information related to /machine/unreleased
+      deprecated: true
       operationId: getMachineUnreleased
       parameters:
         - $ref: '#/components/parameters/Page'
@@ -1844,6 +1848,20 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Get user's rank for the current season
+      tags:
+        - Season
+  /season/user/{userId}/ranks:
+    get:
+      description: Retrieve user ranks for seasons.
+      operationId: getSeasonUserUserIdRank
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/SeasonUserRankSeasonIdResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Get a users rank for all seasons
       tags:
         - Season
   /season/{leaderboard}/leaderboard:
@@ -2675,6 +2693,7 @@ paths:
   /user/profile/activity/{userId}:
     get:
       description: Retrieves information related to /user/profile/activity/{user id}
+      deprecated: true
       operationId: getUserProfileActivity
       parameters:
         - $ref: '#/components/parameters/UserId'
@@ -2692,6 +2711,7 @@ paths:
       operationId: getUserProfileBadges
       parameters:
         - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/Rare'
       responses:
         '200':
           $ref: '#/components/responses/ProfileBadgesUserIdResponse'
@@ -3469,6 +3489,15 @@ components:
       required: false
       schema:
         type: string
+    Rare:
+      description: Number of rare badges to retrieve
+      in: query
+      name: rare
+      required: false
+      schema:
+        maximum: 20
+        minimum: 1
+        type: integer
   headers:
     XRateLimitHeader:
       description: Total requests allowed
@@ -4031,6 +4060,21 @@ components:
             counterVeryEasy:
               example: 35
               type: integer
+    Tag:
+      description: Schema definition for Tag
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tag_category_id:
+          type: integer
+      title: Tag
+      type: object
+    TagCategoryTagsItems:
+      items:
+        $ref: '#/components/schemas/Tag'
+      type: array
     Challenge:
       description: Schema definition for Challenge
       properties:
@@ -4181,7 +4225,7 @@ components:
           example: retired
           type: string
         tags:
-          $ref: '#/components/schemas/StringArray'
+          $ref: '#/components/schemas/TagCategoryTagsItems'
         user_can_review:
           example: true
           type: boolean
@@ -4396,6 +4440,19 @@ components:
           type: string
       type: object
       nullable: true
+    Label:
+      description: Schema definition for Label
+      properties:
+        color:
+          type: string
+        name:
+          type: string
+      title: Label
+      type: object
+    LabelItems:
+      items:
+        $ref: '#/components/schemas/Label'
+      type: array
     ChallengeList:
       description: Schema definition for Challenge List
       properties:
@@ -4453,6 +4510,8 @@ components:
         user_difficulty:
           example: '3.33'
           type: string
+        labels:
+          $ref: '#/components/schemas/LabelItems'
       title: Challenge List
       type: object
     ChallengeListData:
@@ -5784,19 +5843,6 @@ components:
           $ref: '#/components/schemas/MachineGraphOwnsDifficultyInfoItems'
       title: Machine Graph Owns Difficulty Id Response
       type: object
-    Label:
-      description: Schema definition for Label
-      properties:
-        color:
-          type: string
-        name:
-          type: string
-      title: Label
-      type: object
-    LabelItems:
-      items:
-        $ref: '#/components/schemas/Label'
-      type: array
     MachinePlayInfo:
       properties:
         expires_at:
@@ -6478,21 +6524,6 @@ components:
         message:
           $ref: '#/components/schemas/MaschineReviewsMessageItems'
       type: object
-    Tag:
-      description: Schema definition for Tag
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        tag_category_id:
-          type: integer
-      title: Tag
-      type: object
-    TagCategoryTagsItems:
-      items:
-        $ref: '#/components/schemas/Tag'
-      type: array
     TagCategory:
       description: Schema definition for Tag Category
       properties:
@@ -8824,6 +8855,8 @@ components:
         state:
           description: The state of the item.
           type: string
+        tags:
+          $ref: '#/components/schemas/TagCategoryTagsItems'
       title: Sherlock Item
       type: object
     SherlockListData:
