@@ -5,7 +5,6 @@ properties:
   status:
     enum:
       - error
-    example: '0'
     type: string
 required:
   - status

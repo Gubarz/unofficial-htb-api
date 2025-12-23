@@ -16,5 +16,4 @@ properties:
     example: Hack The Box
   avatar:
     type: string
-    format: uri
     example: /storage/companies/1.png

@@ -66,6 +66,7 @@ properties:
     $ref: ./Maker.yaml
   maker2:
     $ref: ./Maker.yaml
+    nullable: true
   name:
     example: SolarLab
     type: string
@@ -140,6 +141,8 @@ properties:
     type: string
     nullable: true
   isSingleFlag:
+    type: boolean
+  botHasBlood:
     type: boolean
 title: Machine Profile Info
 type: object

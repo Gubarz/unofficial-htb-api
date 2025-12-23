@@ -45,6 +45,7 @@ properties:
     type: string
   retires:
     $ref: ./ChallengeRetires.yaml
+    nullable: true
   solves:
     example: 132
     type: integer

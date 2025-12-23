@@ -8,10 +8,13 @@ properties:
     nullable: true
     type: integer
   isRespected:
-    nullable: true
     type: boolean
   name:
     nullable: true
+    type: string
+  profile_url:
+    nullable: true
+    format: uri
     type: string
 title: Maker
 type: object

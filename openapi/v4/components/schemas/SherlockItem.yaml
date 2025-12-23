@@ -4,6 +4,7 @@ properties:
     type: boolean
   avatar:
     type: string
+    format: uri
   category_id:
     type: integer
   category_name:
@@ -29,6 +30,7 @@ properties:
     type: integer
   release_date:
     type: string
+    format: date-time
   retires:
     $ref: ./SherlockRetires.yaml
     nullable: true
@@ -37,7 +39,7 @@ properties:
   state:
     description: The state of the item.
     type: string
-  tags:
-    $ref: ./TagCategoryTagsItems.yaml
+  labels:
+    $ref: LabelItems.yaml
 title: Sherlock Item
 type: object

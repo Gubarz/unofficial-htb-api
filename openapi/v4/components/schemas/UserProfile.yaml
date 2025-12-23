@@ -81,4 +81,19 @@ properties:
     type: integer
   challenge_bloods:
     type: integer
+  full_name:
+    type: string
+  cv:
+    type: string
+    format: uri
+    nullable: true
+  cpe_id:
+    type: integer
+    nullable: true
+  phone_number:
+    type: string
+    nullable: true
+  server:
+    type: string
+    nullable: true
 type: object
