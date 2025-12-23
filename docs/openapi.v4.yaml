@@ -4501,6 +4501,7 @@ components:
           type: string
         retires:
           $ref: '#/components/schemas/ChallengeRetires'
+          nullable: true
         solves:
           example: 132
           type: integer
@@ -6059,10 +6060,13 @@ components:
           nullable: true
           type: integer
         isRespected:
-          nullable: true
           type: boolean
         name:
           nullable: true
+          type: string
+        profile_url:
+          nullable: true
+          format: uri
           type: string
       title: Maker
       type: object
@@ -6181,6 +6185,7 @@ components:
           $ref: '#/components/schemas/Maker'
         maker2:
           $ref: '#/components/schemas/Maker'
+          nullable: true
         name:
           example: SolarLab
           type: string
@@ -6255,6 +6260,8 @@ components:
           type: string
           nullable: true
         isSingleFlag:
+          type: boolean
+        botHasBlood:
           type: boolean
       title: Machine Profile Info
       type: object
@@ -8822,6 +8829,7 @@ components:
           type: boolean
         avatar:
           type: string
+          format: uri
         category_id:
           type: integer
         category_name:
@@ -8847,6 +8855,7 @@ components:
           type: integer
         release_date:
           type: string
+          format: date-time
         retires:
           $ref: '#/components/schemas/SherlockRetires'
           nullable: true
@@ -8855,8 +8864,8 @@ components:
         state:
           description: The state of the item.
           type: string
-        tags:
-          $ref: '#/components/schemas/TagCategoryTagsItems'
+        labels:
+          $ref: '#/components/schemas/LabelItems'
       title: Sherlock Item
       type: object
     SherlockListData:
@@ -9060,7 +9069,7 @@ components:
           example: retired_free
           type: string
         tags:
-          $ref: '#/components/schemas/Tag'
+          $ref: '#/components/schemas/TagCategoryTagsItems'
         writeup_visible:
           type: boolean
         user_can_review:
@@ -9731,7 +9740,6 @@ components:
           example: Hack The Box
         avatar:
           type: string
-          format: uri
           example: /storage/companies/1.png
     TracksItems:
       required:
@@ -9863,7 +9871,6 @@ components:
         status:
           enum:
             - error
-          example: '0'
           type: string
       required:
         - status
@@ -10760,6 +10767,21 @@ components:
           type: integer
         challenge_bloods:
           type: integer
+        full_name:
+          type: string
+        cv:
+          type: string
+          format: uri
+          nullable: true
+        cpe_id:
+          type: integer
+          nullable: true
+        phone_number:
+          type: string
+          nullable: true
+        server:
+          type: string
+          nullable: true
       type: object
     UserProfileBasicIdResponse:
       description: Schema definition for User Profile Basic Id Response
