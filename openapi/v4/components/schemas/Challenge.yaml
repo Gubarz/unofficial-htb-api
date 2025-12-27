@@ -72,9 +72,8 @@ properties:
     nullable: true
     type: string
   docker_ports:
-    example: null
     nullable: true
-    type: string
+    $ref: ./IntArray.yaml
   download:
     example: true
     type: boolean
