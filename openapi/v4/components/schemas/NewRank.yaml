@@ -1,0 +1,8 @@
+properties:
+  id:
+    example: 5
+    type: integer
+  text:
+    nullable: true
+    type: string
+type: object

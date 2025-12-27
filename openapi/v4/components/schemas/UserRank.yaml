@@ -1,0 +1,6 @@
+properties:
+  changed:
+    type: boolean
+  newrank:
+    $ref: ./NewRank.yaml
+type: object

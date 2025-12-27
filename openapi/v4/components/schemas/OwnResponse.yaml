@@ -3,8 +3,7 @@ properties:
   message:
     example: machine owned successfully!
     type: string
-  status:
-    example: 200
-    type: integer
+  user_rank:
+    $ref: ./UserRank.yaml
 title: Own Response
 type: object
