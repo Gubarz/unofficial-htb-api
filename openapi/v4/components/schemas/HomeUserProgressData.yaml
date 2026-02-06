@@ -1,4 +1,6 @@
 properties:
+  challenges:
+    $ref: ./HomeProgressChallengeCardItem.yaml
   fortresses:
     $ref: ./HomeUserProgressFortressesCard.yaml
   machines:

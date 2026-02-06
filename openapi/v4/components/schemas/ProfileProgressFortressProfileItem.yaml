@@ -1,4 +1,6 @@
 properties:
+  id:
+    type: integer
   avatar:
     type: string
   completion_percentage:

@@ -16,4 +16,26 @@ properties:
     type: string
   url:
     type: string
+  tasksCompleted:
+    type: number
+  guided:
+    type: boolean
+  root_flag:
+    type: boolean
+  rating:
+    type: integer
+  status:
+    type: string
+    nullable: true
+  user_flag:
+    type: boolean
+  ratingCount:
+    type: integer
+  tasksTotal:
+    type: integer
+  avatarUrl:
+    type: string
+  progress:
+    type: number
+    nullable: true
 type: object

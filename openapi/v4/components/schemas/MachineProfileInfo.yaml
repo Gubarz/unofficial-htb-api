@@ -48,6 +48,9 @@ properties:
     example: null
     nullable: true
     type: string
+  machinePwnedDate:
+    type: string
+    format: date-time
   ip:
     example: 10.10.10.10
     format: ipv4

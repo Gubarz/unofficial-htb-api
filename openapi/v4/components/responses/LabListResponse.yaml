@@ -1,5 +1,0 @@
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/LabListResponse.yaml
-description: Lab List Response

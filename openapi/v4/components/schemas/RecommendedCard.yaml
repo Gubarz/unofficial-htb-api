@@ -30,5 +30,7 @@ properties:
   url_name:
     example: prometheon
     type: string
+  avatar_url:
+    type: string
 title: Recommended Card
 type: object

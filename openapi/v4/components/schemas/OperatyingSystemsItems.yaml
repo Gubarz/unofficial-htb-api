@@ -1,3 +1,0 @@
-items:
-  $ref: ./OperatingSystems.yaml
-type: array

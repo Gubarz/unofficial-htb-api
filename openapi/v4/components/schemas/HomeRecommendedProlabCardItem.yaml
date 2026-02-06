@@ -16,4 +16,19 @@ properties:
     type: string
   url:
     type: string
+  categoryName:
+    type: string
+  ratingCount:
+    type: integer
+  progress:
+    type: number
+    nullable: true
+  tasksCompleted:
+    type: integer
+  rating:
+    type: number
+  tasksTotal:
+    type: integer
+  avatarUrl:
+    type: string
 type: object

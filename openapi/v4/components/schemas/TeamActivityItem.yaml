@@ -33,6 +33,8 @@ properties:
     type: string
   user:
     $ref: ./TeamActivityUser.yaml
+  avatar_url:
+    type: string
 type: object
 required: 
   - date

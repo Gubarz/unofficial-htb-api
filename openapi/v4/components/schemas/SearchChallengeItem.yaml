@@ -5,8 +5,7 @@ properties:
   category_name:
     type: string
     example: Pwn
-  description:
-    example: Our agents got caught during a mission...
+  avatar_url:
     type: string
   id:
     example: 217

@@ -18,4 +18,18 @@ properties:
     type: string
   urlName:
     type: string
+  rating:
+    type: number
+  ratingCount:
+    type: integer
+  progress:
+    type: number
+    nullable: true
+  status:
+    type: string
+    nullable: true
+  categoryName:
+    type: string
+  avatarUrl:
+    type: string
 type: object

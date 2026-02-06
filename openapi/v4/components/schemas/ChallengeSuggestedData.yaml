@@ -7,4 +7,6 @@ properties:
     type: string
   url_name:
     type: string
+  avatar_url:
+    type: string
 type: object

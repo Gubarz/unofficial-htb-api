@@ -158,8 +158,6 @@ paths:
     $ref: paths/home_user_progress.yaml
   /home/user/todo:
     $ref: paths/home_user_todo.yaml
-  /lab/list:
-    $ref: paths/lab_list.yaml
   /machine/active:
     $ref: paths/machine_active.yaml
   /machine/activity/{machineId}:
@@ -414,8 +412,6 @@ paths:
     $ref: paths/user_apptoken_delete.yaml
   /user/apptoken/list:
     $ref: paths/user_apptoken_list.yaml
-  /user/banned:
-    $ref: paths/user_banned.yaml
   /user/connection/status:
     $ref: paths/user_connection_status.yaml
   /user/dashboard:
@@ -448,8 +444,6 @@ paths:
     $ref: paths/user_profile_progress_challenges_{userId}.yaml
   /user/profile/progress/fortress/{userId}:
     $ref: paths/user_profile_progress_fortress_{userId}.yaml
-  /user/profile/progress/machines/os/{userId}:
-    $ref: paths/user_profile_progress_machines_os_{userId}.yaml
   /user/profile/progress/prolab/{userId}:
     $ref: paths/user_profile_progress_prolab_{userId}.yaml
   /user/profile/progress/sherlocks/{userId}:

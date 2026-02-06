@@ -90,5 +90,7 @@ properties:
     type: boolean
   subscriptionType:
     type: string
+  account_id:
+    type: string
 title: User Info
 type: object

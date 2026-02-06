@@ -1,4 +1,0 @@
-properties:
-  profile:
-    $ref: ./UserProfileProgressMChinesOsProfile.yaml
-type: object

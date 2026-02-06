@@ -1,36 +1,33 @@
 properties:
-  avatar:
-    type: string
-  categoryID:
-    type: integer
   difficulty:
     type: string
+  url:
+    type: string
+  avatar:
+    type: string
+  urlName:
+    type: string
+  points:
+    nullable: true
+    type: number
+  categoryID:
+    type: string
+  avatarUrl:
+    type: string
+  rating:
+    type: number
+  ratingCount:
+    type: integer
+  progress:
+    type: number
+    nullable: true
+  status:
+    type: string
+    nullable: true
   id:
     type: integer
   name:
     type: string
   type:
     type: string
-  url:
-    type: string
-  urlName:
-    type: string
-  categoryName:
-    type: string
-  rating:
-    type: number
-  progress:
-    type: number
-    nullable: true
-  ratingCount:
-    type: integer
-  status:
-    type: string
-    nullable: true
-  avatarUrl:
-    type: string
-  tasksCompleted:
-    type: integer
-  tasksTotal:
-    type: integer
 type: object

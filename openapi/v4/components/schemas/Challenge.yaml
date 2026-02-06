@@ -154,5 +154,7 @@ properties:
     type: boolean
   user_submitted_difficulty:
     type: integer
+  avatar_url:
+    type: string
 title: Challenge
 type: object
