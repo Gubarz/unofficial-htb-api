@@ -1,0 +1,13 @@
+post:
+  description: Stops a container with container_id
+  operationId: postContainerStop
+  requestBody:
+    $ref: ../components/requestBodies/ContainerStartStopRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ContainerStopResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Stops a Container
+  tags:
+    - Containers

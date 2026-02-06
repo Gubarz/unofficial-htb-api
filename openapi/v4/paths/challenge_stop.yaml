@@ -1,5 +1,6 @@
 post:
   description: Stops a challenge container with challenge_id
+  deprecated: true
   operationId: postChallengeStop
   requestBody:
     $ref: ../components/requestBodies/ChallengeStartStopRequest.yaml
@@ -8,6 +9,6 @@ post:
       $ref: ../components/responses/ChallengeStopResponse.yaml
     '400':
       $ref: ../components/responses/GenericError.yaml
-  summary: Stops a challenge
+  summary: Stops a challenge - Use Container Stop
   tags:
     - Challenges

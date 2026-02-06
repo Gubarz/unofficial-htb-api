@@ -1,5 +1,6 @@
 get:
   description: Get company detail
+  deprecated: true
   operationId: getCareerCompany
   parameters:
     - $ref: ../components/parameters/Page.yaml

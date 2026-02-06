@@ -1,5 +1,6 @@
 get:
   description: Get career info
+  deprecated: true
   operationId: getCareerInfo
   parameters:
     - $ref: ../components/parameters/JobId.yaml

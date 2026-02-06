@@ -1,5 +1,6 @@
 get:
   description: Retrieves information related to /user/profile/content/{user id}
+  deprecated: true
   operationId: getUserProfileContent
   parameters:
     - $ref: ../components/parameters/UserId.yaml
@@ -8,6 +9,6 @@ get:
       $ref: ../components/responses/ProfileContentUserIdResponse.yaml
     '400':
       $ref: ../components/responses/GenericError.yaml
-  summary: 'User profile: Submitted Content'
+  summary: 'User profile: Submitted Content - See v5'
   tags:
     - User

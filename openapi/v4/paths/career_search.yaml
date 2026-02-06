@@ -1,5 +1,6 @@
 get:
   description: Returns a list of all jobs that match the search query
+  deprecated: true
   operationId: getCareerSearch
   parameters:
     - $ref: ../components/parameters/SearchQuery.yaml

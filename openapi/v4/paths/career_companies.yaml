@@ -1,5 +1,6 @@
 get:
   description: Get /career/companies
+  deprecated: true
   operationId: getCareerCompanies
   responses:
     '200':

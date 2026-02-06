@@ -1,0 +1,19 @@
+content:
+  application/x-www-form-urlencoded:
+    schema:
+      properties:
+        containerable_id:
+          type: integer
+      required:
+        - containerable_id
+      type: object
+  application/json:
+    schema:
+      properties:
+        containerable_id:
+          type: integer
+      required:
+        - containerable_id
+      type: object
+description: use containerable_id
+required: true

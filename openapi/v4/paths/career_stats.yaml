@@ -2,6 +2,7 @@ get:
   description: >-
     Returns a number of new jobs posted today and the total number of jobs
     posted on the platform
+  deprecated: true
   operationId: getCareerStats
   responses:
     '200':

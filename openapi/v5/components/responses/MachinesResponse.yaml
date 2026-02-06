@@ -6,4 +6,8 @@ content:
     schema:
       $ref: ../schemas/MachinesResponse.yaml
 description: Machines Successful
-
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

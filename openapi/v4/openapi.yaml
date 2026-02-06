@@ -25,6 +25,8 @@ tags:
     name: Challenges
   - description: Endpoints related to VPN connections
     name: Connection
+  - description: Containers
+    name: Containers
   - description: Endpoints related to Fortresses
     name: Fortresses
   - description: Endpoints related to the Home page banner
@@ -138,6 +140,10 @@ paths:
     $ref: paths/connections_servers_prolab_{prolabId}.yaml
   /connections/servers/switch/{vpnId}:
     $ref: paths/connections_servers_switch_{vpnId}.yaml
+  /container/start:
+    $ref: paths/container_start.yaml
+  /container/stop:
+    $ref: paths/container_stop.yaml
   /content/stats:
     $ref: paths/content_stats.yaml
   /fortress/{fortressId}:

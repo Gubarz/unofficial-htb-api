@@ -1,5 +1,6 @@
 post:
   description: This is the toggle in the career page to allow companies to reach out to you
+  deprecated: true
   operationId: postCareerTemporaryContactOptin
   requestBody:
     content:

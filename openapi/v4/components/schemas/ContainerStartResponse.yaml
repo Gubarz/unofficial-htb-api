@@ -1,0 +1,10 @@
+description: Schema definition for Container Start Response
+properties:
+  id:
+    example: 1214160
+    type: integer
+  message:
+    example: Instance Created!
+    type: string
+title: Container Start Response
+type: object

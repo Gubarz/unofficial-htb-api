@@ -1,5 +1,6 @@
 get:
   description: Get /career/requests
+  deprecated: true
   operationId: getCareerRequests
   parameters:
     - $ref: ../components/parameters/Page.yaml

@@ -1,5 +1,6 @@
 get:
   description: Returns a list of featured jobs
+  deprecated: true
   operationId: getCareerFeatured
   responses:
     '200':

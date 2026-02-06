@@ -1,5 +1,6 @@
 post:
   description: Starts a challenge container with challenge_id
+  deprecated: true
   operationId: postChallengeStart
   requestBody:
     $ref: ../components/requestBodies/ChallengeStartStopRequest.yaml

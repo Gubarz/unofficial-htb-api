@@ -1,5 +1,6 @@
 get:
   description: Returns a list of all jobs that the user has applied for
+  deprecated: true
   operationId: getCareerHistory
   responses:
     '200':

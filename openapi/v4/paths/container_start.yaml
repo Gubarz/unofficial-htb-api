@@ -1,0 +1,13 @@
+post:
+  description: Starts a container with container_id
+  operationId: postContainerStart
+  requestBody:
+    $ref: ../components/requestBodies/ContainerStartStopRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ContainerStartResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Starts a Container
+  tags:
+    - Containers

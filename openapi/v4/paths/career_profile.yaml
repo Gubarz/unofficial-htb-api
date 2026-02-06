@@ -1,5 +1,6 @@
 get:
   description: Returns a list of profile information related to the user's career settings
+  deprecated: true
   operationId: getCareerProfile
   responses:
     '200':
