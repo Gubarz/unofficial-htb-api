@@ -22,6 +22,8 @@ tags:
     name: Challenges
   - description: Endpoints related to VPN connections
     name: Connection
+  - description: Containers
+    name: Containers
   - description: Endpoints related to Fortresses
     name: Fortresses
   - description: Endpoints related to the Home page banner
@@ -126,6 +128,7 @@ paths:
   /career/companies:
     get:
       description: Get /career/companies
+      deprecated: true
       operationId: getCareerCompanies
       responses:
         '200':
@@ -138,6 +141,7 @@ paths:
   /career/company/{companyId}:
     get:
       description: Get company detail
+      deprecated: true
       operationId: getCareerCompany
       parameters:
         - $ref: '#/components/parameters/Page'
@@ -153,6 +157,7 @@ paths:
   /career/featured:
     get:
       description: Returns a list of featured jobs
+      deprecated: true
       operationId: getCareerFeatured
       responses:
         '200':
@@ -165,6 +170,7 @@ paths:
   /career/history:
     get:
       description: Returns a list of all jobs that the user has applied for
+      deprecated: true
       operationId: getCareerHistory
       responses:
         '200':
@@ -177,6 +183,7 @@ paths:
   /career/info/{jobId}:
     get:
       description: Get career info
+      deprecated: true
       operationId: getCareerInfo
       parameters:
         - $ref: '#/components/parameters/JobId'
@@ -191,6 +198,7 @@ paths:
   /career/profile:
     get:
       description: Returns a list of profile information related to the user's career settings
+      deprecated: true
       operationId: getCareerProfile
       responses:
         '200':
@@ -203,6 +211,7 @@ paths:
   /career/requests:
     get:
       description: Get /career/requests
+      deprecated: true
       operationId: getCareerRequests
       parameters:
         - $ref: '#/components/parameters/Page'
@@ -217,6 +226,7 @@ paths:
   /career/search:
     get:
       description: Returns a list of all jobs that match the search query
+      deprecated: true
       operationId: getCareerSearch
       parameters:
         - $ref: '#/components/parameters/SearchQuery'
@@ -234,6 +244,7 @@ paths:
   /career/stats:
     get:
       description: Returns a number of new jobs posted today and the total number of jobs posted on the platform
+      deprecated: true
       operationId: getCareerStats
       responses:
         '200':
@@ -246,6 +257,7 @@ paths:
   /career/temporary/contact/optin:
     post:
       description: This is the toggle in the career page to allow companies to reach out to you
+      deprecated: true
       operationId: postCareerTemporaryContactOptin
       requestBody:
         content:
@@ -419,6 +431,7 @@ paths:
   /challenge/start:
     post:
       description: Starts a challenge container with challenge_id
+      deprecated: true
       operationId: postChallengeStart
       requestBody:
         $ref: '#/components/requestBodies/ChallengeStartStopRequest'
@@ -427,12 +440,13 @@ paths:
           $ref: '#/components/responses/ChallengeStartResponse'
         '400':
           $ref: '#/components/responses/GenericError'
-      summary: Starts a challenge
+      summary: Starts a challenge - Use Container Start
       tags:
         - Challenges
   /challenge/stop:
     post:
       description: Stops a challenge container with challenge_id
+      deprecated: true
       operationId: postChallengeStop
       requestBody:
         $ref: '#/components/requestBodies/ChallengeStartStopRequest'
@@ -441,7 +455,7 @@ paths:
           $ref: '#/components/responses/ChallengeStopResponse'
         '400':
           $ref: '#/components/responses/GenericError'
-      summary: Stops a challenge
+      summary: Stops a challenge - Use Container Stop
       tags:
         - Challenges
   /challenge/suggested:
@@ -613,6 +627,34 @@ paths:
       summary: Swtich VPN server
       tags:
         - Connection
+  /container/start:
+    post:
+      description: Starts a container with container_id
+      operationId: postContainerStart
+      requestBody:
+        $ref: '#/components/requestBodies/ContainerStartStopRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/ContainerStartResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Starts a Container
+      tags:
+        - Containers
+  /container/stop:
+    post:
+      description: Stops a container with container_id
+      operationId: postContainerStop
+      requestBody:
+        $ref: '#/components/requestBodies/ContainerStartStopRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/ContainerStopResponse'
+        '400':
+          $ref: '#/components/responses/GenericError'
+      summary: Stops a Container
+      tags:
+        - Containers
   /content/stats:
     get:
       description: Retrieves information related to /content/stats
@@ -2740,6 +2782,7 @@ paths:
   /user/profile/content/{userId}:
     get:
       description: Retrieves information related to /user/profile/content/{user id}
+      deprecated: true
       operationId: getUserProfileContent
       parameters:
         - $ref: '#/components/parameters/UserId'
@@ -2748,7 +2791,7 @@ paths:
           $ref: '#/components/responses/ProfileContentUserIdResponse'
         '400':
           $ref: '#/components/responses/GenericError'
-      summary: 'User profile: Submitted Content'
+      summary: 'User profile: Submitted Content - See v5'
       tags:
         - User
   /user/profile/graph/{period}/{userId}:
@@ -4915,6 +4958,17 @@ components:
           example: true
           type: boolean
       title: Connection Server Switch Resposne
+      type: object
+    ContainerStartResponse:
+      description: Schema definition for Container Start Response
+      properties:
+        id:
+          example: 1214160
+          type: integer
+        message:
+          example: Instance Created!
+          type: string
+      title: Container Start Response
       type: object
     ContentStatsResponse:
       description: Schema definition for Content Stats Response
@@ -11787,6 +11841,30 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
+    ContainerStartResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ContainerStartResponse'
+      description: Container Start Response
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    ContainerStopResponse:
+      content:
+        application/json:
+          example:
+            message: Container Stopped
+          schema:
+            $ref: '#/components/schemas/Messagesuccess'
+      description: Container Stop Response
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
     ContentStatsResponse:
       content:
         application/json:
@@ -13455,6 +13533,26 @@ components:
               - challenge_id
             type: object
       description: use challenge_id
+      required: true
+    ContainerStartStopRequest:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            properties:
+              containerable_id:
+                type: integer
+            required:
+              - containerable_id
+            type: object
+        application/json:
+          schema:
+            properties:
+              containerable_id:
+                type: integer
+            required:
+              - containerable_id
+            type: object
+      description: use containerable_id
       required: true
     MultiOwnRequest:
       content:
