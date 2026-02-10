@@ -6276,7 +6276,7 @@ components:
           type: string
         machinePwnedDate:
           type: string
-          format: date-time
+          format: string
         ip:
           example: 10.10.10.10
           format: ipv4
