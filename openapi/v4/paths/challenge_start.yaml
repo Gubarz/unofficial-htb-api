@@ -9,6 +9,6 @@ post:
       $ref: ../components/responses/ChallengeStartResponse.yaml
     '400':
       $ref: ../components/responses/GenericError.yaml
-  summary: Starts a challenge
+  summary: Starts a challenge - Use Container Start
   tags:
     - Challenges
