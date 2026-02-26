@@ -107,7 +107,7 @@ paths:
       summary: User Profile Content
       tags:
         - User
-  /user/profile/dashboard/favorites:
+  /user/dashboard/favorites:
     get:
       description: User Dashboard Favorites
       operationId: getUserDashboardFavorites
@@ -119,7 +119,7 @@ paths:
       summary: User Dashboard Favorites
       tags:
         - User
-  /user/profile/dashboard/inprogress:
+  /user/dashboard/inprogress:
     get:
       description: User Dashboard In Progress
       operationId: getUserDashboardInProgress
@@ -131,7 +131,7 @@ paths:
       summary: User Dashboard In Progress
       tags:
         - User
-  /user/profile/dashboard/recommended:
+  /user/dashboard/recommended:
     get:
       description: User Dashboard Recommended
       operationId: getUserDashboardRecommended
@@ -428,6 +428,9 @@ components:
           type: string
           format: date-time
           nullable: true
+        life_remaining:
+          type: integer
+          nullable: true
     MachineLabel:
       type: object
       properties:
@@ -444,6 +447,7 @@ components:
           type: string
         avatar:
           type: string
+          nullable: true
         isRespected:
           type: boolean
         profile_url:
@@ -1455,18 +1459,6 @@ components:
         - proLabs
         - tracks
         - fortresses
-    UserDashboardFavoritesResponse:
-      description: Schema definition for the /user/dashboard/favorites endpoint response.
-      allOf:
-        - $ref: '#/components/schemas/UserDashboardCollections'
-    UserDashboardInProgressResponse:
-      description: Schema definition for the /user/dashboard/inprogress endpoint response.
-      allOf:
-        - $ref: '#/components/schemas/UserDashboardCollections'
-    UserDashboardRecommendedResponse:
-      description: Schema definition for the /user/dashboard/recommended endpoint response.
-      allOf:
-        - $ref: '#/components/schemas/UserDashboardCollections'
   examples:
     ConnectionsSuccess:
       summary: Assigned Servers
@@ -2308,7 +2300,7 @@ components:
             UserDashboardFavorites:
               $ref: '#/components/examples/UserDashboardFavoritesSuccess'
           schema:
-            $ref: '#/components/schemas/UserDashboardFavoritesResponse'
+            $ref: '#/components/schemas/UserDashboardCollections'
     UserDashboardInProgressResponse:
       description: User Dashboard items the user is currently progressing through
       content:
@@ -2317,7 +2309,7 @@ components:
             UserDashboardInProgress:
               $ref: '#/components/examples/UserDashboardInProgressSuccess'
           schema:
-            $ref: '#/components/schemas/UserDashboardInProgressResponse'
+            $ref: '#/components/schemas/UserDashboardCollections'
     UserDashboardRecommendedResponse:
       description: User Dashboard recommendations tailored to the user
       content:
@@ -2326,7 +2318,7 @@ components:
             UserDashboardRecommended:
               $ref: '#/components/examples/UserDashboardRecommendedSuccess'
           schema:
-            $ref: '#/components/schemas/UserDashboardRecommendedResponse'
+            $ref: '#/components/schemas/UserDashboardCollections'
   requestBodies:
     MachineOwnRequest:
       content:

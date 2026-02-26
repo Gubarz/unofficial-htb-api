@@ -46,6 +46,8 @@ tags:
     name: Sherlocks
   - description: Endpoints related to Starting Point
     name: Starting Point
+  - description: Endpoint for Tags
+    name: Tags
   - description: Endpoints related to Team Rankings
     name: Team
   - description: Endpoints related to Tracks
@@ -1040,18 +1042,18 @@ paths:
       summary: Use /reviews/{product}/{productId}/paginated
       tags:
         - Machines
-  /machine/tags/list:
+  /tags/list:
     get:
-      description: Retrieve a list of machine tags.
-      operationId: getMachineTagsList
+      description: Retrieve a list of tags.
+      operationId: getTagsList
       responses:
         '200':
-          $ref: '#/components/responses/MachineTagsListResponse'
+          $ref: '#/components/responses/TagsListResponse'
         '400':
           $ref: '#/components/responses/GenericError'
-      summary: Get machine tags list
+      summary: Get tags list
       tags:
-        - Machines
+        - Tags
   /machine/tags/{machineId}:
     get:
       description: Retrieves information related to /machine/tags/{machine id}
@@ -1887,7 +1889,7 @@ paths:
         - $ref: '#/components/parameters/UserId'
       responses:
         '200':
-          $ref: '#/components/responses/SeasonUserRankSeasonIdResponse'
+          $ref: '#/components/responses/SeasonUserRankSeasonIdRanksResponse'
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Get a users rank for all seasons
@@ -3771,9 +3773,11 @@ components:
       title: Career Featured Response
       type: object
     StringArray:
+      type: array
+      nullable: true
       items:
         type: string
-      type: array
+        nullable: true
     CareerHistoryResponse:
       description: Schema definition for Career History Response
       properties:
@@ -3951,6 +3955,7 @@ components:
         user_avatar:
           example: /storage/avatars/fd5b946aaadbb0254014fa10a22dd403.png
           type: string
+          nullable: true
         user_id:
           example: 82600
           type: integer
@@ -4008,9 +4013,10 @@ components:
       title: Challenge Change Log Id Response
       type: object
     IntArray:
+      type: array
+      nullable: true
       items:
         type: integer
-      type: array
     PlayInfoAlt:
       type: object
       properties:
@@ -4152,15 +4158,19 @@ components:
           nullable: true
           type: string
         docker_ports:
+          type: array
           nullable: true
-          $ref: '#/components/schemas/IntArray'
+          allOf:
+            - $ref: '#/components/schemas/IntArray'
         download:
           example: true
           type: boolean
         file_name:
           type: string
+          nullable: true
         file_size:
           type: string
+          nullable: true
         first_blood_time:
           example: 0H 39M 49S
           type: string
@@ -4217,6 +4227,7 @@ components:
         sha256:
           example: b3edd221b1ca7ae93673ddcbdfe5dbe2109998db2865f0e1b8ec5cc9fac56492
           type: string
+          nullable: true
         solves:
           example: 704
           type: integer
@@ -4234,6 +4245,7 @@ components:
           type: boolean
         user_submitted_difficulty:
           type: integer
+          nullable: true
         avatar_url:
           type: string
       title: Challenge
@@ -4725,7 +4737,10 @@ components:
     ConnectionStatusProductData:
       properties:
         connection:
-          $ref: '#/components/schemas/Connection'
+          nullable: true
+          type: object
+          anyOf:
+            - $ref: '#/components/schemas/Connection'
         location_type_friendly:
           type: string
         server:
@@ -5139,15 +5154,19 @@ components:
         number_of_flags:
           example: 11
           type: integer
+        owned_flags:
+          type: integer
+        ownership:
+          type: number
       title: Fortress
       type: object
     FortressesResponse:
       description: Schema definition for Fortresses Response
       properties:
         data:
-          additionalProperties:
+          type: array
+          items:
             $ref: '#/components/schemas/Fortress'
-          type: object
         status:
           example: true
           type: boolean
@@ -5431,6 +5450,8 @@ components:
           nullable: true
           type: number
         categoryID:
+          type: integer
+        categoryName:
           type: string
         avatarUrl:
           type: string
@@ -5451,6 +5472,13 @@ components:
         type:
           type: string
       type: object
+    HomeProgressChallengeCard:
+      description: Schema definition for Home Challenge Card
+      items:
+        $ref: '#/components/schemas/HomeProgressChallengeCardItem'
+        nullable: true
+      title: Home Challenge Card
+      type: array
     HomeUserProgressFortressItem:
       properties:
         avatar:
@@ -5472,11 +5500,25 @@ components:
         url:
           example: /fortresses/1
           type: string
+        avatarUrl:
+          type: string
+        progress:
+          type: integer
+        solvesCount:
+          type: integer
+        tasksCompleted:
+          type: integer
+        tasksTotal:
+          type: integer
+        type:
+          type: string
       type: object
     HomeUserProgressFortressesCard:
-      additionalProperties:
+      items:
         $ref: '#/components/schemas/HomeUserProgressFortressItem'
-      type: object
+        nullable: true
+      type: array
+      title: Home Fortress Card
     HomeProgressMachineCardItem:
       properties:
         avatar:
@@ -5493,11 +5535,11 @@ components:
           nullable: true
           type: number
         root_flag:
-          type: integer
+          type: boolean
         url:
           type: string
         user_flag:
-          type: integer
+          type: boolean
         avatarUrl:
           type: string
         status:
@@ -5581,7 +5623,7 @@ components:
     HomeUserProgressData:
       properties:
         challenges:
-          $ref: '#/components/schemas/HomeProgressChallengeCardItem'
+          $ref: '#/components/schemas/HomeProgressChallengeCard'
         fortresses:
           $ref: '#/components/schemas/HomeUserProgressFortressesCard'
         machines:
@@ -5695,6 +5737,8 @@ components:
           $ref: '#/components/schemas/HomeTodoProlabCard'
         tracks:
           $ref: '#/components/schemas/HomeRecommendedTracksCard'
+        sherlocks:
+          $ref: '#/components/schemas/HomeRecommendedSherlocksCard'
       type: object
     HomeUserTodoRepsonse:
       description: Schema definition for Home User Todo Repsonse
@@ -5708,6 +5752,7 @@ components:
         avatar:
           example: /storage/avatars/23e804513a47e8f20bc865d0419946e1.png
           type: string
+          nullable: true
         expires_at:
           example: '2024-05-18 17:42:04'
           type: string
@@ -5748,15 +5793,13 @@ components:
           nullable: true
           type: integer
       type: object
-    ActiveMachineInfoWrapper:
-      allOf:
-        - $ref: '#/components/schemas/ActiveMachineInfo'
-      nullable: true
-      type: object
     ActiveMachineResponse:
       properties:
         info:
-          $ref: '#/components/schemas/ActiveMachineInfoWrapper'
+          type: object
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/ActiveMachineInfo'
       type: object
     MachineAcitivtyItem:
       properties:
@@ -5773,6 +5816,7 @@ components:
           type: string
         user_avatar:
           type: string
+          nullable: true
         user_id:
           type: integer
         user_name:
@@ -6058,6 +6102,7 @@ components:
       properties:
         avatar:
           type: string
+          nullable: true
         id:
           type: integer
         is_root_blood:
@@ -6204,6 +6249,7 @@ components:
         avatar:
           example: /storage/avatars/3453459704ee924e218ba13453453453.png
           type: string
+          nullable: true
         id:
           example: 234234
           type: integer
@@ -6388,6 +6434,7 @@ components:
         avatar:
           example: /storage/avatars/a2c2bd7b4e98ff8b782ed590896305a1.png
           type: string
+          nullable: true
         difficultyText:
           example: Medium
           type: string
@@ -6652,15 +6699,15 @@ components:
           $ref: '#/components/schemas/TagCategoryTagsItems'
       title: Tag Category
       type: object
-    MachinetagsListInfoItems:
+    TagsListInfoItems:
       items:
         $ref: '#/components/schemas/TagCategory'
       type: array
-    MachineTagsListResponse:
+    TagsListResponse:
       description: Schema definition for Machine Tags List Response
       properties:
         info:
-          $ref: '#/components/schemas/MachinetagsListInfoItems'
+          $ref: '#/components/schemas/TagsListInfoItems'
       title: Machine Tag List Response
       type: object
     MachineTagItems:
@@ -7078,11 +7125,14 @@ components:
         avatar_thumb:
           example: /storage/avatars/2b44f5ca5458931c49e1fa57da6705c1_thumb.png
           type: string
+          nullable: true
         id:
           example: 11649
           type: integer
         name:
           example: RastaMouse
+          type: string
+        account_id:
           type: string
       title: Lab Master
       type: object
@@ -7215,6 +7265,8 @@ components:
     ProlabOverviewData:
       description: Schema definition for Prolab Overview Data
       properties:
+        content_id:
+          type: string
         designated_level:
           $ref: '#/components/schemas/DesignatedLevel'
         excerpt:
@@ -7310,7 +7362,9 @@ components:
     ProlabRatingData:
       properties:
         rating:
-          type: string
+          oneOf:
+            - type: number
+            - type: string
       type: object
     ProlabRatingResponse:
       properties:
@@ -7327,6 +7381,7 @@ components:
         difficulty:
           example: 8
           type: integer
+          nullable: true
         helpful_pro_feedbacks_count:
           example: 1
           type: integer
@@ -7339,6 +7394,7 @@ components:
         text:
           example: I really enjoyed the lab for a Red team_ experience
           type: string
+          nullable: true
         user:
           $ref: '#/components/schemas/UserIdNameThumb'
         user_in_helpful_pro_feedbacks:
@@ -7426,6 +7482,7 @@ components:
           type: string
         subscription_period:
           type: string
+          nullable: true
         type:
           nullable: true
           type: string
@@ -7490,6 +7547,14 @@ components:
         user_eligible_for_certificate:
           example: false
           type: boolean
+        content_id:
+          type: string
+        rating:
+          type: number
+        rating_count:
+          type: integer
+        pro_flags_owns_count:
+          type: integer
       title: Prolab
       type: object
     ProlabDataItems:
@@ -7810,6 +7875,7 @@ components:
       properties:
         avatar_thumb:
           type: string
+          nullable: true
         challenge_bloods:
           type: integer
         challenge_owns:
@@ -8156,6 +8222,7 @@ components:
       properties:
         avatar_thumb:
           type: string
+          nullable: true
         challenge_bloods:
           type: integer
         challenge_owns:
@@ -8378,6 +8445,7 @@ components:
         description:
           example: In this Sherlock, players will investigate the Demodex rootkit attributed to Salt Typhoon.
           type: string
+          nullable: true
         id:
           example: 1006
           type: integer
@@ -8462,6 +8530,7 @@ components:
           type: boolean
         background_image:
           type: string
+          nullable: true
         end_date:
           format: date-time
           type: string
@@ -8471,6 +8540,7 @@ components:
           type: boolean
         logo:
           type: string
+          nullable: true
         name:
           type: string
         start_date:
@@ -8492,6 +8562,7 @@ components:
           type: string
         trailer:
           type: string
+          nullable: true
       type: object
     SeasonListData:
       items:
@@ -8523,6 +8594,9 @@ components:
         is_spawning:
           nullable: true
           type: boolean
+        life_remaining:
+          type: integer
+          nullable: true
       title: Play Info
       type: object
     SeasonActiveData:
@@ -8639,7 +8713,7 @@ components:
         production:
           type: integer
         rating:
-          type: integer
+          type: number
         ratingCount:
           type: integer
         user_blood_points:
@@ -8758,6 +8832,7 @@ components:
           type: integer
         user_avatar:
           type: string
+          nullable: true
       type: object
     FollowerItems:
       items:
@@ -8788,6 +8863,19 @@ components:
         - maxItems: 0
           type: array
           items: {}
+    NextRank:
+      properties:
+        id:
+          example: 5
+          type: integer
+          nullable: true
+        title:
+          nullable: true
+          type: string
+        requirement:
+          type: integer
+          nullable: true
+      type: object
     SeasonUserRankDataTotalSeasonFlags:
       type: object
       properties:
@@ -8798,7 +8886,10 @@ components:
     SeasonUserRankData:
       properties:
         flags_to_next_rank:
-          $ref: '#/components/schemas/FlagsToNextRank'
+          type: object
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/FlagsToNextRank'
         league:
           type: string
         rank:
@@ -8810,7 +8901,10 @@ components:
         total_season_points:
           type: integer
         next_rank:
-          type: integer
+          type: object
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/NextRank'
         root_owns:
           type: integer
         root_bloods:
@@ -8829,12 +8923,24 @@ components:
           $ref: '#/components/schemas/SeasonUserRankData'
       title: Season User Rank
       type: object
+    SeasonUserRankDataItems:
+      items:
+        $ref: '#/components/schemas/SeasonUserRankData'
+      type: array
+    SeasonUserRankRanks:
+      description: Schema definition for Season User Rank
+      properties:
+        data:
+          $ref: '#/components/schemas/SeasonUserRankDataItems'
+      title: Season User Rank
+      type: object
     SeasonPlayersLeaderboardDataItem:
       properties:
         account_id:
           type: string
         avatar_thumb:
           type: string
+          nullable: true
         country:
           nullable: true
           type: string
@@ -8883,6 +8989,7 @@ components:
       properties:
         avatar_thumb:
           type: string
+          nullable: true
         country:
           nullable: true
           type: string
@@ -8911,6 +9018,7 @@ components:
           type: number
         country_name:
           type: string
+          nullable: true
       type: object
     SeasonPlayersLeaderBoardTopData:
       items:
@@ -9022,6 +9130,18 @@ components:
       items:
         $ref: '#/components/schemas/Maker'
       type: array
+    SherlockBlood:
+      properties:
+        blood_user_id:
+          type: integer
+        blood_user:
+          type: string
+        blood_user_avatar:
+          type: string
+          nullable: true
+        blood_time:
+          type: string
+      type: object
     SherlockPlay:
       properties:
         creators:
@@ -9036,6 +9156,8 @@ components:
           type: string
         play_info:
           $ref: '#/components/schemas/PlayInfoAlt'
+        blood:
+          $ref: '#/components/schemas/SherlockBlood'
       type: object
     SherlockPlayResponse:
       description: Schema definition for Sherlock Play Response
@@ -9420,6 +9542,7 @@ components:
         avatar_thumb:
           example: /storage/avatars/sdfgs45345edrgsdfsd374fb23452d_thumb.png
           type: string
+          nullable: true
         id:
           example: 1234
           type: integer
@@ -9758,6 +9881,7 @@ components:
       properties:
         avatar:
           type: string
+          nullable: true
         country_code:
           nullable: true
           type: string
@@ -9996,6 +10120,7 @@ components:
       properties:
         avatar_thumb:
           type: string
+          nullable: true
         id:
           type: integer
         name:
@@ -10189,6 +10314,7 @@ components:
       properties:
         avatar:
           type: string
+          nullable: true
         country_code:
           nullable: true
           type: string
@@ -10203,7 +10329,9 @@ components:
         public:
           type: integer
         rank:
-          type: string
+          oneOf:
+            - type: string
+            - type: integer
         rank_text:
           type: string
         role:
@@ -10408,6 +10536,7 @@ components:
           type: string
         last_seen:
           type: string
+          nullable: true
         name:
           type: string
       type: object
@@ -10491,8 +10620,10 @@ components:
       properties:
         country:
           type: string
+          nullable: true
         country_name:
           type: string
+          nullable: true
         id:
           type: integer
         name:
@@ -10505,8 +10636,13 @@ components:
         challenge_id:
           type: integer
         created_at:
+          nullable: true
+          format: date-time
           type: string
-        deleted_at: {}
+        deleted_at:
+          nullable: true
+          format: date-time
+          type: string
         deleted_index_fix:
           type: integer
         id:
@@ -10515,12 +10651,17 @@ components:
           $ref: '#/components/schemas/MachineOwnsTabloid'
         machine_flag_id:
           type: integer
+          nullable: true
         machine_id:
           type: integer
         sp_flag:
           type: integer
-        sync_source: {}
+        sync_source:
+          type: string
+          nullable: true
         updated_at:
+          nullable: true
+          format: date-time
           type: string
         user:
           $ref: '#/components/schemas/UserOwnsUser'
@@ -10799,6 +10940,7 @@ components:
           type: string
         current_rank_progress:
           type: number
+          nullable: true
         github:
           nullable: true
           type: string
@@ -11107,6 +11249,10 @@ components:
           type: number
         total_challenges:
           type: number
+    ChallengeDifficultiesItems:
+      items:
+        $ref: '#/components/schemas/ChallengeDifficulties'
+      type: array
     ProfileProgressChallengeOwns:
       properties:
         percentage:
@@ -11121,7 +11267,7 @@ components:
         challenge_categories:
           $ref: '#/components/schemas/ProfileProgressChallengeItems'
         challenge_difficulties:
-          $ref: '#/components/schemas/ChallengeDifficulties'
+          $ref: '#/components/schemas/ChallengeDifficultiesItems'
         challenge_owns:
           $ref: '#/components/schemas/ProfileProgressChallengeOwns'
         solved_tasks:
@@ -11183,6 +11329,10 @@ components:
         mini:
           type: boolean
         avatar:
+          type: string
+        id:
+          type: integer
+        identifier:
           type: string
       type: object
     ProfileProgressProlabItems:
@@ -11255,7 +11405,7 @@ components:
         points:
           type: integer
         points_growth:
-          type: number
+          type: string
         previous_points:
           type: integer
         previous_rank:
@@ -11263,7 +11413,7 @@ components:
         rank:
           type: integer
         rank_growth:
-          type: number
+          type: string
       type: object
     RankingGraphStats:
       properties:
@@ -11272,7 +11422,7 @@ components:
         points_diff:
           type: integer
         points_growth:
-          type: number
+          type: string
         ranks_diff:
           type: integer
       type: object
@@ -12146,12 +12296,12 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    MachineTagsListResponse:
+    TagsListResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MachineTagsListResponse'
-      description: Machine Tags List Response
+            $ref: '#/components/schemas/TagsListResponse'
+      description: Tags List Response
       headers:
         x-ratelimit-limit:
           $ref: '#/components/headers/XRateLimitHeader'
@@ -12677,6 +12827,17 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SeasonUserRank'
+      description: Season User Rank Response
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    SeasonUserRankSeasonIdRanksResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SeasonUserRankRanks'
       description: Season User Rank Response
       headers:
         x-ratelimit-limit:
