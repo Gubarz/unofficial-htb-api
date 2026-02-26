@@ -2,7 +2,7 @@ properties:
   challenge_categories:
     $ref: ./ProfileProgressChallengeItems.yaml
   challenge_difficulties:
-    $ref: ./ChallengeDifficulties.yaml
+    $ref: ./ChallengeDifficultiesItems.yaml
   challenge_owns:
     $ref: ./ProfileProgressChallengeOwns.yaml
   solved_tasks:

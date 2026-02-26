@@ -1,8 +1,8 @@
 content:
   application/json:
     schema:
-      $ref: ../schemas/MachineTagsListResponse.yaml
-description: Machine Tags List Response
+      $ref: ../schemas/SeasonUserRankRanks.yaml
+description: Season User Rank Response
 headers:
   x-ratelimit-limit:
     $ref: ../headers/XRateLimitHeader.yaml

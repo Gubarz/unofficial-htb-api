@@ -1,12 +1,12 @@
 properties:
   id:
+    example: 5
     type: integer
-  name:
-    type: string
-  points:
     nullable: true
-    type: integer
-  user_avatar:
+  title:
+    nullable: true
     type: string
+  requirement:
+    type: integer
     nullable: true
 type: object

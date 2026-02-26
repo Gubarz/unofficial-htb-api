@@ -16,5 +16,8 @@ properties:
   is_spawning:
     nullable: true
     type: boolean
+  life_remaining:
+    type: integer
+    nullable: true
 title: Play Info
 type: object

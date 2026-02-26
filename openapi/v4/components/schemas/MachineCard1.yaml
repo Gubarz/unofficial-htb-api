@@ -3,6 +3,7 @@ properties:
   avatar:
     example: /storage/avatars/a2c2bd7b4e98ff8b782ed590896305a1.png
     type: string
+    nullable: true
   difficultyText:
     example: Medium
     type: string

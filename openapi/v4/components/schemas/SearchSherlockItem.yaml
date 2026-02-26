@@ -11,6 +11,7 @@ properties:
   description:
     example: In this Sherlock, players will investigate the Demodex rootkit attributed to Salt Typhoon.
     type: string
+    nullable: true
   id:
     example: 1006
     type: integer

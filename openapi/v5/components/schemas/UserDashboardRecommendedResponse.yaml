@@ -1,3 +1,0 @@
-description: Schema definition for the /user/dashboard/recommended endpoint response.
-allOf:
-  - $ref: ./UserDashboardCollections.yaml

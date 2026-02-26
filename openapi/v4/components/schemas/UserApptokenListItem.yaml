@@ -5,6 +5,7 @@ properties:
     type: string
   last_seen:
     type: string
+    nullable: true
   name:
     type: string
 type: object

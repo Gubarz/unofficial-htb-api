@@ -22,5 +22,9 @@ properties:
   number_of_flags:
     example: 11
     type: integer
+  owned_flags:
+    type: integer
+  ownership:
+    type: number
 title: Fortress
 type: object

@@ -1,8 +1,10 @@
 properties:
   country:
     type: string
+    nullable: true
   country_name:
     type: string
+    nullable: true
   id:
     type: integer
   name:

@@ -7,6 +7,7 @@ properties:
     type: string
   current_rank_progress:
     type: number
+    nullable: true
   github:
     nullable: true
     type: string

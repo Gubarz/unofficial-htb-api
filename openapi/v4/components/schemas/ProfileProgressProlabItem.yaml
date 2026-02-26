@@ -16,4 +16,8 @@ properties:
     type: boolean
   avatar:
     type: string
+  id:
+    type: integer
+  identifier:
+    type: string
 type: object

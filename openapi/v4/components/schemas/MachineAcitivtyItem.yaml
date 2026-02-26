@@ -12,6 +12,7 @@ properties:
     type: string
   user_avatar:
     type: string
+    nullable: true
   user_id:
     type: integer
   user_name:

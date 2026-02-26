@@ -1,4 +1,7 @@
 properties:
   info:
-    $ref: ./ActiveMachineInfoWrapper.yaml
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ./ActiveMachineInfo.yaml
 type: object

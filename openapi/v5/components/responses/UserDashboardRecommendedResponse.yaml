@@ -5,4 +5,4 @@ content:
       UserDashboardRecommended:
         $ref: ../examples/UserDashboardRecommendedSuccess.yaml
     schema:
-      $ref: ../schemas/UserDashboardRecommendedResponse.yaml
+      $ref: ../schemas/UserDashboardCollections.yaml

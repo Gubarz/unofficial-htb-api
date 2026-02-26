@@ -11,6 +11,8 @@ properties:
     nullable: true
     type: number
   categoryID:
+    type: integer
+  categoryName:
     type: string
   avatarUrl:
     type: string

@@ -13,11 +13,11 @@ properties:
     nullable: true
     type: number
   root_flag:
-    type: integer
+    type: boolean
   url:
     type: string
   user_flag:
-    type: integer
+    type: boolean
   avatarUrl:
     type: string
   status:

@@ -1,4 +1,6 @@
 properties:
   rating:
-    type: string
+    oneOf: 
+      -  type: number
+      -  type: string
 type: object

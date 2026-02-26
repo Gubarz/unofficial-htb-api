@@ -50,5 +50,13 @@ properties:
   user_eligible_for_certificate:
     example: false
     type: boolean
+  content_id:
+    type: string
+  rating:
+    type: number
+  rating_count:
+    type: integer
+  pro_flags_owns_count:
+    type: integer
 title: Prolab
 type: object

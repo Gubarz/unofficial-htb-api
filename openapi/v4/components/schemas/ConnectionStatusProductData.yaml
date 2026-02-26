@@ -1,6 +1,9 @@
 properties:
   connection:
-    $ref: ./Connection.yaml
+    nullable: true
+    type: object
+    anyOf: 
+      -  $ref: ./Connection.yaml
   location_type_friendly:
     type: string
   server:

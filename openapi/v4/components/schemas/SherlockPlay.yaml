@@ -11,4 +11,6 @@ properties:
     type: string
   play_info:
     $ref: ./PlayInfoAlt.yaml
+  blood:
+    $ref: SherlockBlood.yaml
 type: object

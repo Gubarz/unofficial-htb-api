@@ -7,6 +7,7 @@ properties:
   difficulty:
     example: 8
     type: integer
+    nullable: true
   helpful_pro_feedbacks_count:
     example: 1
     type: integer
@@ -19,6 +20,7 @@ properties:
   text:
     example: I really enjoyed the lab for a Red team_ experience
     type: string
+    nullable: true
   user:
     $ref: ./UserIdNameThumb.yaml
   user_in_helpful_pro_feedbacks:

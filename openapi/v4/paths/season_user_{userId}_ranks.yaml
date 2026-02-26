@@ -5,7 +5,7 @@ get:
     - $ref: ../components/parameters/UserId.yaml
   responses:
     '200':
-      $ref: ../components/responses/SeasonUserRankSeasonIdResponse.yaml
+      $ref: ../components/responses/SeasonUserRankSeasonIdRanksResponse.yaml
     '400':
       $ref: ../components/responses/GenericError.yaml
   summary: Get a users rank for all seasons

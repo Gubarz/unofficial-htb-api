@@ -18,4 +18,16 @@ properties:
   url:
     example: /fortresses/1
     type: string
+  avatarUrl:
+    type: string
+  progress:
+    type: integer
+  solvesCount:
+    type: integer
+  tasksCompleted:
+    type: integer
+  tasksTotal:
+    type: integer
+  type:
+    type: string
 type: object

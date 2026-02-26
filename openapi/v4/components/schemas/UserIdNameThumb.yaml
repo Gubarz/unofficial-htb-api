@@ -3,11 +3,14 @@ properties:
   avatar_thumb:
     example: /storage/avatars/2b44f5ca5458931c49e1fa57da6705c1_thumb.png
     type: string
+    nullable: true
   id:
     example: 11649
     type: integer
   name:
     example: RastaMouse
+    type: string
+  account_id:
     type: string
 title: Lab Master
 type: object

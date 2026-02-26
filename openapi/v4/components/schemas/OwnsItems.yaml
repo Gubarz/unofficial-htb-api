@@ -4,8 +4,13 @@ properties:
   challenge_id:
     type: integer
   created_at:
+    nullable: true
+    format: date-time
     type: string
-  deleted_at: {}
+  deleted_at:
+    nullable: true
+    format: date-time
+    type: string
   deleted_index_fix:
     type: integer
   id:
@@ -14,12 +19,17 @@ properties:
     $ref: ./MachineOwnsTabloid.yaml
   machine_flag_id:
     type: integer
+    nullable: true
   machine_id:
     type: integer
   sp_flag:
     type: integer
-  sync_source: {}
+  sync_source:
+    type: string
+    nullable: true
   updated_at:
+    nullable: true
+    format: date-time
     type: string
   user:
     $ref: ./UserOwnsUser.yaml

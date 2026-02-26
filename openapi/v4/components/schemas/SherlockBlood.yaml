@@ -1,0 +1,11 @@
+properties:
+  blood_user_id:
+    type: integer
+  blood_user:
+    type: string
+  blood_user_avatar:
+    type: string
+    nullable: true
+  blood_time:
+    type: string
+type: object

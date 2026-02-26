@@ -3,6 +3,7 @@ properties:
   avatar:
     example: /storage/avatars/3453459704ee924e218ba13453453453.png
     type: string
+    nullable: true
   id:
     example: 234234
     type: integer

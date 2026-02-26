@@ -1,4 +1,0 @@
-allOf:
-  - $ref: ./ActiveMachineInfo.yaml
-nullable: true
-type: object

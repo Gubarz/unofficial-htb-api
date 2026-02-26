@@ -16,3 +16,6 @@ properties:
     type: string
     format: date-time
     nullable: true
+  life_remaining:
+    type: integer
+    nullable: true

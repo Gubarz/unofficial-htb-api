@@ -1,5 +1,7 @@
 description: Schema definition for Prolab Overview Data
 properties:
+  content_id:
+    type: string
   designated_level:
     $ref: ./DesignatedLevel.yaml
   excerpt:

@@ -12,6 +12,7 @@ properties:
     type: string
   subscription_period:
     type: string
+    nullable: true
   type:
     nullable: true
     type: string

@@ -7,4 +7,6 @@ properties:
     $ref: ./HomeTodoProlabCard.yaml
   tracks:
     $ref: ./HomeRecommendedTracksCard.yaml
+  sherlocks:
+    $ref: ./HomeRecommendedSherlocksCard.yaml
 type: object

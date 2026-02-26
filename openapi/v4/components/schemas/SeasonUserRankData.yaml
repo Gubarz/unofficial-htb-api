@@ -1,6 +1,9 @@
 properties:
   flags_to_next_rank:
-    $ref: ./FlagsToNextRank.yaml
+    type: object
+    nullable: true
+    allOf: 
+      -  $ref: ./FlagsToNextRank.yaml
   league:
     type: string
   rank:
@@ -12,7 +15,10 @@ properties:
   total_season_points:
     type: integer
   next_rank:
-    type: integer
+    type: object
+    nullable: true
+    allOf: 
+      -  $ref: ./NextRank.yaml
   root_owns:
     type: integer
   root_bloods:

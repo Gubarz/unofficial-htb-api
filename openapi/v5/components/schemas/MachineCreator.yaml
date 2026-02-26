@@ -6,6 +6,7 @@ properties:
     type: string
   avatar:
     type: string
+    nullable: true
   isRespected:
     type: boolean
   profile_url:

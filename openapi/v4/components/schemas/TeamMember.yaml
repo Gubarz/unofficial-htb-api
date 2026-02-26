@@ -2,6 +2,7 @@ description: University Members Resposne
 properties:
   avatar:
     type: string
+    nullable: true
   country_code:
     nullable: true
     type: string

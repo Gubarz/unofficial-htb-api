@@ -1,6 +1,7 @@
 properties:
   avatar_thumb:
     type: string
+    nullable: true
   id:
     type: integer
   name:

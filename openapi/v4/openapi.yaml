@@ -49,6 +49,8 @@ tags:
     name: Sherlocks
   - description: Endpoints related to Starting Point
     name: Starting Point
+  - description: Endpoint for Tags
+    name: Tags
   - description: Endpoints related to Team Rankings
     name: Team
   - description: Endpoints related to Tracks
@@ -198,8 +200,8 @@ paths:
     $ref: paths/machine_reviews_user_{machineId}.yaml
   /machine/reviews/{machineId}:
     $ref: paths/machine_reviews_{machineId}.yaml
-  /machine/tags/list:
-    $ref: paths/machine_tags_list.yaml
+  /tags/list:
+    $ref: paths/tags_list.yaml
   /machine/tags/{machineId}:
     $ref: paths/machine_tags_{machineId}.yaml
   /machine/todo/paginated:

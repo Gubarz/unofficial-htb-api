@@ -1,3 +1,5 @@
+type: array
+nullable: true
 items:
   type: string
-type: array
+  nullable: true

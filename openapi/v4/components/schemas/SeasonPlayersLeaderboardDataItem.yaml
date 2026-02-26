@@ -3,6 +3,7 @@ properties:
     type: string
   avatar_thumb:
     type: string
+    nullable: true
   country:
     nullable: true
     type: string

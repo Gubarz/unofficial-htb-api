@@ -33,7 +33,7 @@ properties:
   production:
     type: integer
   rating:
-    type: integer
+    type: number
   ratingCount:
     type: integer
   user_blood_points:

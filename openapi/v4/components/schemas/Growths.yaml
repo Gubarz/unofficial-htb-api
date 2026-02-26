@@ -5,7 +5,7 @@ properties:
   points:
     type: integer
   points_growth:
-    type: number
+    type: string
   previous_points:
     type: integer
   previous_rank:
@@ -13,5 +13,5 @@ properties:
   rank:
     type: integer
   rank_growth:
-    type: number
+    type: string
 type: object

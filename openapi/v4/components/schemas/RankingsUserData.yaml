@@ -1,6 +1,7 @@
 properties:
   avatar_thumb:
     type: string
+    nullable: true
   challenge_bloods:
     type: integer
   challenge_owns:

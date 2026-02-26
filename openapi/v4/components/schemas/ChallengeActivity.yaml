@@ -16,6 +16,7 @@ properties:
   user_avatar:
     example: /storage/avatars/fd5b946aaadbb0254014fa10a22dd403.png
     type: string
+    nullable: true
   user_id:
     example: 82600
     type: integer

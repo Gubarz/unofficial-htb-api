@@ -72,15 +72,19 @@ properties:
     nullable: true
     type: string
   docker_ports:
+    type: array
     nullable: true
-    $ref: ./IntArray.yaml
+    allOf:
+      - $ref: ./IntArray.yaml
   download:
     example: true
     type: boolean
   file_name:
     type: string
+    nullable: true
   file_size:
     type: string
+    nullable: true
   first_blood_time:
     example: 0H 39M 49S
     type: string
@@ -137,6 +141,7 @@ properties:
   sha256:
     example: b3edd221b1ca7ae93673ddcbdfe5dbe2109998db2865f0e1b8ec5cc9fac56492
     type: string
+    nullable: true
   solves:
     example: 704
     type: integer
@@ -154,6 +159,7 @@ properties:
     type: boolean
   user_submitted_difficulty:
     type: integer
+    nullable: true
   avatar_url:
     type: string
 title: Challenge

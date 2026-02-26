@@ -1,6 +1,7 @@
 properties:
   avatar:
     type: string
+    nullable: true
   id:
     type: integer
   is_root_blood:

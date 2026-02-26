@@ -1,0 +1,11 @@
+get:
+  description: Retrieve a list of tags.
+  operationId: getTagsList
+  responses:
+    '200':
+      $ref: ../components/responses/TagsListResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get tags list
+  tags:
+    - Tags

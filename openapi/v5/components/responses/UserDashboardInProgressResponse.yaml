@@ -5,4 +5,4 @@ content:
       UserDashboardInProgress:
         $ref: ../examples/UserDashboardInProgressSuccess.yaml
     schema:
-      $ref: ../schemas/UserDashboardInProgressResponse.yaml
+      $ref: ../schemas/UserDashboardCollections.yaml

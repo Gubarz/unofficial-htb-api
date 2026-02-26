@@ -1,6 +1,7 @@
 properties:
   avatar_thumb:
     type: string
+    nullable: true
   country:
     nullable: true
     type: string
@@ -29,4 +30,5 @@ properties:
     type: number
   country_name:
     type: string
+    nullable: true
 type: object

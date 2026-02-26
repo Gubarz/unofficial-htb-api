@@ -3,6 +3,7 @@ properties:
     type: boolean
   background_image:
     type: string
+    nullable: true
   end_date:
     format: date-time
     type: string
@@ -12,6 +13,7 @@ properties:
     type: boolean
   logo:
     type: string
+    nullable: true
   name:
     type: string
   start_date:
@@ -33,4 +35,5 @@ properties:
     type: string
   trailer:
     type: string
+    nullable: true
 type: object

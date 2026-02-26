@@ -5,4 +5,4 @@ content:
       UserDashboardFavorites:
         $ref: ../examples/UserDashboardFavoritesSuccess.yaml
     schema:
-      $ref: ../schemas/UserDashboardFavoritesResponse.yaml
+      $ref: ../schemas/UserDashboardCollections.yaml
