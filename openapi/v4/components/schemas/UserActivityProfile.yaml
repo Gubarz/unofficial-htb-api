@@ -1,4 +1,0 @@
-properties:
-  activity:
-    $ref: ./UserActivityProfileActivity.yaml
-type: object

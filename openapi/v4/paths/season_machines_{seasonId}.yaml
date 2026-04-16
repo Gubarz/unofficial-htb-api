@@ -1,0 +1,13 @@
+get:
+  description: Retrieve machines for a season.
+  operationId: getSeasonMachines
+  parameters:
+  - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonMachinesResponse.yaml
+    '400':
+      $ref: ../components/responses/GenericError.yaml
+  summary: Get a season list of machines
+  tags:
+    - Season

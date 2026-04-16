@@ -1,7 +1,0 @@
-properties:
-  challenges:
-    type: integer
-  latest:
-    $ref: ./TabloidOwnsItems.yaml
-  machines:
-    type: integer

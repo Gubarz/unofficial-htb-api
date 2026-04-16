@@ -1,6 +1,0 @@
-properties:
-  currentPage:
-    type: integer
-  pages:
-    type: integer
-type: object

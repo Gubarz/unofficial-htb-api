@@ -1,3 +1,0 @@
-items:
-  $ref: ./TopUserItem.yaml
-type: array

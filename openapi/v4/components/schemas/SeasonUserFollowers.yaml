@@ -1,6 +1,0 @@
-description: Schema definition for Season User Followers
-properties:
-  data:
-    $ref: ./SeasonUserFollowerData.yaml
-title: Season User Followers
-type: object

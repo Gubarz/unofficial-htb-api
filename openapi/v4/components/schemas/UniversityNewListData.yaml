@@ -1,6 +1,0 @@
-properties:
-  data:
-    $ref: ./UniversityListItems.yaml
-  last_page:
-    type: integer
-type: object

@@ -1,5 +1,0 @@
-items:
-  $ref: ./HomeUserProgressFortressItem.yaml
-  nullable: true
-type: array
-title: Home Fortress Card

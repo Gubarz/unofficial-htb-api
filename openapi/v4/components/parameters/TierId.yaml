@@ -1,6 +1,0 @@
-description: ID of the tier
-in: path
-name: tierId
-required: true
-schema:
-  type: integer

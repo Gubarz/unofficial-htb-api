@@ -104,6 +104,7 @@ value:
       type: Retired Sherlock
   proLabs:
     - url: /prolabs/overview/puppet
+      mini: true
       identifier: PUPPET
       difficulty: ADVANCED
       avatar: null

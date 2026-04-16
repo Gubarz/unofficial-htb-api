@@ -1,6 +1,7 @@
 get:
   description: Retrieves information related to /user/connection/status
   operationId: getUserConnectionStatus
+  deprecated: true
   responses:
     '200':
       $ref: ../components/responses/UserConnectionStatusResponse.yaml

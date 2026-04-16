@@ -9,7 +9,7 @@ properties:
     type: boolean
   id:
     type: integer
-  machine_avatar:
+  avatar_url:
     type: string
   name:
     type: string

@@ -5,7 +5,7 @@ properties:
   can_delete_avatar:
     type: boolean
   captain:
-    $ref: ./UserIdNameThumb.yaml
+    $ref: ./UserBasicInfoThumb.yaml
   country_code:
     nullable: true
     type: string

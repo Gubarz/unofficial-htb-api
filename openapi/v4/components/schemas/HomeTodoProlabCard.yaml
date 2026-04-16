@@ -1,6 +1,0 @@
-description: Schema definition for Home Prolab Card
-items:
-  $ref: ./HomeTodoProlabCardItem.yaml
-  nullable: true
-title: Home Prolab Card
-type: array

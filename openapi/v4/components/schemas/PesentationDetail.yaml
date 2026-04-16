@@ -1,0 +1,18 @@
+type: object
+properties:
+  mission:
+    type: string
+  whatIsTitle:
+    type: string
+  whatIsDescription:
+    type: string
+  whoIsForDescription:
+    type: string
+  skills:
+    $ref: ./StringArray.yaml
+  attitude:
+    $ref: ./StringArray.yaml
+  whatWillGainTitle:
+    type: string
+  whatWillGainPoints:
+    $ref: ./StringArray.yaml

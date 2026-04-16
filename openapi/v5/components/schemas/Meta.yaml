@@ -6,6 +6,7 @@ properties:
   from:
     example: 1
     type: integer
+    nullable: true
   last_page:
     example: 11
     type: integer
@@ -20,6 +21,7 @@ properties:
   to:
     example: 15
     type: integer
+    nullable: true
   total:
     example: 162
     type: integer

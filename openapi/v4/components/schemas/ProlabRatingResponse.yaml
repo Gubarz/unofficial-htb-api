@@ -1,4 +1,0 @@
-properties:
-  data:
-    $ref: ./ProlabRatingData.yaml
-type: object

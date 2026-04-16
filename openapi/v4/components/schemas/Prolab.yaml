@@ -58,5 +58,11 @@ properties:
     type: integer
   pro_flags_owns_count:
     type: integer
+  avatar_48_circle_url:
+    type: string
+  avatar_48_url:
+    type: string
+  avatar_url:
+    type: string
 title: Prolab
 type: object

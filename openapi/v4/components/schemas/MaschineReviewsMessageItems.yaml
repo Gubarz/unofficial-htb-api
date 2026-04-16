@@ -1,3 +1,0 @@
-items:
-  $ref: ./MachineReviewsMessageItem.yaml
-type: array

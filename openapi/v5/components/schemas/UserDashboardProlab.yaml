@@ -4,6 +4,9 @@ properties:
   url:
     type: string
     description: Relative link to the Pro Lab overview.
+  mini:
+    type: boolean
+    description: Is item a mini-prolab or not
   identifier:
     type: string
     description: Short identifier or slug.
@@ -50,6 +53,7 @@ properties:
     description: Resource type label (e.g., Pro Lab).
 required:
   - url
+  - mini
   - identifier
   - difficulty
   - avatar

@@ -1,7 +1,0 @@
-description: Schema definition for Machine Reviews User Id Response
-properties:
-  message:
-    nullable: true
-    type: string
-title: Machine Review User Id Response
-type: object

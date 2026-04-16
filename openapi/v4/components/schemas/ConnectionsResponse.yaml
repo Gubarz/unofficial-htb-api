@@ -1,8 +1,0 @@
-description: Schema definition for Connections Response
-properties:
-  data:
-    $ref: ./ConnectionsData.yaml
-  status:
-    type: boolean
-title: Connections Response
-type: object

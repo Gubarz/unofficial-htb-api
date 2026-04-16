@@ -1,6 +1,0 @@
-description: Schema definition for Machine Owns Top Id Response
-properties:
-  info:
-    $ref: ./MachineOwnsItems.yaml
-title: Machine Owns Top Id Response
-type: object

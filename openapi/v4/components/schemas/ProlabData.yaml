@@ -48,5 +48,19 @@ properties:
   writeup:
     nullable: true
     type: string
+  avatar_48_circle_url:
+    type: string
+  avatar_48_url:
+    type: string
+  avatar_url:
+    type: string
+  presentation_detail:
+    $ref: ./PesentationDetail.yaml
+  reviews_average:
+    type: string
+  reviews_count:
+    type: integer
+  user_has_reviewed:
+    type: boolean
 title: Prolab Data
 type: object

@@ -1,3 +1,0 @@
-items:
-  $ref: ./OwnsItems.yaml
-type: array

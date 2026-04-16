@@ -97,4 +97,6 @@ properties:
   server:
     type: string
     nullable: true
+  account_id:
+    type: string
 type: object

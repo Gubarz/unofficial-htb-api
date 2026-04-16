@@ -1,6 +1,0 @@
-description: ID of the Job
-in: path
-name: jobId
-required: true
-schema:
-  type: integer

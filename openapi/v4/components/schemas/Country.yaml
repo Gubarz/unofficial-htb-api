@@ -1,6 +1,0 @@
-properties:
-  code:
-    type: string
-  name:
-    type: string
-type: object

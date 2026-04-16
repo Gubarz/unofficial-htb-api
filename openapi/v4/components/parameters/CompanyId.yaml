@@ -1,6 +1,0 @@
-description: ID of the company
-in: path
-name: companyId
-required: true
-schema:
-  type: integer

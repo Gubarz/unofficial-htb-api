@@ -1,5 +1,0 @@
-properties:
-  owns:
-    $ref: ./TabloidOwns.yaml
-    type: object
-type: object

@@ -1,6 +1,0 @@
-properties:
-  data:
-    $ref: ./ProlabSubscription.yaml
-  status:
-    type: boolean
-type: object

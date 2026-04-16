@@ -1,4 +1,0 @@
-items:
-  $ref: ./CareerCompaniesItem.yaml
-  type: object
-type: array

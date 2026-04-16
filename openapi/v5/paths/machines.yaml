@@ -13,6 +13,7 @@ get:
     - $ref: ../components/parameters/SortType.yaml
     - $ref: ../components/parameters/Free.yaml
     - $ref: ../components/parameters/Todo.yaml
+    - $ref: ../components/parameters/SpTier.yaml
   responses:
     '200':
       $ref: ../components/responses/MachinesResponse.yaml

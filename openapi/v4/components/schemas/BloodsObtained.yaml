@@ -1,6 +1,0 @@
-properties:
-  bloods_obtained:
-    type: integer
-  flags_pawned:
-    type: integer
-type: object

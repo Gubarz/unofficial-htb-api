@@ -1,8 +1,0 @@
-properties:
-  id:
-    type: integer
-  name:
-    type: string
-  url:
-    type: string
-type: object

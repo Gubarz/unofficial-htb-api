@@ -1,0 +1,13 @@
+description: Filter by StartingPoint Tier (tier + 1), ie if you want StartingPoint 0 machines you use spTier=1
+explode: true
+in: query
+name: spTier
+required: false
+schema:
+  enum:
+    - 1
+    - 2
+    - 3
+  format: int
+  type: integer
+

@@ -1,3 +1,0 @@
-items:
-  $ref: ./ReviewOverview.yaml
-type: array

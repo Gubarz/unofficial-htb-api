@@ -1,3 +1,0 @@
-items:
-  $ref: ./ChallengeCategoriesDetailsItem.yaml
-type: array

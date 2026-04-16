@@ -1,6 +1,0 @@
-description: Schema definition for Career Stats Response
-properties:
-  data:
-    $ref: ./CareerStatsData.yaml
-title: Career Stats Response
-type: object

@@ -1,3 +1,0 @@
-items:
-  $ref: ./AnnouncementItem.yaml
-type: array

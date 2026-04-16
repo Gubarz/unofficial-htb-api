@@ -1,4 +1,0 @@
-properties:
-  content:
-    $ref: ./PorfileContentProfileContent.yaml
-type: object

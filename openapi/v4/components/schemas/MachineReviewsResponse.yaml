@@ -1,8 +1,0 @@
-properties:
-  average:
-    type: number
-  count:
-    type: number
-  message:
-    $ref: ./MaschineReviewsMessageItems.yaml
-type: object

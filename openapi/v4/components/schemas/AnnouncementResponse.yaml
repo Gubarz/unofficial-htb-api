@@ -1,4 +1,0 @@
-properties:
-  announcements:
-    $ref: ./AnnouncementItems.yaml
-type: object

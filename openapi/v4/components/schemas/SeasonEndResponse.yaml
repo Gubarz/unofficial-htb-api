@@ -1,4 +1,0 @@
-properties:
-  data:
-    $ref: ./SeasonEndData.yaml
-type: object

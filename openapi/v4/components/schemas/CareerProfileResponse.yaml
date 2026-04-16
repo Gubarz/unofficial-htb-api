@@ -1,6 +1,0 @@
-description: Schema definition for Career Profile Response
-properties:
-  data:
-    $ref: ./CareerProfileData.yaml
-title: Career Profile Response
-type: object
