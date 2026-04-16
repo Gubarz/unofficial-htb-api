@@ -66,6 +66,7 @@ paths:
         - $ref: '#/components/parameters/SortType'
         - $ref: '#/components/parameters/Free'
         - $ref: '#/components/parameters/Todo'
+        - $ref: '#/components/parameters/SpTier'
       responses:
         '200':
           $ref: '#/components/responses/MachinesResponse'
@@ -610,10 +611,6 @@ components:
         label:
           example: '1'
           type: string
-        page:
-          example: 1
-          type: integer
-          nullable: true
         url:
           example: https://labs.hackthebox.com/api/v4/prolab/1/reviews?page=1
           nullable: true
@@ -633,6 +630,7 @@ components:
         from:
           example: 1
           type: integer
+          nullable: true
         last_page:
           example: 11
           type: integer
@@ -647,6 +645,7 @@ components:
         to:
           example: 15
           type: integer
+          nullable: true
         total:
           example: 162
           type: integer
@@ -1261,6 +1260,9 @@ components:
         url:
           type: string
           description: Relative link to the Pro Lab overview.
+        mini:
+          type: boolean
+          description: Is item a mini-prolab or not
         identifier:
           type: string
           description: Short identifier or slug.
@@ -1307,6 +1309,7 @@ components:
           description: Resource type label (e.g., Pro Lab).
       required:
         - url
+        - mini
         - identifier
         - difficulty
         - avatar
@@ -2190,6 +2193,7 @@ components:
             type: Retired Sherlock
         proLabs:
           - url: /prolabs/overview/puppet
+            mini: true
             identifier: PUPPET
             difficulty: ADVANCED
             avatar: null
@@ -2477,6 +2481,19 @@ components:
       schema:
         enum:
           - 1
+        format: int
+        type: integer
+    SpTier:
+      description: Filter by StartingPoint Tier (tier + 1), ie if you want StartingPoint 0 machines you use spTier=1
+      explode: true
+      in: query
+      name: spTier
+      required: false
+      schema:
+        enum:
+          - 1
+          - 2
+          - 3
         format: int
         type: integer
     UserId:
