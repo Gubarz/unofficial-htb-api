@@ -165,7 +165,7 @@ paths:
       summary: Info details of the specific challenge
       tags:
         - Challenges
-  /challenge/submit:
+  /challenge/own:
     post:
       description: Submit flag for Challenge
       operationId: postChallengeOwn
@@ -2694,14 +2694,10 @@ components:
         challenge_id:
           example: 597
           type: integer
-        difficulty:
-          example: 50
-          type: integer
         flag:
           example: 0cc175b9c0f1b6a831c399e269772661
           type: string
       required:
-        - difficulty
         - challenge_id
         - flag
       title: Own Request
