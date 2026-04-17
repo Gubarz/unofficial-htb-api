@@ -76,8 +76,8 @@ paths:
     $ref: paths/challenges_{challengeId}_download_link.yaml
   /challenge/info/{challengeSlug}:
     $ref: paths/challenge_info_{challengeSlug}.yaml
-  /challenge/submit:
-    $ref: paths/challenge_submit.yaml
+  /challenge/own:
+    $ref: paths/challenge_own.yaml
   /challenge/recommended:
     $ref: paths/challenge_recommended.yaml
   /challenge/start:
