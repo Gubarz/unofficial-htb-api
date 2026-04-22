@@ -1040,6 +1040,8 @@ components:
         type:
           type: string
           description: Machine status label (e.g., Active Machine).
+        experiencePoints:
+          type: integer
       required:
         - os
         - difficulty
@@ -1059,6 +1061,7 @@ components:
         - id
         - name
         - type
+        - experiencePoints
     UserDashboardStartingPoint:
       description: Summary information for a Starting Point tier card.
       type: object
@@ -1164,6 +1167,8 @@ components:
         type:
           type: string
           description: Resource type label (e.g., Retired Challenge).
+        experiencePoints:
+          type: integer
       required:
         - difficulty
         - url
@@ -1180,6 +1185,7 @@ components:
         - id
         - name
         - type
+        - experiencePoints
     UserDashboardSherlock:
       description: Summary information for Sherlock investigations displayed in dashboard feeds.
       type: object

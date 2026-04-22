@@ -2679,6 +2679,8 @@ components:
           nullable: true
         avatar_url:
           type: string
+        experience_points:
+          type: integer
       title: Challenge
       type: object
     ChallengeResponse:
@@ -3845,6 +3847,8 @@ components:
           type: boolean
         botHasBlood:
           type: boolean
+        experience_points:
+          type: integer
       title: Machine Profile Info
       type: object
     MachineProfileResponse:
@@ -5096,6 +5100,7 @@ components:
           type: integer
         ranks_diff:
           type: integer
+          nullable: true
         root_bloods:
           type: integer
         root_owns:
@@ -6851,6 +6856,8 @@ components:
         points:
           type: integer
         rank:
+          type: integer
+        experience_points:
           type: integer
       type: object
     UserAchievementTarTypeUserIdTarIdResponse:
