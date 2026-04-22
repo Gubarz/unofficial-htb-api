@@ -147,5 +147,7 @@ properties:
     type: boolean
   botHasBlood:
     type: boolean
+  experience_points:
+    type: integer
 title: Machine Profile Info
 type: object

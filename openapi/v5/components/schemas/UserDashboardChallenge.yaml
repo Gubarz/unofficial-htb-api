@@ -52,6 +52,8 @@ properties:
   type:
     type: string
     description: Resource type label (e.g., Retired Challenge).
+  experiencePoints:
+    type: integer
 required:
   - difficulty
   - url
@@ -68,3 +70,4 @@ required:
   - id
   - name
   - type
+  - experiencePoints

@@ -60,6 +60,8 @@ properties:
   type:
     type: string
     description: Machine status label (e.g., Active Machine).
+  experiencePoints:
+    type: integer
 required:
   - os
   - difficulty
@@ -79,3 +81,4 @@ required:
   - id
   - name
   - type
+  - experiencePoints

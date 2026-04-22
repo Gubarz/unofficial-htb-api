@@ -17,6 +17,7 @@ properties:
     type: integer
   ranks_diff:
     type: integer
+    nullable: true
   root_bloods:
     type: integer
   root_owns:

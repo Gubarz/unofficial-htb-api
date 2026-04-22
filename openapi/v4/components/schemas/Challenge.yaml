@@ -162,5 +162,7 @@ properties:
     nullable: true
   avatar_url:
     type: string
+  experience_points:
+    type: integer
 title: Challenge
 type: object

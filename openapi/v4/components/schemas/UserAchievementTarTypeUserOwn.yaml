@@ -10,4 +10,6 @@ properties:
     type: integer
   rank:
     type: integer
+  experience_points:
+    type: integer
 type: object
