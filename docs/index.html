@@ -23,6 +23,9 @@
   <select id="version-selector">
     <option value="v4">v4</option>
     <option value="v5">v5</option>
+    <option value="ctf">ctf</option>
+    <option value="core">core</option>
+    <option value="experience">experience</option>
   </select>
 
   <div id="swagger-ui"></div>
@@ -36,7 +39,7 @@
     }
 
     function loadUI(version) {
-      const file = version === "v5" ? "openapi.v5.yaml" : "openapi.v4.yaml";
+      const file = version === "v5" ? "openapi.v5.yaml" : version === "ctf" ? "openapi.ctf.yaml" : version === "core" ? "openapi.core.yaml" : version === "experience" ? "openapi.experience.v1.yaml" : "openapi.v4.yaml";
       const url = `./${file}`;
 
       window.ui = SwaggerUIBundle({
