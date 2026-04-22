@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/openapi.v*.yaml
+          git add docs/openapi.*.yaml
           git diff --cached --quiet || git commit -m "Update bundled OpenAPI specs in docs/"
           git push origin HEAD:main
 
