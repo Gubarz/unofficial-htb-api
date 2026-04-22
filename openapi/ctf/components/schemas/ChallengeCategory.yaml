@@ -1,0 +1,36 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+    enum:
+      - Fullpwn
+      - Web
+      - Pwn
+      - Crypto
+      - Reversing
+      - Stego
+      - Forensics
+      - Misc
+      - Start
+      - PCAP
+      - Coding
+      - Mobile
+      - OSINT
+      - Blockchain
+      - Hardware
+      - Warmup
+      - Attack
+      - Defence
+      - Cloud
+      - ICS
+      - ML
+      - TTX
+      - Trivia
+      - Sherlocks
+      - AI
+      - Secure Coding
+      - Quantum
+      - Physical
+      - Payment Systems

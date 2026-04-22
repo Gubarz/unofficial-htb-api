@@ -1,0 +1,10 @@
+type: object
+properties:
+  data:
+    $ref: ./PaginatedPastCtfEventsData.yaml
+  links:
+    $ref: ./PaginationLinks.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  on_last_page:
+    type: boolean

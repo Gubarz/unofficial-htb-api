@@ -1,0 +1,30 @@
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http
+info:
+  contact:
+    name: ' '
+  description: >-
+    The undocumented public API Core for the Hack The Box platform. This OpenAPI
+    specification is community-maintained and reverse-engineered. This project 
+    is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API Core
+  version: v0.0.1
+openapi: 3.0.4
+paths: 
+  /atlas/countries:
+    $ref: paths/atlas_countries.yaml
+security:
+  - bearer: []
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/core
+tags:
+  - description: Endpoints related to Atlas
+    name: Atlas

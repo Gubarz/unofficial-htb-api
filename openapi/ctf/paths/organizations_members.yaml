@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Organizations
+  operationId: getOrganizationMembers
+  summary: List organization members (restricted)
+  responses:
+    '200':
+      $ref: ../components/responses/GetOrganizationMembers200.yaml
+    '403':
+      $ref: ../components/responses/GetOrganizationMembers403.yaml

@@ -1,0 +1,5 @@
+title: Atlas Countries
+description: Schema definition for Atlas Countries Response
+type: array
+items:
+  $ref: CountryObject.yaml

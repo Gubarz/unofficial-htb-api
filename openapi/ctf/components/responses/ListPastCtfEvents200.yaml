@@ -1,0 +1,5 @@
+description: Paginated past events
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PaginatedPastCtfEvents.yaml

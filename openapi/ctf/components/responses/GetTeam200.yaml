@@ -1,0 +1,5 @@
+description: Team details
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/TeamDetail.yaml

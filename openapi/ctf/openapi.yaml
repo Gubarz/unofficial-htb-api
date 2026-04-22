@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: HackTheBox CTF API
+  description: >-
+    Reverse-engineered OpenAPI spec for the HTB CTF platform REST API at
+    ctf.hackthebox.com/api. Generated from live endpoint probing + JS bundle
+    analysis.
+  version: 1.0.0
+  contact:
+    name: HTB CTF API Reference
+servers:
+  - url: https://ctf.hackthebox.com/api
+    description: Production CTF API
+security:
+  - bearerAuth: []
+paths:
+  /users/profile:
+    $ref: paths/users_profile.yaml
+  /users/profile/settings:
+    $ref: paths/users_profile_settings.yaml
+  /ctfs:
+    $ref: paths/ctfs.yaml
+  /ctfs/past:
+    $ref: paths/ctfs_past.yaml
+  /ctfs/{ctf_id}:
+    $ref: paths/ctfs_{ctf_id}.yaml
+  /teams:
+    $ref: paths/teams.yaml
+  /teams/{team_id}:
+    $ref: paths/teams_{team_id}.yaml
+  /teams/my-teams:
+    $ref: paths/teams_my-teams.yaml
+  /teams/available-to-join:
+    $ref: paths/teams_available-to-join.yaml
+  /teams/join-requests:
+    $ref: paths/teams_join-requests.yaml
+  /notifications:
+    $ref: paths/notifications.yaml
+  /public/challenge-categories:
+    $ref: paths/public_challenge-categories.yaml
+  /public/countries:
+    $ref: paths/public_countries.yaml
+  /public/company-registration-status:
+    $ref: paths/public_company-registration-status.yaml
+  /public/university-registration-status:
+    $ref: paths/public_university-registration-status.yaml
+  /organizations/settings:
+    $ref: paths/organizations_settings.yaml
+  /organizations/members:
+    $ref: paths/organizations_members.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: API token from HTB CTF platform.
+tags:
+  - name: User
+    description: User profile and settings
+  - name: CTF Events
+    description: CTF event listing and details
+  - name: Teams
+    description: Team management and discovery
+  - name: Notifications
+    description: User notifications
+  - name: Public
+    description: Public endpoints (no auth required)
+  - name: Organizations
+    description: Organization management

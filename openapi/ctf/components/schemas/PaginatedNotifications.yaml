@@ -1,0 +1,12 @@
+type: object
+properties:
+  data:
+    $ref: ./PaginatedNotificationData.yaml
+  links:
+    $ref: ./PaginationLinks.yaml
+  meta:
+    $ref: ./PaginationMeta.yaml
+  hasMorePages:
+    type: boolean
+  allAreRead:
+    type: boolean

@@ -1,0 +1,5 @@
+description: Organization settings
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/OrganizationSettings.yaml

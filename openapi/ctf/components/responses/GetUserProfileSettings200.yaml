@@ -1,0 +1,5 @@
+description: Profile settings
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserProfileSettings.yaml

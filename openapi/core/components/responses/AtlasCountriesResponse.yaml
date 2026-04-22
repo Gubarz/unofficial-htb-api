@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      ConnectionsSuccess:
+        $ref: ../examples/AtlasCountriesSuccess.yaml
+    schema:
+      $ref: ../schemas/AtlasCountriesResponse.yaml
+description: Atlas Countries

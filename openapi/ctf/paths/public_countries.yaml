@@ -1,0 +1,9 @@
+get:
+  tags:
+    - Public
+  operationId: getCountries
+  summary: List all countries with codes (no auth required)
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/GetCountries200.yaml

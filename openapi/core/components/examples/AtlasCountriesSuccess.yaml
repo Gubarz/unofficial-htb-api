@@ -1,0 +1,11 @@
+summary: Atlas Countries
+value:
+  - name: United States
+    iso2: US
+    phoneCode: "+1"
+  - name: Afghanistan
+    iso2: AF
+    phoneCode: "+93"
+  - name: Aland Islands
+    iso2: AX
+    phoneCode: "+358-18"

@@ -1,0 +1,11 @@
+get:
+  description: Atlas Countries
+  operationId: getAtlasCountries
+  responses:
+    '200':
+      $ref: ../components/responses/AtlasCountriesResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: Get Atlas Countries
+  tags:
+    - Atlas

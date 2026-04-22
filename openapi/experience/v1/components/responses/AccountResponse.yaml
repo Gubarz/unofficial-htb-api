@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      ConnectionsSuccess:
+        $ref: ../examples/AccountSuccess.yaml
+    schema:
+      $ref: ../schemas/AccountResponse.yaml
+description: Account

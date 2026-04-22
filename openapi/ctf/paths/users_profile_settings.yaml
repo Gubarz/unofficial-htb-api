@@ -1,0 +1,10 @@
+get:
+  tags:
+    - User
+  operationId: getUserProfileSettings
+  summary: >-
+    Get user profile settings including visibility, socials, and MCP token
+    expiration
+  responses:
+    '200':
+      $ref: ../components/responses/GetUserProfileSettings200.yaml

@@ -1,0 +1,18 @@
+type: object
+properties:
+  pattern:
+    $ref: ./Pattern.yaml
+  theme:
+    $ref: ./Theme.yaml
+  upper_title:
+    type: string
+    nullable: true
+  motto:
+    type: string
+    nullable: true
+  show_motto:
+    type: boolean
+  show_upper_title:
+    type: boolean
+  show_company_logo:
+    type: boolean

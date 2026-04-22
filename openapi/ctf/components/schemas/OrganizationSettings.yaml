@@ -1,0 +1,36 @@
+type: object
+properties:
+  org_logo:
+    type: string
+    format: uri
+    nullable: true
+  org_email:
+    type: string
+    format: email
+    nullable: true
+  org_name:
+    type: string
+    nullable: true
+  org_country:
+    type: string
+    nullable: true
+  org_industry:
+    type: string
+    nullable: true
+  org_state:
+    type: string
+    nullable: true
+  org_website:
+    type: string
+    format: uri
+    nullable: true
+  canSeeCredits:
+    type: boolean
+  canSpendCredits:
+    type: boolean
+  canSeeBuildCtf:
+    type: boolean
+  canSeeAdminPanel:
+    type: boolean
+  adminPanel:
+    $ref: ./AdminPanel.yaml

@@ -1,0 +1,11 @@
+get:
+  tags:
+    - CTF Events
+  operationId: listPastCtfEvents
+  summary: List past CTF events (paginated, 20 per page)
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+      description: Page number
+  responses:
+    '200':
+      $ref: ../components/responses/ListPastCtfEvents200.yaml

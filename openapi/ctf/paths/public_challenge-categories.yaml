@@ -1,0 +1,9 @@
+get:
+  tags:
+    - Public
+  operationId: getChallengeCategories
+  summary: List all 28 challenge categories (no auth required)
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/GetChallengeCategories200.yaml

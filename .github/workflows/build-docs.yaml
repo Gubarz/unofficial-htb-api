@@ -31,12 +31,18 @@ jobs:
         run: |
           redocly bundle openapi@v4 --output openapi.v4.yaml
           redocly bundle openapi@v5 --output openapi.v5.yaml
+          redocly bundle openapi@core --output openapi.core.yaml
+          redocly bundle openapi@experience --output openapi.experience.v1.yaml
+          redocly bundle openapi@ctf --output openapi.ctf.yaml
 
       - name: Copy specs to docs/ for GitHub Pages
         run: |
           mkdir -p docs
           cp openapi.v4.yaml docs/openapi.v4.yaml
           cp openapi.v5.yaml docs/openapi.v5.yaml
+          cp openapi.core.yaml docs/openapi.core.yaml
+          cp openapi.experience.v1.yaml docs/openapi.experience.v1.yaml
+          cp openapi.ctf.yaml docs/openapi.ctf.yaml
 
       - name: Commit and push updated docs/ (if changed)
         run: |
@@ -54,5 +60,8 @@ jobs:
           files: |
             openapi.v4.yaml
             openapi.v5.yaml
+            openapi.core.yaml
+            openapi.experience.v1.yaml
+            openapi.ctf.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

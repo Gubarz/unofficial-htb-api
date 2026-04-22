@@ -1,0 +1,8 @@
+get:
+  tags:
+    - Teams
+  operationId: getJoinRequests
+  summary: Get pending team join requests
+  responses:
+    '200':
+      $ref: ../components/responses/GetJoinRequests200.yaml

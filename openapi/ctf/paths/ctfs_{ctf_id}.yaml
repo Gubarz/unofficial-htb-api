@@ -1,0 +1,12 @@
+get:
+  tags:
+    - CTF Events
+  operationId: getCtfEvent
+  summary: Get CTF event details (MCP-gated for some events)
+  parameters:
+    - $ref: ../components/parameters/CtfId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GetCtfEvent200.yaml
+    '403':
+      $ref: ../components/responses/GetCtfEvent403.yaml

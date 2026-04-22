@@ -1,0 +1,5 @@
+description: Registration status
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/RegistrationStatus.yaml

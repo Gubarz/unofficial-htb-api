@@ -1,0 +1,8 @@
+get:
+  tags:
+    - Notifications
+  operationId: getNotifications
+  summary: Get user notifications (paginated, 10 per page)
+  responses:
+    '200':
+      $ref: ../components/responses/GetNotifications200.yaml

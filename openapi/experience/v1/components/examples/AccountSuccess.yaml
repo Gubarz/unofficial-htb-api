@@ -1,0 +1,22 @@
+summary: Account Success
+value:
+  level: 110
+  levelTitle: Grandmaster
+  levelGrade: "3"
+  rankImage: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/svg/rank_grandmaster.svg
+  rankImageBackground: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/backgrounds/grandmaster.svg
+  outroAnimation: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/json/rank_grandmaster_out.json
+  introAnimation: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/json/rank_grandmaster_in.json
+  totalExperiencePoints: 254565
+  levelExperiencePoints: 4369
+  experienceUntilNextLevel: 3481
+  streakData:
+    counter: 1
+    currentExperiencePoints: 390
+    requiredExperiencePoints: 200
+    remainingExperiencePoints: 0
+    expiresAt: "2026-04-26T23:59:59.000Z"
+    isCompleted: true
+    inDanger: false
+    maxStreak: 1
+    streakSavers: 1

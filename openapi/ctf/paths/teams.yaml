@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Teams
+  operationId: listTeams
+  summary: Get top teams leaderboard (20 per page)
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ListTeams200.yaml

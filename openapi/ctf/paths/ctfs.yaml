@@ -1,0 +1,10 @@
+get:
+  tags:
+    - CTF Events
+  operationId: listCtfEvents
+  summary: List all CTF events (ongoing, upcoming, past)
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ListCtfEvents200.yaml

@@ -1,0 +1,95 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  isHtbOrganizer:
+    type: boolean
+  starts_at:
+    type: string
+    format: date-time
+  ends_at:
+    type: string
+    format: date-time
+  status:
+    type: string
+    enum:
+      - Ongoing
+      - Upcoming
+      - Past
+  isPaused:
+    type: boolean
+  hide_scoreboard:
+    type: integer
+  banner:
+    type: string
+    format: uri
+  custom_banner:
+    $ref: ./CustomBanner.yaml
+  hasCode:
+    type: integer
+    nullable: true
+    description: 1 if event requires an access code
+  private:
+    type: integer
+  university:
+    type: boolean
+  isBusiness:
+    type: boolean
+  isUni:
+    type: boolean
+  players:
+    type: integer
+    description: Number of registered players
+  max_participants:
+    type: integer
+    nullable: true
+  team_size:
+    type: integer
+  slug:
+    type: string
+    description: URL-safe identifier
+  format:
+    type: string
+    enum:
+      - Jeopardy
+  featured:
+    type: boolean
+  mcp_access_mode:
+    type: string
+    enum:
+      - no_mcp
+      - only_mcp
+    description: Whether MCP is required, allowed, or disabled
+  hide_organization_info:
+    type: boolean
+  org_logo:
+    type: string
+    format: uri
+  org_name:
+    type: string
+  isHost:
+    type: boolean
+  canPlay:
+    type: boolean
+  canJoin:
+    type: boolean
+  userCanViewScoreboard:
+    type: integer
+    nullable: true
+  view_analytics:
+    type: boolean
+  hasJoined:
+    type: object
+    nullable: true
+  joinedTeam:
+    type: string
+    nullable: true
+  joinedTeamAvatar:
+    type: string
+    format: uri
+    nullable: true
+  membersJoined:
+    type: object
+    nullable: true

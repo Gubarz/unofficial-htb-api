@@ -1,0 +1,17 @@
+type: object
+properties:
+  first:
+    type: string
+    format: uri
+  last:
+    type: string
+    format: uri
+    nullable: true
+  prev:
+    type: string
+    format: uri
+    nullable: true
+  next:
+    type: string
+    format: uri
+    nullable: true

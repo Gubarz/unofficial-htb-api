@@ -1,0 +1,9 @@
+get:
+  tags:
+    - Public
+  operationId: getCompanyRegistrationStatus
+  summary: Check company registration status
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/GetCompanyRegistrationStatus200.yaml

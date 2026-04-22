@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+    format: uri
+    nullable: true
+  team_role:
+    type: string
+    nullable: true
+  numberOfMembers:
+    type: integer
+  numberOfPwns:
+    type: integer
+  country_code:
+    type: string
+  country_name:
+    type: string
+  type:
+    type: string
+    nullable: true

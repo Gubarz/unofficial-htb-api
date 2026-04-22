@@ -1,0 +1,19 @@
+type: object
+nullable: true
+properties:
+  canGenerateCertificate:
+    type: boolean
+  canDownloadCertificate:
+    type: boolean
+  namingSensitivity:
+    type: string
+    enum:
+      - relaxed
+      - strict
+  position:
+    type: integer
+    nullable: true
+  identifier:
+    type: string
+    enum:
+      - enabled

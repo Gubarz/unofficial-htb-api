@@ -1,0 +1,51 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 12345
+  name:
+    type: string
+  full_name:
+    type: string
+    nullable: true
+  contact_info:
+    type: string
+    nullable: true
+  country_phone_code:
+    type: string
+    nullable: true
+  phone_number:
+    type: string
+    nullable: true
+  user_events_count:
+    type: integer
+  email:
+    type: string
+    format: email
+  timezone:
+    type: string
+    example: Etc/UTC
+  joined_ctfs_with_team:
+    $ref: ./JoinedCtfsWithTeam.yaml
+  processing_purchases:
+    type: array
+    items:
+      type: object
+  academic_email:
+    type: string
+    nullable: true
+  hasAnyTeam:
+    type: boolean
+  hasNormalTeam:
+    type: boolean
+  avatar:
+    type: string
+    format: uri
+    nullable: true
+  htb_acc_avatar:
+    type: string
+    format: uri
+    nullable: true
+  device_id:
+    type: string
+    nullable: true

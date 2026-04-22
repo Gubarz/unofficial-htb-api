@@ -1,0 +1,5 @@
+description: User profile
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserProfile.yaml

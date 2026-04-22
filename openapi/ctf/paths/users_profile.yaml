@@ -1,0 +1,8 @@
+get:
+  tags:
+    - User
+  operationId: getUserProfile
+  summary: Get authenticated user profile
+  responses:
+    '200':
+      $ref: ../components/responses/GetUserProfile200.yaml

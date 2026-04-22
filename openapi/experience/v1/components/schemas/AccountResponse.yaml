@@ -1,0 +1,42 @@
+title: Account Response
+description: Schema definition for Account response
+type: object
+properties:
+  level:
+    type: integer
+  levelTitle:
+    type: string
+  levelGrade:
+    type: string
+  rankImage:
+    type: string
+    format: uri
+  rankImageBackground:
+    type: string
+    format: uri
+  outroAnimation:
+    type: string
+    format: uri
+  introAnimation:
+    type: string
+    format: uri
+  totalExperiencePoints:
+    type: integer
+  levelExperiencePoints:
+    type: integer
+  experienceUntilNextLevel:
+    type: integer
+  streakData:
+    $ref: StreakData.yaml
+required:
+  - level
+  - levelTitle
+  - levelGrade
+  - rankImage
+  - rankImageBackground
+  - outroAnimation
+  - introAnimation
+  - totalExperiencePoints
+  - levelExperiencePoints
+  - experienceUntilNextLevel
+  - streakData

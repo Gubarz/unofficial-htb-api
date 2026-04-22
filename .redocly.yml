@@ -5,6 +5,15 @@ apis:
   openapi@v5:
     root: openapi/v5/openapi.yaml
     output: openapi.v5.yaml
+  openapi@core:
+    root: openapi/core/openapi.yaml
+    output: openapi.core.yaml
+  openapi@experience:
+    root: openapi/experience/v1/openapi.yaml
+    output: openapi.experience.v1.yaml
+  openapi@ctf:
+    root: openapi/ctf/openapi.yaml
+    output: openapi.ctf.yaml
 extends:
   - recommended 
 rules:

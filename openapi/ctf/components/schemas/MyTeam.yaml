@@ -1,0 +1,36 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  motto:
+    type: string
+  avatar:
+    type: string
+    format: uri
+    nullable: true
+  country_name:
+    type: string
+  country_code:
+    type: string
+  discord_link:
+    type: string
+    format: uri
+    nullable: true
+  is_dormant:
+    type: integer
+  numberOfMembers:
+    type: integer
+  isCaptain:
+    type: integer
+    description: 1 if user is team captain
+  numberOfPwns:
+    type: integer
+  isPending:
+    type: boolean
+  joinedMembers:
+    $ref: ./JoinedMembers.yaml
+  type:
+    type: string
+    nullable: true

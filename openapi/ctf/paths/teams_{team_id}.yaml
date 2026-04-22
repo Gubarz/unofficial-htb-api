@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Teams
+  operationId: getTeam
+  summary: Get team details by ID
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/GetTeam200.yaml

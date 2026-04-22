@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: string
+  type:
+    type: string
+  notifiable_type:
+    type: string
+  notifiable_id:
+    type: integer
+  data:
+    $ref: ./NotificationData.yaml
+  read_at:
+    type: string
+    format: date-time
+    nullable: true
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

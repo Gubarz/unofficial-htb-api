@@ -1,0 +1,12 @@
+type: object
+properties:
+  canPerformMembersActions:
+    type: boolean
+  canViewMembers:
+    type: boolean
+  canViewEvents:
+    type: boolean
+  canViewSettings:
+    type: boolean
+  canViewContentLibrary:
+    type: boolean

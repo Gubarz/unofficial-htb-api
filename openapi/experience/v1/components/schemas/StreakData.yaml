@@ -1,0 +1,31 @@
+type: object
+properties:
+  counter:
+    type: integer
+  currentExperiencePoints:
+    type: integer
+  requiredExperiencePoints:
+    type: integer
+  remainingExperiencePoints:
+    type: integer
+  expiresAt:
+    type: string
+    format: date-time
+  isCompleted:
+    type: boolean
+  inDanger:
+    type: boolean
+  maxStreak:
+    type: integer
+  streakSavers:
+    type: integer
+required:
+  - counter
+  - currentExperiencePoints
+  - requiredExperiencePoints
+  - remainingExperiencePoints
+  - expiresAt
+  - isCompleted
+  - inDanger
+  - maxStreak
+  - streakSavers

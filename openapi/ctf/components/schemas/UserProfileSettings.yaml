@@ -1,0 +1,61 @@
+type: object
+properties:
+  profile_visibility_options:
+    $ref: ./ProfileVisibilityOptions.yaml
+  profile_visibility:
+    type: string
+    enum:
+      - team-members
+      - private
+      - public
+  avatar:
+    type: string
+    format: uri
+    nullable: true
+  name:
+    type: string
+  email:
+    type: string
+    format: email
+  full_name:
+    type: string
+    nullable: true
+  timezone:
+    type: string
+  description:
+    type: string
+    nullable: true
+  contact_info:
+    type: string
+    nullable: true
+  contact_info_public:
+    type: boolean
+  website:
+    type: string
+    format: uri
+    nullable: true
+  twitter:
+    type: string
+    nullable: true
+  discord:
+    type: string
+    nullable: true
+  ctftime:
+    type: string
+    nullable: true
+  academic_email:
+    type: string
+    nullable: true
+  company_email:
+    type: string
+    nullable: true
+  country_name:
+    type: string
+  country_code:
+    type: string
+    minLength: 2
+    maxLength: 2
+  mcp_token_expiration:
+    type: string
+    format: date-time
+    nullable: true

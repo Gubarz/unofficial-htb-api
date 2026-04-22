@@ -1,0 +1,5 @@
+description: Insufficient permissions
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ErrorMessage.yaml

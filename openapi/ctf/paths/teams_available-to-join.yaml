@@ -1,0 +1,8 @@
+get:
+  tags:
+    - Teams
+  operationId: getAvailableTeams
+  summary: List teams currently accepting new members
+  responses:
+    '200':
+      $ref: ../components/responses/GetAvailableTeams200.yaml

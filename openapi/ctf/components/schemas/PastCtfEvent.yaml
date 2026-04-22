@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  slug:
+    type: string
+  format:
+    type: string
+  players:
+    type: integer
+  starts_at:
+    type: string
+    format: date-time
+  ends_at:
+    type: string
+    format: date-time
+  isHost:
+    type: boolean
+  userCanViewScoreboard:
+    type: integer
+    nullable: true
+  view_analytics:
+    type: boolean
+  certificate_info:
+    $ref: ./CertificateInfo.yaml

@@ -1,0 +1,9 @@
+get:
+  tags:
+    - Public
+  operationId: getUniversityRegistrationStatus
+  summary: Check university registration status
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/GetUniversityRegistrationStatus200.yaml

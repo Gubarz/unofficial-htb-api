@@ -1,0 +1,13 @@
+get:
+  description: Account
+  operationId: getAccountAccountId
+  parameters:
+    - $ref: ../components/parameters/AccountId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/AccountResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: Get Account
+  tags:
+    - Account

@@ -1,0 +1,8 @@
+get:
+  tags:
+    - Teams
+  operationId: getMyTeams
+  summary: Get teams the authenticated user belongs to
+  responses:
+    '200':
+      $ref: ../components/responses/GetMyTeams200.yaml

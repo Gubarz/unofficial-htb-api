@@ -1,0 +1,5 @@
+description: CTF event details
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/CtfEventDetail.yaml

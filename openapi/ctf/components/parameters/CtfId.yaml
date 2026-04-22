@@ -1,0 +1,6 @@
+name: ctf_id
+in: path
+required: true
+schema:
+  type: integer
+  minimum: 1
