@@ -1,0 +1,108 @@
+openapi: 3.0.4
+info:
+  contact:
+    name: ' '
+  description: The undocumented public API Core for the Hack The Box platform. This OpenAPI specification is community-maintained and reverse-engineered. This project  is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API Core
+  version: v0.0.1
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/core
+security:
+  - bearer: []
+tags:
+  - description: Endpoints related to Atlas
+    name: Atlas
+paths:
+  /atlas/countries:
+    get:
+      description: Atlas Countries
+      operationId: getAtlasCountries
+      responses:
+        '200':
+          $ref: '#/components/responses/AtlasCountriesResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get Atlas Countries
+      tags:
+        - Atlas
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http
+  schemas:
+    CountryObject:
+      type: object
+      properties:
+        name:
+          type: string
+        iso2:
+          type: string
+        phoneCode:
+          type: string
+      required:
+        - name
+        - iso2
+        - phoneCode
+    AtlasCountriesResponse:
+      title: Atlas Countries
+      description: Schema definition for Atlas Countries Response
+      type: array
+      items:
+        $ref: '#/components/schemas/CountryObject'
+    Generic400Response:
+      description: Schema definition for Generic Error Response
+      properties:
+        message:
+          example: Some Error Message.
+          type: string
+        status:
+          example: 400
+          type: integer
+      required:
+        - message
+        - status
+      title: Generic Error Response
+      type: object
+  examples:
+    AtlasCountriesSuccess:
+      summary: Atlas Countries
+      value:
+        - name: United States
+          iso2: US
+          phoneCode: '+1'
+        - name: Afghanistan
+          iso2: AF
+          phoneCode: '+93'
+        - name: Aland Islands
+          iso2: AX
+          phoneCode: +358-18
+    Generic400Response:
+      summary: Generic Error Response
+      value:
+        message: Some Error Message.
+        status: 400
+  responses:
+    AtlasCountriesResponse:
+      content:
+        application/json:
+          examples:
+            ConnectionsSuccess:
+              $ref: '#/components/examples/AtlasCountriesSuccess'
+          schema:
+            $ref: '#/components/schemas/AtlasCountriesResponse'
+      description: Atlas Countries
+    Generic400Response:
+      content:
+        application/json:
+          examples:
+            Generic400Error:
+              $ref: '#/components/examples/Generic400Response'
+          schema:
+            $ref: '#/components/schemas/Generic400Response'
+      description: Generic 400 Response

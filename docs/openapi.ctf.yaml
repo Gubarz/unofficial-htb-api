@@ -1,0 +1,975 @@
+openapi: 3.0.3
+info:
+  title: HackTheBox CTF API
+  description: Reverse-engineered OpenAPI spec for the HTB CTF platform REST API at ctf.hackthebox.com/api. Generated from live endpoint probing + JS bundle analysis.
+  version: 1.0.0
+  contact:
+    name: HTB CTF API Reference
+servers:
+  - url: https://ctf.hackthebox.com/api
+    description: Production CTF API
+security:
+  - bearerAuth: []
+tags:
+  - name: User
+    description: User profile and settings
+  - name: CTF Events
+    description: CTF event listing and details
+  - name: Teams
+    description: Team management and discovery
+  - name: Notifications
+    description: User notifications
+  - name: Public
+    description: Public endpoints (no auth required)
+  - name: Organizations
+    description: Organization management
+paths:
+  /users/profile:
+    get:
+      tags:
+        - User
+      operationId: getUserProfile
+      summary: Get authenticated user profile
+      responses:
+        '200':
+          $ref: '#/components/responses/GetUserProfile200'
+  /users/profile/settings:
+    get:
+      tags:
+        - User
+      operationId: getUserProfileSettings
+      summary: Get user profile settings including visibility, socials, and MCP token expiration
+      responses:
+        '200':
+          $ref: '#/components/responses/GetUserProfileSettings200'
+  /ctfs:
+    get:
+      tags:
+        - CTF Events
+      operationId: listCtfEvents
+      summary: List all CTF events (ongoing, upcoming, past)
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCtfEvents200'
+  /ctfs/past:
+    get:
+      tags:
+        - CTF Events
+      operationId: listPastCtfEvents
+      summary: List past CTF events (paginated, 20 per page)
+      parameters:
+        - $ref: '#/components/parameters/Page'
+          description: Page number
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPastCtfEvents200'
+  /ctfs/{ctf_id}:
+    get:
+      tags:
+        - CTF Events
+      operationId: getCtfEvent
+      summary: Get CTF event details (MCP-gated for some events)
+      parameters:
+        - $ref: '#/components/parameters/CtfId'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCtfEvent200'
+        '403':
+          $ref: '#/components/responses/GetCtfEvent403'
+  /teams:
+    get:
+      tags:
+        - Teams
+      operationId: listTeams
+      summary: Get top teams leaderboard (20 per page)
+      parameters:
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListTeams200'
+  /teams/{team_id}:
+    get:
+      tags:
+        - Teams
+      operationId: getTeam
+      summary: Get team details by ID
+      parameters:
+        - $ref: '#/components/parameters/TeamId'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTeam200'
+  /teams/my-teams:
+    get:
+      tags:
+        - Teams
+      operationId: getMyTeams
+      summary: Get teams the authenticated user belongs to
+      responses:
+        '200':
+          $ref: '#/components/responses/GetMyTeams200'
+  /teams/available-to-join:
+    get:
+      tags:
+        - Teams
+      operationId: getAvailableTeams
+      summary: List teams currently accepting new members
+      responses:
+        '200':
+          $ref: '#/components/responses/GetAvailableTeams200'
+  /teams/join-requests:
+    get:
+      tags:
+        - Teams
+      operationId: getJoinRequests
+      summary: Get pending team join requests
+      responses:
+        '200':
+          $ref: '#/components/responses/GetJoinRequests200'
+  /notifications:
+    get:
+      tags:
+        - Notifications
+      operationId: getNotifications
+      summary: Get user notifications (paginated, 10 per page)
+      responses:
+        '200':
+          $ref: '#/components/responses/GetNotifications200'
+  /public/challenge-categories:
+    get:
+      tags:
+        - Public
+      operationId: getChallengeCategories
+      summary: List all 28 challenge categories (no auth required)
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/GetChallengeCategories200'
+  /public/countries:
+    get:
+      tags:
+        - Public
+      operationId: getCountries
+      summary: List all countries with codes (no auth required)
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCountries200'
+  /public/company-registration-status:
+    get:
+      tags:
+        - Public
+      operationId: getCompanyRegistrationStatus
+      summary: Check company registration status
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCompanyRegistrationStatus200'
+  /public/university-registration-status:
+    get:
+      tags:
+        - Public
+      operationId: getUniversityRegistrationStatus
+      summary: Check university registration status
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/GetUniversityRegistrationStatus200'
+  /organizations/settings:
+    get:
+      tags:
+        - Organizations
+      operationId: getOrganizationSettings
+      summary: Get organization settings and admin panel permissions
+      responses:
+        '200':
+          $ref: '#/components/responses/GetOrganizationSettings200'
+  /organizations/members:
+    get:
+      tags:
+        - Organizations
+      operationId: getOrganizationMembers
+      summary: List organization members (restricted)
+      responses:
+        '200':
+          $ref: '#/components/responses/GetOrganizationMembers200'
+        '403':
+          $ref: '#/components/responses/GetOrganizationMembers403'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: API token from HTB CTF platform.
+  schemas:
+    JoinedCtfsWithTeam:
+      type: array
+      items:
+        type: object
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 12345
+        name:
+          type: string
+        full_name:
+          type: string
+          nullable: true
+        contact_info:
+          type: string
+          nullable: true
+        country_phone_code:
+          type: string
+          nullable: true
+        phone_number:
+          type: string
+          nullable: true
+        user_events_count:
+          type: integer
+        email:
+          type: string
+          format: email
+        timezone:
+          type: string
+          example: Etc/UTC
+        joined_ctfs_with_team:
+          $ref: '#/components/schemas/JoinedCtfsWithTeam'
+        processing_purchases:
+          type: array
+          items:
+            type: object
+        academic_email:
+          type: string
+          nullable: true
+        hasAnyTeam:
+          type: boolean
+        hasNormalTeam:
+          type: boolean
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        htb_acc_avatar:
+          type: string
+          format: uri
+          nullable: true
+        device_id:
+          type: string
+          nullable: true
+    ProfileVisibilityOptions:
+      type: array
+      items:
+        type: string
+      example:
+        - team-members
+        - private
+        - public
+    UserProfileSettings:
+      type: object
+      properties:
+        profile_visibility_options:
+          $ref: '#/components/schemas/ProfileVisibilityOptions'
+        profile_visibility:
+          type: string
+          enum:
+            - team-members
+            - private
+            - public
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+          nullable: true
+        timezone:
+          type: string
+        description:
+          type: string
+          nullable: true
+        contact_info:
+          type: string
+          nullable: true
+        contact_info_public:
+          type: boolean
+        website:
+          type: string
+          format: uri
+          nullable: true
+        twitter:
+          type: string
+          nullable: true
+        discord:
+          type: string
+          nullable: true
+        ctftime:
+          type: string
+          nullable: true
+        academic_email:
+          type: string
+          nullable: true
+        company_email:
+          type: string
+          nullable: true
+        country_name:
+          type: string
+        country_code:
+          type: string
+          minLength: 2
+          maxLength: 2
+        mcp_token_expiration:
+          type: string
+          format: date-time
+          nullable: true
+    Pattern:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+    Theme:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+          pattern: ^#[0-9a-fA-F]{6}$
+        accent_color:
+          type: string
+          pattern: ^#[0-9a-fA-F]{6}$
+    CustomBanner:
+      type: object
+      properties:
+        pattern:
+          $ref: '#/components/schemas/Pattern'
+        theme:
+          $ref: '#/components/schemas/Theme'
+        upper_title:
+          type: string
+          nullable: true
+        motto:
+          type: string
+          nullable: true
+        show_motto:
+          type: boolean
+        show_upper_title:
+          type: boolean
+        show_company_logo:
+          type: boolean
+    CtfEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        isHtbOrganizer:
+          type: boolean
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - Ongoing
+            - Upcoming
+            - Past
+        isPaused:
+          type: boolean
+        hide_scoreboard:
+          type: integer
+        banner:
+          type: string
+          format: uri
+        custom_banner:
+          $ref: '#/components/schemas/CustomBanner'
+        hasCode:
+          type: integer
+          nullable: true
+          description: 1 if event requires an access code
+        private:
+          type: integer
+        university:
+          type: boolean
+        isBusiness:
+          type: boolean
+        isUni:
+          type: boolean
+        players:
+          type: integer
+          description: Number of registered players
+        max_participants:
+          type: integer
+          nullable: true
+        team_size:
+          type: integer
+        slug:
+          type: string
+          description: URL-safe identifier
+        format:
+          type: string
+          enum:
+            - Jeopardy
+        featured:
+          type: boolean
+        mcp_access_mode:
+          type: string
+          enum:
+            - no_mcp
+            - only_mcp
+          description: Whether MCP is required, allowed, or disabled
+        hide_organization_info:
+          type: boolean
+        org_logo:
+          type: string
+          format: uri
+        org_name:
+          type: string
+        isHost:
+          type: boolean
+        canPlay:
+          type: boolean
+        canJoin:
+          type: boolean
+        userCanViewScoreboard:
+          type: integer
+          nullable: true
+        view_analytics:
+          type: boolean
+        hasJoined:
+          type: object
+          nullable: true
+        joinedTeam:
+          type: string
+          nullable: true
+        joinedTeamAvatar:
+          type: string
+          format: uri
+          nullable: true
+        membersJoined:
+          type: object
+          nullable: true
+    CertificateInfo:
+      type: object
+      nullable: true
+      properties:
+        canGenerateCertificate:
+          type: boolean
+        canDownloadCertificate:
+          type: boolean
+        namingSensitivity:
+          type: string
+          enum:
+            - relaxed
+            - strict
+        position:
+          type: integer
+          nullable: true
+        identifier:
+          type: string
+          enum:
+            - enabled
+    PastCtfEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        format:
+          type: string
+        players:
+          type: integer
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        isHost:
+          type: boolean
+        userCanViewScoreboard:
+          type: integer
+          nullable: true
+        view_analytics:
+          type: boolean
+        certificate_info:
+          $ref: '#/components/schemas/CertificateInfo'
+    PaginatedPastCtfEventsData:
+      type: array
+      items:
+        $ref: '#/components/schemas/PastCtfEvent'
+    PaginationLinks:
+      type: object
+      properties:
+        first:
+          type: string
+          format: uri
+        last:
+          type: string
+          format: uri
+          nullable: true
+        prev:
+          type: string
+          format: uri
+          nullable: true
+        next:
+          type: string
+          format: uri
+          nullable: true
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        current_page_url:
+          type: string
+          format: uri
+        from:
+          type: integer
+          nullable: true
+        path:
+          type: string
+          format: uri
+        per_page:
+          type: integer
+        to:
+          type: integer
+          nullable: true
+    PaginatedPastCtfEvents:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PaginatedPastCtfEventsData'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        on_last_page:
+          type: boolean
+    CtfEventDetail:
+      type: object
+      description: Full CTF event detail (only accessible for events where user is authorized)
+    ErrorMessage:
+      type: object
+      properties:
+        message:
+          type: string
+    TeamSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        team_role:
+          type: string
+          nullable: true
+        numberOfMembers:
+          type: integer
+        numberOfPwns:
+          type: integer
+        country_code:
+          type: string
+        country_name:
+          type: string
+        type:
+          type: string
+          nullable: true
+    TeamDetail:
+      type: object
+      properties:
+        name:
+          type: string
+        motto:
+          type: string
+        country:
+          type: string
+        numberOfMembers:
+          type: integer
+    JoinedMembers:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+    MyTeam:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        motto:
+          type: string
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        country_name:
+          type: string
+        country_code:
+          type: string
+        discord_link:
+          type: string
+          format: uri
+          nullable: true
+        is_dormant:
+          type: integer
+        numberOfMembers:
+          type: integer
+        isCaptain:
+          type: integer
+          description: 1 if user is team captain
+        numberOfPwns:
+          type: integer
+        isPending:
+          type: boolean
+        joinedMembers:
+          $ref: '#/components/schemas/JoinedMembers'
+        type:
+          type: string
+          nullable: true
+    JoinableTeam:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        numberOfMembers:
+          type: integer
+    NotificationData:
+      type: object
+      properties:
+        icon:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+    Notification:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        notifiable_type:
+          type: string
+        notifiable_id:
+          type: integer
+        data:
+          $ref: '#/components/schemas/NotificationData'
+        read_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    PaginatedNotificationData:
+      type: array
+      items:
+        $ref: '#/components/schemas/Notification'
+    PaginatedNotifications:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PaginatedNotificationData'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        hasMorePages:
+          type: boolean
+        allAreRead:
+          type: boolean
+    ChallengeCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          enum:
+            - Fullpwn
+            - Web
+            - Pwn
+            - Crypto
+            - Reversing
+            - Stego
+            - Forensics
+            - Misc
+            - Start
+            - PCAP
+            - Coding
+            - Mobile
+            - OSINT
+            - Blockchain
+            - Hardware
+            - Warmup
+            - Attack
+            - Defence
+            - Cloud
+            - ICS
+            - ML
+            - TTX
+            - Trivia
+            - Sherlocks
+            - AI
+            - Secure Coding
+            - Quantum
+            - Physical
+            - Payment Systems
+    Country:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        code:
+          type: string
+          minLength: 2
+          maxLength: 2
+    RegistrationStatus:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+    AdminPanel:
+      type: object
+      properties:
+        canPerformMembersActions:
+          type: boolean
+        canViewMembers:
+          type: boolean
+        canViewEvents:
+          type: boolean
+        canViewSettings:
+          type: boolean
+        canViewContentLibrary:
+          type: boolean
+    OrganizationSettings:
+      type: object
+      properties:
+        org_logo:
+          type: string
+          format: uri
+          nullable: true
+        org_email:
+          type: string
+          format: email
+          nullable: true
+        org_name:
+          type: string
+          nullable: true
+        org_country:
+          type: string
+          nullable: true
+        org_industry:
+          type: string
+          nullable: true
+        org_state:
+          type: string
+          nullable: true
+        org_website:
+          type: string
+          format: uri
+          nullable: true
+        canSeeCredits:
+          type: boolean
+        canSpendCredits:
+          type: boolean
+        canSeeBuildCtf:
+          type: boolean
+        canSeeAdminPanel:
+          type: boolean
+        adminPanel:
+          $ref: '#/components/schemas/AdminPanel'
+  responses:
+    GetUserProfile200:
+      description: User profile
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserProfile'
+    GetUserProfileSettings200:
+      description: Profile settings
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserProfileSettings'
+    ListCtfEvents200:
+      description: Array of CTF events
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CtfEvent'
+    ListPastCtfEvents200:
+      description: Paginated past events
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedPastCtfEvents'
+    GetCtfEvent200:
+      description: CTF event details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CtfEventDetail'
+    GetCtfEvent403:
+      description: MCP-gated event or insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+    ListTeams200:
+      description: Array of teams
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/TeamSummary'
+    GetTeam200:
+      description: Team details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TeamDetail'
+    GetMyTeams200:
+      description: Array of user's teams
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/MyTeam'
+    GetAvailableTeams200:
+      description: Array of joinable teams
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/JoinableTeam'
+    GetJoinRequests200:
+      description: Array of pending join requests
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+    GetNotifications200:
+      description: Paginated notifications
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaginatedNotifications'
+    GetChallengeCategories200:
+      description: Array of challenge categories
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ChallengeCategory'
+    GetCountries200:
+      description: Array of countries
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Country'
+    GetCompanyRegistrationStatus200:
+      description: Registration status
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationStatus'
+    GetUniversityRegistrationStatus200:
+      description: Registration status
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationStatus'
+    GetOrganizationSettings200:
+      description: Organization settings
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrganizationSettings'
+    GetOrganizationMembers200:
+      description: Array of members
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+    GetOrganizationMembers403:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+    CtfId:
+      name: ctf_id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    TeamId:
+      name: team_id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1

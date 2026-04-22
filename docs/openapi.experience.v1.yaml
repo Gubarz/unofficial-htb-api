@@ -1,0 +1,185 @@
+openapi: 3.0.4
+info:
+  contact:
+    name: ' '
+  description: The undocumented public API experience/v1 for the Hack The Box platform. This OpenAPI specification is community-maintained and reverse-engineered. This project  is not affiliated with or endorsed by HTB.
+  license:
+    name: The Unlicense
+    url: https://unlicense.org/
+  title: HTB Unofficial API experience/v1
+  version: v0.0.1
+servers:
+  - description: HTB API
+    url: https://labs.hackthebox.com/api/experience/v1
+security:
+  - bearer: []
+tags:
+  - description: Endpoints related to Account
+    name: Account
+paths:
+  /account/{accountId}:
+    get:
+      description: Account
+      operationId: getAccountAccountId
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AccountResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get Account
+      tags:
+        - Account
+components:
+  securitySchemes:
+    bearer:
+      description: Need to create token on app.hackthebox.com
+      scheme: bearer
+      type: http
+  parameters:
+    AccountId:
+      description: Account ID of user
+      in: path
+      name: accountId
+      required: true
+      schema:
+        type: string
+  schemas:
+    StreakData:
+      type: object
+      properties:
+        counter:
+          type: integer
+        currentExperiencePoints:
+          type: integer
+        requiredExperiencePoints:
+          type: integer
+        remainingExperiencePoints:
+          type: integer
+        expiresAt:
+          type: string
+          format: date-time
+        isCompleted:
+          type: boolean
+        inDanger:
+          type: boolean
+        maxStreak:
+          type: integer
+        streakSavers:
+          type: integer
+      required:
+        - counter
+        - currentExperiencePoints
+        - requiredExperiencePoints
+        - remainingExperiencePoints
+        - expiresAt
+        - isCompleted
+        - inDanger
+        - maxStreak
+        - streakSavers
+    AccountResponse:
+      title: Account Response
+      description: Schema definition for Account response
+      type: object
+      properties:
+        level:
+          type: integer
+        levelTitle:
+          type: string
+        levelGrade:
+          type: string
+        rankImage:
+          type: string
+          format: uri
+        rankImageBackground:
+          type: string
+          format: uri
+        outroAnimation:
+          type: string
+          format: uri
+        introAnimation:
+          type: string
+          format: uri
+        totalExperiencePoints:
+          type: integer
+        levelExperiencePoints:
+          type: integer
+        experienceUntilNextLevel:
+          type: integer
+        streakData:
+          $ref: '#/components/schemas/StreakData'
+      required:
+        - level
+        - levelTitle
+        - levelGrade
+        - rankImage
+        - rankImageBackground
+        - outroAnimation
+        - introAnimation
+        - totalExperiencePoints
+        - levelExperiencePoints
+        - experienceUntilNextLevel
+        - streakData
+    Generic400Response:
+      description: Schema definition for Generic Error Response
+      properties:
+        message:
+          example: Some Error Message.
+          type: string
+        status:
+          example: 400
+          type: integer
+      required:
+        - message
+        - status
+      title: Generic Error Response
+      type: object
+  examples:
+    AccountSuccess:
+      summary: Account Success
+      value:
+        level: 110
+        levelTitle: Grandmaster
+        levelGrade: '3'
+        rankImage: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/svg/rank_grandmaster.svg
+        rankImageBackground: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/backgrounds/grandmaster.svg
+        outroAnimation: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/json/rank_grandmaster_out.json
+        introAnimation: https://htb-experience-prod-public-storage.s3.amazonaws.com/assets/ranks/json/rank_grandmaster_in.json
+        totalExperiencePoints: 254565
+        levelExperiencePoints: 4369
+        experienceUntilNextLevel: 3481
+        streakData:
+          counter: 1
+          currentExperiencePoints: 390
+          requiredExperiencePoints: 200
+          remainingExperiencePoints: 0
+          expiresAt: '2026-04-26T23:59:59.000Z'
+          isCompleted: true
+          inDanger: false
+          maxStreak: 1
+          streakSavers: 1
+    Generic400Response:
+      summary: Generic Error Response
+      value:
+        message: Some Error Message.
+        status: 400
+  responses:
+    AccountResponse:
+      content:
+        application/json:
+          examples:
+            ConnectionsSuccess:
+              $ref: '#/components/examples/AccountSuccess'
+          schema:
+            $ref: '#/components/schemas/AccountResponse'
+      description: Account
+    Generic400Response:
+      content:
+        application/json:
+          examples:
+            Generic400Error:
+              $ref: '#/components/examples/Generic400Response'
+          schema:
+            $ref: '#/components/schemas/Generic400Response'
+      description: Generic 400 Response
