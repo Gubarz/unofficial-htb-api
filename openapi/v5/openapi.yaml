@@ -24,8 +24,10 @@ paths:
     $ref: paths/machine_own.yaml
   /machines:
     $ref: paths/machines.yaml
-  /user/profile/activity/{userId}:
-    $ref: paths/user_profile_activity_{userId}.yaml
+  /universities:
+    $ref: paths/universities.yaml
+  /universities/{universityId}/stats:
+    $ref: paths/universities_{universityId}_stats.yaml
   /user/profile/content/{userId}:
     $ref: paths/user_profile_content_{userId}.yaml
   /user/dashboard/favorites:
@@ -34,6 +36,12 @@ paths:
     $ref: paths/user_dashboard_inprogress.yaml
   /user/dashboard/recommended:
     $ref: paths/user_dashboard_recommended.yaml
+  /user/profile/content/{userId}/counts:
+    $ref: paths/user_profile_content_{userId}_counts.yaml
+  /user/profile/activity/{userId}:
+    $ref: paths/user_profile_activity_{userId}.yaml
+  /virtual_machine/active:
+    $ref: paths/virtual_machine_active.yaml
 security:
   - bearer: []
 servers:
@@ -46,6 +54,12 @@ tags:
   - description: Endpoints related to Machines
     name: Machines
     x-displayName: Machines
+  - description: Endpoints related to Universities
+    name: University
+    x-displayName: University
   - description: Endpoints related to User
     name: User
     x-displayName: User
+  - description: Endpoints related to VM
+    name: VM
+    x-displayName: VM

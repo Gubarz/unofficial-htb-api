@@ -1,0 +1,17 @@
+content:
+  application/json:
+    examples:
+      VirtualMachineActiveEmpty:
+        $ref: ../examples/VirtualMachineActiveEmpty.yaml
+      VirtualMachineActiveSpawning:
+        $ref: ../examples/VirtualMachineActiveSpawning.yaml
+      VirtualMachineActiveSpawned:
+        $ref: ../examples/VirtualMachineActiveSpawned.yaml
+    schema:
+      $ref: ../schemas/VirtualMachineActiveResponse.yaml
+description: Virtual Machine Active Successful
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

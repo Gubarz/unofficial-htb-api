@@ -1,0 +1,39 @@
+description: Schema definition for active virtual machine information
+type: object
+properties:
+  vpn_server_type:
+    type: string
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+  type:
+    type: string
+  expires_at:
+    type: string
+  isSpawning:
+    type: boolean
+  lab_server:
+    type: string
+  vpn_server_id:
+    type: integer
+  avatar_url:
+    type: string
+  ip:
+    type: string
+    format: ipv4
+    nullable: true
+required:
+  - vpn_server_type
+  - id
+  - name
+  - avatar
+  - type
+  - expires_at
+  - isSpawning
+  - lab_server
+  - vpn_server_id
+  - avatar_url
+  - ip

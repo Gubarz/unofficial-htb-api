@@ -1,0 +1,28 @@
+description: Schema definition for University Stats responses
+type: object
+properties:
+  rank:
+    type: string
+  total_points:
+    type: integer
+  members:
+    type: integer
+  respects:
+    type: integer
+  machine_solves:
+    type: integer
+  challenge_solves:
+    type: integer
+  sherlock_solves:
+    type: integer
+  total_bloods:
+    type: integer
+required:
+  - rank
+  - total_points
+  - members
+  - respects
+  - machine_solves
+  - challenge_solves
+  - sherlock_solves
+  - total_bloods

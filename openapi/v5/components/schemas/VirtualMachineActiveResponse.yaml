@@ -1,0 +1,9 @@
+description: Schema definition for Virtual Machine Active responses
+type: object
+properties:
+  info:
+    nullable: true
+    oneOf:
+      - $ref: ./VirtualMachineActiveInfo.yaml
+required:
+  - info

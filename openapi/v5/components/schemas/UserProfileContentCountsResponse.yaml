@@ -1,0 +1,16 @@
+description: Schema definition for User Profile Content Counts responses
+type: object
+properties:
+  machine:
+    type: integer
+  challenge:
+    type: integer
+  sherlock:
+    type: integer
+  writeup:
+    type: integer
+required:
+  - machine
+  - challenge
+  - sherlock
+  - writeup

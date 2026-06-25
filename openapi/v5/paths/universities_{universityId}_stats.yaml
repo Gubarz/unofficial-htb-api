@@ -1,0 +1,13 @@
+get:
+  description: University Stats
+  operationId: getUniversityStats
+  parameters:
+    - $ref: ../components/parameters/UniversityId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UniversityStatsResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: Get University Stats
+  tags:
+    - University

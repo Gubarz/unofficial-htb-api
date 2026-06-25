@@ -1,0 +1,13 @@
+content:
+  application/json:
+    examples:
+      UserProfileContentCountsSuccess:
+        $ref: ../examples/UserProfileContentCountsSuccess.yaml
+    schema:
+      $ref: ../schemas/UserProfileContentCountsResponse.yaml
+description: User Profile Content Counts Successful
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

@@ -1,0 +1,30 @@
+description: Schema definition for a University list item
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar:
+    type: string
+    nullable: true
+  country_code:
+    type: string
+  country_name:
+    type: string
+  users_count:
+    type: integer
+  respected_by_count:
+    type: integer
+  created_at:
+    type: string
+    format: date-time
+required:
+  - id
+  - name
+  - avatar
+  - country_code
+  - country_name
+  - users_count
+  - respected_by_count
+  - created_at

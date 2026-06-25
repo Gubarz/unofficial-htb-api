@@ -1,0 +1,70 @@
+summary: Universities Success
+value:
+  data:
+    - id: 1
+      name: "University of Rome - Tor Vergata"
+      avatar: "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c4ca4238a0b923820dcc509a6f75849b.png"
+      country_code: "IT"
+      country_name: "Italy"
+      users_count: 76
+      respected_by_count: 718
+      created_at: "2018-04-03T07:01:10.000Z"
+  links:
+    first: "https://labs.hackthebox.com/api/v5/universities?page=1"
+    last: "https://labs.hackthebox.com/api/v5/universities?page=79"
+    prev: null
+    next: "https://labs.hackthebox.com/api/v5/universities?page=2"
+  meta:
+    current_page: 1
+    from: 1
+    last_page: 79
+    links:
+      - url: null
+        label: "&laquo; Previous"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=1"
+        label: "1"
+        active: true
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=2"
+        label: "2"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=3"
+        label: "3"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=4"
+        label: "4"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=5"
+        label: "5"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=6"
+        label: "6"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=7"
+        label: "7"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=8"
+        label: "8"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=9"
+        label: "9"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=10"
+        label: "10"
+        active: false
+      - url: null
+        label: "..."
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=78"
+        label: "78"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=79"
+        label: "79"
+        active: false
+      - url: "https://labs.hackthebox.com/api/v5/universities?page=2"
+        label: "Next &raquo;"
+        active: false
+    path: "https://labs.hackthebox.com/api/v5/universities"
+    per_page: 15
+    to: 15
+    total: 1184

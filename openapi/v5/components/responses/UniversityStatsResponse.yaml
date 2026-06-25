@@ -1,0 +1,13 @@
+content:
+  application/json:
+    examples:
+      UniversityStatsSuccess:
+        $ref: ../examples/UniversityStatsSuccess.yaml
+    schema:
+      $ref: ../schemas/UniversityStatsResponse.yaml
+description: University Stats Successful
+headers:
+  x-ratelimit-limit:
+    $ref: ../headers/XRateLimitHeader.yaml
+  x-ratelimit-remaining:
+    $ref: ../headers/XRateLimitRemainingHeader.yaml

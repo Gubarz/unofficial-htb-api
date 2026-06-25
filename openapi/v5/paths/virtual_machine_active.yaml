@@ -1,0 +1,11 @@
+get:
+  description: Virtual Machine Active
+  operationId: getVirtualMachineActive
+  responses:
+    '200':
+      $ref: ../components/responses/VirtualMachineActiveResponse.yaml
+    '400':
+      $ref: ../components/responses/Generic400Response.yaml
+  summary: Get Active Virtual Machine
+  tags:
+    - VM
