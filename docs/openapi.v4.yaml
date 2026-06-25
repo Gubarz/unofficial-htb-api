@@ -191,36 +191,6 @@ paths:
       summary: Challenge Recommendation Cards
       tags:
         - Challenges
-  /challenge/start:
-    post:
-      description: Starts a challenge container with challenge_id
-      deprecated: true
-      operationId: postChallengeStart
-      requestBody:
-        $ref: '#/components/requestBodies/ChallengeStartStopRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ChallengeStartResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Starts a challenge - Use Container Start
-      tags:
-        - Challenges
-  /challenge/stop:
-    post:
-      description: Stops a challenge container with challenge_id
-      deprecated: true
-      operationId: postChallengeStop
-      requestBody:
-        $ref: '#/components/requestBodies/ChallengeStartStopRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/ChallengeStopResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Stops a challenge - Use Container Stop
-      tags:
-        - Challenges
   /challenge/suggested:
     get:
       description: Retrieves information related to /challenge/suggested
@@ -255,7 +225,7 @@ paths:
         - $ref: '#/components/parameters/ChallengeId'
       responses:
         '200':
-          $ref: '#/components/responses/GenericPDFResponse'
+          $ref: '#/components/responses/ChallengeWriteupOfficialResponse'
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Get Official PDF Writeup
@@ -1412,35 +1382,6 @@ paths:
       summary: Get Track Details
       tags:
         - Tracks
-  /university/activity/{universityId}:
-    get:
-      description: Univeritiy Activity
-      operationId: getUniversityActivity
-      parameters:
-        - $ref: '#/components/parameters/UniversityId'
-      responses:
-        '200':
-          $ref: '#/components/responses/UniversityActivityResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Univeritiy Activity
-      tags:
-        - Universities
-  /university/all/list:
-    get:
-      description: Retrieve a list of all universities.
-      operationId: getUniversityAllList
-      parameters:
-        - $ref: '#/components/parameters/Search'
-        - $ref: '#/components/parameters/Page'
-      responses:
-        '200':
-          $ref: '#/components/responses/UniversityAllListResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Retrieve information profile for teams
-      tags:
-        - Universities
   /university/members/{universityId}:
     get:
       description: Retrieve the list of members of a team, including both active and pending/invited members
@@ -1655,49 +1596,6 @@ paths:
       summary: Other user's profile
       tags:
         - User
-  /user/profile/bloods/{userId}:
-    get:
-      description: Retrieves information related to /user/profile/bloods/{user id}
-      operationId: getUserProfileBloods
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProfileBloodsUserIdResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: 'User profile: Bloods'
-      tags:
-        - User
-  /user/profile/chart/machines/attack/{userId}:
-    get:
-      description: Retrieves information related to /user/profile/chart/machines/attack/{user id}
-      operationId: getUserProfileChartMachinesAttack
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProfileChartMachinesAttackUserIdResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: 'User profile: machine Ownage Chart By Attack Path'
-      tags:
-        - User
-  /user/profile/graph/{period}/{userId}:
-    get:
-      description: Retrieves information related to /user/profile/graph/{period}/{user id}
-      operationId: getUserProfileGraph
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-        - $ref: '#/components/parameters/PeriodPath'
-      responses:
-        '200':
-          $ref: '#/components/responses/ProfileGraphPeriodUserIdResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: 'User profile: Achievement Graph'
-      tags:
-        - User
   /user/profile/progress/challenges/{userId}:
     get:
       description: Retrieves information related to /user/profile/progress/challenges/{user id}
@@ -1844,34 +1742,6 @@ paths:
         '400':
           $ref: '#/components/responses/VmReset400'
       summary: Reset a machine / SP
-      tags:
-        - VM
-  /vm/reset/vote:
-    post:
-      description: Reset the virtual machine.
-      operationId: postVMResetVote
-      requestBody:
-        $ref: '#/components/requestBodies/VirtualMachineRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/VMResponse'
-        '400':
-          $ref: '#/components/responses/VmReset400'
-      summary: Vote to Reset a machine
-      tags:
-        - VM
-  /vm/reset/vote/accept:
-    post:
-      description: Reset the virtual machine.
-      operationId: postVMResetVoteAccept
-      requestBody:
-        $ref: '#/components/requestBodies/VirtualMachineRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/VMResponse'
-        '400':
-          $ref: '#/components/responses/VmReset400'
-      summary: Accept vote to Reset a machine
       tags:
         - VM
   /vm/spawn:
@@ -2242,13 +2112,6 @@ components:
       required: true
       schema:
         type: integer
-    Search:
-      description: Search
-      in: query
-      name: search
-      required: false
-      schema:
-        type: string
     Rare:
       description: Number of rare badges to retrieve
       in: query
@@ -2258,19 +2121,6 @@ components:
         maximum: 20
         minimum: 1
         type: integer
-    PeriodPath:
-      description: One of ["1Y", "6M", "3M", "1M", "1W"]
-      in: path
-      name: period
-      required: true
-      schema:
-        enum:
-          - 1Y
-          - 6M
-          - 3M
-          - 1M
-          - 1W
-        type: string
   headers:
     XRateLimitHeader:
       description: Total requests allowed
@@ -2792,27 +2642,6 @@ components:
             - retiring
       title: Challenge Recommended Response
       type: object
-    ChallengeStartResponse:
-      description: Schema definition for Challenge Start Response
-      properties:
-        id:
-          example: 1214160
-          type: integer
-        message:
-          example: Instance Created!
-          type: string
-      title: Challenge Start Response
-      type: object
-    Messagesuccess:
-      description: Schema definition for Message
-      properties:
-        message:
-          description: Return message and success
-          type: string
-        success:
-          type: boolean
-      title: Message
-      type: object
     ChallengeSuggestedData:
       properties:
         challenge_category_name:
@@ -2843,6 +2672,7 @@ components:
           type: string
         sha256:
           type: string
+          nullable: true
         url:
           type: string
         video_url:
@@ -2861,6 +2691,14 @@ components:
         data:
           $ref: '#/components/schemas/WriteupData'
       title: Challenge writeups
+      type: object
+    url:
+      description: Schema definition for a URL Response
+      properties:
+        url:
+          type: string
+          nullable: true
+      title: URL Response
       type: object
     ChallengeRetires:
       properties:
@@ -3215,6 +3053,16 @@ components:
           type: string
       title: Container Start Response
       type: object
+    Messagesuccess:
+      description: Schema definition for Message
+      properties:
+        message:
+          description: Return message and success
+          type: string
+        success:
+          type: boolean
+      title: Message
+      type: object
     Company:
       description: Schema definition for Company
       properties:
@@ -3417,6 +3265,10 @@ components:
           example: /storage/avatars/23e804513a47e8f20bc865d0419946e1.png
           type: string
           nullable: true
+        avatar_url:
+          example: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png
+          type: string
+          nullable: true
         expires_at:
           example: '2024-05-18 17:42:04'
           type: string
@@ -3460,9 +3312,8 @@ components:
     ActiveMachineResponse:
       properties:
         info:
-          type: object
           nullable: true
-          allOf:
+          oneOf:
             - $ref: '#/components/schemas/ActiveMachineInfo'
       type: object
     MachineAcitivtyItem:
@@ -3676,6 +3527,14 @@ components:
       properties:
         avatar:
           example: /storage/avatars/3453459704ee924e218ba13453453453.png
+          type: string
+          nullable: true
+        avatar_url:
+          example: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d0-845d-476d-bf65-4d861b5e5314.png
+          type: string
+          nullable: true
+        avatar_thumb_url:
+          example: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d0-845d-476d-bf65-4d861b5e5314_thumb_64.png
           type: string
           nullable: true
         id:
@@ -5545,6 +5404,8 @@ components:
           type: integer
         user_points:
           type: integer
+        content_id:
+          type: string
       type: object
     SeasonActive:
       description: Schema definition for Season Active
@@ -5746,6 +5607,10 @@ components:
           type: integer
         total_season_flags:
           $ref: '#/components/schemas/SeasonUserRankDataTotalSeasonFlags'
+        total_season_bloods:
+          type: integer
+        season_content_id:
+          type: string
       type: object
     SeasonUserRank:
       description: Schema definition for Season User Rank
@@ -6084,6 +5949,9 @@ components:
           type: boolean
         avatar:
           example: /storage/challenges/cbcb58ac2e496207586df2854b17995f.png
+          type: string
+        avatar_url:
+          example: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/9ea47ecf-b5aa-4a60-aa89-b1915754afdd.png
           type: string
         category_id:
           example: 16
@@ -6617,120 +6485,6 @@ components:
         - $ref: '#/components/schemas/TrackSuccessResponse'
         - $ref: '#/components/schemas/TrackErrorResponse'
       type: object
-    PublicUserProfileBasic:
-      properties:
-        avatar_thumb:
-          type: string
-          nullable: true
-        id:
-          type: integer
-        name:
-          type: string
-        public:
-          type: integer
-      type: object
-    UniversityAcitivtyItem:
-      properties:
-        challenge_category:
-          type: string
-        date:
-          type: string
-        date_diff:
-          type: string
-        first_blood:
-          type: boolean
-        id:
-          type: integer
-        avatar_url:
-          type: string
-        name:
-          type: string
-        object_type:
-          type: string
-        points:
-          type: number
-        type:
-          type: string
-        user:
-          $ref: '#/components/schemas/PublicUserProfileBasic'
-      type: object
-    UniversityActivityResponse:
-      items:
-        $ref: '#/components/schemas/UniversityAcitivtyItem'
-      type: array
-    UniversityListItem:
-      properties:
-        cca2:
-          type: string
-        country:
-          type: string
-        created_at:
-          type: string
-        has_auto_generated_logo:
-          type: integer
-        id:
-          type: integer
-        name:
-          type: string
-        respected_by_count:
-          type: integer
-        user_avatars:
-          $ref: '#/components/schemas/StringArray'
-        users_count:
-          type: integer
-      type: object
-    UniversityListItems:
-      items:
-        $ref: '#/components/schemas/UniversityListItem'
-      type: array
-    UniversityListData:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        data:
-          $ref: '#/components/schemas/UniversityListItems'
-        first_page_url:
-          nullable: true
-          type: string
-        from:
-          example: 1
-          type: integer
-        last_page:
-          example: 11
-          nullable: true
-          type: integer
-        last_page_url:
-          type: string
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-        next_page_url:
-          nullable: true
-          type: string
-        path:
-          type: string
-        per_page:
-          example: 15
-          type: integer
-        prev_page_url:
-          nullable: true
-          type: integer
-        to:
-          example: 15
-          type: integer
-        total:
-          example: 162
-          type: integer
-      type: object
-    UniversityAllListResponse:
-      description: Schema for University All List Response
-      properties:
-        data:
-          $ref: '#/components/schemas/UniversityListData'
-        message:
-          type: string
-        section:
-          type: string
     UniversityMembersResponse:
       description: University Members Resposne
       properties:
@@ -6834,6 +6588,8 @@ components:
     UserAchievementMachineTypeUser:
       properties:
         avatar:
+          type: string
+        avatar_url:
           type: string
         id:
           type: integer
@@ -7240,150 +6996,6 @@ components:
           $ref: '#/components/schemas/UserProfile'
       title: User Profile Basic Id Response
       type: object
-    UserProfileBloodsChallenges:
-      properties:
-        blood_difference:
-          type: string
-        category_name:
-          type: string
-        difficulty_text:
-          type: string
-        id:
-          type: integer
-        name:
-          type: string
-      type: object
-    BloodsChallengesItems:
-      items:
-        $ref: '#/components/schemas/UserProfileBloodsChallenges'
-      type: array
-    UserProfileBloodsMachines:
-      properties:
-        avatar:
-          type: string
-        difficulty_text:
-          type: string
-        id:
-          type: integer
-        name:
-          type: string
-        os:
-          type: string
-        root_blood:
-          type: boolean
-        root_blood_difference:
-          type: string
-        user_blood:
-          type: boolean
-        user_blood_difference:
-          type: string
-      type: object
-    BloodsMachinesItems:
-      items:
-        $ref: '#/components/schemas/UserProfileBloodsMachines'
-      type: array
-    Bloods:
-      properties:
-        challenges:
-          $ref: '#/components/schemas/BloodsChallengesItems'
-        machines:
-          $ref: '#/components/schemas/BloodsMachinesItems'
-      type: object
-    UserProfileBloodsProfile:
-      properties:
-        bloods:
-          $ref: '#/components/schemas/Bloods'
-      type: object
-    UserProfileBloodsResponse:
-      properties:
-        profile:
-          $ref: '#/components/schemas/UserProfileBloodsProfile'
-      type: object
-    ProfileChartMachineAttackCard:
-      description: Schema definition for Profile Chart Machine Attack Card
-      properties:
-        avg_user_solved:
-          example: 0.403
-          type: number
-        solved:
-          type: integer
-        total:
-          type: integer
-      title: Profile Chart Machine Attack Card
-      type: object
-    ProfileChartMachineAttackProfileMachineAttackPaths:
-      properties:
-        Web Application:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Vulnerability Assessment:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Injections:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Password Cracking:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Password Reuse:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Reconnaissance:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Security Tools:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Software & OS exploitation:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Source Code Analysis:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-        Enterprise Network:
-          $ref: '#/components/schemas/ProfileChartMachineAttackCard'
-      type: object
-    MachineOwnsCard:
-      description: Schema definition for Machine Owns Card
-      properties:
-        solved:
-          example: 100
-          type: integer
-        total:
-          example: 204
-          type: integer
-      title: Machine Owns Card
-      type: object
-    ProfileChartMachineAttackProfile:
-      properties:
-        machine_attack_paths:
-          $ref: '#/components/schemas/ProfileChartMachineAttackProfileMachineAttackPaths'
-        machine_owns:
-          $ref: '#/components/schemas/MachineOwnsCard'
-      type: object
-    ProfileChartMachineAttackIdResponse:
-      description: Schema definition for Profile Chart Machine Attack Id Response
-      properties:
-        profile:
-          $ref: '#/components/schemas/ProfileChartMachineAttackProfile'
-      title: Profile Chart Machine Attack Id Response
-      type: object
-    ProfileGraphData:
-      properties:
-        challenge_owns:
-          $ref: '#/components/schemas/IntArray'
-        first_bloods:
-          $ref: '#/components/schemas/IntArray'
-        respects:
-          $ref: '#/components/schemas/IntArray'
-        system_owns:
-          $ref: '#/components/schemas/IntArray'
-        user_owns:
-          $ref: '#/components/schemas/IntArray'
-      type: object
-    ProfileGraopPeriodProfile:
-      properties:
-        graphData:
-          $ref: '#/components/schemas/ProfileGraphData'
-      type: object
-    ProfileGraphPeriodIdResponse:
-      description: Schema definition for Profile Graph Period Id Response
-      properties:
-        profile:
-          $ref: '#/components/schemas/ProfileGraopPeriodProfile'
-      title: Profile Graph Period Id Response
-      type: object
     ChallengeCategoriesItems:
       properties:
         avg_user_solved:
@@ -7435,6 +7047,8 @@ components:
         challenge_owns:
           $ref: '#/components/schemas/ProfileProgressChallengeOwns'
         solved_tasks:
+          type: integer
+        total_bloods:
           type: integer
       type: object
     ProfileProgressChallengesIdRepsonse:
@@ -7555,6 +7169,8 @@ components:
           $ref: '#/components/schemas/UserProfileProgressSherlockProfileChallengeOwns'
         solved_tasks:
           type: number
+        total_bloods:
+          type: integer
       type: object
     UserProfileProgressSherlocksResponse:
       properties:
@@ -7846,30 +7462,6 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    ChallengeStartResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ChallengeStartResponse'
-      description: Challenge Start Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    ChallengeStopResponse:
-      content:
-        application/json:
-          example:
-            message: Container Stopped
-          schema:
-            $ref: '#/components/schemas/Messagesuccess'
-      description: Challenge Stop Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
     ChallengeSuggestedResponse:
       content:
         application/json:
@@ -7892,10 +7484,12 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    GenericPDFResponse:
+    ChallengeWriteupOfficialResponse:
       content:
-        application/pdf: {}
-      description: OK
+        application/json:
+          schema:
+            $ref: '#/components/schemas/url'
+      description: Challenge Writeup Official Response
       headers:
         x-ratelimit-limit:
           $ref: '#/components/headers/XRateLimitHeader'
@@ -8187,11 +7781,15 @@ components:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
     MachineWriteupMachineIdResponse:
       content:
-        application/pdf:
+        application/json:
           schema:
-            format: binary
-            type: string
+            $ref: '#/components/schemas/url'
       description: Machine Writeup Response
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
     MachinesAdventureResponse:
       content:
         application/json:
@@ -8602,10 +8200,9 @@ components:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
     SherlocksSherlockIdWriteupOfficialResponse:
       content:
-        application/pdf:
+        application/json:
           schema:
-            format: binary
-            type: string
+            $ref: '#/components/schemas/url'
       description: Sherlock Official Writeup Response
       headers:
         x-ratelimit-limit:
@@ -8734,28 +8331,6 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    UniversityActivityResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UniversityActivityResponse'
-      description: OK
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    UniversityAllListResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UniversityAllListResponse'
-      description: University List Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
     UniversityMembersTeamIdResponse:
       content:
         application/json:
@@ -8869,39 +8444,6 @@ components:
           schema:
             $ref: '#/components/schemas/UserProfileBasicIdResponse'
       description: User Profile Basic Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    ProfileBloodsUserIdResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserProfileBloodsResponse'
-      description: Profile Bloods User Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    ProfileChartMachinesAttackUserIdResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProfileChartMachineAttackIdResponse'
-      description: Profile Chart Machines Attack Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    ProfileGraphPeriodUserIdResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProfileGraphPeriodIdResponse'
-      description: Profile Graph Period Response
       headers:
         x-ratelimit-limit:
           $ref: '#/components/headers/XRateLimitHeader'
@@ -9051,18 +8593,6 @@ components:
           schema:
             $ref: '#/components/schemas/ChallengeOwnRequest'
       description: Body to post machine flag
-      required: true
-    ChallengeStartStopRequest:
-      content:
-        application/x-www-form-urlencoded:
-          schema:
-            properties:
-              challenge_id:
-                type: integer
-            required:
-              - challenge_id
-            type: object
-      description: use challenge_id
       required: true
     ContainerStartStopRequest:
       content:

@@ -20,9 +20,15 @@ tags:
   - description: Endpoints related to Machines
     name: Machines
     x-displayName: Machines
+  - description: Endpoints related to Universities
+    name: University
+    x-displayName: University
   - description: Endpoints related to User
     name: User
     x-displayName: User
+  - description: Endpoints related to VM
+    name: VM
+    x-displayName: VM
 paths:
   /connections:
     get:
@@ -75,22 +81,35 @@ paths:
       summary: Get Machines
       tags:
         - Machines
-  /user/profile/activity/{userId}:
+  /universities:
     get:
-      description: User Profile Activity
-      operationId: getUserProfileActivity
+      description: Universities
+      operationId: getUniversities
       parameters:
-        - $ref: '#/components/parameters/UserId'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/Page'
       responses:
         '200':
-          $ref: '#/components/responses/UserProfileActivityResponse'
+          $ref: '#/components/responses/UniversitiesResponse'
         '400':
           $ref: '#/components/responses/Generic400Response'
-      summary: User Profile Activity
+      summary: Get Universities
       tags:
-        - User
+        - University
+  /universities/{universityId}/stats:
+    get:
+      description: University Stats
+      operationId: getUniversityStats
+      parameters:
+        - $ref: '#/components/parameters/UniversityId'
+      responses:
+        '200':
+          $ref: '#/components/responses/UniversityStatsResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get University Stats
+      tags:
+        - University
   /user/profile/content/{userId}:
     get:
       description: User Profile Content
@@ -144,6 +163,48 @@ paths:
       summary: User Dashboard Recommended
       tags:
         - User
+  /user/profile/content/{userId}/counts:
+    get:
+      description: User Profile Content Counts
+      operationId: getUserProfileContentCounts
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileContentCountsResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Profile Content Counts
+      tags:
+        - User
+  /user/profile/activity/{userId}:
+    get:
+      description: User Profile Activity
+      operationId: getUserProfileActivity
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileActivityResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: User Profile Activity
+      tags:
+        - User
+  /virtual_machine/active:
+    get:
+      description: Virtual Machine Active
+      operationId: getVirtualMachineActive
+      responses:
+        '200':
+          $ref: '#/components/responses/VirtualMachineActiveResponse'
+        '400':
+          $ref: '#/components/responses/Generic400Response'
+      summary: Get Active Virtual Machine
+      tags:
+        - VM
 components:
   securitySchemes:
     bearer:
@@ -665,165 +726,84 @@ components:
         - data
         - links
         - meta
-    UserProfileActivityFortress:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - fortress
-            fortressId:
-              type: integer
-            fortressName:
-              type: string
-          required:
-            - type
-            - fortressId
-            - fortressName
-    UserProfileActivityMachineOwn:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - root
-                - user
-          required:
-            - type
-    UserProfileActivityChallenge:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - challenge
-            categoryName:
-              type: string
-          required:
-            - type
-            - categoryName
-    UserProfileActivitySherlock:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - sherlock
-          required:
-            - type
-    UserProfileActivityProlab:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              enum:
-                - prolab
-            prolabId:
-              type: integer
-            prolabName:
-              type: string
-            prolabIdentifier:
-              type: string
-          required:
-            - type
-            - prolabId
-            - prolabName
-            - prolabIdentifier
-    UserProfileActivityBase:
+    UniversitiesItem:
+      description: Schema definition for a University list item
       type: object
       properties:
-        type:
-          type: string
         id:
           type: integer
         name:
           type: string
-        points:
-          type: integer
-        ownDate:
-          type: string
-          format: date-time
         avatar:
           type: string
-          format: uri
-        blood:
-          type: boolean
           nullable: true
+        country_code:
+          type: string
+        country_name:
+          type: string
+        users_count:
+          type: integer
+        respected_by_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
       required:
-        - type
         - id
         - name
-        - points
-        - ownDate
-    UserProfileActivityMachineBase:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserProfileActivityBase'
-        - type: object
-          properties:
-            blood:
-              type: boolean
-          required:
-            - blood
-    UserProfileActivityItem:
-      oneOf:
-        - $ref: '#/components/schemas/UserProfileActivityFortress'
-        - $ref: '#/components/schemas/UserProfileActivityMachineOwn'
-        - $ref: '#/components/schemas/UserProfileActivityChallenge'
-        - $ref: '#/components/schemas/UserProfileActivitySherlock'
-        - $ref: '#/components/schemas/UserProfileActivityProlab'
-      discriminator:
-        propertyName: type
-        mapping:
-          fortress: '#/components/schemas/UserProfileActivityFortress'
-          root: '#/components/schemas/UserProfileActivityMachineOwn'
-          user: '#/components/schemas/UserProfileActivityMachineOwn'
-          challenge: '#/components/schemas/UserProfileActivityChallenge'
-          sherlock: '#/components/schemas/UserProfileActivitySherlock'
-          prolab: '#/components/schemas/UserProfileActivityProlab'
-    UserProfileActivityData:
+        - avatar
+        - country_code
+        - country_name
+        - users_count
+        - respected_by_count
+        - created_at
+    UniversitiesData:
       type: array
       items:
-        $ref: '#/components/schemas/UserProfileActivityItem'
-    MetaAlt:
-      type: object
-      properties:
-        page:
-          type: integer
-        lastPage:
-          type: integer
-        totalItems:
-          type: integer
-      required:
-        - page
-        - lastPage
-        - totalItems
-    UserProfileActivityResponse:
-      description: Schema definition for User profile activity responses
+        $ref: '#/components/schemas/UniversitiesItem'
+    UniversitiesResponse:
+      description: Schema definition for Universities list responses
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/UserProfileActivityData'
+          $ref: '#/components/schemas/UniversitiesData'
+        links:
+          $ref: '#/components/schemas/Links'
         meta:
-          $ref: '#/components/schemas/MetaAlt'
+          $ref: '#/components/schemas/Meta'
       required:
         - data
+        - links
         - meta
+    UniversityStatsResponse:
+      description: Schema definition for University Stats responses
+      type: object
+      properties:
+        rank:
+          type: string
+        total_points:
+          type: integer
+        members:
+          type: integer
+        respects:
+          type: integer
+        machine_solves:
+          type: integer
+        challenge_solves:
+          type: integer
+        sherlock_solves:
+          type: integer
+        total_bloods:
+          type: integer
+      required:
+        - rank
+        - total_points
+        - members
+        - respects
+        - machine_solves
+        - challenge_solves
+        - sherlock_solves
+        - total_bloods
     UserProfileContentItemMachine:
       description: Machine entry returned by the user profile content feed.
       type: object
@@ -966,6 +946,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/UserProfileContentItem'
+    MetaAlt:
+      type: object
+      properties:
+        page:
+          type: integer
+        lastPage:
+          type: integer
+        totalItems:
+          type: integer
+      required:
+        - page
+        - lastPage
+        - totalItems
     UserProfileContentResponse:
       description: Schema definition for User profile content responses.
       type: object
@@ -1468,6 +1461,219 @@ components:
         - proLabs
         - tracks
         - fortresses
+    UserProfileContentCountsResponse:
+      description: Schema definition for User Profile Content Counts responses
+      type: object
+      properties:
+        machine:
+          type: integer
+        challenge:
+          type: integer
+        sherlock:
+          type: integer
+        writeup:
+          type: integer
+      required:
+        - machine
+        - challenge
+        - sherlock
+        - writeup
+    UserProfileActivityFortress:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - fortress
+            fortressId:
+              type: integer
+            fortressName:
+              type: string
+          required:
+            - type
+            - fortressId
+            - fortressName
+    UserProfileActivityMachineOwn:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - root
+                - user
+          required:
+            - type
+    UserProfileActivityChallenge:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityMachineBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - challenge
+            categoryName:
+              type: string
+          required:
+            - type
+            - categoryName
+    UserProfileActivitySherlock:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - sherlock
+          required:
+            - type
+    UserProfileActivityProlab:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - prolab
+            prolabId:
+              type: integer
+            prolabName:
+              type: string
+            prolabIdentifier:
+              type: string
+          required:
+            - type
+            - prolabId
+            - prolabName
+            - prolabIdentifier
+    UserProfileActivityBase:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        points:
+          type: integer
+        ownDate:
+          type: string
+          format: date-time
+        avatar:
+          type: string
+          format: uri
+        blood:
+          type: boolean
+          nullable: true
+      required:
+        - type
+        - id
+        - name
+        - points
+        - ownDate
+    UserProfileActivityMachineBase:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/UserProfileActivityBase'
+        - type: object
+          properties:
+            blood:
+              type: boolean
+          required:
+            - blood
+    UserProfileActivityItem:
+      oneOf:
+        - $ref: '#/components/schemas/UserProfileActivityFortress'
+        - $ref: '#/components/schemas/UserProfileActivityMachineOwn'
+        - $ref: '#/components/schemas/UserProfileActivityChallenge'
+        - $ref: '#/components/schemas/UserProfileActivitySherlock'
+        - $ref: '#/components/schemas/UserProfileActivityProlab'
+      discriminator:
+        propertyName: type
+        mapping:
+          fortress: '#/components/schemas/UserProfileActivityFortress'
+          root: '#/components/schemas/UserProfileActivityMachineOwn'
+          user: '#/components/schemas/UserProfileActivityMachineOwn'
+          challenge: '#/components/schemas/UserProfileActivityChallenge'
+          sherlock: '#/components/schemas/UserProfileActivitySherlock'
+          prolab: '#/components/schemas/UserProfileActivityProlab'
+    UserProfileActivityData:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserProfileActivityItem'
+    UserProfileActivityResponse:
+      description: Schema definition for User profile activity responses
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserProfileActivityData'
+        meta:
+          $ref: '#/components/schemas/MetaAlt'
+      required:
+        - data
+        - meta
+    VirtualMachineActiveInfo:
+      description: Schema definition for active virtual machine information
+      type: object
+      properties:
+        vpn_server_type:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: string
+        type:
+          type: string
+        expires_at:
+          type: string
+        isSpawning:
+          type: boolean
+        lab_server:
+          type: string
+        vpn_server_id:
+          type: integer
+        avatar_url:
+          type: string
+        ip:
+          type: string
+          format: ipv4
+          nullable: true
+      required:
+        - vpn_server_type
+        - id
+        - name
+        - avatar
+        - type
+        - expires_at
+        - isSpawning
+        - lab_server
+        - vpn_server_id
+        - avatar_url
+        - ip
+    VirtualMachineActiveResponse:
+      description: Schema definition for Virtual Machine Active responses
+      type: object
+      properties:
+        info:
+          nullable: true
+          oneOf:
+            - $ref: '#/components/schemas/VirtualMachineActiveInfo'
+      required:
+        - info
   examples:
     ConnectionsSuccess:
       summary: Assigned Servers
@@ -1672,58 +1878,88 @@ components:
           per_page: 6
           to: 6
           total: 24
-    UserProfileActivitySuccess:
-      summary: User profile activity
+    UniversitiesSuccess:
+      summary: Universities Success
       value:
         data:
-          - fortressId: 3
-            fortressName: Context
-            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1c383cd30b7c298ab50293adfecb7b18_logo.svg
-            type: fortress
-            id: 35
-            name: But we have SSL!?
-            points: 20
-            ownDate: '2025-09-26T13:23:21.000Z'
-          - blood: false
-            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
-            type: root
-            id: 751
-            name: Imagery
-            points: 30
-            ownDate: '2025-09-27T20:48:56.000Z'
-          - blood: false
-            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
-            type: user
-            id: 751
-            name: Imagery
-            points: 15
-            ownDate: '2025-09-27T20:29:12.000Z'
-          - blood: false
-            categoryName: Crypto
-            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c81e728d9d4c2f636f067f89cc14862c.svg
-            type: challenge
-            id: 639
-            name: POPO
-            points: 3
-            ownDate: '2025-09-23T13:43:32.000Z'
-          - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/abd815286ba1007abfbb8415b83ae2cf.png
-            type: sherlock
-            id: 632
-            name: Unit42
-            points: 0
-            ownDate: '2024-04-12T02:47:40.000Z'
-          - prolabId: 4
-            prolabName: Dante
-            prolabIdentifier: DANTE
-            type: prolab
-            id: 106
-            name: One misconfig to rule them all...
-            points: 10
-            ownDate: '2023-06-19T04:59:09.000Z'
+          - id: 1
+            name: University of Rome - Tor Vergata
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c4ca4238a0b923820dcc509a6f75849b.png
+            country_code: IT
+            country_name: Italy
+            users_count: 76
+            respected_by_count: 718
+            created_at: '2018-04-03T07:01:10.000Z'
+        links:
+          first: https://labs.hackthebox.com/api/v5/universities?page=1
+          last: https://labs.hackthebox.com/api/v5/universities?page=79
+          prev: null
+          next: https://labs.hackthebox.com/api/v5/universities?page=2
         meta:
-          page: 1
-          lastPage: 4
-          totalItems: 50
+          current_page: 1
+          from: 1
+          last_page: 79
+          links:
+            - url: null
+              label: '&laquo; Previous'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=1
+              label: '1'
+              active: true
+            - url: https://labs.hackthebox.com/api/v5/universities?page=2
+              label: '2'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=3
+              label: '3'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=4
+              label: '4'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=5
+              label: '5'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=6
+              label: '6'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=7
+              label: '7'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=8
+              label: '8'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=9
+              label: '9'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=10
+              label: '10'
+              active: false
+            - url: null
+              label: ...
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=78
+              label: '78'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=79
+              label: '79'
+              active: false
+            - url: https://labs.hackthebox.com/api/v5/universities?page=2
+              label: Next &raquo;
+              active: false
+          path: https://labs.hackthebox.com/api/v5/universities
+          per_page: 15
+          to: 15
+          total: 1184
+    UniversityStatsSuccess:
+      summary: University Stats Success
+      value:
+        rank: '115'
+        total_points: 1049
+        members: 64
+        respects: 128
+        machine_solves: 269
+        challenge_solves: 283
+        sherlock_solves: 7
+        total_bloods: 0
     UserProfileContentMachineSuccess:
       summary: User profile content filtered by machines
       value:
@@ -2215,6 +2451,99 @@ components:
             type: Pro Lab
         tracks: []
         fortresses: []
+    UserProfileContentCountsSuccess:
+      summary: User Profile Content Counts Success
+      value:
+        machine: 5
+        challenge: 2
+        sherlock: 0
+        writeup: 0
+    UserProfileActivitySuccess:
+      summary: User profile activity
+      value:
+        data:
+          - fortressId: 3
+            fortressName: Context
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1c383cd30b7c298ab50293adfecb7b18_logo.svg
+            type: fortress
+            id: 35
+            name: But we have SSL!?
+            points: 20
+            ownDate: '2025-09-26T13:23:21.000Z'
+          - blood: false
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+            type: root
+            id: 751
+            name: Imagery
+            points: 30
+            ownDate: '2025-09-27T20:48:56.000Z'
+          - blood: false
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
+            type: user
+            id: 751
+            name: Imagery
+            points: 15
+            ownDate: '2025-09-27T20:29:12.000Z'
+          - blood: false
+            categoryName: Crypto
+            avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c81e728d9d4c2f636f067f89cc14862c.svg
+            type: challenge
+            id: 639
+            name: POPO
+            points: 3
+            ownDate: '2025-09-23T13:43:32.000Z'
+          - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/abd815286ba1007abfbb8415b83ae2cf.png
+            type: sherlock
+            id: 632
+            name: Unit42
+            points: 0
+            ownDate: '2024-04-12T02:47:40.000Z'
+          - prolabId: 4
+            prolabName: Dante
+            prolabIdentifier: DANTE
+            type: prolab
+            id: 106
+            name: One misconfig to rule them all...
+            points: 10
+            ownDate: '2023-06-19T04:59:09.000Z'
+        meta:
+          page: 1
+          lastPage: 4
+          totalItems: 50
+    VirtualMachineActiveEmpty:
+      summary: Virtual Machine Active Empty
+      value:
+        info: null
+    VirtualMachineActiveSpawning:
+      summary: Virtual Machine Active Spawning
+      value:
+        info:
+          vpn_server_type: Machines VIP+
+          id: 351
+          name: Cap
+          avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png
+          type: machine
+          expires_at: '2026-06-26 17:03:17'
+          isSpawning: true
+          lab_server: dedivip_lab
+          vpn_server_id: 289
+          avatar_url: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png
+          ip: null
+    VirtualMachineActiveSpawned:
+      summary: Virtual Machine Active Spawned
+      value:
+        info:
+          vpn_server_type: Machines VIP+
+          id: 351
+          name: Cap
+          avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png
+          type: machine
+          expires_at: '2026-06-26 17:03:17'
+          isSpawning: false
+          lab_server: dedivip_lab
+          vpn_server_id: 289
+          avatar_url: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png
+          ip: 10.129.22.200
   responses:
     ConnectionsResponse:
       content:
@@ -2280,15 +2609,34 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    UserProfileActivityResponse:
+    UniversitiesResponse:
       content:
         application/json:
           examples:
-            UserProfileActivity:
-              $ref: '#/components/examples/UserProfileActivitySuccess'
+            UniversitiesSuccess:
+              $ref: '#/components/examples/UniversitiesSuccess'
           schema:
-            $ref: '#/components/schemas/UserProfileActivityResponse'
-      description: User Profile Activity Successful
+            $ref: '#/components/schemas/UniversitiesResponse'
+      description: Universities Successful
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    UniversityStatsResponse:
+      content:
+        application/json:
+          examples:
+            UniversityStatsSuccess:
+              $ref: '#/components/examples/UniversityStatsSuccess'
+          schema:
+            $ref: '#/components/schemas/UniversityStatsResponse'
+      description: University Stats Successful
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
     UserProfileContentResponse:
       description: User profile content filtered listing
       content:
@@ -2329,6 +2677,47 @@ components:
               $ref: '#/components/examples/UserDashboardRecommendedSuccess'
           schema:
             $ref: '#/components/schemas/UserDashboardCollections'
+    UserProfileContentCountsResponse:
+      content:
+        application/json:
+          examples:
+            UserProfileContentCountsSuccess:
+              $ref: '#/components/examples/UserProfileContentCountsSuccess'
+          schema:
+            $ref: '#/components/schemas/UserProfileContentCountsResponse'
+      description: User Profile Content Counts Successful
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
+    UserProfileActivityResponse:
+      content:
+        application/json:
+          examples:
+            UserProfileActivity:
+              $ref: '#/components/examples/UserProfileActivitySuccess'
+          schema:
+            $ref: '#/components/schemas/UserProfileActivityResponse'
+      description: User Profile Activity Successful
+    VirtualMachineActiveResponse:
+      content:
+        application/json:
+          examples:
+            VirtualMachineActiveEmpty:
+              $ref: '#/components/examples/VirtualMachineActiveEmpty'
+            VirtualMachineActiveSpawning:
+              $ref: '#/components/examples/VirtualMachineActiveSpawning'
+            VirtualMachineActiveSpawned:
+              $ref: '#/components/examples/VirtualMachineActiveSpawned'
+          schema:
+            $ref: '#/components/schemas/VirtualMachineActiveResponse'
+      description: Virtual Machine Active Successful
+      headers:
+        x-ratelimit-limit:
+          $ref: '#/components/headers/XRateLimitHeader'
+        x-ratelimit-remaining:
+          $ref: '#/components/headers/XRateLimitRemainingHeader'
   requestBodies:
     MachineOwnRequest:
       content:
@@ -2501,6 +2890,13 @@ components:
           - 2
           - 3
         format: int
+        type: integer
+    UniversityId:
+      description: ID of the university
+      in: path
+      name: universityId
+      required: true
+      schema:
         type: integer
     UserId:
       description: ID of the user
