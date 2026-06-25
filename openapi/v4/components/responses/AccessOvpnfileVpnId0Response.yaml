@@ -1,5 +1,5 @@
 content:
-  text/plain:
+  application/octet-stream:
     schema:
       $ref: ../schemas/OpenVpn.yaml
 description: Returns open_vpn file
