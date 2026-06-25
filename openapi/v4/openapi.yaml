@@ -252,10 +252,6 @@ paths:
     $ref: paths/tracks_like_{trackId}.yaml
   /tracks/{trackId}:
     $ref: paths/tracks_{trackId}.yaml
-  /university/activity/{universityId}:
-    $ref: paths/university_activity_{universityId}.yaml
-  /university/all/list:
-    $ref: paths/university_all_list.yaml
   /university/members/{universityId}:
     $ref: paths/university_members_{universityId}.yaml
   /university/profile/{universityId}:
@@ -284,12 +280,6 @@ paths:
     $ref: paths/user_profile_badges_{userId}.yaml
   /user/profile/basic/{userId}:
     $ref: paths/user_profile_basic_{userId}.yaml
-  /user/profile/bloods/{userId}:
-    $ref: paths/user_profile_bloods_{userId}.yaml
-  /user/profile/chart/machines/attack/{userId}:
-    $ref: paths/user_profile_chart_machines_attack_{userId}.yaml
-  /user/profile/graph/{period}/{userId}:
-    $ref: paths/user_profile_graph_{period}_{userId}.yaml
   /user/profile/progress/challenges/{userId}:
     $ref: paths/user_profile_progress_challenges_{userId}.yaml
   /user/profile/progress/fortress/{userId}:

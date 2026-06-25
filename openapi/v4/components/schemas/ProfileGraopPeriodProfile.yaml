@@ -1,4 +1,0 @@
-properties:
-  graphData:
-    $ref: ./ProfileGraphData.yaml
-type: object

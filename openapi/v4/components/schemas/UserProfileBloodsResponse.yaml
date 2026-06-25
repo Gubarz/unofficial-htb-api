@@ -1,4 +1,0 @@
-properties:
-  profile:
-    $ref: ./UserProfileBloodsProfile.yaml
-type: object
