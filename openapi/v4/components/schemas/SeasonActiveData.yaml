@@ -67,4 +67,6 @@ properties:
     type: integer
   user_points:
     type: integer
+  content_id:
+    type: string
 type: object

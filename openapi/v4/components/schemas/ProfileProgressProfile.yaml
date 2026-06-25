@@ -7,4 +7,6 @@ properties:
     $ref: ./ProfileProgressChallengeOwns.yaml
   solved_tasks:
     type: integer
+  total_bloods:
+    type: integer
 type: object

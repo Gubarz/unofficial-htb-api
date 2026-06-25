@@ -3,6 +3,7 @@ properties:
     type: string
   sha256:
     type: string
+    nullable: true
   url:
     type: string
   video_url:

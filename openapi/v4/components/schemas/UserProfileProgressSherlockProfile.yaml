@@ -7,4 +7,6 @@ properties:
     $ref: ./UserProfileProgressSherlockProfileChallengeOwns.yaml
   solved_tasks:
     type: number
+  total_bloods:
+    type: integer
 type: object

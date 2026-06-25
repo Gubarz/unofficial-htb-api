@@ -1,0 +1,7 @@
+description: Schema definition for a URL Response
+properties:
+  url:
+    type: string
+    nullable: true
+title: URL Response
+type: object

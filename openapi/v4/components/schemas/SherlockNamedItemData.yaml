@@ -4,6 +4,9 @@ properties:
   avatar:
     example: /storage/challenges/cbcb58ac2e496207586df2854b17995f.png
     type: string
+  avatar_url:
+    example: "https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/9ea47ecf-b5aa-4a60-aa89-b1915754afdd.png"
+    type: string
   category_id:
     example: 16
     type: integer

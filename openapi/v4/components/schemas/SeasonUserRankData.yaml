@@ -29,4 +29,8 @@ properties:
     type: integer
   total_season_flags:
     $ref: ./SeasonUserRankDataTotalSeasonFlags.yaml
+  total_season_bloods:
+    type: integer
+  season_content_id:
+    type: string
 type: object

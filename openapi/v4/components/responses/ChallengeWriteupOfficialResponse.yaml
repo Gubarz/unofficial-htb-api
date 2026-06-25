@@ -2,7 +2,7 @@ content:
   application/json:
     schema:
       $ref: ../schemas/url.yaml
-description: Machine Writeup Response
+description: Challenge Writeup Official Response
 headers:
   x-ratelimit-limit:
     $ref: ../headers/XRateLimitHeader.yaml
