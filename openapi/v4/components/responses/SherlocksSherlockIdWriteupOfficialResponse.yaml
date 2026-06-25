@@ -1,8 +1,7 @@
 content:
-  application/pdf:
+  application/json:
     schema:
-      format: binary
-      type: string
+      $ref: ../schemas/url.yaml
 description: Sherlock Official Writeup Response
 headers:
   x-ratelimit-limit:

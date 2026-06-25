@@ -1,7 +1,6 @@
 properties:
   info:
-    type: object
     nullable: true
-    allOf:
+    oneOf:
       - $ref: ./ActiveMachineInfo.yaml
 type: object
