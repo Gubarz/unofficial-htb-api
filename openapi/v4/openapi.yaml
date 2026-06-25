@@ -80,10 +80,6 @@ paths:
     $ref: paths/challenge_own.yaml
   /challenge/recommended:
     $ref: paths/challenge_recommended.yaml
-  /challenge/start:
-    $ref: paths/challenge_start.yaml
-  /challenge/stop:
-    $ref: paths/challenge_stop.yaml
   /challenge/suggested:
     $ref: paths/challenge_suggested.yaml
   /challenge/{challengeId}/writeup:
@@ -302,10 +298,6 @@ paths:
     $ref: paths/vm_extend.yaml
   /vm/reset:
     $ref: paths/vm_reset.yaml
-  /vm/reset/vote:
-    $ref: paths/vm_reset_vote.yaml
-  /vm/reset/vote/accept:
-    $ref: paths/vm_reset_vote_accept.yaml
   /vm/spawn:
     $ref: paths/vm_spawn.yaml
   /vm/terminate:
