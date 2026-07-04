@@ -63,7 +63,7 @@ properties:
     type: string
   onboarding_tutorial_complete:
     example: 1
-    type: integer
+    type: boolean
   opt_in:
     example: 0
     type: integer
