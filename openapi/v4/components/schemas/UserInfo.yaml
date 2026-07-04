@@ -76,6 +76,7 @@ properties:
   subscription_plan:
     example: string
     type: string
+    nullable: true
   team:
     $ref: ./ConnectionDataMachine.yaml
   timezone:
