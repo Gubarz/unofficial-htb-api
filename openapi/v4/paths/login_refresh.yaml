@@ -1,0 +1,16 @@
+post:
+  summary: Refresh authentication tokens
+  description: Exchanges a refresh token for authentication tokens.
+  operationId: postSourceAuthRefresh
+  tags:
+    - Platform
+  requestBody:
+    $ref: ../components/requestBodies/SourceAuthRefreshRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthTokenResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+  security:
+    - {}
+    - bearer: []

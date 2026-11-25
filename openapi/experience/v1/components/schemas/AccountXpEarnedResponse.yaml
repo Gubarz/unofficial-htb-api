@@ -1,0 +1,4 @@
+description: XP history entries.
+type: array
+items:
+  $ref: ./AccountXpEarnedPoint.yaml

@@ -1,0 +1,22 @@
+type: object
+properties:
+  flags_to_next_rank:
+    $ref: ./SeasonProgressCount.yaml
+  league:
+    type: string
+  rank:
+    type: integer
+  total_season_bloods:
+    type: integer
+  total_season_flags:
+    $ref: ./SeasonProgressCount.yaml
+  total_season_points:
+    type: integer
+  total_season_tasks:
+    type: object
+    properties:
+      obtained: {}
+      total: {}
+    additionalProperties: true
+additionalProperties: true
+description: Offensive league ranking and season progress.

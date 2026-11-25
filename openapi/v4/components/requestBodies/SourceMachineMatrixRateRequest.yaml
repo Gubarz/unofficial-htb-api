@@ -1,0 +1,5 @@
+description: Ratings for the machine difficulty matrix.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceMachineMatrixRateRequest.yaml

@@ -1,0 +1,11 @@
+description: Content category for the progress chart.
+in: query
+name: content_type
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string
+  enum:
+    - machines
+    - sherlocks
+    - challenges
+  example: machines

@@ -1,0 +1,7 @@
+description: Team creation eligibility.
+type: object
+properties:
+  canCreateTeam:
+    type: boolean
+  message:
+    type: string

@@ -1,0 +1,4 @@
+description: SSO redirect target.
+type: object
+properties:
+  redirect_target: {}

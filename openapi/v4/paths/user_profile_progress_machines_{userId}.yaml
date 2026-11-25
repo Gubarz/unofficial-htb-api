@@ -1,0 +1,11 @@
+get:
+  description: Get user-profile machine progress.
+  operationId: getUserProfileMachineProgress
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileMachineProgressSourceResponse.yaml
+  summary: Get user-profile machine progress
+  tags:
+    - User

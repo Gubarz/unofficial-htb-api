@@ -1,0 +1,5 @@
+description: Public profile badges.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileBadgesSourceResponse.yaml

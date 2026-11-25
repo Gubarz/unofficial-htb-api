@@ -1,0 +1,45 @@
+description: Public profile machine progress.
+type: object
+properties:
+  profile:
+    type: object
+    properties:
+      machine_difficulties:
+        type: array
+        items:
+          type: object
+          properties:
+            completion_percentage:
+              type: number
+            name:
+              type: string
+            owned_machines:
+              type: integer
+            total_machines:
+              type: integer
+      machine_os:
+        type: array
+        items:
+          type: object
+          properties:
+            completion_percentage:
+              type: integer
+            name:
+              type: string
+            owned_machines:
+              type: integer
+            total_machines:
+              type: integer
+      machine_owns:
+        type: object
+        properties:
+          completion_percentage:
+            type: integer
+          solved:
+            type: integer
+          total:
+            type: integer
+      solved_tasks:
+        type: integer
+      total_bloods:
+        type: integer

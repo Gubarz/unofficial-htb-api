@@ -1,6 +1,0 @@
-properties:
-  info:
-    nullable: true
-    oneOf:
-      - $ref: ./ActiveMachineInfo.yaml
-type: object

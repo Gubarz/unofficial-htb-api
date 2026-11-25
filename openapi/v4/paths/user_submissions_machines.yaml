@@ -1,0 +1,10 @@
+get:
+  description: List user machine submissions.
+  operationId: getUserMachineSubmissions
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/UserMachineSubmissionsSourceResponse.yaml
+  summary: List user machine submissions
+  tags:
+    - User

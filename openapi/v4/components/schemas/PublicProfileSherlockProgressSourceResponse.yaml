@@ -1,0 +1,47 @@
+description: Public profile sherlock progress.
+type: object
+properties:
+  profile:
+    type: object
+    properties:
+      challenge_categories:
+        type: array
+        items:
+          type: object
+          properties:
+            avg_user_solved:
+              type: number
+            completion_percentage:
+              type: integer
+            name:
+              type: string
+            owned_flags:
+              type: integer
+            total_flags:
+              type: integer
+      challenge_difficulties:
+        type: array
+        items:
+          type: object
+          properties:
+            completion_percentage:
+              type: number
+            name:
+              type: string
+            owned_challenges:
+              type: integer
+            total_challenges:
+              type: integer
+      challenge_owns:
+        type: object
+        properties:
+          percentage:
+            type: integer
+          solved:
+            type: integer
+          total:
+            type: integer
+      solved_tasks:
+        type: integer
+      total_bloods:
+        type: integer

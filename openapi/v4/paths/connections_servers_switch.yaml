@@ -1,0 +1,11 @@
+post:
+  summary: Switch the connection product without a server ID
+  description: Switch the connection product without a server ID.
+  operationId: postSourceConnectionServerSwitch
+  tags:
+    - Connection
+  requestBody:
+    $ref: ../components/requestBodies/SourceConnectionServerSwitchRequest.yaml
+  responses:
+    2XX:
+      description: Server switch requested.

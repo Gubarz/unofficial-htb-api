@@ -1,0 +1,15 @@
+post:
+  summary: Dismiss a notice
+  description: Dismiss a notice.
+  operationId: postSourceNoticeDismiss
+  tags:
+    - Platform
+  parameters:
+    - name: noticeId
+      in: path
+      required: true
+      description: Notice ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Notice dismissed.

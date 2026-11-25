@@ -21,6 +21,9 @@ properties:
     type: boolean
   play_methods:
     $ref: ./StringArray.yaml
+  predownload:
+    type: string
+    description: Reference for preparing the download.
   progress:
     type: integer
   rating:

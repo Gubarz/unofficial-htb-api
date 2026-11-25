@@ -1,0 +1,5 @@
+description: Subscription upgrade.
+type: object
+properties:
+  three_d_secure_action_result_token_id:
+    $ref: ./SourceSubscriptionThreeDSecureToken.yaml

@@ -1,0 +1,6 @@
+description: Subscription upgrade.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceSubscriptionUpgradeRequest.yaml

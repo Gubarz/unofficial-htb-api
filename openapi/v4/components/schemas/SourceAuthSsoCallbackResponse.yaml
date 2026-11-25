@@ -1,0 +1,5 @@
+description: SSO callback result.
+type: object
+properties:
+  message:
+    $ref: ./SourceAuthSsoCallbackMessage.yaml

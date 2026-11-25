@@ -1,0 +1,10 @@
+type: object
+properties:
+  default_currency:
+    type: string
+  product_groups:
+    type: array
+    items:
+      $ref: ./SubscriptionPricingSourceProductGroupsItem.yaml
+additionalProperties: true
+description: Subscription pricing and default currency.

@@ -1,17 +1,7 @@
-summary: User profile content filtered by machines
+summary: User profile machine content
 value:
-  data:
-    - id: 814
-      name: MonitorsFour
-      os: Windows
-      machineAvatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/c7878dd8dba2eb248a89584ec958a5b8.png
-      difficulty: Easy
-      starRating: 0
-      userOwnCount: 0
-      rootOwnCount: 0
-      releaseDate: 2025-12-06T19:00:00.000Z
-      ratingCount: 0
+  data: []
   meta:
+    lastPage: 1
     page: 1
-    lastPage: 2
-    totalItems: 18
+    totalItems: 0

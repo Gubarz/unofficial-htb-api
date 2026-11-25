@@ -1,0 +1,5 @@
+description: Machine download link.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MachineDownloadLinkSourceResponse.yaml

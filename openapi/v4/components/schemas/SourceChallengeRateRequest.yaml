@@ -1,0 +1,6 @@
+title: Challenge difficulty rating
+type: object
+properties:
+  difficulty:
+    type: number
+    description: Difficulty score, scaled by ten from the UI rating.

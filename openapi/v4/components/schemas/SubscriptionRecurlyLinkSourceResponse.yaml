@@ -1,0 +1,4 @@
+description: Link to manage a subscription in Recurly.
+type: object
+properties:
+  url: {}

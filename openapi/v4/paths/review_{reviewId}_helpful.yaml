@@ -1,0 +1,15 @@
+post:
+  summary: Mark a review helpful
+  description: Mark a review helpful.
+  operationId: postSourceReviewHelpful
+  tags:
+    - Review
+  parameters:
+    - name: reviewId
+      in: path
+      required: true
+      description: Review ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Helpfulness recorded.

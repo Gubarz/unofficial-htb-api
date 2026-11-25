@@ -1,0 +1,7 @@
+description: Name to search for.
+in: query
+name: name
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

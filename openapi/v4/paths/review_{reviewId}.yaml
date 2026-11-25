@@ -1,0 +1,15 @@
+delete:
+  summary: Delete a review
+  description: Delete a review.
+  operationId: deleteSourceReviewDelete
+  tags:
+    - Review
+  parameters:
+    - name: reviewId
+      in: path
+      required: true
+      description: Review ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Review removed.

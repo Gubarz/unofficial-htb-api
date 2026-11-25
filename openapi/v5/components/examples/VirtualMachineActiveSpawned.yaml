@@ -1,14 +1,15 @@
-summary: Virtual Machine Active Spawned
+summary: Active virtual machine
 value:
   info:
-    vpn_server_type: "Machines VIP+"
-    id: 351
-    name: "Cap"
-    avatar: "https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png"
-    type: "machine"
-    expires_at: "2026-06-26 17:03:17"
+    avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a32f3339-1d5f-48c5-85dd-fc8988817133-1794237322.png
+    avatar_url: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a32f3339-1d5f-48c5-85dd-fc8988817133-1794237322_thumb_64.png
+    expires_at: '2026-11-30 07:47:29'
+    id: 1017
+    ip: 192.0.2.10
     isSpawning: false
-    lab_server: "dedivip_lab"
-    vpn_server_id: 289
-    avatar_url: "https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png"
-    ip: "10.129.22.200"
+    lab_server: ra_lab
+    name: Handler
+    type: machine
+    vpn_server_id: 268
+    vpn_server_type: Release Arena
+description: A running virtual machine with its network details.

@@ -1,0 +1,54 @@
+type: object
+properties:
+  active:
+    type: boolean
+  auth_user_has_blood: {}
+  auth_user_number_of_flags: {}
+  avatar:
+    type: string
+  blood_points: {}
+  content_id:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  is_owned: {}
+  is_owned_root:
+    type: boolean
+  is_owned_user:
+    type: boolean
+  is_released:
+    type: boolean
+  is_root_blood:
+    type: boolean
+  is_user_blood:
+    type: boolean
+  name:
+    type: string
+  number_of_flags: {}
+  os:
+    type: string
+  rating:
+    type: number
+  ratingCount:
+    x-go-name: RatingCountCamel
+  rating_count:
+    type: integer
+  release_time:
+    type: string
+  root_blood_points:
+    type: integer
+  root_points:
+    type: integer
+  total_points: {}
+  type:
+    type: string
+  unknown:
+    type: boolean
+  user_blood_points:
+    type: integer
+  user_points:
+    type: integer
+additionalProperties: true
+description: Offensive seasonal content.

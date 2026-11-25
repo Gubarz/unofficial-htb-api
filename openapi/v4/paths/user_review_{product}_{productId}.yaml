@@ -1,0 +1,14 @@
+get:
+  description: Get the current user review.
+  operationId: getUserOwnReview
+  parameters:
+    - $ref: ../components/parameters/UserReviewProduct.yaml
+    - $ref: ../components/parameters/ProductId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/UserOwnReviewSourceResponse.yaml
+    '204':
+      description: No review exists for this content.
+  summary: Get the current user review
+  tags:
+    - User

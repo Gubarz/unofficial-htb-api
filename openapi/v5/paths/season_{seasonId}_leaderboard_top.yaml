@@ -1,0 +1,14 @@
+get:
+  operationId: getSeasonLeaderboardTop
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardEntity.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardFlavor.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardTopNumber.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonLeaderboardTopResponse.yaml
+  summary: Get top season leaderboard entries
+  tags:
+    - Season
+  description: Returns the top-ranked players or teams for a season and league.

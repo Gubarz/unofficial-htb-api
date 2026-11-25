@@ -1,0 +1,22 @@
+description: University invitations.
+type: object
+properties:
+  original:
+    type: array
+    items:
+      type: object
+      properties:
+        id: {}
+        user:
+          type: object
+          properties:
+            id: {}
+            name: {}
+            avatar: {}
+            avatar_thumb: {}
+            rank_name: {}
+            rank_text: {}
+            country_name: {}
+            points: {}
+            rank: {}
+            ranking: {}

@@ -1,0 +1,15 @@
+post:
+  summary: Start a challenge environment
+  description: Start a challenge environment.
+  operationId: postSourceChallengeVmStart
+  tags:
+    - Challenges
+  parameters:
+    - name: challengeId
+      in: path
+      required: true
+      description: Challenge ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Challenge VM start requested.

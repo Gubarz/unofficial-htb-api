@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      SeasonContentSuccess:
+        $ref: ../examples/SeasonContentSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonContentResponse.yaml
+description: Offensive and defensive content collections for a season.

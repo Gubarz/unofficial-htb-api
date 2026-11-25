@@ -1,0 +1,7 @@
+description: User machine submissions.
+type: object
+properties:
+  submission_machines:
+    type: array
+    items:
+      $ref: ./UserMachineSubmissionsSourceSubmissionMachinesItem.yaml

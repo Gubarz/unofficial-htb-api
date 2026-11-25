@@ -1,0 +1,5 @@
+description: VPN connection settings for Pwnbox.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourcePwnboxVpnRequest.yaml

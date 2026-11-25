@@ -1,0 +1,14 @@
+type: object
+properties:
+  id: {}
+  name: {}
+  description: {}
+  rewards:
+    type: array
+    items:
+      type: object
+      properties:
+        name: {}
+      additionalProperties: true
+additionalProperties: true
+description: Rewards for top-ranked participants.

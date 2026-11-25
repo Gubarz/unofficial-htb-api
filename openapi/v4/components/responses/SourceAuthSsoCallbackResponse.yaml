@@ -1,0 +1,5 @@
+description: SSO callback result.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthSsoCallbackResponse.yaml

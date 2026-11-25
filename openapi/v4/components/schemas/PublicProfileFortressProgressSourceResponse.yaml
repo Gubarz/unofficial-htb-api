@@ -1,0 +1,23 @@
+description: Public profile fortress progress.
+type: object
+properties:
+  profile:
+    type: object
+    properties:
+      fortresses:
+        type: array
+        items:
+          type: object
+          properties:
+            avatar:
+              type: string
+            completion_percentage:
+              type: integer
+            id:
+              type: integer
+            name:
+              type: string
+            owned_flags:
+              type: integer
+            total_flags:
+              type: integer

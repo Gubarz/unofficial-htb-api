@@ -1,5 +1,8 @@
 description: Schema definition for Challenge
 properties:
+  file_password: {}
+  predownload:
+    type: string
   authUserHasReviewed:
     example: false
     type: boolean

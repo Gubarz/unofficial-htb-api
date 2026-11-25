@@ -1,0 +1,17 @@
+post:
+  summary: Check a voucher
+  description: Check a voucher.
+  operationId: postSourceVoucherCheck
+  tags:
+    - User
+  parameters:
+    - name: voucherCode
+      in: query
+      description: Voucher code.
+      schema:
+        type: string
+  requestBody:
+    $ref: ../components/requestBodies/SourceVoucherCheckRequest.yaml
+  responses:
+    2XX:
+      description: Voucher status returned.

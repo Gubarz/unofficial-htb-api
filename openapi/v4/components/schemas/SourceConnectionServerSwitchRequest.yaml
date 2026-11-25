@@ -1,0 +1,9 @@
+title: Connection product switch
+type: object
+properties:
+  arena:
+    type: boolean
+    description: Arena selection flag.
+  content_type:
+    type: string
+    description: Content product type.

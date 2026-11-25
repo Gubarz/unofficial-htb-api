@@ -1,0 +1,5 @@
+description: Subscription billing history.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionBillingHistorySourceResponse.yaml

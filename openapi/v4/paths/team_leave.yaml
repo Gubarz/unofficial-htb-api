@@ -1,0 +1,9 @@
+post:
+  summary: Leave the current team
+  description: Leave the current team.
+  operationId: sourcePostTeamLeave
+  tags:
+    - Team
+  responses:
+    2XX:
+      description: Successful request.

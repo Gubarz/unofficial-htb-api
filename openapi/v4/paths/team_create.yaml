@@ -1,0 +1,11 @@
+post:
+  summary: Create a team
+  description: Create a team.
+  operationId: sourcePostTeamCreate
+  tags:
+    - Team
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamCreateRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

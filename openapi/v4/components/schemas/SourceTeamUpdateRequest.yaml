@@ -1,0 +1,13 @@
+title: SourceTeamUpdateRequest
+type: object
+properties:
+  id: {}
+  name: {}
+  country: {}
+  description: {}
+  discord: {}
+  facebook: {}
+  motto: {}
+  public: {}
+  twitter: {}
+additionalProperties: true

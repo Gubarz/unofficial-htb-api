@@ -1,0 +1,5 @@
+description: Link to manage a subscription in Recurly.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionRecurlyLinkSourceResponse.yaml

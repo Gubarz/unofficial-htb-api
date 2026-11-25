@@ -1,0 +1,46 @@
+summary: Top offensive players
+value:
+  data:
+    - account_id: 00000000-0000-4000-8000-000000000001
+      avatar_thumb: /storage/avatars/example-1.png
+      country: BY
+      country_name: Belarus
+      is_respected: false
+      league_rank: Holo
+      name: Example Player 1
+      points: 710
+      rank: 1
+      resource_id: 1
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 2
+      user_owns: 9
+    - account_id: 00000000-0000-4000-8000-000000000002
+      avatar_thumb: /storage/avatars/example-2.png
+      country: US
+      country_name: United States
+      is_respected: false
+      league_rank: Holo
+      name: Example Player 2
+      points: 700
+      rank: 2
+      resource_id: 2
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+    - account_id: 00000000-0000-4000-8000-000000000003
+      avatar_thumb: /storage/avatars/example-3.png
+      country: CH
+      country_name: Switzerland
+      is_respected: false
+      league_rank: Holo
+      name: Example Player 3
+      points: 700
+      rank: 3
+      resource_id: 3
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+description: Top-ranked players in the offensive league.

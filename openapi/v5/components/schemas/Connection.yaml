@@ -1,7 +1,7 @@
 oneOf:
-  - $ref: ConnectionLabEntry.yaml
-  - $ref: ConnectionProLabEntry.yaml
-  - $ref: ConnectionCompetitiveEntry.yaml
+- $ref: ConnectionLabEntry.yaml
+- $ref: ConnectionProLabEntry.yaml
+- $ref: ConnectionCompetitiveEntry.yaml
 discriminator:
   propertyName: type
   mapping:
@@ -10,3 +10,4 @@ discriminator:
     fortresses: ConnectionLabEntry.yaml
     prolab: ConnectionProLabEntry.yaml
     competitive: ConnectionCompetitiveEntry.yaml
+    sherlocks: ConnectionLabEntry.yaml

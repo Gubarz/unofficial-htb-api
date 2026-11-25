@@ -1,0 +1,5 @@
+description: User profile machine progress.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserProfileMachineProgressSourceResponse.yaml

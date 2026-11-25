@@ -1,0 +1,15 @@
+post:
+  summary: Remove a university member
+  description: Remove a university member.
+  operationId: sourcePostUniversityKickUserid
+  tags:
+    - Universities
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: University member ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

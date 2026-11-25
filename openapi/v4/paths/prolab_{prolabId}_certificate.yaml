@@ -1,0 +1,17 @@
+post:
+  summary: Request a Pro Lab certificate
+  description: Request a Pro Lab certificate.
+  operationId: postSourceProlabCertificate
+  tags:
+    - Prolabs
+  parameters:
+    - name: prolabId
+      in: path
+      required: true
+      description: Pro Lab ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceProlabCertificateRequest.yaml
+  responses:
+    2XX:
+      description: Certificate request accepted.

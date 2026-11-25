@@ -1,0 +1,9 @@
+description: Subscription balance.
+type: object
+properties:
+  balances:
+    type: object
+    additionalProperties:
+      type: number
+  default_currency:
+    type: string

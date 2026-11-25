@@ -1,0 +1,20 @@
+post:
+  summary: Rate a machine walkthrough
+  description: Rate a machine walkthrough.
+  operationId: postSourceMachineWalkthroughRate
+  tags:
+    - Machines
+  parameters:
+    - name: walkthroughId
+      in: path
+      required: true
+      description: Walkthrough ID.
+      schema: {}
+    - name: rating
+      in: path
+      required: true
+      description: Rating.
+      schema: {}
+  responses:
+    2XX:
+      description: Walkthrough rating submitted.

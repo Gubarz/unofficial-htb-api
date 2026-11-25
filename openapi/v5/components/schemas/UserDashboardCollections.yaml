@@ -1,4 +1,4 @@
-description: Collections returned by dashboard endpoints such as favorites, in progress, and recommended.
+description: Dashboard content grouped by content kind.
 type: object
 properties:
   machines:
@@ -36,11 +36,3 @@ properties:
     description: Fortresses relevant to the dashboard view.
     items:
       $ref: ./UserDashboardFortress.yaml
-required:
-  - machines
-  - startingPoints
-  - challenges
-  - sherlocks
-  - proLabs
-  - tracks
-  - fortresses

@@ -1,9 +1,12 @@
-description: Schema definition for Virtual Machine Active responses
+description: Active virtual machine details, or null when no VM is active.
 type: object
 properties:
   info:
-    nullable: true
     oneOf:
       - $ref: ./VirtualMachineActiveInfo.yaml
+      - type: object
+        nullable: true
+        enum:
+          - null
 required:
   - info

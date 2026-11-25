@@ -1,0 +1,10 @@
+get:
+  description: List profile certificates.
+  operationId: getUserProfileCertificates
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileCertificatesSourceResponse.yaml
+  summary: List profile certificates
+  tags:
+    - User

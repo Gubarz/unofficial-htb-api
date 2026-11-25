@@ -1,0 +1,6 @@
+description: An empty logout request.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthLogoutRequest.yaml

@@ -1,0 +1,13 @@
+post:
+  summary: Request a one-time password
+  description: Requests a one-time password.
+  operationId: postSourceAuthOtp
+  tags:
+    - Platform
+  requestBody:
+    $ref: ../components/requestBodies/SourceAuthOtpRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

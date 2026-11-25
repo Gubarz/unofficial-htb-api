@@ -1,0 +1,8 @@
+in: query
+name: per_page
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: integer
+example: 15
+description: Number of entries per page.

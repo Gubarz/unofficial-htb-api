@@ -1,0 +1,52 @@
+type: object
+properties:
+  entitlements:
+    type: object
+    properties:
+      content:
+        type: object
+        properties:
+          mini_labs:
+            type: array
+            items:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                content_id:
+                  type: string
+                id:
+                  type: integer
+                name:
+                  type: string
+              additionalProperties: true
+          pro_labs:
+            type: array
+            items:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                content_id:
+                  type: string
+                id:
+                  type: integer
+                name:
+                  type: string
+              additionalProperties: true
+        additionalProperties: true
+    additionalProperties: true
+  perks:
+    type: string
+  plans:
+    type: array
+    items:
+      $ref: ./SubscriptionPricingSourcePlan.yaml
+  type:
+    type: string
+  upgrades_to:
+    type: array
+    items:
+      type: string
+additionalProperties: true
+description: Subscription product and available plans.

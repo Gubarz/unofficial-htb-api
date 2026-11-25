@@ -1,0 +1,11 @@
+get:
+  description: Get an official Pro Lab writeup.
+  operationId: getProlabOfficialWriteup
+  parameters:
+    - $ref: ../components/parameters/ProlabId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/ProlabOfficialWriteupSourceResponse.yaml
+  summary: Get an official Pro Lab writeup
+  tags:
+    - Prolabs

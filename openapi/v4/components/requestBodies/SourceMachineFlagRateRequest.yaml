@@ -1,0 +1,5 @@
+description: Rating for a machine flag task.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceMachineFlagRateRequest.yaml

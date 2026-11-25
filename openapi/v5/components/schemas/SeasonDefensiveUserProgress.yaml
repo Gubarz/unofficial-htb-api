@@ -1,0 +1,40 @@
+type: object
+properties:
+  flags_to_next_rank:
+    $ref: ./SeasonProgressCount.yaml
+  league:
+    oneOf:
+      - not:
+          type: object
+          nullable: true
+          enum:
+            - null
+      - type: object
+        nullable: true
+        enum:
+          - null
+  rank:
+    oneOf:
+      - not:
+          type: object
+          nullable: true
+          enum:
+            - null
+      - type: object
+        nullable: true
+        enum:
+          - null
+  total_season_bloods:
+    type: integer
+  total_season_flags:
+    type: object
+    properties:
+      obtained: {}
+      total: {}
+    additionalProperties: true
+  total_season_points:
+    type: integer
+  total_season_tasks:
+    $ref: ./SeasonProgressCount.yaml
+additionalProperties: true
+description: Defensive league ranking and season progress.

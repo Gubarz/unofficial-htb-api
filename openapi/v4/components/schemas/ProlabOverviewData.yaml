@@ -37,7 +37,12 @@ properties:
     example: INTERMEDIATE
     type: string
   social_links:
-    $ref: ./SocialLinks.yaml
+    description: Community links for the lab. An empty array indicates no links.
+    oneOf:
+      - $ref: ./SocialLinks.yaml
+      - type: array
+        items: {}
+        maxItems: 0
   state:
     type: string
   user_eligible_to_play:

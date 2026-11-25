@@ -1,0 +1,17 @@
+post:
+  summary: Check a team name
+  description: Check a team name.
+  operationId: sourcePostTeamCheckNameTeamid
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: ID of the existing team.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamNameCheckRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

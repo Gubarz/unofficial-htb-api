@@ -1,0 +1,11 @@
+get:
+  description: Returns the public profile for the specified user.
+  operationId: getPublicProfile
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicProfileSourceResponse.yaml
+  summary: Get a public profile
+  tags:
+    - User

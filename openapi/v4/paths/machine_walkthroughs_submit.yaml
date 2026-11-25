@@ -1,0 +1,11 @@
+post:
+  summary: Submit a machine walkthrough
+  description: Submit a machine walkthrough.
+  operationId: postSourceMachineWalkthroughSubmit
+  tags:
+    - Machines
+  requestBody:
+    $ref: ../components/requestBodies/SourceMachineWalkthroughSubmitRequest.yaml
+  responses:
+    2XX:
+      description: Walkthrough submission received.

@@ -1,0 +1,13 @@
+post:
+  summary: Resume a subscription
+  description: Resume a subscription.
+  operationId: postSourceSubscriptionResume
+  tags:
+    - User
+  parameters:
+    - $ref: ../components/parameters/SourceSubscriptionType.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

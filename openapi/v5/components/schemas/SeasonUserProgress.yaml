@@ -1,0 +1,26 @@
+type: object
+properties:
+  rank: {}
+  league: {}
+  total_season_points: {}
+  total_season_bloods: {}
+  flags_to_next_rank:
+    type: object
+    properties:
+      obtained: {}
+      total: {}
+    additionalProperties: true
+  total_season_flags:
+    type: object
+    properties:
+      obtained: {}
+      total: {}
+    additionalProperties: true
+  total_season_tasks:
+    type: object
+    properties:
+      obtained: {}
+      total: {}
+    additionalProperties: true
+additionalProperties: true
+description: Combined league ranking and season progress.

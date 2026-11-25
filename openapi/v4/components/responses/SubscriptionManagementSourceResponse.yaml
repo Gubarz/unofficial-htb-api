@@ -1,0 +1,5 @@
+description: Subscription management.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionManagementSourceResponse.yaml

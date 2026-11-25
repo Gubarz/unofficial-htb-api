@@ -1,169 +1,297 @@
-summary: Dashboard in-progress snapshot
+summary: Dashboard content in progress
 value:
-  machines:
-    - os: Windows
-      difficulty: Medium
-      avatar: /avatars/ea0bd450c67da1efd2058c2cab9400cf.png
-      url: /machines/Compiled
-      user_flag: true
-      root_flag: false
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/ea0bd450c67da1efd2058c2cab9400cf.png
-      points: null
-      rating: 4.1
-      ratingCount: 95
-      tasksCompleted: 1
-      tasksTotal: 10
-      progress: 10
-      guided: true
-      status: vip
-      id: 618
-      name: Compiled
-      type: Retired Machine
-  startingPoints:
-    - description: The key is a strong foundation
-      completionPercentage: 55
-      freeMachineCompletionPercentage: 100
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/abaa159b15e1bcde9045ba65f73eb5be.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/abaa159b15e1bcde9045ba65f73eb5be.png
-      progress: 55
-      tasksCompleted: 39
-      tasksTotal: 71
-      id: 1
-      name: Tier 0
-      type: Starting Point
-    - description: You need to walk before you can run
-      completionPercentage: 11
-      freeMachineCompletionPercentage: 22
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/90376b468f867417eca35808bb6742ae.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/90376b468f867417eca35808bb6742ae.png
-      progress: 11
-      tasksCompleted: 11
-      tasksTotal: 96
-      id: 2
-      name: Tier 1
-      type: Starting Point
-    - description: Don't forget to contemplate
-      completionPercentage: 1
-      freeMachineCompletionPercentage: 2
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/4739247316226a94e765c9a6c18f407b.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/starting-points/tiers/4739247316226a94e765c9a6c18f407b.png
-      progress: 1
-      tasksCompleted: 1
-      tasksTotal: 76
-      id: 3
-      name: Tier 2
-      type: Starting Point
-  challenges: []
-  sherlocks:
-    - urlName: meerkat
-      difficulty: Easy
-      url: /sherlocks/meerkat
-      categoryID: 17
-      categoryName: SOC
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/94c7bb58efc3b337800875b5d382a072.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/94c7bb58efc3b337800875b5d382a072.png
-      rating: 4.7
-      ratingCount: 384
-      tasksCompleted: 7
-      tasksTotal: 10
-      progress: 70
-      status: null
-      id: 552
-      name: Meerkat
-      type: Retired Sherlock
-    - urlName: bft
+  challenges:
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      categoryID: 5
+      categoryName: Web
       difficulty: Very Easy
-      url: /sherlocks/bft
+      experiencePoints: 100
+      id: 1317
+      name: Space Explorer
+      points: null
+      progress: null
+      rating: 4.3
+      ratingCount: 83
+      status: vip+
+      type: challenge
+      url: /challenges/space-explorer
+      urlName: space-explorer
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      categoryID: 5
+      categoryName: Web
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 413
+      name: Spookifier
+      points: null
+      progress: null
+      rating: 4.5
+      ratingCount: 325
+      status: vip+
+      type: challenge
+      url: /challenges/spookifier
+      urlName: spookifier
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1679091c5a880faf6fb5e6087eb1b2dc.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1679091c5a880faf6fb5e6087eb1b2dc.svg
+      categoryID: 6
+      categoryName: Misc
+      difficulty: Insane
+      experiencePoints: 500
+      id: 1171
+      name: ShadowStreamSherlock
+      points: null
+      progress: null
+      rating: 4.8
+      ratingCount: 4
+      status: null
+      type: challenge
+      url: /challenges/shadowstreamsherlock
+      urlName: shadowstreamsherlock
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/b6d767d2f8ed5d21a44b0e5886680cb9.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/b6d767d2f8ed5d21a44b0e5886680cb9.svg
+      categoryID: 22
+      categoryName: Coding
+      difficulty: Hard
+      experiencePoints: 520
+      id: 1284
+      name: Chaogen
+      points: 40
+      progress: null
+      rating: 4.8
+      ratingCount: 24
+      status: null
+      type: challenge
+      url: /challenges/chaogen
+      urlName: chaogen
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      categoryID: 4
+      categoryName: Pwn
+      difficulty: Medium
+      experiencePoints: 300
+      id: 669
+      name: Maze of Mist
+      points: null
+      progress: null
+      rating: 5
+      ratingCount: 2
+      status: vip+
+      type: challenge
+      url: /challenges/maze-of-mist
+      urlName: maze-of-mist
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1ff1de774005f8da13f42943881c655f.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1ff1de774005f8da13f42943881c655f.svg
+      categoryID: 24
+      categoryName: ICS
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 524
+      name: Watch Tower
+      points: null
+      progress: null
+      rating: 3.8
+      ratingCount: 26
+      status: vip+
+      type: challenge
+      url: /challenges/watch-tower
+      urlName: watch-tower
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      categoryID: 1
+      categoryName: Reversing
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 806
+      name: SpookyPass
+      points: null
+      progress: null
+      rating: 4.5
+      ratingCount: 647
+      status: null
+      type: challenge
+      url: /challenges/spookypass
+      urlName: spookypass
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      categoryID: 4
+      categoryName: Pwn
+      difficulty: Insane
+      experiencePoints: 650
+      id: 313
+      name: NFTDRM
+      points: 50
+      progress: null
+      rating: 5
+      ratingCount: 20
+      status: null
+      type: challenge
+      url: /challenges/nftdrm
+      urlName: nftdrm
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1679091c5a880faf6fb5e6087eb1b2dc.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/1679091c5a880faf6fb5e6087eb1b2dc.svg
+      categoryID: 6
+      categoryName: Misc
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 714
+      name: Computational Recruiting
+      points: null
+      progress: null
+      rating: 4.1
+      ratingCount: 10
+      status: vip+
+      type: challenge
+      url: /challenges/computational-recruiting
+      urlName: computational-recruiting
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      categoryID: 1
+      categoryName: Reversing
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 485
+      name: Hunting License
+      points: null
+      progress: null
+      rating: 4.2
+      ratingCount: 37
+      status: vip+
+      type: challenge
+      url: /challenges/hunting-license
+      urlName: hunting-license
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      categoryID: 5
+      categoryName: Web
+      difficulty: Very Easy
+      experiencePoints: 100
+      id: 646
+      name: Flag Command
+      points: null
+      progress: null
+      rating: 4.5
+      ratingCount: 582
+      status: null
+      type: challenge
+      url: /challenges/flag-command
+      urlName: flag-command
+  fortresses: []
+  machines:
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a32f3339-1d5f-48c5-85dd-fc8988817133-1794237322.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a32f3339-1d5f-48c5-85dd-fc8988817133-1794237322.png
+      difficulty: Insane
+      experiencePoints: 1365
+      guided: false
+      id: 1017
+      name: Handler
+      os: Windows
+      points: 50
+      progress: 0
+      rating: 4.5
+      ratingCount: 33
+      root_flag: false
+      status: seasonal
+      tasksCompleted: 0
+      tasksTotal: 2
+      type: machine
+      url: /machines/Handler
+      user_flag: false
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccae76-9dec-4da0-a15f-e879aaffd0ca-1789999840.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccae76-9dec-4da0-a15f-e879aaffd0ca-1789999840.png
+      difficulty: Insane
+      experiencePoints: 1365
+      guided: false
+      id: 993
+      name: Autopilot
+      os: Windows
+      points: 50
+      progress: 0
+      rating: 4.5
+      ratingCount: 138
+      root_flag: false
+      status: null
+      tasksCompleted: 0
+      tasksTotal: 2
+      type: machine
+      url: /machines/Autopilot
+      user_flag: false
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a22a6987-d3b2-4b23-a843-db9f38b06566-1783030428.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a22a6987-d3b2-4b23-a843-db9f38b06566-1783030428.png
+      difficulty: Insane
+      experiencePoints: 1365
+      guided: false
+      id: 963
+      name: TrustFall
+      os: Windows
+      points: 50
+      progress: 0
+      rating: 4.8
+      ratingCount: 50
+      root_flag: false
+      status: null
+      tasksCompleted: 0
+      tasksTotal: 2
+      type: machine
+      url: /machines/TrustFall
+      user_flag: false
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d7-5bd0-442f-af5f-5e80e61ac691.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d7-5bd0-442f-af5f-5e80e61ac691.png
+      difficulty: Hard
+      experiencePoints: 850
+      guided: false
+      id: 22
+      name: Holiday
+      os: Linux
+      points: null
+      progress: 0
+      rating: 4.9
+      ratingCount: 188
+      root_flag: false
+      status: vip+
+      tasksCompleted: 0
+      tasksTotal: 2
+      type: machine
+      url: /machines/Holiday
+      user_flag: false
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png
+      difficulty: Easy
+      experiencePoints: 450
+      guided: true
+      id: 351
+      name: Cap
+      os: Linux
+      points: null
+      progress: 0
+      rating: 4.6
+      ratingCount: 5024
+      root_flag: false
+      status: null
+      tasksCompleted: 0
+      tasksTotal: 9
+      type: machine
+      url: /machines/Cap
+      user_flag: false
+  proLabs: []
+  sherlocks:
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/a19c1a82-954d-4bb8-af68-c01712b0c16a-1776943700.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/a19c1a82-954d-4bb8-af68-c01712b0c16a-1776943700.png
       categoryID: 14
       categoryName: DFIR
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/26dd0dbc6e3f4c8043749885523d6a25.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/26dd0dbc6e3f4c8043749885523d6a25.png
-      rating: 4.7
-      ratingCount: 107
-      tasksCompleted: 3
-      tasksTotal: 6
-      progress: 50
-      status: null
-      id: 633
-      name: BFT
-      type: Retired Sherlock
-  proLabs:
-    - url: /prolabs/overview/dante
-      identifier: DANTE
-      difficulty: null
-      avatar: null
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/a87ff679a2f3e71d9181a67b7542122c_avatar.svg
-      categoryName: Red Team Operator Level I
-      rating: 4.7
-      ratingCount: 570
-      progress: 70
-      tasksCompleted: 19
-      tasksTotal: 27
-      id: 4
-      name: Dante
-      type: Pro Lab
-    - url: /prolabs/overview/puppet
-      identifier: PUPPET
-      difficulty: null
-      avatar: null
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/b6d767d2f8ed5d21a44b0e5886680cb9_avatar.svg
-      categoryName: Red Team Operator Level I
-      rating: 4.6
-      ratingCount: 22
-      progress: 25
-      tasksCompleted: 1
-      tasksTotal: 4
-      id: 22
-      name: Puppet
-      type: Pro Lab
-  tracks:
-    - avatar: /tracks/52.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/52.png
-      url: /tracks/Intro-to-Red-Team
-      difficulty: Easy
-      likeCount: 761
-      progress: 47
-      tasksCompleted: 7
-      tasksTotal: 15
-      id: 52
-      name: Intro to Red Team
-      type: Track
-    - avatar: /tracks/60.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/60.png
-      url: /tracks/Active-Directory-Exploitation
-      difficulty: Easy
-      likeCount: 280
-      progress: 27
-      tasksCompleted: 3
-      tasksTotal: 11
-      id: 60
-      name: Active Directory Exploitation
-      type: Track
-  fortresses:
-    - points: 100
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg
-      solvesCount: 3188
-      tasksCompleted: 6
-      tasksTotal: 11
-      progress: 55
-      id: 1
-      name: Jet
-      type: Fortress
-    - points: 160
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/eccbc87e4b5ce2fe28308fd9f2a7baf3_logo.svg
-      solvesCount: 1806
-      tasksCompleted: 2
-      tasksTotal: 7
-      progress: 29
-      id: 3
-      name: Context
-      type: Fortress
-    - points: 220
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/8f14e45fceea167a5a36dedd4bea2543_logo.svg
-      solvesCount: 785
-      tasksCompleted: 1
-      tasksTotal: 10
-      progress: 10
-      id: 7
-      name: AWS
-      type: Fortress
+      difficulty: Medium
+      experiencePoints: 640
+      id: 1209
+      name: CorpDown-1
+      progress: 0
+      rating: 3.8
+      ratingCount: 14
+      status: vip+
+      tasksCompleted: 0
+      tasksTotal: 13
+      type: sherlock
+      url: /sherlocks/corpdown-1
+      urlName: corpdown-1
+  startingPoints: []
+  tracks: []

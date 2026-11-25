@@ -1,0 +1,5 @@
+description: Public profile prolab progress.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileProlabProgressSourceResponse.yaml

@@ -1,0 +1,15 @@
+post:
+  summary: Redeem a voucher
+  description: Redeem a voucher.
+  operationId: postSourceVoucherRedeem
+  tags:
+    - User
+  parameters:
+    - name: voucherCode
+      in: query
+      description: Voucher code.
+      schema:
+        type: string
+  responses:
+    2XX:
+      description: Voucher redemption request accepted.

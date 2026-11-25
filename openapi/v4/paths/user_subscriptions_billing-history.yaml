@@ -1,0 +1,12 @@
+get:
+  description: List subscription billing history.
+  operationId: getSubscriptionBillingHistory
+  parameters:
+    - $ref: ../components/parameters/Page.yaml
+    - $ref: ../components/parameters/SubscriptionBillingHistoryPerPage.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionBillingHistorySourceResponse.yaml
+  summary: List subscription billing history
+  tags:
+    - User

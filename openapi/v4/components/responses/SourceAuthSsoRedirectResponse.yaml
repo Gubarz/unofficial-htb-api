@@ -1,0 +1,5 @@
+description: SSO redirect target.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthSsoRedirectResponse.yaml

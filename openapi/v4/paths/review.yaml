@@ -1,0 +1,11 @@
+post:
+  summary: Create or update a content review
+  description: Create or update a content review.
+  operationId: postSourceContentReviewPublish
+  tags:
+    - Review
+  requestBody:
+    $ref: ../components/requestBodies/SourceContentReviewPublishRequest.yaml
+  responses:
+    2XX:
+      description: Review submission received.

@@ -1,0 +1,165 @@
+summary: Season rewards
+value:
+  data:
+    - reward_types:
+        description: As you progress through the ranks in a seasonal, you will unlock unique rewards.
+          The more flags you pwn, the faster you will move up the ranks.
+        groups:
+          - description: null
+            flags_needed: 17
+            id: 5
+            name: HOLO
+            order: 4
+            rank_up_requirement: '>90%'
+            reward_type_id: 1
+            rewards:
+              - id: 100
+                name: $40 Discount Code for HTB Labs
+                order: 2
+                reward_group_id: 5
+              - id: 67
+                name: 250 Cubes on HTB Academy
+                order: 1
+                reward_group_id: 5
+              - id: 42
+                name: 50% HTB Swag Discount
+                order: 0
+                reward_group_id: 5
+            subtitle: RANK REWARDS
+          - description: null
+            flags_needed: 12
+            id: 4
+            name: PLATINUM
+            order: 3
+            rank_up_requirement: '>65%'
+            reward_type_id: 1
+            rewards:
+              - id: 97
+                name: $30 Discount Code for HTB Labs
+                order: 2
+                reward_group_id: 4
+              - id: 70
+                name: 200 Cubes on HTB Academy
+                order: 1
+                reward_group_id: 4
+              - id: 43
+                name: 40% HTB Swag Discount
+                order: 0
+                reward_group_id: 4
+            subtitle: RANK REWARDS
+          - description: null
+            flags_needed: 8
+            id: 3
+            name: RUBY
+            order: 2
+            rank_up_requirement: '>40%'
+            reward_type_id: 1
+            rewards:
+              - id: 94
+                name: $25 Discount Code for HTB Labs
+                order: 2
+                reward_group_id: 3
+              - id: 72
+                name: 150 Cubes on HTB Academy
+                order: 1
+                reward_group_id: 3
+              - id: 44
+                name: 30% HTB Swag Discount
+                order: 0
+                reward_group_id: 3
+            subtitle: RANK REWARDS
+          - description: null
+            flags_needed: 3
+            id: 2
+            name: SILVER
+            order: 1
+            rank_up_requirement: '>15%'
+            reward_type_id: 1
+            rewards:
+              - id: 91
+                name: $15 Discount Code for HTB Labs
+                order: 2
+                reward_group_id: 2
+              - id: 74
+                name: 100 Cubes on HTB Academy
+                order: 1
+                reward_group_id: 2
+              - id: 45
+                name: 20% HTB Swag Discount
+                order: 0
+                reward_group_id: 2
+            subtitle: RANK REWARDS
+        id: 1
+        name: Rank Progression
+        order: 1
+        top_earns: []
+    - reward_types:
+        description: These rewards are granted to only the best in each season. Pwn the machines and climb
+          the leaderboard for a chance to earn these rewards.
+        groups:
+          - description: "In addition to the other rewards,\r\nthe top 5 ranked players will receive:"
+            id: 6
+            name: TOP 5 PLAYERS
+            order: 2
+            reward_type_id: 2
+            rewards:
+              - id: 76
+                name: $250 discount code for HTB Labs
+                order: 2
+                reward_group_id: 6
+              - id: 34
+                name: HTB Seasonal Medal
+                order: 2
+                reward_group_id: 6
+              - id: 39
+                name: $300 HTB Swag Gift Card
+                order: 1
+                reward_group_id: 6
+              - id: 62
+                name: 1500 Cubes on HTB Academy
+                order: 0
+                reward_group_id: 6
+            subtitle: null
+          - description: "In addition to the other rewards,\r\nthe 6th - 10th ranked players will receive:"
+            id: 7
+            name: RANKS 6-10
+            order: 1
+            reward_type_id: 2
+            rewards:
+              - id: 79
+                name: $175 discount code for HTB Labs
+                order: 4
+                reward_group_id: 7
+              - id: 40
+                name: $200 HTB Swag Gift Card
+                order: 2
+                reward_group_id: 7
+              - id: 63
+                name: 1000 Cubes on HTB Academy
+                order: 0
+                reward_group_id: 7
+            subtitle: null
+          - description: "In addition to the other rewards,\r\nthe 11th - 25th ranked players will receive:"
+            id: 8
+            name: RANKS 11-25
+            order: 0
+            reward_type_id: 2
+            rewards:
+              - id: 82
+                name: $75 discount code for HTB Labs
+                order: 4
+                reward_group_id: 8
+              - id: 41
+                name: $100 HTB Swag Gift Card
+                order: 2
+                reward_group_id: 8
+              - id: 66
+                name: 500 Cubes on HTB Academy
+                order: 0
+                reward_group_id: 8
+            subtitle: null
+        id: 2
+        name: Seasonal Rewards
+        order: 0
+        top_earns: []
+description: Reward groups, requirements, and rewards for a season.

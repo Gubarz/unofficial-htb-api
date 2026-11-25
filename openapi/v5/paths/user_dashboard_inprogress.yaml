@@ -1,5 +1,5 @@
 get:
-  description: User Dashboard In Progress
+  description: Lists content the user is currently progressing through.
   operationId: getUserDashboardInProgress
   responses:
     '200':

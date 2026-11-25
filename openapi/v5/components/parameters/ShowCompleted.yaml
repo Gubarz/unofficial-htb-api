@@ -1,9 +1,9 @@
 description: Omit for both
 in: query
-name: show_completed
+name: showCompleted
 required: false
 schema:
   enum:
-    - incomplete
-    - complete
+  - incomplete
+  - complete
   type: string

@@ -1,0 +1,8 @@
+description: Subscription products and pricing.
+content:
+  application/json:
+    examples:
+      SubscriptionPricingSuccess:
+        $ref: ../examples/SubscriptionPricingSuccess.yaml
+    schema:
+      $ref: ../schemas/SubscriptionPricingSourceResponse.yaml

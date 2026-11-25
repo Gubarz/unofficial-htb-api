@@ -1,0 +1,12 @@
+get:
+  description: Returns the subscription confirmation details.
+  operationId: getSubscriptionThankYou
+  parameters:
+    - $ref: ../components/parameters/SubscriptionThankYouAccountCode.yaml
+    - $ref: ../components/parameters/SubscriptionThankYouPlanCode.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SubscriptionThankYouSourceResponse.yaml
+  summary: Get subscription confirmation details
+  tags:
+    - User

@@ -1,0 +1,22 @@
+post:
+  summary: Submit a machine task flag
+  description: Submit a machine task flag.
+  operationId: postSourceMachineTaskFlag
+  tags:
+    - Machines
+  parameters:
+    - name: machineId
+      in: path
+      required: true
+      description: Machine ID.
+      schema: {}
+    - name: taskId
+      in: path
+      required: true
+      description: Task ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceMachineTaskFlagRequest.yaml
+  responses:
+    2XX:
+      description: Task flag submitted.

@@ -1,0 +1,16 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      blue:
+        type: array
+        items:
+          $ref: ./SeasonDefensiveContentItem.yaml
+      red:
+        type: array
+        items:
+          $ref: ./SeasonContentItem.yaml
+    additionalProperties: true
+additionalProperties: true
+description: Offensive and defensive content collections for a season.

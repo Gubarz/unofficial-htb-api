@@ -1,0 +1,4 @@
+description: Subscription recently updated.
+type: object
+properties:
+  updated_recently: {}

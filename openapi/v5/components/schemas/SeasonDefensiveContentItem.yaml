@@ -1,0 +1,29 @@
+type: object
+properties:
+  id: {}
+  name: {}
+  avatar: {}
+  os: {}
+  difficulty_text: {}
+  release_time: {}
+  active: {}
+  is_released: {}
+  unknown: {}
+  is_owned: {}
+  is_owned_user: {}
+  is_owned_root: {}
+  is_user_blood: {}
+  is_root_blood: {}
+  user_points: {}
+  root_points: {}
+  user_blood_points: {}
+  root_blood_points: {}
+  auth_user_number_of_flags: {}
+  number_of_flags: {}
+  auth_user_has_blood: {}
+  blood_points: {}
+  total_points: {}
+  rating: {}
+  ratingCount: {}
+additionalProperties: true
+description: Defensive seasonal content.

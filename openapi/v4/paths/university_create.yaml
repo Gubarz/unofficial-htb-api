@@ -1,0 +1,11 @@
+post:
+  summary: Create a university
+  description: Create a university.
+  operationId: sourcePostUniversityCreate
+  tags:
+    - Universities
+  requestBody:
+    $ref: ../components/requestBodies/SourceUniversityCreateRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

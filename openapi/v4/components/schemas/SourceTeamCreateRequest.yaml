@@ -1,0 +1,22 @@
+title: SourceTeamCreateRequest
+type: object
+properties:
+  name: {}
+  country: {}
+  description: {}
+  discord: {}
+  twitter: {}
+  facebook: {}
+  motto: {}
+  public:
+    type: string
+    description: Team visibility, encoded as "1" for public or "0" for private.
+  avatar:
+    type: string
+    format: binary
+    description: Team avatar image.
+  cover_image:
+    type: string
+    format: binary
+    description: Team cover image.
+additionalProperties: true

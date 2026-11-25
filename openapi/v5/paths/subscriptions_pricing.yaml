@@ -1,0 +1,10 @@
+get:
+  description: Lists subscription products, plans, and prices.
+  operationId: getSubscriptionPricing
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionPricingSourceResponse.yaml
+  summary: Get subscription pricing
+  tags:
+    - Subscription

@@ -1,0 +1,17 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      blue:
+        oneOf:
+          - $ref: ./SeasonActiveDefensiveContent.yaml
+          - type: object
+            nullable: true
+            enum:
+              - null
+      red:
+        $ref: ./SeasonActiveContentItem.yaml
+    additionalProperties: true
+additionalProperties: true
+description: Current offensive and defensive seasonal content.

@@ -1,0 +1,17 @@
+post:
+  summary: Upload a team cover image
+  description: Upload a team cover image.
+  operationId: sourcePostTeamCoverImageTeamid
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamCoverUploadRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

@@ -1,0 +1,12 @@
+description: An invoice in the subscription billing history.
+type: object
+properties:
+  amount: {}
+  date:
+    type: string
+  description:
+    type: string
+  pdf_url:
+    type: string
+  quaderno_invoice_id:
+    type: string

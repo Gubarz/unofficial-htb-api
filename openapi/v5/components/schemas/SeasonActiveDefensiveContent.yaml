@@ -1,0 +1,31 @@
+type: object
+properties:
+  id: {}
+  name: {}
+  type: {}
+  avatar: {}
+  os: {}
+  category: {}
+  difficulty_text: {}
+  release_time: {}
+  is_released: {}
+  is_owned: {}
+  is_owned_user: {}
+  is_owned_root: {}
+  rating: {}
+  rating_count: {}
+  total_points: {}
+  blood_points: {}
+  user_blood_points: {}
+  user_own_points: {}
+  root_own_points: {}
+  user_bloods:
+    type: array
+    items:
+      type: object
+      properties:
+        name: {}
+        avatar: {}
+      additionalProperties: true
+additionalProperties: true
+description: Active defensive seasonal content.

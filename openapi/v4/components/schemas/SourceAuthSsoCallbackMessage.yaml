@@ -1,0 +1,6 @@
+description: Authentication tokens and redirect target.
+type: object
+properties:
+  access_token: {}
+  refresh_token: {}
+  redirect: {}

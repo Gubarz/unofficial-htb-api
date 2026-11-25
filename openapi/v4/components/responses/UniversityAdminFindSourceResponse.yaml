@@ -1,0 +1,5 @@
+description: Matching university administrator candidates.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UniversityAdminFindSourceResponse.yaml

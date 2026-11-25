@@ -1,0 +1,15 @@
+post:
+  summary: Upgrade a subscription
+  description: Upgrade a subscription.
+  operationId: postSourceSubscriptionUpgrade
+  tags:
+    - User
+  parameters:
+    - $ref: ../components/parameters/SourceSubscriptionType.yaml
+  requestBody:
+    $ref: ../components/requestBodies/SourceSubscriptionUpgradeRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

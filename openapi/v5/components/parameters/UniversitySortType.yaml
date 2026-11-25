@@ -1,0 +1,10 @@
+description: Sort direction.
+in: query
+name: sort_type
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string
+  enum:
+  - asc
+  - desc

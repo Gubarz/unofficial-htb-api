@@ -1,0 +1,9 @@
+get:
+  description: Check team creation eligibility.
+  operationId: getTeamCreatableSource
+  responses:
+    '200':
+      $ref: ../components/responses/TeamCreatableSourceResponse.yaml
+  summary: Check team creation eligibility
+  tags:
+    - Team

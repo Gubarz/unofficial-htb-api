@@ -3,7 +3,7 @@ get:
   operationId: getSeasonLeaderboardTop
   parameters:
     - $ref: ../components/parameters/Leaderboard.yaml
-    - $ref: ../components/parameters/PeriodQuery.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardTopNumberQuery.yaml
     - $ref: ../components/parameters/SeasonId.yaml
   responses:
     '200':

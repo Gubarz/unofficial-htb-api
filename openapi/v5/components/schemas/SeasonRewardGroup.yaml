@@ -1,0 +1,34 @@
+type: object
+properties:
+  description:
+    oneOf:
+      - type: string
+      - type: object
+        nullable: true
+        enum:
+          - null
+  flags_needed:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  order:
+    type: integer
+  rank_up_requirement:
+    type: string
+  reward_type_id:
+    type: integer
+  rewards:
+    type: array
+    items:
+      $ref: ./SeasonReward.yaml
+  subtitle:
+    oneOf:
+      - type: string
+      - type: object
+        nullable: true
+        enum:
+          - null
+additionalProperties: true
+description: A seasonal reward group and its requirements.

@@ -1,0 +1,287 @@
+summary: Offensive teams
+value:
+  data:
+    - avatar_thumb: /storage/avatars/example-1.png
+      country: VC
+      country_name: Saint Vincent and the Grenadines
+      league_rank: Holo
+      name: Example Team 1
+      points: 717
+      positive_trend: false
+      rank: 1
+      rank_trend: 0
+      resource_id: 1
+      root_bloods: 3
+      root_owns: 9
+      user_bloods: 2
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-2.png
+      country: US
+      country_name: United States
+      league_rank: Holo
+      name: Example Team 2
+      points: 700
+      positive_trend: false
+      rank: 2
+      rank_trend: 0
+      resource_id: 2
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-3.png
+      country: AQ
+      country_name: Antarctica
+      league_rank: Holo
+      name: Example Team 3
+      points: 700
+      positive_trend: false
+      rank: 3
+      rank_trend: 0
+      resource_id: 3
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-4.png
+      country: null
+      country_name: Unknown
+      league_rank: Holo
+      name: Example Team 4
+      points: 690
+      positive_trend: false
+      rank: 4
+      rank_trend: 0
+      resource_id: 4
+      root_bloods: 1
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-5.png
+      country: CA
+      country_name: Canada
+      league_rank: Holo
+      name: Example Team 5
+      points: 685
+      positive_trend: true
+      rank: 5
+      rank_trend: 7
+      resource_id: 5
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-6.png
+      country: null
+      country_name: Unknown
+      league_rank: Holo
+      name: Example Team 6
+      points: 685
+      positive_trend: true
+      rank: 6
+      rank_trend: 7
+      resource_id: 6
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-7.png
+      country: null
+      country_name: Unknown
+      league_rank: Holo
+      name: Example Team 7
+      points: 685
+      positive_trend: true
+      rank: 7
+      rank_trend: 7
+      resource_id: 7
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-8.png
+      country: US
+      country_name: United States
+      league_rank: Holo
+      name: Example Team 8
+      points: 685
+      positive_trend: true
+      rank: 8
+      rank_trend: 7
+      resource_id: 8
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-9.png
+      country: DE
+      country_name: Germany
+      league_rank: Holo
+      name: Example Team 9
+      points: 685
+      positive_trend: true
+      rank: 9
+      rank_trend: 7
+      resource_id: 9
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-10.png
+      country: AQ
+      country_name: Antarctica
+      league_rank: Holo
+      name: Example Team 10
+      points: 685
+      positive_trend: true
+      rank: 10
+      rank_trend: 7
+      resource_id: 10
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-11.png
+      country: null
+      country_name: Unknown
+      league_rank: Holo
+      name: Example Team 11
+      points: 685
+      positive_trend: true
+      rank: 11
+      rank_trend: 7
+      resource_id: 11
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-12.png
+      country: DO
+      country_name: Dominican Republic
+      league_rank: Holo
+      name: Example Team 12
+      points: 685
+      positive_trend: true
+      rank: 12
+      rank_trend: 7
+      resource_id: 12
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-13.png
+      country: ES
+      country_name: Spain
+      league_rank: Holo
+      name: Example Team 13
+      points: 685
+      positive_trend: true
+      rank: 13
+      rank_trend: 7
+      resource_id: 13
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-14.png
+      country: ES
+      country_name: Spain
+      league_rank: Holo
+      name: Example Team 14
+      points: 685
+      positive_trend: true
+      rank: 14
+      rank_trend: 7
+      resource_id: 14
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-15.png
+      country: null
+      country_name: Unknown
+      league_rank: Holo
+      name: Example Team 15
+      points: 685
+      positive_trend: true
+      rank: 15
+      rank_trend: 7
+      resource_id: 15
+      root_bloods: 0
+      root_owns: 9
+      user_bloods: 0
+      user_owns: 9
+  links:
+    first: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=1
+    last: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=49
+    next: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=2
+    prev: null
+  meta:
+    current_page: 1
+    from: 1
+    last_page: 49
+    links:
+      - active: false
+        label: '&laquo; Previous'
+        page: null
+        url: null
+      - active: true
+        label: '1'
+        page: 1
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=1
+      - active: false
+        label: '2'
+        page: 2
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=2
+      - active: false
+        label: '3'
+        page: 3
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=3
+      - active: false
+        label: '4'
+        page: 4
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=4
+      - active: false
+        label: '5'
+        page: 5
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=5
+      - active: false
+        label: '6'
+        page: 6
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=6
+      - active: false
+        label: '7'
+        page: 7
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=7
+      - active: false
+        label: '8'
+        page: 8
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=8
+      - active: false
+        label: '9'
+        page: 9
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=9
+      - active: false
+        label: '10'
+        page: 10
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=10
+      - active: false
+        label: '...'
+        url: null
+      - active: false
+        label: '48'
+        page: 48
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=48
+      - active: false
+        label: '49'
+        page: 49
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=49
+      - active: false
+        label: Next &raquo;
+        page: 2
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=2
+    path: https://labs.hackthebox.com/api/v5/season/21/leaderboard
+    per_page: 15
+    to: 15
+    total: 721
+description: Paginated teams in the offensive league.

@@ -1,0 +1,5 @@
+description: My university.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MyUniversitySourceResponse.yaml

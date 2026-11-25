@@ -1,0 +1,7 @@
+description: User own review.
+type: object
+properties:
+  headline: {}
+  id: {}
+  review: {}
+  stars: {}

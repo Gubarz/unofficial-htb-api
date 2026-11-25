@@ -1,0 +1,20 @@
+post:
+  summary: Delete team media
+  description: Delete team media.
+  operationId: sourcePostTeamTypeTeamidDelete
+  tags:
+    - Team
+  parameters:
+    - name: type
+      in: path
+      required: true
+      description: Type of team media to delete.
+      schema: {}
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

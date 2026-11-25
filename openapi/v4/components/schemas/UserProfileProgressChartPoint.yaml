@@ -1,0 +1,9 @@
+description: A point in the user profile progress chart.
+type: object
+properties:
+  time:
+    type: string
+    description: Time label supplied by the API for this point.
+  value:
+    type: number
+    description: Numeric value of the chart point.

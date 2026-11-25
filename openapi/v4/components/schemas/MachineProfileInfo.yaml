@@ -1,5 +1,10 @@
 description: Schema definition for Machine Profile Info
 properties:
+  fileName: {}
+  filePassword: {}
+  fileSize: {}
+  playMethods:
+    $ref: ./StringArray.yaml
   academy_modules:
     $ref: ./AcademyModulesItems.yaml
   active:
@@ -64,6 +69,8 @@ properties:
   machine_mode:
     example: seasonal
     nullable: true
+    type: string
+  mode:
     type: string
   maker:
     $ref: ./Maker.yaml

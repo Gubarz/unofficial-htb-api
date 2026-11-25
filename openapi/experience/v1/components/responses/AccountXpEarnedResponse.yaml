@@ -1,0 +1,5 @@
+description: XP history for the requested time range.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/AccountXpEarnedResponse.yaml

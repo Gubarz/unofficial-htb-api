@@ -1,0 +1,5 @@
+description: Pro Lab ID.
+in: path
+name: prolabId
+required: true
+schema: {}

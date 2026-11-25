@@ -1,0 +1,15 @@
+post:
+  summary: Transfer university administration
+  description: Transfer university administration.
+  operationId: sourcePostUniversityTransferadminUserid
+  tags:
+    - Universities
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: University member ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

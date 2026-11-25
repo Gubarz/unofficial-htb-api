@@ -1,0 +1,10 @@
+title: Machine flag rating
+type: object
+properties:
+  machineId:
+    description: Machine ID. Matches the machine ID in the path.
+  type:
+    description: Task type.
+  difficulty:
+    type: number
+    description: Task difficulty rating.

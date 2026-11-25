@@ -1,0 +1,16 @@
+title: Content review submission
+type: object
+properties:
+  stars:
+    type: number
+    description: Star rating for the content.
+  headline:
+    type: string
+    description: Optional review headline.
+  review:
+    type: string
+    description: Optional review text.
+  type:
+    description: Type of content being reviewed.
+  id:
+    description: ID of the content being reviewed.

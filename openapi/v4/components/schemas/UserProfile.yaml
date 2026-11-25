@@ -1,4 +1,6 @@
 properties:
+  labs_membership:
+    type: string
   avatar:
     type: string
   country_code:

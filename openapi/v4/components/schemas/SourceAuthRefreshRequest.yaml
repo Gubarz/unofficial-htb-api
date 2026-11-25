@@ -1,0 +1,5 @@
+description: Refresh token.
+type: object
+properties:
+  refresh_token:
+    type: string

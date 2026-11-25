@@ -1,0 +1,5 @@
+description: Pro Lab certificate request.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceProlabCertificateRequest.yaml

@@ -1,0 +1,8 @@
+title: SourceTeamAvatarUploadRequest
+type: object
+properties:
+  avatar:
+    type: string
+    format: binary
+    description: Team avatar image.
+additionalProperties: true

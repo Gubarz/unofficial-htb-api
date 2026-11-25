@@ -1,0 +1,10 @@
+get:
+  description: Check recent subscription-status updates.
+  operationId: getSubscriptionRecentlyUpdated
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionRecentlyUpdatedSourceResponse.yaml
+  summary: Check recent subscription-status updates
+  tags:
+    - User

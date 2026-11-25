@@ -17,9 +17,11 @@ info:
   title: HTB Unofficial API experience/v1
   version: v0.0.1
 openapi: 3.0.4
-paths: 
+paths:
   /account/{accountId}:
     $ref: paths/account_{accountId}.yaml
+  /account/{accountId}/xp-earned:
+    $ref: paths/account_{accountId}_xp-earned.yaml
 security:
   - bearer: []
 servers:

@@ -1,0 +1,11 @@
+post:
+  summary: Submit machine matrix ratings
+  description: Submit machine matrix ratings.
+  operationId: postSourceMachineMatrixRate
+  tags:
+    - Machines
+  requestBody:
+    $ref: ../components/requestBodies/SourceMachineMatrixRateRequest.yaml
+  responses:
+    2XX:
+      description: Difficulty matrix rating submitted.

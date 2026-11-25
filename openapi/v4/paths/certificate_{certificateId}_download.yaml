@@ -1,0 +1,11 @@
+get:
+  description: Download a certificate.
+  operationId: getCertificateDownload
+  parameters:
+    - $ref: ../components/parameters/CertificateDownloadId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/CertificateDownloadSourceResponse.yaml
+  summary: Download a certificate
+  tags:
+    - User

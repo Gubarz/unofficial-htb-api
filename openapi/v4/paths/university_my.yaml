@@ -1,0 +1,9 @@
+get:
+  description: Returns the signed-in user’s university summary.
+  operationId: getMyUniversitySource
+  responses:
+    '200':
+      $ref: ../components/responses/MyUniversitySourceResponse.yaml
+  summary: Get the signed-in user’s university
+  tags:
+    - Universities

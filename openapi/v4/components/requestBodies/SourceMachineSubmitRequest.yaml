@@ -1,0 +1,5 @@
+description: Machine submit.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceMachineSubmitRequest.yaml

@@ -1,8 +1,8 @@
 content:
-  application/octet-stream:
+  text/html:
     schema:
       $ref: ../schemas/OpenVpn.yaml
-description: Returns open_vpn file
+description: OpenVPN configuration download served as text/html.
 headers:
   x-ratelimit-limit:
     $ref: ../headers/XRateLimitHeader.yaml

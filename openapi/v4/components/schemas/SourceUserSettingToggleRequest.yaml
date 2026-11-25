@@ -1,0 +1,6 @@
+title: User preference toggle
+type: object
+properties:
+  setting:
+    type: string
+    description: Preference key to toggle.

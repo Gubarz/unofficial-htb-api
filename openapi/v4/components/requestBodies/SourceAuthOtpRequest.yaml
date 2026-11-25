@@ -1,0 +1,6 @@
+description: One-time password request.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthOtpRequest.yaml

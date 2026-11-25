@@ -1,0 +1,5 @@
+description: Pro Lab reset status.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ProlabResetStatusSourceResponse.yaml

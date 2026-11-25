@@ -1,70 +1,182 @@
-summary: Universities Success
+summary: Universities
 value:
   data:
-    - id: 1
-      name: "University of Rome - Tor Vergata"
-      avatar: "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c4ca4238a0b923820dcc509a6f75849b.png"
-      country_code: "IT"
-      country_name: "Italy"
-      users_count: 76
-      respected_by_count: 718
-      created_at: "2018-04-03T07:01:10.000Z"
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c4ca4238a0b923820dcc509a6f75849b.png
+    country_code: IT
+    country_name: Italy
+    created_at: '2018-04-03T07:01:10.000Z'
+    id: 1
+    name: University of Rome - Tor Vergata
+    respected_by_count: 758
+    users_count: 76
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c81e728d9d4c2f636f067f89cc14862c.png
+    country_code: MX
+    country_name: Mexico
+    created_at: '2018-04-06T14:40:34.000Z'
+    id: 2
+    name: Universidad Autonoma de Zacatecas
+    respected_by_count: 176
+    users_count: 48
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/eccbc87e4b5ce2fe28308fd9f2a7baf3.png
+    country_code: IN
+    country_name: India
+    created_at: '2018-04-25T04:42:32.000Z'
+    id: 3
+    name: Kumaraguru College of Technology
+    respected_by_count: 339
+    users_count: 19
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/a87ff679a2f3e71d9181a67b7542122c.png
+    country_code: GB
+    country_name: United Kingdom
+    created_at: '2018-04-25T09:23:46.000Z'
+    id: 4
+    name: Lancaster University
+    respected_by_count: 303
+    users_count: 61
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/e4da3b7fbbce2345d7772b0674a318d5.png
+    country_code: AU
+    country_name: Australia
+    created_at: '2018-04-26T06:40:15.000Z'
+    id: 5
+    name: Deakin University
+    respected_by_count: 130
+    users_count: 64
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/1679091c5a880faf6fb5e6087eb1b2dc.png
+    country_code: IN
+    country_name: India
+    created_at: '2018-04-26T10:42:34.000Z'
+    id: 6
+    name: Lovely Professional University
+    respected_by_count: 836
+    users_count: 139
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/8f14e45fceea167a5a36dedd4bea2543.png
+    country_code: GB
+    country_name: United Kingdom
+    created_at: '2018-05-03T09:36:14.000Z'
+    id: 7
+    name: Edinburgh Napier University
+    respected_by_count: 98
+    users_count: 21
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c9f0f895fb98ab9159f51fd0297e236d.png
+    country_code: TR
+    country_name: Turkey
+    created_at: '2018-05-03T09:41:02.000Z'
+    id: 8
+    name: Cankaya University
+    respected_by_count: 95
+    users_count: 7
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/45c48cce2e2d7fbdea1afc51c7c6ad26.png
+    country_code: PT
+    country_name: Portugal
+    created_at: '2018-05-15T03:25:05.000Z'
+    id: 9
+    name: University of Porto
+    respected_by_count: 99
+    users_count: 28
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/d3d9446802a44259755d38e6d163e820.png
+    country_code: ES
+    country_name: Spain
+    created_at: '2018-05-22T18:38:07.000Z'
+    id: 10
+    name: Universidad de La Laguna
+    respected_by_count: 97
+    users_count: 1
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/6512bd43d9caa6e02c990b0a82652dca.png
+    country_code: BR
+    country_name: Brazil
+    created_at: '2018-05-29T02:10:22.000Z'
+    id: 11
+    name: Universidade Federal do Pampa
+    respected_by_count: 76
+    users_count: 15
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c20ad4d76fe97759aa27a0c99bff6710.png
+    country_code: IL
+    country_name: Israel
+    created_at: '2018-05-30T10:00:49.000Z'
+    id: 12
+    name: Tel Aviv University
+    respected_by_count: 149
+    users_count: 12
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/c51ce410c124a10e0db5e4b97fc2af39.png
+    country_code: US
+    country_name: United States
+    created_at: '2018-06-16T18:03:11.000Z'
+    id: 13
+    name: Baker College
+    respected_by_count: 41
+    users_count: 10
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/aab3238922bcc25a6f606eb525ffdc56.png
+    country_code: UA
+    country_name: Ukraine
+    created_at: '2018-06-16T18:06:03.000Z'
+    id: 14
+    name: Kyiv Polytechnic Institute
+    respected_by_count: 136
+    users_count: 64
+  - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/universities/9bf31c7ff062936a96d3c8bd1f8f2ff3.png
+    country_code: ES
+    country_name: Spain
+    created_at: '2018-06-16T18:09:40.000Z'
+    id: 15
+    name: Universidad Politécnica de Madrid
+    respected_by_count: 160
+    users_count: 75
   links:
-    first: "https://labs.hackthebox.com/api/v5/universities?page=1"
-    last: "https://labs.hackthebox.com/api/v5/universities?page=79"
+    first: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=1
+    last: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=82
+    next: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=2
     prev: null
-    next: "https://labs.hackthebox.com/api/v5/universities?page=2"
   meta:
     current_page: 1
     from: 1
-    last_page: 79
+    last_page: 82
     links:
-      - url: null
-        label: "&laquo; Previous"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=1"
-        label: "1"
-        active: true
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=2"
-        label: "2"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=3"
-        label: "3"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=4"
-        label: "4"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=5"
-        label: "5"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=6"
-        label: "6"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=7"
-        label: "7"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=8"
-        label: "8"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=9"
-        label: "9"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=10"
-        label: "10"
-        active: false
-      - url: null
-        label: "..."
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=78"
-        label: "78"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=79"
-        label: "79"
-        active: false
-      - url: "https://labs.hackthebox.com/api/v5/universities?page=2"
-        label: "Next &raquo;"
-        active: false
-    path: "https://labs.hackthebox.com/api/v5/universities"
+    - active: false
+      label: '&laquo; Previous'
+      url: null
+    - active: true
+      label: '1'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=1
+    - active: false
+      label: '2'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=2
+    - active: false
+      label: '3'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=3
+    - active: false
+      label: '4'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=4
+    - active: false
+      label: '5'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=5
+    - active: false
+      label: '6'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=6
+    - active: false
+      label: '7'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=7
+    - active: false
+      label: '8'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=8
+    - active: false
+      label: '9'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=9
+    - active: false
+      label: '10'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=10
+    - active: false
+      label: '...'
+      url: null
+    - active: false
+      label: '81'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=81
+    - active: false
+      label: '82'
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=82
+    - active: false
+      label: Next &raquo;
+      url: https://labs.hackthebox.com/api/v5/universities?per_page=15&page=2
+    path: https://labs.hackthebox.com/api/v5/universities
     per_page: 15
     to: 15
-    total: 1184
+    total: 1220

@@ -1,0 +1,11 @@
+post:
+  summary: Toggle a user preference
+  description: Toggle a user preference.
+  operationId: postSourceUserSettingToggle
+  tags:
+    - User
+  requestBody:
+    $ref: ../components/requestBodies/SourceUserSettingToggleRequest.yaml
+  responses:
+    2XX:
+      description: Setting updated.

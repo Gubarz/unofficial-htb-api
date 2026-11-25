@@ -1,0 +1,6 @@
+description: Sign-in credentials.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthLoginRequest.yaml

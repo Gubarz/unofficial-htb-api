@@ -8,5 +8,6 @@ properties:
     type: string
   background_image:
     type: string
+    nullable: true
 title: Latest Season
 type: object

@@ -1,0 +1,17 @@
+post:
+  summary: Rate a challenge difficulty
+  description: Rate a challenge difficulty.
+  operationId: postSourceChallengeRate
+  tags:
+    - Challenges
+  parameters:
+    - name: challengeId
+      in: path
+      required: true
+      description: Challenge ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceChallengeRateRequest.yaml
+  responses:
+    2XX:
+      description: Challenge rating submitted.

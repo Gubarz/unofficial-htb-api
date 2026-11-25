@@ -1,0 +1,16 @@
+content:
+  application/json:
+    examples:
+      SeasonLeaderboardDefensivePlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardDefensivePlayersSuccess.yaml
+      SeasonLeaderboardCombinedPlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardCombinedPlayersSuccess.yaml
+      SeasonLeaderboardOffensivePlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardOffensivePlayersSuccess.yaml
+      SeasonLeaderboardDefensiveTeamsSuccess:
+        $ref: ../examples/SeasonLeaderboardDefensiveTeamsSuccess.yaml
+      SeasonLeaderboardOffensiveTeamsSuccess:
+        $ref: ../examples/SeasonLeaderboardOffensiveTeamsSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonLeaderboardResponse.yaml
+description: A paginated season leaderboard.

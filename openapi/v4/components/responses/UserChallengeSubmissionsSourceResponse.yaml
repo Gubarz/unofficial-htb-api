@@ -1,0 +1,5 @@
+description: User challenge submissions.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserChallengeSubmissionsSourceResponse.yaml

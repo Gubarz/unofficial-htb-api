@@ -1,0 +1,11 @@
+get:
+  description: Find university administrator candidates.
+  operationId: findUniversityAdminCandidatesSource
+  parameters:
+    - $ref: ../components/parameters/UniversityAdminFindSourceName.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/UniversityAdminFindSourceResponse.yaml
+  summary: Find university administrator candidates
+  tags:
+    - Universities

@@ -1,0 +1,11 @@
+get:
+  description: List university invitation requests.
+  operationId: getUniversityInvitationsSource
+  parameters:
+    - $ref: ../components/parameters/UniversityInvitationsSourceUniversityId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/UniversityInvitationsSourceResponse.yaml
+  summary: List university invitation requests
+  tags:
+    - Universities

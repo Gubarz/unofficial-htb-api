@@ -1,0 +1,8 @@
+type: object
+properties:
+  obtained:
+    type: integer
+  total:
+    type: integer
+additionalProperties: true
+description: Completed and total counts.

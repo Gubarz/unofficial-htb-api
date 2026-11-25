@@ -1,0 +1,5 @@
+description: Machine task flag.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceMachineTaskFlagRequest.yaml

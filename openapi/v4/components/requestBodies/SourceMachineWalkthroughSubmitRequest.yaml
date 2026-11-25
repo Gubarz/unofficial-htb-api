@@ -1,0 +1,5 @@
+description: Machine walkthrough submit.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceMachineWalkthroughSubmitRequest.yaml

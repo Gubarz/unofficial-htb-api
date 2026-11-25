@@ -1,0 +1,5 @@
+description: Public profile fortress progress.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileFortressProgressSourceResponse.yaml

@@ -1,0 +1,11 @@
+post:
+  summary: Submit a machine
+  description: Submit a machine.
+  operationId: postSourceMachineSubmit
+  tags:
+    - Machines
+  requestBody:
+    $ref: ../components/requestBodies/SourceMachineSubmitRequest.yaml
+  responses:
+    2XX:
+      description: Machine submission received.

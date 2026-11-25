@@ -1,0 +1,11 @@
+post:
+  summary: Submit a challenge
+  description: Submit a challenge.
+  operationId: postSourceChallengeSubmit
+  tags:
+    - Challenges
+  requestBody:
+    $ref: ../components/requestBodies/SourceChallengeSubmitRequest.yaml
+  responses:
+    2XX:
+      description: Challenge submission received.

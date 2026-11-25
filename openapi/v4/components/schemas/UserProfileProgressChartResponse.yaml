@@ -1,0 +1,5 @@
+description: User profile progress-chart response.
+type: object
+properties:
+  chart_data:
+    $ref: ./UserProfileProgressChartData.yaml

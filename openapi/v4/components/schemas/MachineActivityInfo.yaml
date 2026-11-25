@@ -3,4 +3,5 @@ properties:
     $ref: ./MachineActivityItems.yaml
   server:
     type: string
+    nullable: true
 type: object

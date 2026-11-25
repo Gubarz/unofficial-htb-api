@@ -1,0 +1,8 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./SeasonLeaderboardTopEntry.yaml
+additionalProperties: true
+description: The top-ranked players or teams for a season.

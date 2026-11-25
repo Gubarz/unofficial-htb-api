@@ -31,6 +31,9 @@ properties:
     type: boolean
   play_methods:
     $ref: ./StringArray.yaml
+  predownload:
+    type: string
+    description: Reference for preparing the download.
   rating:
     example: 4
     format: float

@@ -1,0 +1,7 @@
+in: query
+name: keyword
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string
+description: Search term.

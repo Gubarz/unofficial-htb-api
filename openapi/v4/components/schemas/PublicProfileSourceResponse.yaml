@@ -1,0 +1,81 @@
+description: Public profile.
+type: object
+properties:
+  profile:
+    type: object
+    properties:
+      account_id:
+        type: string
+      avatar:
+        type: string
+      challenge_bloods:
+        type: integer
+      country_code:
+        type: string
+      country_name:
+        type: string
+      current_rank_progress:
+        type: integer
+      followed_by_count:
+        type: integer
+      github:
+        type: string
+      id:
+        type: integer
+      joined_date:
+        type: string
+      linkedin: {}
+      name:
+        type: string
+      next_rank:
+        type: string
+      next_rank_points:
+        type: number
+      points:
+        type: integer
+      rank:
+        type: string
+      rank_id:
+        type: integer
+      rank_ownership:
+        type: number
+      rank_requirement:
+        type: integer
+      ranking:
+        type: integer
+      respects:
+        type: integer
+      sso_id:
+        type: boolean
+      system_bloods:
+        type: integer
+      system_owns:
+        type: integer
+      team:
+        type: object
+        properties:
+          avatar:
+            type: string
+          id:
+            type: integer
+          logo_thumb_url:
+            type: string
+          member_count:
+            type: integer
+          name:
+            type: string
+          ranking:
+            type: integer
+      timezone:
+        type: string
+      twitter: {}
+      university: {}
+      university_name: {}
+      user_bloods:
+        type: integer
+      user_follows:
+        type: integer
+      user_owns:
+        type: integer
+      user_respects:
+        type: integer

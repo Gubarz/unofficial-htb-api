@@ -1,0 +1,5 @@
+description: University ID.
+in: path
+name: universityId
+required: true
+schema: {}

@@ -1,0 +1,10 @@
+get:
+  description: Get subscription management details.
+  operationId: getSubscriptionManagement
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionManagementSourceResponse.yaml
+  summary: Get subscription management details
+  tags:
+    - User

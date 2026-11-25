@@ -1,0 +1,27 @@
+summary: Current user season ranking
+value:
+  data:
+    blue:
+      flags_to_next_rank:
+        obtained: 0
+        total: 0
+      league: null
+      rank: null
+      total_season_bloods: 0
+      total_season_points: 0
+      total_season_tasks:
+        obtained: 0
+        total: 0
+    purple: null
+    red:
+      flags_to_next_rank:
+        obtained: 2
+        total: 4
+      league: Ruby
+      rank: 1708
+      total_season_bloods: 0
+      total_season_flags:
+        obtained: 10
+        total: 18
+      total_season_points: 325
+description: Offensive and defensive progress, with no combined league ranking.

@@ -1,0 +1,5 @@
+description: Public team activity.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/TeamActivityIdResponse.yaml
