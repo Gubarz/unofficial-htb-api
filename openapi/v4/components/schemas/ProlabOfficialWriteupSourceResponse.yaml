@@ -1,0 +1,4 @@
+description: Official Pro Lab writeup.
+type: object
+properties:
+  url: {}

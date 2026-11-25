@@ -1,0 +1,16 @@
+post:
+  summary: Upgrade from the current subscription plan to a target plan
+  description: Upgrade from the current subscription plan to a target plan.
+  operationId: postSourceSubscriptionUpgradeToPlan
+  tags:
+    - User
+  parameters:
+    - $ref: ../components/parameters/SourceSubscriptionCurrentPlan.yaml
+    - $ref: ../components/parameters/SourceSubscriptionTargetPlan.yaml
+  requestBody:
+    $ref: ../components/requestBodies/SourceSubscriptionUpgradeRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

@@ -1,0 +1,10 @@
+title: SourceUniversityUpdateRequest
+type: object
+properties:
+  url: {}
+  description: {}
+  twitter: {}
+  facebook: {}
+  discord: {}
+  country: {}
+additionalProperties: true

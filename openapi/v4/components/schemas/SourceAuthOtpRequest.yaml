@@ -1,0 +1,5 @@
+description: One-time password request.
+type: object
+properties:
+  type:
+    type: string

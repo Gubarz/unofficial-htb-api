@@ -1,0 +1,6 @@
+description: Subscription type.
+in: path
+name: subscriptionType
+required: true
+schema:
+  type: string

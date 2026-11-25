@@ -1,0 +1,11 @@
+get:
+  operationId: getSeasonRewards
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonRewardsResponse.yaml
+  summary: Get season rewards
+  tags:
+    - Season
+  description: Returns the reward groups and top-earner rewards for a season.

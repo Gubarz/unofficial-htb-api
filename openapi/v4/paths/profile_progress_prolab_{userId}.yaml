@@ -1,0 +1,11 @@
+get:
+  description: Get public-profile Pro Lab progress.
+  operationId: getPublicProfileProlabProgress
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicProfileProlabProgressSourceResponse.yaml
+  summary: Get public-profile Pro Lab progress
+  tags:
+    - User

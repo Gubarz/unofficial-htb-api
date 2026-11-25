@@ -1,0 +1,7 @@
+description: Filter universities by name.
+in: query
+name: name
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

@@ -1,6 +1,6 @@
-summary: User Profile Content Counts Success
+summary: User profile content counts
 value:
-  machine: 5
-  challenge: 2
+  challenge: 0
+  machine: 0
   sherlock: 0
   writeup: 0

@@ -1,0 +1,9 @@
+title: Pwnbox VPN selection
+description: VPN connection settings for Pwnbox.
+type: object
+properties:
+  vpn_server_id:
+    description: VPN server ID.
+  kill_other_pwnbox_connections:
+    type: boolean
+    description: Whether to replace other Pwnbox VPN connections.

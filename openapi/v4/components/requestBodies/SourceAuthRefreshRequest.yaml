@@ -1,0 +1,6 @@
+description: Refresh token request.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceAuthRefreshRequest.yaml

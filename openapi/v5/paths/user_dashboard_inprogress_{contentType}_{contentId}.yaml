@@ -1,0 +1,22 @@
+delete:
+  summary: Remove content from the in-progress dashboard
+  description: Removes the identified content from the in-progress dashboard.
+  operationId: deleteSourceDashboardInProgressDelete
+  tags:
+    - User
+  parameters:
+    - name: contentType
+      in: path
+      required: true
+      description: Content kind from the dashboard item's type.
+      schema:
+        type: string
+      example: machine
+    - name: contentId
+      in: path
+      required: true
+      description: Identifier of the dashboard content item.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful removal.

@@ -1,0 +1,5 @@
+description: User profile certificates.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserProfileCertificatesSourceResponse.yaml

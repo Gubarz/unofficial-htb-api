@@ -1,0 +1,5 @@
+description: Public team members.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicTeamMembersSourceResponse.yaml

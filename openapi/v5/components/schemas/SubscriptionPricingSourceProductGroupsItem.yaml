@@ -1,0 +1,10 @@
+type: object
+properties:
+  name:
+    type: string
+  products:
+    type: array
+    items:
+      $ref: ./SubscriptionPricingSourceProduct.yaml
+additionalProperties: true
+description: Subscription product group.

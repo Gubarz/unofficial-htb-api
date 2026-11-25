@@ -1,84 +1,68 @@
-description: Summary information for a machine card shown on dashboard endpoints.
 type: object
 properties:
-  os:
-    type: string
-    description: Operating system of the machine.
-  difficulty:
-    type: string
-    description: Difficulty label as shown in the UI.
   avatar:
     type: string
     description: Relative asset path for the machine avatar.
-  url:
-    type: string
-    description: Relative link to the machine detail page.
-  user_flag:
-    type: boolean
-    description: Indicates whether the user captured the user flag.
-  root_flag:
-    type: boolean
-    description: Indicates whether the user captured the root flag.
   avatarUrl:
     type: string
-    format: uri
     description: Absolute URL for the machine avatar.
-  points:
+  difficulty:
+    type: string
+    description: Difficulty label as shown in the UI.
+  experiencePoints:
     type: integer
-    nullable: true
-    description: Points awarded for the machine.
-  rating:
-    type: number
-    format: float
-    nullable: true
-    description: Average user rating.
-  ratingCount:
-    type: integer
-    description: Number of ratings submitted.
-  tasksCompleted:
-    type: integer
-    description: Tasks completed within the machine entry.
-  tasksTotal:
-    type: integer
-    description: Total tasks available for the machine entry.
-  progress:
-    type: integer
-    description: Overall completion percentage.
   guided:
     type: boolean
     description: Whether the machine is part of a guided experience.
-  status:
-    type: string
-    nullable: true
-    description: Subscription requirement or availability label.
   id:
     type: integer
     description: Internal machine identifier.
   name:
     type: string
     description: Machine display name.
+  os:
+    type: string
+    description: Operating system of the machine.
+  points:
+    oneOf:
+      - type: integer
+      - type: object
+        nullable: true
+        enum:
+          - null
+    description: Points awarded for the machine.
+  progress:
+    type: integer
+    description: Overall completion percentage.
+  rating:
+    type: number
+    description: Average user rating.
+  ratingCount:
+    type: integer
+    description: Number of ratings submitted.
+  root_flag:
+    type: boolean
+  status:
+    oneOf:
+      - type: string
+      - type: object
+        nullable: true
+        enum:
+          - null
+    description: Subscription requirement or availability label.
+  tasksCompleted:
+    type: integer
+    description: Tasks completed within the machine entry.
+  tasksTotal:
+    type: integer
+    description: Total tasks available for the machine entry.
   type:
     type: string
     description: Machine status label (e.g., Active Machine).
-  experiencePoints:
-    type: integer
-required:
-  - os
-  - difficulty
-  - avatar
-  - url
-  - user_flag
-  - root_flag
-  - avatarUrl
-  - points
-  - rating
-  - ratingCount
-  - tasksCompleted
-  - tasksTotal
-  - progress
-  - guided
-  - status
-  - id
-  - name
-  - type
-  - experiencePoints
+  url:
+    type: string
+    description: Relative link to the machine detail page.
+  user_flag:
+    type: boolean
+additionalProperties: true
+description: Dashboard machine.

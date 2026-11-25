@@ -1,0 +1,5 @@
+description: Public profile sherlock progress.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileSherlockProgressSourceResponse.yaml

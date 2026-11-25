@@ -1,0 +1,206 @@
+summary: Subscription pricing
+value:
+  default_currency: USD
+  product_groups:
+    - name: hands-on-labs
+      products:
+        - perks: <p>Top features:</p><ul><li>All competitive Labs, free — Machines,
+            Challenges, Sherlocks<br></li><li>2h of Pwnbox</li><li><p>2 Pro Labs (Hacker
+            rank required)</p></li></ul>
+          plans:
+            - billing_interval: years
+              billing_interval_count: 1
+              code: annual-free-hands-on-plan
+              is_current_plan: true
+              name: Annual Free Hands-On Labs
+              prices:
+                - currency: EUR
+                  per_period: 0
+                  setup: 0
+                - currency: USD
+                  per_period: 0
+                  setup: 0
+                - currency: GBP
+                  per_period: 0
+                  setup: 0
+              upgrades_to: null
+            - billing_interval: months
+              billing_interval_count: 1
+              code: monthly-free-hands-on-plan
+              is_current_plan: true
+              name: Monthly Free Hands-On Labs
+              prices:
+                - currency: EUR
+                  per_period: 0
+                  setup: 0
+                - currency: USD
+                  per_period: 0
+                  setup: 0
+                - currency: GBP
+                  per_period: 0
+                  setup: 0
+              upgrades_to: null
+          type: free
+          upgrades_to:
+            - dedivip
+            - pro
+            - pro
+        - perks: <p><strong>Everything in Free, plus:</strong></p><ul><li>700+ Retired
+            Labs (Machines, Challenges, Sherlocks)<br></li><li>Unlimited Pwnbox</li><li>Guided
+            Mode and Official Walkthroughs</li><li>CPE Credit submission</li><li>Priority
+            Support</li></ul>
+          plans:
+            - billing_interval: months
+              billing_interval_count: 1
+              code: monthly-dedivip-subscription
+              is_current_plan: false
+              name: Monthly VIP+ Subscription
+              prices:
+                - currency: EUR
+                  per_period: 21
+                  setup: 0
+                - currency: GBP
+                  per_period: 18
+                  setup: 0
+                - currency: USD
+                  per_period: 25
+                  setup: 0
+              upgrades_to: null
+            - billing_interval: years
+              billing_interval_count: 1
+              code: annual-dedivip-subscription
+              is_current_plan: false
+              name: Annual VIP+ Subscription
+              prices:
+                - currency: EUR
+                  per_period: 190
+                  setup: 0
+                - currency: GBP
+                  per_period: 165
+                  setup: 0
+                - currency: USD
+                  per_period: 223
+                  setup: 0
+              upgrades_to: null
+          type: dedivip
+          upgrades_to:
+            - pro
+        - entitlements:
+            content:
+              mini_labs:
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9e4de635-3722-4d4b-8267-c7ee7bffd6a1.svg
+                  content_id: 9e4de635-3722-4d4b-8267-c7ee7bffd6a1
+                  id: 11
+                  name: P.O.O
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9fbdcaa0-4238-4320-9ba0-63273a60d6f7.svg
+                  content_id: 9fbdcaa0-4238-4320-9ba0-63273a60d6f7
+                  id: 37
+                  name: Unintended
+              pro_labs:
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9e4d9178-059d-4991-ad9e-35fe1fc8ce18.svg
+                  content_id: 9e4d9178-059d-4991-ad9e-35fe1fc8ce18
+                  id: 1
+                  name: RastaLabs
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9e4d9177-f589-47c1-9eca-d506189b95ba.svg
+                  content_id: 9e4d9177-f589-47c1-9eca-d506189b95ba
+                  id: 2
+                  name: Offshore
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9e4d9177-de27-465e-89f0-a54f7c5fe859.svg
+                  content_id: 9e4d9177-de27-465e-89f0-a54f7c5fe859
+                  id: 4
+                  name: Dante
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9e4d9177-ac01-44ab-bb9d-ff9a3682cc64.svg
+                  content_id: 9e4d9177-ac01-44ab-bb9d-ff9a3682cc64
+                  id: 6
+                  name: Zephyr
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9eae4da0-4fd8-42cb-89ba-ad5291d8ac73.svg
+                  content_id: 9eae4da0-4fd8-42cb-89ba-ad5291d8ac73
+                  id: 17
+                  name: Wanderer
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/9fe44222-7f11-4d47-8456-50a57c9e36c0.svg
+                  content_id: 9fe44222-7f11-4d47-8456-50a57c9e36c0
+                  id: 28
+                  name: Ifrit
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/a03053df-f23c-49ba-8817-b3f8b70c1095.svg
+                  content_id: a03053df-f23c-49ba-8817-b3f8b70c1095
+                  id: 49
+                  name: Wutai
+                - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_48/a0ede325-53b5-43f7-84e8-8f45993c0a2d-1769435785.svg
+                  content_id: a0ede325-53b5-43f7-84e8-8f45993c0a2d
+                  id: 64
+                  name: Shinra
+          perks: ''
+          plans:
+            - billing_interval: months
+              billing_interval_count: 1
+              code: monthly-pro-subscription
+              is_current_plan: false
+              name: Monthly Pro Subscription
+              prices:
+                - currency: EUR
+                  per_period: 44
+                  setup: 0
+                - currency: GBP
+                  per_period: 39
+                  setup: 0
+                - currency: USD
+                  per_period: 49
+                  setup: 0
+              upgrades_to: null
+            - billing_interval: years
+              billing_interval_count: 1
+              code: annual-pro-subscription
+              is_current_plan: false
+              name: Annual Pro Subscription
+              prices:
+                - currency: EUR
+                  per_period: 440
+                  setup: 0
+                - currency: GBP
+                  per_period: 390
+                  setup: 0
+                - currency: USD
+                  per_period: 490
+                  setup: 0
+              upgrades_to: null
+          type: pro
+          upgrades_to:
+            - pro
+    - name: pro-labs
+      products:
+        - perks: ''
+          plans:
+            - billing_interval: years
+              billing_interval_count: 1
+              code: annual-free-pro-lab-plan
+              is_current_plan: true
+              name: Annual Free Pro-Labs
+              prices:
+                - currency: EUR
+                  per_period: 0
+                  setup: 0
+                - currency: USD
+                  per_period: 0
+                  setup: 0
+                - currency: GBP
+                  per_period: 0
+                  setup: 0
+              upgrades_to: null
+            - billing_interval: months
+              billing_interval_count: 1
+              code: monthly-free-pro-lab-plan
+              is_current_plan: true
+              name: Monthly Free Pro-Labs
+              prices:
+                - currency: EUR
+                  per_period: 0
+                  setup: 0
+                - currency: USD
+                  per_period: 0
+                  setup: 0
+                - currency: GBP
+                  per_period: 0
+                  setup: 0
+              upgrades_to: null
+          type: free
+          upgrades_to: []

@@ -1,0 +1,5 @@
+description: Subscription recently updated.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionRecentlyUpdatedSourceResponse.yaml

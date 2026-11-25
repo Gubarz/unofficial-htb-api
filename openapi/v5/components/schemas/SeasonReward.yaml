@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  order:
+    type: integer
+  reward_group_id:
+    type: integer
+additionalProperties: true
+description: A seasonal reward.

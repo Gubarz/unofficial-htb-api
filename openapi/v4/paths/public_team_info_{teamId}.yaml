@@ -1,0 +1,11 @@
+get:
+  description: Get public team profile.
+  operationId: getPublicTeamInfoSource
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicTeamInfoSourceResponse.yaml
+  summary: Get public team profile
+  tags:
+    - Team

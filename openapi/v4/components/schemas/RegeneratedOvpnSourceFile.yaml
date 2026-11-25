@@ -1,0 +1,3 @@
+description: Replacement OpenVPN configuration.
+type: string
+format: binary

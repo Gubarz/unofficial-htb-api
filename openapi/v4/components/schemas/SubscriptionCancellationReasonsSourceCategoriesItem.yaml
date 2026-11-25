@@ -1,0 +1,20 @@
+description: A cancellation reason category and its options.
+type: object
+properties:
+  freetext:
+    type: boolean
+  id:
+    type: integer
+  name:
+    type: string
+  children:
+    type: array
+    items:
+      type: object
+      properties:
+        freetext:
+          type: boolean
+        id:
+          type: integer
+        name:
+          type: string

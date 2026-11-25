@@ -1,0 +1,31 @@
+description: Public profile prolab progress.
+type: object
+properties:
+  profile:
+    type: object
+    properties:
+      prolabs:
+        type: array
+        items:
+          type: object
+          properties:
+            avatar:
+              type: string
+            average_ratings:
+              type: number
+            completion_percentage:
+              type: integer
+            id:
+              type: integer
+            identifier:
+              type: string
+            mini:
+              type: boolean
+            name:
+              type: string
+            owned_flags:
+              type: integer
+            total_flags:
+              type: integer
+            total_machines:
+              type: integer

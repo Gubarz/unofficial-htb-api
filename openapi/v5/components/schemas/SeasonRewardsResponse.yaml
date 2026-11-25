@@ -1,0 +1,12 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        reward_types:
+          $ref: ./SeasonRewardType.yaml
+      additionalProperties: true
+additionalProperties: true
+description: Seasonal reward categories.

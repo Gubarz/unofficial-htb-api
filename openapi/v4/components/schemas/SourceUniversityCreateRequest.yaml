@@ -1,0 +1,27 @@
+title: SourceUniversityCreateRequest
+type: object
+properties:
+  authform:
+    type: string
+    format: binary
+    description: University authorization document.
+  name: {}
+  admin_id:
+    type: string
+    description: ID of the university administrator.
+  acceptauth:
+    type: string
+    description: Whether the submitter accepts the authorization terms.
+  description: {}
+  faculty_name: {}
+  faculty_email: {}
+  url: {}
+  discord: {}
+  twitter: {}
+  facebook: {}
+  logo:
+    type: string
+    format: binary
+    description: University logo file.
+  country: {}
+additionalProperties: true

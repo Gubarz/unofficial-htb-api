@@ -1,0 +1,30 @@
+delete:
+  summary: Cancel a team join request
+  description: Cancel a team join request.
+  operationId: sourceDeleteTeamTeamidRequestToJoin
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.
+post:
+  summary: Request to join a team
+  description: Request to join a team.
+  operationId: sourcePostTeamTeamidRequestToJoin
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

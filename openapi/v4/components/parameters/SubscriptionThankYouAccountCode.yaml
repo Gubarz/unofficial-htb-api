@@ -1,0 +1,6 @@
+description: Subscription account code.
+in: query
+name: account_code
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

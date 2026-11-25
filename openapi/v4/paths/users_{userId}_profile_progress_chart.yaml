@@ -1,0 +1,13 @@
+get:
+  description: Returns progress chart points for the selected content type and time range.
+  operationId: getUserProfileProgressChart
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/ProfileProgressChartContentType.yaml
+    - $ref: ../components/parameters/PeriodQuery.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/UserProfileProgressChartResponse.yaml
+  summary: User Profile Progress Chart
+  tags:
+    - User

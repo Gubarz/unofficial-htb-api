@@ -8,3 +8,7 @@ oneOf:
   - maxItems: 0
     type: array
     items: {}
+  - type: object
+    nullable: true
+    enum:
+      - null

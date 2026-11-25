@@ -1,0 +1,7 @@
+description: SSO authorization code.
+in: query
+name: code
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

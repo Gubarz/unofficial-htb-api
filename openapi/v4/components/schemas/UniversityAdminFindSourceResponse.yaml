@@ -1,0 +1,7 @@
+description: Matching university administrator candidates.
+type: array
+items:
+  type: object
+  properties:
+    id: {}
+    name: {}

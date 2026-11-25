@@ -1,0 +1,11 @@
+get:
+  description: Regenerates VPN credentials and downloads the replacement configuration.
+  operationId: regenerateTcpOvpnSource
+  parameters:
+    - $ref: ../components/parameters/RegeneratedOvpnSourceVpnId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/RegenerateTcpOvpnSourceResponse.yaml
+  summary: Regenerate TCP VPN configuration
+  tags:
+    - Connection

@@ -1,0 +1,11 @@
+title: Machine walkthrough submission
+type: object
+properties:
+  language_id:
+    type: number
+    description: Language ID for the walkthrough.
+  machine_id:
+    description: ID of the machine covered by the walkthrough.
+  url:
+    type: string
+    description: Walkthrough URL after trimming whitespace.

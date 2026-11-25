@@ -1,0 +1,9 @@
+post:
+  summary: Leave the current university
+  description: Leave the current university.
+  operationId: sourcePostUniversityLeave
+  tags:
+    - Universities
+  responses:
+    2XX:
+      description: Successful request.

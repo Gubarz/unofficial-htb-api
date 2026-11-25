@@ -1,0 +1,5 @@
+description: Public profile challenge progress.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileChallengeProgressSourceResponse.yaml

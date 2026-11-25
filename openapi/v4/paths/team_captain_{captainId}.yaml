@@ -1,0 +1,15 @@
+post:
+  summary: Promote a team captain
+  description: Promote a team captain.
+  operationId: sourcePostTeamCaptainCaptainid
+  tags:
+    - Team
+  parameters:
+    - name: captainId
+      in: path
+      required: true
+      description: Captain ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

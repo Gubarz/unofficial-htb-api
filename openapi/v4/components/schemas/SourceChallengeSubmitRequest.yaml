@@ -1,0 +1,30 @@
+title: Challenge submission
+type: object
+properties:
+  name:
+    type: string
+    description: Name of the submitted content.
+  description:
+    type: string
+    description: Description of the submitted content.
+  type:
+    type: string
+    description: Submission type, in uppercase.
+  category:
+    type: string
+    description: The selected category name, not the category object or ID.
+  difficulty:
+    type: string
+    description: The selected difficulty name, not the option object.
+  download_link:
+    type: string
+    description: Download URL for the submitted content.
+  writeup_link:
+    type: string
+    description: URL for the accompanying writeup.
+  accept_terms:
+    type: boolean
+    description: Whether the submitter accepts the submission terms.
+  flag:
+    type: string
+    description: Flag for the submitted challenge.

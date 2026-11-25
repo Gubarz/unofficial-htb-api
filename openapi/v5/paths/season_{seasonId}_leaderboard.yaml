@@ -1,0 +1,18 @@
+get:
+  operationId: getSeasonLeaderboard
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardEntity.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardFlavor.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardCountry.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardKeyword.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardLeagueRank.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardPage.yaml
+    - $ref: ../components/parameters/SeasonLeaderboardPerPage.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonLeaderboardResponse.yaml
+  summary: Get season leaderboard
+  tags:
+    - Season
+  description: Returns a paginated season leaderboard for the selected entity type and league.

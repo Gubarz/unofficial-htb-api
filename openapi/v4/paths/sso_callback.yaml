@@ -1,0 +1,17 @@
+get:
+  summary: Complete SSO sign-in
+  description: Processes the SSO authorization code and state.
+  operationId: getSourceAuthSsoCallback
+  tags:
+    - Platform
+  parameters:
+    - $ref: ../components/parameters/SourceAuthSsoCode.yaml
+    - $ref: ../components/parameters/SourceAuthSsoState.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSsoCallbackResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+  security:
+    - {}
+    - bearer: []

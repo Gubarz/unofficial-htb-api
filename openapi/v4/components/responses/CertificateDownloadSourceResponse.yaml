@@ -1,0 +1,5 @@
+description: Certificate download.
+content:
+  application/octet-stream:
+    schema:
+      $ref: ../schemas/CertificateDownloadSourceResponse.yaml

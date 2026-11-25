@@ -1,0 +1,29 @@
+type: object
+properties:
+  billing_interval:
+    type: string
+  billing_interval_count:
+    type: integer
+  code:
+    type: string
+  is_current_plan:
+    type: boolean
+  name:
+    type: string
+  prices:
+    type: array
+    items:
+      $ref: ./SubscriptionPricingSourcePrice.yaml
+  upgrades_to:
+    oneOf:
+      - not:
+          type: object
+          nullable: true
+          enum:
+            - null
+      - type: object
+        nullable: true
+        enum:
+          - null
+additionalProperties: true
+description: Subscription billing plan.

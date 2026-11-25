@@ -1,0 +1,65 @@
+type: object
+properties:
+  auth_user_has_root_blood:
+    type: boolean
+  auth_user_has_user_blood:
+    type: boolean
+  auth_user_number_of_flags:
+    type: integer
+  avatar:
+    type: string
+  blood_points: {}
+  category: {}
+  content_id:
+    type: string
+  difficulty_text:
+    type: string
+  id:
+    type: integer
+  is_owned: {}
+  is_owned_root:
+    type: boolean
+  is_owned_user:
+    type: boolean
+  is_released:
+    type: boolean
+  name:
+    type: string
+  number_of_flags:
+    type: integer
+  os:
+    type: string
+  rating:
+    type: number
+  rating_count:
+    type: integer
+  release_time:
+    type: string
+  root_blood_points:
+    type: integer
+  root_own_points:
+    type: integer
+  total_points:
+    type: integer
+  type:
+    type: string
+  user_blood_points:
+    type: integer
+  user_bloods:
+    type: array
+    items:
+      type: object
+      properties:
+        avatar:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+      additionalProperties: true
+  user_own_points:
+    type: integer
+additionalProperties: true
+description: Active offensive seasonal content.

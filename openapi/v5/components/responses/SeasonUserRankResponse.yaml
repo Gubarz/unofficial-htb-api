@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      SeasonUserRankSuccess:
+        $ref: ../examples/SeasonUserRankSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonUserRankResponse.yaml
+description: The signed-in user's league rankings and progress.

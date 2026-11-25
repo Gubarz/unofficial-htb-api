@@ -1,0 +1,7 @@
+description: An XP history entry.
+type: object
+properties:
+  startAt:
+    description: Start time for the entry.
+  xpEarned:
+    description: XP earned during this interval.

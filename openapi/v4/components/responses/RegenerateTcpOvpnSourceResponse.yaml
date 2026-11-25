@@ -1,0 +1,5 @@
+description: Regenerate tcp ovpn.
+content:
+  '*/*':
+    schema:
+      $ref: ../schemas/RegeneratedOvpnSourceFile.yaml

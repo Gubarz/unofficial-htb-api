@@ -1,0 +1,5 @@
+description: Subscription balance.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionBalanceSourceResponse.yaml

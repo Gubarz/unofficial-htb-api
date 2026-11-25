@@ -1,0 +1,48 @@
+description: Subscription billing history.
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./SubscriptionBillingHistorySourceDataItem.yaml
+  meta:
+    type: object
+    properties:
+      current_page:
+        type: integer
+      from:
+        type: integer
+      last_page:
+        type: integer
+      links:
+        type: array
+        items:
+          type: object
+          properties:
+            active:
+              type: boolean
+            label:
+              type: string
+            page:
+              type: integer
+              nullable: true
+            url:
+              type: string
+              nullable: true
+      path:
+        type: string
+      per_page:
+        type: integer
+      to:
+        type: integer
+      total:
+        type: integer
+  links:
+    type: object
+    properties:
+      first:
+        type: string
+      last:
+        type: string
+      next: {}
+      prev: {}

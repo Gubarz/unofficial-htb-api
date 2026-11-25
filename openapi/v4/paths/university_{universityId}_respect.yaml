@@ -1,0 +1,15 @@
+post:
+  summary: Respect a university
+  description: Respect a university.
+  operationId: sourcePostUniversityUniversityidRespect
+  tags:
+    - Universities
+  parameters:
+    - name: universityId
+      in: path
+      required: true
+      description: University ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

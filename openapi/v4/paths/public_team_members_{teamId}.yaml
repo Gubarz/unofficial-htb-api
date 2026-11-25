@@ -1,0 +1,11 @@
+get:
+  description: List public team members.
+  operationId: getPublicTeamMembersSource
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicTeamMembersSourceResponse.yaml
+  summary: List public team members
+  tags:
+    - Team

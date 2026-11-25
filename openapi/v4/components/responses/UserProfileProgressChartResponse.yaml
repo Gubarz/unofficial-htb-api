@@ -1,0 +1,8 @@
+description: User profile progress-chart points.
+content:
+  application/json:
+    examples:
+      UserProfileProgressChart:
+        $ref: ../examples/UserProfileProgressChartSuccess.yaml
+    schema:
+      $ref: ../schemas/UserProfileProgressChartResponse.yaml

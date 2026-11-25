@@ -1,0 +1,11 @@
+post:
+  summary: Delete the current team
+  description: Delete the current team.
+  operationId: sourcePostTeamDelete
+  tags:
+    - Team
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamDeleteRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

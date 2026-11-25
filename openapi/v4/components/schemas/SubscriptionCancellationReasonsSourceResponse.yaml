@@ -1,0 +1,7 @@
+description: Subscription cancellation reasons.
+type: object
+properties:
+  categories:
+    type: array
+    items:
+      $ref: ./SubscriptionCancellationReasonsSourceCategoriesItem.yaml

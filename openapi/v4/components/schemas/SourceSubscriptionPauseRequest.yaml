@@ -1,0 +1,5 @@
+description: Subscription pause.
+type: object
+properties:
+  duration:
+    type: integer

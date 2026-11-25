@@ -1,13 +1,12 @@
-description: One of ["1Y", "6M", "3M", "1M", "1W"]
+description: Time range for the progress chart.
 in: query
-name: period
-required: true
+name: duration
+required: false
 schema:
-  default: 1W
-  enum:
-    - 1Y
-    - 6M
-    - 3M
-    - 1M
-    - 1W
   type: string
+  enum:
+    - 1W
+    - 1M
+    - 3M
+    - 1Y
+  example: 1M

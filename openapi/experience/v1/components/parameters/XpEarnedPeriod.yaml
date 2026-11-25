@@ -1,0 +1,11 @@
+description: Time range for XP history.
+in: query
+name: period
+schema:
+  type: string
+  enum:
+    - 1w
+    - 1m
+    - 3m
+    - 1y
+  example: 1m

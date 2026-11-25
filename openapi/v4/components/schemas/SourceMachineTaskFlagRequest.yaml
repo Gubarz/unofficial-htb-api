@@ -1,0 +1,5 @@
+title: Machine task flag
+type: object
+properties:
+  flag:
+    description: Answer submitted for the task.

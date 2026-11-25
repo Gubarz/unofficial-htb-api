@@ -62,7 +62,7 @@ properties:
     example: string
     type: string
   onboarding_tutorial_complete:
-    example: 1
+    example: true
     type: boolean
   opt_in:
     example: 0

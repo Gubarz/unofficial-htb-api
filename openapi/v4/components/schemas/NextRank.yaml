@@ -10,3 +10,4 @@ properties:
     type: integer
     nullable: true
 type: object
+nullable: true

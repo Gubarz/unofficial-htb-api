@@ -1,0 +1,7 @@
+description: User profile certificates.
+type: object
+properties:
+  ownedProLab:
+    type: array
+    items:
+      $ref: ./UserProfileCertificatesSourceOwnedProLabItem.yaml

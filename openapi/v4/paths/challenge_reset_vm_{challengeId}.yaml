@@ -1,0 +1,15 @@
+post:
+  summary: Reset a challenge environment
+  description: Reset a challenge environment.
+  operationId: postSourceChallengeVmReset
+  tags:
+    - Challenges
+  parameters:
+    - name: challengeId
+      in: path
+      required: true
+      description: Challenge ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Challenge VM reset requested.

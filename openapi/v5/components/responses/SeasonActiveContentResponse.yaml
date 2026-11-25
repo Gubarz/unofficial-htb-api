@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      SeasonActiveContentSuccess:
+        $ref: ../examples/SeasonActiveContentSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonActiveContentResponse.yaml
+description: Current offensive and defensive seasonal content.

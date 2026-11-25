@@ -1,0 +1,8 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./SeasonUserRanksEntry.yaml
+additionalProperties: true
+description: A user's seasonal ranking history.

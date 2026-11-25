@@ -1,0 +1,12 @@
+get:
+  description: List public-profile badges.
+  operationId: getPublicProfileBadges
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+    - $ref: ../components/parameters/PublicProfileBadgesRare.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicProfileBadgesSourceResponse.yaml
+  summary: List public-profile badges
+  tags:
+    - User

@@ -1,0 +1,5 @@
+description: Official Pro Lab writeup.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/ProlabOfficialWriteupSourceResponse.yaml

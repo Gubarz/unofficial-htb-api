@@ -1,0 +1,5 @@
+description: User setting toggle.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceUserSettingToggleRequest.yaml

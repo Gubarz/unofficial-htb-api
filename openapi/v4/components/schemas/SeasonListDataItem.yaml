@@ -1,4 +1,7 @@
 properties:
+  animation: {}
+  content_id:
+    type: string
   active:
     type: boolean
   background_image:

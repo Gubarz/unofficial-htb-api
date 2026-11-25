@@ -9,7 +9,7 @@ content:
         $ref: ../examples/VirtualMachineActiveSpawned.yaml
     schema:
       $ref: ../schemas/VirtualMachineActiveResponse.yaml
-description: Virtual Machine Active Successful
+description: Active virtual machine details, or null when no VM is active.
 headers:
   x-ratelimit-limit:
     $ref: ../headers/XRateLimitHeader.yaml

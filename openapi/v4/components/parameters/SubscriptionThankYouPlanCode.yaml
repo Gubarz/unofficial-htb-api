@@ -1,0 +1,6 @@
+description: Subscription plan code.
+in: query
+name: plan_code
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

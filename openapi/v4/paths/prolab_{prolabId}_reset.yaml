@@ -1,0 +1,28 @@
+get:
+  description: Returns the reset status for the Pro Lab.
+  operationId: getProlabResetStatusSource
+  parameters:
+    - $ref: ../components/parameters/ProlabResetStatusSourceProlabId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/ProlabResetStatusSourceResponse.yaml
+  summary: Get a Pro Lab reset status
+  tags:
+    - Prolabs
+post:
+  summary: Request a Pro Lab reset
+  description: Request a Pro Lab reset.
+  operationId: postSourceProlabReset
+  tags:
+    - Prolabs
+  parameters:
+    - name: prolabId
+      in: path
+      required: true
+      description: Pro Lab ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceProlabResetRequest.yaml
+  responses:
+    2XX:
+      description: Reset request accepted.

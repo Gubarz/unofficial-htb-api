@@ -3,7 +3,7 @@ get:
   operationId: getReviewPaginated
   parameters:
     - $ref: ../components/parameters/ProductId.yaml
-    - $ref: ../components/parameters/ProductPath.yaml
+    - $ref: ../components/parameters/ReviewProductPath.yaml
   responses:
     '200':
       $ref: ../components/responses/ReviewProductPaginatedResponse.yaml

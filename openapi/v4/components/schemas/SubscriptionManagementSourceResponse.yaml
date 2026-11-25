@@ -1,0 +1,109 @@
+description: Subscription management.
+type: object
+properties:
+  membership:
+    type: object
+    properties:
+      allowedActions:
+        type: array
+        items:
+          type: string
+      annualUpgrade: {}
+      createdAt: {}
+      currentPlan:
+        type: object
+        properties:
+          name:
+            type: string
+          pricing: {}
+          recurlyPlan: {}
+          type:
+            type: string
+      endsAt: {}
+      id: {}
+      interval: {}
+      pausedAt: {}
+      renewsAt: {}
+      resumeAt: {}
+      state: {}
+      upgrades:
+        type: array
+        items:
+          type: object
+          properties:
+            entitlements:
+              type: object
+              properties:
+                content:
+                  type: object
+                  properties:
+                    mini_labs:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          avatar:
+                            type: string
+                          content_id:
+                            type: string
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                    pro_labs:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          avatar:
+                            type: string
+                          content_id:
+                            type: string
+                          id:
+                            type: integer
+                          name:
+                            type: string
+            name:
+              type: string
+            pricing:
+              type: object
+              nullable: true
+              properties:
+                currency:
+                  type: string
+                per_period:
+                  type: integer
+                setup:
+                  type: integer
+            recurlyPlan:
+              type: string
+            type:
+              type: string
+  prolabs:
+    type: object
+    properties:
+      allowedActions:
+        type: array
+        items:
+          type: string
+      annualUpgrade: {}
+      createdAt: {}
+      currentPlan:
+        type: object
+        properties:
+          name:
+            type: string
+          pricing: {}
+          recurlyPlan: {}
+          type:
+            type: string
+      endsAt: {}
+      id: {}
+      interval: {}
+      pausedAt: {}
+      renewsAt: {}
+      resumeAt: {}
+      state: {}
+      upgrades:
+        type: array
+        items: {}

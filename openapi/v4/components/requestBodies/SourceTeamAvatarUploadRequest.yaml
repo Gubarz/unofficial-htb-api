@@ -1,0 +1,4 @@
+content:
+  multipart/form-data:
+    schema:
+      $ref: ../schemas/SourceTeamAvatarUploadRequest.yaml

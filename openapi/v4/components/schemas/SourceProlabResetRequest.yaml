@@ -1,0 +1,12 @@
+title: Pro Lab reset request
+type: object
+properties:
+  area:
+    type: string
+    description: Name of the selected reset area.
+  machine:
+    type: number
+    description: ID of the machine to reset.
+  description:
+    type: string
+    description: Reason for requesting the reset.

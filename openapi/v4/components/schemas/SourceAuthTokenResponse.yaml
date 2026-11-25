@@ -1,0 +1,5 @@
+description: Authentication tokens returned after sign-in.
+type: object
+properties:
+  message:
+    $ref: ./SourceAuthTokenMessage.yaml

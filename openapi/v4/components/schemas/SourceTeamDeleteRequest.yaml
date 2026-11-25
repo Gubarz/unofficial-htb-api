@@ -1,0 +1,8 @@
+title: SourceTeamDeleteRequest
+type: object
+properties:
+  otp: {}
+  type:
+    type: string
+    example: TEAM_DELETE
+additionalProperties: true

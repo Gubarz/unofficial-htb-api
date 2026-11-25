@@ -1,0 +1,17 @@
+post:
+  summary: Upload a team avatar
+  description: Upload a team avatar.
+  operationId: sourcePostTeamAvatarTeamid
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamAvatarUploadRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

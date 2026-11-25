@@ -1,0 +1,43 @@
+summary: Top offensive teams
+value:
+  data:
+    - avatar_thumb: /storage/avatars/example-1.png
+      country: VC
+      country_name: Saint Vincent and the Grenadines
+      is_respected: false
+      league_rank: Holo
+      name: Example Team 1
+      points: 717
+      rank: 1
+      resource_id: 1
+      root_bloods: 3
+      root_owns: 9
+      user_bloods: 2
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-2.png
+      country: US
+      country_name: United States
+      is_respected: false
+      league_rank: Holo
+      name: Example Team 2
+      points: 700
+      rank: 2
+      resource_id: 2
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+    - avatar_thumb: /storage/avatars/example-3.png
+      country: AQ
+      country_name: Antarctica
+      is_respected: false
+      league_rank: Holo
+      name: Example Team 3
+      points: 700
+      rank: 3
+      resource_id: 3
+      root_bloods: 2
+      root_owns: 9
+      user_bloods: 1
+      user_owns: 9
+description: Top-ranked teams in the offensive league.

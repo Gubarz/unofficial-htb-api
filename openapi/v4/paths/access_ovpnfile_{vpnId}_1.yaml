@@ -1,0 +1,11 @@
+get:
+  description: Regenerates VPN credentials and downloads the replacement configuration.
+  operationId: regenerateUdpOvpnSource
+  parameters:
+    - $ref: ../components/parameters/RegeneratedOvpnSourceVpnId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/RegenerateUdpOvpnSourceResponse.yaml
+  summary: Regenerate UDP VPN configuration
+  tags:
+    - Connection

@@ -1,0 +1,12 @@
+get:
+  description: List public team activity.
+  operationId: getPublicTeamActivitySource
+  parameters:
+    - $ref: ../components/parameters/TeamId.yaml
+    - $ref: ../components/parameters/NPastDays.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/PublicTeamActivitySourceResponse.yaml
+  summary: List public team activity
+  tags:
+    - Team

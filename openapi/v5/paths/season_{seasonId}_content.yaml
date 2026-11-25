@@ -1,0 +1,11 @@
+get:
+  operationId: getSeasonContent
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonContentResponse.yaml
+  summary: Get season content
+  tags:
+    - Season
+  description: Returns the offensive and defensive content for a season.

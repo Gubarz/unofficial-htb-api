@@ -1,51 +1,127 @@
 summary: User profile activity
 value:
   data:
-    - fortressId: 3
-      fortressName: Context
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1c383cd30b7c298ab50293adfecb7b18_logo.svg
-      type: fortress
-      id: 35
-      name: But we have SSL!?
-      points: 20
-      ownDate: 2025-09-26T13:23:21.000Z
-    - blood: false
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
-      type: root
-      id: 751
-      name: Imagery
-      points: 30
-      ownDate: 2025-09-27T20:48:56.000Z
-    - blood: false
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/662ccbe3935d62aee031d620014adac4.png
-      type: user
-      id: 751
-      name: Imagery
-      points: 15
-      ownDate: 2025-09-27T20:29:12.000Z
-    - blood: false
-      categoryName: Crypto
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c81e728d9d4c2f636f067f89cc14862c.svg
-      type: challenge
-      id: 639
-      name: POPO
-      points: 3
-      ownDate: 2025-09-23T13:43:32.000Z
-    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/abd815286ba1007abfbb8415b83ae2cf.png
-      type: sherlock
-      id: 632
-      name: Unit42
-      points: 0
-      ownDate: 2024-04-12T02:47:40.000Z
-    - prolabId: 4
-      prolabName: Dante
-      prolabIdentifier: DANTE
-      type: prolab
-      id: 106
-      name: One misconfig to rule them all...
-      points: 10
-      ownDate: 2023-06-19T04:59:09.000Z
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccbd04-996d-4d16-8702-e8328fbb7fb9-1793102158.png
+    avatarUrl: content/machines/avatar/a2ccbd04-996d-4d16-8702-e8328fbb7fb9-1793102158.png
+    blood: false
+    id: 1002
+    name: Takeoff
+    ownDate: '2026-10-31T21:28:51.000Z'
+    points: 40
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccbd04-996d-4d16-8702-e8328fbb7fb9-1793102158.png
+    avatarUrl: content/machines/avatar/a2ccbd04-996d-4d16-8702-e8328fbb7fb9-1793102158.png
+    blood: false
+    id: 1002
+    name: Takeoff
+    ownDate: '2026-10-31T21:28:47.000Z'
+    points: 20
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccb5d6-1b4e-4e64-bbd0-30ae061102ed-1790001077.png
+    avatarUrl: content/machines/avatar/a2ccb5d6-1b4e-4e64-bbd0-30ae061102ed-1790001077.png
+    blood: false
+    id: 999
+    name: DutyBound
+    ownDate: '2026-10-24T19:46:41.000Z'
+    points: 30
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2ccb5d6-1b4e-4e64-bbd0-30ae061102ed-1790001077.png
+    avatarUrl: content/machines/avatar/a2ccb5d6-1b4e-4e64-bbd0-30ae061102ed-1790001077.png
+    blood: false
+    id: 999
+    name: DutyBound
+    ownDate: '2026-10-24T19:44:47.000Z'
+    points: 15
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2e41-9160-4e35-9d3f-8eb1e98cdf77-1789978330.png
+    avatarUrl: content/machines/avatar/a2cc2e41-9160-4e35-9d3f-8eb1e98cdf77-1789978330.png
+    blood: false
+    id: 990
+    name: Stream
+    ownDate: '2026-10-10T21:01:04.000Z'
+    points: 30
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2e41-9160-4e35-9d3f-8eb1e98cdf77-1789978330.png
+    avatarUrl: content/machines/avatar/a2cc2e41-9160-4e35-9d3f-8eb1e98cdf77-1789978330.png
+    blood: false
+    id: 990
+    name: Stream
+    ownDate: '2026-10-10T21:01:00.000Z'
+    points: 15
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2bba-5e0b-41f2-842e-2f3d3cee8d22-1789977906.png
+    avatarUrl: content/machines/avatar/a2cc2bba-5e0b-41f2-842e-2f3d3cee8d22-1789977906.png
+    blood: false
+    id: 987
+    name: Touch
+    ownDate: '2026-10-03T21:06:36.000Z'
+    points: 20
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2bba-5e0b-41f2-842e-2f3d3cee8d22-1789977906.png
+    avatarUrl: content/machines/avatar/a2cc2bba-5e0b-41f2-842e-2f3d3cee8d22-1789977906.png
+    blood: false
+    id: 987
+    name: Touch
+    ownDate: '2026-10-03T20:35:22.000Z'
+    points: 10
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2776-5507-42ae-b9d0-3346ff823ce7-1789977190.png
+    avatarUrl: content/machines/avatar/a2cc2776-5507-42ae-b9d0-3346ff823ce7-1789977190.png
+    blood: false
+    id: 984
+    name: Layover
+    ownDate: '2026-09-26T20:23:52.000Z'
+    points: 30
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a2cc2776-5507-42ae-b9d0-3346ff823ce7-1789977190.png
+    avatarUrl: content/machines/avatar/a2cc2776-5507-42ae-b9d0-3346ff823ce7-1789977190.png
+    blood: false
+    id: 984
+    name: Layover
+    ownDate: '2026-09-26T19:55:56.000Z'
+    points: 15
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a261b49a-7ddc-4eac-a75a-8fd26a7ff740-1785405255.png
+    avatarUrl: content/machines/avatar/a261b49a-7ddc-4eac-a75a-8fd26a7ff740-1785405255.png
+    blood: false
+    id: 978
+    name: Scaffold
+    ownDate: '2026-09-05T23:47:24.000Z'
+    points: 40
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a261b49a-7ddc-4eac-a75a-8fd26a7ff740-1785405255.png
+    avatarUrl: content/machines/avatar/a261b49a-7ddc-4eac-a75a-8fd26a7ff740-1785405255.png
+    blood: false
+    id: 978
+    name: Scaffold
+    ownDate: '2026-09-05T23:45:54.000Z'
+    points: 20
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a29813ab-2643-4f77-80fd-65500f97bcd0-1787750589.png
+    avatarUrl: content/machines/avatar/a29813ab-2643-4f77-80fd-65500f97bcd0-1787750589.png
+    blood: false
+    id: 975
+    name: BlockSynergy
+    ownDate: '2026-08-29T21:01:34.000Z'
+    points: 50
+    type: root
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a29813ab-2643-4f77-80fd-65500f97bcd0-1787750589.png
+    avatarUrl: content/machines/avatar/a29813ab-2643-4f77-80fd-65500f97bcd0-1787750589.png
+    blood: false
+    id: 975
+    name: BlockSynergy
+    ownDate: '2026-08-29T19:55:50.000Z'
+    points: 25
+    type: user
+  - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a1fb3806-c604-4d36-bee1-66af5615df23-1781003488.png
+    avatarUrl: content/machines/avatar/a1fb3806-c604-4d36-bee1-66af5615df23-1781003488.png
+    blood: false
+    id: 936
+    name: DanglingTree
+    ownDate: '2026-08-08T23:19:54.000Z'
+    points: 30
+    type: root
   meta:
+    lastPage: 40
     page: 1
-    lastPage: 4
-    totalItems: 50
+    totalItems: 588

@@ -1,0 +1,12 @@
+title: Pro Lab certificate request
+type: object
+properties:
+  name:
+    type: string
+    description: Name to place on the certificate.
+  name_confirmation:
+    type: string
+    description: Confirmation of the certificate name.
+  confirm:
+    type: boolean
+    description: Whether the user confirms the certificate name.

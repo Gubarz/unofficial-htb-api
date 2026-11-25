@@ -1,0 +1,17 @@
+post:
+  summary: Rate a machine flag task
+  description: Rate a machine flag task.
+  operationId: postSourceMachineFlagRate
+  tags:
+    - Machines
+  parameters:
+    - name: machineId
+      in: path
+      required: true
+      description: Machine ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceMachineFlagRateRequest.yaml
+  responses:
+    2XX:
+      description: Flag rating submitted.

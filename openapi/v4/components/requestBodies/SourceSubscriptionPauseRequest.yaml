@@ -1,0 +1,6 @@
+description: Subscription pause.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceSubscriptionPauseRequest.yaml

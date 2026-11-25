@@ -418,18 +418,6 @@ paths:
       summary: Home Banner
       tags:
         - Home
-  /machine/active:
-    get:
-      description: Retrieves information related to /machine/active
-      operationId: getMachineActive
-      responses:
-        '200':
-          $ref: '#/components/responses/MachineActiveResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: Get active machine details
-      tags:
-        - Machines
   /machine/activity/{machineId}:
     get:
       description: Retrieves information related to /machine/activity/{machine id}
@@ -901,7 +889,7 @@ paths:
       operationId: getReviewPaginated
       parameters:
         - $ref: '#/components/parameters/ProductId'
-        - $ref: '#/components/parameters/ProductPath'
+        - $ref: '#/components/parameters/ReviewProductPath'
       responses:
         '200':
           $ref: '#/components/responses/ReviewProductPaginatedResponse'
@@ -1029,7 +1017,7 @@ paths:
       operationId: getSeasonLeaderboardTop
       parameters:
         - $ref: '#/components/parameters/Leaderboard'
-        - $ref: '#/components/parameters/PeriodQuery'
+        - $ref: '#/components/parameters/SeasonLeaderboardTopNumberQuery'
         - $ref: '#/components/parameters/SeasonId'
       responses:
         '200':
@@ -1502,19 +1490,6 @@ paths:
       summary: User App Tokens List
       tags:
         - User
-  /user/connection/status:
-    get:
-      description: Retrieves information related to /user/connection/status
-      operationId: getUserConnectionStatus
-      deprecated: true
-      responses:
-        '200':
-          $ref: '#/components/responses/UserConnectionStatusResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: 'Bearer: Connection Status [ Connected ]'
-      tags:
-        - User
   /user/disrespect/{userId}:
     post:
       description: Remove respect from user
@@ -1541,18 +1516,6 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Follow a user
-      tags:
-        - User
-  /user/followers:
-    get:
-      description: Retrieves information related to /user/followers
-      operationId: getUserFollowers
-      responses:
-        '200':
-          $ref: '#/components/responses/UserFollowersResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: 'Bearer: Followers'
       tags:
         - User
   /user/info:
@@ -1652,18 +1615,6 @@ paths:
       summary: User Profile Progreess Sherlocks
       tags:
         - User
-  /user/profile/summary:
-    get:
-      description: Retrieves information related to /user/profile/summary
-      operationId: getUserProfileSummary
-      responses:
-        '200':
-          $ref: '#/components/responses/UserProfileSummaryResponse'
-        '400':
-          $ref: '#/components/responses/GenericError'
-      summary: User Profile Summary
-      tags:
-        - User
   /user/respect/{userId}:
     post:
       description: Respect a user
@@ -1714,6 +1665,20 @@ paths:
         '400':
           $ref: '#/components/responses/GenericError'
       summary: Unfollow a user
+      tags:
+        - User
+  /users/{userId}/profile/progress/chart:
+    get:
+      description: Returns progress chart points for the selected content type and time range.
+      operationId: getUserProfileProgressChart
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/ProfileProgressChartContentType'
+        - $ref: '#/components/parameters/PeriodQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileProgressChartResponse'
+      summary: User Profile Progress Chart
       tags:
         - User
   /vm/extend:
@@ -1793,6 +1758,1297 @@ paths:
         - Machines
         - Sherlocks
         - Challenges
+  /access/ovpnfile/{vpnId}/1:
+    get:
+      description: Regenerates VPN credentials and downloads the replacement configuration.
+      operationId: regenerateUdpOvpnSource
+      parameters:
+        - $ref: '#/components/parameters/RegeneratedOvpnSourceVpnId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/RegenerateUdpOvpnSourceResponse'
+      summary: Regenerate UDP VPN configuration
+      tags:
+        - Connection
+  /access/ovpnfile/{vpnId}/1/1:
+    get:
+      description: Regenerates VPN credentials and downloads the replacement configuration.
+      operationId: regenerateTcpOvpnSource
+      parameters:
+        - $ref: '#/components/parameters/RegeneratedOvpnSourceVpnId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/RegenerateTcpOvpnSourceResponse'
+      summary: Regenerate TCP VPN configuration
+      tags:
+        - Connection
+  /certificate/{certificateId}/download:
+    get:
+      description: Download a certificate.
+      operationId: getCertificateDownload
+      parameters:
+        - $ref: '#/components/parameters/CertificateDownloadId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/CertificateDownloadSourceResponse'
+      summary: Download a certificate
+      tags:
+        - User
+  /machines/{machineId}/download_link:
+    get:
+      description: Get a machine download link.
+      operationId: getMachineDownloadLink
+      parameters:
+        - $ref: '#/components/parameters/MachineId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/MachineDownloadLinkSourceResponse'
+      summary: Get a machine download link
+      tags:
+        - Machines
+  /profile/badges/{userId}:
+    get:
+      description: List public-profile badges.
+      operationId: getPublicProfileBadges
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/PublicProfileBadgesRare'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileBadgesSourceResponse'
+      summary: List public-profile badges
+      tags:
+        - User
+  /profile/progress/challenges/{userId}:
+    get:
+      description: Get public-profile challenge progress.
+      operationId: getPublicProfileChallengeProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileChallengeProgressSourceResponse'
+      summary: Get public-profile challenge progress
+      tags:
+        - User
+  /profile/progress/fortress/{userId}:
+    get:
+      description: Get public-profile fortress progress.
+      operationId: getPublicProfileFortressProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileFortressProgressSourceResponse'
+      summary: Get public-profile fortress progress
+      tags:
+        - User
+  /profile/progress/machines/{userId}:
+    get:
+      description: Get public-profile machine progress.
+      operationId: getPublicProfileMachineProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileMachineProgressSourceResponse'
+      summary: Get public-profile machine progress
+      tags:
+        - User
+  /profile/progress/prolab/{userId}:
+    get:
+      description: Get public-profile Pro Lab progress.
+      operationId: getPublicProfileProlabProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileProlabProgressSourceResponse'
+      summary: Get public-profile Pro Lab progress
+      tags:
+        - User
+  /profile/progress/sherlocks/{userId}:
+    get:
+      description: Get public-profile Sherlock progress.
+      operationId: getPublicProfileSherlockProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileSherlockProgressSourceResponse'
+      summary: Get public-profile Sherlock progress
+      tags:
+        - User
+  /profile/{userId}:
+    get:
+      description: Returns the public profile for the specified user.
+      operationId: getPublicProfile
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicProfileSourceResponse'
+      summary: Get a public profile
+      tags:
+        - User
+  /prolab/{prolabId}/reset:
+    get:
+      description: Returns the reset status for the Pro Lab.
+      operationId: getProlabResetStatusSource
+      parameters:
+        - $ref: '#/components/parameters/ProlabResetStatusSourceProlabId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/ProlabResetStatusSourceResponse'
+      summary: Get a Pro Lab reset status
+      tags:
+        - Prolabs
+    post:
+      summary: Request a Pro Lab reset
+      description: Request a Pro Lab reset.
+      operationId: postSourceProlabReset
+      tags:
+        - Prolabs
+      parameters:
+        - name: prolabId
+          in: path
+          required: true
+          description: Pro Lab ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceProlabResetRequest'
+      responses:
+        2XX:
+          description: Reset request accepted.
+  /prolab/{prolabId}/writeup/official:
+    get:
+      description: Get an official Pro Lab writeup.
+      operationId: getProlabOfficialWriteup
+      parameters:
+        - $ref: '#/components/parameters/ProlabId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/ProlabOfficialWriteupSourceResponse'
+      summary: Get an official Pro Lab writeup
+      tags:
+        - Prolabs
+  /public/team/activity/{teamId}:
+    get:
+      description: List public team activity.
+      operationId: getPublicTeamActivitySource
+      parameters:
+        - $ref: '#/components/parameters/TeamId'
+        - $ref: '#/components/parameters/NPastDays'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicTeamActivitySourceResponse'
+      summary: List public team activity
+      tags:
+        - Team
+  /public/team/info/{teamId}:
+    get:
+      description: Get public team profile.
+      operationId: getPublicTeamInfoSource
+      parameters:
+        - $ref: '#/components/parameters/TeamId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicTeamInfoSourceResponse'
+      summary: Get public team profile
+      tags:
+        - Team
+  /public/team/members/{teamId}:
+    get:
+      description: List public team members.
+      operationId: getPublicTeamMembersSource
+      parameters:
+        - $ref: '#/components/parameters/TeamId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PublicTeamMembersSourceResponse'
+      summary: List public team members
+      tags:
+        - Team
+  /sso/callback:
+    get:
+      summary: Complete SSO sign-in
+      description: Processes the SSO authorization code and state.
+      operationId: getSourceAuthSsoCallback
+      tags:
+        - Platform
+      parameters:
+        - $ref: '#/components/parameters/SourceAuthSsoCode'
+        - $ref: '#/components/parameters/SourceAuthSsoState'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSsoCallbackResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+      security:
+        - {}
+        - bearer: []
+  /sso/redirect:
+    get:
+      summary: Get the SSO redirect
+      description: Returns the redirect target for SSO sign-in.
+      operationId: getSourceAuthSsoRedirect
+      tags:
+        - Platform
+      parameters:
+        - $ref: '#/components/parameters/SourceAuthSsoRedirect'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSsoRedirectResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+      security:
+        - {}
+        - bearer: []
+  /team/creatable:
+    get:
+      description: Check team creation eligibility.
+      operationId: getTeamCreatableSource
+      responses:
+        '200':
+          $ref: '#/components/responses/TeamCreatableSourceResponse'
+      summary: Check team creation eligibility
+      tags:
+        - Team
+  /university/admin/find:
+    get:
+      description: Find university administrator candidates.
+      operationId: findUniversityAdminCandidatesSource
+      parameters:
+        - $ref: '#/components/parameters/UniversityAdminFindSourceName'
+      responses:
+        2XX:
+          $ref: '#/components/responses/UniversityAdminFindSourceResponse'
+      summary: Find university administrator candidates
+      tags:
+        - Universities
+  /university/invitations/{universityId}:
+    get:
+      description: List university invitation requests.
+      operationId: getUniversityInvitationsSource
+      parameters:
+        - $ref: '#/components/parameters/UniversityInvitationsSourceUniversityId'
+      responses:
+        2XX:
+          $ref: '#/components/responses/UniversityInvitationsSourceResponse'
+      summary: List university invitation requests
+      tags:
+        - Universities
+  /university/my:
+    get:
+      description: Returns the signed-in user’s university summary.
+      operationId: getMyUniversitySource
+      responses:
+        '200':
+          $ref: '#/components/responses/MyUniversitySourceResponse'
+      summary: Get the signed-in user’s university
+      tags:
+        - Universities
+  /user/profile/certificates:
+    get:
+      description: List profile certificates.
+      operationId: getUserProfileCertificates
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileCertificatesSourceResponse'
+      summary: List profile certificates
+      tags:
+        - User
+  /user/profile/progress/machines/{userId}:
+    get:
+      description: Get user-profile machine progress.
+      operationId: getUserProfileMachineProgress
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          $ref: '#/components/responses/UserProfileMachineProgressSourceResponse'
+      summary: Get user-profile machine progress
+      tags:
+        - User
+  /user/review/{product}/{productId}:
+    get:
+      description: Get the current user review.
+      operationId: getUserOwnReview
+      parameters:
+        - $ref: '#/components/parameters/UserReviewProduct'
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        '204':
+          description: No review exists for this content.
+        2XX:
+          $ref: '#/components/responses/UserOwnReviewSourceResponse'
+      summary: Get the current user review
+      tags:
+        - User
+  /user/submissions/challenges:
+    get:
+      description: List user challenge submissions.
+      operationId: getUserChallengeSubmissions
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/UserChallengeSubmissionsSourceResponse'
+      summary: List user challenge submissions
+      tags:
+        - User
+  /user/submissions/machines:
+    get:
+      description: List user machine submissions.
+      operationId: getUserMachineSubmissions
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/UserMachineSubmissionsSourceResponse'
+      summary: List user machine submissions
+      tags:
+        - User
+  /user/subscriptions/balance:
+    get:
+      description: Get subscription balance.
+      operationId: getSubscriptionBalance
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/SubscriptionBalanceSourceResponse'
+      summary: Get subscription balance
+      tags:
+        - User
+  /user/subscriptions/billing-history:
+    get:
+      description: List subscription billing history.
+      operationId: getSubscriptionBillingHistory
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/SubscriptionBillingHistoryPerPage'
+      responses:
+        '200':
+          $ref: '#/components/responses/SubscriptionBillingHistorySourceResponse'
+      summary: List subscription billing history
+      tags:
+        - User
+  /user/subscriptions/cancellation/reasons:
+    get:
+      description: List subscription cancellation reasons.
+      operationId: getSubscriptionCancellationReasons
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/SubscriptionCancellationReasonsSourceResponse'
+      summary: List subscription cancellation reasons
+      tags:
+        - User
+  /user/subscriptions/manage/recurly:
+    get:
+      description: Get the subscription management link.
+      operationId: getSubscriptionRecurlyLink
+      parameters: []
+      responses:
+        2XX:
+          $ref: '#/components/responses/SubscriptionRecurlyLinkSourceResponse'
+      summary: Get the subscription management link
+      tags:
+        - User
+  /user/subscriptions/management:
+    get:
+      description: Get subscription management details.
+      operationId: getSubscriptionManagement
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/SubscriptionManagementSourceResponse'
+      summary: Get subscription management details
+      tags:
+        - User
+  /user/subscriptions/status/updated/recently:
+    get:
+      description: Check recent subscription-status updates.
+      operationId: getSubscriptionRecentlyUpdated
+      parameters: []
+      responses:
+        '200':
+          $ref: '#/components/responses/SubscriptionRecentlyUpdatedSourceResponse'
+      summary: Check recent subscription-status updates
+      tags:
+        - User
+  /user/subscriptions/thankyou:
+    get:
+      description: Returns the subscription confirmation details.
+      operationId: getSubscriptionThankYou
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionThankYouAccountCode'
+        - $ref: '#/components/parameters/SubscriptionThankYouPlanCode'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SubscriptionThankYouSourceResponse'
+      summary: Get subscription confirmation details
+      tags:
+        - User
+  /challenge/rate/{challengeId}:
+    post:
+      summary: Rate a challenge difficulty
+      description: Rate a challenge difficulty.
+      operationId: postSourceChallengeRate
+      tags:
+        - Challenges
+      parameters:
+        - name: challengeId
+          in: path
+          required: true
+          description: Challenge ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceChallengeRateRequest'
+      responses:
+        2XX:
+          description: Challenge rating submitted.
+  /challenge/reset/vm/{challengeId}:
+    post:
+      summary: Reset a challenge environment
+      description: Reset a challenge environment.
+      operationId: postSourceChallengeVmReset
+      tags:
+        - Challenges
+      parameters:
+        - name: challengeId
+          in: path
+          required: true
+          description: Challenge ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Challenge VM reset requested.
+  /challenge/start/vm/{challengeId}:
+    post:
+      summary: Start a challenge environment
+      description: Start a challenge environment.
+      operationId: postSourceChallengeVmStart
+      tags:
+        - Challenges
+      parameters:
+        - name: challengeId
+          in: path
+          required: true
+          description: Challenge ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Challenge VM start requested.
+  /challenges/submit:
+    post:
+      summary: Submit a challenge
+      description: Submit a challenge.
+      operationId: postSourceChallengeSubmit
+      tags:
+        - Challenges
+      requestBody:
+        $ref: '#/components/requestBodies/SourceChallengeSubmitRequest'
+      responses:
+        2XX:
+          description: Challenge submission received.
+  /connections/servers/switch:
+    post:
+      summary: Switch the connection product without a server ID
+      description: Switch the connection product without a server ID.
+      operationId: postSourceConnectionServerSwitch
+      tags:
+        - Connection
+      requestBody:
+        $ref: '#/components/requestBodies/SourceConnectionServerSwitchRequest'
+      responses:
+        2XX:
+          description: Server switch requested.
+  /login:
+    post:
+      summary: Sign in
+      description: Authenticates the account and returns access and refresh tokens.
+      operationId: postSourceAuthLogin
+      tags:
+        - Platform
+      requestBody:
+        $ref: '#/components/requestBodies/SourceAuthLoginRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthTokenResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+      security:
+        - {}
+        - bearer: []
+  /login/refresh:
+    post:
+      summary: Refresh authentication tokens
+      description: Exchanges a refresh token for authentication tokens.
+      operationId: postSourceAuthRefresh
+      tags:
+        - Platform
+      requestBody:
+        $ref: '#/components/requestBodies/SourceAuthRefreshRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthTokenResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+      security:
+        - {}
+        - bearer: []
+  /logout:
+    post:
+      summary: Sign out
+      description: Signs out the authenticated account.
+      operationId: postSourceAuthLogout
+      tags:
+        - Platform
+      requestBody:
+        $ref: '#/components/requestBodies/SourceAuthLogoutRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /machine/rate/matrix:
+    post:
+      summary: Submit machine matrix ratings
+      description: Submit machine matrix ratings.
+      operationId: postSourceMachineMatrixRate
+      tags:
+        - Machines
+      requestBody:
+        $ref: '#/components/requestBodies/SourceMachineMatrixRateRequest'
+      responses:
+        2XX:
+          description: Difficulty matrix rating submitted.
+  /machine/submit:
+    post:
+      summary: Submit a machine
+      description: Submit a machine.
+      operationId: postSourceMachineSubmit
+      tags:
+        - Machines
+      requestBody:
+        $ref: '#/components/requestBodies/SourceMachineSubmitRequest'
+      responses:
+        2XX:
+          description: Machine submission received.
+  /machine/walkthroughs/rate/{walkthroughId}/{rating}:
+    post:
+      summary: Rate a machine walkthrough
+      description: Rate a machine walkthrough.
+      operationId: postSourceMachineWalkthroughRate
+      tags:
+        - Machines
+      parameters:
+        - name: walkthroughId
+          in: path
+          required: true
+          description: Walkthrough ID.
+          schema: {}
+        - name: rating
+          in: path
+          required: true
+          description: Rating.
+          schema: {}
+      responses:
+        2XX:
+          description: Walkthrough rating submitted.
+  /machine/walkthroughs/submit:
+    post:
+      summary: Submit a machine walkthrough
+      description: Submit a machine walkthrough.
+      operationId: postSourceMachineWalkthroughSubmit
+      tags:
+        - Machines
+      requestBody:
+        $ref: '#/components/requestBodies/SourceMachineWalkthroughSubmitRequest'
+      responses:
+        2XX:
+          description: Walkthrough submission received.
+  /machine/{machineId}/flag/rate:
+    post:
+      summary: Rate a machine flag task
+      description: Rate a machine flag task.
+      operationId: postSourceMachineFlagRate
+      tags:
+        - Machines
+      parameters:
+        - name: machineId
+          in: path
+          required: true
+          description: Machine ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceMachineFlagRateRequest'
+      responses:
+        2XX:
+          description: Flag rating submitted.
+  /machines/{machineId}/tasks/{taskId}/flag:
+    post:
+      summary: Submit a machine task flag
+      description: Submit a machine task flag.
+      operationId: postSourceMachineTaskFlag
+      tags:
+        - Machines
+      parameters:
+        - name: machineId
+          in: path
+          required: true
+          description: Machine ID.
+          schema: {}
+        - name: taskId
+          in: path
+          required: true
+          description: Task ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceMachineTaskFlagRequest'
+      responses:
+        2XX:
+          description: Task flag submitted.
+  /notices/dismiss/{noticeId}:
+    post:
+      summary: Dismiss a notice
+      description: Dismiss a notice.
+      operationId: postSourceNoticeDismiss
+      tags:
+        - Platform
+      parameters:
+        - name: noticeId
+          in: path
+          required: true
+          description: Notice ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Notice dismissed.
+  /otp:
+    post:
+      summary: Request a one-time password
+      description: Requests a one-time password.
+      operationId: postSourceAuthOtp
+      tags:
+        - Platform
+      requestBody:
+        $ref: '#/components/requestBodies/SourceAuthOtpRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /prolab/{prolabId}/certificate:
+    post:
+      summary: Request a Pro Lab certificate
+      description: Request a Pro Lab certificate.
+      operationId: postSourceProlabCertificate
+      tags:
+        - Prolabs
+      parameters:
+        - name: prolabId
+          in: path
+          required: true
+          description: Pro Lab ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceProlabCertificateRequest'
+      responses:
+        2XX:
+          description: Certificate request accepted.
+  /pwnbox/vpn:
+    post:
+      summary: Change the Pwnbox VPN server
+      description: Change the Pwnbox VPN server.
+      operationId: postSourcePwnboxVpn
+      tags:
+        - PwnBox
+      requestBody:
+        $ref: '#/components/requestBodies/SourcePwnboxVpnRequest'
+      responses:
+        2XX:
+          description: Pwnbox VPN request accepted.
+  /review:
+    post:
+      summary: Create or update a content review
+      description: Create or update a content review.
+      operationId: postSourceContentReviewPublish
+      tags:
+        - Review
+      requestBody:
+        $ref: '#/components/requestBodies/SourceContentReviewPublishRequest'
+      responses:
+        2XX:
+          description: Review submission received.
+  /review/{reviewId}:
+    delete:
+      summary: Delete a review
+      description: Delete a review.
+      operationId: deleteSourceReviewDelete
+      tags:
+        - Review
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          description: Review ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Review removed.
+  /review/{reviewId}/helpful:
+    post:
+      summary: Mark a review helpful
+      description: Mark a review helpful.
+      operationId: postSourceReviewHelpful
+      tags:
+        - Review
+      parameters:
+        - name: reviewId
+          in: path
+          required: true
+          description: Review ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Helpfulness recorded.
+  /sherlocks/submit:
+    post:
+      summary: Submit a Sherlock
+      description: Submit a Sherlock.
+      operationId: postSourceSherlockSubmit
+      tags:
+        - Sherlocks
+      requestBody:
+        $ref: '#/components/requestBodies/SourceSherlockSubmitRequest'
+      responses:
+        2XX:
+          description: Sherlock task submission received.
+  /team/avatar/{teamId}:
+    post:
+      summary: Upload a team avatar
+      description: Upload a team avatar.
+      operationId: sourcePostTeamAvatarTeamid
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamAvatarUploadRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/captain/{captainId}:
+    post:
+      summary: Promote a team captain
+      description: Promote a team captain.
+      operationId: sourcePostTeamCaptainCaptainid
+      tags:
+        - Team
+      parameters:
+        - name: captainId
+          in: path
+          required: true
+          description: Captain ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /team/check_name/{teamId}:
+    post:
+      summary: Check a team name
+      description: Check a team name.
+      operationId: sourcePostTeamCheckNameTeamid
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: ID of the existing team.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamNameCheckRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/cover_image/{teamId}:
+    post:
+      summary: Upload a team cover image
+      description: Upload a team cover image.
+      operationId: sourcePostTeamCoverImageTeamid
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamCoverUploadRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/create:
+    post:
+      summary: Create a team
+      description: Create a team.
+      operationId: sourcePostTeamCreate
+      tags:
+        - Team
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamCreateRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/delete:
+    post:
+      summary: Delete the current team
+      description: Delete the current team.
+      operationId: sourcePostTeamDelete
+      tags:
+        - Team
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamDeleteRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/leave:
+    post:
+      summary: Leave the current team
+      description: Leave the current team.
+      operationId: sourcePostTeamLeave
+      tags:
+        - Team
+      responses:
+        2XX:
+          description: Successful request.
+  /team/{teamId}/disrespect:
+    post:
+      summary: Remove respect from a team
+      description: Remove respect from a team.
+      operationId: sourcePostTeamTeamidDisrespect
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /team/{teamId}/request-to-join:
+    delete:
+      summary: Cancel a team join request
+      description: Cancel a team join request.
+      operationId: sourceDeleteTeamTeamidRequestToJoin
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+    post:
+      summary: Request to join a team
+      description: Request to join a team.
+      operationId: sourcePostTeamTeamidRequestToJoin
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /team/{teamId}/respect:
+    post:
+      summary: Respect a team
+      description: Respect a team.
+      operationId: sourcePostTeamTeamidRespect
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /team/{teamId}/update:
+    post:
+      summary: Update a team
+      description: Update a team.
+      operationId: sourcePostTeamTeamidUpdate
+      tags:
+        - Team
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceTeamUpdateRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /team/{type}/{teamId}/delete:
+    post:
+      summary: Delete team media
+      description: Delete team media.
+      operationId: sourcePostTeamTypeTeamidDelete
+      tags:
+        - Team
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: Type of team media to delete.
+          schema: {}
+        - name: teamId
+          in: path
+          required: true
+          description: Team ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/create:
+    post:
+      summary: Create a university
+      description: Create a university.
+      operationId: sourcePostUniversityCreate
+      tags:
+        - Universities
+      requestBody:
+        $ref: '#/components/requestBodies/SourceUniversityCreateRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /university/kick/{userId}:
+    post:
+      summary: Remove a university member
+      description: Remove a university member.
+      operationId: sourcePostUniversityKickUserid
+      tags:
+        - Universities
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: University member ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/leave:
+    post:
+      summary: Leave the current university
+      description: Leave the current university.
+      operationId: sourcePostUniversityLeave
+      tags:
+        - Universities
+      responses:
+        2XX:
+          description: Successful request.
+  /university/transferAdmin/{userId}:
+    post:
+      summary: Transfer university administration
+      description: Transfer university administration.
+      operationId: sourcePostUniversityTransferadminUserid
+      tags:
+        - Universities
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: University member ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/update/{universityId}:
+    post:
+      summary: Update a university
+      description: Update a university.
+      operationId: sourcePostUniversityUpdateUniversityid
+      tags:
+        - Universities
+      parameters:
+        - name: universityId
+          in: path
+          required: true
+          description: University ID.
+          schema: {}
+      requestBody:
+        $ref: '#/components/requestBodies/SourceUniversityUpdateRequest'
+      responses:
+        2XX:
+          description: Successful request.
+  /university/{invitationId}/invite/accept:
+    post:
+      summary: Accept a university invitation
+      description: Accept a university invitation.
+      operationId: sourcePostUniversityInvitationidInviteAccept
+      tags:
+        - Universities
+      parameters:
+        - name: invitationId
+          in: path
+          required: true
+          description: University invitation ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/{invitationId}/invite/reject:
+    delete:
+      summary: Reject a university invitation
+      description: Reject a university invitation.
+      operationId: sourceDeleteUniversityInvitationidInviteReject
+      tags:
+        - Universities
+      parameters:
+        - name: invitationId
+          in: path
+          required: true
+          description: University invitation ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/{universityId}/disrespect:
+    post:
+      summary: Remove respect from a university
+      description: Remove respect from a university.
+      operationId: sourcePostUniversityUniversityidDisrespect
+      tags:
+        - Universities
+      parameters:
+        - name: universityId
+          in: path
+          required: true
+          description: University ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/{universityId}/request-to-join:
+    delete:
+      summary: Cancel a university join request
+      description: Cancel a university join request.
+      operationId: sourceDeleteUniversityUniversityidRequestToJoin
+      tags:
+        - Universities
+      parameters:
+        - name: universityId
+          in: path
+          required: true
+          description: University ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+    post:
+      summary: Request to join a university
+      description: Request to join a university.
+      operationId: sourcePostUniversityUniversityidRequestToJoin
+      tags:
+        - Universities
+      parameters:
+        - name: universityId
+          in: path
+          required: true
+          description: University ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /university/{universityId}/respect:
+    post:
+      summary: Respect a university
+      description: Respect a university.
+      operationId: sourcePostUniversityUniversityidRespect
+      tags:
+        - Universities
+      parameters:
+        - name: universityId
+          in: path
+          required: true
+          description: University ID.
+          schema: {}
+      responses:
+        2XX:
+          description: Successful request.
+  /user/edit/toggle:
+    post:
+      summary: Toggle a user preference
+      description: Toggle a user preference.
+      operationId: postSourceUserSettingToggle
+      tags:
+        - User
+      requestBody:
+        $ref: '#/components/requestBodies/SourceUserSettingToggleRequest'
+      responses:
+        2XX:
+          description: Setting updated.
+  /user/feedback/review/publish:
+    post:
+      summary: Publish platform feedback
+      description: Publish platform feedback.
+      operationId: postSourcePlatformReviewPublish
+      tags:
+        - Review
+      requestBody:
+        $ref: '#/components/requestBodies/SourcePlatformReviewPublishRequest'
+      responses:
+        2XX:
+          description: Review submission received.
+  /user/subscriptions/upgrade/{currentPlan}/to/{targetPlan}:
+    post:
+      summary: Upgrade from the current subscription plan to a target plan
+      description: Upgrade from the current subscription plan to a target plan.
+      operationId: postSourceSubscriptionUpgradeToPlan
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionCurrentPlan'
+        - $ref: '#/components/parameters/SourceSubscriptionTargetPlan'
+      requestBody:
+        $ref: '#/components/requestBodies/SourceSubscriptionUpgradeRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/subscriptions/{subscriptionType}/cancel:
+    post:
+      summary: Cancel a subscription
+      description: Cancel a subscription.
+      operationId: postSourceSubscriptionCancel
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionType'
+      requestBody:
+        $ref: '#/components/requestBodies/SourceSubscriptionCancelRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/subscriptions/{subscriptionType}/pause:
+    post:
+      summary: Pause a subscription
+      description: Pause a subscription.
+      operationId: postSourceSubscriptionPause
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionType'
+      requestBody:
+        $ref: '#/components/requestBodies/SourceSubscriptionPauseRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/subscriptions/{subscriptionType}/reactivate:
+    post:
+      summary: Reactivate a subscription
+      description: Reactivate a subscription.
+      operationId: postSourceSubscriptionReactivate
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionType'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/subscriptions/{subscriptionType}/resume:
+    post:
+      summary: Resume a subscription
+      description: Resume a subscription.
+      operationId: postSourceSubscriptionResume
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionType'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/subscriptions/{subscriptionType}/upgrade:
+    post:
+      summary: Upgrade a subscription
+      description: Upgrade a subscription.
+      operationId: postSourceSubscriptionUpgrade
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/SourceSubscriptionType'
+      requestBody:
+        $ref: '#/components/requestBodies/SourceSubscriptionUpgradeRequest'
+      responses:
+        2XX:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+        default:
+          $ref: '#/components/responses/SourceAuthSubscriptionsUnspecifiedResponse'
+  /user/voucher/check:
+    post:
+      summary: Check a voucher
+      description: Check a voucher.
+      operationId: postSourceVoucherCheck
+      tags:
+        - User
+      parameters:
+        - name: voucherCode
+          in: query
+          description: Voucher code.
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/SourceVoucherCheckRequest'
+      responses:
+        2XX:
+          description: Voucher status returned.
+  /user/voucher/redeem:
+    post:
+      summary: Redeem a voucher
+      description: Redeem a voucher.
+      operationId: postSourceVoucherRedeem
+      tags:
+        - User
+      parameters:
+        - name: voucherCode
+          in: query
+          description: Voucher code.
+          schema:
+            type: string
+      responses:
+        2XX:
+          description: Voucher redemption request accepted.
 components:
   securitySchemes:
     bearer:
@@ -1979,17 +3235,18 @@ components:
       required: true
       schema:
         type: integer
-    ProductPath:
-      description: Product Name
+    ReviewProductPath:
+      description: Type of content being reviewed.
       in: path
       name: product
       required: true
       schema:
+        type: string
         enum:
           - machine
           - challenge
           - sherlock
-        type: string
+          - prolab
     Query:
       description: Search String
       in: query
@@ -2038,20 +3295,14 @@ components:
           - players
           - teams
         type: string
-    PeriodQuery:
-      description: One of ["1Y", "6M", "3M", "1M", "1W"]
+    SeasonLeaderboardTopNumberQuery:
+      description: Number of top-ranked entries to return.
       in: query
-      name: period
-      required: true
+      name: number
+      required: false
       schema:
-        default: 1W
-        enum:
-          - 1Y
-          - 6M
-          - 3M
-          - 1M
-          - 1W
-        type: string
+        type: integer
+        x-go-type-skip-optional-pointer: false
     SherlockSortBy:
       description: Attribute to sort by
       in: query
@@ -2121,6 +3372,155 @@ components:
         maximum: 20
         minimum: 1
         type: integer
+    ProfileProgressChartContentType:
+      description: Content category for the progress chart.
+      in: query
+      name: content_type
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+        enum:
+          - machines
+          - sherlocks
+          - challenges
+        example: machines
+    PeriodQuery:
+      description: Time range for the progress chart.
+      in: query
+      name: duration
+      required: false
+      schema:
+        type: string
+        enum:
+          - 1W
+          - 1M
+          - 3M
+          - 1Y
+        example: 1M
+    ProductPath:
+      description: Product Name
+      in: path
+      name: product
+      required: true
+      schema:
+        enum:
+          - machine
+          - challenge
+          - sherlock
+        type: string
+    RegeneratedOvpnSourceVpnId:
+      description: VPN server ID.
+      in: path
+      name: vpnId
+      required: true
+      schema: {}
+    CertificateDownloadId:
+      description: Certificate ID.
+      in: path
+      name: certificateId
+      required: true
+      schema:
+        type: string
+    PublicProfileBadgesRare:
+      description: Filter badges by rarity.
+      in: query
+      name: rare
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: integer
+    ProlabResetStatusSourceProlabId:
+      description: Pro Lab ID.
+      in: path
+      name: prolabId
+      required: true
+      schema: {}
+    SourceAuthSsoCode:
+      description: SSO authorization code.
+      in: query
+      name: code
+      required: false
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    SourceAuthSsoState:
+      description: SSO state value.
+      in: query
+      name: state
+      required: false
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    SourceAuthSsoRedirect:
+      description: SSO redirect target.
+      in: query
+      name: redirect
+      required: false
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    UniversityAdminFindSourceName:
+      description: Name to search for.
+      in: query
+      name: name
+      required: false
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    UniversityInvitationsSourceUniversityId:
+      description: University ID.
+      in: path
+      name: universityId
+      required: true
+      schema: {}
+    UserReviewProduct:
+      description: Type of content being reviewed.
+      in: path
+      name: product
+      required: true
+      schema:
+        type: string
+    SubscriptionBillingHistoryPerPage:
+      description: Number of invoices per page.
+      in: query
+      name: per_page
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: integer
+    SubscriptionThankYouAccountCode:
+      description: Subscription account code.
+      in: query
+      name: account_code
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    SubscriptionThankYouPlanCode:
+      description: Subscription plan code.
+      in: query
+      name: plan_code
+      schema:
+        x-go-type-skip-optional-pointer: false
+        type: string
+    SourceSubscriptionCurrentPlan:
+      description: Code of the current subscription plan.
+      in: path
+      name: currentPlan
+      required: true
+      schema:
+        type: string
+    SourceSubscriptionTargetPlan:
+      description: Code of the target subscription plan.
+      in: path
+      name: targetPlan
+      required: true
+      schema:
+        type: string
+    SourceSubscriptionType:
+      description: Subscription type.
+      in: path
+      name: subscriptionType
+      required: true
+      schema:
+        type: string
   headers:
     XRateLimitHeader:
       description: Total requests allowed
@@ -2369,6 +3769,9 @@ components:
     Challenge:
       description: Schema definition for Challenge
       properties:
+        file_password: {}
+        predownload:
+          type: string
         authUserHasReviewed:
           example: false
           type: boolean
@@ -2755,6 +4158,9 @@ components:
           type: boolean
         play_methods:
           $ref: '#/components/schemas/StringArray'
+        predownload:
+          type: string
+          description: Reference for preparing the download.
         rating:
           example: 4
           format: float
@@ -2938,6 +4344,8 @@ components:
     Server:
       description: Schema definition for Server
       properties:
+        name:
+          type: string
         current_clients:
           example: 85
           type: integer
@@ -3259,63 +4667,6 @@ components:
           $ref: '#/components/schemas/HomeBannerItems'
       title: Home Banner Response
       type: object
-    ActiveMachineInfo:
-      properties:
-        avatar:
-          example: /storage/avatars/23e804513a47e8f20bc865d0419946e1.png
-          type: string
-          nullable: true
-        avatar_url:
-          example: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png
-          type: string
-          nullable: true
-        expires_at:
-          example: '2024-05-18 17:42:04'
-          type: string
-        id:
-          example: 597
-          type: integer
-        ip:
-          example: 10.129.56.30
-          format: ipv4
-          nullable: true
-          type: string
-        isSpawning:
-          example: false
-          type: boolean
-        lab_server:
-          example: vip_lab
-          type: string
-        name:
-          example: Usage
-          type: string
-        tier_id:
-          example: null
-          nullable: true
-          type: string
-        type:
-          example: Free
-          type: string
-        voted:
-          example: null
-          nullable: true
-          type: string
-        voting:
-          example: null
-          nullable: true
-          type: string
-        vpn_server_id:
-          example: 289
-          nullable: true
-          type: integer
-      type: object
-    ActiveMachineResponse:
-      properties:
-        info:
-          nullable: true
-          oneOf:
-            - $ref: '#/components/schemas/ActiveMachineInfo'
-      type: object
     MachineAcitivtyItem:
       properties:
         blood_type:
@@ -3347,6 +4698,7 @@ components:
           $ref: '#/components/schemas/MachineActivityItems'
         server:
           type: string
+          nullable: true
       type: object
     MachineActivityIdResponse:
       description: Schema definition for Machine Activity Id Response
@@ -3559,6 +4911,11 @@ components:
     MachineProfileInfo:
       description: Schema definition for Machine Profile Info
       properties:
+        fileName: {}
+        filePassword: {}
+        fileSize: {}
+        playMethods:
+          $ref: '#/components/schemas/StringArray'
         academy_modules:
           $ref: '#/components/schemas/AcademyModulesItems'
         active:
@@ -3623,6 +4980,8 @@ components:
         machine_mode:
           example: seasonal
           nullable: true
+          type: string
+        mode:
           type: string
         maker:
           $ref: '#/components/schemas/Maker'
@@ -4103,6 +5462,7 @@ components:
           type: string
         background_image:
           type: string
+          nullable: true
       title: Latest Season
       type: object
     UpcomingSeason:
@@ -4419,7 +5779,12 @@ components:
           example: INTERMEDIATE
           type: string
         social_links:
-          $ref: '#/components/schemas/SocialLinks'
+          description: Community links for the lab. An empty array indicates no links.
+          oneOf:
+            - $ref: '#/components/schemas/SocialLinks'
+            - type: array
+              items: {}
+              maxItems: 0
         state:
           type: string
         user_eligible_to_play:
@@ -5238,6 +6603,9 @@ components:
       type: object
     SeasonListDataItem:
       properties:
+        animation: {}
+        content_id:
+          type: string
         active:
           type: boolean
         background_image:
@@ -5416,6 +6784,8 @@ components:
       type: object
     SeasonMachinesDataItem:
       properties:
+        content_id:
+          type: string
         user_points:
           type: integer
         active:
@@ -5555,6 +6925,10 @@ components:
         - maxItems: 0
           type: array
           items: {}
+        - type: object
+          nullable: true
+          enum:
+            - null
     NextRank:
       properties:
         id:
@@ -5568,6 +6942,7 @@ components:
           type: integer
           nullable: true
       type: object
+      nullable: true
     SeasonUserRankDataTotalSeasonFlags:
       type: object
       properties:
@@ -5578,10 +6953,7 @@ components:
     SeasonUserRankData:
       properties:
         flags_to_next_rank:
-          type: object
-          nullable: true
-          allOf:
-            - $ref: '#/components/schemas/FlagsToNextRank'
+          $ref: '#/components/schemas/FlagsToNextRank'
         league:
           type: string
         rank:
@@ -5593,10 +6965,7 @@ components:
         total_season_points:
           type: integer
         next_rank:
-          type: object
-          nullable: true
-          allOf:
-            - $ref: '#/components/schemas/NextRank'
+          $ref: '#/components/schemas/NextRank'
         root_owns:
           type: integer
         root_bloods:
@@ -5759,6 +7128,9 @@ components:
           type: boolean
         play_methods:
           $ref: '#/components/schemas/StringArray'
+        predownload:
+          type: string
+          description: Reference for preparing the download.
         progress:
           type: integer
         rating:
@@ -5945,6 +7317,11 @@ components:
       type: object
     SherlockNamedItemData:
       properties:
+        experience_points:
+          type: integer
+        file_password: {}
+        predownload:
+          type: string
         auth_user_has_reviewed:
           type: boolean
         avatar:
@@ -5971,6 +7348,8 @@ components:
           type: boolean
         name:
           example: Safecracker
+          type: string
+        mode:
           type: string
         play_methods:
           $ref: '#/components/schemas/StringArray'
@@ -6086,6 +7465,7 @@ components:
           $ref: '#/components/schemas/TeamActivityUser'
         avatar_url:
           type: string
+          nullable: true
       type: object
       required:
         - date
@@ -6216,6 +7596,7 @@ components:
       properties:
         avatar_thumb:
           type: string
+          nullable: true
         id:
           type: integer
         name:
@@ -6670,52 +8051,6 @@ components:
         tokens:
           $ref: '#/components/schemas/UserApptokenListItems'
       type: object
-    UserConnectionStatusResponse:
-      description: Schema definition for User Connection Status Response
-      properties:
-        connection:
-          oneOf:
-            - properties:
-                down:
-                  example: 123.45
-                  type: number
-                ip4:
-                  example: 10.10.10.10
-                  type: string
-                ip6:
-                  example: 2001:db8::1
-                  type: string
-                name:
-                  example: tun0
-                  type: string
-                through_pwnbox:
-                  example: false
-                  type: boolean
-                up:
-                  example: 67.89
-                  type: number
-              type: object
-            - example: not connected
-              type: string
-        status:
-          type: boolean
-      title: User Connection Status Response
-      type: object
-    Item:
-      properties:
-        id:
-          type: integer
-      type: object
-    InfoArray:
-      items:
-        $ref: '#/components/schemas/Item'
-      type: array
-    UpdateResponse:
-      description: Update Response
-      properties:
-        info:
-          $ref: '#/components/schemas/InfoArray'
-      type: object
     ConnectionDataMachine:
       nullable: true
       properties:
@@ -6791,8 +8126,8 @@ components:
           example: string
           type: string
         onboarding_tutorial_complete:
-          example: 1
-          type: integer
+          example: true
+          type: boolean
         opt_in:
           example: 0
           type: integer
@@ -6805,6 +8140,7 @@ components:
         subscription_plan:
           example: string
           type: string
+          nullable: true
         team:
           $ref: '#/components/schemas/ConnectionDataMachine'
         timezone:
@@ -6888,6 +8224,8 @@ components:
       nullable: true
     UserProfile:
       properties:
+        labs_membership:
+          type: string
         avatar:
           type: string
         country_code:
@@ -7177,106 +8515,6 @@ components:
         profile:
           $ref: '#/components/schemas/UserProfileProgressSherlockProfile'
       type: object
-    Growths:
-      properties:
-        compared_to_date:
-          format: date-time
-          type: string
-        points:
-          type: integer
-        points_growth:
-          type: string
-        previous_points:
-          type: integer
-        previous_rank:
-          type: integer
-        rank:
-          type: integer
-        rank_growth:
-          type: string
-      type: object
-    RankingGraphStats:
-      properties:
-        chart_data:
-          $ref: '#/components/schemas/IntArray'
-        points_diff:
-          type: integer
-        points_growth:
-          type: string
-        ranks_diff:
-          type: integer
-      type: object
-    ProfileUserTeamInfo:
-      properties:
-        avatar:
-          type: string
-        name:
-          type: string
-        ranking:
-          type: integer
-      type: object
-    ProfileUserTeamWrapper:
-      nullable: true
-      oneOf:
-        - $ref: '#/components/schemas/ProfileUserTeamInfo'
-      type: object
-    ProfileUserStats:
-      properties:
-        current_rank_progress:
-          type: number
-        growths:
-          $ref: '#/components/schemas/Growths'
-        id:
-          type: integer
-        name:
-          type: string
-        next_rank:
-          type: string
-        next_rank_points:
-          type: number
-        points:
-          type: integer
-        rank:
-          type: string
-        rank_id:
-          type: integer
-        rank_ownership:
-          type: number
-        rank_requirement:
-          type: integer
-        ranking:
-          type: integer
-        rankingGraphStats:
-          $ref: '#/components/schemas/RankingGraphStats'
-        respects:
-          type: integer
-        sso_id:
-          type: boolean
-        subscription:
-          type: string
-        system_bloods:
-          type: integer
-        system_owns:
-          type: integer
-        team:
-          $ref: '#/components/schemas/ProfileUserTeamWrapper'
-        university_name:
-          nullable: true
-          type: string
-        user_bloods:
-          type: integer
-        user_owns:
-          type: integer
-        challenge_bloods:
-          type: integer
-      type: object
-    ProfileIdRepsonse:
-      description: Schema definition for Profile Id Repsonse
-      properties:
-        userStats:
-          $ref: '#/components/schemas/ProfileUserStats'
-      title: Profile Id Repsonse
-      type: object
     UserSettingsResponse:
       description: Schema definition for User Settings Response
       properties:
@@ -7304,6 +8542,31 @@ components:
         $ref: '#/components/schemas/UserTrackItem'
       title: User Tracks Response
       type: array
+    UserProfileProgressChartPoint:
+      description: A point in the user profile progress chart.
+      type: object
+      properties:
+        time:
+          type: string
+          description: Time label supplied by the API for this point.
+        value:
+          type: number
+          description: Numeric value of the chart point.
+    UserProfileProgressChartData:
+      description: Data series used by the user profile progress chart.
+      type: object
+      properties:
+        points:
+          type: array
+          description: Chart points in the order supplied by the API.
+          items:
+            $ref: '#/components/schemas/UserProfileProgressChartPoint'
+    UserProfileProgressChartResponse:
+      description: User profile progress-chart response.
+      type: object
+      properties:
+        chart_data:
+          $ref: '#/components/schemas/UserProfileProgressChartData'
     SpawnExtendRequest:
       description: Schema definition for Spawn Request
       properties:
@@ -7329,13 +8592,1251 @@ components:
           format: date-time
       title: Message
       type: object
+    Item:
+      properties:
+        id:
+          type: integer
+      type: object
+    InfoArray:
+      items:
+        $ref: '#/components/schemas/Item'
+      type: array
+    UpdateResponse:
+      description: Update Response
+      properties:
+        info:
+          $ref: '#/components/schemas/InfoArray'
+      type: object
+    RegeneratedOvpnSourceFile:
+      description: Replacement OpenVPN configuration.
+      type: string
+      format: binary
+    CertificateDownloadSourceResponse:
+      description: Certificate download.
+      type: string
+      format: binary
+    MachineDownloadLinkSourceResponse:
+      description: Machine download link.
+      type: object
+      properties:
+        url: {}
+    PublicProfileBadgesSourceResponse:
+      description: Public profile badges.
+      type: object
+      properties:
+        badges:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+              icon:
+                type: string
+              id:
+                type: integer
+              name:
+                type: string
+              pivot:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+    PublicProfileChallengeProgressSourceResponse:
+      description: Public profile challenge progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            challenge_categories:
+              type: array
+              items:
+                type: object
+                properties:
+                  avg_user_solved:
+                    type: number
+                  completion_percentage:
+                    type: integer
+                  name:
+                    type: string
+                  owned_flags:
+                    type: integer
+                  total_flags:
+                    type: integer
+            challenge_difficulties:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: number
+                  name:
+                    type: string
+                  owned_challenges:
+                    type: integer
+                  total_challenges:
+                    type: integer
+            challenge_owns:
+              type: object
+              properties:
+                percentage:
+                  type: integer
+                solved:
+                  type: integer
+                total:
+                  type: integer
+            solved_tasks:
+              type: integer
+            total_bloods:
+              type: integer
+    PublicProfileFortressProgressSourceResponse:
+      description: Public profile fortress progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            fortresses:
+              type: array
+              items:
+                type: object
+                properties:
+                  avatar:
+                    type: string
+                  completion_percentage:
+                    type: integer
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  owned_flags:
+                    type: integer
+                  total_flags:
+                    type: integer
+    PublicProfileMachineProgressSourceResponse:
+      description: Public profile machine progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            machine_difficulties:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: number
+                  name:
+                    type: string
+                  owned_machines:
+                    type: integer
+                  total_machines:
+                    type: integer
+            machine_os:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: integer
+                  name:
+                    type: string
+                  owned_machines:
+                    type: integer
+                  total_machines:
+                    type: integer
+            machine_owns:
+              type: object
+              properties:
+                completion_percentage:
+                  type: integer
+                solved:
+                  type: integer
+                total:
+                  type: integer
+            solved_tasks:
+              type: integer
+            total_bloods:
+              type: integer
+    PublicProfileProlabProgressSourceResponse:
+      description: Public profile prolab progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            prolabs:
+              type: array
+              items:
+                type: object
+                properties:
+                  avatar:
+                    type: string
+                  average_ratings:
+                    type: number
+                  completion_percentage:
+                    type: integer
+                  id:
+                    type: integer
+                  identifier:
+                    type: string
+                  mini:
+                    type: boolean
+                  name:
+                    type: string
+                  owned_flags:
+                    type: integer
+                  total_flags:
+                    type: integer
+                  total_machines:
+                    type: integer
+    PublicProfileSherlockProgressSourceResponse:
+      description: Public profile sherlock progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            challenge_categories:
+              type: array
+              items:
+                type: object
+                properties:
+                  avg_user_solved:
+                    type: number
+                  completion_percentage:
+                    type: integer
+                  name:
+                    type: string
+                  owned_flags:
+                    type: integer
+                  total_flags:
+                    type: integer
+            challenge_difficulties:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: number
+                  name:
+                    type: string
+                  owned_challenges:
+                    type: integer
+                  total_challenges:
+                    type: integer
+            challenge_owns:
+              type: object
+              properties:
+                percentage:
+                  type: integer
+                solved:
+                  type: integer
+                total:
+                  type: integer
+            solved_tasks:
+              type: integer
+            total_bloods:
+              type: integer
+    PublicProfileSourceResponse:
+      description: Public profile.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            account_id:
+              type: string
+            avatar:
+              type: string
+            challenge_bloods:
+              type: integer
+            country_code:
+              type: string
+            country_name:
+              type: string
+            current_rank_progress:
+              type: integer
+            followed_by_count:
+              type: integer
+            github:
+              type: string
+            id:
+              type: integer
+            joined_date:
+              type: string
+            linkedin: {}
+            name:
+              type: string
+            next_rank:
+              type: string
+            next_rank_points:
+              type: number
+            points:
+              type: integer
+            rank:
+              type: string
+            rank_id:
+              type: integer
+            rank_ownership:
+              type: number
+            rank_requirement:
+              type: integer
+            ranking:
+              type: integer
+            respects:
+              type: integer
+            sso_id:
+              type: boolean
+            system_bloods:
+              type: integer
+            system_owns:
+              type: integer
+            team:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                id:
+                  type: integer
+                logo_thumb_url:
+                  type: string
+                member_count:
+                  type: integer
+                name:
+                  type: string
+                ranking:
+                  type: integer
+            timezone:
+              type: string
+            twitter: {}
+            university: {}
+            university_name: {}
+            user_bloods:
+              type: integer
+            user_follows:
+              type: integer
+            user_owns:
+              type: integer
+            user_respects:
+              type: integer
+    ProlabResetStatusSourceResponse:
+      description: Pro Lab reset status.
+      type: object
+      properties:
+        last_reverted: {}
+    SourceProlabResetRequest:
+      title: Pro Lab reset request
+      type: object
+      properties:
+        area:
+          type: string
+          description: Name of the selected reset area.
+        machine:
+          type: number
+          description: ID of the machine to reset.
+        description:
+          type: string
+          description: Reason for requesting the reset.
+    ProlabOfficialWriteupSourceResponse:
+      description: Official Pro Lab writeup.
+      type: object
+      properties:
+        url: {}
+    PublicTeamInfoSourceResponse:
+      description: Public team info.
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar_url:
+          type: string
+        country_code:
+          type: string
+        country_name:
+          type: string
+        motto:
+          type: string
+        description:
+          type: string
+        facebook: {}
+        twitter: {}
+        discord:
+          type: string
+        is_respected: {}
+        join_request_sent: {}
+        captain:
+          type: object
+          properties:
+            id:
+              type: integer
+            avatar_thumb: {}
+            name:
+              type: string
+          additionalProperties: true
+        can_delete_avatar:
+          type: boolean
+        cover_image_url: {}
+        points:
+          type: integer
+        public:
+          type: boolean
+      additionalProperties: true
+    PublicTeamMembersSourceResponse:
+      description: Public team members.
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          avatar:
+            type: string
+            nullable: true
+          rank:
+            type: integer
+          rank_text:
+            type: string
+          role:
+            type: string
+          points:
+            type: integer
+          root_owns:
+            type: integer
+          user_owns:
+            type: integer
+          root_bloods_count:
+            type: integer
+          user_bloods_count:
+            type: integer
+          country_code:
+            type: string
+            nullable: true
+          country_name:
+            type: string
+            nullable: true
+          public:
+            type: integer
+          team:
+            type: object
+            properties:
+              captain_id:
+                type: integer
+              id:
+                type: integer
+        additionalProperties: true
+    SourceAuthSsoCallbackMessage:
+      description: Authentication tokens and redirect target.
+      type: object
+      properties:
+        access_token: {}
+        refresh_token: {}
+        redirect: {}
+    SourceAuthSsoCallbackResponse:
+      description: SSO callback result.
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/SourceAuthSsoCallbackMessage'
+    SourceAuthSsoRedirectResponse:
+      description: SSO redirect target.
+      type: object
+      properties:
+        redirect_target: {}
+    TeamCreatableSourceResponse:
+      description: Team creation eligibility.
+      type: object
+      properties:
+        canCreateTeam:
+          type: boolean
+        message:
+          type: string
+    UniversityAdminFindSourceResponse:
+      description: Matching university administrator candidates.
+      type: array
+      items:
+        type: object
+        properties:
+          id: {}
+          name: {}
+    UniversityInvitationsSourceResponse:
+      description: University invitations.
+      type: object
+      properties:
+        original:
+          type: array
+          items:
+            type: object
+            properties:
+              id: {}
+              user:
+                type: object
+                properties:
+                  id: {}
+                  name: {}
+                  avatar: {}
+                  avatar_thumb: {}
+                  rank_name: {}
+                  rank_text: {}
+                  country_name: {}
+                  points: {}
+                  rank: {}
+                  ranking: {}
+    MyUniversitySourceResponse:
+      description: My university.
+      type: object
+      properties:
+        data:
+          oneOf:
+            - type: array
+              items: {}
+            - type: object
+              properties:
+                id: {}
+                name: {}
+                logo_url: {}
+                country: {}
+                rank: {}
+                users_count: {}
+                root_owns_count: {}
+        message:
+          type: string
+        section:
+          type: string
+    UserProfileCertificatesSourceOwnedProLabItem:
+      description: A Pro Lab certificate.
+    UserProfileCertificatesSourceResponse:
+      description: User profile certificates.
+      type: object
+      properties:
+        ownedProLab:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserProfileCertificatesSourceOwnedProLabItem'
+    UserProfileMachineProgressSourceResponse:
+      description: User profile machine progress.
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            machine_difficulties:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: number
+                  name:
+                    type: string
+                  owned_machines:
+                    type: integer
+                  total_machines:
+                    type: integer
+            machine_os:
+              type: array
+              items:
+                type: object
+                properties:
+                  completion_percentage:
+                    type: integer
+                  name:
+                    type: string
+                  owned_machines:
+                    type: integer
+                  total_machines:
+                    type: integer
+            machine_owns:
+              type: object
+              properties:
+                completion_percentage:
+                  type: integer
+                solved:
+                  type: integer
+                total:
+                  type: integer
+            solved_tasks:
+              type: integer
+            total_bloods:
+              type: integer
+    UserOwnReviewSourceResponse:
+      description: User own review.
+      type: object
+      properties:
+        headline: {}
+        id: {}
+        review: {}
+        stars: {}
+    UserChallengeSubmissionsSourceSubmissionChallengesItem:
+      description: A submitted challenge.
+    UserChallengeSubmissionsSourceResponse:
+      description: User challenge submissions.
+      type: object
+      properties:
+        submission_challenges:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserChallengeSubmissionsSourceSubmissionChallengesItem'
+    UserMachineSubmissionsSourceSubmissionMachinesItem:
+      description: A submitted machine.
+    UserMachineSubmissionsSourceResponse:
+      description: User machine submissions.
+      type: object
+      properties:
+        submission_machines:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserMachineSubmissionsSourceSubmissionMachinesItem'
+    SubscriptionBalanceSourceResponse:
+      description: Subscription balance.
+      type: object
+      properties:
+        balances:
+          type: object
+          additionalProperties:
+            type: number
+        default_currency:
+          type: string
+    SubscriptionBillingHistorySourceDataItem:
+      description: An invoice in the subscription billing history.
+      type: object
+      properties:
+        amount: {}
+        date:
+          type: string
+        description:
+          type: string
+        pdf_url:
+          type: string
+        quaderno_invoice_id:
+          type: string
+    SubscriptionBillingHistorySourceResponse:
+      description: Subscription billing history.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionBillingHistorySourceDataItem'
+        meta:
+          type: object
+          properties:
+            current_page:
+              type: integer
+            from:
+              type: integer
+            last_page:
+              type: integer
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  active:
+                    type: boolean
+                  label:
+                    type: string
+                  page:
+                    type: integer
+                    nullable: true
+                  url:
+                    type: string
+                    nullable: true
+            path:
+              type: string
+            per_page:
+              type: integer
+            to:
+              type: integer
+            total:
+              type: integer
+        links:
+          type: object
+          properties:
+            first:
+              type: string
+            last:
+              type: string
+            next: {}
+            prev: {}
+    SubscriptionCancellationReasonsSourceCategoriesItem:
+      description: A cancellation reason category and its options.
+      type: object
+      properties:
+        freetext:
+          type: boolean
+        id:
+          type: integer
+        name:
+          type: string
+        children:
+          type: array
+          items:
+            type: object
+            properties:
+              freetext:
+                type: boolean
+              id:
+                type: integer
+              name:
+                type: string
+    SubscriptionCancellationReasonsSourceResponse:
+      description: Subscription cancellation reasons.
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionCancellationReasonsSourceCategoriesItem'
+    SubscriptionRecurlyLinkSourceResponse:
+      description: Link to manage a subscription in Recurly.
+      type: object
+      properties:
+        url: {}
+    SubscriptionManagementSourceResponse:
+      description: Subscription management.
+      type: object
+      properties:
+        membership:
+          type: object
+          properties:
+            allowedActions:
+              type: array
+              items:
+                type: string
+            annualUpgrade: {}
+            createdAt: {}
+            currentPlan:
+              type: object
+              properties:
+                name:
+                  type: string
+                pricing: {}
+                recurlyPlan: {}
+                type:
+                  type: string
+            endsAt: {}
+            id: {}
+            interval: {}
+            pausedAt: {}
+            renewsAt: {}
+            resumeAt: {}
+            state: {}
+            upgrades:
+              type: array
+              items:
+                type: object
+                properties:
+                  entitlements:
+                    type: object
+                    properties:
+                      content:
+                        type: object
+                        properties:
+                          mini_labs:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                avatar:
+                                  type: string
+                                content_id:
+                                  type: string
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                          pro_labs:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                avatar:
+                                  type: string
+                                content_id:
+                                  type: string
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                  name:
+                    type: string
+                  pricing:
+                    type: object
+                    nullable: true
+                    properties:
+                      currency:
+                        type: string
+                      per_period:
+                        type: integer
+                      setup:
+                        type: integer
+                  recurlyPlan:
+                    type: string
+                  type:
+                    type: string
+        prolabs:
+          type: object
+          properties:
+            allowedActions:
+              type: array
+              items:
+                type: string
+            annualUpgrade: {}
+            createdAt: {}
+            currentPlan:
+              type: object
+              properties:
+                name:
+                  type: string
+                pricing: {}
+                recurlyPlan: {}
+                type:
+                  type: string
+            endsAt: {}
+            id: {}
+            interval: {}
+            pausedAt: {}
+            renewsAt: {}
+            resumeAt: {}
+            state: {}
+            upgrades:
+              type: array
+              items: {}
+    SubscriptionRecentlyUpdatedSourceResponse:
+      description: Subscription recently updated.
+      type: object
+      properties:
+        updated_recently: {}
+    SubscriptionThankYouSourceResponse:
+      description: Subscription confirmation details.
+      type: object
+      properties:
+        subscription_details: {}
+    SourceChallengeRateRequest:
+      title: Challenge difficulty rating
+      type: object
+      properties:
+        difficulty:
+          type: number
+          description: Difficulty score, scaled by ten from the UI rating.
+    SourceChallengeSubmitRequest:
+      title: Challenge submission
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the submitted content.
+        description:
+          type: string
+          description: Description of the submitted content.
+        type:
+          type: string
+          description: Submission type, in uppercase.
+        category:
+          type: string
+          description: The selected category name, not the category object or ID.
+        difficulty:
+          type: string
+          description: The selected difficulty name, not the option object.
+        download_link:
+          type: string
+          description: Download URL for the submitted content.
+        writeup_link:
+          type: string
+          description: URL for the accompanying writeup.
+        accept_terms:
+          type: boolean
+          description: Whether the submitter accepts the submission terms.
+        flag:
+          type: string
+          description: Flag for the submitted challenge.
+    SourceConnectionServerSwitchRequest:
+      title: Connection product switch
+      type: object
+      properties:
+        arena:
+          type: boolean
+          description: Arena selection flag.
+        content_type:
+          type: string
+          description: Content product type.
+    SourceAuthLoginRequest:
+      description: Sign-in credentials.
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    SourceAuthTokenMessage:
+      description: Authentication token details.
+      type: object
+      properties:
+        access_token: {}
+        refresh_token: {}
+    SourceAuthTokenResponse:
+      description: Authentication tokens returned after sign-in.
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/SourceAuthTokenMessage'
+    SourceAuthRefreshRequest:
+      description: Refresh token.
+      type: object
+      properties:
+        refresh_token:
+          type: string
+    SourceAuthLogoutRequest:
+      description: An empty logout request.
+      type: object
+    SourceMachineMatrixRateRequest:
+      title: Machine matrix ratings
+      type: object
+      properties:
+        real:
+          type: number
+          description: Real-world relevance rating.
+        cve:
+          type: number
+          description: CVE rating.
+        enum:
+          type: number
+          description: Enumeration difficulty rating.
+        machine_id:
+          description: Machine ID.
+    SourceMachineSubmitRequest:
+      title: Machine submission
+      type: object
+      properties:
+        name:
+          type: string
+          description: Machine submission name.
+        difficulty:
+          type: string
+          description: Selected difficulty name.
+        hypervisor:
+          type: string
+          description: Selected hypervisor name.
+        os:
+          type: string
+          description: Selected operating-system name.
+        avatar_design:
+          type: string
+          description: Avatar design details.
+        user:
+          type: string
+          description: User account name for the submitted machine.
+        user_password:
+          type: string
+          description: Password for the submitted machine user account.
+        user_hash:
+          type: string
+          description: Hash for the submitted machine user account.
+        admin:
+          type: string
+          description: Administrative account name for the submitted machine.
+        admin_password:
+          type: string
+          description: Password for the submitted machine administrative account.
+        admin_hash:
+          type: string
+          description: Hash for the submitted machine administrative account.
+        download_link:
+          type: string
+          description: Download URL for the submitted machine.
+        writeup_link:
+          type: string
+          description: URL for the accompanying writeup.
+        cocreators:
+          type: array
+          description: IDs of the machine’s co-creators.
+          items:
+            type: number
+        accept_terms:
+          type: boolean
+          description: Whether the submitter accepts the submission terms.
+    SourceMachineWalkthroughSubmitRequest:
+      title: Machine walkthrough submission
+      type: object
+      properties:
+        language_id:
+          type: number
+          description: Language ID for the walkthrough.
+        machine_id:
+          description: ID of the machine covered by the walkthrough.
+        url:
+          type: string
+          description: Walkthrough URL after trimming whitespace.
+    SourceMachineFlagRateRequest:
+      title: Machine flag rating
+      type: object
+      properties:
+        machineId:
+          description: Machine ID. Matches the machine ID in the path.
+        type:
+          description: Task type.
+        difficulty:
+          type: number
+          description: Task difficulty rating.
+    SourceMachineTaskFlagRequest:
+      title: Machine task flag
+      type: object
+      properties:
+        flag:
+          description: Answer submitted for the task.
+    SourceAuthOtpRequest:
+      description: One-time password request.
+      type: object
+      properties:
+        type:
+          type: string
+    SourceProlabCertificateRequest:
+      title: Pro Lab certificate request
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name to place on the certificate.
+        name_confirmation:
+          type: string
+          description: Confirmation of the certificate name.
+        confirm:
+          type: boolean
+          description: Whether the user confirms the certificate name.
+    SourcePwnboxVpnRequest:
+      title: Pwnbox VPN selection
+      description: VPN connection settings for Pwnbox.
+      type: object
+      properties:
+        vpn_server_id:
+          description: VPN server ID.
+        kill_other_pwnbox_connections:
+          type: boolean
+          description: Whether to replace other Pwnbox VPN connections.
+    SourceContentReviewPublishRequest:
+      title: Content review submission
+      type: object
+      properties:
+        stars:
+          type: number
+          description: Star rating for the content.
+        headline:
+          type: string
+          description: Optional review headline.
+        review:
+          type: string
+          description: Optional review text.
+        type:
+          description: Type of content being reviewed.
+        id:
+          description: ID of the content being reviewed.
+    SourceSherlockSubmitRequest:
+      title: Sherlock submission
+      description: Sherlock task submission.
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the submitted content.
+        description:
+          type: string
+          description: Description of the submitted content.
+        type:
+          type: string
+          description: Submission type, in uppercase.
+        category:
+          type: string
+          description: The selected category name, not the category object or ID.
+        difficulty:
+          type: string
+          description: The selected difficulty name, not the option object.
+        download_link:
+          type: string
+          description: Download URL for the submitted content.
+        writeup_link:
+          type: string
+          description: URL for the accompanying writeup.
+        accept_terms:
+          type: boolean
+          description: Whether the submitter accepts the submission terms.
+    SourceTeamAvatarUploadRequest:
+      title: SourceTeamAvatarUploadRequest
+      type: object
+      properties:
+        avatar:
+          type: string
+          format: binary
+          description: Team avatar image.
+      additionalProperties: true
+    SourceTeamNameCheckRequest:
+      title: SourceTeamNameCheckRequest
+      type: object
+      properties:
+        name: {}
+      additionalProperties: true
+    SourceTeamCoverUploadRequest:
+      title: SourceTeamCoverUploadRequest
+      type: object
+      properties:
+        cover_image:
+          type: string
+          format: binary
+          description: Team cover image.
+      additionalProperties: true
+    SourceTeamCreateRequest:
+      title: SourceTeamCreateRequest
+      type: object
+      properties:
+        name: {}
+        country: {}
+        description: {}
+        discord: {}
+        twitter: {}
+        facebook: {}
+        motto: {}
+        public:
+          type: string
+          description: Team visibility, encoded as "1" for public or "0" for private.
+        avatar:
+          type: string
+          format: binary
+          description: Team avatar image.
+        cover_image:
+          type: string
+          format: binary
+          description: Team cover image.
+      additionalProperties: true
+    SourceTeamDeleteRequest:
+      title: SourceTeamDeleteRequest
+      type: object
+      properties:
+        otp: {}
+        type:
+          type: string
+          example: TEAM_DELETE
+      additionalProperties: true
+    SourceTeamUpdateRequest:
+      title: SourceTeamUpdateRequest
+      type: object
+      properties:
+        id: {}
+        name: {}
+        country: {}
+        description: {}
+        discord: {}
+        facebook: {}
+        motto: {}
+        public: {}
+        twitter: {}
+      additionalProperties: true
+    SourceUniversityCreateRequest:
+      title: SourceUniversityCreateRequest
+      type: object
+      properties:
+        authform:
+          type: string
+          format: binary
+          description: University authorization document.
+        name: {}
+        admin_id:
+          type: string
+          description: ID of the university administrator.
+        acceptauth:
+          type: string
+          description: Whether the submitter accepts the authorization terms.
+        description: {}
+        faculty_name: {}
+        faculty_email: {}
+        url: {}
+        discord: {}
+        twitter: {}
+        facebook: {}
+        logo:
+          type: string
+          format: binary
+          description: University logo file.
+        country: {}
+      additionalProperties: true
+    SourceUniversityUpdateRequest:
+      title: SourceUniversityUpdateRequest
+      type: object
+      properties:
+        url: {}
+        description: {}
+        twitter: {}
+        facebook: {}
+        discord: {}
+        country: {}
+      additionalProperties: true
+    SourceUserSettingToggleRequest:
+      title: User preference toggle
+      type: object
+      properties:
+        setting:
+          type: string
+          description: Preference key to toggle.
+    SourcePlatformReviewPublishRequest:
+      title: Platform feedback publication
+      type: object
+      properties:
+        headline:
+          type: string
+          description: Optional feedback headline.
+        review:
+          type: string
+          description: Optional feedback text.
+        rating:
+          type: number
+          description: Feedback rating.
+        publish:
+          type: boolean
+          description: Whether to share the feedback publicly.
+    SourceSubscriptionThreeDSecureToken:
+      description: 3-D Secure token for the subscription payment.
+      type: object
+      properties:
+        type: {}
+        id: {}
+    SourceSubscriptionUpgradeRequest:
+      description: Subscription upgrade.
+      type: object
+      properties:
+        three_d_secure_action_result_token_id:
+          $ref: '#/components/schemas/SourceSubscriptionThreeDSecureToken'
+    SourceSubscriptionCancelRequest:
+      description: Cancellation reason, secondary reasons, and feedback.
+      type: object
+      properties:
+        reason: {}
+        secondaryReasons:
+          type: array
+          items: {}
+        feedback: {}
+    SourceSubscriptionPauseRequest:
+      description: Subscription pause.
+      type: object
+      properties:
+        duration:
+          type: integer
+    SourceVoucherCheckRequest:
+      title: Voucher check body
+      description: An empty voucher status request.
+      type: object
+      properties: {}
   responses:
     AccessOvpnfileVpnId0Response:
       content:
-        text/plain:
+        text/html:
           schema:
             $ref: '#/components/schemas/OpenVpn'
-      description: Returns open_vpn file
+      description: OpenVPN configuration download served as text/html.
       headers:
         x-ratelimit-limit:
           $ref: '#/components/headers/XRateLimitHeader'
@@ -7653,17 +10154,6 @@ components:
           schema:
             $ref: '#/components/schemas/HomeBannerResponse'
       description: Home Banners Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    MachineActiveResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ActiveMachineResponse'
-      description: Active Machines Response
       headers:
         x-ratelimit-limit:
           $ref: '#/components/headers/XRateLimitHeader'
@@ -8399,28 +10889,6 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
-    UserConnectionStatusResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserConnectionStatusResponse'
-      description: User Connection Status Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
-    UserFollowersResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateResponse'
-      description: User Followers Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
     UserInfoResponse:
       content:
         application/json:
@@ -8488,17 +10956,6 @@ components:
           schema:
             $ref: '#/components/schemas/UserProfileProgressSherlocksResponse'
       description: OK
-    UserProfileSummaryResponse:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProfileIdRepsonse'
-      description: User Profile Summary Response
-      headers:
-        x-ratelimit-limit:
-          $ref: '#/components/headers/XRateLimitHeader'
-        x-ratelimit-remaining:
-          $ref: '#/components/headers/XRateLimitRemainingHeader'
     UserSettingsResponse:
       content:
         application/json:
@@ -8521,6 +10978,15 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
+    UserProfileProgressChartResponse:
+      description: User profile progress-chart points.
+      content:
+        application/json:
+          examples:
+            UserProfileProgressChart:
+              $ref: '#/components/examples/UserProfileProgressChartSuccess'
+          schema:
+            $ref: '#/components/schemas/UserProfileProgressChartResponse'
     VMExtendResponse:
       content:
         application/json:
@@ -8583,6 +11049,218 @@ components:
           $ref: '#/components/headers/XRateLimitHeader'
         x-ratelimit-remaining:
           $ref: '#/components/headers/XRateLimitRemainingHeader'
+    RegenerateUdpOvpnSourceResponse:
+      description: Regenerate udp ovpn.
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/RegeneratedOvpnSourceFile'
+    RegenerateTcpOvpnSourceResponse:
+      description: Regenerate tcp ovpn.
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/RegeneratedOvpnSourceFile'
+    CertificateDownloadSourceResponse:
+      description: Certificate download.
+      content:
+        application/octet-stream:
+          schema:
+            $ref: '#/components/schemas/CertificateDownloadSourceResponse'
+    MachineDownloadLinkSourceResponse:
+      description: Machine download link.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MachineDownloadLinkSourceResponse'
+    PublicProfileBadgesSourceResponse:
+      description: Public profile badges.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileBadgesSourceResponse'
+    PublicProfileChallengeProgressSourceResponse:
+      description: Public profile challenge progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileChallengeProgressSourceResponse'
+    PublicProfileFortressProgressSourceResponse:
+      description: Public profile fortress progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileFortressProgressSourceResponse'
+    PublicProfileMachineProgressSourceResponse:
+      description: Public profile machine progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileMachineProgressSourceResponse'
+    PublicProfileProlabProgressSourceResponse:
+      description: Public profile prolab progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileProlabProgressSourceResponse'
+    PublicProfileSherlockProgressSourceResponse:
+      description: Public profile sherlock progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileSherlockProgressSourceResponse'
+    PublicProfileSourceResponse:
+      description: Public profile.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicProfileSourceResponse'
+    ProlabResetStatusSourceResponse:
+      description: Pro Lab reset status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProlabResetStatusSourceResponse'
+    ProlabOfficialWriteupSourceResponse:
+      description: Official Pro Lab writeup.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProlabOfficialWriteupSourceResponse'
+    PublicTeamActivitySourceResponse:
+      description: Public team activity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TeamActivityIdResponse'
+    PublicTeamInfoSourceResponse:
+      description: Public team info.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicTeamInfoSourceResponse'
+    PublicTeamMembersSourceResponse:
+      description: Public team members.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublicTeamMembersSourceResponse'
+    SourceAuthSubscriptionsUnspecifiedResponse:
+      description: Response with an unspecified body.
+    SourceAuthSsoCallbackResponse:
+      description: SSO callback result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthSsoCallbackResponse'
+    SourceAuthSsoRedirectResponse:
+      description: SSO redirect target.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthSsoRedirectResponse'
+    TeamCreatableSourceResponse:
+      description: Team creation eligibility.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TeamCreatableSourceResponse'
+    UniversityAdminFindSourceResponse:
+      description: Matching university administrator candidates.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversityAdminFindSourceResponse'
+    UniversityInvitationsSourceResponse:
+      description: University invitations.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversityInvitationsSourceResponse'
+    MyUniversitySourceResponse:
+      description: My university.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MyUniversitySourceResponse'
+    UserProfileCertificatesSourceResponse:
+      description: User profile certificates.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserProfileCertificatesSourceResponse'
+    UserProfileMachineProgressSourceResponse:
+      description: User profile machine progress.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserProfileMachineProgressSourceResponse'
+    UserOwnReviewSourceResponse:
+      description: User own review.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserOwnReviewSourceResponse'
+    UserChallengeSubmissionsSourceResponse:
+      description: User challenge submissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserChallengeSubmissionsSourceResponse'
+    UserMachineSubmissionsSourceResponse:
+      description: User machine submissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserMachineSubmissionsSourceResponse'
+    SubscriptionBalanceSourceResponse:
+      description: Subscription balance.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionBalanceSourceResponse'
+    SubscriptionBillingHistorySourceResponse:
+      description: Subscription billing history.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionBillingHistorySourceResponse'
+    SubscriptionCancellationReasonsSourceResponse:
+      description: Subscription cancellation reasons.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionCancellationReasonsSourceResponse'
+    SubscriptionRecurlyLinkSourceResponse:
+      description: Link to manage a subscription in Recurly.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionRecurlyLinkSourceResponse'
+    SubscriptionManagementSourceResponse:
+      description: Subscription management.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionManagementSourceResponse'
+    SubscriptionRecentlyUpdatedSourceResponse:
+      description: Subscription recently updated.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionRecentlyUpdatedSourceResponse'
+    SubscriptionThankYouSourceResponse:
+      description: Subscription confirmation details.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SubscriptionThankYouSourceResponse'
+    SourceAuthTokenResponse:
+      description: Authentication tokens returned after sign-in.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthTokenResponse'
   requestBodies:
     ChallengeOwnRequest:
       content:
@@ -8671,3 +11349,203 @@ components:
             $ref: '#/components/schemas/SpawnExtendRequest'
       description: Body to post spawn or reset vm
       required: true
+    SourceProlabResetRequest:
+      description: Pro Lab reset request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceProlabResetRequest'
+    SourceChallengeRateRequest:
+      description: Challenge rate.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceChallengeRateRequest'
+    SourceChallengeSubmitRequest:
+      description: Challenge submit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceChallengeSubmitRequest'
+    SourceConnectionServerSwitchRequest:
+      description: Connection server switch.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceConnectionServerSwitchRequest'
+    SourceAuthLoginRequest:
+      description: Sign-in credentials.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthLoginRequest'
+    SourceAuthRefreshRequest:
+      description: Refresh token request.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthRefreshRequest'
+    SourceAuthLogoutRequest:
+      description: An empty logout request.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthLogoutRequest'
+    SourceMachineMatrixRateRequest:
+      description: Ratings for the machine difficulty matrix.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceMachineMatrixRateRequest'
+    SourceMachineSubmitRequest:
+      description: Machine submit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceMachineSubmitRequest'
+    SourceMachineWalkthroughSubmitRequest:
+      description: Machine walkthrough submit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceMachineWalkthroughSubmitRequest'
+    SourceMachineFlagRateRequest:
+      description: Rating for a machine flag task.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceMachineFlagRateRequest'
+    SourceMachineTaskFlagRequest:
+      description: Machine task flag.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceMachineTaskFlagRequest'
+    SourceAuthOtpRequest:
+      description: One-time password request.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceAuthOtpRequest'
+    SourceProlabCertificateRequest:
+      description: Pro Lab certificate request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceProlabCertificateRequest'
+    SourcePwnboxVpnRequest:
+      description: VPN connection settings for Pwnbox.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourcePwnboxVpnRequest'
+    SourceContentReviewPublishRequest:
+      description: Content review publish.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceContentReviewPublishRequest'
+    SourceSherlockSubmitRequest:
+      description: Sherlock task submission.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceSherlockSubmitRequest'
+    SourceTeamAvatarUploadRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/SourceTeamAvatarUploadRequest'
+    SourceTeamNameCheckRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceTeamNameCheckRequest'
+    SourceTeamCoverUploadRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/SourceTeamCoverUploadRequest'
+    SourceTeamCreateRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/SourceTeamCreateRequest'
+    SourceTeamDeleteRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceTeamDeleteRequest'
+    SourceTeamUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceTeamUpdateRequest'
+    SourceUniversityCreateRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/SourceUniversityCreateRequest'
+    SourceUniversityUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceUniversityUpdateRequest'
+    SourceUserSettingToggleRequest:
+      description: User setting toggle.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceUserSettingToggleRequest'
+    SourcePlatformReviewPublishRequest:
+      description: Platform review publish.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourcePlatformReviewPublishRequest'
+    SourceSubscriptionUpgradeRequest:
+      description: Subscription upgrade.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceSubscriptionUpgradeRequest'
+    SourceSubscriptionCancelRequest:
+      description: Subscription cancel.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceSubscriptionCancelRequest'
+    SourceSubscriptionPauseRequest:
+      description: Subscription pause.
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceSubscriptionPauseRequest'
+    SourceVoucherCheckRequest:
+      description: An empty voucher status request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceVoucherCheckRequest'
+  examples:
+    UserProfileProgressChartSuccess:
+      summary: One month of machine progress
+      description: Machine progress chart for a one-month time range.
+      value:
+        chart_data:
+          points:
+            - time: '2026-11-25 00:00:00'
+              value: 0
+            - time: '2026-11-16 00:00:00'
+              value: 1
+            - time: '2026-11-09 00:00:00'
+              value: 1
+            - time: '2026-11-02 00:00:00'
+              value: 1

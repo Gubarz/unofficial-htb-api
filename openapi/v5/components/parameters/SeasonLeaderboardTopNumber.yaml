@@ -1,0 +1,8 @@
+in: query
+name: number
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: integer
+example: 3
+description: Number of top-ranked entries to return.

@@ -1,0 +1,29 @@
+type: object
+properties:
+  background_image:
+    type: string
+  blue:
+    $ref: ./SeasonDefensiveUserProgress.yaml
+  end_date:
+    type: string
+  is_active:
+    type: boolean
+  purple:
+    oneOf:
+      - $ref: ./SeasonUserProgress.yaml
+      - type: object
+        nullable: true
+        enum:
+          - null
+  red:
+    $ref: ./SeasonOffensiveUserProgress.yaml
+  season_content_id:
+    type: string
+  season_id:
+    type: integer
+  season_name:
+    type: string
+  start_date:
+    type: string
+additionalProperties: true
+description: A user's rankings and progress for a season.

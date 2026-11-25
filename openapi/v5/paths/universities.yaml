@@ -2,8 +2,12 @@ get:
   description: Universities
   operationId: getUniversities
   parameters:
-    - $ref: ../components/parameters/PerPage.yaml
-    - $ref: ../components/parameters/Page.yaml
+  - $ref: ../components/parameters/PerPage.yaml
+  - $ref: ../components/parameters/Page.yaml
+  - $ref: ../components/parameters/UniversityName.yaml
+  - $ref: ../components/parameters/UniversityCountryCode.yaml
+  - $ref: ../components/parameters/UniversitySortBy.yaml
+  - $ref: ../components/parameters/UniversitySortType.yaml
   responses:
     '200':
       $ref: ../components/responses/UniversitiesResponse.yaml
@@ -11,4 +15,4 @@ get:
       $ref: ../components/responses/Generic400Response.yaml
   summary: Get Universities
   tags:
-    - University
+  - University

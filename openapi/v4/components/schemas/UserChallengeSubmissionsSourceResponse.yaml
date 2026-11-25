@@ -1,0 +1,7 @@
+description: User challenge submissions.
+type: object
+properties:
+  submission_challenges:
+    type: array
+    items:
+      $ref: ./UserChallengeSubmissionsSourceSubmissionChallengesItem.yaml

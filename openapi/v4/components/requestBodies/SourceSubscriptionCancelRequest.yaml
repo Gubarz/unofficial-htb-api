@@ -1,0 +1,6 @@
+description: Subscription cancel.
+required: false
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceSubscriptionCancelRequest.yaml

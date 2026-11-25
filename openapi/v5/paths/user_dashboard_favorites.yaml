@@ -1,5 +1,5 @@
 get:
-  description: User Dashboard Favorites
+  description: Lists the user's favorite content.
   operationId: getUserDashboardFavorites
   responses:
     '200':

@@ -1,0 +1,6 @@
+description: Number of invoices per page.
+in: query
+name: per_page
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: integer

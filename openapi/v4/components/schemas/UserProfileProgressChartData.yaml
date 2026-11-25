@@ -1,0 +1,8 @@
+description: Data series used by the user profile progress chart.
+type: object
+properties:
+  points:
+    type: array
+    description: Chart points in the order supplied by the API.
+    items:
+      $ref: ./UserProfileProgressChartPoint.yaml

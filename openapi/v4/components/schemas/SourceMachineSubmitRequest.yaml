@@ -1,0 +1,50 @@
+title: Machine submission
+type: object
+properties:
+  name:
+    type: string
+    description: Machine submission name.
+  difficulty:
+    type: string
+    description: Selected difficulty name.
+  hypervisor:
+    type: string
+    description: Selected hypervisor name.
+  os:
+    type: string
+    description: Selected operating-system name.
+  avatar_design:
+    type: string
+    description: Avatar design details.
+  user:
+    type: string
+    description: User account name for the submitted machine.
+  user_password:
+    type: string
+    description: Password for the submitted machine user account.
+  user_hash:
+    type: string
+    description: Hash for the submitted machine user account.
+  admin:
+    type: string
+    description: Administrative account name for the submitted machine.
+  admin_password:
+    type: string
+    description: Password for the submitted machine administrative account.
+  admin_hash:
+    type: string
+    description: Hash for the submitted machine administrative account.
+  download_link:
+    type: string
+    description: Download URL for the submitted machine.
+  writeup_link:
+    type: string
+    description: URL for the accompanying writeup.
+  cocreators:
+    type: array
+    description: IDs of the machine’s co-creators.
+    items:
+      type: number
+  accept_terms:
+    type: boolean
+    description: Whether the submitter accepts the submission terms.

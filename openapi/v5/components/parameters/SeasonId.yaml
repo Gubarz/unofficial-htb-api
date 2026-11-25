@@ -1,0 +1,7 @@
+in: path
+name: seasonId
+required: true
+schema:
+  type: integer
+example: 21
+description: Season ID.

@@ -1,0 +1,37 @@
+summary: Active seasonal content
+value:
+  data:
+    blue: null
+    red:
+      auth_user_has_root_blood: false
+      auth_user_has_user_blood: false
+      auth_user_number_of_flags: 0
+      avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a32f3339-1d5f-48c5-85dd-fc8988817133-1794237322.png
+      content_id: a32f3339-1d5f-48c5-85dd-fc8988817133
+      difficulty_text: Insane
+      id: 1017
+      is_owned_root: false
+      is_owned_user: false
+      is_released: true
+      name: Handler
+      number_of_flags: 2
+      os: Windows
+      rating: 4.5
+      rating_count: 33
+      release_time: '2026-11-21T19:00:00.000Z'
+      root_blood_points: 0
+      root_own_points: 55
+      total_points: 50
+      type: machine
+      user_blood_points: 0
+      user_bloods:
+        - avatar: /storage/avatars/example-1.png
+          id: 1
+          name: Example Player 1
+          type: user
+        - avatar: /storage/avatars/example-2.png
+          id: 2
+          name: Example Player 2
+          type: root
+      user_own_points: 50
+description: An active offensive machine with no active defensive content.

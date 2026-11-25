@@ -1,0 +1,11 @@
+get:
+  description: Get a machine download link.
+  operationId: getMachineDownloadLink
+  parameters:
+    - $ref: ../components/parameters/MachineId.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/MachineDownloadLinkSourceResponse.yaml
+  summary: Get a machine download link
+  tags:
+    - Machines

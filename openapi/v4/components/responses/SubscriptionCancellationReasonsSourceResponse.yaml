@@ -1,0 +1,5 @@
+description: Subscription cancellation reasons.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SubscriptionCancellationReasonsSourceResponse.yaml

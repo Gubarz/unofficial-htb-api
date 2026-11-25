@@ -1,0 +1,10 @@
+get:
+  description: Get subscription balance.
+  operationId: getSubscriptionBalance
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionBalanceSourceResponse.yaml
+  summary: Get subscription balance
+  tags:
+    - User

@@ -1,0 +1,16 @@
+content:
+  application/json:
+    examples:
+      SeasonLeaderboardTopDefensivePlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardTopDefensivePlayersSuccess.yaml
+      SeasonLeaderboardTopCombinedPlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardTopCombinedPlayersSuccess.yaml
+      SeasonLeaderboardTopOffensivePlayersSuccess:
+        $ref: ../examples/SeasonLeaderboardTopOffensivePlayersSuccess.yaml
+      SeasonLeaderboardTopDefensiveTeamsSuccess:
+        $ref: ../examples/SeasonLeaderboardTopDefensiveTeamsSuccess.yaml
+      SeasonLeaderboardTopOffensiveTeamsSuccess:
+        $ref: ../examples/SeasonLeaderboardTopOffensiveTeamsSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonLeaderboardTopResponse.yaml
+description: The top-ranked players or teams for a season.

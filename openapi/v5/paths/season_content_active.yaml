@@ -1,0 +1,10 @@
+get:
+  operationId: getSeasonActiveContent
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonActiveContentResponse.yaml
+  summary: Get active seasonal content
+  tags:
+    - Season
+  description: Returns the current offensive and defensive seasonal content.

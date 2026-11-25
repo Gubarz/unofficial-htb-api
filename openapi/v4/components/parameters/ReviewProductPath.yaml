@@ -1,0 +1,11 @@
+description: Type of content being reviewed.
+in: path
+name: product
+required: true
+schema:
+  type: string
+  enum:
+    - machine
+    - challenge
+    - sherlock
+    - prolab

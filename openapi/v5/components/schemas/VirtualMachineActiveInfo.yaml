@@ -1,4 +1,3 @@
-description: Schema definition for active virtual machine information
 type: object
 properties:
   vpn_server_type:
@@ -37,3 +36,4 @@ required:
   - vpn_server_id
   - avatar_url
   - ip
+description: Active virtual machine details.

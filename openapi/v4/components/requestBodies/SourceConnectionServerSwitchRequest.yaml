@@ -1,0 +1,5 @@
+description: Connection server switch.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceConnectionServerSwitchRequest.yaml

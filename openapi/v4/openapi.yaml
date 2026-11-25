@@ -112,8 +112,6 @@ paths:
     $ref: paths/fortresses.yaml
   /home/banners:
     $ref: paths/home_banners.yaml
-  /machine/active:
-    $ref: paths/machine_active.yaml
   /machine/activity/{machineId}:
     $ref: paths/machine_activity_{machineId}.yaml
   /machine/changelog/{machineId}:
@@ -262,14 +260,10 @@ paths:
     $ref: paths/user_apptoken_delete.yaml
   /user/apptoken/list:
     $ref: paths/user_apptoken_list.yaml
-  /user/connection/status:
-    $ref: paths/user_connection_status.yaml
   /user/disrespect/{userId}:
     $ref: paths/user_disrespect_{userId}.yaml
   /user/follow/{userId}:
     $ref: paths/user_follow_{userId}.yaml
-  /user/followers:
-    $ref: paths/user_followers.yaml
   /user/info:
     $ref: paths/user_info.yaml
   /user/profile/badges/{userId}:
@@ -284,8 +278,6 @@ paths:
     $ref: paths/user_profile_progress_prolab_{userId}.yaml
   /user/profile/progress/sherlocks/{userId}:
     $ref: paths/user_profile_progress_sherlocks_{userId}.yaml
-  /user/profile/summary:
-    $ref: paths/user_profile_summary.yaml
   /user/respect/{userId}:
     $ref: paths/user_respect_{userId}.yaml
   /user/settings:
@@ -294,6 +286,8 @@ paths:
     $ref: paths/user_tracks.yaml
   /user/unfollow/{userId}:
     $ref: paths/user_unfollow_{userId}.yaml
+  /users/{userId}/profile/progress/chart:
+    $ref: paths/users_{userId}_profile_progress_chart.yaml
   /vm/extend:
     $ref: paths/vm_extend.yaml
   /vm/reset:
@@ -304,6 +298,182 @@ paths:
     $ref: paths/vm_terminate.yaml
   /{product}/todo/update/{productId}:
     $ref: paths/{product}_todo_update_{productId}.yaml
+  /access/ovpnfile/{vpnId}/1:
+    $ref: paths/access_ovpnfile_{vpnId}_1.yaml
+  /access/ovpnfile/{vpnId}/1/1:
+    $ref: paths/access_ovpnfile_{vpnId}_1_1.yaml
+  /certificate/{certificateId}/download:
+    $ref: paths/certificate_{certificateId}_download.yaml
+  /machines/{machineId}/download_link:
+    $ref: paths/machines_{machineId}_download_link.yaml
+  /profile/badges/{userId}:
+    $ref: paths/profile_badges_{userId}.yaml
+  /profile/progress/challenges/{userId}:
+    $ref: paths/profile_progress_challenges_{userId}.yaml
+  /profile/progress/fortress/{userId}:
+    $ref: paths/profile_progress_fortress_{userId}.yaml
+  /profile/progress/machines/{userId}:
+    $ref: paths/profile_progress_machines_{userId}.yaml
+  /profile/progress/prolab/{userId}:
+    $ref: paths/profile_progress_prolab_{userId}.yaml
+  /profile/progress/sherlocks/{userId}:
+    $ref: paths/profile_progress_sherlocks_{userId}.yaml
+  /profile/{userId}:
+    $ref: paths/profile_{userId}.yaml
+  /prolab/{prolabId}/reset:
+    $ref: paths/prolab_{prolabId}_reset.yaml
+  /prolab/{prolabId}/writeup/official:
+    $ref: paths/prolab_{prolabId}_writeup_official.yaml
+  /public/team/activity/{teamId}:
+    $ref: paths/public_team_activity_{teamId}.yaml
+  /public/team/info/{teamId}:
+    $ref: paths/public_team_info_{teamId}.yaml
+  /public/team/members/{teamId}:
+    $ref: paths/public_team_members_{teamId}.yaml
+  /sso/callback:
+    $ref: paths/sso_callback.yaml
+  /sso/redirect:
+    $ref: paths/sso_redirect.yaml
+  /team/creatable:
+    $ref: paths/team_creatable.yaml
+  /university/admin/find:
+    $ref: paths/university_admin_find.yaml
+  /university/invitations/{universityId}:
+    $ref: paths/university_invitations_{universityId}.yaml
+  /university/my:
+    $ref: paths/university_my.yaml
+  /user/profile/certificates:
+    $ref: paths/user_profile_certificates.yaml
+  /user/profile/progress/machines/{userId}:
+    $ref: paths/user_profile_progress_machines_{userId}.yaml
+  /user/review/{product}/{productId}:
+    $ref: paths/user_review_{product}_{productId}.yaml
+  /user/submissions/challenges:
+    $ref: paths/user_submissions_challenges.yaml
+  /user/submissions/machines:
+    $ref: paths/user_submissions_machines.yaml
+  /user/subscriptions/balance:
+    $ref: paths/user_subscriptions_balance.yaml
+  /user/subscriptions/billing-history:
+    $ref: paths/user_subscriptions_billing-history.yaml
+  /user/subscriptions/cancellation/reasons:
+    $ref: paths/user_subscriptions_cancellation_reasons.yaml
+  /user/subscriptions/manage/recurly:
+    $ref: paths/user_subscriptions_manage_recurly.yaml
+  /user/subscriptions/management:
+    $ref: paths/user_subscriptions_management.yaml
+  /user/subscriptions/status/updated/recently:
+    $ref: paths/user_subscriptions_status_updated_recently.yaml
+  /user/subscriptions/thankyou:
+    $ref: paths/user_subscriptions_thankyou.yaml
+  /challenge/rate/{challengeId}:
+    $ref: paths/challenge_rate_{challengeId}.yaml
+  /challenge/reset/vm/{challengeId}:
+    $ref: paths/challenge_reset_vm_{challengeId}.yaml
+  /challenge/start/vm/{challengeId}:
+    $ref: paths/challenge_start_vm_{challengeId}.yaml
+  /challenges/submit:
+    $ref: paths/challenges_submit.yaml
+  /connections/servers/switch:
+    $ref: paths/connections_servers_switch.yaml
+  /login:
+    $ref: paths/login.yaml
+  /login/refresh:
+    $ref: paths/login_refresh.yaml
+  /logout:
+    $ref: paths/logout.yaml
+  /machine/rate/matrix:
+    $ref: paths/machine_rate_matrix.yaml
+  /machine/submit:
+    $ref: paths/machine_submit.yaml
+  /machine/walkthroughs/rate/{walkthroughId}/{rating}:
+    $ref: paths/machine_walkthroughs_rate_{walkthroughId}_{rating}.yaml
+  /machine/walkthroughs/submit:
+    $ref: paths/machine_walkthroughs_submit.yaml
+  /machine/{machineId}/flag/rate:
+    $ref: paths/machine_{machineId}_flag_rate.yaml
+  /machines/{machineId}/tasks/{taskId}/flag:
+    $ref: paths/machines_{machineId}_tasks_{taskId}_flag.yaml
+  /notices/dismiss/{noticeId}:
+    $ref: paths/notices_dismiss_{noticeId}.yaml
+  /otp:
+    $ref: paths/otp.yaml
+  /prolab/{prolabId}/certificate:
+    $ref: paths/prolab_{prolabId}_certificate.yaml
+  /pwnbox/vpn:
+    $ref: paths/pwnbox_vpn.yaml
+  /review:
+    $ref: paths/review.yaml
+  /review/{reviewId}:
+    $ref: paths/review_{reviewId}.yaml
+  /review/{reviewId}/helpful:
+    $ref: paths/review_{reviewId}_helpful.yaml
+  /sherlocks/submit:
+    $ref: paths/sherlocks_submit.yaml
+  /team/avatar/{teamId}:
+    $ref: paths/team_avatar_{teamId}.yaml
+  /team/captain/{captainId}:
+    $ref: paths/team_captain_{captainId}.yaml
+  /team/check_name/{teamId}:
+    $ref: paths/team_check_name_{teamId}.yaml
+  /team/cover_image/{teamId}:
+    $ref: paths/team_cover_image_{teamId}.yaml
+  /team/create:
+    $ref: paths/team_create.yaml
+  /team/delete:
+    $ref: paths/team_delete.yaml
+  /team/leave:
+    $ref: paths/team_leave.yaml
+  /team/{teamId}/disrespect:
+    $ref: paths/team_{teamId}_disrespect.yaml
+  /team/{teamId}/request-to-join:
+    $ref: paths/team_{teamId}_request-to-join.yaml
+  /team/{teamId}/respect:
+    $ref: paths/team_{teamId}_respect.yaml
+  /team/{teamId}/update:
+    $ref: paths/team_{teamId}_update.yaml
+  /team/{type}/{teamId}/delete:
+    $ref: paths/team_{type}_{teamId}_delete.yaml
+  /university/create:
+    $ref: paths/university_create.yaml
+  /university/kick/{userId}:
+    $ref: paths/university_kick_{userId}.yaml
+  /university/leave:
+    $ref: paths/university_leave.yaml
+  /university/transferAdmin/{userId}:
+    $ref: paths/university_transferAdmin_{userId}.yaml
+  /university/update/{universityId}:
+    $ref: paths/university_update_{universityId}.yaml
+  /university/{invitationId}/invite/accept:
+    $ref: paths/university_{invitationId}_invite_accept.yaml
+  /university/{invitationId}/invite/reject:
+    $ref: paths/university_{invitationId}_invite_reject.yaml
+  /university/{universityId}/disrespect:
+    $ref: paths/university_{universityId}_disrespect.yaml
+  /university/{universityId}/request-to-join:
+    $ref: paths/university_{universityId}_request-to-join.yaml
+  /university/{universityId}/respect:
+    $ref: paths/university_{universityId}_respect.yaml
+  /user/edit/toggle:
+    $ref: paths/user_edit_toggle.yaml
+  /user/feedback/review/publish:
+    $ref: paths/user_feedback_review_publish.yaml
+  /user/subscriptions/upgrade/{currentPlan}/to/{targetPlan}:
+    $ref: paths/user_subscriptions_upgrade_{currentPlan}_to_{targetPlan}.yaml
+  /user/subscriptions/{subscriptionType}/cancel:
+    $ref: paths/user_subscriptions_{subscriptionType}_cancel.yaml
+  /user/subscriptions/{subscriptionType}/pause:
+    $ref: paths/user_subscriptions_{subscriptionType}_pause.yaml
+  /user/subscriptions/{subscriptionType}/reactivate:
+    $ref: paths/user_subscriptions_{subscriptionType}_reactivate.yaml
+  /user/subscriptions/{subscriptionType}/resume:
+    $ref: paths/user_subscriptions_{subscriptionType}_resume.yaml
+  /user/subscriptions/{subscriptionType}/upgrade:
+    $ref: paths/user_subscriptions_{subscriptionType}_upgrade.yaml
+  /user/voucher/check:
+    $ref: paths/user_voucher_check.yaml
+  /user/voucher/redeem:
+    $ref: paths/user_voucher_redeem.yaml
 components:
   securitySchemes:
     bearer:

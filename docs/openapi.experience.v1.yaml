@@ -31,6 +31,19 @@ paths:
       summary: Get Account
       tags:
         - Account
+  /account/{accountId}/xp-earned:
+    get:
+      description: Returns XP history for the specified account and time range.
+      operationId: getAccountXpEarned
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/XpEarnedPeriod'
+      responses:
+        2XX:
+          $ref: '#/components/responses/AccountXpEarnedResponse'
+      summary: Get account XP history
+      tags:
+        - Account
 components:
   securitySchemes:
     bearer:
@@ -45,6 +58,18 @@ components:
       required: true
       schema:
         type: string
+    XpEarnedPeriod:
+      description: Time range for XP history.
+      in: query
+      name: period
+      schema:
+        type: string
+        enum:
+          - 1w
+          - 1m
+          - 3m
+          - 1y
+        example: 1m
   schemas:
     StreakData:
       type: object
@@ -135,6 +160,19 @@ components:
         - status
       title: Generic Error Response
       type: object
+    AccountXpEarnedPoint:
+      description: An XP history entry.
+      type: object
+      properties:
+        startAt:
+          description: Start time for the entry.
+        xpEarned:
+          description: XP earned during this interval.
+    AccountXpEarnedResponse:
+      description: XP history entries.
+      type: array
+      items:
+        $ref: '#/components/schemas/AccountXpEarnedPoint'
   examples:
     AccountSuccess:
       summary: Account Success
@@ -183,3 +221,9 @@ components:
           schema:
             $ref: '#/components/schemas/Generic400Response'
       description: Generic 400 Response
+    AccountXpEarnedResponse:
+      description: XP history for the requested time range.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AccountXpEarnedResponse'

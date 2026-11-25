@@ -1,0 +1,8 @@
+in: query
+name: page
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: integer
+example: 1
+description: Page number.

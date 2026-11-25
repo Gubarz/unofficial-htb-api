@@ -1,0 +1,50 @@
+type: object
+properties:
+  account_id:
+    type: string
+  avatar_thumb:
+    type: string
+    nullable: true
+  bloods: {}
+  blue_league_rank: {}
+  country:
+    oneOf:
+      - type: string
+      - type: object
+        nullable: true
+        enum:
+          - null
+  country_name:
+    type: string
+    nullable: true
+  flag_bloods: {}
+  flag_owns: {}
+  id: {}
+  league_rank:
+    type: string
+  name:
+    type: string
+  owns: {}
+  points:
+    type: integer
+  positive_trend:
+    type: boolean
+  rank:
+    type: integer
+  rank_trend:
+    type: integer
+  red_league_rank: {}
+  resource_id:
+    type: integer
+  root_bloods:
+    type: integer
+  root_owns:
+    type: integer
+  task_bloods: {}
+  task_owns: {}
+  user_bloods:
+    type: integer
+  user_owns:
+    type: integer
+additionalProperties: true
+description: A season leaderboard entry.

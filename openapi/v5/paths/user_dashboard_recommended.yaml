@@ -1,5 +1,5 @@
 get:
-  description: User Dashboard Recommended
+  description: Lists content recommended for the user.
   operationId: getUserDashboardRecommended
   responses:
     '200':

@@ -1,0 +1,5 @@
+title: SourceTeamNameCheckRequest
+type: object
+properties:
+  name: {}
+additionalProperties: true

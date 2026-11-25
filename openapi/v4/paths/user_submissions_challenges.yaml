@@ -1,0 +1,10 @@
+get:
+  description: List user challenge submissions.
+  operationId: getUserChallengeSubmissions
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/UserChallengeSubmissionsSourceResponse.yaml
+  summary: List user challenge submissions
+  tags:
+    - User

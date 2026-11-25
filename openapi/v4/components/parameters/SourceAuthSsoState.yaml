@@ -1,0 +1,7 @@
+description: SSO state value.
+in: query
+name: state
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

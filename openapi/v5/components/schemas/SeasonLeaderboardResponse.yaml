@@ -1,0 +1,86 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./SeasonLeaderboardEntry.yaml
+  links:
+    type: object
+    properties:
+      first:
+        type: string
+      last:
+        type: string
+      next:
+        oneOf:
+          - type: string
+          - type: object
+            nullable: true
+            enum:
+              - null
+      prev:
+        oneOf:
+          - not:
+              type: object
+              nullable: true
+              enum:
+                - null
+          - type: object
+            nullable: true
+            enum:
+              - null
+    additionalProperties: true
+  meta:
+    type: object
+    properties:
+      current_page:
+        type: integer
+      from:
+        oneOf:
+          - type: integer
+          - type: object
+            nullable: true
+            enum:
+              - null
+      last_page:
+        type: integer
+      links:
+        type: array
+        items:
+          type: object
+          properties:
+            active:
+              type: boolean
+            label:
+              type: string
+            page:
+              oneOf:
+                - type: integer
+                - type: object
+                  nullable: true
+                  enum:
+                    - null
+            url:
+              oneOf:
+                - type: string
+                - type: object
+                  nullable: true
+                  enum:
+                    - null
+          additionalProperties: true
+      path:
+        type: string
+      per_page:
+        type: integer
+      to:
+        oneOf:
+          - type: integer
+          - type: object
+            nullable: true
+            enum:
+              - null
+      total:
+        type: integer
+    additionalProperties: true
+additionalProperties: true
+description: A paginated season leaderboard.

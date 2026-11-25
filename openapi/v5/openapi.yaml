@@ -42,6 +42,24 @@ paths:
     $ref: paths/user_profile_activity_{userId}.yaml
   /virtual_machine/active:
     $ref: paths/virtual_machine_active.yaml
+  /subscriptions/pricing:
+    $ref: paths/subscriptions_pricing.yaml
+  /user/dashboard/inprogress/{contentType}/{contentId}:
+    $ref: paths/user_dashboard_inprogress_{contentType}_{contentId}.yaml
+  /season/content/active:
+    $ref: paths/season_content_active.yaml
+  /season/user/{userId}/ranks:
+    $ref: paths/season_user_{userId}_ranks.yaml
+  /season/{seasonId}/content:
+    $ref: paths/season_{seasonId}_content.yaml
+  /season/{seasonId}/leaderboard:
+    $ref: paths/season_{seasonId}_leaderboard.yaml
+  /season/{seasonId}/leaderboard/top:
+    $ref: paths/season_{seasonId}_leaderboard_top.yaml
+  /season/{seasonId}/rewards:
+    $ref: paths/season_{seasonId}_rewards.yaml
+  /season/{seasonId}/user/rank:
+    $ref: paths/season_{seasonId}_user_rank.yaml
 security:
   - bearer: []
 servers:
@@ -63,3 +81,8 @@ tags:
   - description: Endpoints related to VM
     name: VM
     x-displayName: VM
+  - name: Subscription
+    description: Subscription plans and pricing.
+  - name: Season
+    description: Seasonal content, league standings, progress, and rewards.
+    x-displayName: Season

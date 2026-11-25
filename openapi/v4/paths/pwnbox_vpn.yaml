@@ -1,0 +1,11 @@
+post:
+  summary: Change the Pwnbox VPN server
+  description: Change the Pwnbox VPN server.
+  operationId: postSourcePwnboxVpn
+  tags:
+    - PwnBox
+  requestBody:
+    $ref: ../components/requestBodies/SourcePwnboxVpnRequest.yaml
+  responses:
+    2XX:
+      description: Pwnbox VPN request accepted.

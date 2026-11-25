@@ -1,0 +1,6 @@
+description: Certificate ID.
+in: path
+name: certificateId
+required: true
+schema:
+  type: string

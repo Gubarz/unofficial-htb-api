@@ -1,0 +1,7 @@
+description: Filter universities by country code.
+in: query
+name: country_code
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

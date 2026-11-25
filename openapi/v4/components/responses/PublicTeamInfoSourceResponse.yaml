@@ -1,0 +1,5 @@
+description: Public team info.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicTeamInfoSourceResponse.yaml

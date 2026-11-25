@@ -1,0 +1,11 @@
+post:
+  summary: Publish platform feedback
+  description: Publish platform feedback.
+  operationId: postSourcePlatformReviewPublish
+  tags:
+    - Review
+  requestBody:
+    $ref: ../components/requestBodies/SourcePlatformReviewPublishRequest.yaml
+  responses:
+    2XX:
+      description: Review submission received.

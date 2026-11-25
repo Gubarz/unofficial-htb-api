@@ -1,0 +1,10 @@
+get:
+  description: Get the subscription management link.
+  operationId: getSubscriptionRecurlyLink
+  parameters: []
+  responses:
+    2XX:
+      $ref: ../components/responses/SubscriptionRecurlyLinkSourceResponse.yaml
+  summary: Get the subscription management link
+  tags:
+    - User

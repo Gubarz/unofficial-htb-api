@@ -1,0 +1,5 @@
+description: Public profile.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/PublicProfileSourceResponse.yaml

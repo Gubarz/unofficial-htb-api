@@ -1,0 +1,14 @@
+title: Machine matrix ratings
+type: object
+properties:
+  real:
+    type: number
+    description: Real-world relevance rating.
+  cve:
+    type: number
+    description: CVE rating.
+  enum:
+    type: number
+    description: Enumeration difficulty rating.
+  machine_id:
+    description: Machine ID.

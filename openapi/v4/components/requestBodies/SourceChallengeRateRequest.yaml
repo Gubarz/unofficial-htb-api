@@ -1,0 +1,5 @@
+description: Challenge rate.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceChallengeRateRequest.yaml

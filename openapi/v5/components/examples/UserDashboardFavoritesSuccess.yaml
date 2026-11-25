@@ -1,146 +1,153 @@
-summary: Dashboard favorites snapshot
+summary: Dashboard favorites
 value:
-  machines:
-    - os: Linux
-      difficulty: Medium
-      avatar: /avatars/243db542f3168e3393c4cabf699a665e.png
-      url: /machines/Giveback
-      user_flag: true
-      root_flag: true
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/243db542f3168e3393c4cabf699a665e.png
-      points: 30
-      rating: 2.9
-      ratingCount: 219
-      tasksCompleted: 2
-      tasksTotal: 2
-      progress: 100
-      guided: false
-      status: null
-      id: 796
-      name: Giveback
-      type: Active Machine
-    - os: Linux
-      difficulty: Easy
-      avatar: /avatars/3ec233f1bf70b096a66f8a452e7cd52f.png
-      url: /machines/PermX
-      user_flag: true
-      root_flag: true
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/3ec233f1bf70b096a66f8a452e7cd52f.png
-      points: null
-      rating: 4.6
-      ratingCount: 480
-      tasksCompleted: 2
-      tasksTotal: 2
-      progress: 100
-      guided: false
-      status: vip
-      id: 613
-      name: PermX
-      type: Retired Machine
-    - os: Linux
-      difficulty: Hard
-      avatar: /avatars/2d22afd496c5ae6f6c51ca24bf3719e1.png
-      url: /machines/BigBang
-      user_flag: true
-      root_flag: true
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/2d22afd496c5ae6f6c51ca24bf3719e1.png
-      points: null
-      rating: 4.2
-      ratingCount: 111
-      tasksCompleted: 2
-      tasksTotal: 2
-      progress: 100
-      guided: false
-      status: vip
-      id: 645
-      name: BigBang
-      type: Retired Machine
-  startingPoints: []
   challenges:
-    - difficulty: Very Easy
-      url: /challenges/flag-command
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
-      urlName: flag-command
-      points: null
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
       categoryID: 5
       categoryName: Web
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
-      rating: 4.5
-      ratingCount: 157
-      progress: null
-      status: null
+      difficulty: Very Easy
+      experiencePoints: 100
       id: 646
       name: Flag Command
-      type: Retired Challenge
-    - difficulty: Very Easy
-      url: /challenges/distract-and-destroy
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
-      urlName: distract-and-destroy
-      points: 10
+      points: null
+      progress: null
+      rating: 4.5
+      ratingCount: 582
+      status: null
+      type: challenge
+      url: /challenges/flag-command
+      urlName: flag-command
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
       categoryID: 12
       categoryName: Blockchain
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c20ad4d76fe97759aa27a0c99bff6710.svg
-      rating: 4.6
-      ratingCount: 65
-      progress: 100
-      status: null
+      difficulty: Very Easy
+      experiencePoints: 130
       id: 501
       name: Distract and Destroy
-      type: Active Challenge
-    - difficulty: Very Easy
-      url: /challenges/writing-on-the-wall
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      urlName: writing-on-the-wall
-      points: null
+      points: 0
+      progress: 100
+      rating: 4.5
+      ratingCount: 93
+      status: null
+      type: challenge
+      url: /challenges/distract-and-destroy
+      urlName: distract-and-destroy
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
       categoryID: 4
       categoryName: Pwn
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      rating: 4.8
-      ratingCount: 8
-      progress: null
-      status: vip
+      difficulty: Very Easy
+      experiencePoints: 100
       id: 663
       name: Writing on the Wall
-      type: Retired Challenge
+      points: null
+      progress: null
+      rating: 4.8
+      ratingCount: 12
+      status: vip+
+      type: challenge
+      url: /challenges/writing-on-the-wall
+      urlName: writing-on-the-wall
+  fortresses: []
+  machines:
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a08b4611-3c78-4baa-9642-2b649f0892be.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a08b4611-3c78-4baa-9642-2b649f0892be.png
+      difficulty: Insane
+      experiencePoints: 1365
+      guided: false
+      id: 817
+      name: Eloquia
+      os: Windows
+      points: null
+      progress: 100
+      rating: 4.3
+      ratingCount: 113
+      root_flag: true
+      status: vip+
+      tasksCompleted: 2
+      tasksTotal: 2
+      type: machine
+      url: /machines/Eloquia
+      user_flag: true
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a03b77d0-cbb5-4ac8-8903-a112165de9e1.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a03b77d0-cbb5-4ac8-8903-a112165de9e1.png
+      difficulty: Medium
+      experiencePoints: 845
+      guided: false
+      id: 796
+      name: Giveback
+      os: Linux
+      points: null
+      progress: 100
+      rating: 2.9
+      ratingCount: 263
+      root_flag: true
+      status: vip+
+      tasksCompleted: 2
+      tasksTotal: 2
+      type: machine
+      url: /machines/Giveback
+      user_flag: true
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90cc-d0d5-4d03-a772-ee0ef65ef8bc.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90cc-d0d5-4d03-a772-ee0ef65ef8bc.png
+      difficulty: Easy
+      experiencePoints: 585
+      guided: false
+      id: 613
+      name: PermX
+      os: Linux
+      points: null
+      progress: 100
+      rating: 4.6
+      ratingCount: 494
+      root_flag: true
+      status: vip+
+      tasksCompleted: 2
+      tasksTotal: 2
+      type: machine
+      url: /machines/PermX
+      user_flag: true
+  proLabs: []
   sherlocks:
-    - urlName: campfire-2
-      difficulty: Very Easy
-      url: /sherlocks/campfire-2
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/9e4d9101-4ab6-4804-99ce-2bfbbb9887e4.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/9e4d9101-4ab6-4804-99ce-2bfbbb9887e4.png
       categoryID: 14
       categoryName: DFIR
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/6bc24fc1ab650b25b4114e93a98f1eba.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/6bc24fc1ab650b25b4114e93a98f1eba.png
-      rating: 4.7
-      ratingCount: 93
-      tasksCompleted: 0
-      tasksTotal: 5
-      progress: 0
-      status: null
+      difficulty: Very Easy
+      experiencePoints: 150
       id: 736
       name: Campfire-2
-      type: Retired Sherlock
-  proLabs: []
+      progress: 0
+      rating: 4.8
+      ratingCount: 158
+      status: null
+      tasksCompleted: 0
+      tasksTotal: 5
+      type: sherlock
+      url: /sherlocks/campfire-2
+      urlName: campfire-2
+  startingPoints: []
   tracks:
     - avatar: /tracks/60.png
       avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/60.png
-      url: /tracks/Active-Directory-Exploitation
       difficulty: Easy
-      likeCount: 280
+      id: 60
+      likeCount: 607
+      name: Active Directory Exploitation
       progress: 27
       tasksCompleted: 3
       tasksTotal: 11
-      id: 60
-      name: Active Directory Exploitation
-      type: Track
+      type: track
+      url: /tracks/Active-Directory-Exploitation
     - avatar: /tracks/8.png
       avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/tracks/8.png
-      url: /tracks/Synack-Red-Team
       difficulty: Medium
-      likeCount: 813
+      id: 8
+      likeCount: 873
+      name: Synack Red Team
       progress: 0
       tasksCompleted: 0
       tasksTotal: 16
-      id: 8
-      name: Synack Red Team
-      type: Track
-  fortresses: []
+      type: track
+      url: /tracks/Synack-Red-Team

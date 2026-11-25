@@ -1,122 +1,129 @@
-summary: Dashboard recommended snapshot
+summary: Recommended dashboard content
 value:
-  machines:
-    - os: Linux
+  challenges:
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/c4ca4238a0b923820dcc509a6f75849b.svg
+      categoryID: 1
+      categoryName: Reversing
       difficulty: Hard
-      avatar: /avatars/f6634ed8d93806d70d330297d7c90ee2.png
-      url: /machines/Store
-      user_flag: false
-      root_flag: false
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/f6634ed8d93806d70d330297d7c90ee2.png
+      experiencePoints: 400
+      id: 138
+      name: vmcrack
       points: null
+      progress: null
+      rating: 5
+      ratingCount: 115
+      status: vip+
+      type: challenge
+      url: /challenges/vmcrack
+      urlName: vmcrack
+    - avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/e4da3b7fbbce2345d7772b0674a318d5.svg
+      categoryID: 5
+      categoryName: Web
+      difficulty: Hard
+      experiencePoints: 400
+      id: 127
+      name: ImageTok
+      points: null
+      progress: null
+      rating: 4.9
+      ratingCount: 307
+      status: vip+
+      type: challenge
+      url: /challenges/imagetok
+      urlName: imagetok
+  fortresses: []
+  machines:
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a21777f8-ef13-4ed6-8849-2e84c2dfa769-1782216807.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/a21777f8-ef13-4ed6-8849-2e84c2dfa769-1782216807.png
+      difficulty: Hard
+      experiencePoints: 850
+      guided: false
+      id: 951
+      name: Ghostlink
+      os: Windows
+      points: null
+      progress: 0
+      rating: 4.7
+      ratingCount: 40
+      root_flag: false
+      status: vip+
+      tasksCompleted: 0
+      tasksTotal: 2
+      type: machine
+      url: /machines/Ghostlink
+      user_flag: false
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-27ff-4e12-9785-d2c8ae954286.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-27ff-4e12-9785-d2c8ae954286.png
+      difficulty: Hard
+      experiencePoints: 850
+      guided: false
+      id: 389
+      name: Jarmis
+      os: Linux
+      points: null
+      progress: 0
       rating: 5
       ratingCount: 5
-      tasksCompleted: 0
-      tasksTotal: 2
-      progress: 0
-      guided: false
-      status: vip+
-      id: 790
-      name: Store
-      type: Retired Machine
-    - os: Linux
-      difficulty: Hard
-      avatar: /avatars/d12fa2e84c31a94e402fdc765a0e9125.png
-      url: /machines/Dump
-      user_flag: false
       root_flag: false
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/avatars/d12fa2e84c31a94e402fdc765a0e9125.png
-      points: null
-      rating: 5
-      ratingCount: 3
+      status: vip+
       tasksCompleted: 0
       tasksTotal: 2
-      progress: 0
-      guided: false
-      status: vip+
-      id: 793
-      name: Dump
-      type: Retired Machine
-  startingPoints: []
-  challenges:
-    - difficulty: Hard
-      url: /challenges/modern-typer
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      urlName: modern-typer
-      points: null
-      categoryID: 4
-      categoryName: Pwn
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      rating: 5
-      ratingCount: 58
-      progress: null
-      status: vip
-      id: 203
-      name: Modern Typer
-      type: Retired Challenge
-    - difficulty: Hard
-      url: /challenges/tictacpwn
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      urlName: tictacpwn
-      points: null
-      categoryID: 4
-      categoryName: Pwn
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenge_categories/a87ff679a2f3e71d9181a67b7542122c.svg
-      rating: 5
-      ratingCount: 28
-      progress: null
-      status: vip
-      id: 205
-      name: TicTacPwn
-      type: Retired Challenge
-  sherlocks:
-    - urlName: sillyeli
-      difficulty: Hard
-      url: /sherlocks/sillyeli
-      categoryID: 14
-      categoryName: DFIR
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/021bbc7ee20b71134d53e20206bd6feb.png
-      rating: 4.9
-      ratingCount: 17
-      tasksCompleted: 0
-      tasksTotal: 16
-      progress: 0
-      status: null
-      id: 1024
-      name: SillyEli
-      type: Active Sherlock
-    - urlName: optinseltrace24-6-sleigh-slayer
-      difficulty: Hard
-      url: /sherlocks/optinseltrace24-6-sleigh-slayer
-      categoryID: 14
-      categoryName: DFIR
-      avatar: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/challenges/301ad0e3bd5cb1627a2044908a42fdc2.png
-      rating: 4.9
-      ratingCount: 8
-      tasksCompleted: 0
-      tasksTotal: 24
-      progress: 0
-      status: vip
-      id: 834
-      name: 'OpTinselTrace24-6: Sleigh Slayer'
-      type: Retired Sherlock
+      type: machine
+      url: /machines/Jarmis
+      user_flag: false
   proLabs:
-    - url: /prolabs/overview/puppet
-      mini: true
-      identifier: PUPPET
-      difficulty: ADVANCED
-      avatar: null
-      avatarUrl: https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/prolabs/b6d767d2f8ed5d21a44b0e5886680cb9_avatar.svg
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f30eef8-35b0-4372-b59b-136069efd81a.svg
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f30eef8-35b0-4372-b59b-136069efd81a.svg
       categoryName: Red Team Operator Level I
-      rating: 4.6
-      ratingCount: 22
+      difficulty: INTERMEDIATE
+      id: 22
+      identifier: PUPPET
+      mini: true
+      name: Puppet
       progress: 25
+      rating: 4.8
+      ratingCount: 133
+      status: free
       tasksCompleted: 1
       tasksTotal: 4
-      id: 22
-      name: Puppet
-      type: Pro Lab
+      type: pro_lab
+      url: /prolabs/overview/puppet
+  sherlocks:
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/12deefc2-cae4-4de6-b431-675cdce4c549-1793098664.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/12deefc2-cae4-4de6-b431-675cdce4c549-1793098664.png
+      categoryID: 16
+      categoryName: Malware Analysis
+      difficulty: Hard
+      experiencePoints: 765
+      id: 1422
+      name: Anti-Analysis_TyphonLogger
+      progress: 0
+      rating: 5
+      ratingCount: 1
+      status: vip+
+      tasksCompleted: 0
+      tasksTotal: 11
+      type: sherlock
+      url: /sherlocks/anti-analysistyphonlogger
+      urlName: anti-analysistyphonlogger
+    - avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/5aacabe1-7003-4fb9-bb2f-398f82dee15c-1793098928.png
+      avatarUrl: https://cdn.services-k8s.prod.aws.htb.systems/content/sherlocks/avatar/5aacabe1-7003-4fb9-bb2f-398f82dee15c-1793098928.png
+      categoryID: 14
+      categoryName: DFIR
+      difficulty: Hard
+      experiencePoints: 525
+      id: 1440
+      name: Linux_Disk_Forensics
+      progress: 0
+      rating: 5
+      ratingCount: 1
+      status: vip+
+      tasksCompleted: 0
+      tasksTotal: 5
+      type: sherlock
+      url: /sherlocks/linuxdiskforensics
+      urlName: linuxdiskforensics
+  startingPoints: []
   tracks: []
-  fortresses: []

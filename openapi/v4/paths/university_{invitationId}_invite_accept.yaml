@@ -1,0 +1,15 @@
+post:
+  summary: Accept a university invitation
+  description: Accept a university invitation.
+  operationId: sourcePostUniversityInvitationidInviteAccept
+  tags:
+    - Universities
+  parameters:
+    - name: invitationId
+      in: path
+      required: true
+      description: University invitation ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

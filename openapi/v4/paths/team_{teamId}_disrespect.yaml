@@ -1,0 +1,15 @@
+post:
+  summary: Remove respect from a team
+  description: Remove respect from a team.
+  operationId: sourcePostTeamTeamidDisrespect
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

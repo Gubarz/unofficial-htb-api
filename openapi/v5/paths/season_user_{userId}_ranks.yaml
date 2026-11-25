@@ -1,0 +1,11 @@
+get:
+  operationId: getSeasonUserRanks
+  parameters:
+    - $ref: ../components/parameters/UserId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonUserRanksResponse.yaml
+  summary: Get a user's season ranking history
+  tags:
+    - Season
+  description: Returns a user's rankings and progress across seasons.

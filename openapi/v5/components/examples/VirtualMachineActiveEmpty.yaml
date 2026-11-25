@@ -1,3 +1,4 @@
-summary: Virtual Machine Active Empty
+summary: No active virtual machine
 value:
   info: null
+description: No virtual machine is active.

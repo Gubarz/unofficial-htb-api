@@ -1,0 +1,6 @@
+description: Code of the current subscription plan.
+in: path
+name: currentPlan
+required: true
+schema:
+  type: string

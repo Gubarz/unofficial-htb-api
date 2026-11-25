@@ -1,6 +1,0 @@
-description: Schema definition for Profile Id Repsonse
-properties:
-  userStats:
-    $ref: ./ProfileUserStats.yaml
-title: Profile Id Repsonse
-type: object

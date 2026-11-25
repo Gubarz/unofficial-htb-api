@@ -1,4 +1,4 @@
-description: Summary information for fortress cards surfaced on dashboard views.
+description: Dashboard fortress.
 type: object
 properties:
   points:
@@ -6,7 +6,6 @@ properties:
     description: Points available for the fortress.
   avatarUrl:
     type: string
-    format: uri
     description: Absolute URL for the fortress avatar.
   solvesCount:
     type: integer
@@ -29,13 +28,3 @@ properties:
   type:
     type: string
     description: Resource type label (e.g., Fortress).
-required:
-  - points
-  - avatarUrl
-  - solvesCount
-  - tasksCompleted
-  - tasksTotal
-  - progress
-  - id
-  - name
-  - type

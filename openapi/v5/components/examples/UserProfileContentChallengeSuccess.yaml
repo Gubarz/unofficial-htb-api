@@ -1,15 +1,7 @@
-summary: User profile content filtered by challenges
+summary: User profile challenge content
 value:
-  data:
-    - id: 1063
-      name: Untrusted Node
-      categoryName: Quantum
-      starRating: 0
-      difficulty: Medium
-      ownCount: 0
-      releaseDate: 2025-12-05T21:00:00.000Z
-      ratingCount: 0
+  data: []
   meta:
-    page: 1
     lastPage: 1
-    totalItems: 8
+    page: 1
+    totalItems: 0

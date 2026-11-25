@@ -1,0 +1,20 @@
+type: object
+properties:
+  description:
+    type: string
+  groups:
+    type: array
+    items:
+      $ref: ./SeasonRewardGroup.yaml
+  id:
+    type: integer
+  name:
+    type: string
+  order:
+    type: integer
+  top_earns:
+    type: array
+    items:
+      $ref: ./SeasonRewardCard.yaml
+additionalProperties: true
+description: A seasonal reward category and its reward groups.

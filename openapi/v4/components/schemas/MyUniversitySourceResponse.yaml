@@ -1,0 +1,20 @@
+description: My university.
+type: object
+properties:
+  data:
+    oneOf:
+      - type: array
+        items: {}
+      - type: object
+        properties:
+          id: {}
+          name: {}
+          logo_url: {}
+          country: {}
+          rank: {}
+          users_count: {}
+          root_owns_count: {}
+  message:
+    type: string
+  section:
+    type: string

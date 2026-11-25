@@ -1,0 +1,8 @@
+title: SourceTeamCoverUploadRequest
+type: object
+properties:
+  cover_image:
+    type: string
+    format: binary
+    description: Team cover image.
+additionalProperties: true

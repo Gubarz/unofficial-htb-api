@@ -1,0 +1,5 @@
+description: Pro Lab reset request.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceProlabResetRequest.yaml

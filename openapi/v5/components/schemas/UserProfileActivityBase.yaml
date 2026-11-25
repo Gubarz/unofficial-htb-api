@@ -14,6 +14,9 @@ properties:
   avatar:
     type: string
     format: uri
+  avatarUrl:
+    type: string
+    description: Avatar URL for the activity entry.
   blood:
     type: boolean
     nullable: true

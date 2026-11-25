@@ -1,0 +1,6 @@
+description: Code of the target subscription plan.
+in: path
+name: targetPlan
+required: true
+schema:
+  type: string

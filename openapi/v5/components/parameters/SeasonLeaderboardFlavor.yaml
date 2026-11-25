@@ -1,0 +1,12 @@
+in: query
+name: seasonFlavor
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string
+  enum:
+    - red
+    - blue
+    - purple
+example: red
+description: League to rank. Use `red` for offensive, `blue` for defensive, or `purple` for combined.

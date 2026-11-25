@@ -1,0 +1,16 @@
+get:
+  summary: Get the SSO redirect
+  description: Returns the redirect target for SSO sign-in.
+  operationId: getSourceAuthSsoRedirect
+  tags:
+    - Platform
+  parameters:
+    - $ref: ../components/parameters/SourceAuthSsoRedirect.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSsoRedirectResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+  security:
+    - {}
+    - bearer: []

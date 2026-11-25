@@ -1,0 +1,15 @@
+post:
+  summary: Respect a team
+  description: Respect a team.
+  operationId: sourcePostTeamTeamidRespect
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  responses:
+    2XX:
+      description: Successful request.

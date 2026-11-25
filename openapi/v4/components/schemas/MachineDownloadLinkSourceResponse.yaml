@@ -1,0 +1,4 @@
+description: Machine download link.
+type: object
+properties:
+  url: {}

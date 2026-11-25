@@ -1,0 +1,30 @@
+summary: "Defensive players \u2014 empty"
+value:
+  data: []
+  links:
+    first: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=1
+    last: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=1
+    next: null
+    prev: null
+  meta:
+    current_page: 1
+    from: null
+    last_page: 1
+    links:
+      - active: false
+        label: '&laquo; Previous'
+        page: null
+        url: null
+      - active: true
+        label: '1'
+        page: 1
+        url: https://labs.hackthebox.com/api/v5/season/21/leaderboard?page=1
+      - active: false
+        label: Next &raquo;
+        page: null
+        url: null
+    path: https://labs.hackthebox.com/api/v5/season/21/leaderboard
+    per_page: 15
+    to: null
+    total: 0
+description: No defensive players rankings are available.

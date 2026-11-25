@@ -1,0 +1,6 @@
+description: Filter badges by rarity.
+in: query
+name: rare
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: integer

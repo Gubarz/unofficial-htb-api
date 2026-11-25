@@ -1,0 +1,11 @@
+post:
+  summary: Submit a Sherlock
+  description: Submit a Sherlock.
+  operationId: postSourceSherlockSubmit
+  tags:
+    - Sherlocks
+  requestBody:
+    $ref: ../components/requestBodies/SourceSherlockSubmitRequest.yaml
+  responses:
+    2XX:
+      description: Sherlock task submission received.

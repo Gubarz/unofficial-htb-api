@@ -1,0 +1,15 @@
+post:
+  summary: Cancel a subscription
+  description: Cancel a subscription.
+  operationId: postSourceSubscriptionCancel
+  tags:
+    - User
+  parameters:
+    - $ref: ../components/parameters/SourceSubscriptionType.yaml
+  requestBody:
+    $ref: ../components/requestBodies/SourceSubscriptionCancelRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

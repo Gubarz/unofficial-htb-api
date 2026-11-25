@@ -1,0 +1,7 @@
+description: SSO redirect target.
+in: query
+name: redirect
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string

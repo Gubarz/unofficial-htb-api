@@ -1,0 +1,5 @@
+description: Sherlock task submission.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceSherlockSubmitRequest.yaml

@@ -1,0 +1,5 @@
+description: Authentication token details.
+type: object
+properties:
+  access_token: {}
+  refresh_token: {}

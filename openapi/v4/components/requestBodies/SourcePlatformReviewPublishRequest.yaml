@@ -1,0 +1,5 @@
+description: Platform review publish.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourcePlatformReviewPublishRequest.yaml

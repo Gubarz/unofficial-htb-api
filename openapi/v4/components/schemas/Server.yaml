@@ -1,5 +1,7 @@
 description: Schema definition for Server
 properties:
+  name:
+    type: string
   current_clients:
     example: 85
     type: integer

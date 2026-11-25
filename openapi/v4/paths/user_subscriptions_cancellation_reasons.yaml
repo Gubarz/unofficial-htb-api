@@ -1,0 +1,10 @@
+get:
+  description: List subscription cancellation reasons.
+  operationId: getSubscriptionCancellationReasons
+  parameters: []
+  responses:
+    '200':
+      $ref: ../components/responses/SubscriptionCancellationReasonsSourceResponse.yaml
+  summary: List subscription cancellation reasons
+  tags:
+    - User

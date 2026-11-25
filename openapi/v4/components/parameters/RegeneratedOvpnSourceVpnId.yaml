@@ -1,0 +1,5 @@
+description: VPN server ID.
+in: path
+name: vpnId
+required: true
+schema: {}

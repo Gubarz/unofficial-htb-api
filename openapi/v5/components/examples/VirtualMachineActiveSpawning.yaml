@@ -1,14 +1,15 @@
-summary: Virtual Machine Active Spawning
+summary: Virtual machine starting
 value:
   info:
-    vpn_server_type: "Machines VIP+"
+    vpn_server_type: Machines VIP+
     id: 351
-    name: "Cap"
-    avatar: "https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png"
-    type: "machine"
-    expires_at: "2026-06-26 17:03:17"
+    name: Cap
+    avatar: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868.png
+    type: machine
+    expires_at: '2026-06-26 17:03:17'
     isSpawning: true
-    lab_server: "dedivip_lab"
+    lab_server: dedivip_lab
     vpn_server_id: 289
-    avatar_url: "https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png"
+    avatar_url: https://cdn.services-k8s.prod.aws.htb.systems/content/machines/avatar/9e4d90d2-73c7-4da0-a15f-662bbc048868_thumb_64.png
     ip: null
+description: A virtual machine is starting and has no IP address yet.

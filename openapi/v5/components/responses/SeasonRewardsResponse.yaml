@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      SeasonRewardsSuccess:
+        $ref: ../examples/SeasonRewardsSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonRewardsResponse.yaml
+description: Seasonal reward categories.

@@ -1,0 +1,21 @@
+description: Public profile badges.
+type: object
+properties:
+  badges:
+    type: array
+    items:
+      type: object
+      properties:
+        description:
+          type: string
+        icon:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        pivot:
+          type: object
+          properties:
+            created_at:
+              type: string

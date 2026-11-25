@@ -1,0 +1,8 @@
+description: Cancellation reason, secondary reasons, and feedback.
+type: object
+properties:
+  reason: {}
+  secondaryReasons:
+    type: array
+    items: {}
+  feedback: {}

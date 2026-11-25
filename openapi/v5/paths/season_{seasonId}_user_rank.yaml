@@ -1,0 +1,11 @@
+get:
+  operationId: getSeasonUserRank
+  parameters:
+    - $ref: ../components/parameters/SeasonId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/SeasonUserRankResponse.yaml
+  summary: Get current user season rank
+  tags:
+    - Season
+  description: Returns the signed-in user's league rankings and progress for a season.

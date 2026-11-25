@@ -1,0 +1,17 @@
+post:
+  summary: Update a university
+  description: Update a university.
+  operationId: sourcePostUniversityUpdateUniversityid
+  tags:
+    - Universities
+  parameters:
+    - name: universityId
+      in: path
+      required: true
+      description: University ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceUniversityUpdateRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

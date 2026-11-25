@@ -1,0 +1,17 @@
+post:
+  summary: Update a team
+  description: Update a team.
+  operationId: sourcePostTeamTeamidUpdate
+  tags:
+    - Team
+  parameters:
+    - name: teamId
+      in: path
+      required: true
+      description: Team ID.
+      schema: {}
+  requestBody:
+    $ref: ../components/requestBodies/SourceTeamUpdateRequest.yaml
+  responses:
+    2XX:
+      description: Successful request.

@@ -1,0 +1,5 @@
+description: University invitations.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UniversityInvitationsSourceResponse.yaml

@@ -1,0 +1,16 @@
+post:
+  summary: Sign in
+  description: Authenticates the account and returns access and refresh tokens.
+  operationId: postSourceAuthLogin
+  tags:
+    - Platform
+  requestBody:
+    $ref: ../components/requestBodies/SourceAuthLoginRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthTokenResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+  security:
+    - {}
+    - bearer: []

@@ -1,0 +1,15 @@
+post:
+  summary: Pause a subscription
+  description: Pause a subscription.
+  operationId: postSourceSubscriptionPause
+  tags:
+    - User
+  parameters:
+    - $ref: ../components/parameters/SourceSubscriptionType.yaml
+  requestBody:
+    $ref: ../components/requestBodies/SourceSubscriptionPauseRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

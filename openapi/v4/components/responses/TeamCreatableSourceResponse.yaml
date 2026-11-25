@@ -1,0 +1,5 @@
+description: Team creation eligibility.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/TeamCreatableSourceResponse.yaml

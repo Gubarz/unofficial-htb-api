@@ -1,0 +1,44 @@
+description: Public team members.
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    avatar:
+      type: string
+      nullable: true
+    rank:
+      type: integer
+    rank_text:
+      type: string
+    role:
+      type: string
+    points:
+      type: integer
+    root_owns:
+      type: integer
+    user_owns:
+      type: integer
+    root_bloods_count:
+      type: integer
+    user_bloods_count:
+      type: integer
+    country_code:
+      type: string
+      nullable: true
+    country_name:
+      type: string
+      nullable: true
+    public:
+      type: integer
+    team:
+      type: object
+      properties:
+        captain_id:
+          type: integer
+        id:
+          type: integer
+  additionalProperties: true

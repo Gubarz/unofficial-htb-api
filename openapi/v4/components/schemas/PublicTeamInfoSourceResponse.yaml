@@ -1,0 +1,40 @@
+description: Public team info.
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  avatar_url:
+    type: string
+  country_code:
+    type: string
+  country_name:
+    type: string
+  motto:
+    type: string
+  description:
+    type: string
+  facebook: {}
+  twitter: {}
+  discord:
+    type: string
+  is_respected: {}
+  join_request_sent: {}
+  captain:
+    type: object
+    properties:
+      id:
+        type: integer
+      avatar_thumb: {}
+      name:
+        type: string
+    additionalProperties: true
+  can_delete_avatar:
+    type: boolean
+  cover_image_url: {}
+  points:
+    type: integer
+  public:
+    type: boolean
+additionalProperties: true

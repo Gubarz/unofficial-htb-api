@@ -1,0 +1,11 @@
+in: query
+name: entity
+required: false
+schema:
+  x-go-type-skip-optional-pointer: false
+  type: string
+  enum:
+    - players
+    - teams
+example: players
+description: Whether to rank players or teams.

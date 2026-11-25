@@ -1,0 +1,7 @@
+description: Number of top-ranked entries to return.
+in: query
+name: number
+required: false
+schema:
+  type: integer
+  x-go-type-skip-optional-pointer: false

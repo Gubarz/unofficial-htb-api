@@ -1,0 +1,19 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      blue:
+        $ref: ./SeasonDefensiveUserProgress.yaml
+      purple:
+        oneOf:
+          - $ref: ./SeasonUserProgress.yaml
+          - type: object
+            nullable: true
+            enum:
+              - null
+      red:
+        $ref: ./SeasonOffensiveUserProgress.yaml
+    additionalProperties: true
+additionalProperties: true
+description: The signed-in user's league rankings and progress.

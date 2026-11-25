@@ -1,0 +1,5 @@
+description: User machine submissions.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/UserMachineSubmissionsSourceResponse.yaml

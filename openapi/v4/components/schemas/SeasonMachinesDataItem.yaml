@@ -1,4 +1,6 @@
 properties:
+  content_id:
+    type: string
   user_points:
     type: integer
   active:

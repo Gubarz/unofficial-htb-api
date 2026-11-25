@@ -1,0 +1,15 @@
+title: Platform feedback publication
+type: object
+properties:
+  headline:
+    type: string
+    description: Optional feedback headline.
+  review:
+    type: string
+    description: Optional feedback text.
+  rating:
+    type: number
+    description: Feedback rating.
+  publish:
+    type: boolean
+    description: Whether to share the feedback publicly.

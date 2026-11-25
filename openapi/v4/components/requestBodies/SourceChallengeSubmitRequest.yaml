@@ -1,0 +1,5 @@
+description: Challenge submit.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/SourceChallengeSubmitRequest.yaml

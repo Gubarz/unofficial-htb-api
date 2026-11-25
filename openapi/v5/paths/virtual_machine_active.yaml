@@ -1,5 +1,4 @@
 get:
-  description: Virtual Machine Active
   operationId: getVirtualMachineActive
   responses:
     '200':
@@ -9,3 +8,4 @@ get:
   summary: Get Active Virtual Machine
   tags:
     - VM
+  description: 'Returns the active virtual machine, or info: null when no VM is active.'

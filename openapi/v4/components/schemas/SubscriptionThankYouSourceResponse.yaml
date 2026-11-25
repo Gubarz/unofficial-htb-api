@@ -1,0 +1,4 @@
+description: Subscription confirmation details.
+type: object
+properties:
+  subscription_details: {}

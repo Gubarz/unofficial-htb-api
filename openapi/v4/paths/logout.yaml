@@ -1,0 +1,13 @@
+post:
+  summary: Sign out
+  description: Signs out the authenticated account.
+  operationId: postSourceAuthLogout
+  tags:
+    - Platform
+  requestBody:
+    $ref: ../components/requestBodies/SourceAuthLogoutRequest.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml
+    default:
+      $ref: ../components/responses/SourceAuthSubscriptionsUnspecifiedResponse.yaml

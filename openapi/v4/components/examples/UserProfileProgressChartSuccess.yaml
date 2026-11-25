@@ -1,0 +1,13 @@
+summary: One month of machine progress
+description: Machine progress chart for a one-month time range.
+value:
+  chart_data:
+    points:
+      - time: '2026-11-25 00:00:00'
+        value: 0
+      - time: '2026-11-16 00:00:00'
+        value: 1
+      - time: '2026-11-09 00:00:00'
+        value: 1
+      - time: '2026-11-02 00:00:00'
+        value: 1

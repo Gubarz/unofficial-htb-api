@@ -1,0 +1,3 @@
+description: Certificate download.
+type: string
+format: binary

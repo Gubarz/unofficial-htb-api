@@ -1,0 +1,12 @@
+get:
+  description: Returns XP history for the specified account and time range.
+  operationId: getAccountXpEarned
+  parameters:
+    - $ref: ../components/parameters/AccountId.yaml
+    - $ref: ../components/parameters/XpEarnedPeriod.yaml
+  responses:
+    2XX:
+      $ref: ../components/responses/AccountXpEarnedResponse.yaml
+  summary: Get account XP history
+  tags:
+    - Account

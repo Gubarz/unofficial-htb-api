@@ -1,0 +1,8 @@
+content:
+  application/json:
+    examples:
+      SeasonUserRanksSuccess:
+        $ref: ../examples/SeasonUserRanksSuccess.yaml
+    schema:
+      $ref: ../schemas/SeasonUserRanksResponse.yaml
+description: A user's seasonal ranking history.
